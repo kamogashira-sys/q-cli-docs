@@ -56,30 +56,28 @@ MCP（Model Context Protocol）は、AIモデルと外部ツールを接続す�
 
 ## 🔄 MCP設定の読込フロー
 
-### 読込優先順位
+### 設定の優先順位
 
-Q CLIは以下の優先順位でMCP設定を読み込みます：
+Q CLIは以下の優先順位でMCP設定を読み込み、マージします：
 
-1. **Agent設定内のMCPサーバー** (最優先)
-   - ワークスペース: `.amazonq/cli-agents/{agent_name}.json`
-   - グローバル: `~/.aws/amazonq/cli-agents/{agent_name}.json`
+| 優先度 | 設定種別 | パス | 説明 |
+|--------|---------|------|------|
+| **1** | Agent設定内のMCPサーバー | `.amazonq/cli-agents/{agent_name}.json`<br/>`~/.aws/amazonq/cli-agents/{agent_name}.json` | 最優先。Agent設定内の`mcpServers`セクション |
+| **2** | ワークスペースレガシーMCP設定 | `.amazonq/mcp.json` | 中優先。プロジェクト固有のMCP設定 |
+| **3** | グローバルレガシーMCP設定 | `~/.aws/amazonq/mcp.json` | 最低優先。ユーザー全体のMCP設定 |
 
-2. **ワークスペースレガシーMCP設定** (中優先)
-   - `.amazonq/mcp.json`
+**重複処理**: 同じ`command`を持つMCPサーバーは、上位優先度のものが使用されます（下位は無視）。
 
-3. **グローバルレガシーMCP設定** (最低優先)
-   - `~/.aws/amazonq/mcp.json`
-
-### 詳細フロー図
+### 全パターン対応フロー図
 
 ```mermaid
 flowchart TD
-    Start([Q CLI起動]) --> CheckMCPEnabled{MCP有効?}
+    Start([Q CLI起動]) --> CheckMCPEnabled{MCP有効?<br/>管理者設定}
     
-    CheckMCPEnabled -->|無効| Disabled[MCP機能無効<br/>警告表示]
-    CheckMCPEnabled -->|有効| LoadAgents[Agent設定読込]
+    CheckMCPEnabled -->|無効<br/>パターンA-1| MCPDisabled[MCP機能無効<br/>警告表示]
+    CheckMCPEnabled -->|有効| LoadAgents[Agent設定読込開始]
     
-    Disabled --> End([終了])
+    MCPDisabled --> End([終了<br/>MCPサーバーなし])
     
     LoadAgents --> CheckCWD{カレントディレクトリ<br/>= ホームディレクトリ?}
     
@@ -87,47 +85,104 @@ flowchart TD
     CheckCWD -->|No| LoadLocal[ワークスペースAgent読込<br/>.amazonq/cli-agents/*.json]
     
     SkipLocal --> LoadGlobal[グローバルAgent読込<br/>~/.aws/amazonq/cli-agents/*.json]
-    LoadLocal --> LoadGlobal
+    LoadLocal --> CheckConflict{Agent名衝突?}
     
-    LoadGlobal --> ProcessAgents[各Agent処理]
+    CheckConflict -->|衝突あり<br/>パターンB-10| UseWorkspace[ワークスペース版使用<br/>警告表示]
+    CheckConflict -->|衝突なし| LoadGlobal
     
-    ProcessAgents --> CheckLegacyFlag{use_legacy_mcp_json<br/>= true?}
+    UseWorkspace --> LoadGlobal
+    LoadGlobal --> CheckAgentExists{Agentファイル<br/>存在する?}
     
-    CheckLegacyFlag -->|Yes<br/>デフォルト| LoadLegacyGlobal[グローバルレガシーMCP読込<br/>~/.aws/amazonq/mcp.json]
-    CheckLegacyFlag -->|No| AgentMCP[Agent内mcpServers]
+    CheckAgentExists -->|存在しない<br/>パターンB-1,2,3| CreateDefault[デフォルトAgent作成<br/>use_legacy_mcp_json=true<br/>mcp_servers=空]
+    CheckAgentExists -->|存在する<br/>パターンB-4~9| LoadAgent[指定Agent読込]
     
-    LoadLegacyGlobal --> MergeLegacy[レガシー設定をマージ<br/>重複commandはスキップ]
-    MergeLegacy --> AgentMCP
+    CreateDefault --> LoadLegacyForDefault[グローバルレガシーMCP読込<br/>~/.aws/amazonq/mcp.json]
+    LoadAgent --> CheckLegacyFlag{use_legacy_mcp_json<br/>= true?}
     
-    AgentMCP --> CollectServers[MCPサーバー収集<br/>優先度1: Agent設定]
+    CheckLegacyFlag -->|Yes<br/>パターンB-4,5,6,7| LoadLegacyGlobal[グローバルレガシーMCP読込<br/>~/.aws/amazonq/mcp.json]
+    CheckLegacyFlag -->|No<br/>パターンB-8,9| SkipLegacyGlobal[グローバルレガシーMCP<br/>読込スキップ]
+    
+    LoadLegacyForDefault --> MergeDefault[デフォルトAgentにマージ<br/>重複commandスキップ]
+    LoadLegacyGlobal --> MergeAgent[Agentにマージ<br/>重複commandスキップ]
+    
+    MergeDefault --> CollectServers[MCPサーバー収集開始<br/>優先度1: Agent設定]
+    MergeAgent --> CollectServers
+    SkipLegacyGlobal --> CollectServers
     
     CollectServers --> LoadWorkspaceLegacy[ワークスペースレガシー読込<br/>.amazonq/mcp.json<br/>優先度2]
     
-    LoadWorkspaceLegacy --> LoadGlobalLegacy[グローバルレガシー読込<br/>~/.aws/amazonq/mcp.json<br/>優先度3]
+    LoadWorkspaceLegacy --> CheckWorkspaceLegacy{ワークスペース<br/>レガシーあり?}
     
-    LoadGlobalLegacy --> Deduplicate[重複除去<br/>同じcommandは上位優先]
+    CheckWorkspaceLegacy -->|あり<br/>パターンB-3,7,8,9| MergeWorkspace[ワークスペースレガシーをマージ<br/>重複commandスキップ]
+    CheckWorkspaceLegacy -->|なし<br/>パターンB-1,2,4,5,6| LoadGlobalLegacy2
+    
+    MergeWorkspace --> LoadGlobalLegacy2[グローバルレガシー読込<br/>~/.aws/amazonq/mcp.json<br/>優先度3]
+    
+    LoadGlobalLegacy2 --> CheckGlobalLegacy{グローバル<br/>レガシーあり?}
+    
+    CheckGlobalLegacy -->|あり<br/>パターンB-2,3,6,7| MergeGlobal[グローバルレガシーをマージ<br/>重複commandスキップ]
+    CheckGlobalLegacy -->|なし<br/>パターンB-1,4,5,8,9| Deduplicate
+    
+    MergeGlobal --> Deduplicate[最終重複除去<br/>commandフィールドで判定]
     
     Deduplicate --> FilterDisabled[disabled=trueを除外]
     
-    FilterDisabled --> End
+    FilterDisabled --> CheckResult{MCPサーバー<br/>存在する?}
+    
+    CheckResult -->|存在する| MCPStart([MCP起動])
+    CheckResult -->|存在しない<br/>パターンB-1,4| NoMCP([MCPサーバーなし])
     
     style Start fill:#e1f5ff
-    style End fill:#c8e6c9
+    style End fill:#ffcdd2
+    style MCPStart fill:#c8e6c9
+    style NoMCP fill:#fff9c4
     style CheckMCPEnabled fill:#fff9c4
     style CheckCWD fill:#fff9c4
+    style CheckConflict fill:#fff9c4
+    style CheckAgentExists fill:#fff9c4
     style CheckLegacyFlag fill:#fff9c4
+    style CheckWorkspaceLegacy fill:#fff9c4
+    style CheckGlobalLegacy fill:#fff9c4
+    style CheckResult fill:#fff9c4
+    style MCPDisabled fill:#ffcdd2
+    style CreateDefault fill:#ffe0b2
+    style LoadAgent fill:#c5e1a5
     style LoadLocal fill:#c5e1a5
     style LoadGlobal fill:#dcedc8
     style LoadLegacyGlobal fill:#ffe0b2
     style LoadWorkspaceLegacy fill:#ffccbc
-    style LoadGlobalLegacy fill:#ffccbc
-    style AgentMCP fill:#b3e5fc
-    style Deduplicate fill:#fff9c4
+    style LoadGlobalLegacy2 fill:#ffccbc
+    style Deduplicate fill:#b3e5fc
 ```
 
-### 重複処理
+### 設定パターン一覧
 
-**重複判定基準**: `command` フィールドで判定
+Q CLIのMCP設定には、以下の11パターンが存在します：
+
+#### パターンA: MCP無効（1パターン）
+
+| パターン | 条件 | 結果 |
+|---------|------|------|
+| **A-1** | 管理者によるMCP無効化 | MCPなし（警告表示） |
+
+#### パターンB: MCP有効（10パターン）
+
+| パターン | Agentファイル | use_legacy_mcp_json | レガシーMCP設定 | 結果 |
+|---------|--------------|---------------------|----------------|------|
+| **B-1** | ❌ なし | true (デフォルト) | ❌ なし | MCPなし |
+| **B-2** | ❌ なし | true (デフォルト) | ✅ グローバルのみ | グローバルレガシー |
+| **B-3** | ❌ なし | true (デフォルト) | ✅ ワークスペースあり | ワークスペース + グローバルレガシー |
+| **B-4** | ✅ あり（MCP空） | true | ❌ なし | MCPなし |
+| **B-5** | ✅ あり（MCPあり） | true | ❌ なし | Agent内MCPのみ |
+| **B-6** | ✅ あり（MCPあり） | true | ✅ グローバルのみ | Agent + グローバルレガシー |
+| **B-7** | ✅ あり（MCPあり） | true | ✅ ワークスペースあり | Agent + ワークスペース + グローバルレガシー |
+| **B-8** | ✅ あり（MCP空） | false | ✅ あり | ワークスペースレガシーのみ |
+| **B-9** | ✅ あり（MCPあり） | false | ✅ あり | Agent + ワークスペースレガシー |
+| **B-10** | ✅ 複数（名前衝突） | - | - | ワークスペースAgent優先 |
+
+### 重複処理の詳細
+
+**重複判定基準**: `command`フィールドで判定
 
 同じ`command`を持つMCPサーバーが複数の設定ファイルに存在する場合、上位優先度の設定が使用されます。
 
@@ -143,7 +198,7 @@ flowchart TD
   }
 }
 
-// レガシーMCP設定 (優先度3)
+// ワークスペースレガシーMCP設定 (優先度2)
 {
   "mcpServers": {
     "server-b": {
@@ -154,7 +209,7 @@ flowchart TD
 }
 ```
 
-**結果**: `server-a` のみ使用される（Agent設定が優先）
+**結果**: `server-a` のみ使用される（Agent設定が優先、`server-b`は無視）
 
 ### use_legacy_mcp_json フラグ
 
@@ -162,17 +217,22 @@ Agent設定で`useLegacyMcpJson`フラグを使用して、グローバルレガ
 
 **デフォルト値**: `true`
 
+**影響範囲**:
+- ✅ **影響あり**: グローバルレガシーMCP設定（`~/.aws/amazonq/mcp.json`）のAgent読込時の統合
+- ❌ **影響なし**: ワークスペースレガシーMCP設定（`.amazonq/mcp.json`）- 常に読込
+
+**レガシー設定を統合する（デフォルト）**:
 ```json
 {
   "name": "my-agent",
-  "useLegacyMcpJson": true,  // グローバルレガシーMCP設定を読込
+  "useLegacyMcpJson": true,  // グローバルレガシーMCP設定を統合
   "mcpServers": {
     // Agent固有のMCPサーバー
   }
 }
 ```
 
-**レガシー設定を無効化**:
+**レガシー設定を無視する**:
 ```json
 {
   "name": "isolated-agent",
@@ -183,11 +243,38 @@ Agent設定で`useLegacyMcpJson`フラグを使用して、グローバルレガ
 }
 ```
 
+> **⚠️ 注意**: `useLegacyMcpJson: false`でも、ワークスペースレガシーMCP設定（`.amazonq/mcp.json`）は読み込まれます。
+
+### デフォルトAgent
+
+Agentファイルが存在しない場合、Q CLIは自動的にデフォルトAgentを作成します：
+
+**デフォルトAgentの特性**:
+- `name: "default"`
+- `useLegacyMcpJson: true`
+- `mcpServers: {}` (空)
+- `tools: ["*"]` (全ツール許可)
+
+このため、Agentファイルを作成しなくても、レガシーMCP設定（`~/.aws/amazonq/mcp.json`または`.amazonq/mcp.json`）があれば、MCPサーバーは起動します。
+
 ### 特殊なケース
 
-#### ワークスペース = ホームディレクトリの場合
+#### ケース1: ワークスペース = ホームディレクトリ
 
 カレントディレクトリがホームディレクトリと同じ場合、ワークスペースAgent設定の読込はスキップされます（グローバルAgent設定と重複するため）。
+
+#### ケース2: Agent名の衝突
+
+ワークスペースとグローバルに同名のAgentファイルが存在する場合：
+- ワークスペース版が優先
+- 警告表示: "WARNING: Agent conflict for {name}. Using workspace version."
+
+#### ケース3: MCP無効化
+
+管理者設定でMCP機能が無効化されている場合：
+- Agent設定は読み込まれる
+- MCPサーバーは起動しない
+- 警告表示: "⚠️ WARNING: MCP functionality has been disabled by your administrator."
 
 ---
 
