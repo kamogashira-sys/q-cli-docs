@@ -239,7 +239,7 @@ echo "GITHUB_TOKEN=your-token-here" >> .env
   "mcpServers": {
     "awslabs.aws-documentation-mcp-server": {
       "command": "uvx",
-      "args": ["awslabs.aws-documentation-mcp-server@latest"],
+      "args": ["awslabs.aws-documentation-mcp-server@1.1.8"],
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR",
         "AWS_DOCUMENTATION_PARTITION": "aws"
@@ -250,6 +250,44 @@ echo "GITHUB_TOKEN=your-token-here" >> .env
   }
 }
 ```
+
+> **⚠️ 重要: uvxキャッシュによるストレージ逼迫に注意**
+>
+> **問題**: `@latest`を使用すると、MCPサーバー起動のたびに新しいキャッシュが作成され、ストレージを圧迫します（1サーバーあたり約30MB/回）。
+>
+> **原因**: uvxは実行時に仮想環境をキャッシュディレクトリ（`~/.cache/uv`）に作成しますが、`@latest`指定時はキャッシュが再利用されず、毎回新規作成されます。
+>
+> **対策（いずれかを選択）**:
+>
+> 1. **バージョンを明示する（推奨）**
+>    ```json
+>    "args": ["awslabs.aws-documentation-mcp-server@1.1.8"]
+>    ```
+>    - キャッシュが再利用され、ストレージ消費を抑制
+>    - バージョン更新時は手動で変更が必要
+>
+> 2. **定期的にキャッシュをクリーンアップ**
+>    ```bash
+>    # 未使用キャッシュを削除
+>    uv cache prune
+>    
+>    # すべてのキャッシュを削除
+>    uv cache clean
+>    
+>    # crontabで1時間ごとに自動実行（例）
+>    1 * * * * /path/to/uv cache prune
+>    ```
+>
+> **キャッシュ確認方法**:
+> ```bash
+> # キャッシュディレクトリの場所を確認
+> uv cache dir
+> 
+> # キャッシュサイズを確認
+> du -sh ~/.cache/uv
+> ```
+>
+> 参考: [uvxでローカルMCPサーバーを利用する場合はキャッシュによるストレージ逼迫にご注意ください](https://blog.serverworks.co.jp/warnings-to-use-local-mcp)
 
 ### AWS Knowledge MCP Server（リモート）
 
