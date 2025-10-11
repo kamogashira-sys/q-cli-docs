@@ -1,0 +1,16 @@
+=== リンク修正開始 ===
+開始時刻: Sat Oct 11 18:04:30 JST 2025
+パターン1: getting-started/
+パターン2: user-guide/configuration/
+パターン3: user-guide/features/
+パターン4: user-guide/best-practices/
+パターン5: user-guide/troubleshooting/
+パターン6: user-guide/README.md
+パターン7: enterprise-deployment.md
+パターン8: reference/
+パターン9: developer-guide/
+パターン10: updates/
+パターン11: community/
+パターン12: analysis/
+=== リンク修正完了 ===
+完了時刻: Sat Oct 11 18:04:34 JST 2025

@@ -1,0 +1,54 @@
+name: 🐛 Bug Report
+description: Report a bug in the documentation
+title: "[Bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+        
+        **Important**: This is an unofficial documentation project. For official Q CLI issues, please use the [official repository](https://github.com/aws/amazon-q-developer-cli/issues).
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug you found in the documentation
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      description: What should the documentation say or do instead?
+      placeholder: Tell us what you expected!
+    validations:
+      required: true
+
+  - type: input
+    id: document
+    attributes:
+      label: Document/Page
+      description: Which document or page contains the bug?
+      placeholder: e.g., docs/user-guide/configuration/environment-variables.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here
+      placeholder: Screenshots, links, etc.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/kamogashira-sys/q-cli-docs/blob/main/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

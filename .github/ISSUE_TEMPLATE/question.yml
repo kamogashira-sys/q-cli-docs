@@ -1,0 +1,53 @@
+name: ❓ Question
+description: Ask a question about Q CLI or this documentation
+title: "[Question] "
+labels: ["question", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your question!
+        
+        **Important**: This is an unofficial documentation project. For official Q CLI support, please use:
+        - [Official Q CLI Repository](https://github.com/aws/amazon-q-developer-cli/issues)
+        - [AWS Support](https://aws.amazon.com/support/)
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: What would you like to know?
+      placeholder: Ask your question here
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Provide any relevant context
+      placeholder: What are you trying to achieve? What have you tried?
+
+  - type: input
+    id: document
+    attributes:
+      label: Related Documentation
+      description: Is this related to a specific document?
+      placeholder: e.g., docs/user-guide/configuration/agent-configuration.md
+
+  - type: checkboxes
+    id: searched
+    attributes:
+      label: Have you searched existing documentation?
+      options:
+        - label: I have searched the existing documentation
+        - label: I have searched existing issues
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/kamogashira-sys/q-cli-docs/blob/main/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

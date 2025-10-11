@@ -1,0 +1,43 @@
+title: "Amazon Q Developer CLI Documentation"
+description: "Comprehensive documentation and analysis for Amazon Q Developer CLI"
+baseurl: "/q-cli-docs"
+url: "https://kamogashira-sys.github.io"
+
+# Theme
+theme: minima
+
+# Markdown processor
+markdown: kramdown
+highlighter: rouge
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# SEO
+lang: ja
+author: Q CLI Documentation Project
+
+# Navigation
+header_pages:
+  - README.md
+  - getting-started/README.md
+  - user-guide/README.md
+  - developer-guide/README.md
+  - reference/README.md
+
+# Exclude from processing
+exclude:
+  - .github/
+  - node_modules/
+  - vendor/
+  - .bundle/
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json

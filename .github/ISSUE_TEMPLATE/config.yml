@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🏠 Official Q CLI Repository
+    url: https://github.com/aws/amazon-q-developer-cli
+    about: For official Q CLI issues, bugs, and feature requests
+  - name: 📖 Official Q CLI Documentation
+    url: https://aws.amazon.com/q/developer/
+    about: Official Amazon Q Developer documentation
+  - name: 🆘 AWS Support
+    url: https://aws.amazon.com/support/
+    about: For official AWS support and technical assistance
