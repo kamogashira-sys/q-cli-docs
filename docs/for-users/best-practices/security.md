@@ -667,7 +667,42 @@ q restart
 
 ### テレメトリとプライバシー
 
-- [ ] テレメトリ設定を確認
+#### データプライバシーの理解
+
+**プラン別のデータ使用ポリシー**:
+
+| プラン | データ使用 | 詳細 |
+|--------|-----------|------|
+| **Free** | サービス改善に使用される可能性あり | 質問、応答、コード生成がサービス改善に使用される場合がある |
+| **Pro** | サービス改善に使用されない | コンテンツはモデル学習やサービス改善に使用されない |
+| **Enterprise** | サービス改善に使用されない | コンテンツはモデル学習やサービス改善に使用されない |
+
+> **💡 重要**: Pro/Enterpriseプランでは、あなたのコンテンツ（質問、コード、応答）はAWSのサービス改善やモデル学習に使用されません。
+>
+> 詳細: [AWS公式ドキュメント - Service Improvement](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/service-improvement.html)
+
+#### Freeプランでのオプトアウト
+
+Freeプランでコンテンツ共有をオプトアウトする方法:
+
+**方法1: AWS Organizations AI services opt-out policy**
+```bash
+# 組織レベルでオプトアウト
+aws organizations put-policy \
+  --content file://ai-optout-policy.json \
+  --type AISERVICES_OPT_OUT_POLICY
+```
+
+**方法2: IDE設定**
+- VS Code: 設定でCodeWhispererコンテンツ共有を無効化
+- JetBrains: 設定でデータ共有を無効化
+
+#### テレメトリ設定のチェックリスト
+
+- [ ] 使用しているプラン（Free/Pro/Enterprise）を確認
+- [ ] Pro/Enterpriseプランの場合、データプライバシー保護が有効であることを確認
+- [ ] Freeプランの場合、必要に応じてオプトアウトを設定
+- [ ] テレメトリ設定を確認（`~/.local/share/amazon-q/settings.json`）
 - [ ] CodeWhispererコンテンツ共有設定を確認
 - [ ] 必要に応じてテレメトリを無効化
 

@@ -100,6 +100,13 @@ Amazon Q Developer CLI（Q CLI）は、AWSが提供する**AI駆動**の開発�
   3. UX Rewrite using Ratatui (#2550) - 実質的な「Qv2」
   4. ADC Support (#2600)
 
+### Pro/Enterpriseプランのメリット
+
+- **データプライバシー保護**: コンテンツ（質問、コード、応答）がサービス改善やモデル学習に使用されない
+- **Freeプランとの違い**: Freeプランではコンテンツがサービス改善に使用される可能性がある
+- **エンタープライズ適合性**: 機密情報を扱う組織に最適
+- **詳細**: [AWS公式ドキュメント](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/service-improvement.html)
+
 ### エンタープライズ採用への障壁
 
 1. **Windows未対応** - 多くのエンタープライズ環境はWindows中心
