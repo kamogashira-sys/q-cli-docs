@@ -54,6 +54,143 @@ MCP（Model Context Protocol）は、AIモデルと外部ツールを接続す�
 
 ---
 
+## 🔄 MCP設定の読込フロー
+
+### 読込優先順位
+
+Q CLIは以下の優先順位でMCP設定を読み込みます：
+
+1. **Agent設定内のMCPサーバー** (最優先)
+   - ワークスペース: `.amazonq/cli-agents/{agent_name}.json`
+   - グローバル: `~/.aws/amazonq/cli-agents/{agent_name}.json`
+
+2. **ワークスペースレガシーMCP設定** (中優先)
+   - `.amazonq/mcp.json`
+
+3. **グローバルレガシーMCP設定** (最低優先)
+   - `~/.aws/amazonq/mcp.json`
+
+### 詳細フロー図
+
+```mermaid
+flowchart TD
+    Start([Q CLI起動]) --> CheckMCPEnabled{MCP有効?}
+    
+    CheckMCPEnabled -->|無効| Disabled[MCP機能無効<br/>警告表示]
+    CheckMCPEnabled -->|有効| LoadAgents[Agent設定読込]
+    
+    Disabled --> End([終了])
+    
+    LoadAgents --> CheckCWD{カレントディレクトリ<br/>= ホームディレクトリ?}
+    
+    CheckCWD -->|Yes| SkipLocal[ワークスペースAgent<br/>読込スキップ]
+    CheckCWD -->|No| LoadLocal[ワークスペースAgent読込<br/>.amazonq/cli-agents/*.json]
+    
+    SkipLocal --> LoadGlobal[グローバルAgent読込<br/>~/.aws/amazonq/cli-agents/*.json]
+    LoadLocal --> LoadGlobal
+    
+    LoadGlobal --> ProcessAgents[各Agent処理]
+    
+    ProcessAgents --> CheckLegacyFlag{use_legacy_mcp_json<br/>= true?}
+    
+    CheckLegacyFlag -->|Yes<br/>デフォルト| LoadLegacyGlobal[グローバルレガシーMCP読込<br/>~/.aws/amazonq/mcp.json]
+    CheckLegacyFlag -->|No| AgentMCP[Agent内mcpServers]
+    
+    LoadLegacyGlobal --> MergeLegacy[レガシー設定をマージ<br/>重複commandはスキップ]
+    MergeLegacy --> AgentMCP
+    
+    AgentMCP --> CollectServers[MCPサーバー収集<br/>優先度1: Agent設定]
+    
+    CollectServers --> LoadWorkspaceLegacy[ワークスペースレガシー読込<br/>.amazonq/mcp.json<br/>優先度2]
+    
+    LoadWorkspaceLegacy --> LoadGlobalLegacy[グローバルレガシー読込<br/>~/.aws/amazonq/mcp.json<br/>優先度3]
+    
+    LoadGlobalLegacy --> Deduplicate[重複除去<br/>同じcommandは上位優先]
+    
+    Deduplicate --> FilterDisabled[disabled=trueを除外]
+    
+    FilterDisabled --> End
+    
+    style Start fill:#e1f5ff
+    style End fill:#c8e6c9
+    style CheckMCPEnabled fill:#fff9c4
+    style CheckCWD fill:#fff9c4
+    style CheckLegacyFlag fill:#fff9c4
+    style LoadLocal fill:#c5e1a5
+    style LoadGlobal fill:#dcedc8
+    style LoadLegacyGlobal fill:#ffe0b2
+    style LoadWorkspaceLegacy fill:#ffccbc
+    style LoadGlobalLegacy fill:#ffccbc
+    style AgentMCP fill:#b3e5fc
+    style Deduplicate fill:#fff9c4
+```
+
+### 重複処理
+
+**重複判定基準**: `command` フィールドで判定
+
+同じ`command`を持つMCPサーバーが複数の設定ファイルに存在する場合、上位優先度の設定が使用されます。
+
+**例**:
+```json
+// Agent設定 (優先度1)
+{
+  "mcpServers": {
+    "server-a": {
+      "command": "node",
+      "args": ["server.js"]
+    }
+  }
+}
+
+// レガシーMCP設定 (優先度3)
+{
+  "mcpServers": {
+    "server-b": {
+      "command": "node",  // 同じcommand
+      "args": ["other.js"]
+    }
+  }
+}
+```
+
+**結果**: `server-a` のみ使用される（Agent設定が優先）
+
+### use_legacy_mcp_json フラグ
+
+Agent設定で`useLegacyMcpJson`フラグを使用して、グローバルレガシーMCP設定の読込を制御できます。
+
+**デフォルト値**: `true`
+
+```json
+{
+  "name": "my-agent",
+  "useLegacyMcpJson": true,  // グローバルレガシーMCP設定を読込
+  "mcpServers": {
+    // Agent固有のMCPサーバー
+  }
+}
+```
+
+**レガシー設定を無効化**:
+```json
+{
+  "name": "isolated-agent",
+  "useLegacyMcpJson": false,  // グローバルレガシーMCP設定を無視
+  "mcpServers": {
+    // Agent固有のMCPサーバーのみ使用
+  }
+}
+```
+
+### 特殊なケース
+
+#### ワークスペース = ホームディレクトリの場合
+
+カレントディレクトリがホームディレクトリと同じ場合、ワークスペースAgent設定の読込はスキップされます（グローバルAgent設定と重複するため）。
+
+---
+
 ## 🔧 MCP設定スキーマ
 
 ### 基本構造

@@ -426,6 +426,7 @@ q settings
 - [推奨設定ガイド](../best-practices/configuration.md) - ユースケース別推奨設定
 - [ベストプラクティス](../best-practices/configuration.md) - 設定のベストプラクティス
 - [Agent設定ファイル完全仕様](agent-configuration.md) - Agent設定の詳細
+- **[MCP設定の読込フロー](mcp-configuration.md#-mcp設定の読込フロー)** - MCP設定の優先順位と読込処理の詳細
 
 ---
 
