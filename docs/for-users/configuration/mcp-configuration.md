@@ -435,8 +435,6 @@ MCP設定に関する問題が発生した場合は、[トラブルシューテ�
 
 ---
 
----
-
 ## 🔗 外部リンク
 
 - [MCP 公式サイト](https://modelcontextprotocol.io/)
