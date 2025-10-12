@@ -17,20 +17,20 @@ Amazon Q CLIコミュニティ全体に関連する情報です。
 
 | セクション | 文書数 | 内容 |
 |-----------|--------|------|
-| [Updates](updates/) | 5 | 最新情報とロードマップ |
-| [Community](community/) | 4 | コミュニティリソース |
-| [Analysis](analysis/) | 3 | 詳細な分析レポート |
+| [Updates](01_updates/) | 5 | 最新情報とロードマップ |
+| [Community](02_community/) | 4 | コミュニティリソース |
+| [Analysis](03_analysis/) | 3 | 詳細な分析レポート |
 
 ## 🚀 推奨読書順序
 
 ### 最新情報を知りたい方
-1. [Updates](updates/) - 変更履歴とロードマップ
+1. [Updates](01_updates/) - 変更履歴とロードマップ
 
 ### コミュニティに参加したい方
-1. [Community](community/) - リソースと貢献方法
+1. [Community](02_community/) - リソースと貢献方法
 
 ### 詳細を知りたい方
-1. [Analysis](analysis/) - 詳細な分析レポート
+1. [Analysis](03_analysis/) - 詳細な分析レポート
 
 ---
 
