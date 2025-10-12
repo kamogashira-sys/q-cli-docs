@@ -109,9 +109,9 @@ q settings chat.defaultAgent
 
 より詳細な設定方法については、以下のドキュメントを参照してください：
 
-- **[Agent設定ガイド](../03_configuration/agent-configuration.md)** - 詳細な設定方法
-- **[設定例集](../03_configuration/examples.md)** - 実践的な設定例
-- **[MCP設定ガイド](../03_configuration/mcp-configuration.md)** - MCPサーバー連携
+- **[Agent設定ガイド](../03_configuration/04_agent-configuration.md)** - 詳細な設定方法
+- **[設定例集](../03_configuration/07_examples.md)** - 実践的な設定例
+- **[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)** - MCPサーバー連携
 
 ---
 
@@ -357,9 +357,9 @@ q settings chat.defaultAgent
 
 ## 📚 関連ドキュメント
 
-- [Agent設定ガイド](../03_configuration/agent-configuration.md)
-- [MCP設定ガイド](../03_configuration/mcp-configuration.md)
-- [設定例集](../03_configuration/examples.md)
+- [Agent設定ガイド](../03_configuration/04_agent-configuration.md)
+- [MCP設定ガイド](../03_configuration/06_mcp-configuration.md)
+- [設定例集](../03_configuration/07_examples.md)
 
 ---
 

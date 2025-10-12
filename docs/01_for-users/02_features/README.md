@@ -51,7 +51,7 @@ graph TB
     Agent --> Exp[実験的機能]
 ```
 
-**注**: MCPサーバーの詳細は[MCP設定ガイド](../03_configuration/mcp-configuration.md)、Knowledge機能の詳細は[パフォーマンス最適化](../04_best-practices/performance.md)を参照してください。
+**注**: MCPサーバーの詳細は[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)、Knowledge機能の詳細は[パフォーマンス最適化](../04_best-practices/performance.md)を参照してください。
 
 ---
 

@@ -383,7 +383,7 @@ Phase 3: 全社展開
 ### 📚 関連ドキュメント
 
 - [インストールガイド](../01_getting-started/01_installation.md)
-- [環境変数ガイド](../03_configuration/environment-variables.md)
+- [環境変数ガイド](../03_configuration/05_environment-variables.md)
 - [セキュリティベストプラクティス](../04_best-practices/security.md)
 
 ---
@@ -392,7 +392,7 @@ Phase 3: 全社展開
 
 1. **[インストールガイド](../01_getting-started/01_installation.md)** - Q CLI のインストール
 2. **[クイックスタート](../01_getting-started/02_quick-start.md)** - 基本的な使い方
-3. **[Agent設定](../03_configuration/agent-configuration.md)** - 組織固有の設定
+3. **[Agent設定](../03_configuration/04_agent-configuration.md)** - 組織固有の設定
 
 ---
 

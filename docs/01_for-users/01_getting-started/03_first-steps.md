@@ -332,11 +332,11 @@ q auth refresh
 
 - **[チャット機能](../02_features/01_chat.md)** - チャット機能の詳細
 - **[Agent機能](../02_features/02_agents.md)** - Agentのカスタマイズ
-- **[MCP 設定](../03_configuration/mcp-configuration.md)** - 外部ツールとの連携
+- **[MCP 設定](../03_configuration/06_mcp-configuration.md)** - 外部ツールとの連携
 
 ### 設定を最適化する
 
-- **[設定ガイド](../03_configuration/overview.md)** - 設定の全体像
+- **[設定ガイド](../03_configuration/01_overview.md)** - 設定の全体像
 - **[ベストプラクティス](../04_best-practices/configuration.md)** - 推奨設定
 
 ### 問題解決

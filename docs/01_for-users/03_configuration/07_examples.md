@@ -464,11 +464,11 @@ rm ~/.aws/amazonq/settings.json
 
 ## 📚 関連ドキュメント
 
-- **[設定システム概要](overview.md)** - 設定の全体像
-- **[Agent設定](agent-configuration.md)** - Agent設定の詳細
-- **[MCP設定](mcp-configuration.md)** - MCP設定の詳細
-- **[環境変数](environment-variables.md)** - 環境変数の使い方
-- **[優先順位ルール](priority-rules.md)** - 設定の優先順位
+- **[設定システム概要](01_overview.md)** - 設定の全体像
+- **[Agent設定](04_agent-configuration.md)** - Agent設定の詳細
+- **[MCP設定](06_mcp-configuration.md)** - MCP設定の詳細
+- **[環境変数](05_environment-variables.md)** - 環境変数の使い方
+- **[優先順位ルール](02_priority-rules.md)** - 設定の優先順位
 
 ---
 

@@ -161,9 +161,9 @@ q settings all
 
 ### 設定をカスタマイズ
 
-- **[設定ガイド](../03_configuration/overview.md)** - 設定の全体像
-- **[Agent設定](../03_configuration/agent-configuration.md)** - Agent設定の詳細
-- **[設定例集](../03_configuration/examples.md)** - 実践的な設定例
+- **[設定ガイド](../03_configuration/01_overview.md)** - 設定の全体像
+- **[Agent設定](../03_configuration/04_agent-configuration.md)** - Agent設定の詳細
+- **[設定例集](../03_configuration/07_examples.md)** - 実践的な設定例
 
 ### 問題が発生した場合
 

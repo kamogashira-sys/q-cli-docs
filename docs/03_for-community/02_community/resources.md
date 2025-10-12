@@ -42,15 +42,15 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 - [最初の一歩](../../01_for-users/01_getting-started/03_first-steps.md) - 基本的な使い方
 
 #### 設定
-- [設定システム概要](../../01_for-users/03_configuration/overview.md) - 設定の全体像
-- [Agent設定](../../01_for-users/03_configuration/agent-configuration.md) - カスタムAgent作成
-- [MCP設定](../../01_for-users/03_configuration/mcp-configuration.md) - MCPサーバー統合
+- [設定システム概要](../../01_for-users/03_configuration/01_overview.md) - 設定の全体像
+- [Agent設定](../../01_for-users/03_configuration/04_agent-configuration.md) - カスタムAgent作成
+- [MCP設定](../../01_for-users/03_configuration/06_mcp-configuration.md) - MCPサーバー統合
 
 ### 中級者向け
 
 #### 機能活用
 - [Agent機能](../../01_for-users/02_features/02_agents.md) - Agent機能の詳細
-- [MCP設定](../../01_for-users/03_configuration/mcp-configuration.md) - MCP統合の活用
+- [MCP設定](../../01_for-users/03_configuration/06_mcp-configuration.md) - MCP統合の活用
 - [Knowledge機能](../../01_for-users/04_best-practices/performance.md#knowledge機能の最適化) - Knowledge Base活用
 
 #### ベストプラクティス
@@ -61,7 +61,7 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 ### 上級者向け
 
 #### 開発者向け
-- [アーキテクチャ概要](../../02_for-developers/02_architecture/overview.md) - システム設計
+- [アーキテクチャ概要](../../02_for-developers/02_architecture/01_overview.md) - システム設計
 - [ソースコード構造](../../02_for-developers/02_architecture/source-code-structure.md) - コードベース解説
 - [貢献ガイド](contributing.md) - コントリビューション方法
 
@@ -146,16 +146,16 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 1. [インストール](../../01_for-users/01_getting-started/01_installation.md)
 2. [クイックスタート](../../01_for-users/01_getting-started/02_quick-start.md)
 3. [基本的な使い方](../../01_for-users/01_getting-started/03_first-steps.md)
-4. [設定システム概要](../../01_for-users/03_configuration/overview.md)
+4. [設定システム概要](../../01_for-users/03_configuration/01_overview.md)
 
 ### 中級者向け学習パス
-1. [Agent設定](../../01_for-users/03_configuration/agent-configuration.md)
-2. [MCP統合](../../01_for-users/03_configuration/mcp-configuration.md)
+1. [Agent設定](../../01_for-users/03_configuration/04_agent-configuration.md)
+2. [MCP統合](../../01_for-users/03_configuration/06_mcp-configuration.md)
 3. [Knowledge活用](../../01_for-users/04_best-practices/performance.md#knowledge機能の最適化)
 4. [ベストプラクティス](../../01_for-users/04_best-practices/configuration.md)
 
 ### 上級者向け学習パス
-1. [アーキテクチャ理解](../../02_for-developers/02_architecture/overview.md)
+1. [アーキテクチャ理解](../../02_for-developers/02_architecture/01_overview.md)
 2. [ソースコード解析](../../02_for-developers/02_architecture/source-code-structure.md)
 3. [開発環境構築](../../02_for-developers/01_contributing/development-setup.md)
 4. [コントリビューション](contributing.md)

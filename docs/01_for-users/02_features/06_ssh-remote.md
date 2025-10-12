@@ -244,7 +244,7 @@ chmod 600 ~/.local/share/amazon-q/settings.json
 
 - [インストールガイド](../01_getting-started/01_installation.md)
 - [認証設定](../01_getting-started/02_quick-start.md#認証設定)
-- [環境変数リファレンス](../03_configuration/environment-variables.md)
+- [環境変数リファレンス](../03_configuration/05_environment-variables.md)
 - [セキュリティベストプラクティス](../04_best-practices/security.md)
 
 ---

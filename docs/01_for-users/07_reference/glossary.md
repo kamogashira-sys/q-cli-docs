@@ -340,9 +340,9 @@ Agent設定ファイルのスキーマバージョン。
 
 ## 📚 関連ドキュメント
 
-- **[Agent設定ガイド](../03_configuration/agent-configuration.md)**
-- **[MCP設定ガイド](../03_configuration/mcp-configuration.md)**
-- **[設定優先順位](../03_configuration/priority-rules.md)**
+- **[Agent設定ガイド](../03_configuration/04_agent-configuration.md)**
+- **[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)**
+- **[設定優先順位](../03_configuration/02_priority-rules.md)**
 - **[実験的機能](../02_features/07_experimental.md)**
 
 ---

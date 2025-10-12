@@ -386,11 +386,11 @@ q chat  # -vオプションなし
 
 ## 参考リンク
 
-- [設定優先順位ガイド](priority-rules.md) - 設定の優先順位と図解
+- [設定優先順位ガイド](02_priority-rules.md) - 設定の優先順位と図解
 - [設定項目完全リファレンス](../07_reference/settings-reference.md)
 - [推奨設定ガイド](../04_best-practices/configuration.md)
 - [ベストプラクティス](../04_best-practices/configuration.md)
-- [Agent設定ファイル完全仕様](agent-configuration.md)
+- [Agent設定ファイル完全仕様](04_agent-configuration.md)
 
 ---
 

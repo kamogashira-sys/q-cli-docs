@@ -282,8 +282,8 @@ cp ~/.local/share/amazon-q/settings.json ~/.local/share/amazon-q/settings.json.b
 ## 参考リンク
 
 - [推奨設定ガイド](../04_best-practices/configuration.md)
-- [環境変数ガイド](../03_configuration/environment-variables.md)
-- [設定優先順位](../03_configuration/priority-rules.md)
+- [環境変数ガイド](../03_configuration/05_environment-variables.md)
+- [設定優先順位](../03_configuration/02_priority-rules.md)
 - [ベストプラクティス](../04_best-practices/configuration.md)
 
 ---

@@ -710,9 +710,9 @@ aws organizations put-policy \
 
 ## 📚 関連ドキュメント
 
-- **[Agent設定ガイド](../03_configuration/agent-configuration.md)** - Agent設定の詳細
-- **[MCP設定ガイド](../03_configuration/mcp-configuration.md)** - MCPサーバーの設定
-- **[環境変数ガイド](../03_configuration/environment-variables.md)** - 環境変数の使い方
+- **[Agent設定ガイド](../03_configuration/04_agent-configuration.md)** - Agent設定の詳細
+- **[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)** - MCPサーバーの設定
+- **[環境変数ガイド](../03_configuration/05_environment-variables.md)** - 環境変数の使い方
 - **[トラブルシューティング](../06_troubleshooting/common-issues.md)** - よくある問題と解決方法
 - **[設定のベストプラクティス](configuration.md)** - 全般的な設定のベストプラクティス
 - **[パフォーマンス最適化](performance.md)** - パフォーマンス最適化のベストプラクティス

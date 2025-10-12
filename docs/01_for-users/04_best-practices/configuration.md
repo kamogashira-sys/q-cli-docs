@@ -621,9 +621,9 @@ q settings chat.disableMarkdownRendering false
 
 ## 参考リンク
 
-- [Agent設定ガイド](../03_configuration/agent-configuration.md)
-- [MCP設定ガイド](../03_configuration/mcp-configuration.md)
-- [環境変数ガイド](../03_configuration/environment-variables.md)
+- [Agent設定ガイド](../03_configuration/04_agent-configuration.md)
+- [MCP設定ガイド](../03_configuration/06_mcp-configuration.md)
+- [環境変数ガイド](../03_configuration/05_environment-variables.md)
 - [トラブルシューティング](../06_troubleshooting/common-issues.md)
 - [セキュリティベストプラクティス](security.md)
 - [パフォーマンス最適化](performance.md)

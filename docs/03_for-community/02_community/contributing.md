@@ -250,7 +250,7 @@ git push origin feature/your-feature-name
 
 - [開発環境セットアップ](../../02_for-developers/01_contributing/development-setup.md)
 - [PRガイドライン](../../02_for-developers/01_contributing/pull-request-guide.md)
-- [アーキテクチャ概要](../../02_for-developers/02_architecture/overview.md)
+- [アーキテクチャ概要](../../02_for-developers/02_architecture/01_overview.md)
 
 ---
 
