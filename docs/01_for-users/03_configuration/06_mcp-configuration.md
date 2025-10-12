@@ -671,8 +671,8 @@ q agent show my-agent
 MCP設定に関する問題が発生した場合は、[トラブルシューティングガイド](../06_troubleshooting/02_common-issues.md)を参照してください。
 
 **関連トピック**:
-- [MCP設定のトラブルシューティング](../06_troubleshooting/02_common-issues.md#mcp設定)
-- [Agent設定のトラブルシューティング](../06_troubleshooting/02_common-issues.md#agent設定)
+- [MCP設定のトラブルシューティング](../06_troubleshooting/02_common-issues.md#mcp関連の問題)
+- [Agent設定のトラブルシューティング](../06_troubleshooting/02_common-issues.md#agent関連の問題)
 - [よくある質問](../06_troubleshooting/01_faq.md)
 
 ---

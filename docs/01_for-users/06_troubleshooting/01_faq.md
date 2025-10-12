@@ -387,7 +387,7 @@ tail -f /run/user/$(id -u)/qlog/q-cli.log
 tail -f /tmp/qlog/q-cli.log
 ```
 
-詳細は[よくある問題](02_common-issues.md#ログの確認)を参照。
+詳細は[よくある問題](02_common-issues.md#デバッグ手順)を参照。
 
 ### キャッシュのクリア方法は？
 ```bash
@@ -484,7 +484,7 @@ Agent設定でツール権限を細かく制御できます。
 - `fs_read`: 必要なパスのみ許可
 - `autoAllowReadonly`: 無効化（v1.16.0+）
 
-詳細は[Agent設定](../03_configuration/04_agent-configuration.md#ツール権限)を参照。
+詳細は[Agent設定](../03_configuration/04_agent-configuration.md#️-ツール設定)を参照。
 
 ---
 
