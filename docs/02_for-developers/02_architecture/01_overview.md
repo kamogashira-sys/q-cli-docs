@@ -37,8 +37,8 @@ User Input → CLI → Chat Engine → Agent → Tools/MCP → Response
 
 ## 📚 詳細情報
 
-- [ソースコード構造](source-code-structure.md)
-- [設定システム詳細](configuration-system.md)
+- [ソースコード構造](03_source-code-structure.md)
+- [設定システム詳細](02_configuration-system.md)
 
 ---
 

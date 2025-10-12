@@ -225,7 +225,7 @@ q agent edit my-agent
 3. [優先順位ルール](02_priority-rules.md)を理解
 
 ### 上級者向け
-1. [設定システム詳細](../../02_for-developers/02_architecture/configuration-system.md)を学ぶ
+1. [設定システム詳細](../../02_for-developers/02_architecture/02_configuration-system.md)を学ぶ
 2. 複雑な設定パターンを実装
 3. カスタムMCPサーバーを開発
 

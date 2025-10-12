@@ -210,9 +210,9 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 |---|------------|------------|---------|
 | 1 | [README](02_for-developers/02_architecture/README.md) | 上級 | アーキテクチャセクションの概要 |
 | 2 | [アーキテクチャ概要](02_for-developers/02_architecture/01_overview.md) | 上級 | システム全体像、コンポーネント構成、アーキテクチャ図 |
-| 3 | [設定システム](02_for-developers/02_architecture/configuration-system.md) | 上級 | 設定システムの内部実装、優先順位処理、読み込みフロー |
-| 4 | [ソースコード構造](02_for-developers/02_architecture/source-code-structure.md) | 上級 | ソースコード構造マップ、設定関連ファイル、クラス図、シーケンス図 |
-| 5 | [コード統計](02_for-developers/02_architecture/code-statistics.md) | 上級 | 263k行Rust、8クレート、TOP5モジュール分析 |
+| 3 | [設定システム](02_for-developers/02_architecture/02_configuration-system.md) | 上級 | 設定システムの内部実装、優先順位処理、読み込みフロー |
+| 4 | [ソースコード構造](02_for-developers/02_architecture/03_source-code-structure.md) | 上級 | ソースコード構造マップ、設定関連ファイル、クラス図、シーケンス図 |
+| 5 | [コード統計](02_for-developers/02_architecture/04_code-statistics.md) | 上級 | 263k行Rust、8クレート、TOP5モジュール分析 |
 
 #### コントリビューション（3文書）
 
@@ -273,9 +273,9 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
 | 1 | [README](03_for-community/03_analysis/README.md) | 中級〜上級 | Analysisセクションの概要 |
-| 2 | [ロードマップ分析](03_for-community/03_analysis/roadmap-analysis-20251008.md) | 中級〜上級 | 35件のRoadmapアイテム分析、優先順位マトリクス、エンタープライズ採用への障壁 |
-| 3 | [ソースコード構造分析](03_for-community/03_analysis/source-code-structure.md) | 上級 | ソースコード構造の詳細分析、設定システムの実装 |
-| 4 | [コード規模分析](03_for-community/03_analysis/source-code-scale-analysis.md) | 上級 | プロジェクト規模統計、言語別コード量、モジュール分析 |
+| 2 | [ロードマップ分析](03_for-community/03_analysis/01_roadmap-analysis-20251008.md) | 中級〜上級 | 35件のRoadmapアイテム分析、優先順位マトリクス、エンタープライズ採用への障壁 |
+| 3 | [ソースコード構造分析](03_for-community/03_analysis/03_source-code-structure.md) | 上級 | ソースコード構造の詳細分析、設定システムの実装 |
+| 4 | [コード規模分析](03_for-community/03_analysis/02_source-code-scale-analysis.md) | 上級 | プロジェクト規模統計、言語別コード量、モジュール分析 |
 
 ---
 

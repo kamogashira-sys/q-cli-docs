@@ -102,8 +102,8 @@ Amazon Q CLIは、**26万行超のRustコード**で構成される大規模な�
 ## 📚 詳細情報
 
 より詳細な分析は以下を参照してください：
-- **[詳細分析レポート](../../03_for-community/03_analysis/source-code-scale-analysis.md)** - 完全な分析結果
-- **[ソースコード構造](source-code-structure.md)** - コード構造の詳細
+- **[詳細分析レポート](../../03_for-community/03_analysis/02_source-code-scale-analysis.md)** - 完全な分析結果
+- **[ソースコード構造](03_source-code-structure.md)** - コード構造の詳細
 
 ---
 

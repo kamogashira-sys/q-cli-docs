@@ -14,22 +14,22 @@ Amazon Q CLIの内部アーキテクチャを詳しく説明します。
 
 | # | ドキュメント | ステータス | 対象読者 | 内容 |
 |---|-------------|-----------|---------|------|
-| 1 | [ソースコード構造](source-code-structure.md) | 完成 | 開発者 | コード構造の詳細 |
-| 2 | [コード統計](code-statistics.md) | 完成 | 開発者 | ソースコード規模統計 |
-| 3 | [設定システム詳細](configuration-system.md) | 完成 | 開発者 | 設定システムの実装 |
+| 1 | [ソースコード構造](03_source-code-structure.md) | 完成 | 開発者 | コード構造の詳細 |
+| 2 | [コード統計](04_code-statistics.md) | 完成 | 開発者 | ソースコード規模統計 |
+| 3 | [設定システム詳細](02_configuration-system.md) | 完成 | 開発者 | 設定システムの実装 |
 
 ---
 
 ## 🚀 推奨読み順
 
 ### 初めての方
-1. **[ソースコード構造](source-code-structure.md)** - コード全体像を把握（15分）
-2. **[コード統計](code-statistics.md)** - プロジェクト規模を理解（5分）
+1. **[ソースコード構造](03_source-code-structure.md)** - コード全体像を把握（15分）
+2. **[コード統計](04_code-statistics.md)** - プロジェクト規模を理解（5分）
 
 ### 開発者の方
-1. **[ソースコード構造](source-code-structure.md)** - 詳細な構造を理解（15分）
-2. **[設定システム詳細](configuration-system.md)** - 設定システムの実装（20分）
-3. **[コード統計](code-statistics.md)** - 規模を把握（5分）
+1. **[ソースコード構造](03_source-code-structure.md)** - 詳細な構造を理解（15分）
+2. **[設定システム詳細](02_configuration-system.md)** - 設定システムの実装（20分）
+3. **[コード統計](04_code-statistics.md)** - 規模を把握（5分）
 
 ---
 
