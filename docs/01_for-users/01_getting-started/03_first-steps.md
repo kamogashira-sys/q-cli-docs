@@ -330,8 +330,8 @@ q auth refresh
 
 ### 機能を深く学ぶ
 
-- **[チャット機能](../02_features/chat.md)** - チャット機能の詳細
-- **[Agent機能](../02_features/agents.md)** - Agentのカスタマイズ
+- **[チャット機能](../02_features/01_chat.md)** - チャット機能の詳細
+- **[Agent機能](../02_features/02_agents.md)** - Agentのカスタマイズ
 - **[MCP 設定](../03_configuration/mcp-configuration.md)** - 外部ツールとの連携
 
 ### 設定を最適化する

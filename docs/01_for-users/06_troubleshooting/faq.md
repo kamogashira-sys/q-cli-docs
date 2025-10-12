@@ -84,7 +84,7 @@ rm -rf ~/.aws/amazonq
 1. [インストール](../01_getting-started/01_installation.md)
 2. [クイックスタート](../01_getting-started/02_quick-start.md)
 3. [最初の一歩](../01_getting-started/03_first-steps.md)
-4. [チャット機能](../02_features/chat.md)
+4. [チャット機能](../02_features/01_chat.md)
 
 **中級者向け（3-5時間）**:
 1. [Agent設定](../03_configuration/agent-configuration.md)
@@ -95,7 +95,7 @@ rm -rf ~/.aws/amazonq
 **上級者向け（5時間以上）**:
 1. [パフォーマンス最適化](../04_best-practices/performance.md)
 2. [セキュリティ](../04_best-practices/security.md)
-3. [実験的機能](../02_features/experimental.md)
+3. [実験的機能](../02_features/07_experimental.md)
 4. [エンタープライズ展開](../05_deployment/enterprise-deployment.md)
 
 ---
@@ -203,7 +203,7 @@ ls -la ~/.aws/amazonq/cli-agents/
 ls -la .q/agents/
 ```
 
-詳細は[Agent機能](../02_features/agents.md)を参照。
+詳細は[Agent機能](../02_features/02_agents.md)を参照。
 
 ---
 
@@ -218,7 +218,7 @@ Agentは、Q CLIの動作をカスタマイズする設定ファイルです。
 - プロンプトのカスタマイズ
 - プロジェクト固有の設定
 
-詳細は[Agent機能](../02_features/agents.md)を参照。
+詳細は[Agent機能](../02_features/02_agents.md)を参照。
 
 ### Agentの切り替え方法は？
 ```bash

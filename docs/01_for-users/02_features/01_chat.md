@@ -258,9 +258,9 @@ q settings chat.enableHistoryHints true
 ## 📚 関連ドキュメント
 
 - [最初の一歩](../01_getting-started/03_first-steps.md)
-- [Agent機能](agents.md)
+- [Agent機能](02_agents.md)
 - [Knowledge機能](../04_best-practices/performance.md#knowledge機能の最適化)
-- [Checkpoint機能](checkpoints.md)
+- [Checkpoint機能](05_checkpoints.md)
 - [グローバル設定](../03_configuration/global-settings.md)
 - [コマンドリファレンス](../07_reference/commands.md)
 

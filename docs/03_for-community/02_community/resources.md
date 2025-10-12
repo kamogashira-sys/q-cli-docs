@@ -49,7 +49,7 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 ### 中級者向け
 
 #### 機能活用
-- [Agent機能](../../01_for-users/02_features/agents.md) - Agent機能の詳細
+- [Agent機能](../../01_for-users/02_features/02_agents.md) - Agent機能の詳細
 - [MCP設定](../../01_for-users/03_configuration/mcp-configuration.md) - MCP統合の活用
 - [Knowledge機能](../../01_for-users/04_best-practices/performance.md#knowledge機能の最適化) - Knowledge Base活用
 

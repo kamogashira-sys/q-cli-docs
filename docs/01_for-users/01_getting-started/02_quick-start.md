@@ -156,8 +156,8 @@ q settings all
 ### さらに学ぶ
 
 - **[最初の一歩](03_first-steps.md)** - より詳しい使い方
-- **[チャット機能](../02_features/chat.md)** - チャット機能の詳細
-- **[Agent機能](../02_features/agents.md)** - Agentのカスタマイズ
+- **[チャット機能](../02_features/01_chat.md)** - チャット機能の詳細
+- **[Agent機能](../02_features/02_agents.md)** - Agentのカスタマイズ
 
 ### 設定をカスタマイズ
 

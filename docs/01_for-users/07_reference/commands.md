@@ -378,7 +378,7 @@ q mcp uninstall my-server
 
 ## 📚 関連ドキュメント
 
-- [チャット機能ガイド](../02_features/chat.md)
+- [チャット機能ガイド](../02_features/01_chat.md)
 - [Agent設定ガイド](../03_configuration/agent-configuration.md)
 - [設定項目リファレンス](settings-reference.md)
 - [環境変数リファレンス](../03_configuration/environment-variables.md)
