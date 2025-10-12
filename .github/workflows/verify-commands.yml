@@ -1,0 +1,38 @@
+name: Verify Commands
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/**/*.md'
+      - 'scripts/verify_commands.py'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'docs/**/*.md'
+      - 'scripts/verify_commands.py'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Verify commands in documentation
+      run: |
+        cd $GITHUB_WORKSPACE
+        python3 scripts/verify_commands.py
+    
+    - name: Report results
+      if: failure()
+      run: |
+        echo "❌ コマンド検証に失敗しました"
+        echo "詳細は上記のログを確認してください"
+        exit 1
