@@ -260,9 +260,9 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
 | 1 | [README](03_for-community/02_community/README.md) | 初級 | Communityセクションの概要 |
-| 2 | [コントリビューションガイド](03_for-community/02_community/contributing.md) | 中級 | コミュニティへの貢献方法、PR作成手順 |
-| 3 | [リソース集](03_for-community/02_community/resources.md) | 初級〜中級 | 関連リンク、公式リソース、コミュニティツール |
-| 4 | [ショーケース](03_for-community/02_community/showcase.md) | 初級〜中級 | 活用事例、ユースケース紹介 |
+| 2 | [コントリビューションガイド](03_for-community/02_community/03_contributing.md) | 中級 | コミュニティへの貢献方法、PR作成手順 |
+| 3 | [リソース集](03_for-community/02_community/02_resources.md) | 初級〜中級 | 関連リンク、公式リソース、コミュニティツール |
+| 4 | [ショーケース](03_for-community/02_community/01_showcase.md) | 初級〜中級 | 活用事例、ユースケース紹介 |
 
 ---
 

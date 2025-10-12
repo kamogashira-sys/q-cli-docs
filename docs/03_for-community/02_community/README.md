@@ -32,7 +32,7 @@ Amazon Q CLIのコミュニティへようこそ！このセクションでは�
 
 ### コードの貢献
 プルリクエストを送る前に：
-1. [貢献ガイド](contributing.md)を確認
+1. [貢献ガイド](03_contributing.md)を確認
 2. [開発環境のセットアップ](../../02_for-developers/01_contributing/01_development-setup.md)
 3. [PRガイドライン](../../02_for-developers/01_contributing/02_pull-request-guide.md)に従う
 
@@ -63,8 +63,8 @@ Amazon Q CLIのコミュニティへようこそ！このセクションでは�
 - [AWS Documentation](https://docs.aws.amazon.com/)
 
 ### コミュニティリソース
-- [リソース集](resources.md) - チュートリアル、記事、動画
-- [ユースケース紹介](showcase.md) - 実際の活用事例
+- [リソース集](02_resources.md) - チュートリアル、記事、動画
+- [ユースケース紹介](01_showcase.md) - 実際の活用事例
 
 ### 学習リソース
 - [Getting Started](../../01_for-users/01_getting-started/README.md) - 初心者向けガイド

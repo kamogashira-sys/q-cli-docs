@@ -302,7 +302,7 @@ Amazon Q CLIの活用事例を募集しています！
 
 ### 共有方法
 1. [GitHub Discussions](https://github.com/aws/amazon-q-developer-cli/discussions)で投稿
-2. または[PRを送信](contributing.md)
+2. または[PRを送信](03_contributing.md)
 
 ### 掲載基準
 - 具体的な課題と解決策
