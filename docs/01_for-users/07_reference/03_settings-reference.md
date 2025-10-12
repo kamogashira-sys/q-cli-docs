@@ -4,9 +4,94 @@
 **ソースコード**: `crates/chat-cli/src/database/settings.rs`  
 **対象バージョン**: v1.17.0以降
 
-## 概要
+---
 
-このドキュメントは、**`q settings`コマンドで設定可能な全35項目**を網羅的にリストアップしたリファレンスです。
+## 📚 このドキュメントの使い方
+
+- **初めての方**: [初心者向けクイックスタート](#-初心者向けクイックスタート) を参照（5分）
+- **すべての設定を確認したい方**: [全設定項目一覧](#-全設定項目一覧全35項目) を参照
+
+---
+
+## 🚀 初心者向けクイックスタート
+
+Q CLIを始めるために**最低限必要な設定**と**便利な設定**を紹介します。
+
+### ステップ1: 必須設定（2項目）
+
+まずはこの2つを設定してください。
+
+```bash
+# 1. デフォルトAgentを設定
+q settings chat.defaultAgent my-agent
+
+# 2. テレメトリを設定（プライバシー重視の場合は無効化）
+q settings telemetry.enabled false
+```
+
+| 設定キー | 説明 | デフォルト値 |
+|---------|------|-------------|
+| `chat.defaultAgent` | デフォルトで使用するAgent名 | なし |
+| `telemetry.enabled` | 使用状況データの収集（プライバシー設定） | `true` |
+
+---
+
+### ステップ2: 推奨設定（5項目）
+
+より便利に使うための設定です。必要に応じて有効化してください。
+
+```bash
+# 複雑な推論機能を有効化（推奨）
+q settings chat.enableThinking true
+
+# Knowledge Base機能を有効化（コードベース検索）
+q settings chat.enableKnowledge true
+
+# 履歴ヒントを表示（過去の会話を参照）
+q settings chat.enableHistoryHints true
+
+# TODOリスト機能を有効化
+q settings chat.enableTodoList true
+
+# チェックポイント機能を有効化（会話の保存・復元）
+q settings chat.enableCheckpoint true
+```
+
+| 設定キー | 説明 | デフォルト値 |
+|---------|------|-------------|
+| `chat.enableThinking` | 複雑な推論のためのThinkingツール | `false` |
+| `chat.enableKnowledge` | Knowledge Base機能（コードベース検索） | `false` |
+| `chat.enableHistoryHints` | 会話履歴ヒントの表示 | `false` |
+| `chat.enableTodoList` | TODOリスト機能 | `false` |
+| `chat.enableCheckpoint` | チェックポイント機能（会話の保存・復元） | `false` |
+
+---
+
+### 設定の確認
+
+```bash
+# すべての設定を確認
+q settings all
+
+# 特定の設定を確認
+q settings chat.enableThinking
+```
+
+---
+
+### 次のステップ
+
+- より詳細な設定は [全設定項目一覧](#-全設定項目一覧全35項目) を参照
+- 設定の優先順位は [設定優先順位ガイド](../03_configuration/02_priority-rules.md) を参照
+- 推奨設定は [推奨設定ガイド](../04_best-practices/01_configuration.md) を参照
+
+---
+
+## 📋 全設定項目一覧（全35項目）
+
+すべての設定項目の完全リストです。上級者向けの詳細設定も含まれます。
+
+> 💡 **初心者の方へ**: このセクションは参考情報です。[クイックスタート](#-初心者向けクイックスタート)の設定だけで十分使えます。
 
 ### 設定方法
 
@@ -27,11 +112,9 @@
 
 詳細は [設定優先順位ガイド](../03_configuration/02_priority-rules.md) を参照してください。
 
-**最終更新**: 2025-10-12
-
 ---
 
-## 設定項目一覧（全35項目）
+### 全項目リスト
 
 | # | 設定キー | 型 | 説明 | カテゴリ |
 |---|---------|-----|------|---------|
