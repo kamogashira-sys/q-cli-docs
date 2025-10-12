@@ -690,7 +690,7 @@ du -sh ~/.cache/amazon-q/
 
 ## 📚 関連ドキュメント
 
-- **[設定項目リファレンス](../07_reference/settings-reference.md)** - 全設定項目の詳細
+- **[設定項目リファレンス](../07_reference/03_settings-reference.md)** - 全設定項目の詳細
 - **[Agent設定ガイド](../03_configuration/04_agent-configuration.md)** - Agent設定の詳細
 - **[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)** - MCPサーバーの設定
 - **[環境変数ガイド](../03_configuration/05_environment-variables.md)** - 環境変数の使い方

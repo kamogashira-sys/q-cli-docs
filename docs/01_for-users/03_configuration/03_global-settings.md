@@ -319,7 +319,7 @@ vim ~/.local/share/amazon-q/settings.json
 ## 📚 関連ドキュメント
 
 - [設定システム概要](01_overview.md)
-- [設定項目完全リファレンス](../07_reference/settings-reference.md)
+- [設定項目完全リファレンス](../07_reference/03_settings-reference.md)
 - [設定例集](07_examples.md)
 - [設定優先順位ガイド](02_priority-rules.md)
 

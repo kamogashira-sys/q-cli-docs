@@ -187,7 +187,7 @@ Q CLIドキュメントと実装の整合性を維持し、誤りの再発を防
 ### 設定項目追加時
 
 1. Setting enumに項目を追加
-2. `docs/07_reference/settings-reference.md`を更新
+2. `docs/07_reference/03_settings-reference.md`を更新
 3. 設定項目確認用チェックリストを実施
 
 ## 参考資料

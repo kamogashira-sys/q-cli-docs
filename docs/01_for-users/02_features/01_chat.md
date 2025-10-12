@@ -262,7 +262,7 @@ q settings chat.enableHistoryHints true
 - [Knowledge機能](../04_best-practices/03_performance.md#knowledge機能の最適化)
 - [Checkpoint機能](05_checkpoints.md)
 - [グローバル設定](../03_configuration/03_global-settings.md)
-- [コマンドリファレンス](../07_reference/commands.md)
+- [コマンドリファレンス](../07_reference/02_commands.md)
 
 ---
 

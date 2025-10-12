@@ -72,8 +72,8 @@ q diagnostic
 ## 📚 関連ドキュメント
 
 - [インストールガイド](../01_getting-started/01_installation.md)
-- [サポート環境](../07_reference/supported-environments.md)
-- [コマンドリファレンス](../07_reference/commands.md)
+- [サポート環境](../07_reference/05_supported-environments.md)
+- [コマンドリファレンス](../07_reference/02_commands.md)
 - [チャット機能](01_chat.md)
 
 ---

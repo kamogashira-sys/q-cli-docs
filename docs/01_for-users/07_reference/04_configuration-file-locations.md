@@ -125,7 +125,7 @@ Linux環境では、以下の環境変数により配置場所が変更されま
 - Knowledge機能設定
 - MCP機能設定
 
-**詳細**: [設定項目リファレンス](settings-reference.md)
+**詳細**: [設定項目リファレンス](03_settings-reference.md)
 
 ---
 
@@ -481,7 +481,7 @@ ls ~/.local/share/amazon-q/settings.json
 - [Agent設定ガイド](../03_configuration/04_agent-configuration.md) - Agent設定の詳細
 - [MCP設定ガイド](../03_configuration/06_mcp-configuration.md) - MCPサーバー設定の詳細
 - [環境変数ガイド](../03_configuration/05_environment-variables.md) - 環境変数の詳細
-- [設定項目リファレンス](settings-reference.md) - 全設定項目の一覧
+- [設定項目リファレンス](03_settings-reference.md) - 全設定項目の一覧
 
 ---
 

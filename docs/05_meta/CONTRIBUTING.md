@@ -80,7 +80,7 @@
    - 適切なセクション（コア、qterm、デバッグ等）に追加
    - 説明と使用例を記載
 
-2. `docs/07_reference/settings-reference.md`
+2. `docs/07_reference/03_settings-reference.md`
    - 環境変数リストに追加
    - 同じ説明と使用例を記載
 
@@ -88,7 +88,7 @@
 
 **必須**: 以下のドキュメントを更新
 
-1. `docs/07_reference/settings-reference.md`
+1. `docs/07_reference/03_settings-reference.md`
    - 設定項目リストに追加
    - カテゴリ、型、説明を記載
 
@@ -103,7 +103,7 @@
 
 **必須**: 以下のドキュメントを更新
 
-1. `docs/07_reference/configuration-file-locations.md`
+1. `docs/07_reference/04_configuration-file-locations.md`
    - ファイルパス一覧を更新
 
 2. 該当する場合、関連ガイドも更新

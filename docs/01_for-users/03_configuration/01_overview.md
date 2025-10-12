@@ -233,9 +233,9 @@ q agent edit my-agent
 
 ## 📚 関連ドキュメント
 
-- **[設定項目リファレンス](../07_reference/settings-reference.md)**
+- **[設定項目リファレンス](../07_reference/03_settings-reference.md)**
 - **[環境変数リファレンス](../03_configuration/05_environment-variables.md)**
-- **[コマンドリファレンス](../07_reference/commands.md)**
+- **[コマンドリファレンス](../07_reference/02_commands.md)**
 
 ---
 

@@ -59,8 +59,8 @@ graph TD
 
 - **[ベストプラクティス](../04_best-practices/01_configuration.md)** - 設定のベストプラクティス
 - **[トラブルシューティング](../06_troubleshooting/02_common-issues.md)** - よくある問題
-- **[設定項目リファレンス](../07_reference/settings-reference.md)** - 全設定項目
-- **[設定ファイル配置マップ](../07_reference/configuration-file-locations.md)** - すべての設定ファイルの配置場所
+- **[設定項目リファレンス](../07_reference/03_settings-reference.md)** - 全設定項目
+- **[設定ファイル配置マップ](../07_reference/04_configuration-file-locations.md)** - すべての設定ファイルの配置場所
 
 ---
 

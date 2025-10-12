@@ -380,7 +380,7 @@ q mcp uninstall my-server
 
 - [チャット機能ガイド](../02_features/01_chat.md)
 - [Agent設定ガイド](../03_configuration/04_agent-configuration.md)
-- [設定項目リファレンス](settings-reference.md)
+- [設定項目リファレンス](03_settings-reference.md)
 - [環境変数リファレンス](../03_configuration/05_environment-variables.md)
 
 ---
