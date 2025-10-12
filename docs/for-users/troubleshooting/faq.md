@@ -1,6 +1,92 @@
 # FAQ - よくある質問
 
-**最終更新**: 2025-10-11
+**最終更新**: 2025-10-12
+
+---
+
+## 🎓 初心者向け
+
+### Q CLIとAWS CLIの違いは何ですか？
+
+**AWS CLI**:
+- AWSサービスを操作するコマンドラインツール
+- コマンドと引数を正確に指定する必要がある
+- 例: `aws s3 ls`, `aws ec2 describe-instances`
+
+**Q CLI**:
+- AIが自然言語を理解し、コード生成やファイル操作を支援
+- 自然言語で質問できる
+- 例: `q chat "S3バケット一覧を教えて"`
+
+**使い分け**:
+- AWS CLI: スクリプトや自動化に最適
+- Q CLI: 対話的な開発作業、学習、探索に最適
+
+### 最初に何をすべきですか？
+
+**推奨手順**:
+1. [インストール](../getting-started/installation.md)（10分）
+2. [クイックスタート](../getting-started/quick-start.md)（5分）
+3. [最初の一歩](../getting-started/first-steps.md)（15分）
+
+**最初の質問例**:
+```bash
+q chat "Hello, Q! What can you do?"
+q chat "Pythonでファイルを読み込む方法を教えて"
+q chat "このディレクトリの構造を説明して"
+```
+
+### 失敗しても大丈夫ですか？
+
+**はい、安心してください！**
+
+**設定のリセット方法**:
+```bash
+# 設定ファイルを削除
+rm ~/.aws/amazonq/config.toml
+
+# Agent設定を削除
+rm -rf ~/.aws/amazonq/cli-agents/
+
+# Q CLIを再起動
+q quit
+q
+```
+
+**アンインストール方法**:
+```bash
+# macOS (Homebrew)
+brew uninstall amazon-q
+
+# Linux
+sudo rm /usr/local/bin/q
+rm -rf ~/.aws/amazonq
+```
+
+**データの保護**:
+- Q CLIはローカルで動作します
+- 設定ファイルは`~/.aws/amazonq/`に保存されます
+- いつでも削除・再インストールできます
+
+### おすすめの学習順序は？
+
+**初心者向け（1-2時間）**:
+1. [インストール](../getting-started/installation.md)
+2. [クイックスタート](../getting-started/quick-start.md)
+3. [最初の一歩](../getting-started/first-steps.md)
+4. [チャット機能](../features/chat.md)
+
+**中級者向け（3-5時間）**:
+1. [Agent設定](../configuration/agent-configuration.md)
+2. [MCP設定](../configuration/mcp-configuration.md)
+3. [設定例集](../configuration/examples.md)
+4. [ベストプラクティス](../best-practices/configuration.md)
+
+**上級者向け（5時間以上）**:
+1. [パフォーマンス最適化](../best-practices/performance.md)
+2. [セキュリティ](../best-practices/security.md)
+3. [実験的機能](../features/experimental.md)
+4. [エンタープライズ展開](../deployment/enterprise-deployment.md)
 
 ---
 
@@ -392,4 +478,69 @@ Agent設定でツール権限を細かく制御できます。
 
 ---
 
-**作成日**: 2025-10-11
+## 💰 料金・プラン
+
+### Free/Pro/Enterpriseの違いは？
+
+| 項目 | Free | Pro | Enterprise |
+|------|------|-----|------------|
+| 月額料金 | 無料 | $19/月 | カスタム |
+| 基本機能 | ✅ | ✅ | ✅ |
+| コード補完 | ✅ | ✅ | ✅ |
+| チャット機能 | ✅ | ✅ | ✅ |
+| Agent機能 | ✅ | ✅ | ✅ |
+| MCP統合 | ✅ | ✅ | ✅ |
+| データプライバシー | ⚠️ | ✅ | ✅ |
+| 優先サポート | ❌ | ✅ | ✅ |
+| SLA保証 | ❌ | ❌ | ✅ |
+| 管理機能 | ❌ | ❌ | ✅ |
+
+### データプライバシーの違いは？
+
+**Free プラン**:
+- コンテンツ（質問、コード、応答）がサービス改善に使用される可能性があります
+- オプトアウト可能（設定で無効化できます）
+
+**Pro/Enterprise プラン**:
+- コンテンツがサービス改善やモデル学習に**使用されません**
+- 機密情報を扱う組織に最適
+- データは暗号化され、安全に保管されます
+
+**詳細**: [AWS公式ドキュメント](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/service-improvement.html)
+
+### どのプランを選ぶべきですか？
+
+**Free プラン（推奨: 個人開発者、学習目的）**:
+- 個人プロジェクト
+- 学習・実験
+- オープンソース開発
+
+**Pro プラン（推奨: プロフェッショナル開発者）**:
+- 商用プロジェクト
+- 機密情報を扱う開発
+- 優先サポートが必要
+
+**Enterprise プラン（推奨: 組織・チーム）**:
+- 大規模チーム（10名以上）
+- エンタープライズセキュリティ要件
+- SLA保証が必要
+- 統合認証（IAM Identity Center）
+
+### 使用量の確認方法は？
+
+```bash
+# 現在のプランを確認
+q login --status
+
+# 設定を確認
+q settings all
+```
+
+**AWSコンソールでの確認**:
+1. [AWS Console](https://console.aws.amazon.com/)にログイン
+2. Amazon Q Developer → Settings
+3. Usage & Billing を確認
+
+---
+
+**最終更新**: 2025-10-12
