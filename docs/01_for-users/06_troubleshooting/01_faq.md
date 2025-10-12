@@ -335,7 +335,7 @@ q settings set knowledge.enabled true
 # Knowledge機能は設定で有効化: q settings chat.enableKnowledge true
 ```
 
-詳細は[Knowledge機能](../04_best-practices/03_performance.md#knowledge機能の最適化)を参照。
+詳細は[Knowledge機能](../04_best-practices/03_performance.md#-knowledge-base最適化)を参照。
 
 ---
 

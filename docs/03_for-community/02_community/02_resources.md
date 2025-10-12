@@ -51,7 +51,7 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 #### 機能活用
 - [Agent機能](../../01_for-users/02_features/02_agents.md) - Agent機能の詳細
 - [MCP設定](../../01_for-users/03_configuration/06_mcp-configuration.md) - MCP統合の活用
-- [Knowledge機能](../../01_for-users/04_best-practices/03_performance.md#knowledge機能の最適化) - Knowledge Base活用
+- [Knowledge機能](../../01_for-users/04_best-practices/03_performance.md#-knowledge-base最適化) - Knowledge Base活用
 
 #### ベストプラクティス
 - [設定のベストプラクティス](../../01_for-users/04_best-practices/01_configuration.md) - 推奨設定
@@ -151,7 +151,7 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 ### 中級者向け学習パス
 1. [Agent設定](../../01_for-users/03_configuration/04_agent-configuration.md)
 2. [MCP統合](../../01_for-users/03_configuration/06_mcp-configuration.md)
-3. [Knowledge活用](../../01_for-users/04_best-practices/03_performance.md#knowledge機能の最適化)
+3. [Knowledge活用](../../01_for-users/04_best-practices/03_performance.md#-knowledge-base最適化)
 4. [ベストプラクティス](../../01_for-users/04_best-practices/01_configuration.md)
 
 ### 上級者向け学習パス
