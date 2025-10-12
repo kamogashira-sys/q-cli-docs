@@ -17,22 +17,22 @@ graph LR
 ```
 
 1. **[📖 ドキュメントサイト全体を確認](docs/README.md)** ← まずここから！（5分）
-2. **[💻 インストール](docs/for-users/getting-started/installation.md)** - Q CLIのインストール方法（10分）
-3. **[🚀 クイックスタート](docs/for-users/getting-started/quick-start.md)** - 5分で始めるQ CLI（5分）
-4. **[👣 最初の一歩](docs/for-users/getting-started/first-steps.md)** - 基本的な使い方（15分）
+2. **[💻 インストール](docs/01_for-users/getting-started/installation.md)** - Q CLIのインストール方法（10分）
+3. **[🚀 クイックスタート](docs/01_for-users/getting-started/quick-start.md)** - 5分で始めるQ CLI（5分）
+4. **[👣 最初の一歩](docs/01_for-users/getting-started/first-steps.md)** - 基本的な使い方（15分）
 
 ### 設定を始める
 
-1. **基本設定を確認**: [Getting Started](docs/for-users/getting-started/README.md)
-2. **環境変数を設定**: [環境変数ガイド](docs/for-users/configuration/environment-variables.md)
-3. **Agent設定を作成**: [Agent設定ガイド](docs/for-users/configuration/agent-configuration.md)
-4. **設定を確認**: [設定優先順位ガイド](docs/for-users/configuration/priority-rules.md)
+1. **基本設定を確認**: [Getting Started](docs/01_for-users/getting-started/README.md)
+2. **環境変数を設定**: [環境変数ガイド](docs/01_for-users/configuration/environment-variables.md)
+3. **Agent設定を作成**: [Agent設定ガイド](docs/01_for-users/configuration/agent-configuration.md)
+4. **設定を確認**: [設定優先順位ガイド](docs/01_for-users/configuration/priority-rules.md)
 
 ### トラブルシューティング
 
 問題が発生した場合：
-1. [トラブルシューティングガイド](docs/for-users/troubleshooting/common-issues.md)を確認
-2. [設定優先順位ガイド](docs/for-users/configuration/priority-rules.md)で優先順位を理解
+1. [トラブルシューティングガイド](docs/01_for-users/troubleshooting/common-issues.md)を確認
+2. [設定優先順位ガイド](docs/01_for-users/configuration/priority-rules.md)で優先順位を理解
 3. [GitHub ISSUE](https://github.com/aws/amazon-q-developer-cli/issues)で既知の問題を検索
 
 ---

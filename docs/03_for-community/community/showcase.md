@@ -313,10 +313,10 @@ Amazon Q CLIの活用事例を募集しています！
 
 ## 📚 関連ドキュメント
 
-- **[Getting Started](../for-users/getting-started/README.md)**
-- **[Agent設定](../for-users/configuration/agent-configuration.md)**
-- **[MCP設定](../for-users/configuration/mcp-configuration.md)**
-- **[ベストプラクティス](../for-users/best-practices/configuration.md)**
+- **[Getting Started](../01_for-users/getting-started/README.md)**
+- **[Agent設定](../01_for-users/configuration/agent-configuration.md)**
+- **[MCP設定](../01_for-users/configuration/mcp-configuration.md)**
+- **[ベストプラクティス](../01_for-users/best-practices/configuration.md)**
 
 ---
 

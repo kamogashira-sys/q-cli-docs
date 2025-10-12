@@ -685,7 +685,7 @@ cp -r ~/.aws/amazonq/cli-agents ~/.aws/amazonq/cli-agents.backup
 /issue
 
 # または、GitHubで直接報告
-# https://github.com/aws/amazon-q-developer-cli/issues/new
+# https://github.com/aws/amazon-q-developer-cli/04_issues/new
 ```
 
 **ISSUE報告時に含めるべき情報**:

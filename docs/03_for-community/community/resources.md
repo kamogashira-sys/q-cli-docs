@@ -22,8 +22,8 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 
 ### リリース情報
 - [GitHub Releases](https://github.com/aws/amazon-q-developer-cli/releases) - リリースノート
-- [Changelog](../for-community/updates/changelog.md) - 変更履歴
-- [Roadmap](../for-community/updates/roadmap.md) - 開発ロードマップ
+- [Changelog](../03_for-community/updates/changelog.md) - 変更履歴
+- [Roadmap](../03_for-community/updates/roadmap.md) - 開発ロードマップ
 
 ### サポート
 - [GitHub Issues](https://github.com/aws/amazon-q-developer-cli/issues) - バグ報告・機能リクエスト
@@ -37,32 +37,32 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 ### 初心者向け
 
 #### Getting Started
-- [インストールガイド](../for-users/getting-started/installation.md) - 環境別インストール手順
-- [クイックスタート](../for-users/getting-started/quick-start.md) - 5分で始めるQ CLI
-- [最初の一歩](../for-users/getting-started/first-steps.md) - 基本的な使い方
+- [インストールガイド](../01_for-users/getting-started/installation.md) - 環境別インストール手順
+- [クイックスタート](../01_for-users/getting-started/quick-start.md) - 5分で始めるQ CLI
+- [最初の一歩](../01_for-users/getting-started/first-steps.md) - 基本的な使い方
 
 #### 設定
-- [設定システム概要](../for-users/configuration/overview.md) - 設定の全体像
-- [Agent設定](../for-users/configuration/agent-configuration.md) - カスタムAgent作成
-- [MCP設定](../for-users/configuration/mcp-configuration.md) - MCPサーバー統合
+- [設定システム概要](../01_for-users/configuration/overview.md) - 設定の全体像
+- [Agent設定](../01_for-users/configuration/agent-configuration.md) - カスタムAgent作成
+- [MCP設定](../01_for-users/configuration/mcp-configuration.md) - MCPサーバー統合
 
 ### 中級者向け
 
 #### 機能活用
-- [Agent機能](../for-users/features/agents.md) - Agent機能の詳細
-- [MCP設定](../for-users/configuration/mcp-configuration.md) - MCP統合の活用
-- [Knowledge機能](../for-users/best-practices/performance.md#knowledge機能の最適化) - Knowledge Base活用
+- [Agent機能](../01_for-users/features/agents.md) - Agent機能の詳細
+- [MCP設定](../01_for-users/configuration/mcp-configuration.md) - MCP統合の活用
+- [Knowledge機能](../01_for-users/best-practices/performance.md#knowledge機能の最適化) - Knowledge Base活用
 
 #### ベストプラクティス
-- [設定のベストプラクティス](../for-users/best-practices/configuration.md) - 推奨設定
-- [セキュリティ](../for-users/best-practices/security.md) - セキュリティ対策
-- [パフォーマンス最適化](../for-users/best-practices/performance.md) - 高速化テクニック
+- [設定のベストプラクティス](../01_for-users/best-practices/configuration.md) - 推奨設定
+- [セキュリティ](../01_for-users/best-practices/security.md) - セキュリティ対策
+- [パフォーマンス最適化](../01_for-users/best-practices/performance.md) - 高速化テクニック
 
 ### 上級者向け
 
 #### 開発者向け
-- [アーキテクチャ概要](../for-developers/architecture/overview.md) - システム設計
-- [ソースコード構造](../for-developers/architecture/source-code-structure.md) - コードベース解説
+- [アーキテクチャ概要](../02_for-developers/architecture/overview.md) - システム設計
+- [ソースコード構造](../02_for-developers/architecture/source-code-structure.md) - コードベース解説
 - [貢献ガイド](contributing.md) - コントリビューション方法
 
 ---
@@ -143,21 +143,21 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 ## 学習パス
 
 ### 初心者向け学習パス
-1. [インストール](../for-users/getting-started/installation.md)
-2. [クイックスタート](../for-users/getting-started/quick-start.md)
-3. [基本的な使い方](../for-users/getting-started/first-steps.md)
-4. [設定システム概要](../for-users/configuration/overview.md)
+1. [インストール](../01_for-users/getting-started/installation.md)
+2. [クイックスタート](../01_for-users/getting-started/quick-start.md)
+3. [基本的な使い方](../01_for-users/getting-started/first-steps.md)
+4. [設定システム概要](../01_for-users/configuration/overview.md)
 
 ### 中級者向け学習パス
-1. [Agent設定](../for-users/configuration/agent-configuration.md)
-2. [MCP統合](../for-users/configuration/mcp-configuration.md)
-3. [Knowledge活用](../for-users/best-practices/performance.md#knowledge機能の最適化)
-4. [ベストプラクティス](../for-users/best-practices/configuration.md)
+1. [Agent設定](../01_for-users/configuration/agent-configuration.md)
+2. [MCP統合](../01_for-users/configuration/mcp-configuration.md)
+3. [Knowledge活用](../01_for-users/best-practices/performance.md#knowledge機能の最適化)
+4. [ベストプラクティス](../01_for-users/best-practices/configuration.md)
 
 ### 上級者向け学習パス
-1. [アーキテクチャ理解](../for-developers/architecture/overview.md)
-2. [ソースコード解析](../for-developers/architecture/source-code-structure.md)
-3. [開発環境構築](../for-developers/contributing/development-setup.md)
+1. [アーキテクチャ理解](../02_for-developers/architecture/overview.md)
+2. [ソースコード解析](../02_for-developers/architecture/source-code-structure.md)
+3. [開発環境構築](../02_for-developers/contributing/development-setup.md)
 4. [コントリビューション](contributing.md)
 
 ---

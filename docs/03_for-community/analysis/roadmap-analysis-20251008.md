@@ -670,9 +670,9 @@ GitHubのISSUE、PR、ディスカッションを徹底的に調査しました�
 
 - [GitHub Repository](https://github.com/aws/amazon-q-developer-cli)
 - [Roadmap Issues](https://github.com/aws/amazon-q-developer-cli/issues?q=is%3Aissue+label%3ARoadmap)
-- [Remote MCP Servers Discussion](https://github.com/aws/amazon-q-developer-cli/issues/2706)
-- [Windows Support Tracking](https://github.com/aws/amazon-q-developer-cli/issues/2602)
-- [UX Rewrite Discussion](https://github.com/aws/amazon-q-developer-cli/issues/2550)
+- [Remote MCP Servers Discussion](https://github.com/aws/amazon-q-developer-cli/04_issues/2706)
+- [Windows Support Tracking](https://github.com/aws/amazon-q-developer-cli/04_issues/2602)
+- [UX Rewrite Discussion](https://github.com/aws/amazon-q-developer-cli/04_issues/2550)
 
 ---
 

@@ -31,8 +31,8 @@
 
 ## 🔗 関連リンク
 
-- **[CONTRIBUTING](../meta/CONTRIBUTING.md)** - コントリビューションガイド
-- **[QUALITY_ASSURANCE](../meta/QUALITY_ASSURANCE.md)** - 品質保証プロセス
+- **[CONTRIBUTING](../05_meta/CONTRIBUTING.md)** - コントリビューションガイド
+- **[QUALITY_ASSURANCE](../05_meta/QUALITY_ASSURANCE.md)** - 品質保証プロセス
 
 ---
 
