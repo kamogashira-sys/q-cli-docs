@@ -304,6 +304,46 @@ q
 
 ---
 
+### アップデート方法
+
+#### ⚠️ 重要な注意事項
+
+現在、Linux環境では`q update`コマンドが正常に動作しない場合があります（[ISSUE #3066](https://github.com/aws/amazon-q-developer-cli/issues/3066)、[#2120](https://github.com/aws/amazon-q-developer-cli/issues/2120)、[#841](https://github.com/aws/amazon-q-developer-cli/issues/841)）。
+
+**既知の問題**:
+- `q update`実行時に`Invalid cross-device link (os error 18)`エラーが発生する場合がある
+- 特にAWS EC2環境や複数のマウントポイントがある環境で発生しやすい
+- アップデートが実行されない、またはエラーメッセージが表示されない
+
+#### 推奨される回避策
+
+**debパッケージの場合（Ubuntu/Debian）**:
+
+```bash
+# 最新版をダウンロード
+wget https://desktop-release.q.us-east-1.amazonaws.com/latest/amazon-q.deb
+
+# インストール
+sudo dpkg -i amazon-q.deb
+
+# 依存関係の修正（必要な場合）
+sudo apt-get install -f
+```
+
+**AppImageの場合**:
+
+```bash
+# 最新版をダウンロード
+wget https://desktop-release.q.us-east-1.amazonaws.com/latest/Amazon%20Q.AppImage -O ~/amazon-q.AppImage
+
+# 実行権限を付与
+chmod +x ~/amazon-q.AppImage
+```
+
+**進捗状況**: [GitHub ISSUE #841](https://github.com/aws/amazon-q-developer-cli/issues/841)で確認できます
+
+---
+
 ### その他のLinuxディストリビューション（AppImage）
 
 Ubuntu以外のLinuxディストリビューション（Fedora、CentOS、Arch Linuxなど）では、AppImage形式を使用できます。
