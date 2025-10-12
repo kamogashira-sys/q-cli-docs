@@ -176,7 +176,7 @@ Amazon Q Developer CLI（Q CLI）は、AWSが提供する**AI駆動**の開発�
 
 ## 🤝 貢献者
 
-- **調査担当**: AI Assistant
+- **調査担当**: Amazon Q Developer CLI
 - **レビュー**: katoh
 
 ---
