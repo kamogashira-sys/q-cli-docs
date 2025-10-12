@@ -221,7 +221,7 @@
 ## 📚 関連ドキュメント
 
 - **[ソースコード構造マップ](source-code-structure.md)** - ソースコード構造の詳細
-- **[バージョン履歴](../03_for-community/updates/version-history-v1.13-v1.17.md)** - バージョンアップ履歴
+- **[バージョン履歴](../../03_for-community/updates/version-history-v1.13-v1.17.md)** - バージョンアップ履歴
 - **[ロードマップ分析](roadmap-analysis-20251008.md)** - ロードマップ分析
 ---
 

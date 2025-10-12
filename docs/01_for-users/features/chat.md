@@ -257,12 +257,12 @@ q settings chat.enableHistoryHints true
 
 ## 📚 関連ドキュメント
 
-- [最初の一歩](../../getting-started/first-steps.md)
+- [最初の一歩](../getting-started/first-steps.md)
 - [Agent機能](agents.md)
 - [Knowledge機能](../best-practices/performance.md#knowledge機能の最適化)
 - [Checkpoint機能](checkpoints.md)
 - [グローバル設定](../configuration/global-settings.md)
-- [コマンドリファレンス](../../reference/commands.md)
+- [コマンドリファレンス](../reference/commands.md)
 
 ---
 

@@ -1003,7 +1003,7 @@ GitHub ISSUEを報告
 
 - [推奨設定ガイド](../best-practices/configuration.md)
 - [ベストプラクティス](../best-practices/configuration.md)
-- [Agent設定ファイル完全仕様](agent-configuration.md)
+- [Agent設定ファイル完全仕様](../configuration/agent-configuration.md)
 - [GitHub Repository](https://github.com/aws/amazon-q-developer-cli)
 
 ---

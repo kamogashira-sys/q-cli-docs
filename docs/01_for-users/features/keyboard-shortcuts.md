@@ -389,10 +389,10 @@ q settings chat.delegateModeKey e
 
 ## 📚 関連ドキュメント
 
-- [最初の一歩](../../getting-started/first-steps.md) - 基本的な操作方法
+- [最初の一歩](../getting-started/first-steps.md) - 基本的な操作方法
 - [グローバル設定](../configuration/global-settings.md) - キーバインド設定の詳細
 - [推奨設定](../best-practices/configuration.md) - Tangentモードの設定
-- [設定項目リファレンス](../../reference/settings-reference.md) - 全設定項目の一覧
+- [設定項目リファレンス](../reference/settings-reference.md) - 全設定項目の一覧
 
 ---
 

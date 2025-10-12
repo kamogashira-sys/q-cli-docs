@@ -405,10 +405,10 @@ substitute_env_vars()
 
 ## 参考リンク
 
-- [設定優先順位ガイド](../01_for-users/configuration/priority-rules.md) - 設定の優先順位と図解
-- [設定項目完全リファレンス](../01_for-users/reference/settings-reference.md) - 全設定項目の一覧
-- [環境変数ガイド](../01_for-users/configuration/environment-variables.md) - 環境変数の完全リスト
-- [Agent設定ファイル完全仕様](../01_for-users/configuration/agent-configuration.md) - Agent設定の詳細
+- [設定優先順位ガイド](../../01_for-users/configuration/priority-rules.md) - 設定の優先順位と図解
+- [設定項目完全リファレンス](../../01_for-users/reference/settings-reference.md) - 全設定項目の一覧
+- [環境変数ガイド](../../01_for-users/configuration/environment-variables.md) - 環境変数の完全リスト
+- [Agent設定ファイル完全仕様](../../01_for-users/configuration/agent-configuration.md) - Agent設定の詳細
 
 ---
 
