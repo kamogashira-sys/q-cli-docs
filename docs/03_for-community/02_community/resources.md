@@ -157,7 +157,7 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 ### 上級者向け学習パス
 1. [アーキテクチャ理解](../../02_for-developers/02_architecture/01_overview.md)
 2. [ソースコード解析](../../02_for-developers/02_architecture/source-code-structure.md)
-3. [開発環境構築](../../02_for-developers/01_contributing/development-setup.md)
+3. [開発環境構築](../../02_for-developers/01_contributing/01_development-setup.md)
 4. [コントリビューション](contributing.md)
 
 ---

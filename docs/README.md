@@ -219,8 +219,8 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
 | 1 | [README](02_for-developers/01_contributing/README.md) | 上級 | コントリビューションセクションの概要 |
-| 2 | [開発環境セットアップ](02_for-developers/01_contributing/development-setup.md) | 上級 | 開発環境構築、ビルド方法、テスト実行 |
-| 3 | [プルリクエストガイド](02_for-developers/01_contributing/pull-request-guide.md) | 上級 | PR作成手順、レビュー基準、マージプロセス |
+| 2 | [開発環境セットアップ](02_for-developers/01_contributing/01_development-setup.md) | 上級 | 開発環境構築、ビルド方法、テスト実行 |
+| 3 | [プルリクエストガイド](02_for-developers/01_contributing/02_pull-request-guide.md) | 上級 | PR作成手順、レビュー基準、マージプロセス |
 
 ---
 

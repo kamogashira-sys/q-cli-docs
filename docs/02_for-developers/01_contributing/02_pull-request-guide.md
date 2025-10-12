@@ -232,15 +232,15 @@ A: PRのサイズや複雑さによりますが、通常1-2週間程度です。
 ## 📚 関連ドキュメント
 
 - [貢献ガイド](../../03_for-community/02_community/contributing.md)
-- [開発環境セットアップ](development-setup.md)
+- [開発環境セットアップ](01_development-setup.md)
 - [コーディング規約](README.md)
 
-- **[開発環境セットアップ](development-setup.md)** - [貢献ガイド](../../03_for-community/02_community/contributing.md)
-- [開発環境セットアップ](development-setup.md)
+- **[開発環境セットアップ](01_development-setup.md)** - [貢献ガイド](../../03_for-community/02_community/contributing.md)
+- [開発環境セットアップ](01_development-setup.md)
 - [コーディング規約](README.md)
 
 - **[コーディング規約](README.md)** - [貢献ガイド](../../03_for-community/02_community/contributing.md)
-- [開発環境セットアップ](development-setup.md)
+- [開発環境セットアップ](01_development-setup.md)
 - [コーディング規約](README.md)
 
 
