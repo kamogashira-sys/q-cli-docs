@@ -68,8 +68,31 @@ uname -m
 
 Amazon Q CLIを使用するには、以下のいずれかの認証方法が必要です：
 
-- **AWS Builder ID**（推奨）: 個人開発者向け、無料で利用可能
-- **IAM Identity Center**: 組織・チーム向け、管理者から提供されるStart URLが必要
+#### AWS Builder ID（推奨）
+
+個人開発者向けの無料認証方法です。
+
+**特徴**:
+- 無料で利用可能
+- メールアドレスまたはGoogleアカウントで登録
+- Amazon Q Developer、CodeCatalyst等で利用可能
+- AWS アカウントとは独立した個人プロファイル
+
+**作成方法**:
+- [Amazon Q Developer向けBuilder ID入門（公式ガイド）](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/getting-started-builderid.html)
+- [AWS Builder ID作成ガイド](https://docs.aws.amazon.com/signin/latest/userguide/create-builder-id.html)
+
+#### IAM Identity Center
+
+組織・チーム向けの認証方法です。
+
+**特徴**:
+- 管理者から提供されるStart URLが必要
+- 組織のSSO（シングルサインオン）と連携
+- 複数のAWSアカウントへのアクセス管理
+- エンタープライズ向け
+
+**詳細**: 管理者にお問い合わせください
 
 ---
 
