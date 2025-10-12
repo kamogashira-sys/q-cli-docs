@@ -89,12 +89,15 @@ q chat --agent aws-specialist
 
 ### TODO管理
 
+> **⚠️ 注意**: todos機能は実験的機能です。`q experiment`で有効化してください。
+
 | コマンド | 説明 | 使用例 |
 |---------|------|--------|
-| `/todo` | TODO一覧を表示 | `/todo` |
-| `/todo add <task>` | TODOを追加 | `/todo add "テストを書く"` |
-| `/todo complete <id>` | TODOを完了 | `/todo complete 1` |
-| `/todo remove <id>` | TODOを削除 | `/todo remove 1` |
+| `/todos` | TODO一覧を表示 | `/todos` |
+| `/todos help` | ヘルプを表示 | `/todos help` |
+| `/todos clear-finished` | 完了済みをクリア | `/todos clear-finished` |
+| `/todos delete` | TODOを削除 | `/todos delete` |
+| `/todos delete --all` | 全削除 | `/todos delete --all` |
 
 ### Agent管理
 
@@ -193,10 +196,9 @@ q chat --agent aws-specialist
 ### 5. TODOで作業を管理
 
 ```
-> /todo add "テストを書く"
-> /todo add "ドキュメントを更新"
-> /todo
-> /todo complete 1
+> /todos view
+> /todos delete
+> /todos clear-finished
 ```
 
 ---

@@ -208,11 +208,11 @@ Knowledge Baseから情報を検索します。
 ### TODOリストの管理
 
 ```
-> /todo add "Implement user authentication"
+> /todos view
 
-> /todo list
+> /todos delete
 
-> /todo complete 1
+> /todos clear-finished
 ```
 
 ---

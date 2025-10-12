@@ -286,10 +286,13 @@ q mcp uninstall my-server
 
 | コマンド | 説明 |
 |---------|------|
-| `/todo` | TODO一覧を表示 |
-| `/todo add <task>` | TODOを追加 |
-| `/todo complete <id>` | TODOを完了 |
-| `/todo remove <id>` | TODOを削除 |
+| `/todos` | TODO管理 |
+| `/todos help` | ヘルプを表示 |
+| `/todos view` | TODO一覧を表示 |
+| `/todos clear-finished` | 完了済みTODOをクリア |
+| `/todos resume` | TODOを再開 |
+| `/todos delete` | TODOを削除 |
+| `/todos delete --all` | すべてのTODOを削除 |
 
 ### 開発者向け
 
