@@ -162,7 +162,7 @@ Amazon Q CLIの開発ロードマップと今後の計画について説明し�
 - MCPサーバーの開発
 
 ### 貢献方法
-詳細は[貢献ガイド](../../03_for-community/community/contributing.md)を参照。
+詳細は[貢献ガイド](../../03_for-community/02_community/contributing.md)を参照。
 
 ---
 

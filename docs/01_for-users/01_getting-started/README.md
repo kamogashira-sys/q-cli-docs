@@ -136,7 +136,7 @@ Getting Startedを完了したら、以下のセクションに進んでくだ�
 
 ### コミュニティ
 - **[GitHub Issues](https://github.com/aws/amazon-q-developer-cli/issues)** - バグ報告や機能要望
-- **[リソース集](../../03_for-community/community/resources.md)** - 関連リンク・ツール
+- **[リソース集](../../03_for-community/02_community/resources.md)** - 関連リンク・ツール
 
 ---
 

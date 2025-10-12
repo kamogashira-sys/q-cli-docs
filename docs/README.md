@@ -245,11 +245,11 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
-| 1 | [README](03_for-community/updates/README.md) | 初級〜中級 | Updatesセクションの概要 |
-| 2 | [変更履歴](03_for-community/updates/changelog.md) | 初級〜中級 | バージョン別変更履歴、機能追加/バグ修正 |
-| 3 | [ロードマップ](03_for-community/updates/roadmap.md) | 中級〜上級 | 開発計画、35アイテム、優先順位マトリクス、エンタープライズ課題 |
-| 4 | [バージョン履歴 v1.13-v1.17](03_for-community/updates/version-history-v1.13-v1.17.md) | 中級 | v1.13-v1.17詳細履歴、135+ PRs、主要機能進化 |
-| 5 | [マイグレーションガイド](03_for-community/updates/migration-guides.md) | 中級 | バージョン間の移行ガイド、破壊的変更への対応 |
+| 1 | [README](03_for-community/01_updates/README.md) | 初級〜中級 | Updatesセクションの概要 |
+| 2 | [変更履歴](03_for-community/01_updates/changelog.md) | 初級〜中級 | バージョン別変更履歴、機能追加/バグ修正 |
+| 3 | [ロードマップ](03_for-community/01_updates/roadmap.md) | 中級〜上級 | 開発計画、35アイテム、優先順位マトリクス、エンタープライズ課題 |
+| 4 | [バージョン履歴 v1.13-v1.17](03_for-community/01_updates/version-history-v1.13-v1.17.md) | 中級 | v1.13-v1.17詳細履歴、135+ PRs、主要機能進化 |
+| 5 | [マイグレーションガイド](03_for-community/01_updates/migration-guides.md) | 中級 | バージョン間の移行ガイド、破壊的変更への対応 |
 
 ---
 
@@ -259,10 +259,10 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
-| 1 | [README](03_for-community/community/README.md) | 初級 | Communityセクションの概要 |
-| 2 | [コントリビューションガイド](03_for-community/community/contributing.md) | 中級 | コミュニティへの貢献方法、PR作成手順 |
-| 3 | [リソース集](03_for-community/community/resources.md) | 初級〜中級 | 関連リンク、公式リソース、コミュニティツール |
-| 4 | [ショーケース](03_for-community/community/showcase.md) | 初級〜中級 | 活用事例、ユースケース紹介 |
+| 1 | [README](03_for-community/02_community/README.md) | 初級 | Communityセクションの概要 |
+| 2 | [コントリビューションガイド](03_for-community/02_community/contributing.md) | 中級 | コミュニティへの貢献方法、PR作成手順 |
+| 3 | [リソース集](03_for-community/02_community/resources.md) | 初級〜中級 | 関連リンク、公式リソース、コミュニティツール |
+| 4 | [ショーケース](03_for-community/02_community/showcase.md) | 初級〜中級 | 活用事例、ユースケース紹介 |
 
 ---
 
@@ -272,10 +272,10 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
-| 1 | [README](03_for-community/analysis/README.md) | 中級〜上級 | Analysisセクションの概要 |
-| 2 | [ロードマップ分析](03_for-community/analysis/roadmap-analysis-20251008.md) | 中級〜上級 | 35件のRoadmapアイテム分析、優先順位マトリクス、エンタープライズ採用への障壁 |
-| 3 | [ソースコード構造分析](03_for-community/analysis/source-code-structure.md) | 上級 | ソースコード構造の詳細分析、設定システムの実装 |
-| 4 | [コード規模分析](03_for-community/analysis/source-code-scale-analysis.md) | 上級 | プロジェクト規模統計、言語別コード量、モジュール分析 |
+| 1 | [README](03_for-community/03_analysis/README.md) | 中級〜上級 | Analysisセクションの概要 |
+| 2 | [ロードマップ分析](03_for-community/03_analysis/roadmap-analysis-20251008.md) | 中級〜上級 | 35件のRoadmapアイテム分析、優先順位マトリクス、エンタープライズ採用への障壁 |
+| 3 | [ソースコード構造分析](03_for-community/03_analysis/source-code-structure.md) | 上級 | ソースコード構造の詳細分析、設定システムの実装 |
+| 4 | [コード規模分析](03_for-community/03_analysis/source-code-scale-analysis.md) | 上級 | プロジェクト規模統計、言語別コード量、モジュール分析 |
 
 ---
 
