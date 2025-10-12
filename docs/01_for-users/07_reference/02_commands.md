@@ -13,28 +13,28 @@ Amazon Q CLIの**全10コマンド**の完全リストです。このリファ�
 
 ### 基本・Agent管理（2コマンド）
 
-| コマンド | 説明 | 詳細 |
-|---------|------|------|
-| `q chat` | AIアシスタントとの対話を開始 | [→](#q-chat) |
-| `q agent` | Agentを管理（list, show, validate, edit） | [→](#q-agent) |
+| コマンド | 説明 |
+|---------|------|
+| [`q chat`](#q-chat) | AIアシスタントとの対話を開始 |
+| [`q agent`](#q-agent) | Agentを管理（list, show, validate, edit） |
 
 ### 認証・プロファイル（4コマンド）
 
-| コマンド | 説明 | 詳細 |
-|---------|------|------|
-| `q login` | Amazon Qにログイン（Builder ID / Identity Center） | [→](#q-login) |
-| `q logout` | Amazon Qからログアウト | [→](#q-logout) |
-| `q whoami` | 現在のログイン情報を表示 | [→](#q-whoami) |
-| `q profile` | IDCユーザーのプロファイル情報を表示 | [→](#q-profile) |
+| コマンド | 説明 |
+|---------|------|
+| [`q login`](#q-login) | Amazon Qにログイン（Builder ID / Identity Center） |
+| [`q logout`](#q-logout) | Amazon Qからログアウト |
+| [`q whoami`](#q-whoami) | 現在のログイン情報を表示 |
+| [`q profile`](#q-profile) | IDCユーザーのプロファイル情報を表示 |
 
 ### 設定・診断・その他（4コマンド）
 
-| コマンド | 説明 | 詳細 |
-|---------|------|------|
-| `q settings` | 設定を管理（取得・変更・削除・ファイルを開く） | [→](#q-settings) |
-| `q diagnostic` | 診断テストを実行 | [→](#q-diagnostic) |
-| `q issue` | GitHub issueテンプレートを開く | [→](#q-issue) |
-| `q mcp` | MCPサーバーを管理（list, install, uninstall） | [→](#q-mcp) |
+| コマンド | 説明 |
+|---------|------|
+| [`q settings`](#q-settings) | 設定を管理（取得・変更・削除・ファイルを開く） |
+| [`q diagnostic`](#q-diagnostic) | 診断テストを実行 |
+| [`q issue`](#q-issue) | GitHub issueテンプレートを開く |
+| [`q mcp`](#q-mcp) | MCPサーバーを管理（list, install, uninstall） |
 
 > 💡 チャットセッション内で使用できるコマンド（`/help`, `/clear`, `/context`など）は [チャット内コマンド](#チャット内コマンド) を参照してください。
 
