@@ -177,7 +177,7 @@ Amazon Q CLIの機能と設定を詳しく学びたい方向けのガイドで�
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
 | 1 | [README](01_for-users/05_deployment/README.md) | 中級〜上級 | Deploymentセクションの概要 |
-| 2 | [エンタープライズ導入ガイド](01_for-users/05_deployment/enterprise-deployment.md) | 中級〜上級 | IAM Identity Center、組織導入、Pro契約、段階的ロールアウト、セキュリティ |
+| 2 | [エンタープライズ導入ガイド](01_for-users/05_deployment/01_enterprise-deployment.md) | 中級〜上級 | IAM Identity Center、組織導入、Pro契約、段階的ロールアウト、セキュリティ |
 
 #### ベストプラクティス（4文書）
 

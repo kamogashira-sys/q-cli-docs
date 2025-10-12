@@ -366,7 +366,7 @@ q
 
 組織・チーム向けの認証方法です。管理者から提供されたStart URLが必要です。
 
-> **💡 組織での導入**: 組織全体でAmazon Q Developer を導入する場合は、[エンタープライズ導入ガイド](../05_deployment/enterprise-deployment.md)を参照してください。IAM Identity Center のセットアップからサブスクリプション管理まで、詳細な手順を説明しています。
+> **💡 組織での導入**: 組織全体でAmazon Q Developer を導入する場合は、[エンタープライズ導入ガイド](../05_deployment/01_enterprise-deployment.md)を参照してください。IAM Identity Center のセットアップからサブスクリプション管理まで、詳細な手順を説明しています。
 
 #### ステップ1: 認証情報の設定
 

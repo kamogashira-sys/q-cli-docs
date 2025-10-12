@@ -96,7 +96,7 @@ rm -rf ~/.aws/amazonq
 1. [パフォーマンス最適化](../04_best-practices/03_performance.md)
 2. [セキュリティ](../04_best-practices/02_security.md)
 3. [実験的機能](../02_features/07_experimental.md)
-4. [エンタープライズ展開](../05_deployment/enterprise-deployment.md)
+4. [エンタープライズ展開](../05_deployment/01_enterprise-deployment.md)
 
 ---
 

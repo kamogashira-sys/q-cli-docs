@@ -14,7 +14,7 @@ Amazon Q CLIの組織・エンタープライズ向けデプロイメントガ�
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
-| 1 | [エンタープライズ導入ガイド](enterprise-deployment.md) | 中級〜上級 | IAM Identity Center、組織導入、Pro契約、段階的ロールアウト、セキュリティ |
+| 1 | [エンタープライズ導入ガイド](01_enterprise-deployment.md) | 中級〜上級 | IAM Identity Center、組織導入、Pro契約、段階的ロールアウト、セキュリティ |
 
 ---
 
@@ -28,7 +28,7 @@ Amazon Q CLIの組織・エンタープライズ向けデプロイメントガ�
 
 ## 🚀 導入の流れ
 
-1. **[エンタープライズ導入ガイド](enterprise-deployment.md)を読む**
+1. **[エンタープライズ導入ガイド](01_enterprise-deployment.md)を読む**
 2. IAM Identity Centerのセットアップ
 3. パイロットグループでテスト
 4. 段階的に全社展開
