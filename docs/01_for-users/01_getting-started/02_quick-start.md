@@ -1,16 +1,18 @@
 # クイックスタート - 5分で始めるQ CLI
 
 **所要時間**: 約5分  
-**最終更新**: 2025-10-11
+**対象**: すぐに試したい方  
+**最終更新**: 2025-10-12
+
+> 💡 **詳細なインストール手順が必要な方**: [インストールガイド](01_installation.md)を参照
 
 ---
 
 ## 🎯 このガイドで学ぶこと
 
-- Amazon Q CLIのインストール
+- 最短でのインストール
 - 初回起動と認証
 - 最初のチャット
-- 基本的なコマンド
 
 ---
 
@@ -27,6 +29,8 @@ brew install amazon-q
 ```bash
 curl -fsSL https://d2eo22ngex1n9g.cloudfront.net/releases/amazon-q-developer-cli/latest/install.sh | bash
 ```
+
+> 💡 **その他のOS・詳細な手順**: [インストールガイド](01_installation.md)を参照
 
 ### インストール確認
 
@@ -48,26 +52,15 @@ q
 
 ### 認証
 
-初回起動時、ブラウザが自動的に開きます：
+初回起動時、ブラウザが自動的に開きます。AWS Builder IDまたはIAM Identity Centerで認証してください。
 
-1. **AWSアカウントでサインイン**
-   - AWS Builder IDまたはIAM Identity Centerを選択
-   - 認証情報を入力
+**認証完了の確認**:
+```bash
+✓ Authentication successful
+Welcome to Amazon Q CLI!
+```
 
-2. **認証完了の確認**
-   ```bash
-   ✓ Authentication successful
-   Welcome to Amazon Q CLI!
-   ```
-
-3. **認証状態の確認**
-   ```bash
-   q login --help
-   ```
-
-**トラブルシューティング**:
-- ブラウザが開かない場合: `q login --no-browser`
-- 認証エラーの場合: [認証トラブルシューティング](../06_troubleshooting/02_common-issues.md#認証関連)を参照
+> 💡 **認証の詳細・トラブルシューティング**: [インストールガイド - 認証設定](01_installation.md#-認証設定)を参照
 
 ---
 
