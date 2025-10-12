@@ -25,9 +25,9 @@
 ### 最初に何をすべきですか？
 
 **推奨手順**:
-1. [インストール](../01_getting-started/installation.md)（10分）
-2. [クイックスタート](../01_getting-started/quick-start.md)（5分）
-3. [最初の一歩](../01_getting-started/first-steps.md)（15分）
+1. [インストール](../01_getting-started/01_installation.md)（10分）
+2. [クイックスタート](../01_getting-started/02_quick-start.md)（5分）
+3. [最初の一歩](../01_getting-started/03_first-steps.md)（15分）
 
 **最初の質問例**:
 
@@ -81,9 +81,9 @@ rm -rf ~/.aws/amazonq
 ### おすすめの学習順序は？
 
 **初心者向け（1-2時間）**:
-1. [インストール](../01_getting-started/installation.md)
-2. [クイックスタート](../01_getting-started/quick-start.md)
-3. [最初の一歩](../01_getting-started/first-steps.md)
+1. [インストール](../01_getting-started/01_installation.md)
+2. [クイックスタート](../01_getting-started/02_quick-start.md)
+3. [最初の一歩](../01_getting-started/03_first-steps.md)
 4. [チャット機能](../02_features/chat.md)
 
 **中級者向け（3-5時間）**:
@@ -130,7 +130,7 @@ uname -m
 ls -la /usr/local/bin/q
 ```
 
-詳細は[インストールガイド](../01_getting-started/installation.md#トラブルシューティング)を参照。
+詳細は[インストールガイド](../01_getting-started/01_installation.md#トラブルシューティング)を参照。
 
 ### Q CLIをアンインストールするには？
 ```bash
@@ -146,7 +146,7 @@ rm -rf ~/.aws/amazonq
 いいえ、システムに1つのバージョンのみインストールできます。バージョンを切り替える場合は、アンインストール後に再インストールしてください。
 
 ### オフライン環境でインストールできますか？
-オフライン環境では、事前にインストーラーをダウンロードし、依存関係を含めてインストールする必要があります。詳細は[インストールガイド](../01_getting-started/installation.md)を参照してください。
+オフライン環境では、事前にインストーラーをダウンロードし、依存関係を含めてインストールする必要があります。詳細は[インストールガイド](../01_getting-started/01_installation.md)を参照してください。
 
 ### プロキシ環境での設定方法は？
 環境変数でプロキシを設定します：

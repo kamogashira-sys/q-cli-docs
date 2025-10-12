@@ -8,8 +8,8 @@
 
 このガイドを始める前に、以下を完了してください：
 
-- [インストール](installation.md)
-- [クイックスタート](quick-start.md)
+- [インストール](01_installation.md)
+- [クイックスタート](02_quick-start.md)
 
 ---
 
@@ -348,8 +348,8 @@ q auth refresh
 
 ## 🔗 関連リンク
 
-- [クイックスタート](quick-start.md) - 5分で始める
-- [インストールガイド](installation.md) - 詳細なインストール手順
+- [クイックスタート](02_quick-start.md) - 5分で始める
+- [インストールガイド](01_installation.md) - 詳細なインストール手順
 - [GitHub リポジトリ](https://github.com/aws/amazon-q-developer-cli)
 
 ---

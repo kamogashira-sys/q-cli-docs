@@ -17,9 +17,9 @@ graph LR
 ```
 
 1. **[📖 ドキュメントサイト全体を確認](docs/README.md)** ← まずここから！（5分）
-2. **[💻 インストール](docs/01_for-users/01_getting-started/installation.md)** - Q CLIのインストール方法（10分）
-3. **[🚀 クイックスタート](docs/01_for-users/01_getting-started/quick-start.md)** - 5分で始めるQ CLI（5分）
-4. **[👣 最初の一歩](docs/01_for-users/01_getting-started/first-steps.md)** - 基本的な使い方（15分）
+2. **[💻 インストール](docs/01_for-users/01_getting-started/01_installation.md)** - Q CLIのインストール方法（10分）
+3. **[🚀 クイックスタート](docs/01_for-users/01_getting-started/02_quick-start.md)** - 5分で始めるQ CLI（5分）
+4. **[👣 最初の一歩](docs/01_for-users/01_getting-started/03_first-steps.md)** - 基本的な使い方（15分）
 
 ### 設定を始める
 

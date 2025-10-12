@@ -37,9 +37,9 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 ### 初心者向け
 
 #### Getting Started
-- [インストールガイド](../../01_for-users/01_getting-started/installation.md) - 環境別インストール手順
-- [クイックスタート](../../01_for-users/01_getting-started/quick-start.md) - 5分で始めるQ CLI
-- [最初の一歩](../../01_for-users/01_getting-started/first-steps.md) - 基本的な使い方
+- [インストールガイド](../../01_for-users/01_getting-started/01_installation.md) - 環境別インストール手順
+- [クイックスタート](../../01_for-users/01_getting-started/02_quick-start.md) - 5分で始めるQ CLI
+- [最初の一歩](../../01_for-users/01_getting-started/03_first-steps.md) - 基本的な使い方
 
 #### 設定
 - [設定システム概要](../../01_for-users/03_configuration/overview.md) - 設定の全体像
@@ -143,9 +143,9 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 ## 学習パス
 
 ### 初心者向け学習パス
-1. [インストール](../../01_for-users/01_getting-started/installation.md)
-2. [クイックスタート](../../01_for-users/01_getting-started/quick-start.md)
-3. [基本的な使い方](../../01_for-users/01_getting-started/first-steps.md)
+1. [インストール](../../01_for-users/01_getting-started/01_installation.md)
+2. [クイックスタート](../../01_for-users/01_getting-started/02_quick-start.md)
+3. [基本的な使い方](../../01_for-users/01_getting-started/03_first-steps.md)
 4. [設定システム概要](../../01_for-users/03_configuration/overview.md)
 
 ### 中級者向け学習パス

@@ -682,8 +682,8 @@ q issue
 
 インストールが完了したら、以下のドキュメントをご覧ください：
 
-- **[クイックスタート](quick-start.md)** - 5分で始めるQ CLI
-- **[最初の一歩](first-steps.md)** - 基本的な使い方
+- **[クイックスタート](02_quick-start.md)** - 5分で始めるQ CLI
+- **[最初の一歩](03_first-steps.md)** - 基本的な使い方
 - **[設定ガイド](../03_configuration/overview.md)** - 設定のカスタマイズ
 
 ---
