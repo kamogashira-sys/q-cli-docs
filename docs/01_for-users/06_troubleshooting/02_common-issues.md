@@ -199,7 +199,15 @@ which node
 # 2. 手動で実行してテスト
 npx -y @modelcontextprotocol/server-filesystem /path
 
-# 3. タイムアウトを延長
+# 4. 依存関係をインストール
+npm install -g @modelcontextprotocol/server-filesystem
+
+# 5. ログを確認
+# ログファイルを手動で確認
+```
+
+3. タイムアウトを延長（設定ファイルを編集）:
+```json
 {
   "mcpServers": {
     "my-server": {
@@ -207,12 +215,6 @@ npx -y @modelcontextprotocol/server-filesystem /path
     }
   }
 }
-
-# 4. 依存関係をインストール
-npm install -g @modelcontextprotocol/server-filesystem
-
-# 5. ログを確認
-# ログファイルを手動で確認
 ```
 
 ---
@@ -361,22 +363,28 @@ ls -la docs/guide.md
 
 # 2. カレントディレクトリを確認
 pwd
+```
 
-# 3. 絶対パスを使用
+3. 絶対パスを使用:
+```json
 {
   "resources": [
     "file:///absolute/path/to/docs/guide.md"
   ]
 }
+```
 
-# 4. 相対パスを修正
+4. 相対パスを修正:
+```json
 {
   "resources": [
     "file://./docs/guide.md"
   ]
 }
+```
 
-# 5. ワイルドカードを使用
+5. ワイルドカードを使用:
+```json
 {
   "resources": [
     "file://docs/**/*.md"
@@ -466,15 +474,6 @@ git status
 # 1. コンテキストを圧縮
 /compact
 
-# 2. 不要なMCPサーバーを無効化
-{
-  "mcpServers": {
-    "unused-server": {
-      "disabled": true
-    }
-  }
-}
-
 # 3. Knowledge Baseをクリーンアップ
 /knowledge show
 /knowledge remove <unused-path>
@@ -484,6 +483,17 @@ git status
 
 # 5. Amazon Q CLIを再起動
 q restart
+```
+
+2. 不要なMCPサーバーを無効化（設定ファイルを編集）:
+```json
+{
+  "mcpServers": {
+    "unused-server": {
+      "disabled": true
+    }
+  }
+}
 ```
 
 ---
