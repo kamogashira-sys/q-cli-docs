@@ -211,6 +211,10 @@ q chat --agent aws-specialist
 # Thinking機能を有効化
 q settings chat.enableThinking true
 
+# 実験的機能を有効化（推奨: /experimentコマンドを使用）
+> /experiment
+
+# または、設定コマンドで個別に有効化
 # Knowledge機能を有効化
 q settings chat.enableKnowledge true
 
@@ -219,6 +223,9 @@ q settings chat.enableCheckpoint true
 
 # TODOリスト機能を有効化
 q settings chat.enableTodoList true
+
+# Tangent Mode機能を有効化
+q settings chat.enableTangentMode true
 
 # Delegate機能を有効化
 q settings chat.enableDelegate true

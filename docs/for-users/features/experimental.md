@@ -25,6 +25,17 @@
 - **段階的リリース**: 安定後に正式機能として組み込まれます
 
 ### 有効化方法
+
+**方法1: `/experiment`コマンドを使用（推奨）**
+
+```
+> /experiment
+```
+
+表示されるメニューから有効化したい機能を選択してON/OFFを切り替えます。
+
+**方法2: 設定コマンドを使用**
+
 ```bash
 # 設定ファイルで有効化
 q settings edit
@@ -89,6 +100,17 @@ q settings set chat.enableDelegate true
 - **警告表示**: 上限に近づくと警告を表示
 
 ### 有効化
+
+**方法1: `/experiment`コマンドを使用（推奨）**
+
+```
+> /experiment
+```
+
+メニューから「Context Usage Indicator」を選択してONに切り替えます。
+
+**方法2: 設定コマンドを使用**
+
 ```bash
 q settings set chat.enableContextUsageIndicator true
 ```
@@ -168,6 +190,17 @@ AIの思考過程をリアルタイムで表示する機能です。
 - **デバッグ支援**: 期待と異なる回答の原因を特定
 
 ### 有効化
+
+**方法1: `/experiment`コマンドを使用（推奨）**
+
+```
+> /experiment
+```
+
+メニューから「Thinking」を選択してONに切り替えます。
+
+**方法2: 設定コマンドを使用**
+
 ```bash
 q settings set chat.enableThinking true
 ```
@@ -249,6 +282,17 @@ q settings show chat.enableThinking
 - **エラー時の自動リトライ**: 失敗時に自動的に再試行
 
 ### 有効化
+
+**方法1: `/experiment`コマンドを使用（推奨）**
+
+```
+> /experiment
+```
+
+メニューから「Delegate」を選択してONに切り替えます。
+
+**方法2: 設定コマンドを使用**
+
 ```bash
 q settings set chat.enableDelegate true
 ```
