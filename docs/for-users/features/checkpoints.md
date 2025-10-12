@@ -25,7 +25,17 @@ Checkpointは以下の情報を保存します：
 
 ### 有効化
 
-Checkpoint機能を有効にするには、設定を変更します：
+Checkpoint機能を有効にするには、以下のいずれかの方法を使用します：
+
+**方法1: `/experiment`コマンドを使用（推奨）**
+
+```
+> /experiment
+```
+
+表示されるメニューから「Checkpoint」を選択してONに切り替えます。
+
+**方法2: 設定コマンドを使用**
 
 ```bash
 q settings chat.enableCheckpoint true
