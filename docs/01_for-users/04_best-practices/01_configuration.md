@@ -264,13 +264,9 @@ cat >> README.md << 'EOF'
 
 1. Install Amazon Q CLI
 2. Use the project-specific agent:
-   ```bash
    q chat --agent project-helper
-   ```
 3. Set as default (optional):
-   ```bash
    q settings chat.defaultAgent project-helper
-   ```
 EOF
 ```
 
@@ -303,8 +299,10 @@ which npx
 
 # 手動で実行してテスト
 npx -y @modelcontextprotocol/server-filesystem /path
+```
 
-# タイムアウトを延長
+設定でタイムアウトを延長:
+```json
 {
   "timeout": 180000
 }
