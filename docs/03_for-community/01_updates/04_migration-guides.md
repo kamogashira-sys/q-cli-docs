@@ -303,7 +303,7 @@ q knowledge status
 
 ## 📚 関連ドキュメント
 
-- [変更履歴](changelog.md) - バージョン別の変更内容
+- [変更履歴](01_changelog.md) - バージョン別の変更内容
 - [設定ガイド](../../01_for-users/03_configuration/README.md) - 設定の詳細
 - [トラブルシューティング](../../01_for-users/06_troubleshooting/README.md) - 問題解決方法
 

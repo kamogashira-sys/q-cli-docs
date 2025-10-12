@@ -246,10 +246,10 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
 | 1 | [README](03_for-community/01_updates/README.md) | 初級〜中級 | Updatesセクションの概要 |
-| 2 | [変更履歴](03_for-community/01_updates/changelog.md) | 初級〜中級 | バージョン別変更履歴、機能追加/バグ修正 |
-| 3 | [ロードマップ](03_for-community/01_updates/roadmap.md) | 中級〜上級 | 開発計画、35アイテム、優先順位マトリクス、エンタープライズ課題 |
-| 4 | [バージョン履歴 v1.13-v1.17](03_for-community/01_updates/version-history-v1.13-v1.17.md) | 中級 | v1.13-v1.17詳細履歴、135+ PRs、主要機能進化 |
-| 5 | [マイグレーションガイド](03_for-community/01_updates/migration-guides.md) | 中級 | バージョン間の移行ガイド、破壊的変更への対応 |
+| 2 | [変更履歴](03_for-community/01_updates/01_changelog.md) | 初級〜中級 | バージョン別変更履歴、機能追加/バグ修正 |
+| 3 | [ロードマップ](03_for-community/01_updates/02_roadmap.md) | 中級〜上級 | 開発計画、35アイテム、優先順位マトリクス、エンタープライズ課題 |
+| 4 | [バージョン履歴 v1.13-v1.17](03_for-community/01_updates/03_version-history-v1.13-v1.17.md) | 中級 | v1.13-v1.17詳細履歴、135+ PRs、主要機能進化 |
+| 5 | [マイグレーションガイド](03_for-community/01_updates/04_migration-guides.md) | 中級 | バージョン間の移行ガイド、破壊的変更への対応 |
 
 ---
 

@@ -22,8 +22,8 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 
 ### リリース情報
 - [GitHub Releases](https://github.com/aws/amazon-q-developer-cli/releases) - リリースノート
-- [Changelog](../../03_for-community/01_updates/changelog.md) - 変更履歴
-- [Roadmap](../../03_for-community/01_updates/roadmap.md) - 開発ロードマップ
+- [Changelog](../../03_for-community/01_updates/01_changelog.md) - 変更履歴
+- [Roadmap](../../03_for-community/01_updates/02_roadmap.md) - 開発ロードマップ
 
 ### サポート
 - [GitHub Issues](https://github.com/aws/amazon-q-developer-cli/issues) - バグ報告・機能リクエスト

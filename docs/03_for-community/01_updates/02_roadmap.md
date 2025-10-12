@@ -168,8 +168,8 @@ Amazon Q CLIの開発ロードマップと今後の計画について説明し�
 
 ## 📚 関連ドキュメント
 
-- [変更履歴](changelog.md) - 過去のリリース情報
-- [マイグレーションガイド](migration-guides.md) - バージョン間の移行
+- [変更履歴](01_changelog.md) - 過去のリリース情報
+- [マイグレーションガイド](04_migration-guides.md) - バージョン間の移行
 - [GitHub Roadmap](https://github.com/aws/amazon-q-developer-cli/issues?q=is%3Aissue+label%3Aroadmap) - 公式ロードマップ
 
 ---
