@@ -592,132 +592,463 @@ q mcp import <config-file>
 
 ## 📚 チャット内コマンド
 
-チャットセッション内で使用できるコマンドです。
+チャットセッション内で使用できるコマンドです。`/`で始まるコマンドを入力することで、会話の管理、設定の変更、機能の利用ができます。
 
-### 基本コマンド
+**全25コマンド**: 基本操作(5) / 会話管理(4) / Agent・設定(4) / タスク管理(2) / Knowledge・情報管理(2) / 開発者向け(5) / 情報表示(4) / 問題報告(1)
 
-| コマンド | 説明 |
-|---------|------|
-| `/help` | ヘルプを表示 |
-| `/clear` | 会話履歴をクリア |
-| `/quit` | チャットを終了 |
-| `/exit` | チャットを終了（`/quit`のエイリアス） |
-| `/q` | チャットを終了（`/quit`のエイリアス） |
+---
 
-### Agent管理
+### 基本操作
 
-| コマンド | 説明 |
-|---------|------|
-| `/agent` | Agent管理 |
-| `/agent help` | ヘルプを表示 |
-| `/agent list` | Agent一覧を表示 |
-| `/agent create` | Agentを作成 |
-| `/agent delete` | Agentを削除 |
-| `/agent rename` | Agent名を変更 |
-| `/agent set` | Agentを設定 |
-| `/agent schema` | Agentスキーマを表示 |
-| `/agent generate` | Agentを生成 |
+#### `/help` - ヘルプ表示
 
-### コンテキスト管理
+**目的**: チャット内コマンドの一覧とヘルプ情報を表示する
 
-| コマンド | 説明 |
-|---------|------|
-| `/context` | コンテキスト情報を表示 |
-| `/context help` | ヘルプを表示 |
-| `/context show` | コンテキストを表示 |
-| `/context show --expand` | コンテキストを展開表示 |
-| `/context add` | コンテキストを追加 |
-| `/context rm` | コンテキストを削除 |
-| `/context clear` | コンテキストをクリア |
+**使用シーン**: 利用可能なコマンドを確認する / コマンドの使い方を思い出す
 
-### Knowledge管理
+**使用方法**: `/help`
 
-| コマンド | 説明 |
-|---------|------|
-| `/knowledge` | Knowledge情報を表示 |
-| `/knowledge help` | ヘルプを表示 |
-| `/knowledge show` | Knowledge情報を表示 |
-| `/knowledge add` | ファイル/ディレクトリを追加 |
-| `/knowledge remove` | ファイル/ディレクトリを削除 |
-| `/knowledge clear` | Knowledgeをクリア |
-| `/knowledge search` | Knowledgeを検索 |
-| `/knowledge update` | Knowledgeを更新 |
-| `/knowledge status` | Knowledgeステータスを表示 |
-| `/knowledge cancel` | Knowledge処理をキャンセル |
+**関連コマンド**: `/whatsnew`, `/changelog`
 
-### Checkpoint管理
+---
 
-| コマンド | 説明 |
-|---------|------|
-| `/checkpoint` | Checkpoint管理 |
-| `/checkpoint help` | ヘルプを表示 |
-| `/checkpoint init` | Checkpointを初期化 |
-| `/checkpoint list` | Checkpoint一覧を表示 |
-| `/checkpoint restore` | Checkpointを復元 |
-| `/checkpoint expand` | Checkpointを展開 |
-| `/checkpoint diff` | Checkpoint差分を表示 |
-| `/checkpoint clean` | Checkpointをクリーンアップ |
+#### `/clear` - 会話履歴クリア
 
-### TODO管理
+**目的**: 現在のセッションの会話履歴をクリアする
 
-| コマンド | 説明 |
-|---------|------|
-| `/todos` | TODO管理 |
-| `/todos help` | ヘルプを表示 |
-| `/todos view` | TODO一覧を表示 |
-| `/todos clear-finished` | 完了済みTODOをクリア |
-| `/todos resume` | TODOを再開 |
-| `/todos delete` | TODOを削除 |
-| `/todos delete --all` | すべてのTODOを削除 |
+**使用シーン**: 新しいトピックを開始する / コンテキストウィンドウをリセットする / 機密情報を含む会話をクリアする
 
-### フック管理
+**使用方法**: `/clear`
 
-| コマンド | 説明 |
-|---------|------|
-| `/hooks` | フック情報を表示 |
-| `/hooks help` | ヘルプを表示 |
-| `/hooks add` | フックを追加 |
-| `/hooks rm` | フックを削除 |
-| `/hooks enable` | フックを有効化 |
-| `/hooks disable` | フックを無効化 |
-| `/hooks enable-all` | すべてのフックを有効化 |
-| `/hooks disable-all` | すべてのフックを無効化 |
+**注意点**:
+- ⚠️ クリアした会話履歴は復元できません
+- ⚠️ `/knowledge` で追加した情報は削除されません
 
-### Tangent管理
+**関連コマンド**: `/save`, `/tangent`
 
-| コマンド | 説明 |
-|---------|------|
-| `/tangent` | Tangentモードを切り替え |
-| `/tangent tail` | Tangent履歴を表示 |
+---
 
-### その他のコマンド
+#### `/quit` / `/exit` / `/q` - チャット終了
 
-| コマンド | 説明 |
-|---------|------|
-| `/editor` | エディタでプロンプトを作成 |
-| `/reply` | 最新のアシスタントメッセージに返信 |
-| `/issue` | GitHub ISSUEを作成 |
-| `/mcp` | MCPサーバーを表示 |
-| `/model` | モデルを選択 |
-| `/experiment` | 実験機能を切り替え |
-| `/prompts` | プロンプトを表示・取得 |
-| `/compact` | 会話を要約 |
-| `/compact help` | compactヘルプを表示 |
-| `/usage` | コンテキスト使用状況を表示 |
-| `/changelog` | 変更履歴を表示 |
-| `/save` | 会話を保存 |
-| `/load` | 会話を読み込み |
-| `/subscribe` | Q Developer Proサブスクリプション |
+**目的**: チャットセッションを終了する
 
-### ツール管理
+**使用方法**: `/quit` または `/exit` または `/q`
 
-| コマンド | 説明 |
-|---------|------|
-| `/tools` | ツールと権限を表示 |
-| `/tools trust` | ツールを信頼 |
-| `/tools untrust` | ツールの信頼を解除 |
-| `/tools trust-all` | すべてのツールを信頼 |
-| `/tools reset` | ツール設定をリセット |
+**注意点**: 重要な会話は `/save` で保存してから終了
+
+---
+
+### 会話管理
+
+#### `/save` - 会話保存
+
+**目的**: 現在の会話をファイルに保存する
+
+**使用シーン**: 重要な会話を記録する / 作業を中断して後で再開する
+
+**使用方法**:
+```
+/save [ファイル名]
+```
+
+**使用例**:
+```bash
+/save                      # デフォルトのファイル名で保存
+/save my-conversation.json # 指定したファイル名で保存
+```
+
+**関連コマンド**: `/load`
+
+---
+
+#### `/load` - 会話読み込み
+
+**目的**: 保存した会話をファイルから読み込む
+
+**使用シーン**: 中断した作業を再開する / 過去の会話を参照する
+
+**使用方法**:
+```
+/load [ファイル名]
+```
+
+**注意点**: 読み込む前に現在の会話を `/save` で保存することを推奨
+
+**関連コマンド**: `/save`
+
+---
+
+#### `/context` - コンテキスト管理
+
+**目的**: 現在のセッションのコンテキスト情報を管理する
+
+**使用シーン**: コンテキストウィンドウの使用状況を確認する / どの情報がコンテキストに含まれているか確認する
+
+**使用方法**: `/context`
+
+**関連コマンド**: `/clear`, `/knowledge`, `/experiment`, `/compact`
+
+**実験的機能**: `Context Usage Percentage` を有効にすると、プロンプトにコンテキスト使用率が表示されます
+
+---
+
+#### `/tangent` - Tangentモード
+
+**目的**: 会話のチェックポイントを作成し、サイドトピックを探索後に元の会話に戻る
+
+**説明**: メインの会話を保持したまま、別のトピックを探索し、後で元の会話に戻ることができます。
+
+**使用シーン**: メインの会話を中断せずに別の質問をしたい / 代替案を探索したい / Q CLIの使い方を確認したい
+
+**使用方法**:
+```
+/tangent          # Tangentモードに入る/戻る
+Ctrl+T            # キーボードショートカット
+```
+
+**有効化方法**:
+```bash
+q settings set chat.enableTangentMode true
+# または /experiment で有効化
+```
+
+**注意点**:
+- ⚠️ 実験的機能（デフォルトで無効）
+- ⚠️ チェックポイント以降の会話は保存されない
+
+**関連コマンド**: `/checkpoint`, `/experiment`
+
+---
+
+### Agent・設定
+
+#### `/agent` - Agent切り替え
+
+**目的**: 使用するAgentを切り替える
+
+**使用シーン**: プロジェクト固有のAgent設定を使用する / 異なるタスクに最適化されたAgentに切り替える
+
+**使用方法**:
+```
+/agent [Agent名]
+```
+
+**使用例**:
+```bash
+/agent              # Agent一覧を表示
+/agent rust-agent   # 特定のAgentに切り替え
+```
+
+**関連コマンド**: `/tools`, `/hooks`, `/mcp`, `/prompts`
+
+---
+
+#### `/model` - モデル切り替え
+
+**目的**: 使用するAIモデルを切り替える
+
+**使用シーン**: 複雑なタスクに高性能モデルを使用する / コストを最適化する
+
+**使用方法**: `/model [モデル名]`
+
+**注意点**: モデルによってコストと能力が異なる
+
+---
+
+#### `/experiment` - 実験的機能管理
+
+**目的**: 実験的機能のON/OFFを切り替え、新機能を試す
+
+**説明**: 対話的なメニューで実験的機能を管理します。
+
+**使用方法**: `/experiment`
+
+**実験的機能一覧**:
+1. **Checkpointing** - ファイル変更のGitベーストラッキング
+2. **Context Usage Percentage** - コンテキスト使用率の表示
+3. **Knowledge** - 永続的なナレッジベース
+4. **Thinking** - 複雑な推論プロセスの表示
+5. **Tangent Mode** - 会話の分岐機能
+6. **Delegate** - 非同期タスクプロセス管理
+7. **TODO Lists** - TODOリスト管理
+
+**関連コマンド**: `/checkpoint`, `/knowledge`, `/tangent`, `/todos`
+
+---
+
+#### `/prompts` - プロンプト管理
+
+**目的**: カスタムプロンプトを管理する
+
+**使用シーン**: 現在のAgentのプロンプトを確認する / プロンプトの効果を理解する
+
+**使用方法**: `/prompts`
+
+**関連コマンド**: `/agent`, `/model`
+
+---
+
+### タスク管理
+
+#### `/todos` - TODO管理
+
+**目的**: 永続的なTODOリストを管理し、複雑なタスクを追跡・再開する
+
+**説明**: Q CLIが複雑なタスクを分解した際に自動作成されるTODOリストを管理します。
+
+**使用シーン**: 複雑なタスクの進捗を確認したい / 中断した作業を再開したい
+
+**使用方法**:
+```
+/todos view              # TODO一覧を表示
+/todos resume            # TODOを再開
+/todos clear-finished    # 完了済みTODOをクリア
+/todos delete            # TODOを削除
+```
+
+**有効化方法**:
+```bash
+q settings set chat.enableTodoList true
+# または /experiment で有効化
+```
+
+**保存場所**: `.amazonq/cli-todo-lists/`
+
+**関連コマンド**: `/checkpoint`, `/experiment`
+
+---
+
+#### `/checkpoint` - Checkpointing
+
+**目的**: ファイル変更をGitベースでトラッキングし、任意の時点に復元できるチェックポイントを管理する
+
+**説明**: セッション中のファイル変更をシャドウGitリポジトリにスナップショットとして保存します。
+
+**使用シーン**: コード変更を段階的に追跡する / 実験的な変更を試してから元に戻す
+
+**使用方法**:
+```
+/checkpoint init                      # チェックポイントを初期化
+/checkpoint list [--limit N]         # チェックポイント一覧を表示
+/checkpoint expand <tag>              # 詳細を表示
+/checkpoint diff <tag1> [tag2|HEAD]  # 差分を表示
+/checkpoint restore [<tag>] [--hard] # 復元
+/checkpoint clean                     # クリーンアップ
+```
+
+**有効化方法**:
+```bash
+q settings set EnabledCheckpointing true
+# または /experiment で有効化
+```
+
+**注意点**:
+- ⚠️ 実験的機能（デフォルトで無効）
+- ⚠️ Gitリポジトリ内では自動有効化
+- ⚠️ `--hard` オプションは完全復元（チェックポイント後に作成されたファイルも削除）
+
+**関連コマンド**: `/tangent`, `/experiment`
+
+---
+
+### Knowledge・情報管理
+
+#### `/knowledge` - Knowledge管理
+
+**目的**: プロジェクトドキュメントやコードを永続的なナレッジベースとして保存し、セッション間で情報を共有する
+
+**説明**: ファイルやディレクトリをインデックス化して永続的なナレッジベースを構築します。セマンティック検索により、関連する情報を効率的に取得できます。
+
+**使用シーン**: プロジェクトドキュメントをインデックス化する / 大規模なコードベースから関連情報を検索する
+
+**使用方法**:
+```
+/knowledge show                    # ナレッジベース情報を表示
+/knowledge add <path>              # ファイル/ディレクトリを追加
+/knowledge remove <path>           # エントリを削除
+/knowledge update <path>           # エントリを更新
+/knowledge clear                   # すべてのエントリを削除
+/knowledge status                  # バックグラウンド処理の状態
+/knowledge cancel                  # バックグラウンド処理をキャンセル
+```
+
+**有効化方法**:
+```bash
+q settings set chat.enableKnowledge true
+# または /experiment で有効化
+```
+
+**使用例**:
+```bash
+# プロジェクトドキュメントをインデックス化
+/knowledge add docs/ --include "*.md"
+
+# ソースコードを追加（テストファイルを除外）
+/knowledge add src/ --exclude "*.test.js"
+```
+
+**注意点**:
+- ⚠️ ベータ機能（デフォルトで無効）
+- ⚠️ BM25サポート（v1.17.0以降）
+- ⚠️ インデックスデータは `.amazonq/` に保存
+
+**関連コマンド**: `/experiment`, `/context`, `/subscribe`
+
+---
+
+#### `/subscribe` - 購読管理
+
+**目的**: 情報の購読を管理する
+
+**使用シーン**: 新機能のお知らせを受け取る / 重要な更新を見逃さない
+
+**使用方法**: `/subscribe [オプション]`
+
+---
+
+### 開発者向け
+
+#### `/tools` - ツール一覧
+
+**目的**: 現在のAgentで利用可能なツールの一覧を表示する
+
+**使用シーン**: 利用可能なツールを確認する / MCPツールが正しく読み込まれているか確認する
+
+**使用方法**: `/tools`
+
+**関連コマンド**: `/mcp`, `/agent`, `/hooks`
+
+---
+
+#### `/mcp` - MCP管理
+
+**目的**: Model Context Protocol (MCP) サーバーを管理する
+
+**使用シーン**: MCPサーバーの状態を確認する / どのMCPサーバーが利用可能か確認する
+
+**使用方法**: `/mcp`
+
+**関連コマンド**: `/tools`, `/agent`
+
+---
+
+#### `/hooks` - Hooks管理
+
+**目的**: カスタムコマンドをAgent実行時やツール実行時に自動実行する
+
+**説明**: 特定のイベント（Agent起動、ツール実行前後など）で自動的にコマンドを実行できます。
+
+**使用シーン**: ツール実行前にセキュリティチェックを実行したい / コマンド実行をログに記録したい
+
+**Hook種類**:
+- **AgentSpawn** - Agent起動時
+- **UserPromptSubmit** - ユーザープロンプト送信時
+- **PreToolUse** - ツール実行前
+- **PostToolUse** - ツール実行後
+- **Stop** - Assistantの応答完了時
+
+**使用方法**: `/hooks`
+
+**注意点**: Hooksはagent設定ファイルで定義
+
+**関連コマンド**: `/tools`, `/agent`
+
+---
+
+#### `/editor` - エディタ設定
+
+**目的**: 外部エディタの設定を管理する
+
+**使用シーン**: 好みのエディタを設定する / 長いプロンプトを作成したい
+
+**使用方法**: `/editor [エディタコマンド]`
+
+**使用例**:
+```bash
+/editor              # 現在のエディタ設定を表示
+/editor code         # VS Codeを設定
+/editor "code --wait"
+```
+
+---
+
+#### `/reply` - 応答設定
+
+**目的**: AIの応答スタイルを設定する
+
+**使用シーン**: 簡潔な応答が欲しい時 / 詳細な説明が欲しい時
+
+**使用方法**: `/reply [オプション]`
+
+---
+
+### 情報表示
+
+#### `/usage` - 使用状況表示
+
+**目的**: Q CLIの使用状況を表示する
+
+**使用シーン**: トークン使用量を確認する / コストを把握する
+
+**使用方法**: `/usage`
+
+**関連コマンド**: `/context`, `/model`, `/compact`
+
+---
+
+#### `/changelog` - 変更履歴表示
+
+**目的**: Q CLIの変更履歴を表示する
+
+**使用シーン**: 最新の変更を確認する / 新機能を発見する
+
+**使用方法**: `/changelog`
+
+**関連コマンド**: `/whatsnew`, `/issue`
+
+---
+
+#### `/whatsnew` - 新機能表示
+
+**目的**: 最新バージョンの新機能を表示する
+
+**使用シーン**: アップデート後に新機能を確認する / 実験的機能を発見する
+
+**使用方法**: `/whatsnew`
+
+**関連コマンド**: `/changelog`, `/experiment`, `/help`
+
+---
+
+#### `/compact` - コンパクト表示モード
+
+**目的**: 応答をコンパクトに表示する
+
+**使用シーン**: 長い応答を読みやすくする / 画面スペースを節約する
+
+**使用方法**: `/compact`
+
+**動作**: トグルコマンド（ON/OFF切り替え）
+
+**関連コマンド**: `/reply`, `/context`, `/usage`
+
+---
+
+### 問題報告
+
+#### `/issue` - Issue報告
+
+**目的**: Q CLIの問題やフィードバックを報告する
+
+**使用シーン**: バグを報告する / 機能リクエストを送る / フィードバックを提供する
+
+**使用方法**: `/issue`
+
+**自動的に含まれる情報**: Q CLIのバージョン / OS情報 / 実行環境 / エラーログ
+
+**注意点**: 報告内容に機密情報が含まれないよう注意
+
+**関連コマンド**: `/changelog`, `/whatsnew`
 
 ---
 
@@ -738,4 +1069,4 @@ q mcp import <config-file>
 
 ---
 
-最終更新: 2025-10-09
+最終更新: 2025-10-12
