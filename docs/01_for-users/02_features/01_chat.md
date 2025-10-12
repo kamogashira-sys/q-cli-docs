@@ -89,7 +89,7 @@ q chat --agent aws-specialist
 
 ### TODO管理
 
-> **⚠️ 注意**: todos機能は実験的機能です。`q experiment`で有効化してください。
+> **⚠️ 注意**: todos機能は実験的機能です。`q settings chat.enableTodoList true`で有効化してください。
 
 | コマンド | 説明 | 使用例 |
 |---------|------|--------|

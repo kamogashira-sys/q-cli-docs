@@ -159,10 +159,10 @@ export NO_PROXY=localhost,127.0.0.1
 ### インストール後の初期設定は？
 ```bash
 # 認証
-q auth login
+q login
 
 # 設定確認
-q config list
+q settings list
 
 # Agent確認
 q agent list
@@ -179,7 +179,7 @@ q agent list
 **確認方法**:
 ```bash
 # 現在の設定を確認
-q config list
+q settings list
 
 # 環境変数を確認
 env | grep Q_
@@ -329,10 +329,10 @@ MCP（Model Context Protocol）は、外部ツールと連携するためのプ�
 **有効化方法**:
 ```bash
 # Knowledge機能を有効化
-q config set knowledge.enabled true
+q settings set knowledge.enabled true
 
 # インデックス作成
-q knowledge index
+# Knowledge機能は設定で有効化: q settings chat.enableKnowledge true
 ```
 
 詳細は[Knowledge機能](../04_best-practices/03_performance.md#knowledge機能の最適化)を参照。
@@ -349,7 +349,7 @@ q knowledge index
 4. Q CLIを再起動
 
 **よくあるエラー**:
-- 認証エラー → `q auth refresh`
+- 認証エラー → `q logout && q login`
 - 設定エラー → 設定ファイルの構文確認
 - MCPエラー → MCPサーバーの起動確認
 
@@ -367,7 +367,7 @@ q knowledge index
 ps aux | grep q
 
 # Knowledge機能を無効化
-q config set knowledge.enabled false
+q settings set knowledge.enabled false
 ```
 
 ### ログファイルの場所は？
@@ -433,7 +433,7 @@ q
 
 ### 認証エラーが出ます
 ```bash
-q auth refresh
+q logout && q login
 ```
 
 ---

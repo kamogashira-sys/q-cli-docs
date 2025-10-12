@@ -1,0 +1,10 @@
+chat
+agent
+login
+logout
+whoami
+profile
+settings
+diagnostic
+issue
+mcp

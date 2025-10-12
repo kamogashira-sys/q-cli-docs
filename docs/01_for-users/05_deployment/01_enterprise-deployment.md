@@ -196,7 +196,7 @@ chmod +x q-installer.sh
 
 ```bash
 # IAM Identity Center で認証
-q auth login --sso
+q login --sso
 
 # プロンプトに従って入力:
 # - Start URL: https://your-profile.awsapps.com/start
@@ -214,7 +214,7 @@ q auth login --sso
 
 ```bash
 # 現在の認証状態を確認
-q auth status
+q whoami
 
 # 出力例:
 # Status: Authenticated

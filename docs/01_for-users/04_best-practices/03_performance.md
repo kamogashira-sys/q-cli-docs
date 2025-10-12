@@ -604,8 +604,8 @@ rm -rf ~/.cache/amazon-q/*
 # 使用率を確認
 q settings chat.enableContextUsageIndicator true
 
-# 会話履歴を確認
-> /history
+# コンテキスト使用状況を確認
+> /usage
 ```
 
 **解決策**:

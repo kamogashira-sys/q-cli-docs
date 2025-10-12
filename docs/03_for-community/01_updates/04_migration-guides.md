@@ -277,7 +277,7 @@ q chat "Hello"
 q settings show | grep mcp
 
 # Knowledge機能の確認
-q knowledge status
+q settings chat.enableKnowledge
 ```
 
 ### 5. トラブルシューティング

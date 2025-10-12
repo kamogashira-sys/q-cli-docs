@@ -168,29 +168,29 @@ q --agent aws-specialist
 
 ## 📜 履歴管理
 
-### チャット履歴の表示
-
-```
-> /history
-```
-
-### 履歴の検索
-
-```
-> /history search "Python"
-```
-
 ### 会話の保存
 
 ```
 > /save my-conversation
 ```
 
+現在の会話を保存します。
+
 ### 会話の読み込み
 
 ```
 > /load my-conversation
 ```
+
+保存した会話を読み込みます。
+
+### 会話履歴のクリア
+
+```
+> /clear
+```
+
+現在の会話履歴をクリアします。
 
 ---
 
@@ -328,7 +328,9 @@ Amazon Q CLIが生成したコードやコマンドは、実行前に必ず確�
 
 **解決方法**:
 ```bash
-q auth refresh
+# 再ログイン
+q logout
+q login
 ```
 
 ---

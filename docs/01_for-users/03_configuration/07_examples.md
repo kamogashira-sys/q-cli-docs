@@ -19,13 +19,7 @@
 # デフォルトAgent設定
 q settings chat.defaultAgent general-developer
 
-# 実験的機能
-q experiment
-# → Context Usage Percentage: ON
-# → TODO Lists: ON
-# → Tangent Mode: ON
-
-# その他の設定
+# 実験的機能を有効化（設定で個別に有効化）
 q settings chat.enableHistoryHints true
 q settings chat.enableTangentMode true
 q settings chat.enableTodoList true
@@ -37,13 +31,7 @@ q settings chat.enableTodoList true
 # デフォルトAgent設定
 q settings chat.defaultAgent aws-specialist
 
-# 実験的機能
-q experiment
-# → Context Usage Percentage: ON
-# → Knowledge: ON
-# → TODO Lists: ON
-
-# その他の設定
+# 実験的機能を有効化
 q settings chat.enableHistoryHints true
 q settings chat.enableKnowledge true
 ```
@@ -54,12 +42,7 @@ q settings chat.enableKnowledge true
 # デフォルトAgent設定
 q settings chat.defaultAgent code-reviewer
 
-# 実験的機能
-q experiment
-# → Thinking: ON
-# → Checkpointing: ON
-
-# その他の設定
+# 実験的機能を有効化
 q settings chat.enableThinking true
 q settings chat.enableCheckpoint true
 q settings chat.disableMarkdownRendering false
@@ -71,12 +54,7 @@ q settings chat.disableMarkdownRendering false
 # デフォルトAgent設定
 q settings chat.defaultAgent documentation-writer
 
-# 実験的機能
-q experiment
-# → Knowledge: ON
-# → TODO Lists: ON
-
-# その他の設定
+# 実験的機能を有効化
 q settings chat.enableKnowledge true
 q settings chat.enableTodoList true
 q settings chat.disableMarkdownRendering false

@@ -415,10 +415,10 @@ file = "~/.aws/amazonq/logs/q-cli.log"
 
 ```bash
 # 全設定を表示
-q config list
+q settings list
 
 # 特定の設定を表示
-q config get chat.model
+q settings get chat.model
 
 # Agent設定を表示
 q agent show <agent-name>

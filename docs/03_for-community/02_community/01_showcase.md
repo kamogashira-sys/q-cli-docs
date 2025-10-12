@@ -118,7 +118,7 @@ q chat
 
 ```bash
 # ログファイルのインデックス化
-q knowledge add ./logs/
+# Knowledge機能は自動的にファイルをインデックス化します ./logs/
 
 # 分析クエリ
 q chat
