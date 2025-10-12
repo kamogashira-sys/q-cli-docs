@@ -75,20 +75,50 @@ q
 
 ### 簡単な質問
 
+Amazon Q CLIは日本語での質問に対応しています。自然な日本語で質問してみましょう。
+
 ```
-> Hello, Q! What can you do?
+> こんにちは、Q！
 ```
 
 **Q CLIの応答例**:
 ```
-Hello! I'm Amazon Q CLI. I can help you with:
-- Writing and debugging code
-- Explaining technical concepts
-- Running commands on your system
-- Managing files and directories
-- And much more!
+こんにちは！Amazon Q CLIです。何かお手伝いできることはありますか？
+```
 
-What would you like to do today?
+#### 技術的な質問をしてみる
+
+```
+> Pythonとは何ですか？
+```
+
+**Q CLIの応答例**:
+```
+Pythonは、読みやすく書きやすい高水準プログラミング言語です。
+Web開発、データ分析、機械学習、自動化スクリプトなど、
+幅広い用途で使われています。
+
+Pythonについて、何か具体的に知りたいことはありますか？
+```
+
+#### AWSサービスについて質問
+
+```
+> S3バケットの作成方法を教えてください
+```
+
+**Q CLIの応答例**:
+```
+S3バケットを作成する方法をご案内します。
+
+AWS CLIを使用する場合：
+aws s3 mb s3://your-bucket-name --region us-east-1
+
+または、`q translate`コマンドで自然言語から生成することもできます：
+q translate "Create an S3 bucket called 'my-bucket' on us-east-1"
+
+バケット名は全世界で一意である必要があります。
+他に知りたいことはありますか？
 ```
 
 ### コマンド生成を試す（q translate）
