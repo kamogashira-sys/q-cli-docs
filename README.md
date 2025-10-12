@@ -159,6 +159,7 @@ Amazon Q Developer CLI（Q CLI）は、AWSが提供する**AI駆動**の開発�
 
 ### 調査ツール
 
+- **Amazon Q Developer CLI**: AI支援による調査・分析・ドキュメント作成
 - **ripgrep (rg)**: 高速検索で設定項目を抽出
 - **GitHub API**: リリース情報とISSUEの取得
 - **Mermaid**: 図解の作成
