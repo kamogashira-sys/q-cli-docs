@@ -7,6 +7,23 @@
 
 ## 📋 前提条件
 
+### 対応OS
+
+| OS | 対応状況 | 推奨インストール方法 |
+|---|---------|-------------------|
+| [🍎 macOS](#-macos) | ✅ **対応中** | Homebrew（推奨） |
+| [🐧 Linux](#-linux) | ✅ **対応中** | AppImage |
+| 🪟 Windows | ⏳ **対応予定** | [ロードマップ #2602](https://github.com/aws/amazon-q-developer-cli/issues/2602) |
+
+**対応アーキテクチャ**:
+- **macOS**: x86_64（Intel）、arm64（Apple Silicon）
+- **Linux**: x86_64（Intel/AMD）、aarch64（ARM）
+- **Windows**: 対応予定
+
+> 💡 **クイックナビゲーション**: OS名をクリックすると、該当するインストール手順にジャンプします。
+
+---
+
 ### インストール前の確認
 
 #### アーキテクチャの確認
