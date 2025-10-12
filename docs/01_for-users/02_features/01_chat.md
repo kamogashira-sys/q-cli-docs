@@ -111,9 +111,7 @@ q chat --agent aws-specialist
 
 | コマンド | 説明 | 使用例 |
 |---------|------|--------|
-| `/debug` | デバッグ情報を表示 | `/debug` |
 | `/tools` | 利用可能なツール一覧を表示 | `/tools` |
-| `/introspect` | Q CLIの機能を問い合わせ | `/introspect` |
 
 ---
 

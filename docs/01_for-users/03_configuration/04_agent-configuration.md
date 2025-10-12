@@ -362,7 +362,7 @@ default            ~/.aws/amazonq/cli-agents
 
 **Agent設定の表示**:
 ```bash
-q agent show my-agent
+q agent list my-agent
 ```
 
 **確認ポイント**:
@@ -406,7 +406,7 @@ Agent設定の検証時に確認すべき項目：
 - [ ] 環境変数（`${env:VAR}`）が正しく設定されている
 - [ ] ファイルパスが正しい（絶対パスまたは相対パス）
 - [ ] `q agent list`でAgentが表示される
-- [ ] `q agent show`で設定内容が正しく表示される
+- [ ] `q agent list`で設定内容が正しく表示される
 - [ ] 実際のチャットで期待通りに動作する
 
 ### 6. デバッグ方法

@@ -87,7 +87,7 @@
 **Agent機能の導入**:
 - カスタムAgent設定のサポート
 - Agent固有のツール権限設定
-- Agent切り替え機能（`q agent use`）
+- Agent切り替え機能（`q chat --agent <name>`、`q agent set-default`）
 
 **MCP統合の開始**:
 - Model Context Protocol (MCP)のサポート開始

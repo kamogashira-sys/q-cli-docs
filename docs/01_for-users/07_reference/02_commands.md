@@ -578,15 +578,14 @@ q mcp list
 # MCPサーバーを追加
 q mcp add
 
+# MCPサーバーを削除
+q mcp remove <server-name>
+
 # MCPサーバーの状態を確認
 q mcp status <server-name>
-```
 
-# MCPサーバーをインストール
-q mcp install my-server
-
-# MCPサーバーをアンインストール
-q mcp uninstall my-server
+# 別ファイルから設定をインポート
+q mcp import <config-file>
 ```
 
 ---
