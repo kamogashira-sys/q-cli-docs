@@ -24,15 +24,15 @@ graph LR
 ### 設定を始める
 
 1. **基本設定を確認**: [Getting Started](docs/01_for-users/01_getting-started/README.md)
-2. **環境変数を設定**: [環境変数ガイド](docs/01_for-users/03_configuration/environment-variables.md)
-3. **Agent設定を作成**: [Agent設定ガイド](docs/01_for-users/03_configuration/agent-configuration.md)
-4. **設定を確認**: [設定優先順位ガイド](docs/01_for-users/03_configuration/priority-rules.md)
+2. **環境変数を設定**: [環境変数ガイド](docs/01_for-users/03_configuration/05_environment-variables.md)
+3. **Agent設定を作成**: [Agent設定ガイド](docs/01_for-users/03_configuration/04_agent-configuration.md)
+4. **設定を確認**: [設定優先順位ガイド](docs/01_for-users/03_configuration/02_priority-rules.md)
 
 ### トラブルシューティング
 
 問題が発生した場合：
-1. [トラブルシューティングガイド](docs/01_for-users/06_troubleshooting/common-issues.md)を確認
-2. [設定優先順位ガイド](docs/01_for-users/03_configuration/priority-rules.md)で優先順位を理解
+1. [トラブルシューティングガイド](docs/01_for-users/06_troubleshooting/02_common-issues.md)を確認
+2. [設定優先順位ガイド](docs/01_for-users/03_configuration/02_priority-rules.md)で優先順位を理解
 3. [GitHub ISSUE](https://github.com/aws/amazon-q-developer-cli/issues)で既知の問題を検索
 
 ---
@@ -61,10 +61,10 @@ Amazon Q Developer CLI（Q CLI）は、AWSが提供する**AI駆動**の開発�
 
 ### 🎯 **[→ ドキュメント全体を見る（docs/README.md）](docs/README.md)** ← 最初にここを確認！
 
-このプロジェクトには**65文書**の体系的なドキュメントがあります。
+このプロジェクトには**69文書**の体系的なドキュメントがあります。
 
 **[ドキュメントサイト](docs/README.md)** では以下が確認できます：
-- 📊 全65文書の一覧（カテゴリ別、対象ユーザー別）
+- 📊 全69文書の一覧（カテゴリ別、対象ユーザー別）
 - 🎯 目的別ガイド（やりたいことから適切なドキュメントを発見）
 - 📈 統計情報とナビゲーション
 
