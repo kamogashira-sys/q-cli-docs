@@ -91,7 +91,22 @@ Hello! I'm Amazon Q CLI. I can help you with:
 What would you like to do today?
 ```
 
-### コード生成を試す
+### コマンド生成を試す（q translate）
+
+Amazon Q CLIは`q translate`コマンドで自然言語をシェルコマンドに変換できます。
+
+```bash
+# 10秒からカウントダウン
+q translate "Count down from 10 second by second"
+
+# S3バケットを作成
+q translate "Create an S3 bucket called 'my-bucket' on us-west-2"
+
+# HTMLファイルを作成
+q translate "Create a simple index.html file with 'Hello World' message"
+```
+
+### コード生成を試す（q chat）
 
 ```
 > Create a Python script that prints "Hello, World!"
@@ -118,6 +133,20 @@ python hello.py
 ```
 
 **出力**: `Hello, World!`
+
+### トラブルシューティング
+
+エラーが発生した場合は、`q chat`と`@history`タグを使用してヘルプを求めることができます。
+
+```bash
+q chat "@history Help me resolve this error"
+```
+
+> 💡 **詳しい使用例**:
+> - [Amazon Q Developer を活用し自然言語を使って簡単に AWS CLI コマンドを実行（日本語）](https://aws.amazon.com/jp/blogs/news/effortlessly-execute-aws-cli-commands-using-natural-language-with-amazon-q-developer/)
+>   - S3とCloudFrontで静的ウェブサイトを構築する実践的なチュートリアル
+>   - `q translate`と`q chat`の使い方
+>   - トラブルシューティングの例も含む
 
 ---
 
