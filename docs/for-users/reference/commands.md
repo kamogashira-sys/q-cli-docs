@@ -255,8 +255,9 @@ q mcp uninstall my-server
 |---------|------|
 | `/help` | ヘルプを表示 |
 | `/clear` | 会話履歴をクリア |
-| `/exit` | チャットを終了 |
 | `/quit` | チャットを終了 |
+| `/exit` | チャットを終了（`/quit`のエイリアス） |
+| `/q` | チャットを終了（`/quit`のエイリアス） |
 
 ### コンテキスト管理
 
@@ -270,17 +271,28 @@ q mcp uninstall my-server
 | コマンド | 説明 |
 |---------|------|
 | `/knowledge` | Knowledge情報を表示 |
-| `/knowledge add <path>` | ファイル/ディレクトリを追加 |
-| `/knowledge remove <path>` | ファイル/ディレクトリを削除 |
+| `/knowledge help` | ヘルプを表示 |
+| `/knowledge show` | Knowledge情報を表示 |
+| `/knowledge add` | ファイル/ディレクトリを追加 |
+| `/knowledge remove` | ファイル/ディレクトリを削除 |
 | `/knowledge clear` | Knowledgeをクリア |
+| `/knowledge search` | Knowledgeを検索 |
+| `/knowledge update` | Knowledgeを更新 |
+| `/knowledge status` | Knowledgeステータスを表示 |
+| `/knowledge cancel` | Knowledge処理をキャンセル |
 
 ### Checkpoint管理
 
 | コマンド | 説明 |
 |---------|------|
+| `/checkpoint` | Checkpoint管理 |
+| `/checkpoint help` | ヘルプを表示 |
 | `/checkpoint init` | Checkpointを初期化 |
 | `/checkpoint list` | Checkpoint一覧を表示 |
-| `/checkpoint restore <tag>` | Checkpointを復元 |
+| `/checkpoint restore` | Checkpointを復元 |
+| `/checkpoint expand` | Checkpointを展開 |
+| `/checkpoint diff` | Checkpoint差分を表示 |
+| `/checkpoint clean` | Checkpointをクリーンアップ |
 
 ### TODO管理
 
@@ -294,12 +306,15 @@ q mcp uninstall my-server
 | `/todos delete` | TODOを削除 |
 | `/todos delete --all` | すべてのTODOを削除 |
 
-### 開発者向け
+### ツール管理
 
 | コマンド | 説明 |
 |---------|------|
-| `/debug` | デバッグ情報を表示 |
-| `/tools` | 利用可能なツール一覧を表示 |
+| `/tools` | ツールと権限を表示 |
+| `/tools trust` | ツールを信頼 |
+| `/tools untrust` | ツールの信頼を解除 |
+| `/tools trust-all` | すべてのツールを信頼 |
+| `/tools reset` | ツール設定をリセット |
 
 ---
 
