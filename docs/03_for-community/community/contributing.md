@@ -91,7 +91,7 @@ Amazon Q CLIへの貢献に興味を持っていただき、ありがとうご�
    cargo run -- chat "Hello"
    ```
 
-詳細は[開発環境セットアップガイド](../../02_for-developers/contributing/development-setup.md)を参照。
+詳細は[開発環境セットアップガイド](../../02_for-developers/01_contributing/development-setup.md)を参照。
 
 ---
 
@@ -172,7 +172,7 @@ GitHubでPRを作成：
 2. PRテンプレートに従って記入
 3. レビュアーを待つ
 
-詳細は[PRガイドライン](../../02_for-developers/contributing/pull-request-guide.md)を参照。
+詳細は[PRガイドライン](../../02_for-developers/01_contributing/pull-request-guide.md)を参照。
 
 ---
 
@@ -248,9 +248,9 @@ git push origin feature/your-feature-name
 
 ## 📚 関連ドキュメント
 
-- [開発環境セットアップ](../../02_for-developers/contributing/development-setup.md)
-- [PRガイドライン](../../02_for-developers/contributing/pull-request-guide.md)
-- [アーキテクチャ概要](../../02_for-developers/architecture/overview.md)
+- [開発環境セットアップ](../../02_for-developers/01_contributing/development-setup.md)
+- [PRガイドライン](../../02_for-developers/01_contributing/pull-request-guide.md)
+- [アーキテクチャ概要](../../02_for-developers/02_architecture/overview.md)
 
 ---
 

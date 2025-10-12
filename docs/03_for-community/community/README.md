@@ -33,8 +33,8 @@ Amazon Q CLIのコミュニティへようこそ！このセクションでは�
 ### コードの貢献
 プルリクエストを送る前に：
 1. [貢献ガイド](contributing.md)を確認
-2. [開発環境のセットアップ](../../02_for-developers/contributing/development-setup.md)
-3. [PRガイドライン](../../02_for-developers/contributing/pull-request-guide.md)に従う
+2. [開発環境のセットアップ](../../02_for-developers/01_contributing/development-setup.md)
+3. [PRガイドライン](../../02_for-developers/01_contributing/pull-request-guide.md)に従う
 
 ### ドキュメントの改善
 ドキュメントの誤りや改善点を見つけた場合：

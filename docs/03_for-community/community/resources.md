@@ -61,8 +61,8 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 ### 上級者向け
 
 #### 開発者向け
-- [アーキテクチャ概要](../../02_for-developers/architecture/overview.md) - システム設計
-- [ソースコード構造](../../02_for-developers/architecture/source-code-structure.md) - コードベース解説
+- [アーキテクチャ概要](../../02_for-developers/02_architecture/overview.md) - システム設計
+- [ソースコード構造](../../02_for-developers/02_architecture/source-code-structure.md) - コードベース解説
 - [貢献ガイド](contributing.md) - コントリビューション方法
 
 ---
@@ -155,9 +155,9 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 4. [ベストプラクティス](../../01_for-users/04_best-practices/configuration.md)
 
 ### 上級者向け学習パス
-1. [アーキテクチャ理解](../../02_for-developers/architecture/overview.md)
-2. [ソースコード解析](../../02_for-developers/architecture/source-code-structure.md)
-3. [開発環境構築](../../02_for-developers/contributing/development-setup.md)
+1. [アーキテクチャ理解](../../02_for-developers/02_architecture/overview.md)
+2. [ソースコード解析](../../02_for-developers/02_architecture/source-code-structure.md)
+3. [開発環境構築](../../02_for-developers/01_contributing/development-setup.md)
 4. [コントリビューション](contributing.md)
 
 ---

@@ -21,15 +21,15 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 ## 🚀 推奨学習順序
 
 ### 初めての方
-1. **[ソースコード構造](architecture/source-code-structure.md)** - コード全体像を把握（15分）
-2. **[コード統計](architecture/code-statistics.md)** - プロジェクト規模を理解（5分）
-3. **[開発環境構築](contributing/development-setup.md)** - 開発環境をセットアップ（30分）
+1. **[ソースコード構造](02_architecture/source-code-structure.md)** - コード全体像を把握（15分）
+2. **[コード統計](02_architecture/code-statistics.md)** - プロジェクト規模を理解（5分）
+3. **[開発環境構築](01_contributing/development-setup.md)** - 開発環境をセットアップ（30分）
 
 ### コントリビューターの方
-1. **[開発環境構築](contributing/development-setup.md)** - 環境構築（30分）
-2. **[コントリビューションガイド](contributing/README.md)** - 貢献方法を学習（15分）
-3. **[ソースコード構造](architecture/source-code-structure.md)** - 詳細な構造を理解（15分）
-4. **[設定システム詳細](architecture/configuration-system.md)** - 設定システムの実装を理解（20分）
+1. **[開発環境構築](01_contributing/development-setup.md)** - 環境構築（30分）
+2. **[コントリビューションガイド](01_contributing/README.md)** - 貢献方法を学習（15分）
+3. **[ソースコード構造](02_architecture/source-code-structure.md)** - 詳細な構造を理解（15分）
+4. **[設定システム詳細](02_architecture/configuration-system.md)** - 設定システムの実装を理解（20分）
 
 ---
 
@@ -62,8 +62,8 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 
 | サブセクション | ステータス | 対象ユーザー | 内容 |
 |--------------|-----------|-------------|------|
-| [アーキテクチャ](architecture/) | 一部完成 | 開発者 | Amazon Q CLIの内部構造 |
-| [コントリビューション](contributing/) | 完成 | コントリビューター | Amazon Q CLIへの貢献方法 |
+| [アーキテクチャ](02_architecture/) | 一部完成 | 開発者 | Amazon Q CLIの内部構造 |
+| [コントリビューション](01_contributing/) | 完成 | コントリビューター | Amazon Q CLIへの貢献方法 |
 
 ---
 

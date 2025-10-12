@@ -35,7 +35,7 @@ Amazon Q CLIの詳細な分析レポートを提供します。ロードマッ�
 
 - **[Updates](../updates/)** - 最新情報とバージョン履歴
 - **[Developer Guide](../../02_for-developers/)** - 開発者向けガイド
-- **[Architecture](../../02_for-developers/architecture/)** - アーキテクチャ詳細
+- **[Architecture](../../02_for-developers/02_architecture/)** - アーキテクチャ詳細
 
 ---
 

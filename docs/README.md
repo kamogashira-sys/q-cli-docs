@@ -208,19 +208,19 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
-| 1 | [README](02_for-developers/architecture/README.md) | 上級 | アーキテクチャセクションの概要 |
-| 2 | [アーキテクチャ概要](02_for-developers/architecture/overview.md) | 上級 | システム全体像、コンポーネント構成、アーキテクチャ図 |
-| 3 | [設定システム](02_for-developers/architecture/configuration-system.md) | 上級 | 設定システムの内部実装、優先順位処理、読み込みフロー |
-| 4 | [ソースコード構造](02_for-developers/architecture/source-code-structure.md) | 上級 | ソースコード構造マップ、設定関連ファイル、クラス図、シーケンス図 |
-| 5 | [コード統計](02_for-developers/architecture/code-statistics.md) | 上級 | 263k行Rust、8クレート、TOP5モジュール分析 |
+| 1 | [README](02_for-developers/02_architecture/README.md) | 上級 | アーキテクチャセクションの概要 |
+| 2 | [アーキテクチャ概要](02_for-developers/02_architecture/overview.md) | 上級 | システム全体像、コンポーネント構成、アーキテクチャ図 |
+| 3 | [設定システム](02_for-developers/02_architecture/configuration-system.md) | 上級 | 設定システムの内部実装、優先順位処理、読み込みフロー |
+| 4 | [ソースコード構造](02_for-developers/02_architecture/source-code-structure.md) | 上級 | ソースコード構造マップ、設定関連ファイル、クラス図、シーケンス図 |
+| 5 | [コード統計](02_for-developers/02_architecture/code-statistics.md) | 上級 | 263k行Rust、8クレート、TOP5モジュール分析 |
 
 #### コントリビューション（3文書）
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
-| 1 | [README](02_for-developers/contributing/README.md) | 上級 | コントリビューションセクションの概要 |
-| 2 | [開発環境セットアップ](02_for-developers/contributing/development-setup.md) | 上級 | 開発環境構築、ビルド方法、テスト実行 |
-| 3 | [プルリクエストガイド](02_for-developers/contributing/pull-request-guide.md) | 上級 | PR作成手順、レビュー基準、マージプロセス |
+| 1 | [README](02_for-developers/01_contributing/README.md) | 上級 | コントリビューションセクションの概要 |
+| 2 | [開発環境セットアップ](02_for-developers/01_contributing/development-setup.md) | 上級 | 開発環境構築、ビルド方法、テスト実行 |
+| 3 | [プルリクエストガイド](02_for-developers/01_contributing/pull-request-guide.md) | 上級 | PR作成手順、レビュー基準、マージプロセス |
 
 ---
 
@@ -354,7 +354,7 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 - **内容の改善**: より良い説明や例があれば提案してください
 - **新しいドキュメント**: 不足している情報があれば追加してください
 
-詳細は [コントリビューションガイド](02_for-developers/contributing/README.md) をご覧ください。
+詳細は [コントリビューションガイド](02_for-developers/01_contributing/README.md) をご覧ください。
 
 ---
 
