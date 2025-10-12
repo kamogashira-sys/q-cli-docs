@@ -15,6 +15,8 @@
 | [🐧 Linux](#-linux) | ✅ **対応中** | AppImage |
 | 🪟 Windows | ⏳ **対応予定** | [ロードマップ #2602](https://github.com/aws/amazon-q-developer-cli/issues/2602) |
 
+> **💡 Windowsユーザーの方へ**: ネイティブ対応は開発中ですが、[WSL2（Windows Subsystem for Linux）](https://learn.microsoft.com/ja-jp/windows/wsl/install)でLinux環境を構築すれば、現在でも利用可能です。WSL2上でLinux版のインストール手順に従ってください。
+
 **対応アーキテクチャ**:
 - **macOS**: x86_64（Intel）、arm64（Apple Silicon）
 - **Linux**: x86_64（Intel/AMD）、aarch64（ARM）
