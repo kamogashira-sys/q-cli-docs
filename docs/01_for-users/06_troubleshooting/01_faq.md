@@ -353,7 +353,7 @@ q knowledge index
 - 設定エラー → 設定ファイルの構文確認
 - MCPエラー → MCPサーバーの起動確認
 
-詳細は[よくある問題](common-issues.md)を参照。
+詳細は[よくある問題](02_common-issues.md)を参照。
 
 ### Q CLIが遅い場合の対処法は？
 1. Knowledge機能のインデックスを最適化
@@ -387,7 +387,7 @@ tail -f /run/user/$(id -u)/qlog/q-cli.log
 tail -f /tmp/qlog/q-cli.log
 ```
 
-詳細は[よくある問題](common-issues.md#ログの確認)を参照。
+詳細は[よくある問題](02_common-issues.md#ログの確認)を参照。
 
 ### キャッシュのクリア方法は？
 ```bash

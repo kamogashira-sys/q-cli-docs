@@ -341,8 +341,8 @@ q auth refresh
 
 ### 問題解決
 
-- **[トラブルシューティング](../06_troubleshooting/common-issues.md)** - よくある問題
-- **[FAQ](../06_troubleshooting/faq.md)** - よくある質問
+- **[トラブルシューティング](../06_troubleshooting/02_common-issues.md)** - よくある問題
+- **[FAQ](../06_troubleshooting/01_faq.md)** - よくある質問
 
 ---
 

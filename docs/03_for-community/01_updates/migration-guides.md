@@ -313,7 +313,7 @@ q knowledge status
 
 移行に関する問題が発生した場合：
 
-1. [トラブルシューティングガイド](../../01_for-users/06_troubleshooting/common-issues.md)を確認
+1. [トラブルシューティングガイド](../../01_for-users/06_troubleshooting/02_common-issues.md)を確認
 2. [GitHub Issues](https://github.com/aws/amazon-q-developer-cli/issues)で既知の問題を検索
 3. 新しいIssueを作成して報告
 

@@ -131,8 +131,8 @@ Getting Startedを完了したら、以下のセクションに進んでくだ�
 ## 🆘 困ったときは
 
 ### トラブルシューティング
-- **[よくある問題](../06_troubleshooting/common-issues.md)** - 一般的な問題と解決方法
-- **[FAQ](../06_troubleshooting/faq.md)** - よくある質問
+- **[よくある問題](../06_troubleshooting/02_common-issues.md)** - 一般的な問題と解決方法
+- **[FAQ](../06_troubleshooting/01_faq.md)** - よくある質問
 
 ### コミュニティ
 - **[GitHub Issues](https://github.com/aws/amazon-q-developer-cli/issues)** - バグ報告や機能要望

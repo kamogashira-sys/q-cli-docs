@@ -67,7 +67,7 @@ q
 
 **トラブルシューティング**:
 - ブラウザが開かない場合: `q login --no-browser`
-- 認証エラーの場合: [認証トラブルシューティング](../06_troubleshooting/common-issues.md#認証関連)を参照
+- 認証エラーの場合: [認証トラブルシューティング](../06_troubleshooting/02_common-issues.md#認証関連)を参照
 
 ---
 
@@ -167,8 +167,8 @@ q settings all
 
 ### 問題が発生した場合
 
-- **[よくある問題](../06_troubleshooting/common-issues.md)** - トラブルシューティング
-- **[FAQ](../06_troubleshooting/faq.md)** - よくある質問
+- **[よくある問題](../06_troubleshooting/02_common-issues.md)** - トラブルシューティング
+- **[FAQ](../06_troubleshooting/01_faq.md)** - よくある質問
 
 ---
 

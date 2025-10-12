@@ -311,12 +311,12 @@ q agent validate my-agent
 
 ## トラブルシューティング
 
-Agent設定に関する問題が発生した場合は、[トラブルシューティングガイド](../06_troubleshooting/common-issues.md)を参照してください。
+Agent設定に関する問題が発生した場合は、[トラブルシューティングガイド](../06_troubleshooting/02_common-issues.md)を参照してください。
 
 **関連トピック**:
-- [Agent設定のトラブルシューティング](../06_troubleshooting/common-issues.md#agent設定)
-- [MCP設定のトラブルシューティング](../06_troubleshooting/common-issues.md#mcp設定)
-- [よくある質問](../06_troubleshooting/faq.md)
+- [Agent設定のトラブルシューティング](../06_troubleshooting/02_common-issues.md#agent設定)
+- [MCP設定のトラブルシューティング](../06_troubleshooting/02_common-issues.md#mcp設定)
+- [よくある質問](../06_troubleshooting/01_faq.md)
 
 ---
 
@@ -500,7 +500,7 @@ $TMPDIR/qlog/
 - **[MCP設定の読込フロー](06_mcp-configuration.md#-mcp設定の読込フロー)** - Agent設定とレガシーMCP設定の優先順位
 - **[設定例集](07_examples.md)** - 実践的なAgent設定例
 - **[ベストプラクティス](../04_best-practices/01_configuration.md)** - 設定のベストプラクティス
-- **[トラブルシューティング](../06_troubleshooting/common-issues.md)** - よくある問題
+- **[トラブルシューティング](../06_troubleshooting/02_common-issues.md)** - よくある問題
 
 ---
 

@@ -136,7 +136,7 @@ Amazon Q Developerは自動的に言語を検出し、適切な言語で応答�
 ## 📚 関連ドキュメント
 
 - **[インストールガイド](../01_getting-started/01_installation.md)**
-- **[トラブルシューティング](../06_troubleshooting/common-issues.md)**
+- **[トラブルシューティング](../06_troubleshooting/02_common-issues.md)**
 - **[AWS公式ドキュメント](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line-supported-envs.html)**
 
 ---

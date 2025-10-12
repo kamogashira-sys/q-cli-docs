@@ -523,7 +523,7 @@ q settings set chat.delegateTimeout 600
 - [チャット機能](01_chat.md) - 基本的なチャット機能
 - [Agent機能](02_agents.md) - Agent設定
 - [設定ガイド](../03_configuration/README.md) - 設定方法
-- [トラブルシューティング](../06_troubleshooting/common-issues.md) - 問題解決
+- [トラブルシューティング](../06_troubleshooting/02_common-issues.md) - 問題解決
 
 ---
 

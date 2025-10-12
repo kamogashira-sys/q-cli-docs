@@ -195,8 +195,8 @@ Amazon Q CLIの機能と設定を詳しく学びたい方向けのガイドで�
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
 | 1 | [README](01_for-users/06_troubleshooting/README.md) | 初級〜中級 | トラブルシューティングセクションの概要 |
-| 2 | [よくある問題](01_for-users/06_troubleshooting/common-issues.md) | 初級〜中級 | 15の一般的問題、診断コマンド、高度なトラブルシューティング |
-| 3 | [FAQ](01_for-users/06_troubleshooting/faq.md) | 初級 | よくある質問と回答、カテゴリ別整理 |
+| 2 | [よくある問題](01_for-users/06_troubleshooting/02_common-issues.md) | 初級〜中級 | 15の一般的問題、診断コマンド、高度なトラブルシューティング |
+| 3 | [FAQ](01_for-users/06_troubleshooting/01_faq.md) | 初級 | よくある質問と回答、カテゴリ別整理 |
 
 ---
 
@@ -341,7 +341,7 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 ### よく使うドキュメント
 - [クイックスタート](01_for-users/01_getting-started/02_quick-start.md) - 5分で始める
 - [Agent設定](01_for-users/03_configuration/04_agent-configuration.md) - Agent設定の詳細
-- [よくある問題](01_for-users/06_troubleshooting/common-issues.md) - トラブルシューティング
+- [よくある問題](01_for-users/06_troubleshooting/02_common-issues.md) - トラブルシューティング
 - [設定項目リファレンス](01_for-users/07_reference/settings-reference.md) - 全設定項目
 
 ---

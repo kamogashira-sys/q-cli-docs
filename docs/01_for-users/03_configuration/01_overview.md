@@ -204,11 +204,11 @@ q agent edit my-agent
 
 ## トラブルシューティング
 
-問題が発生した場合は、[トラブルシューティングガイド](../06_troubleshooting/common-issues.md)を参照してください。
+問題が発生した場合は、[トラブルシューティングガイド](../06_troubleshooting/02_common-issues.md)を参照してください。
 
 **関連トピック**:
-- [よくある問題と解決方法](../06_troubleshooting/common-issues.md)
-- [FAQ](../06_troubleshooting/faq.md)
+- [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
+- [FAQ](../06_troubleshooting/01_faq.md)
 
 ---
 
