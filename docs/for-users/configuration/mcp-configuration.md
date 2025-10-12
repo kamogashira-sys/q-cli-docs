@@ -340,6 +340,7 @@ Agentファイルが存在しない場合、Q CLIは自動的にデフォルトA
 | `type` | "stdio" \| "http" | "stdio" | No | トランスポートタイプ |
 | `url` | string | "" | No | HTTPサーバーのURL |
 | `headers` | object | {} | No | HTTPヘッダー |
+| `oauth` | object/null | - | No | OAuth設定 |
 | `oauthScopes` | array | ["openid", "email", "profile", "offline_access"] | No | OAuth スコープ |
 | `command` | string | "" | Yes | 起動コマンド |
 | `args` | array | [] | No | コマンド引数 |

@@ -21,42 +21,40 @@
 | # | 設定キー | 型 | 説明 | カテゴリ |
 |---|---------|-----|------|---------|
 | 1 | `telemetry.enabled` | Boolean | テレメトリ収集の有効/無効 | テレメトリ |
-| 2 | `telemetryClientId` | String | テレメトリ用クライアント識別子（新形式） | テレメトリ |
-| 3 | `oldClientId` | String | テレメトリ用レガシークライアント識別子（旧形式） | テレメトリ |
-| 4 | `codeWhisperer.shareCodeWhispererContentWithAWS` | Boolean | CodeWhispererサービスとのコンテンツ共有 | CodeWhisperer |
-| 5 | `shareCodeWhispererContent` | Boolean | CodeWhispererコンテンツ共有（レガシー設定） | CodeWhisperer |
-| 6 | `chat.enableThinking` | Boolean | 複雑な推論のためのThinkingツール有効化 | 実験的機能 |
-| 7 | `chat.enableKnowledge` | Boolean | Knowledge Base機能の有効化 | 実験的機能 |
-| 8 | `knowledge.defaultIncludePatterns` | Array | Knowledge Baseに含めるデフォルトファイルパターン | Knowledge |
-| 9 | `knowledge.defaultExcludePatterns` | Array | Knowledge Baseから除外するデフォルトファイルパターン | Knowledge |
-| 10 | `knowledge.maxFiles` | Number | Knowledgeインデックス作成の最大ファイル数 | Knowledge |
-| 11 | `knowledge.chunkSize` | Number | Knowledge処理のテキストチャンクサイズ | Knowledge |
-| 12 | `knowledge.chunkOverlap` | Number | テキストチャンク間のオーバーラップ | Knowledge |
-| 13 | `knowledge.indexType` | String | 使用するKnowledgeインデックスのタイプ | Knowledge |
-| 14 | `chat.skimCommandKey` | String (1文字) | ファジー検索コマンドのキーバインド | キーバインド |
-| 15 | `chat.autocompletionKey` | String (1文字) | オートコンプリートヒント受け入れのキーバインド | キーバインド |
-| 16 | `chat.enableTangentMode` | Boolean | Tangentモード機能の有効化 | 実験的機能 |
-| 17 | `chat.tangentModeKey` | String (1文字) | Tangentモードトグルのキーバインド | キーバインド |
-| 18 | `chat.delegateModeKey` | String (1文字) | Delegateコマンドのキーバインド | キーバインド |
-| 19 | `introspect.tangentMode` | Boolean | introspectクエリで自動的にTangentモードに入る | Introspect |
-| 20 | `chat.greeting.enabled` | Boolean | チャット開始時の挨拶メッセージ表示 | チャットUI |
-| 21 | `api.timeout` | Number | APIリクエストのタイムアウト（秒） | API |
-| 22 | `chat.editMode` | Boolean | チャットインターフェースの編集モード有効化 | チャットUI |
-| 23 | `chat.enableNotifications` | Boolean | デスクトップ通知の有効化 | チャットUI |
-| 24 | `api.codewhisperer.service` | String | CodeWhispererサービスエンドポイントURL | API |
-| 25 | `api.q.service` | String | QサービスエンドポイントURL | API |
-| 26 | `mcp.initTimeout` | Number | MCPサーバー初期化タイムアウト | MCP |
-| 27 | `mcp.noInteractiveTimeout` | Number | 非対話型MCPタイムアウト | MCP |
-| 28 | `mcp.loadedBefore` | Boolean | 以前にロードされたMCPサーバーの追跡 | MCP |
-| 29 | `chat.enableContextUsageIndicator` | Boolean | プロンプトにコンテキスト使用率パーセンテージ表示 | 実験的機能 |
-| 30 | `chat.defaultModel` | String | 会話のデフォルトAIモデル | チャット |
-| 31 | `chat.disableMarkdownRendering` | Boolean | チャットでのMarkdownフォーマット無効化 | チャットUI |
-| 32 | `chat.defaultAgent` | String | デフォルトAgent設定 | Agent |
-| 33 | `chat.disableAutoCompaction` | Boolean | 自動会話要約の無効化 | チャット |
-| 34 | `chat.enableHistoryHints` | Boolean | 会話履歴ヒントの表示 | チャットUI |
-| 35 | `chat.enableTodoList` | Boolean | TODOリスト機能の有効化 | 実験的機能 |
-| 36 | `chat.enableCheckpoint` | Boolean | チェックポイント機能の有効化 | 実験的機能 |
-| 37 | `chat.enableDelegate` | Boolean | サブエージェント管理のためのDelegateツール有効化 | 実験的機能 |
+| 2 | `telemetryClientId` | String | テレメトリ用クライアント識別子 | テレメトリ |
+| 3 | `codeWhisperer.shareCodeWhispererContentWithAWS` | Boolean | CodeWhispererサービスとのコンテンツ共有 | CodeWhisperer |
+| 4 | `chat.enableThinking` | Boolean | 複雑な推論のためのThinkingツール有効化 | 実験的機能 |
+| 5 | `chat.enableKnowledge` | Boolean | Knowledge Base機能の有効化 | 実験的機能 |
+| 6 | `knowledge.defaultIncludePatterns` | Array | Knowledge Baseに含めるデフォルトファイルパターン | Knowledge |
+| 7 | `knowledge.defaultExcludePatterns` | Array | Knowledge Baseから除外するデフォルトファイルパターン | Knowledge |
+| 8 | `knowledge.maxFiles` | Number | Knowledgeインデックス作成の最大ファイル数 | Knowledge |
+| 9 | `knowledge.chunkSize` | Number | Knowledge処理のテキストチャンクサイズ | Knowledge |
+| 10 | `knowledge.chunkOverlap` | Number | テキストチャンク間のオーバーラップ | Knowledge |
+| 11 | `knowledge.indexType` | String | 使用するKnowledgeインデックスのタイプ | Knowledge |
+| 12 | `chat.skimCommandKey` | String (1文字) | ファジー検索コマンドのキーバインド | キーバインド |
+| 13 | `chat.autocompletionKey` | String (1文字) | オートコンプリートヒント受け入れのキーバインド | キーバインド |
+| 14 | `chat.enableTangentMode` | Boolean | Tangentモード機能の有効化 | 実験的機能 |
+| 15 | `chat.tangentModeKey` | String (1文字) | Tangentモードトグルのキーバインド | キーバインド |
+| 16 | `chat.delegateModeKey` | String (1文字) | Delegateコマンドのキーバインド | キーバインド |
+| 17 | `introspect.tangentMode` | Boolean | introspectクエリで自動的にTangentモードに入る | Introspect |
+| 18 | `chat.greeting.enabled` | Boolean | チャット開始時の挨拶メッセージ表示 | チャットUI |
+| 19 | `api.timeout` | Number | APIリクエストのタイムアウト（秒） | API |
+| 20 | `chat.editMode` | Boolean | チャットインターフェースの編集モード有効化 | チャットUI |
+| 21 | `chat.enableNotifications` | Boolean | デスクトップ通知の有効化 | チャットUI |
+| 22 | `api.codewhisperer.service` | String | CodeWhispererサービスエンドポイントURL | API |
+| 23 | `api.q.service` | String | QサービスエンドポイントURL | API |
+| 24 | `mcp.initTimeout` | Number | MCPサーバー初期化タイムアウト | MCP |
+| 25 | `mcp.noInteractiveTimeout` | Number | 非対話型MCPタイムアウト | MCP |
+| 26 | `mcp.loadedBefore` | Boolean | 以前にロードされたMCPサーバーの追跡 | MCP |
+| 27 | `chat.enableContextUsageIndicator` | Boolean | プロンプトにコンテキスト使用率パーセンテージ表示 | 実験的機能 |
+| 28 | `chat.defaultModel` | String | 会話のデフォルトAIモデル | チャット |
+| 29 | `chat.disableMarkdownRendering` | Boolean | チャットでのMarkdownフォーマット無効化 | チャットUI |
+| 30 | `chat.defaultAgent` | String | デフォルトAgent設定 | Agent |
+| 31 | `chat.disableAutoCompaction` | Boolean | 自動会話要約の無効化 | チャット |
+| 32 | `chat.enableHistoryHints` | Boolean | 会話履歴ヒントの表示 | チャットUI |
+| 33 | `chat.enableTodoList` | Boolean | TODOリスト機能の有効化 | 実験的機能 |
+| 34 | `chat.enableCheckpoint` | Boolean | チェックポイント機能の有効化 | 実験的機能 |
+| 35 | `chat.enableDelegate` | Boolean | サブエージェント管理のためのDelegateツール有効化 | 実験的機能 |
 
 ---
 
@@ -67,15 +65,13 @@
 | 設定キー | 型 | 説明 |
 |---------|-----|------|
 | `telemetry.enabled` | Boolean | テレメトリ収集の有効/無効 |
-| `telemetryClientId` | String | クライアント識別子（新形式） |
-| `oldClientId` | String | レガシークライアント識別子（旧形式） |
+| `telemetryClientId` | String | クライアント識別子 |
 
 ### CodeWhisperer設定
 
 | 設定キー | 型 | 説明 |
 |---------|-----|------|
-| `codeWhisperer.shareCodeWhispererContentWithAWS` | Boolean | コンテンツ共有（新形式） |
-| `shareCodeWhispererContent` | Boolean | コンテンツ共有（レガシー） |
+| `codeWhisperer.shareCodeWhispererContentWithAWS` | Boolean | コンテンツ共有 |
 
 ### チャット設定
 
