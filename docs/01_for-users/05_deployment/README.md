@@ -39,7 +39,7 @@ Amazon Q CLIの組織・エンタープライズ向けデプロイメントガ�
 
 - **[Getting Started](../01_getting-started/)** - 基本的なインストール方法
 - **[Configuration](../03_configuration/)** - 設定のカスタマイズ
-- **[Security Best Practices](../04_best-practices/security.md)** - セキュリティのベストプラクティス
+- **[Security Best Practices](../04_best-practices/02_security.md)** - セキュリティのベストプラクティス
 
 ---
 

@@ -234,9 +234,9 @@ chmod 600 ~/.local/share/amazon-q/settings.json
 ## ベストプラクティス
 
 詳細なベストプラクティスは以下を参照してください：
-- [設定のベストプラクティス](../04_best-practices/configuration.md)
-- [セキュリティベストプラクティス](../04_best-practices/security.md)
-- [パフォーマンス最適化](../04_best-practices/performance.md)
+- [設定のベストプラクティス](../04_best-practices/01_configuration.md)
+- [セキュリティベストプラクティス](../04_best-practices/02_security.md)
+- [パフォーマンス最適化](../04_best-practices/03_performance.md)
 
 ---
 
@@ -245,7 +245,7 @@ chmod 600 ~/.local/share/amazon-q/settings.json
 - [インストールガイド](../01_getting-started/01_installation.md)
 - [認証設定](../01_getting-started/02_quick-start.md#認証設定)
 - [環境変数リファレンス](../03_configuration/05_environment-variables.md)
-- [セキュリティベストプラクティス](../04_best-practices/security.md)
+- [セキュリティベストプラクティス](../04_best-practices/02_security.md)
 
 ---
 

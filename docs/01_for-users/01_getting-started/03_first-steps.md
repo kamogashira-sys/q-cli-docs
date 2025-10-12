@@ -337,7 +337,7 @@ q auth refresh
 ### 設定を最適化する
 
 - **[設定ガイド](../03_configuration/01_overview.md)** - 設定の全体像
-- **[ベストプラクティス](../04_best-practices/configuration.md)** - 推奨設定
+- **[ベストプラクティス](../04_best-practices/01_configuration.md)** - 推奨設定
 
 ### 問題解決
 

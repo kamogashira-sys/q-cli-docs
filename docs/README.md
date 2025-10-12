@@ -184,9 +184,9 @@ Amazon Q CLIの機能と設定を詳しく学びたい方向けのガイドで�
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
 | 1 | [README](01_for-users/04_best-practices/README.md) | 中級 | ベストプラクティスセクションの概要 |
-| 2 | [設定のベストプラクティス](01_for-users/04_best-practices/configuration.md) | 中級 | Agent設定、MCP設定、セキュリティ、パフォーマンス最適化 |
-| 3 | [セキュリティ](01_for-users/04_best-practices/security.md) | 中級〜上級 | ツール権限管理、認証情報管理、最小権限原則 |
-| 4 | [パフォーマンス最適化](01_for-users/04_best-practices/performance.md) | 中級 | コンテキスト管理、MCP最適化、レスポンス時間改善 |
+| 2 | [設定のベストプラクティス](01_for-users/04_best-practices/01_configuration.md) | 中級 | Agent設定、MCP設定、セキュリティ、パフォーマンス最適化 |
+| 3 | [セキュリティ](01_for-users/04_best-practices/02_security.md) | 中級〜上級 | ツール権限管理、認証情報管理、最小権限原則 |
+| 4 | [パフォーマンス最適化](01_for-users/04_best-practices/03_performance.md) | 中級 | コンテキスト管理、MCP最適化、レスポンス時間改善 |
 
 **次のステップ**: 問題が発生した場合は、[トラブルシューティング](#トラブルシューティング3文書)を参照してください。
 

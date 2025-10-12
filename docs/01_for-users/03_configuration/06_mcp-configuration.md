@@ -660,9 +660,9 @@ q agent show my-agent
 ## ベストプラクティス
 
 詳細なベストプラクティスは以下を参照してください：
-- [設定のベストプラクティス](../04_best-practices/configuration.md)
-- [セキュリティベストプラクティス](../04_best-practices/security.md)
-- [パフォーマンス最適化](../04_best-practices/performance.md)
+- [設定のベストプラクティス](../04_best-practices/01_configuration.md)
+- [セキュリティベストプラクティス](../04_best-practices/02_security.md)
+- [パフォーマンス最適化](../04_best-practices/03_performance.md)
 
 ---
 

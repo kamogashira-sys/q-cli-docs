@@ -723,7 +723,7 @@ q chat
 - [Agent設定](03_configuration/04_agent-configuration.md)
 - [MCP設定](03_configuration/06_mcp-configuration.md)
 - [設定例集](03_configuration/07_examples.md)
-- [ベストプラクティス](04_best-practices/configuration.md)
+- [ベストプラクティス](04_best-practices/01_configuration.md)
 
 ---
 

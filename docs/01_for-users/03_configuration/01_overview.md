@@ -198,7 +198,7 @@ q agent edit my-agent
 - Knowledge設定を最適化
 - 不要な機能は無効化
 
-詳細: [ベストプラクティス](../04_best-practices/configuration.md)
+詳細: [ベストプラクティス](../04_best-practices/01_configuration.md)
 
 ---
 

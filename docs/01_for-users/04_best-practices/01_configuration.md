@@ -625,8 +625,8 @@ q settings chat.disableMarkdownRendering false
 - [MCP設定ガイド](../03_configuration/06_mcp-configuration.md)
 - [環境変数ガイド](../03_configuration/05_environment-variables.md)
 - [トラブルシューティング](../06_troubleshooting/common-issues.md)
-- [セキュリティベストプラクティス](security.md)
-- [パフォーマンス最適化](performance.md)
+- [セキュリティベストプラクティス](02_security.md)
+- [パフォーマンス最適化](03_performance.md)
 - [GitHub Repository](https://github.com/aws/amazon-q-developer-cli)
 
 ---

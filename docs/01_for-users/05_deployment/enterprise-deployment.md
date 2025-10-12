@@ -384,7 +384,7 @@ Phase 3: 全社展開
 
 - [インストールガイド](../01_getting-started/01_installation.md)
 - [環境変数ガイド](../03_configuration/05_environment-variables.md)
-- [セキュリティベストプラクティス](../04_best-practices/security.md)
+- [セキュリティベストプラクティス](../04_best-practices/02_security.md)
 
 ---
 

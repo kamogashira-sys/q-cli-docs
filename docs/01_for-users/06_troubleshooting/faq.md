@@ -90,11 +90,11 @@ rm -rf ~/.aws/amazonq
 1. [Agent設定](../03_configuration/04_agent-configuration.md)
 2. [MCP設定](../03_configuration/06_mcp-configuration.md)
 3. [設定例集](../03_configuration/07_examples.md)
-4. [ベストプラクティス](../04_best-practices/configuration.md)
+4. [ベストプラクティス](../04_best-practices/01_configuration.md)
 
 **上級者向け（5時間以上）**:
-1. [パフォーマンス最適化](../04_best-practices/performance.md)
-2. [セキュリティ](../04_best-practices/security.md)
+1. [パフォーマンス最適化](../04_best-practices/03_performance.md)
+2. [セキュリティ](../04_best-practices/02_security.md)
 3. [実験的機能](../02_features/07_experimental.md)
 4. [エンタープライズ展開](../05_deployment/enterprise-deployment.md)
 
@@ -335,7 +335,7 @@ q config set knowledge.enabled true
 q knowledge index
 ```
 
-詳細は[Knowledge機能](../04_best-practices/performance.md#knowledge機能の最適化)を参照。
+詳細は[Knowledge機能](../04_best-practices/03_performance.md#knowledge機能の最適化)を参照。
 
 ---
 
@@ -359,7 +359,7 @@ q knowledge index
 1. Knowledge機能のインデックスを最適化
 2. MCPサーバーの数を減らす
 3. キャッシュをクリア
-詳細は[パフォーマンス最適化](../04_best-practices/performance.md)を参照。
+詳細は[パフォーマンス最適化](../04_best-practices/03_performance.md)を参照。
 
 ### メモリ使用量が多い場合は？
 ```bash
@@ -429,7 +429,7 @@ q
    rm -rf ~/.aws/amazonq/cache/
    ```
 
-詳細は[パフォーマンス最適化](../04_best-practices/performance.md)を参照。
+詳細は[パフォーマンス最適化](../04_best-practices/03_performance.md)を参照。
 
 ### 認証エラーが出ます
 ```bash
@@ -458,7 +458,7 @@ q auth refresh
    - ログの確認
    - アクセスキーのローテーション
 
-詳細は[セキュリティのベストプラクティス](../04_best-practices/security.md)を参照。
+詳細は[セキュリティのベストプラクティス](../04_best-practices/02_security.md)を参照。
 
 ### ツール権限を制限するには？
 Agent設定でツール権限を細かく制御できます。

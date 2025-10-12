@@ -423,8 +423,8 @@ q settings
 
 - [設定項目完全リファレンス](../07_reference/settings-reference.md) - 全設定項目の一覧
 - [環境変数ガイド](./05_environment-variables.md) - 環境変数の完全リスト
-- [推奨設定ガイド](../04_best-practices/configuration.md) - ユースケース別推奨設定
-- [ベストプラクティス](../04_best-practices/configuration.md) - 設定のベストプラクティス
+- [推奨設定ガイド](../04_best-practices/01_configuration.md) - ユースケース別推奨設定
+- [ベストプラクティス](../04_best-practices/01_configuration.md) - 設定のベストプラクティス
 - [Agent設定ファイル完全仕様](04_agent-configuration.md) - Agent設定の詳細
 - **[MCP設定の読込フロー](06_mcp-configuration.md#-mcp設定の読込フロー)** - MCP設定の優先順位と読込処理の詳細
 

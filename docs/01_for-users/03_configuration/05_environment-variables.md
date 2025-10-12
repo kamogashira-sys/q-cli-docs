@@ -378,9 +378,9 @@ q chat  # -vオプションなし
 ## ベストプラクティス
 
 詳細なベストプラクティスは以下を参照してください：
-- [設定のベストプラクティス](../04_best-practices/configuration.md)
-- [セキュリティベストプラクティス](../04_best-practices/security.md)
-- [パフォーマンス最適化](../04_best-practices/performance.md)
+- [設定のベストプラクティス](../04_best-practices/01_configuration.md)
+- [セキュリティベストプラクティス](../04_best-practices/02_security.md)
+- [パフォーマンス最適化](../04_best-practices/03_performance.md)
 
 ---
 
@@ -388,8 +388,8 @@ q chat  # -vオプションなし
 
 - [設定優先順位ガイド](02_priority-rules.md) - 設定の優先順位と図解
 - [設定項目完全リファレンス](../07_reference/settings-reference.md)
-- [推奨設定ガイド](../04_best-practices/configuration.md)
-- [ベストプラクティス](../04_best-practices/configuration.md)
+- [推奨設定ガイド](../04_best-practices/01_configuration.md)
+- [ベストプラクティス](../04_best-practices/01_configuration.md)
 - [Agent設定ファイル完全仕様](04_agent-configuration.md)
 
 ---

@@ -695,8 +695,8 @@ du -sh ~/.cache/amazon-q/
 - **[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)** - MCPサーバーの設定
 - **[環境変数ガイド](../03_configuration/05_environment-variables.md)** - 環境変数の使い方
 - **[トラブルシューティング](../06_troubleshooting/common-issues.md)** - よくある問題と解決方法
-- **[設定のベストプラクティス](configuration.md)** - 全般的な設定のベストプラクティス
-- **[セキュリティベストプラクティス](security.md)** - セキュリティのベストプラクティス
+- **[設定のベストプラクティス](01_configuration.md)** - 全般的な設定のベストプラクティス
+- **[セキュリティベストプラクティス](02_security.md)** - セキュリティのベストプラクティス
 
 ---
 

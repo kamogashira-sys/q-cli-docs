@@ -303,9 +303,9 @@ q agent validate my-agent
 ## ベストプラクティス
 
 詳細なベストプラクティスは以下を参照してください：
-- [設定のベストプラクティス](../04_best-practices/configuration.md)
-- [セキュリティベストプラクティス](../04_best-practices/security.md)
-- [パフォーマンス最適化](../04_best-practices/performance.md)
+- [設定のベストプラクティス](../04_best-practices/01_configuration.md)
+- [セキュリティベストプラクティス](../04_best-practices/02_security.md)
+- [パフォーマンス最適化](../04_best-practices/03_performance.md)
 
 ---
 
@@ -499,7 +499,7 @@ $TMPDIR/qlog/
 - **[MCP設定](06_mcp-configuration.md)** - MCPサーバーの設定
 - **[MCP設定の読込フロー](06_mcp-configuration.md#-mcp設定の読込フロー)** - Agent設定とレガシーMCP設定の優先順位
 - **[設定例集](07_examples.md)** - 実践的なAgent設定例
-- **[ベストプラクティス](../04_best-practices/configuration.md)** - 設定のベストプラクティス
+- **[ベストプラクティス](../04_best-practices/01_configuration.md)** - 設定のベストプラクティス
 - **[トラブルシューティング](../06_troubleshooting/common-issues.md)** - よくある問題
 
 ---
