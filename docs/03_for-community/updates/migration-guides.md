@@ -304,8 +304,8 @@ q knowledge status
 ## 📚 関連ドキュメント
 
 - [変更履歴](changelog.md) - バージョン別の変更内容
-- [設定ガイド](../../01_for-users/configuration/README.md) - 設定の詳細
-- [トラブルシューティング](../../01_for-users/troubleshooting/README.md) - 問題解決方法
+- [設定ガイド](../../01_for-users/03_configuration/README.md) - 設定の詳細
+- [トラブルシューティング](../../01_for-users/06_troubleshooting/README.md) - 問題解決方法
 
 ---
 
@@ -313,7 +313,7 @@ q knowledge status
 
 移行に関する問題が発生した場合：
 
-1. [トラブルシューティングガイド](../../01_for-users/troubleshooting/common-issues.md)を確認
+1. [トラブルシューティングガイド](../../01_for-users/06_troubleshooting/common-issues.md)を確認
 2. [GitHub Issues](https://github.com/aws/amazon-q-developer-cli/issues)で既知の問題を検索
 3. 新しいIssueを作成して報告
 

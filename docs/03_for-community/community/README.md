@@ -67,7 +67,7 @@ Amazon Q CLIのコミュニティへようこそ！このセクションでは�
 - [ユースケース紹介](showcase.md) - 実際の活用事例
 
 ### 学習リソース
-- [Getting Started](../../01_for-users/getting-started/README.md) - 初心者向けガイド
+- [Getting Started](../../01_for-users/01_getting-started/README.md) - 初心者向けガイド
 - [User Guide](../../01_for-users/README.md) - 詳細なユーザーガイド
 - [Developer Guide](../../02_for-developers/README.md) - 開発者向けドキュメント
 

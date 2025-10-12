@@ -76,11 +76,11 @@
 
 **必須**: 以下のドキュメントを更新
 
-1. `docs/user-guide/configuration/environment-variables.md`
+1. `docs/user-guide/03_configuration/environment-variables.md`
    - 適切なセクション（コア、qterm、デバッグ等）に追加
    - 説明と使用例を記載
 
-2. `docs/reference/settings-reference.md`
+2. `docs/07_reference/settings-reference.md`
    - 環境変数リストに追加
    - 同じ説明と使用例を記載
 
@@ -88,12 +88,12 @@
 
 **必須**: 以下のドキュメントを更新
 
-1. `docs/reference/settings-reference.md`
+1. `docs/07_reference/settings-reference.md`
    - 設定項目リストに追加
    - カテゴリ、型、説明を記載
 
 2. 該当する場合、関連ガイドも更新
-   - `docs/user-guide/configuration/`配下の関連ファイル
+   - `docs/user-guide/03_configuration/`配下の関連ファイル
 
 **確認**: 設定項目確認用チェックリストを実施
 - 場所: `~/q-cli-work/checklists/settings-checklist.md`
@@ -103,7 +103,7 @@
 
 **必須**: 以下のドキュメントを更新
 
-1. `docs/reference/configuration-file-locations.md`
+1. `docs/07_reference/configuration-file-locations.md`
    - ファイルパス一覧を更新
 
 2. 該当する場合、関連ガイドも更新

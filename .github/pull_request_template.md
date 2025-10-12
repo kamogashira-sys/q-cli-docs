@@ -27,9 +27,9 @@ Please delete options that are not relevant.
 
 If you added or modified documentation, please list the files:
 
-- [ ] `docs/user-guide/configuration/`
-- [ ] `docs/reference/`
-- [ ] `docs/getting-started/`
+- [ ] `docs/user-guide/03_configuration/`
+- [ ] `docs/07_reference/`
+- [ ] `docs/01_getting-started/`
 - [ ] Other: _______________
 
 ## Checklist

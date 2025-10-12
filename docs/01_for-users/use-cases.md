@@ -720,10 +720,10 @@ q chat
 
 ## 🔗 関連ドキュメント
 
-- [Agent設定](configuration/agent-configuration.md)
-- [MCP設定](configuration/mcp-configuration.md)
-- [設定例集](configuration/examples.md)
-- [ベストプラクティス](best-practices/configuration.md)
+- [Agent設定](03_configuration/agent-configuration.md)
+- [MCP設定](03_configuration/mcp-configuration.md)
+- [設定例集](03_configuration/examples.md)
+- [ベストプラクティス](04_best-practices/configuration.md)
 
 ---
 

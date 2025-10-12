@@ -37,26 +37,26 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 ### 初心者向け
 
 #### Getting Started
-- [インストールガイド](../../01_for-users/getting-started/installation.md) - 環境別インストール手順
-- [クイックスタート](../../01_for-users/getting-started/quick-start.md) - 5分で始めるQ CLI
-- [最初の一歩](../../01_for-users/getting-started/first-steps.md) - 基本的な使い方
+- [インストールガイド](../../01_for-users/01_getting-started/installation.md) - 環境別インストール手順
+- [クイックスタート](../../01_for-users/01_getting-started/quick-start.md) - 5分で始めるQ CLI
+- [最初の一歩](../../01_for-users/01_getting-started/first-steps.md) - 基本的な使い方
 
 #### 設定
-- [設定システム概要](../../01_for-users/configuration/overview.md) - 設定の全体像
-- [Agent設定](../../01_for-users/configuration/agent-configuration.md) - カスタムAgent作成
-- [MCP設定](../../01_for-users/configuration/mcp-configuration.md) - MCPサーバー統合
+- [設定システム概要](../../01_for-users/03_configuration/overview.md) - 設定の全体像
+- [Agent設定](../../01_for-users/03_configuration/agent-configuration.md) - カスタムAgent作成
+- [MCP設定](../../01_for-users/03_configuration/mcp-configuration.md) - MCPサーバー統合
 
 ### 中級者向け
 
 #### 機能活用
-- [Agent機能](../../01_for-users/features/agents.md) - Agent機能の詳細
-- [MCP設定](../../01_for-users/configuration/mcp-configuration.md) - MCP統合の活用
-- [Knowledge機能](../../01_for-users/best-practices/performance.md#knowledge機能の最適化) - Knowledge Base活用
+- [Agent機能](../../01_for-users/02_features/agents.md) - Agent機能の詳細
+- [MCP設定](../../01_for-users/03_configuration/mcp-configuration.md) - MCP統合の活用
+- [Knowledge機能](../../01_for-users/04_best-practices/performance.md#knowledge機能の最適化) - Knowledge Base活用
 
 #### ベストプラクティス
-- [設定のベストプラクティス](../../01_for-users/best-practices/configuration.md) - 推奨設定
-- [セキュリティ](../../01_for-users/best-practices/security.md) - セキュリティ対策
-- [パフォーマンス最適化](../../01_for-users/best-practices/performance.md) - 高速化テクニック
+- [設定のベストプラクティス](../../01_for-users/04_best-practices/configuration.md) - 推奨設定
+- [セキュリティ](../../01_for-users/04_best-practices/security.md) - セキュリティ対策
+- [パフォーマンス最適化](../../01_for-users/04_best-practices/performance.md) - 高速化テクニック
 
 ### 上級者向け
 
@@ -143,16 +143,16 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 ## 学習パス
 
 ### 初心者向け学習パス
-1. [インストール](../../01_for-users/getting-started/installation.md)
-2. [クイックスタート](../../01_for-users/getting-started/quick-start.md)
-3. [基本的な使い方](../../01_for-users/getting-started/first-steps.md)
-4. [設定システム概要](../../01_for-users/configuration/overview.md)
+1. [インストール](../../01_for-users/01_getting-started/installation.md)
+2. [クイックスタート](../../01_for-users/01_getting-started/quick-start.md)
+3. [基本的な使い方](../../01_for-users/01_getting-started/first-steps.md)
+4. [設定システム概要](../../01_for-users/03_configuration/overview.md)
 
 ### 中級者向け学習パス
-1. [Agent設定](../../01_for-users/configuration/agent-configuration.md)
-2. [MCP統合](../../01_for-users/configuration/mcp-configuration.md)
-3. [Knowledge活用](../../01_for-users/best-practices/performance.md#knowledge機能の最適化)
-4. [ベストプラクティス](../../01_for-users/best-practices/configuration.md)
+1. [Agent設定](../../01_for-users/03_configuration/agent-configuration.md)
+2. [MCP統合](../../01_for-users/03_configuration/mcp-configuration.md)
+3. [Knowledge活用](../../01_for-users/04_best-practices/performance.md#knowledge機能の最適化)
+4. [ベストプラクティス](../../01_for-users/04_best-practices/configuration.md)
 
 ### 上級者向け学習パス
 1. [アーキテクチャ理解](../../02_for-developers/architecture/overview.md)

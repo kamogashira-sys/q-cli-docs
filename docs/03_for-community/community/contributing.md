@@ -181,7 +181,7 @@ GitHubでPRを作成：
 ### ドキュメント構造
 ```
 docs/
-├── getting-started/    # 初心者向け
+├── 01_getting-started/    # 初心者向け
 ├── user-guide/         # ユーザーガイド
 ├── developer-guide/    # 開発者向け
 ├── reference/          # リファレンス

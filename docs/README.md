@@ -91,9 +91,9 @@ q chat "このプロジェクトのREADME.mdを作成して"
 
 初めての方は、以下の順序でドキュメントをお読みください：
 
-1. **[インストール](01_for-users/getting-started/installation.md)** - Amazon Q CLIのインストール方法
-2. **[クイックスタート](01_for-users/getting-started/quick-start.md)** - 5分で始めるQ CLI
-3. **[最初の一歩](01_for-users/getting-started/first-steps.md)** - 基本的な使い方
+1. **[インストール](01_for-users/01_getting-started/installation.md)** - Amazon Q CLIのインストール方法
+2. **[クイックスタート](01_for-users/01_getting-started/quick-start.md)** - 5分で始めるQ CLI
+3. **[最初の一歩](01_for-users/01_getting-started/first-steps.md)** - 基本的な使い方
 
 ### 学習パス
 
@@ -128,11 +128,11 @@ Amazon Q CLIを初めて使う方向けのガイドです。
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
-| 1 | [README](01_for-users/getting-started/README.md) | 初級 | Getting Startedセクションの概要とナビゲーション |
-| 2 | [インストールガイド](01_for-users/getting-started/installation.md) | 初級 | OS別インストール手順（macOS/Linux）、Homebrew/手動インストール、システム要件 |
-| 3 | [クイックスタート](01_for-users/getting-started/quick-start.md) | 初級 | 5分で始める、インストール→認証→初回チャット、基本コマンド |
-| 4 | [最初の一歩](01_for-users/getting-started/first-steps.md) | 初級 | 基本操作、チャット/ファイル操作/コマンド実行、Agent切り替え、履歴管理 |
-| 5 | [料金プラン](01_for-users/getting-started/pricing.md) | 初級 | Free/Proプランの違い、料金体系、エンタープライズ向けオプション |
+| 1 | [README](01_for-users/01_getting-started/README.md) | 初級 | Getting Startedセクションの概要とナビゲーション |
+| 2 | [インストールガイド](01_for-users/01_getting-started/installation.md) | 初級 | OS別インストール手順（macOS/Linux）、Homebrew/手動インストール、システム要件 |
+| 3 | [クイックスタート](01_for-users/01_getting-started/quick-start.md) | 初級 | 5分で始める、インストール→認証→初回チャット、基本コマンド |
+| 4 | [最初の一歩](01_for-users/01_getting-started/first-steps.md) | 初級 | 基本操作、チャット/ファイル操作/コマンド実行、Agent切り替え、履歴管理 |
+| 5 | [料金プラン](01_for-users/01_getting-started/pricing.md) | 初級 | Free/Proプランの違い、料金体系、エンタープライズ向けオプション |
 
 **次のステップ**: Getting Startedを完了したら、[設定ガイド](#設定ガイド8文書)でQ CLIをカスタマイズしましょう。
 
@@ -146,14 +146,14 @@ Amazon Q CLIの機能と設定を詳しく学びたい方向けのガイドで�
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
-| 1 | [README](01_for-users/configuration/README.md) | 初級 | 設定ガイドセクションの概要とナビゲーション |
-| 2 | [設定システム概要](01_for-users/configuration/overview.md) | 初級〜中級 | 設定システム全体像、5段階優先順位、4種類の設定（グローバル/Agent/MCP/環境変数） |
-| 3 | [グローバル設定](01_for-users/configuration/global-settings.md) | 初級 | settings.json、35項目（テレメトリ/チャット/Knowledge/デフォルトAgent） |
-| 4 | [Agent設定](01_for-users/configuration/agent-configuration.md) | 中級 | JSONスキーマ、グローバル/ローカルAgent、必須/オプションフィールド、検証方法 |
-| 5 | [MCP設定](01_for-users/configuration/mcp-configuration.md) | 中級 | MCPサーバー設定、stdio/HTTP接続、OAuth認証、環境変数展開 |
-| 6 | [環境変数](01_for-users/configuration/environment-variables.md) | 中級 | 23項目、Q CLI固有18項目、設定方法、実践パターン |
-| 7 | [優先順位ルール](01_for-users/configuration/priority-rules.md) | 中級 | 5段階優先順位（CLI引数→環境変数→ローカルAgent→グローバルAgent→デフォルト）、フロー図 |
-| 8 | [設定例集](01_for-users/configuration/examples.md) | 中級 | 実践的な設定例、ユースケース別（開発/本番/チーム） |
+| 1 | [README](01_for-users/03_configuration/README.md) | 初級 | 設定ガイドセクションの概要とナビゲーション |
+| 2 | [設定システム概要](01_for-users/03_configuration/overview.md) | 初級〜中級 | 設定システム全体像、5段階優先順位、4種類の設定（グローバル/Agent/MCP/環境変数） |
+| 3 | [グローバル設定](01_for-users/03_configuration/global-settings.md) | 初級 | settings.json、35項目（テレメトリ/チャット/Knowledge/デフォルトAgent） |
+| 4 | [Agent設定](01_for-users/03_configuration/agent-configuration.md) | 中級 | JSONスキーマ、グローバル/ローカルAgent、必須/オプションフィールド、検証方法 |
+| 5 | [MCP設定](01_for-users/03_configuration/mcp-configuration.md) | 中級 | MCPサーバー設定、stdio/HTTP接続、OAuth認証、環境変数展開 |
+| 6 | [環境変数](01_for-users/03_configuration/environment-variables.md) | 中級 | 23項目、Q CLI固有18項目、設定方法、実践パターン |
+| 7 | [優先順位ルール](01_for-users/03_configuration/priority-rules.md) | 中級 | 5段階優先順位（CLI引数→環境変数→ローカルAgent→グローバルAgent→デフォルト）、フロー図 |
+| 8 | [設定例集](01_for-users/03_configuration/examples.md) | 中級 | 実践的な設定例、ユースケース別（開発/本番/チーム） |
 
 **次のステップ**: 設定をカスタマイズしたら、[機能ガイド](#機能ガイド8文書)で各機能の使い方を学びましょう。
 
@@ -161,14 +161,14 @@ Amazon Q CLIの機能と設定を詳しく学びたい方向けのガイドで�
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
-| 1 | [README](01_for-users/features/README.md) | 初級〜中級 | Featuresセクションの概要 |
-| 2 | [チャット機能](01_for-users/features/chat.md) | 初級 | 基本操作、チャットコマンド（/help, /agent, /context）、Tips |
-| 3 | [Agent機能](01_for-users/features/agents.md) | 中級 | Agent概要、管理コマンド（list/切り替え）、カスタマイズ項目 |
-| 4 | [オートコンプリート](01_for-users/features/autocomplete.md) | 初級 | オートコンプリート機能、設定、使い方 |
-| 5 | [Checkpoint機能](01_for-users/features/checkpoints.md) | 初級〜中級 | チェックポイント機能、保存/復元、自動保存設定 |
-| 6 | [キーボードショートカット](01_for-users/features/keyboard-shortcuts.md) | 初級〜中級 | ショートカット一覧、Tangent/Skim/Delegateモード、カスタマイズ |
-| 7 | [SSH/リモート接続](01_for-users/features/ssh-remote.md) | 中級 | リモート環境での使用、SSH接続、設定方法 |
-| 8 | [実験的機能](01_for-users/features/experimental.md) | 上級 | 実験的機能、Delegate Mode、安全性警告、ベストプラクティス |
+| 1 | [README](01_for-users/02_features/README.md) | 初級〜中級 | Featuresセクションの概要 |
+| 2 | [チャット機能](01_for-users/02_features/chat.md) | 初級 | 基本操作、チャットコマンド（/help, /agent, /context）、Tips |
+| 3 | [Agent機能](01_for-users/02_features/agents.md) | 中級 | Agent概要、管理コマンド（list/切り替え）、カスタマイズ項目 |
+| 4 | [オートコンプリート](01_for-users/02_features/autocomplete.md) | 初級 | オートコンプリート機能、設定、使い方 |
+| 5 | [Checkpoint機能](01_for-users/02_features/checkpoints.md) | 初級〜中級 | チェックポイント機能、保存/復元、自動保存設定 |
+| 6 | [キーボードショートカット](01_for-users/02_features/keyboard-shortcuts.md) | 初級〜中級 | ショートカット一覧、Tangent/Skim/Delegateモード、カスタマイズ |
+| 7 | [SSH/リモート接続](01_for-users/02_features/ssh-remote.md) | 中級 | リモート環境での使用、SSH接続、設定方法 |
+| 8 | [実験的機能](01_for-users/02_features/experimental.md) | 上級 | 実験的機能、Delegate Mode、安全性警告、ベストプラクティス |
 
 **次のステップ**: 機能を理解したら、[ベストプラクティス](#ベストプラクティス4文書)で効果的な使い方を学びましょう。
 
@@ -176,17 +176,17 @@ Amazon Q CLIの機能と設定を詳しく学びたい方向けのガイドで�
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
-| 1 | [README](01_for-users/deployment/README.md) | 中級〜上級 | Deploymentセクションの概要 |
-| 2 | [エンタープライズ導入ガイド](01_for-users/deployment/enterprise-deployment.md) | 中級〜上級 | IAM Identity Center、組織導入、Pro契約、段階的ロールアウト、セキュリティ |
+| 1 | [README](01_for-users/05_deployment/README.md) | 中級〜上級 | Deploymentセクションの概要 |
+| 2 | [エンタープライズ導入ガイド](01_for-users/05_deployment/enterprise-deployment.md) | 中級〜上級 | IAM Identity Center、組織導入、Pro契約、段階的ロールアウト、セキュリティ |
 
 #### ベストプラクティス（4文書）
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
-| 1 | [README](01_for-users/best-practices/README.md) | 中級 | ベストプラクティスセクションの概要 |
-| 2 | [設定のベストプラクティス](01_for-users/best-practices/configuration.md) | 中級 | Agent設定、MCP設定、セキュリティ、パフォーマンス最適化 |
-| 3 | [セキュリティ](01_for-users/best-practices/security.md) | 中級〜上級 | ツール権限管理、認証情報管理、最小権限原則 |
-| 4 | [パフォーマンス最適化](01_for-users/best-practices/performance.md) | 中級 | コンテキスト管理、MCP最適化、レスポンス時間改善 |
+| 1 | [README](01_for-users/04_best-practices/README.md) | 中級 | ベストプラクティスセクションの概要 |
+| 2 | [設定のベストプラクティス](01_for-users/04_best-practices/configuration.md) | 中級 | Agent設定、MCP設定、セキュリティ、パフォーマンス最適化 |
+| 3 | [セキュリティ](01_for-users/04_best-practices/security.md) | 中級〜上級 | ツール権限管理、認証情報管理、最小権限原則 |
+| 4 | [パフォーマンス最適化](01_for-users/04_best-practices/performance.md) | 中級 | コンテキスト管理、MCP最適化、レスポンス時間改善 |
 
 **次のステップ**: 問題が発生した場合は、[トラブルシューティング](#トラブルシューティング3文書)を参照してください。
 
@@ -194,9 +194,9 @@ Amazon Q CLIの機能と設定を詳しく学びたい方向けのガイドで�
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
-| 1 | [README](01_for-users/troubleshooting/README.md) | 初級〜中級 | トラブルシューティングセクションの概要 |
-| 2 | [よくある問題](01_for-users/troubleshooting/common-issues.md) | 初級〜中級 | 15の一般的問題、診断コマンド、高度なトラブルシューティング |
-| 3 | [FAQ](01_for-users/troubleshooting/faq.md) | 初級 | よくある質問と回答、カテゴリ別整理 |
+| 1 | [README](01_for-users/06_troubleshooting/README.md) | 初級〜中級 | トラブルシューティングセクションの概要 |
+| 2 | [よくある問題](01_for-users/06_troubleshooting/common-issues.md) | 初級〜中級 | 15の一般的問題、診断コマンド、高度なトラブルシューティング |
+| 3 | [FAQ](01_for-users/06_troubleshooting/faq.md) | 初級 | よくある質問と回答、カテゴリ別整理 |
 
 ---
 
@@ -230,12 +230,12 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
-| 1 | [README](01_for-users/reference/README.md) | 中級 | Referenceセクションの概要 |
-| 2 | [設定項目リファレンス](01_for-users/reference/settings-reference.md) | 中級〜上級 | 全35設定項目、カテゴリ別分類（テレメトリ/チャット/Knowledge/MCP） |
-| 3 | [設定ファイル配置マップ](01_for-users/reference/configuration-file-locations.md) | 中級 | 5種類の設定ファイル配置マップ、ディレクトリ構造、実践例 |
-| 4 | [環境変数リファレンス](01_for-users/configuration/environment-variables.md) | 中級〜上級 | 全環境変数リスト、Q CLI固有18項目、AWS/システム変数 |
-| 5 | [コマンドリファレンス](01_for-users/reference/commands.md) | 初級〜中級 | 全コマンドリスト、サブコマンド、オプション |
-| 6 | [用語集](01_for-users/reference/glossary.md) | 初級 | Amazon Q CLI用語集、Agent/MCP/Knowledge等の定義 |
+| 1 | [README](01_for-users/07_reference/README.md) | 中級 | Referenceセクションの概要 |
+| 2 | [設定項目リファレンス](01_for-users/07_reference/settings-reference.md) | 中級〜上級 | 全35設定項目、カテゴリ別分類（テレメトリ/チャット/Knowledge/MCP） |
+| 3 | [設定ファイル配置マップ](01_for-users/07_reference/configuration-file-locations.md) | 中級 | 5種類の設定ファイル配置マップ、ディレクトリ構造、実践例 |
+| 4 | [環境変数リファレンス](01_for-users/03_configuration/environment-variables.md) | 中級〜上級 | 全環境変数リスト、Q CLI固有18項目、AWS/システム変数 |
+| 5 | [コマンドリファレンス](01_for-users/07_reference/commands.md) | 初級〜中級 | 全コマンドリスト、サブコマンド、オプション |
+| 6 | [用語集](01_for-users/07_reference/glossary.md) | 初級 | Amazon Q CLI用語集、Agent/MCP/Knowledge等の定義 |
 
 ---
 
@@ -284,19 +284,19 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 ### 目的別ガイド
 
 #### Amazon Q CLIを始めたい
-→ [Getting Started](01_for-users/getting-started/) セクション（5文書）から始めてください
+→ [Getting Started](01_for-users/01_getting-started/) セクション（5文書）から始めてください
 
 #### 設定を変更したい
-→ [設定ガイド](01_for-users/configuration/)（8文書）で設定方法を確認してください
+→ [設定ガイド](01_for-users/03_configuration/)（8文書）で設定方法を確認してください
 
 #### 特定の機能を使いたい
-→ [機能ガイド](01_for-users/features/)（8文書）で各機能の使い方を確認してください
+→ [機能ガイド](01_for-users/02_features/)（8文書）で各機能の使い方を確認してください
 
 #### 問題を解決したい
-→ [トラブルシューティング](01_for-users/troubleshooting/)（3文書）で解決方法を探してください
+→ [トラブルシューティング](01_for-users/06_troubleshooting/)（3文書）で解決方法を探してください
 
 #### 詳細な仕様を知りたい
-→ [リファレンス](01_for-users/reference/)（6文書）で完全なリストを確認してください
+→ [リファレンス](01_for-users/07_reference/)（6文書）で完全なリストを確認してください
 
 #### コントリビューションしたい
 → [Developer Guide](02_for-developers/)（9文書）で開発方法を確認してください
@@ -339,10 +339,10 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 - **AWS 公式サイト**: https://aws.amazon.com/q/developer/
 
 ### よく使うドキュメント
-- [クイックスタート](01_for-users/getting-started/quick-start.md) - 5分で始める
-- [Agent設定](01_for-users/configuration/agent-configuration.md) - Agent設定の詳細
-- [よくある問題](01_for-users/troubleshooting/common-issues.md) - トラブルシューティング
-- [設定項目リファレンス](01_for-users/reference/settings-reference.md) - 全設定項目
+- [クイックスタート](01_for-users/01_getting-started/quick-start.md) - 5分で始める
+- [Agent設定](01_for-users/03_configuration/agent-configuration.md) - Agent設定の詳細
+- [よくある問題](01_for-users/06_troubleshooting/common-issues.md) - トラブルシューティング
+- [設定項目リファレンス](01_for-users/07_reference/settings-reference.md) - 全設定項目
 
 ---
 
@@ -362,7 +362,7 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 
 このドキュメントは、Amazon Q CLI v1.17.0以降を対象としています。古いバージョンをお使いの場合、一部の機能や設定が異なる可能性があります。
 
-最新バージョンへのアップデート方法は [インストールガイド](01_for-users/getting-started/installation.md) をご覧ください。
+最新バージョンへのアップデート方法は [インストールガイド](01_for-users/01_getting-started/installation.md) をご覧ください。
 
 ---
 
