@@ -259,11 +259,30 @@ q mcp uninstall my-server
 | `/exit` | チャットを終了（`/quit`のエイリアス） |
 | `/q` | チャットを終了（`/quit`のエイリアス） |
 
+### Agent管理
+
+| コマンド | 説明 |
+|---------|------|
+| `/agent` | Agent管理 |
+| `/agent help` | ヘルプを表示 |
+| `/agent list` | Agent一覧を表示 |
+| `/agent create` | Agentを作成 |
+| `/agent delete` | Agentを削除 |
+| `/agent rename` | Agent名を変更 |
+| `/agent set` | Agentを設定 |
+| `/agent schema` | Agentスキーマを表示 |
+| `/agent generate` | Agentを生成 |
+
 ### コンテキスト管理
 
 | コマンド | 説明 |
 |---------|------|
 | `/context` | コンテキスト情報を表示 |
+| `/context help` | ヘルプを表示 |
+| `/context show` | コンテキストを表示 |
+| `/context show --expand` | コンテキストを展開表示 |
+| `/context add` | コンテキストを追加 |
+| `/context rm` | コンテキストを削除 |
 | `/context clear` | コンテキストをクリア |
 
 ### Knowledge管理
@@ -305,6 +324,45 @@ q mcp uninstall my-server
 | `/todos resume` | TODOを再開 |
 | `/todos delete` | TODOを削除 |
 | `/todos delete --all` | すべてのTODOを削除 |
+
+### フック管理
+
+| コマンド | 説明 |
+|---------|------|
+| `/hooks` | フック情報を表示 |
+| `/hooks help` | ヘルプを表示 |
+| `/hooks add` | フックを追加 |
+| `/hooks rm` | フックを削除 |
+| `/hooks enable` | フックを有効化 |
+| `/hooks disable` | フックを無効化 |
+| `/hooks enable-all` | すべてのフックを有効化 |
+| `/hooks disable-all` | すべてのフックを無効化 |
+
+### Tangent管理
+
+| コマンド | 説明 |
+|---------|------|
+| `/tangent` | Tangentモードを切り替え |
+| `/tangent tail` | Tangent履歴を表示 |
+
+### その他のコマンド
+
+| コマンド | 説明 |
+|---------|------|
+| `/editor` | エディタでプロンプトを作成 |
+| `/reply` | 最新のアシスタントメッセージに返信 |
+| `/issue` | GitHub ISSUEを作成 |
+| `/mcp` | MCPサーバーを表示 |
+| `/model` | モデルを選択 |
+| `/experiment` | 実験機能を切り替え |
+| `/prompts` | プロンプトを表示・取得 |
+| `/compact` | 会話を要約 |
+| `/compact help` | compactヘルプを表示 |
+| `/usage` | コンテキスト使用状況を表示 |
+| `/changelog` | 変更履歴を表示 |
+| `/save` | 会話を保存 |
+| `/load` | 会話を読み込み |
+| `/subscribe` | Q Developer Proサブスクリプション |
 
 ### ツール管理
 
