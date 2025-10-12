@@ -67,37 +67,44 @@ q chat --agent aws-specialist
 | コマンド | 説明 | 使用例 |
 |---------|------|--------|
 | `/context` | コンテキスト情報を表示 | `/context` |
-| `/context clear` | コンテキストをクリア | `/context clear` |
 
 ### Knowledge管理
 
+> **⚠️ 注意**: Knowledge機能は実験的機能です。`q settings set chat.enableKnowledge true`で有効化してください。
+
 | コマンド | 説明 | 使用例 |
 |---------|------|--------|
-| `/knowledge` | Knowledge情報を表示 | `/knowledge` |
-| `/knowledge add <path>` | ファイル/ディレクトリを追加 | `/knowledge add src/` |
-| `/knowledge remove <path>` | ファイル/ディレクトリを削除 | `/knowledge remove src/` |
-| `/knowledge clear` | Knowledgeをクリア | `/knowledge clear` |
+| `/knowledge show` | Knowledge情報を表示 | `/knowledge show` |
+| `/knowledge add <path>` | ファイル/ディレクトリを追加 | `/knowledge add docs/ --include "*.md"` |
+| `/knowledge remove <path>` | エントリを削除 | `/knowledge remove docs/` |
+| `/knowledge update <path>` | エントリを更新 | `/knowledge update src/` |
+| `/knowledge clear` | すべてのエントリを削除 | `/knowledge clear` |
+| `/knowledge status` | バックグラウンド処理の状態 | `/knowledge status` |
 
 ### Checkpoint管理
+
+> **⚠️ 注意**: Checkpoint機能は実験的機能です。`q settings set EnabledCheckpointing true`で有効化してください。
 
 | コマンド | 説明 | 使用例 |
 |---------|------|--------|
 | `/checkpoint init` | Checkpointを初期化 | `/checkpoint init` |
-| `/checkpoint list` | Checkpoint一覧を表示 | `/checkpoint list` |
-| `/checkpoint restore <tag>` | Checkpointを復元 | `/checkpoint restore 3` |
+| `/checkpoint list` | Checkpoint一覧を表示 | `/checkpoint list --limit 10` |
+| `/checkpoint expand <tag>` | 詳細を表示 | `/checkpoint expand 3` |
+| `/checkpoint diff <tag1> [tag2]` | 差分を表示 | `/checkpoint diff 2 3` |
+| `/checkpoint restore [<tag>]` | Checkpointを復元 | `/checkpoint restore 3` |
 | `/checkpoint restore <tag> --hard` | 完全復元 | `/checkpoint restore 3 --hard` |
+| `/checkpoint clean` | クリーンアップ | `/checkpoint clean` |
 
 ### TODO管理
 
-> **⚠️ 注意**: todos機能は実験的機能です。`q settings chat.enableTodoList true`で有効化してください。
+> **⚠️ 注意**: todos機能は実験的機能です。`q settings set chat.enableTodoList true`で有効化してください。
 
 | コマンド | 説明 | 使用例 |
 |---------|------|--------|
-| `/todos` | TODO一覧を表示 | `/todos` |
-| `/todos help` | ヘルプを表示 | `/todos help` |
-| `/todos clear-finished` | 完了済みをクリア | `/todos clear-finished` |
+| `/todos view` | TODO一覧を表示 | `/todos view` |
+| `/todos resume` | TODOを再開 | `/todos resume` |
+| `/todos clear-finished` | 完了済みTODOをクリア | `/todos clear-finished` |
 | `/todos delete` | TODOを削除 | `/todos delete` |
-| `/todos delete --all` | 全削除 | `/todos delete --all` |
 
 ### Agent管理
 
