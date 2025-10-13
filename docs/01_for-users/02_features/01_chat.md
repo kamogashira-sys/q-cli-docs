@@ -98,12 +98,12 @@ q chat --agent aws-specialist
 
 | コマンド | 詳細説明 | 使用シーン |
 |---------|---------|-----------|
-| `/checkpoint init` | Checkpoint機能を初期化。会話の保存ポイントを作成できるようになる | 長い会話セッションを開始する前に、保存機能を有効化したい時 |
-| `/checkpoint list` | 保存されているCheckpointの一覧を表示。`--limit`オプションで表示数を制限可能 | 過去のどの時点に戻れるか確認したい時 |
+| [`/checkpoint init`](05_checkpoints.md#使い方) | Checkpoint機能を初期化。会話の保存ポイントを作成できるようになる | 長い会話セッションを開始する前に、保存機能を有効化したい時 |
+| [`/checkpoint list`](05_checkpoints.md#checkpoint一覧) | 保存されているCheckpointの一覧を表示。`--limit`オプションで表示数を制限可能 | 過去のどの時点に戻れるか確認したい時 |
 | `/checkpoint expand <tag>` | 指定したタグのCheckpoint詳細を表示。会話内容のプレビューを確認できる | Checkpointの内容を確認してから復元するか判断したい時 |
 | `/checkpoint diff <tag1> [tag2]` | 2つのCheckpoint間の差分を表示。会話の変化を比較できる | どの時点でどんな変更があったか確認したい時 |
-| `/checkpoint restore [<tag>]` | 指定したCheckpointに会話を復元。タグ省略時は最新のCheckpointに戻る | 会話が脱線した時、以前の状態に戻りたい時 |
-| `/checkpoint restore <tag> --hard` | Checkpointに完全復元。復元後の会話履歴は削除される | 完全に以前の状態からやり直したい時 |
+| [`/checkpoint restore [<tag>]`](05_checkpoints.md#checkpoint復元) | 指定したCheckpointに会話を復元。タグ省略時は最新のCheckpointに戻る | 会話が脱線した時、以前の状態に戻りたい時 |
+| [`/checkpoint restore <tag> --hard`](05_checkpoints.md#復元モード) | Checkpointに完全復元。復元後の会話履歴は削除される | 完全に以前の状態からやり直したい時 |
 | `/checkpoint clean` | 古いCheckpointを削除してストレージを整理 | Checkpointが増えすぎた時、不要なものを削除したい時 |
 
 ### TODO管理
@@ -121,11 +121,11 @@ q chat --agent aws-specialist
 
 | コマンド | 詳細説明 | 使用シーン |
 |---------|---------|-----------|
-| `/agent` | 現在使用中のAgent情報を表示。Agent名、設定内容、有効なツールを確認できる | 現在どのAgentを使っているか確認したい時 |
-| `/agent list` | 利用可能なAgent一覧を表示。グローバルとローカルのAgentを確認できる | 切り替え可能なAgentを確認したい時 |
-| `/agent switch <name>` | 指定したAgentに切り替え。プロジェクトや用途に応じてAgentを変更できる | 別のプロジェクトに切り替える時、専門的なAgentを使いたい時 |
+| [`/agent`](02_agents.md) | 現在使用中のAgent情報を表示。Agent名、設定内容、有効なツールを確認できる | 現在どのAgentを使っているか確認したい時 |
+| [`/agent list`](02_agents.md#agent一覧の表示) | 利用可能なAgent一覧を表示。グローバルとローカルのAgentを確認できる | 切り替え可能なAgentを確認したい時 |
+| [`/agent switch <name>`](02_agents.md#agentの切り替え) | 指定したAgentに切り替え。プロジェクトや用途に応じてAgentを変更できる | 別のプロジェクトに切り替える時、専門的なAgentを使いたい時 |
 | `/model [モデル名]` | 使用するAIモデルを表示または切り替え。モデル名省略時は現在のモデルを表示 | より高性能なモデルに切り替えたい時、コスト削減のため軽量モデルに変更する時 |
-| `/experiment` | 実験的機能のON/OFF切り替え。Knowledge、Checkpoint、TODO等のベータ機能を有効化 | 新機能を試したい時、実験的機能を有効化/無効化する時 |
+| [`/experiment`](07_experimental.md) | 実験的機能のON/OFF切り替え。Knowledge、Checkpoint、TODO等のベータ機能を有効化 | 新機能を試したい時、実験的機能を有効化/無効化する時 |
 | `/prompts` | カスタムプロンプトを管理。独自のプロンプトテンプレートを作成・編集できる | 頻繁に使う指示をテンプレート化したい時 |
 
 ### 開発者向けコマンド
