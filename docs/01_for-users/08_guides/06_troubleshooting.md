@@ -527,7 +527,6 @@ Part2では、残りの問題とデバッグ手法を学びます。
 ---
 
 **出典**:
-- [調査報告書](202510131418_context_best_practices_report.md)
 - [トラブルシューティングガイド](docs/01_for-users/06_troubleshooting/02_common-issues.md)
 # 第6章 Part2: 残りの問題とデバッグ手法
 
@@ -1089,7 +1088,6 @@ ls -la doc/architecture.md
 ---
 
 **出典**:
-- [調査報告書](202510131418_context_best_practices_report.md)
 - [トラブルシューティングガイド](docs/01_for-users/06_troubleshooting/02_common-issues.md)
 - [コマンドリファレンス](docs/01_for-users/07_reference/02_commands.md)
 

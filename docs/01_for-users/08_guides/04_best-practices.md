@@ -646,7 +646,6 @@ Part2では、ファイル選定、パス指定、パフォーマンス最適化
 ---
 
 **出典**:
-- [調査報告書](202510131418_context_best_practices_report.md)
 - [AWS公式ドキュメント - Best practices](https://docs.aws.amazon.com/amazonq/)
 # 第4章 Part2: ファイル選定とパス指定の思考プロセス
 
@@ -1247,7 +1246,6 @@ Part3では、パフォーマンス最適化とセキュリティ設計の思考
 ---
 
 **出典**:
-- [調査報告書](202510131418_context_best_practices_report.md)
 - [AWS公式ドキュメント - Best practices](https://docs.aws.amazon.com/amazonq/)
 # 第4章 Part3: パフォーマンス最適化とセキュリティ設計の思考プロセス
 
@@ -2169,7 +2167,6 @@ q chat --agent my-project
 ---
 
 **出典**:
-- [調査報告書](202510131418_context_best_practices_report.md)
 - [AWS公式ドキュメント - Best practices](https://docs.aws.amazon.com/amazonq/)
 - [AWS公式ドキュメント - Security best practices](https://docs.aws.amazon.com/amazonq/)
 

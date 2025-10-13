@@ -581,7 +581,6 @@ time q chat --agent my-agent
 ---
 
 **出典**:
-- [調査報告書](202510131418_context_best_practices_report.md)
 - [AWS公式ドキュメント - Context management](https://docs.aws.amazon.com/amazonq/)
 - [Agent機能ドキュメント](docs/01_for-users/02_features/02_agents.md)
 

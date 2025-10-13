@@ -914,7 +914,6 @@ AIが利用可能
 ---
 
 **出典**:
-- [調査報告書](202510131418_context_best_practices_report.md)
 - [実装コード](/crates/chat-cli/src/cli/agent/mod.rs)
 - [JSON Schema](/crates/chat-cli/src/cli/agent/schema.json)
 
