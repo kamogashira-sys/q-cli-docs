@@ -16,9 +16,9 @@
 |---|------|-------------|------|
 | 1 | [チャット機能](01_chat.md) | 全レベル | チャット機能の詳細 |
 | 2 | [Agent機能](02_agents.md) | 中級者以上 | Agent機能の詳細 |
-| 3 | [Checkpoint機能](05_checkpoints.md) | 中級者以上 | Checkpoint機能の使い方 |
+| 3 | [オートコンプリート](03_autocomplete.md) | 全レベル | オートコンプリート機能 |
 | 4 | [キーボードショートカット](04_keyboard-shortcuts.md) | 全レベル | ショートカット一覧と活用方法 |
-| 5 | [オートコンプリート](03_autocomplete.md) | 全レベル | オートコンプリート機能 |
+| 5 | [Checkpoint機能](05_checkpoints.md) | 中級者以上 | Checkpoint機能の使い方 |
 | 6 | [SSH/リモート接続](06_ssh-remote.md) | 中級者以上 | リモート環境での使用 |
 | 7 | [実験的機能](07_experimental.md) | 上級者 | 実験的機能の紹介 |
 
