@@ -19,11 +19,11 @@ Q CLIのインストールから高度な活用方法まで、ユーザーが必
 | セクション | 文書数 | 内容 |
 |-----------|--------|------|
 | [Getting Started](01_getting-started/) | 5 | インストールと基本的な使い方 |
-| [Configuration](03_configuration/) | 8 | 設定方法の詳細 |
 | [Features](02_features/) | 8 | 各機能の使い方 |
-| [Best Practices](04_best-practices/) | 4 | 推奨される使い方 |
+| [Configuration](03_configuration/) | 8 | 設定方法の詳細 |
+| [Best Practices](04_best-practices/) | 5 | 推奨される使い方 |
+| [Deployment](05_deployment/) | 2 | エンタープライズ導入 |
 | [Troubleshooting](06_troubleshooting/) | 3 | 問題解決 |
-| [Deployment](05_deployment/) | 1 | エンタープライズ導入 |
 | [Reference](07_reference/) | 6 | リファレンス情報 |
 | [Guides](08_guides/) | 9 | 包括的なガイド（コンテキスト管理） |
 
