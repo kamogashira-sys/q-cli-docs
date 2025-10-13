@@ -43,24 +43,24 @@
 
 ```mermaid
 graph LR
-    Chat[チャット機能] --> Core[コア機能]
-    Chat --> Exp[実験的機能]
-    Chat --> Agent[Agent機能]
+    Chat["<a href='01_chat.md'>チャット機能</a>"] --> Core[コア機能]
+    Chat --> Exp["<a href='07_experimental.md'>実験的機能</a>"]
+    Chat --> Agent["<a href='02_agents.md'>Agent機能</a>"]
     
-    Core --> Keyboard[キーボードショートカット]
-    Core --> Autocomplete[オートコンプリート]
+    Core --> Keyboard["<a href='04_keyboard-shortcuts.md'>キーボードショートカット</a>"]
+    Core --> Autocomplete["<a href='03_autocomplete.md'>オートコンプリート</a>"]
     Core --> Context[コンテキスト管理]
     
     Exp --> Knowledge[Knowledge]
-    Exp --> Checkpoint[Checkpoint]
+    Exp --> Checkpoint["<a href='05_checkpoints.md'>Checkpoint</a>"]
     Exp --> TODO[TODO]
     Exp --> Tangent[Tangent Mode]
     Exp --> Thinking[Thinking]
     Exp --> Delegate[Delegate Mode]
     Exp --> ContextUsage[Context Usage Indicator]
     
-    Agent --> SSH[SSH/リモート接続]
-    Agent --> MCP[MCP統合]
+    Agent --> SSH["<a href='06_ssh-remote.md'>SSH/リモート接続</a>"]
+    Agent --> MCP["<a href='../03_configuration/06_mcp-configuration.md'>MCP統合</a>"]
     
     style Exp fill:#fff3cd
     style Knowledge fill:#e3f2fd
