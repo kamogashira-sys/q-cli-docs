@@ -49,11 +49,11 @@ graph LR
     
     Core --> Keyboard["<a href='04_keyboard-shortcuts.md'>キーボードショートカット</a>"]
     Core --> Autocomplete["<a href='03_autocomplete.md'>オートコンプリート</a>"]
-    Core --> Context["<a href='01_chat.md#コンテキスト管理'>コンテキスト管理</a>"]
+    Core --> Context["<a href='01_chat.md#%E3%82%B3%E3%83%B3%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E7%AE%A1%E7%90%86'>コンテキスト管理</a>"]
     
-    Exp --> Knowledge["<a href='01_chat.md#knowledge管理'>Knowledge</a>"]
+    Exp --> Knowledge["<a href='01_chat.md#knowledge%E7%AE%A1%E7%90%86'>Knowledge</a>"]
     Exp --> Checkpoint["<a href='05_checkpoints.md'>Checkpoint</a>"]
-    Exp --> TODO["<a href='01_chat.md#todo管理'>TODO</a>"]
+    Exp --> TODO["<a href='01_chat.md#todo%E7%AE%A1%E7%90%86'>TODO</a>"]
     Exp --> Tangent[Tangent Mode]
     Exp --> Thinking[Thinking]
     Exp --> Delegate[Delegate Mode]
