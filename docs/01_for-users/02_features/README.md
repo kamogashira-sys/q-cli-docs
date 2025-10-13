@@ -43,15 +43,41 @@
 
 ```mermaid
 graph TB
-    Chat[チャット機能] --> Agent[Agent機能]
-    Agent --> Checkpoint[Checkpoint機能]
-    Chat --> Keyboard[キーボードショートカット]
-    Chat --> Autocomplete[オートコンプリート]
+    Chat[チャット機能] --> Core[コア機能]
+    Chat --> Exp[実験的機能]
+    Chat --> Agent[Agent機能]
+    
+    Core --> Keyboard[キーボードショートカット]
+    Core --> Autocomplete[オートコンプリート]
+    Core --> Context[コンテキスト管理]
+    
+    Exp --> Knowledge[Knowledge]
+    Exp --> Checkpoint[Checkpoint]
+    Exp --> TODO[TODO]
+    Exp --> Tangent[Tangent Mode]
+    Exp --> Thinking[Thinking]
+    Exp --> Delegate[Delegate Mode]
+    Exp --> ContextUsage[Context Usage Indicator]
+    
     Agent --> SSH[SSH/リモート接続]
-    Agent --> Exp[実験的機能]
+    Agent --> MCP[MCP統合]
+    
+    style Exp fill:#fff3cd
+    style Knowledge fill:#e3f2fd
+    style Checkpoint fill:#e3f2fd
+    style TODO fill:#e3f2fd
+    style Tangent fill:#e3f2fd
+    style Thinking fill:#e3f2fd
+    style Delegate fill:#e3f2fd
+    style ContextUsage fill:#e3f2fd
 ```
 
-**注**: MCPサーバーの詳細は[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)、Knowledge機能の詳細は[パフォーマンス最適化](../04_best-practices/03_performance.md)を参照してください。
+**凡例**:
+- **コア機能**: 常に利用可能な基本機能
+- **実験的機能**: 設定で有効化が必要な機能（黄色背景）
+- **Agent機能**: Agent設定に依存する機能
+
+**注**: MCPサーバーの詳細は[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)、実験的機能の詳細は[実験的機能ガイド](07_experimental.md)を参照してください。
 
 ---
 
