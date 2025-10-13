@@ -532,3 +532,7 @@ Found 5 relevant files.
 Added to context: auth.py, user_model.py
 ```
 
+---
+
+**次の章**: [第3章: コンテキストの効果と特徴](03_effects.md)
+

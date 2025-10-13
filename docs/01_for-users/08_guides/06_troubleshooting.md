@@ -1050,3 +1050,8 @@ ls -la doc/architecture.md
 - [調査報告書](202510131418_context_best_practices_report.md)
 - [トラブルシューティングガイド](docs/01_for-users/06_troubleshooting/02_common-issues.md)
 - [コマンドリファレンス](docs/01_for-users/07_reference/02_commands.md)
+
+---
+
+**次の章**: [第7章: 高度なトピック](07_advanced.md)
+

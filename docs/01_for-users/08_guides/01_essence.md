@@ -323,3 +323,7 @@ Note: Context modifications via slash command is temporary.
 
 ⚠️ **よくある間違い**: 「すべてAgent Resourcesに入れる」→ トークン制限を超えてしまいます。適切なアプローチを選びましょう。
 
+---
+
+**次の章**: [第2章: コンテキストの仕組みと管理](02_mechanism.md)
+

@@ -1379,3 +1379,8 @@ find . -name "architecture.md"
 - [調査報告書](202510131418_context_best_practices_report.md)
 - [Agent機能ドキュメント](docs/01_for-users/02_features/02_agents.md)
 - [Agent設定ドキュメント](docs/01_for-users/03_configuration/04_agent-configuration.md)
+
+---
+
+**次の章**: [第6章: トラブルシューティング](06_troubleshooting.md)
+
