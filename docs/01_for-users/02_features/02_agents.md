@@ -433,7 +433,7 @@ nano ~/.aws/amazonq/cli-agents/default.json
 }
 ```
 
-> **💡 重要**: `useLegacyMcpJson: false`を設定することで、レガシー設定との混在を防ぎます。
+> **💡 重要**: `useLegacyMcpJson: false`を設定することで、グローバルレガシーMCP設定との混在を防ぎます。ただし、ワークスペースレガシーMCP設定（`.amazonq/mcp.json`）は引き続き読み込まれます。
 
 **3. デフォルトAgentに設定**
 
@@ -795,7 +795,7 @@ graph TB
     A{useLegacyMcpJson} --> B[true]
     A --> C[false]
     B --> D[グローバル + ワークスペース<br/>両方読み込まれる ✅]
-    C --> E[どちらも読み込まれない ✅]
+    C --> E[グローバルは読み込まれない<br/>ワークスペースは読み込まれる ✅]
     
     style A fill:#fff9c4
     style B fill:#c8e6c9
@@ -806,10 +806,11 @@ graph TB
 
 **重要なポイント**:
 - `useLegacyMcpJson: true`の場合、グローバルレガシーMCP設定（`~/.aws/amazonq/mcp.json`）**と**ワークスペースレガシーMCP設定（`.amazonq/mcp.json`）の**両方**が読み込まれる
-- `useLegacyMcpJson: false`の場合、**どちらも**読み込まれない
-- レガシーMCP設定を完全に無効化するには、`useLegacyMcpJson: false`を設定する
+- `useLegacyMcpJson: false`の場合、グローバルレガシーMCP設定は読み込まれないが、ワークスペースレガシーMCP設定は読み込まれる
+- グローバルレガシーMCP設定を無効化するには、`useLegacyMcpJson: false`を設定する
+- ワークスペースレガシーMCP設定を無効化するには、ファイルを削除するか各サーバーに`disabled: true`を設定する
 
-**無効化方法**:
+**グローバルレガシーMCP設定の無効化方法**:
 ```json
 {
   "useLegacyMcpJson": false,
