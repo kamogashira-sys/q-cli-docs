@@ -70,7 +70,7 @@ q chat --agent aws-specialist
 | `/load [ファイル名]` | 保存した会話をファイルから読み込んで復元。過去の会話を継続できる | 以前の会話を再開したい時、別のセッションで保存した会話を引き継ぐ時 |
 | `/tangent` | Tangentモード（会話の分岐）に入る/戻る。キーボードショートカット: `Ctrl+T` | メインの会話を保持したまま、別の話題を試したい時 |
 
-> **⚠️ 注意**: Tangent Mode機能は実験的機能です。`q settings set chat.enableTangentMode true`または`/experiment`で有効化してください。
+> **🧪 実験的機能**: Tangent Mode機能は開発中です。`q settings set chat.enableTangentMode true`または`/experiment`で有効化してください。
 
 ### コンテキスト管理
 
@@ -81,7 +81,7 @@ q chat --agent aws-specialist
 
 ### Knowledge管理
 
-> **⚠️ 注意**: Knowledge機能は実験的機能です。`q settings set chat.enableKnowledge true`で有効化してください。
+> **🧪 実験的機能**: Knowledge機能は開発中です。`q settings set chat.enableKnowledge true`で有効化してください。
 
 | コマンド | 詳細説明 | 使用シーン |
 |---------|---------|-----------|
@@ -94,7 +94,7 @@ q chat --agent aws-specialist
 
 ### Checkpoint管理
 
-> **⚠️ 注意**: Checkpoint機能は実験的機能です。`q settings set EnabledCheckpointing true`で有効化してください。
+> **🧪 実験的機能**: Checkpoint機能は開発中です。`q settings set EnabledCheckpointing true`で有効化してください。詳細は[Checkpoint機能ガイド](05_checkpoints.md)を参照してください。
 
 | コマンド | 詳細説明 | 使用シーン |
 |---------|---------|-----------|
@@ -108,7 +108,7 @@ q chat --agent aws-specialist
 
 ### TODO管理
 
-> **⚠️ 注意**: todos機能は実験的機能です。`q settings set chat.enableTodoList true`で有効化してください。
+> **🧪 実験的機能**: TODO機能は開発中です。`q settings set chat.enableTodoList true`で有効化してください。
 
 | コマンド | 詳細説明 | 使用シーン |
 |---------|---------|-----------|
