@@ -42,8 +42,117 @@ OFFICIAL_CHAT_COMMANDS = {
     "/changelog", "/save", "/load", "/subscribe", "/tools", "/whatsnew"
 }
 
+# 除外すべきセクションのキーワード
+EXCLUDED_SECTION_KEYWORDS = {
+    # API関連
+    'restful', 'rest api', 'rest', 'api', 'エンドポイント', 'endpoint',
+    'http', 'https', 'url', 'uri', 'リソース', 'resource',
+    
+    # 命名規則
+    '命名規則', 'ネーミング', 'naming', 'convention',
+    '規約', 'ルール', 'rule', 'guideline',
+    
+    # パス関連
+    'パス', 'path', 'ファイルパス', 'file path',
+    'ディレクトリ', 'directory', 'フォルダ', 'folder',
+    
+    # 例示関連
+    'example', '例', 'サンプル', 'sample',
+    'デモ', 'demo'
+}
+
+def split_into_sections(content: str) -> List[Dict[str, str]]:
+    """Markdownをセクションに分割
+    
+    Args:
+        content: Markdownファイルの内容
+        
+    Returns:
+        セクションのリスト [{'heading': '見出し', 'content': '内容', 'level': レベル}, ...]
+    """
+    sections = []
+    current_section = {'heading': '', 'content': '', 'level': 0}
+    
+    for line in content.split('\n'):
+        # 見出し行の検出
+        if line.startswith('#'):
+            # 前のセクションを保存
+            if current_section['content'].strip():
+                sections.append(current_section)
+            
+            # 新しいセクションを開始
+            level = len(line) - len(line.lstrip('#'))
+            heading = line.lstrip('#').strip()
+            current_section = {
+                'heading': heading,
+                'content': '',
+                'level': level
+            }
+        else:
+            # 内容を追加
+            current_section['content'] += line + '\n'
+    
+    # 最後のセクションを保存
+    if current_section['content'].strip():
+        sections.append(current_section)
+    
+    return sections
+
+def is_excluded_section(heading: str) -> bool:
+    """除外すべきセクションかどうかを判定
+    
+    Args:
+        heading: セクションの見出し
+        
+    Returns:
+        True: 除外すべき, False: 検証対象
+    """
+    if not heading:
+        return False
+    
+    heading_lower = heading.lower()
+    
+    # 除外キーワードが含まれているかチェック
+    for keyword in EXCLUDED_SECTION_KEYWORDS:
+        if keyword in heading_lower:
+            return True
+    
+    return False
+
+def extract_chat_commands_hybrid(content: str) -> List[str]:
+    """ハイブリッド方式でチャットコマンドを抽出
+    
+    Args:
+        content: Markdownファイルの内容
+        
+    Returns:
+        検証対象のチャットコマンドのリスト
+    """
+    # セクションに分割
+    sections = split_into_sections(content)
+    
+    chat_commands = []
+    
+    for section in sections:
+        heading = section.get('heading', '')
+        
+        # 除外すべきセクションはスキップ
+        if is_excluded_section(heading):
+            continue
+        
+        # このセクション内の/パターンを抽出
+        pattern = r'`(/[a-z]+)`'
+        matches = re.findall(pattern, section['content'])
+        
+        # 既知のチャットコマンドのみを追加
+        for match in matches:
+            if match in OFFICIAL_CHAT_COMMANDS:
+                chat_commands.append(match)
+    
+    return chat_commands
+
 def extract_commands_from_markdown(file_path: Path) -> Dict[str, List]:
-    """Markdownファイルからコマンドとサブコマンドを抽出"""
+    """Markdownファイルからコマンドとサブコマンドを抽出（ハイブリッド方式）"""
     cli_commands = []
     subcommands = []
     chat_commands = []
@@ -62,10 +171,8 @@ def extract_commands_from_markdown(file_path: Path) -> Dict[str, List]:
             subcommand_matches = re.findall(subcommand_pattern, content)
             subcommands = [(cmd, sub) for cmd, sub in subcommand_matches]
             
-            # チャット内コマンドの抽出
-            chat_pattern = r'`(/[a-z]+)`'
-            chat_matches = re.findall(chat_pattern, content)
-            chat_commands = chat_matches
+            # チャット内コマンドの抽出（ハイブリッド方式）
+            chat_commands = extract_chat_commands_hybrid(content)
     
     except Exception as e:
         print(f"⚠️  Error reading {file_path}: {e}")
