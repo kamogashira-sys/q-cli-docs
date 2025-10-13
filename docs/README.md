@@ -179,7 +179,7 @@ Amazon Q CLIの機能と設定を詳しく学びたい方向けのガイドで�
 | 1 | [README](01_for-users/05_deployment/README.md) | 中級〜上級 | Deploymentセクションの概要 |
 | 2 | [エンタープライズ導入ガイド](01_for-users/05_deployment/01_enterprise-deployment.md) | 中級〜上級 | IAM Identity Center、組織導入、Pro契約、段階的ロールアウト、セキュリティ |
 
-#### ベストプラクティス（4文書）
+#### ベストプラクティス（5文書）
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
@@ -187,6 +187,7 @@ Amazon Q CLIの機能と設定を詳しく学びたい方向けのガイドで�
 | 2 | [設定のベストプラクティス](01_for-users/04_best-practices/01_configuration.md) | 中級 | Agent設定、MCP設定、セキュリティ、パフォーマンス最適化 |
 | 3 | [セキュリティ](01_for-users/04_best-practices/02_security.md) | 中級〜上級 | ツール権限管理、認証情報管理、最小権限原則 |
 | 4 | [パフォーマンス最適化](01_for-users/04_best-practices/03_performance.md) | 中級 | コンテキスト管理、MCP最適化、レスポンス時間改善 |
+| 5 | [実践的ユースケース](01_for-users/04_best-practices/04_use-cases.md) | 初級〜中級 | 1日の作業フロー、プロジェクト別設定テンプレート、実践Tips |
 
 **次のステップ**: 問題が発生した場合は、[トラブルシューティング](#トラブルシューティング3文書)を参照してください。
 
