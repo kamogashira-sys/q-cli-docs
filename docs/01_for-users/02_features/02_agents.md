@@ -696,7 +696,7 @@ mv project-x/.amazonq/mcp.json project-x/.amazonq/mcp.json.backup
 
 **避けるべき対比**: ❌ useLegacyMcpJson: true → グローバルレガシー設定が統合され、混乱の原因に
 
-**⚠️ 重要**: ワークスペースレガシーMCP設定（`.amazonq/mcp.json`）は`useLegacyMcpJson`の値に関係なく**常に読み込まれる**（詳細は下記参照）
+**⚠️ 重要**: `useLegacyMcpJson: true`の場合、グローバルとワークスペースの**両方**のレガシーMCP設定が読み込まれます（詳細は下記参照）
 
 ---
 
@@ -788,32 +788,33 @@ q chat "AWS CLIでS3バケットを一覧表示して"
 
 ---
 
-#### 📌 ワークスペースレガシーMCP設定の特別な注意点
+#### 📌 useLegacyMcpJsonフラグの動作
 
 ```mermaid
-graph LR
-    A[useLegacyMcpJson: false] --> B{ワークスペース<br/>.amazonq/mcp.json}
-    B -->|存在する| C[常に読み込まれる ⚠️]
-    B -->|存在しない| D[読み込まれない]
+graph TB
+    A{useLegacyMcpJson} --> B[true]
+    A --> C[false]
+    B --> D[グローバル + ワークスペース<br/>両方読み込まれる ✅]
+    C --> E[どちらも読み込まれない ✅]
     
-    style A fill:#e3f2fd
-    style B fill:#fff9c4
+    style A fill:#fff9c4
+    style B fill:#c8e6c9
     style C fill:#ffcdd2
-    style D fill:#c8e6c9
+    style D fill:#e3f2fd
+    style E fill:#e3f2fd
 ```
 
 **重要なポイント**:
-- `useLegacyMcpJson: false`でも、ワークスペースレガシーMCP設定（`.amazonq/mcp.json`）は**常に読み込まれる**
-- `useLegacyMcpJson`フラグは**グローバルレガシーMCP設定**（`~/.aws/amazonq/mcp.json`）の読込のみを制御
-- 完全に無効化するには、ファイルを削除またはリネームする必要がある
+- `useLegacyMcpJson: true`の場合、グローバルレガシーMCP設定（`~/.aws/amazonq/mcp.json`）**と**ワークスペースレガシーMCP設定（`.amazonq/mcp.json`）の**両方**が読み込まれる
+- `useLegacyMcpJson: false`の場合、**どちらも**読み込まれない
+- レガシーMCP設定を完全に無効化するには、`useLegacyMcpJson: false`を設定する
 
-**対処方法**:
-```bash
-# 削除
-rm .amazonq/mcp.json
-
-# またはリネーム
-mv .amazonq/mcp.json .amazonq/mcp.json.backup
+**無効化方法**:
+```json
+{
+  "useLegacyMcpJson": false,
+  "mcpServers": { ... }
+}
 ```
 
 ---
