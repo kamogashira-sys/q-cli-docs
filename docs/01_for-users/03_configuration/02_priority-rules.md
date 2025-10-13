@@ -39,12 +39,17 @@ graph LR
 
 ---
 
-## 設定の読み込みフロー
+## 設定項目の値決定フロー
+
+**重要**: 各設定項目（ログレベル、Agent名、モデル等）は独立して優先順位が適用されます。
+例えば、ログレベルはコマンドライン引数で指定し、Agent名は環境変数で指定することが可能です。
+
+以下のフロー図は、1つの設定項目の値がどのように決定されるかを示しています：
 
 ```mermaid
 flowchart TD
-    Start[Q CLI起動] --> CheckCLI{コマンドライン<br/>引数あり?}
-    CheckCLI -->|あり| UseCLI[コマンドライン引数を使用]
+    Start[設定項目の値を決定] --> CheckCLI{CLI引数<br/>指定あり?}
+    CheckCLI -->|あり| UseCLI[CLI引数を使用]
     CheckCLI -->|なし| CheckEnv{環境変数<br/>設定あり?}
     
     CheckEnv -->|あり| UseEnv[環境変数を使用]
@@ -56,17 +61,14 @@ flowchart TD
     CheckGlobal -->|あり| UseGlobal[グローバル設定を使用]
     CheckGlobal -->|なし| UseDefault[デフォルト値を使用]
     
-    UseCLI --> Apply[設定を適用]
-    UseEnv --> Apply
-    UseAgent --> Apply
-    UseGlobal --> Apply
-    UseDefault --> Apply
-    
-    Apply --> End[Q CLI実行]
+    UseCLI --> End[値を確定]
+    UseEnv --> End
+    UseAgent --> End
+    UseGlobal --> End
+    UseDefault --> End
     
     style Start fill:#e1f5ff
-    style End fill:#e1f5ff
-    style Apply fill:#c8e6c9
+    style End fill:#c8e6c9
     style UseCLI fill:#ff6b6b,color:#fff
     style UseEnv fill:#ffa500,color:#fff
     style UseAgent fill:#ffd700,color:#000

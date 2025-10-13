@@ -80,11 +80,20 @@ Amazon Q CLIの**全24コマンド**の完全リストです。このリファ�
 AIアシスタントとの対話を開始します。
 
 ```bash
-q chat [OPTIONS]
+q chat [OPTIONS] [INPUT]
 ```
+
+**引数**:
+- `[INPUT]` - 最初に質問する内容
 
 **オプション**:
 - `--agent <name>` - 使用するAgentを指定
+- `--model <model>` - 使用するモデルを指定
+- `-r, --resume` - このディレクトリの前回の会話を再開
+- `-a, --trust-all-tools` - 確認なしで全てのツールの使用を許可
+- `--trust-tools <TOOL_NAMES>` - 特定のツールのみ信頼（例: `--trust-tools=fs_read,fs_write`）
+- `--no-interactive` - ユーザー入力を期待せずに実行
+- `-w, --wrap <WRAP>` - 行の折り返し動作を制御（always/never/auto）
 
 **使用例**:
 ```bash
@@ -93,6 +102,18 @@ q chat
 
 # 特定のAgentでチャット開始
 q chat --agent aws-specialist
+
+# 質問を指定して開始
+q chat "Pythonでファイルを読み込む方法は？"
+
+# 前回の会話を再開
+q chat --resume
+
+# 特定のモデルを使用
+q chat --model anthropic.claude-3-5-sonnet-20241022-v2:0
+
+# 全てのツールを自動承認
+q chat --trust-all-tools
 ```
 
 ---
@@ -222,7 +243,7 @@ q whoami [OPTIONS]
 ```
 
 **オプション**:
-- `--format <format>` - 出力形式（text/json）
+- `--format <format>` - 出力形式（plain/json/json-pretty）
 
 **使用例**:
 ```bash
@@ -230,6 +251,10 @@ q whoami [OPTIONS]
 q whoami
 
 # JSON形式で表示
+q whoami --format json
+
+# 整形されたJSON形式で表示
+q whoami --format json-pretty
 q whoami --format json
 ```
 

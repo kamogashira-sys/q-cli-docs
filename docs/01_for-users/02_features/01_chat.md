@@ -62,11 +62,22 @@ q chat --agent aws-specialist
 | `/exit` | チャットを終了 | `/exit` |
 | `/clear` | 会話履歴をクリア | `/clear` |
 
+### 会話管理
+
+| コマンド | 説明 | 使用例 |
+|---------|------|--------|
+| `/save [ファイル名]` | 現在の会話をファイルに保存 | `/save my-conversation.json` |
+| `/load [ファイル名]` | 保存した会話をファイルから読み込み | `/load my-conversation.json` |
+| `/tangent` | Tangentモード（会話の分岐）に入る/戻る | `/tangent` または `Ctrl+T` |
+
+> **⚠️ 注意**: Tangent Mode機能は実験的機能です。`q settings set chat.enableTangentMode true`または`/experiment`で有効化してください。
+
 ### コンテキスト管理
 
 | コマンド | 説明 | 使用例 |
 |---------|------|--------|
 | `/context` | コンテキスト情報を表示 | `/context` |
+| `/compact` | 応答をコンパクトに表示（トグル） | `/compact` |
 
 ### Knowledge管理
 
@@ -113,12 +124,34 @@ q chat --agent aws-specialist
 | `/agent` | 現在のAgent情報を表示 | `/agent` |
 | `/agent list` | Agent一覧を表示 | `/agent list` |
 | `/agent switch <name>` | Agentを切り替え | `/agent switch aws-specialist` |
+| `/model [モデル名]` | 使用するAIモデルを切り替え | `/model` |
+| `/experiment` | 実験的機能のON/OFF切り替え | `/experiment` |
+| `/prompts` | カスタムプロンプトを管理 | `/prompts` |
 
 ### 開発者向けコマンド
 
 | コマンド | 説明 | 使用例 |
 |---------|------|--------|
 | `/tools` | 利用可能なツール一覧を表示 | `/tools` |
+| `/mcp` | MCPサーバーの状態を確認 | `/mcp` |
+| `/hooks` | カスタムコマンドをAgent実行時に自動実行 | `/hooks` |
+| `/editor [エディタコマンド]` | 外部エディタの設定を管理 | `/editor code` |
+| `/reply [オプション]` | AIの応答スタイルを設定 | `/reply` |
+
+### 情報表示
+
+| コマンド | 説明 | 使用例 |
+|---------|------|--------|
+| `/usage` | Q CLIの使用状況を表示 | `/usage` |
+| `/changelog` | Q CLIの変更履歴を表示 | `/changelog` |
+| `/whatsnew` | 最新バージョンの新機能を表示 | `/whatsnew` |
+| `/subscribe [オプション]` | 情報の購読を管理 | `/subscribe` |
+
+### 問題報告
+
+| コマンド | 説明 | 使用例 |
+|---------|------|--------|
+| `/issue` | Q CLIの問題やフィードバックを報告 | `/issue` |
 
 ---
 

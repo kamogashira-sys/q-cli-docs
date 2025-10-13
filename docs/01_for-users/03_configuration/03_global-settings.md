@@ -97,7 +97,7 @@ Q CLIは**35項目**の設定をサポートしています。
 ```json
 {
   "chat.enableThinking": true,
-  "chat.enableKnowledge": true,
+  "chat.enableKnowledge": false,
   "chat.greeting.enabled": true,
   "chat.editMode": false,
   "chat.enableNotifications": false,
@@ -109,8 +109,8 @@ Q CLIは**35項目**の設定をサポートしています。
   "chat.enableTodoList": true,
   "chat.enableCheckpoint": true,
   "chat.enableDelegate": true,
-  "chat.enableTangentMode": false,
-  "chat.enableContextUsageIndicator": false
+  "chat.enableTangentMode": true,
+  "chat.enableContextUsageIndicator": true
 }
 ```
 
