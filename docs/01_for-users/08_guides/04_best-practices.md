@@ -1486,9 +1486,9 @@ Total: ~3020 tokens
 **確認方法**:
 ```bash
 # ファイル数を確認
-/context show | grep "Files:"
+/context show
 
-# 出力例:
+# 出力例から「Files (XX):」の行を確認
 # Files (25):
 ```
 
@@ -1532,14 +1532,27 @@ ls -lh README.md
 
 **バランスの確認**:
 ```bash
-# ファイル数
-/context show | grep "Files:"
+# /context showで全体を確認
+/context show
 
-# 各ファイルのトークン数
-/context show | grep "tokens"
+# 出力例:
+# 👤 Agent (default):
+#     README.md (1 match)
+#     .amazonq/rules/**/*.md
+# 
+# 💬 Session (temporary):
+#     /home/user/.amazonq/rules/default.md (1 match)
+# 
+# 2 matched files in use:
+# 💬 /home/user/.amazonq/rules/default.md (~400 tkns)
+# 👤 /home/user/projects/myapp/README.md (~2620 tkns)
+# 
+# Total: ~3020 tokens
 
-# 合計トークン数
-/context show | grep "Total tokens:"
+# 確認ポイント:
+# - Files (XX): ファイル数を確認
+# - ~XXX tkns: 各ファイルのトークン数を確認
+# - Total: ~XXXX tokens: 合計トークン数を確認
 ```
 
 📝 **実例**: 最適化の実践
