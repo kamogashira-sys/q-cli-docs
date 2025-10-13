@@ -287,6 +287,461 @@ q chat --agent back-end
 
 ---
 
+## 🔄 レガシーMCP設定からの移行ガイド
+
+### 移行が必要な理由
+
+レガシーMCP設定（`~/.aws/amazonq/mcp.json`、`.amazonq/mcp.json`）は後方互換性のために維持されていますが、Agent設定に統合することで以下のメリットがあります：
+
+- ✅ **プロジェクトごとに異なるMCP設定を使い分け**: プロジェクトAではPostgreSQL、プロジェクトBではFigmaなど
+- ✅ **ツール権限の細かい制御**: 安全なツールは自動承認、危険なツールは毎回確認
+- ✅ **コンテキストファイルの自動読み込み**: プロジェクト固有のREADMEやドキュメントを自動で読み込み
+- ✅ **起動時の自動実行コマンド**: `git status`などを自動実行してAIに現在の状態を伝える
+
+---
+
+### あなたの状況を選んでください
+
+以下の3つのシナリオから、あなたの状況に最も近いものを選んでください：
+
+#### シナリオA: グローバルMCP設定のみ使用中
+- `~/.aws/amazonq/mcp.json`のみ存在
+- すべてのプロジェクトで同じMCP設定を使用
+- → [シナリオAの移行手順](#シナリオa-グローバルmcp設定のみ)へ
+
+#### シナリオB: プロジェクトごとにMCP設定を使い分け
+- `.amazonq/mcp.json`を各プロジェクトに配置
+- プロジェクトごとに異なるMCP設定
+- → [シナリオBの移行手順](#シナリオb-プロジェクトごとにmcp設定を使い分け)へ
+
+#### シナリオC: グローバル + プロジェクト固有の組み合わせ
+- `~/.aws/amazonq/mcp.json`と`.amazonq/mcp.json`の両方を使用
+- 共通設定 + プロジェクト固有設定
+- → [シナリオCの移行手順](#シナリオc-グローバル--プロジェクト固有の組み合わせ)へ
+
+---
+
+### シナリオA: グローバルMCP設定のみ
+
+#### 現在の設定
+
+```bash
+~/.aws/amazonq/mcp.json
+```
+
+```json
+{
+  "mcpServers": {
+    "postgres": {
+      "command": "uvx",
+      "args": ["awslabs.postgres-mcp-server@latest", ...]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"]
+    }
+  }
+}
+```
+
+#### 移行手順
+
+**1. グローバルAgent設定を作成**
+
+```bash
+mkdir -p ~/.aws/amazonq/cli-agents
+nano ~/.aws/amazonq/cli-agents/default.json
+```
+
+**2. 以下の内容を記述**
+
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
+  "name": "default",
+  "description": "デフォルトAgent（全プロジェクト共通）",
+  "mcpServers": {
+    "postgres": {
+      "command": "uvx",
+      "args": ["awslabs.postgres-mcp-server@latest", ...]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"]
+    }
+  },
+  "tools": ["*"],
+  "useLegacyMcpJson": false
+}
+```
+
+> **💡 重要**: `useLegacyMcpJson: false`を設定することで、レガシー設定との混在を防ぎます。
+
+**3. デフォルトAgentに設定**
+
+```bash
+q settings chat.defaultAgent default
+```
+
+**4. 動作確認**
+
+```bash
+q chat
+```
+
+チャット内で確認:
+```
+> /tools
+```
+
+MCPサーバーのツールが表示されることを確認してください。
+
+**5. レガシー設定を削除（動作確認後）**
+
+```bash
+# バックアップ作成
+mv ~/.aws/amazonq/mcp.json ~/.aws/amazonq/mcp.json.backup
+
+# 確認
+q chat
+> /tools  # MCPツールが表示されることを確認
+```
+
+---
+
+### シナリオB: プロジェクトごとにMCP設定を使い分け
+
+#### 現在の設定
+
+```bash
+project-a/.amazonq/mcp.json  # PostgreSQL
+project-b/.amazonq/mcp.json  # GitHub
+project-c/.amazonq/mcp.json  # Figma
+```
+
+#### 移行手順
+
+**各プロジェクトで以下を実施**:
+
+**1. ワークスペースAgent設定を作成**
+
+```bash
+cd project-a
+mkdir -p .amazonq/cli-agents
+nano .amazonq/cli-agents/project-a.json
+```
+
+**2. プロジェクト固有のAgent設定**
+
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
+  "name": "project-a",
+  "description": "Project A用Agent（PostgreSQL）",
+  "mcpServers": {
+    "postgres": {
+      "command": "uvx",
+      "args": ["awslabs.postgres-mcp-server@latest", ...]
+    }
+  },
+  "tools": ["*"],
+  "allowedTools": [
+    "fs_read",
+    "fs_write",
+    "@postgres"
+  ],
+  "resources": [
+    "file://README.md",
+    "file://docs/database-schema.md"
+  ],
+  "useLegacyMcpJson": false
+}
+```
+
+> **💡 ポイント**: `allowedTools`でPostgreSQLツールを自動承認、`resources`でプロジェクト固有のドキュメントを自動読み込み
+
+**3. プロジェクトごとにデフォルトAgentを設定（オプション）**
+
+```bash
+cd project-a
+q settings chat.defaultAgent project-a
+```
+
+**4. 動作確認**
+
+```bash
+cd project-a
+q chat
+```
+
+チャット内で確認:
+```
+> /tools  # PostgreSQLツールが表示されることを確認
+```
+
+**5. レガシー設定を削除（動作確認後）**
+
+```bash
+cd project-a
+mv .amazonq/mcp.json .amazonq/mcp.json.backup
+```
+
+---
+
+### シナリオC: グローバル + プロジェクト固有の組み合わせ
+
+#### 現在の設定
+
+```bash
+~/.aws/amazonq/mcp.json          # 共通: GitHub, Slack
+project-x/.amazonq/mcp.json      # 追加: PostgreSQL
+```
+
+#### 移行手順
+
+**1. グローバルAgent設定を作成（共通設定）**
+
+```bash
+nano ~/.aws/amazonq/cli-agents/base.json
+```
+
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
+  "name": "base",
+  "description": "基本Agent（共通ツール）",
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"]
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"]
+    }
+  },
+  "tools": ["*"],
+  "useLegacyMcpJson": false
+}
+```
+
+**2. プロジェクト固有Agent設定を作成**
+
+```bash
+cd project-x
+nano .amazonq/cli-agents/project-x.json
+```
+
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
+  "name": "project-x",
+  "description": "Project X用Agent",
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"]
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"]
+    },
+    "postgres": {
+      "command": "uvx",
+      "args": ["awslabs.postgres-mcp-server@latest", ...]
+    }
+  },
+  "tools": ["*"],
+  "allowedTools": [
+    "fs_read",
+    "fs_write",
+    "@github",
+    "@slack",
+    "@postgres"
+  ],
+  "resources": [
+    "file://README.md"
+  ],
+  "useLegacyMcpJson": false
+}
+```
+
+> **⚠️ 重要**: プロジェクト固有Agentには、**共通設定も含める**必要があります。Agent設定は独立しており、他のAgent設定を継承しません。
+
+**3. 動作確認**
+
+```bash
+cd project-x
+q chat --agent project-x
+```
+
+チャット内で確認:
+```
+> /tools  # GitHub、Slack、PostgreSQLのツールが表示されることを確認
+```
+
+**4. レガシー設定を削除（動作確認後）**
+
+```bash
+mv ~/.aws/amazonq/mcp.json ~/.aws/amazonq/mcp.json.backup
+mv project-x/.amazonq/mcp.json project-x/.amazonq/mcp.json.backup
+```
+
+---
+
+### 移行のベストプラクティス
+
+#### ✅ 推奨事項
+
+1. **段階的に移行**
+   - 1つのプロジェクトで試してから全体に展開
+   - 問題が発生した場合、影響範囲を最小限に
+
+2. **useLegacyMcpJson: falseを設定**
+   - レガシー設定との混在を防ぐ
+   - 意図しない動作を回避
+
+3. **バックアップを作成**
+   - 移行前に必ずバックアップ
+   - `mv file.json file.json.backup`で簡単にバックアップ
+
+4. **動作確認を徹底**
+   - `/tools`コマンドでMCPツールを確認
+   - 実際にツールを使用して動作確認
+
+5. **プロジェクトごとにAgent作成**
+   - プロジェクト固有の設定を分離
+   - `allowedTools`と`resources`を活用
+
+#### ❌ 避けるべき事項
+
+1. **レガシー設定を残したまま移行**
+   - 重複起動や予期しない動作の原因
+   - 完全に移行してからレガシー設定を削除
+
+2. **useLegacyMcpJson: trueのまま**
+   - グローバルレガシー設定が統合される
+   - 意図しない動作になる可能性
+
+3. **バックアップなしで削除**
+   - 問題発生時に復旧不可
+   - 必ずバックアップを作成
+
+---
+
+### よくある質問
+
+#### Q1: レガシーMCP設定を残しても大丈夫？
+
+**A**: 技術的には可能ですが、推奨しません。
+
+- `useLegacyMcpJson: true`の場合、グローバルレガシー設定（`~/.aws/amazonq/mcp.json`）が統合される
+- ワークスペースレガシー設定（`.amazonq/mcp.json`）は`useLegacyMcpJson`の値に関係なく**常に読み込まれる**
+- 同じ`command`を持つMCPサーバーは重複しない（上位優先度が使用される）
+- 混乱を避けるため、Agent設定に統合後は削除を推奨
+
+#### Q2: 複数のAgentで同じMCP設定を使いたい
+
+**A**: 各Agent設定に同じ`mcpServers`をコピーしてください。
+
+Agent設定は独立しており、他のAgent設定を継承しません。共通のMCP設定を使いたい場合は、各Agent設定ファイルに同じ内容をコピーする必要があります。
+
+または、共通のベースAgentを作成し、プロジェクト固有Agentで拡張する方法もあります（シナリオCを参照）。
+
+#### Q3: ワークスペースレガシーMCP設定は常に読み込まれる？
+
+**A**: はい。`useLegacyMcpJson: false`でも、ワークスペースレガシーMCP設定（`.amazonq/mcp.json`）は読み込まれます。
+
+- `useLegacyMcpJson`フラグは**グローバルレガシーMCP設定**（`~/.aws/amazonq/mcp.json`）の読込のみを制御
+- ワークスペースレガシーMCP設定は常に読み込まれる
+- 完全に無効化するには、ファイルを削除する必要があります
+
+---
+
+### 移行チェックリスト
+
+#### 準備フェーズ
+
+- [ ] **現在のMCP設定を確認**
+  ```bash
+  cat ~/.aws/amazonq/mcp.json
+  cat .amazonq/mcp.json
+  ```
+
+- [ ] **バックアップを作成**
+  ```bash
+  cp ~/.aws/amazonq/mcp.json ~/.aws/amazonq/mcp.json.backup
+  cp .amazonq/mcp.json .amazonq/mcp.json.backup
+  ```
+
+- [ ] **既存のAgent設定を確認**
+  ```bash
+  q agent list
+  ```
+
+#### 移行フェーズ
+
+- [ ] **Agent設定ファイルを作成**
+  ```bash
+  # グローバル（推奨）
+  mkdir -p ~/.aws/amazonq/cli-agents
+  nano ~/.aws/amazonq/cli-agents/my-agent.json
+  
+  # または ワークスペース
+  mkdir -p .amazonq/cli-agents
+  nano .amazonq/cli-agents/my-agent.json
+  ```
+
+- [ ] **Agent設定を記述**
+  - レガシーMCP設定の`mcpServers`の**中身だけ**をコピー
+  - `useLegacyMcpJson: false`を設定
+  - `allowedTools`と`resources`を追加（オプション）
+
+- [ ] **Agent設定を確認**
+  ```bash
+  q agent list  # 新しいAgentが表示されることを確認
+  ```
+
+#### 検証フェーズ
+
+- [ ] **動作確認**
+  ```bash
+  q chat --agent my-agent
+  ```
+  
+  チャット内で確認:
+  ```
+  > /tools  # MCPツールが表示されることを確認
+  ```
+
+- [ ] **デフォルトAgentに設定（オプション）**
+  ```bash
+  q settings chat.defaultAgent my-agent
+  ```
+
+#### クリーンアップフェーズ
+
+- [ ] **レガシーMCP設定を削除**
+  ```bash
+  rm ~/.aws/amazonq/mcp.json
+  rm .amazonq/mcp.json
+  ```
+
+---
+
+### トラブルシューティング
+
+| 問題 | 原因 | 解決策 |
+|------|------|--------|
+| MCPサーバーが起動しない | `useLegacyMcpJson: true`のまま | `useLegacyMcpJson: false`に変更 |
+| MCPサーバーが起動しない | `mcpServers`の構造が間違っている | レガシー設定の`mcpServers`の**中身だけ**をコピー |
+| MCPサーバーが起動しない | JSON構文エラー | `cat file.json \| jq .`で構文チェック |
+| MCPサーバーが重複起動 | レガシー設定が残っている | レガシー設定を削除 |
+| Agentが表示されない | ファイル名と`name`不一致 | ファイル名を`{name}.json`に変更 |
+| ツールが自動承認されない | `allowedTools`が設定されていない | `allowedTools`にツール名を追加 |
+
+---
+
 ## 📝 Agent管理
 
 ### Agent一覧の表示
