@@ -31,8 +31,23 @@ Files (15):
 # コンテキストを確認
 /context show
 
-# トークン使用量を確認
-/context show | grep "Total tokens:"
+# 出力例:
+# 👤 Agent (default):
+#     README.md (1 match)
+# 
+# 💬 Session (temporary):
+#     /home/user/.amazonq/rules/default.md (1 match)
+# 
+# 2 matched files in use:
+# 💬 /home/user/.amazonq/rules/default.md (~400 tkns)
+# 👤 /home/user/projects/myapp/README.md (~2620 tkns)
+# 
+# Total: ~3020 tokens
+
+# 確認ポイント:
+# - ファイル数: "2 matched files in use"
+# - 各ファイルのトークン数: "~XXX tkns"
+# - 合計トークン数: "Total: ~XXXX tokens"
 ```
 
 **関連コマンド**:

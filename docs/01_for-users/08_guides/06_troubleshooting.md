@@ -136,11 +136,23 @@ find .amazonq/rules/ -name "*.md"
 # トークン使用量の確認
 /context show
 
-# ファイル数の確認
-/context show | grep "Files:"
+# 出力例:
+# 👤 Agent (default):
+#     README.md (1 match)
+# 
+# 💬 Session (temporary):
+#     /home/user/.amazonq/rules/default.md (1 match)
+# 
+# 2 matched files in use:
+# 💬 /home/user/.amazonq/rules/default.md (~400 tkns)
+# 👤 /home/user/projects/myapp/README.md (~2620 tkns)
+# 
+# Total: ~3020 tokens
 
-# 各ファイルのトークン数を確認
-/context show | grep "tokens"
+# 確認ポイント:
+# - "2 matched files in use" でファイル数を確認
+# - "~XXX tkns" で各ファイルのトークン数を確認
+# - "Total: ~XXXX tokens" で合計トークン数を確認
 
 # ファイルサイズの確認
 ls -lh README.md
@@ -679,13 +691,21 @@ ls -lh docs/complete-spec.md
 time q chat --agent my-agent
 # real 0m15.234s
 
-# ファイル数
-/context show | grep "Files:"
-# Files (35):
+# 現状確認
+/context show
 
-# トークン使用量
-/context show | grep "Total tokens:"
-# Total tokens: 55000/80000 (68.75%)
+# 出力例:
+# 35 matched files in use:
+# 💬 /home/user/.amazonq/rules/default.md (~400 tkns)
+# 👤 /home/user/projects/myapp/README.md (~2620 tkns)
+# ... (他33ファイル)
+# 
+# Total: ~55000 tokens
+
+# 確認ポイント:
+# - ファイル数: 35個（多い）
+# - 合計トークン数: 55000（68.75%、高い）
+```
 ```
 
 📝 **ステップ2: ファイル数の削減**
@@ -721,13 +741,21 @@ split -l 100 docs/complete-spec.md docs/spec-part-
 time q chat --agent my-agent
 # real 0m5.123s  # 改善: 15秒 → 5秒
 
-# ファイル数
-/context show | grep "Files:"
-# Files (15):  # 改善: 35 → 15
+# 効果確認
+/context show
 
-# トークン使用量
-/context show | grep "Total tokens:"
-# Total tokens: 30000/80000 (37.5%)  # 改善: 68.75% → 37.5%
+# 出力例（改善後）:
+# 15 matched files in use:
+# 💬 /home/user/.amazonq/rules/default.md (~400 tkns)
+# 👤 /home/user/projects/myapp/README.md (~2620 tkns)
+# ... (他13ファイル)
+# 
+# Total: ~30000 tokens
+
+# 改善結果:
+# - ファイル数: 35 → 15（削減）
+# - 合計トークン数: 55000 → 30000（削減）
+# - トークン使用率: 68.75% → 37.5%（改善）
 ```
 
 #### 予防方法
@@ -833,8 +861,20 @@ Files (35):
 📝 **ステップ1: 総トークン数の確認**
 
 ```bash
-/context show | grep "Total tokens:"
-# Total tokens: 30000/80000 (37.5%)
+/context show
+
+# 出力例:
+# 15 matched files in use:
+# 💬 /home/user/.amazonq/rules/default.md (~400 tkns)
+# 👤 /home/user/projects/myapp/README.md (~5000 tkns)
+# 👤 /home/user/projects/myapp/.amazonq/rules/coding.md (~3000 tkns)
+# 👤 /home/user/projects/myapp/docs/complete-spec.md (~15000 tkns)  # 大きい
+# ... (他11ファイル)
+# 
+# Total: ~30000 tokens
+
+# 確認ポイント:
+# - Total: ~30000 tokens → 30000/80000 (37.5%)
 ```
 
 **判断**:
@@ -846,11 +886,13 @@ Files (35):
 
 📝 **ステップ2: ファイルごとのトークン数を確認**
 
-```bash
-/context show | grep "tokens"
-# 1. README.md - 5000 tokens
-# 2. .amazonq/rules/coding.md - 3000 tokens
-# 3. docs/complete-spec.md - 15000 tokens  # 大きい
+上記の`/context show`の出力から、各ファイルのトークン数を確認：
+
+```
+# 確認結果:
+# 1. README.md - ~5000 tkns
+# 2. .amazonq/rules/coding.md - ~3000 tkns
+# 3. docs/complete-spec.md - ~15000 tkns  # 大きい
 ```
 
 **判断**:
