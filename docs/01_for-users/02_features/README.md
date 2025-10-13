@@ -43,24 +43,24 @@
 
 ```mermaid
 graph LR
-    Chat["<a href='01_chat.md'>チャット機能</a>"] --> Core[コア機能]
-    Chat --> Exp["<a href='07_experimental.md'>実験的機能</a>"]
-    Chat --> Agent["<a href='02_agents.md'>Agent機能</a>"]
+    Chat["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/01_chat.md'>チャット機能</a>"] --> Core[コア機能]
+    Chat --> Exp["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/07_experimental.md'>実験的機能</a>"]
+    Chat --> Agent["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/02_agents.md'>Agent機能</a>"]
     
-    Core --> Keyboard["<a href='04_keyboard-shortcuts.md'>キーボードショートカット</a>"]
-    Core --> Autocomplete["<a href='03_autocomplete.md'>オートコンプリート</a>"]
-    Core --> Context["<a href='01_chat.md#%E3%82%B3%E3%83%B3%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E7%AE%A1%E7%90%86'>コンテキスト管理</a>"]
+    Core --> Keyboard["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/04_keyboard-shortcuts.md'>キーボードショートカット</a>"]
+    Core --> Autocomplete["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/03_autocomplete.md'>オートコンプリート</a>"]
+    Core --> Context["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/01_chat.md#%E3%82%B3%E3%83%B3%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E7%AE%A1%E7%90%86'>コンテキスト管理</a>"]
     
-    Exp --> Knowledge["<a href='01_chat.md#knowledge%E7%AE%A1%E7%90%86'>Knowledge</a>"]
-    Exp --> Checkpoint["<a href='05_checkpoints.md'>Checkpoint</a>"]
-    Exp --> TODO["<a href='01_chat.md#todo%E7%AE%A1%E7%90%86'>TODO</a>"]
+    Exp --> Knowledge["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/01_chat.md#knowledge%E7%AE%A1%E7%90%86'>Knowledge</a>"]
+    Exp --> Checkpoint["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/05_checkpoints.md'>Checkpoint</a>"]
+    Exp --> TODO["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/01_chat.md#todo%E7%AE%A1%E7%90%86'>TODO</a>"]
     Exp --> Tangent[Tangent Mode]
     Exp --> Thinking[Thinking]
     Exp --> Delegate[Delegate Mode]
     Exp --> ContextUsage[Context Usage Indicator]
     
-    Agent --> SSH["<a href='06_ssh-remote.md'>SSH/リモート接続</a>"]
-    Agent --> MCP["<a href='../03_configuration/06_mcp-configuration.md'>MCP統合</a>"]
+    Agent --> SSH["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/06_ssh-remote.md'>SSH/リモート接続</a>"]
+    Agent --> MCP["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/03_configuration/06_mcp-configuration.md'>MCP統合</a>"]
     
     style Exp fill:#fff3cd
     style Knowledge fill:#e3f2fd
