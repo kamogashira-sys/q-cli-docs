@@ -30,7 +30,7 @@ cd amazon-q-developer-cli
 
 # パス定義を確認
 grep -r "settings.json\|qchat.log" crates/chat-cli/src/util/directories.rs
-```
+```bash
 
 #### 環境変数
 - [ ] 環境変数名（`Q_LOG_LEVEL`等）
@@ -42,7 +42,7 @@ grep -r "settings.json\|qchat.log" crates/chat-cli/src/util/directories.rs
 ```bash
 # 環境変数定義を確認
 grep -r "Q_LOG_LEVEL\|RUST_LOG" crates/chat-cli/src/util/consts.rs
-```
+```bash
 
 #### コマンド・サブコマンド
 - [ ] コマンド名
@@ -54,7 +54,7 @@ grep -r "Q_LOG_LEVEL\|RUST_LOG" crates/chat-cli/src/util/consts.rs
 ```bash
 # CLI定義を確認
 find crates/chat-cli/src/cli/ -name "*.rs" -exec grep -l "clap\|Command" {} \;
-```
+```bash
 
 ### Phase 2: 動作検証
 
@@ -72,7 +72,7 @@ q chat "test"
 
 # ログファイル生成を確認
 ls -la /run/user/$(id -u)/qlog/qchat.log
-```
+```bash
 
 #### OS別動作差異
 - [ ] Linux動作
@@ -92,7 +92,7 @@ ls -la /run/user/$(id -u)/qlog/qchat.log
 # テストケースを確認
 find . -name "*.rs" -exec grep -l "#\[test\]" {} \;
 grep -A 10 -B 5 "snapshot_.*_path" crates/chat-cli/src/util/directories.rs
-```
+```bash
 
 ---
 
@@ -149,7 +149,7 @@ grep -A 10 -B 5 "snapshot_.*_path" crates/chat-cli/src/util/directories.rs
 ## 📊 チェック記録
 
 ### 実装照合実施記録
-```
+```bash
 日付: ____年__月__日
 担当者: ________________
 対象ドキュメント: ________________
@@ -165,7 +165,7 @@ ________________
 
 修正内容:
 ________________
-```
+```bash
 
 ---
 

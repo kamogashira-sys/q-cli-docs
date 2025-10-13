@@ -715,6 +715,8 @@ q mcp import <config-file>
 
 **実験的機能**: `Context Usage Percentage` を有効にすると、プロンプトにコンテキスト使用率が表示されます
 
+**詳細**: [コンテキスト管理ガイド](../08_guides/README.md) - コンテキストの概念、管理方法、ベストプラクティスを包括的に解説
+
 ---
 
 #### `/tangent` - Tangentモード
@@ -918,6 +920,8 @@ q settings set chat.enableKnowledge true
 - ⚠️ インデックスデータは `.amazonq/` に保存
 
 **関連コマンド**: `/experiment`, `/context`, `/subscribe`
+
+**詳細**: [コンテキスト管理ガイド - Knowledge Bases](../08_guides/03_effects.md#34-knowledge-basesの特徴) - Knowledge Basesの特徴、使い方、ベストプラクティスを解説
 
 ---
 

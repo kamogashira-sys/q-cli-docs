@@ -26,7 +26,7 @@ source $HOME/.cargo/env
 # バージョン確認
 rustc --version
 cargo --version
-```
+```bash
 
 ### Windows
 1. [rustup-init.exe](https://rustup.rs/) をダウンロード
@@ -38,7 +38,7 @@ cargo --version
 ```bash
 rustc --version  # 例: rustc 1.75.0
 cargo --version  # 例: cargo 1.75.0
-```
+```bash
 
 ---
 
@@ -52,13 +52,13 @@ cd amazon-q-developer-cli
 
 # アップストリームを追加
 git remote add upstream https://github.com/aws/amazon-q-developer-cli.git
-```
+```bash
 
 ### 依存関係のインストール
 ```bash
 # Cargoが自動的に依存関係を解決
 cargo build
-```
+```bash
 
 ### ビルド
 ```bash
@@ -67,7 +67,7 @@ cargo build
 
 # リリースビルド
 cargo build --release
-```
+```bash
 
 ### テスト実行
 ```bash
@@ -79,7 +79,7 @@ cargo test test_name
 
 # テストログ表示
 cargo test -- --nocapture
-```
+```bash
 
 ### ローカル実行
 ```bash
@@ -91,7 +91,7 @@ cargo run --release
 
 # 引数を渡す
 cargo run -- --help
-```
+```bash
 
 ---
 
@@ -105,24 +105,24 @@ cargo run -- --help
 ```bash
 rustc --version
 rustup update
-```
+```bash
 
 2. 依存関係を更新
 ```bash
 cargo update
-```
+```bash
 
 3. クリーンビルド
 ```bash
 cargo clean
 cargo build
-```
+```bash
 
 4. キャッシュをクリア
 ```bash
 rm -rf target/
 cargo build
-```
+```bash
 
 #### 問題: リンカーエラー
 **対処法**:
@@ -135,7 +135,7 @@ sudo apt-get install build-essential
 
 # Fedora/RHEL
 sudo dnf install gcc
-```
+```bash
 
 ### テストエラー
 
@@ -144,22 +144,22 @@ sudo dnf install gcc
 1. 環境変数を確認
 ```bash
 env | grep Q_
-```
+```bash
 
 2. テストログを確認
 ```bash
 cargo test -- --nocapture
-```
+```bash
 
 3. 特定のテストのみ実行
 ```bash
 cargo test test_name -- --nocapture
-```
+```bash
 
 4. テストを無視
 ```bash
 cargo test -- --ignored
-```
+```bash
 
 ### よくあるエラー
 
@@ -176,7 +176,7 @@ ls -la ~/.cargo
 
 # 必要に応じて権限を変更
 chmod -R u+w ~/.cargo
-```
+```bash
 
 #### 3. ネットワークエラー
 **原因**: プロキシ設定が必要  
@@ -188,7 +188,7 @@ proxy = "http://proxy.example.com:8080"
 
 [https]
 proxy = "http://proxy.example.com:8080"
-```
+```bash
 
 ---
 
@@ -211,7 +211,7 @@ proxy = "http://proxy.example.com:8080"
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "rust-lang.rust-analyzer"
 }
-```
+```bash
 
 #### デバッグ設定
 `.vscode/launch.json`:
@@ -231,7 +231,7 @@ proxy = "http://proxy.example.com:8080"
     }
   ]
 }
-```
+```bash
 
 ### IntelliJ IDEA
 
@@ -257,7 +257,7 @@ cargo run
 # トレースログを有効化
 export Q_LOG_LEVEL=trace
 cargo run
-```
+```bash
 
 ### ログファイルの確認
 ```bash
@@ -266,7 +266,7 @@ cargo run
 
 # 最新のログを確認
 tail -f ~/.aws/amazonq/logs/q-cli.log
-```
+```bash
 
 ### デバッガーの使用
 ```bash
@@ -275,7 +275,7 @@ tail -f ~/.aws/amazonq/logs/q-cli.log
 
 # コマンドラインでデバッグ
 rust-lldb target/debug/q
-```
+```bash
 
 ---
 

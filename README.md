@@ -28,12 +28,36 @@ graph LR
 3. **Agent設定を作成**: [Agent設定ガイド](docs/01_for-users/03_configuration/04_agent-configuration.md)
 4. **設定を確認**: [設定優先順位ガイド](docs/01_for-users/03_configuration/02_priority-rules.md)
 
+### 🎯 コンテキスト管理を理解する【重要】
+
+**Q CLIを効果的に使うための最重要ガイド**
+
+Q CLIの応答品質は**コンテキスト管理**で決まります。以下のガイドで体系的に学習できます：
+
+#### 📚 **[コンテキスト管理完全ガイド](docs/01_for-users/08_guides/README.md)** ← 必読！
+
+全8章構成の包括的ガイド：
+1. **[本質編](docs/01_for-users/08_guides/01_essence.md)** - コンテキストとは何か（15分）
+2. **[仕組み編](docs/01_for-users/08_guides/02_mechanism.md)** - 内部動作の理解（20分）
+3. **[効果編](docs/01_for-users/08_guides/03_effects.md)** - 何ができるか（15分）
+4. **[ベストプラクティス編](docs/01_for-users/08_guides/04_best-practices.md)** - 設計原則と実装パターン（45分）
+5. **[実践ガイド編](docs/01_for-users/08_guides/05_practical-guide.md)** - プロジェクト別実装例（30分）
+6. **[トラブルシューティング編](docs/01_for-users/08_guides/06_troubleshooting.md)** - 問題解決（20分）
+7. **[上級編](docs/01_for-users/08_guides/07_advanced.md)** - 最適化とチーム開発（20分）
+8. **[リファレンス編](docs/01_for-users/08_guides/08_reference.md)** - 技術仕様とFAQ（15分）
+
+> **💡 学習の進め方**
+> - **初心者**: 第1章→第3章→第5章（基本を理解して実践）
+> - **中級者**: 第4章→第5章→第6章（ベストプラクティスを習得）
+> - **上級者**: 第7章→第8章（最適化とチーム開発）
+
 ### トラブルシューティング
 
 問題が発生した場合：
-1. [トラブルシューティングガイド](docs/01_for-users/06_troubleshooting/02_common-issues.md)を確認
-2. [設定優先順位ガイド](docs/01_for-users/03_configuration/02_priority-rules.md)で優先順位を理解
-3. [GitHub ISSUE](https://github.com/aws/amazon-q-developer-cli/issues)で既知の問題を検索
+1. [コンテキスト管理トラブルシューティング](docs/01_for-users/08_guides/06_troubleshooting.md)を確認
+2. [一般的なトラブルシューティング](docs/01_for-users/06_troubleshooting/02_common-issues.md)を確認
+3. [設定優先順位ガイド](docs/01_for-users/03_configuration/02_priority-rules.md)で優先順位を理解
+4. [GitHub ISSUE](https://github.com/aws/amazon-q-developer-cli/issues)で既知の問題を検索
 
 ---
 
@@ -61,10 +85,10 @@ Amazon Q Developer CLI（Q CLI）は、AWSが提供する**AI駆動**の開発�
 
 ### 🎯 **[→ ドキュメント全体を見る（docs/README.md）](docs/README.md)** ← 最初にここを確認！
 
-このプロジェクトには**69文書**の体系的なドキュメントがあります。
+このプロジェクトには**78文書**の体系的なドキュメントがあります。
 
 **[ドキュメントサイト](docs/README.md)** では以下が確認できます：
-- 📊 全69文書の一覧（カテゴリ別、対象ユーザー別）
+- 📊 全78文書の一覧（カテゴリ別、対象ユーザー別）
 - 🎯 目的別ガイド（やりたいことから適切なドキュメントを発見）
 - 📈 統計情報とナビゲーション
 

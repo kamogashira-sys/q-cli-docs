@@ -80,7 +80,7 @@ Agentは、Q CLIの動作を定義する設定ファイルです。以下をカ�
 | `tools` | array | ["*"] | 利用可能ツール一覧 |
 | `toolAliases` | object | {} | ツール名エイリアス |
 | `allowedTools` | array | DEFAULT_APPROVE | 自動承認ツール一覧 |
-| `resources` | array | デフォルトリソース | リソースファイル |
+| `resources` | array | デフォルトリソース | リソースファイル（[詳細](../08_guides/README.md)） |
 | `hooks` | object | {} | フック設定 |
 | `toolsSettings` | object | {} | ツール固有設定 |
 | `useLegacyMcpJson` | boolean | true | レガシーMCP設定の使用 |

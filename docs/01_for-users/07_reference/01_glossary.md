@@ -59,6 +59,8 @@ MCPプロトコルを実装したサーバープロセス。Q CLIに追加機能
 
 **コマンド**: `/knowledge add`, `/knowledge search`, `/knowledge show`
 
+**詳細**: [コンテキスト管理ガイド - Knowledge Bases](../08_guides/03_effects.md#34-knowledge-basesの特徴)
+
 ---
 
 ### Checkpoint（チェックポイント）
@@ -73,12 +75,14 @@ MCPプロトコルを実装したサーバープロセス。Q CLIに追加機能
 ### Context（コンテキスト）
 AIが参照する情報の集合。以下を含みます：
 - 会話履歴
-- 参照ファイル
+- 参照ファイル（Agent Resources, Session Context）
 - Knowledge Base
 - MCPリソース
 - システムプロンプト
 
-**管理コマンド**: `/compact`（圧縮）, `/clear`（クリア）
+**管理コマンド**: `/context show`, `/context add`, `/context rm`, `/compact`（圧縮）, `/clear`（クリア）
+
+**詳細**: [コンテキスト管理ガイド](../08_guides/README.md)
 
 ---
 
