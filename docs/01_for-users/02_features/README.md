@@ -57,7 +57,7 @@ graph LR
     Exp --> Tangent[Tangent Mode]
     Exp --> Thinking[Thinking]
     Exp --> Delegate[Delegate Mode]
-    Exp --> ContextUsage[Context Usage Indicator]
+    Exp --> ContextUsage["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/08_guides/04_best-practices.md#%E6%89%8B%E9%A0%861-context-usage-indicator-%E3%81%A7%E5%B8%B8%E6%99%82%E7%9B%A3%E8%A6%96%E6%8E%A8%E5%A5%A8'>Context Usage Indicator</a>"]
     
     Agent --> SSH["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/06_ssh-remote.md'>SSH/リモート接続</a>"]
     Agent --> MCP["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/03_configuration/06_mcp-configuration.md'>MCP統合</a>"]
