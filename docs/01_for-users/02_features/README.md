@@ -42,7 +42,7 @@
 ### 機能関係図
 
 ```mermaid
-graph TB
+graph LR
     Chat[チャット機能] --> Core[コア機能]
     Chat --> Exp[実験的機能]
     Chat --> Agent[Agent機能]
