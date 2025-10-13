@@ -794,8 +794,8 @@ q chat "AWS CLIでS3バケットを一覧表示して"
 graph TB
     A{useLegacyMcpJson} --> B[true]
     A --> C[false]
-    B --> D[グローバル + ワークスペース<br/>両方読み込まれる ✅]
-    C --> E[グローバルは読み込まれない<br/>ワークスペースは読み込まれる ✅]
+    B --> D["グローバル + ワークスペース<br/>両方読み込まれる ✅"]
+    C --> E["グローバル: 読み込まれない<br/>ワークスペース: 読み込まれる ✅"]
     
     style A fill:#fff9c4
     style B fill:#c8e6c9
