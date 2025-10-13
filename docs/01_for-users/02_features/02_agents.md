@@ -13,25 +13,277 @@ Agentは、Amazon Q CLIの動作をカスタマイズする機能です。シス
 
 ## 🤖 Agentとは
 
-### Agentでできること
+### 5分で理解するAgent
 
-Agentを使うことで以下をカスタマイズできます：
+**Agent = あなた専用のAIアシスタント設定**
 
-1. **システムプロンプト**
-   - AIの振る舞いを定義
-   - 専門分野に特化した応答
+Amazon Q Developerを**タスクごとに最適化**する機能です。
 
-2. **利用可能なツール**
-   - 使用するツールを制限
-   - セキュリティ向上
+---
 
-3. **MCPサーバー連携**
-   - 外部ツールとの統合
-   - カスタム機能の追加
+### ステップ1: Agentの基本を理解する
 
-4. **リソースファイル**
-   - コンテキストファイルの自動読み込み
-   - プロジェクト固有の設定
+#### Agentがない場合
+```bash
+q chat
+→ すべてのツールが有効
+→ 汎用的な応答
+→ 毎回設定を説明する必要がある
+```
+
+#### Agentがある場合
+```bash
+q chat --agent my-project
+→ プロジェクト専用のツールのみ
+→ プロジェクトに特化した応答
+→ 設定を自動で読み込み
+```
+
+---
+
+### ステップ2: 実際の問題を見てみる
+
+#### 問題: 「テーブル」の混乱
+
+あなたがウェブアプリケーション開発者だとします：
+
+**シーン1: デザイナーとの会話**
+- あなた: 「テーブルのレイアウトを確認したい」
+- デザイナー: 「Figmaで確認できます」
+- → HTMLテーブルの話
+
+**シーン2: データベース管理者との会話**
+- あなた: 「テーブルのスキーマを確認したい」
+- DBA: 「PostgreSQLで確認できます」
+- → SQLテーブルの話
+
+**問題**: Amazon Q Developerに「テーブルはいくつありますか？」と聞いた時、どちらの意味か分からない！
+
+#### 解決: Agentで文脈を明確化
+
+```bash
+# フロントエンド作業時
+q chat --agent front-end
+> テーブルはいくつありますか？
+→ AIはHTMLテーブルとして理解（Figmaツールを使用）
+
+# バックエンド作業時
+q chat --agent back-end
+> テーブルはいくつありますか？
+→ AIはSQLテーブルとして理解（PostgreSQLツールを使用）
+```
+
+---
+
+### ステップ3: Agentでできること（4つの機能）
+
+#### 機能1: MCPサーバーの切り替え
+
+**何ができる？**: タスクに必要な外部ツールだけを有効化
+
+**例**:
+```json
+// front-end.json
+{
+  "mcpServers": {
+    "Figma": {
+      "command": "npx",
+      "args": ["mcp-remote", "http://127.0.0.1:3845/sse"]
+    }
+  }
+}
+```
+
+**効果**: デザイン作業時はFigmaツールのみ、データベース作業時はPostgreSQLツールのみ
+
+#### 機能2: ツール権限の制御
+
+**何ができる？**: どのツールを自動承認するか制御
+
+**例**:
+```json
+{
+  "allowedTools": [
+    "fs_read",        // ファイル読み取り: 自動承認
+    "fs_write",       // ファイル書き込み: 自動承認
+    "@Figma"          // Figmaツール全て: 自動承認
+  ]
+}
+```
+
+**効果**: 安全なツールは自動承認、危険なツールは毎回確認
+
+#### 機能3: コンテキストファイルの自動読み込み
+
+**何ができる？**: プロジェクト固有の設定を自動で読み込み
+
+**例**:
+```json
+{
+  "resources": [
+    "file://README.md",
+    "file://~/.aws/amazonq/react-preferences.md"
+  ]
+}
+```
+
+**効果**: 毎回説明しなくても、AIがプロジェクトを理解
+
+#### 機能4: 起動時の自動実行
+
+**何ができる？**: Agent起動時にコマンドを自動実行
+
+**例**:
+```json
+{
+  "hooks": {
+    "agentSpawn": [
+      { "command": "git status" },
+      { "command": "npm run" }
+    ]
+  }
+}
+```
+
+**効果**: 現在の状態を自動でAIに伝える
+
+---
+
+### ステップ4: 実践例
+
+#### 例1: フロントエンド開発者向けAgent
+
+**用途**: React + Figmaでのフロントエンド開発
+
+**設定ファイル**: `~/.aws/amazonq/cli-agents/front-end.json`
+
+```json
+{
+  "name": "front-end",
+  "description": "React + Figmaでのフロントエンド開発用",
+  "mcpServers": {
+    "Figma": {
+      "command": "npx",
+      "args": ["mcp-remote", "http://127.0.0.1:3845/sse"]
+    }
+  },
+  "tools": ["*"],
+  "allowedTools": [
+    "fs_read",
+    "fs_write",
+    "report_issue",
+    "@Figma"
+  ],
+  "resources": [
+    "file://README.md",
+    "file://~/.aws/amazonq/react-preferences.md"
+  ],
+  "hooks": {
+    "agentSpawn": [
+      { "command": "git status" }
+    ]
+  }
+}
+```
+
+**使い方**:
+```bash
+q chat --agent front-end
+> Figmaのデザインを確認して、Reactコンポーネントを作成して
+```
+
+**効果**:
+- ✅ Figmaツールが自動で有効
+- ✅ React設定が自動で読み込まれる
+- ✅ Git状態が自動で確認される
+- ✅ ファイル操作が自動承認される
+
+#### 例2: バックエンド開発者向けAgent
+
+**用途**: Python + PostgreSQLでのバックエンド開発
+
+**設定ファイル**: `~/.aws/amazonq/cli-agents/back-end.json`
+
+```json
+{
+  "name": "back-end",
+  "description": "Python + PostgreSQLでのバックエンド開発用",
+  "mcpServers": {
+    "PostgreSQL": {
+      "command": "uvx",
+      "args": [
+        "awslabs.postgres-mcp-server@latest",
+        "--resource_arn", "arn:aws:rds:us-east-1:xxxxxxxxxxxx:cluster:xxxxxx",
+        "--secret_arn", "arn:aws:secretsmanager:us-east-1:xxxxxxxxxxxx:secret:xxxxx",
+        "--database", "dev",
+        "--region", "us-east-1",
+        "--readonly", "True"
+      ]
+    }
+  },
+  "tools": ["*"],
+  "allowedTools": [
+    "fs_read",
+    "report_issue",
+    "@PostgreSQL/get_table_schema"
+  ],
+  "resources": [
+    "file://README.md",
+    "file://~/.aws/amazonq/python-preferences.md",
+    "file://~/.aws/amazonq/sql-preferences.md"
+  ],
+  "hooks": {
+    "agentSpawn": [
+      { "command": "git status" }
+    ]
+  }
+}
+```
+
+**使い方**:
+```bash
+q chat --agent back-end
+> データベースのスキーマを確認して、FastAPIのエンドポイントを作成して
+```
+
+**効果**:
+- ✅ PostgreSQLツールが自動で有効
+- ✅ Python/SQL設定が自動で読み込まれる
+- ✅ データベースは読み取り専用（安全）
+- ✅ ファイル書き込みは毎回確認（安全）
+
+---
+
+### ステップ5: 今すぐ始める
+
+#### 最初の一歩
+
+1. **デフォルトAgentを確認**
+   ```bash
+   q agent list
+   ```
+
+2. **Agentを切り替えてみる**
+   ```bash
+   q chat --agent default
+   ```
+
+3. **自分のAgentを作成する**
+   - [Agent設定ガイド](../03_configuration/04_agent-configuration.md)を参照
+
+#### 推奨する学習順序
+
+1. ✅ まずはデフォルトAgentで慣れる
+2. ✅ 既存のAgentを試す（`q agent list`で確認）
+3. ✅ 簡単なAgentを作成する（MCPサーバーなし）
+4. ✅ MCPサーバーを追加する
+5. ✅ 複数のAgentを使い分ける
+
+#### 参考資料
+
+- [AWSブログ: Amazon Q Developer CLI カスタムエージェントで開発の混乱を乗り越えよう](https://aws.amazon.com/jp/blogs/news/overcome-development-disarray-with-amazon-q-developer-cli-custom-agents/)
+- [Agent設定ガイド](../03_configuration/04_agent-configuration.md)
+- [MCP設定ガイド](../03_configuration/06_mcp-configuration.md)
 
 ---
 
