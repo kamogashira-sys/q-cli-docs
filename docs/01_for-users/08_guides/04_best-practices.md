@@ -1255,42 +1255,48 @@ Part3では、パフォーマンス最適化とセキュリティ設計の思考
 
 #### 4.5.1 トークン使用量の監視方法
 
-#### 手順1: `/context show`で確認
+#### 手順1: Context Usage Indicator で常時監視（推奨）
 
-**コマンド**:
+**実験的機能の有効化**:
+
+Context Usage Indicator は実験的機能です。プロンプトにトークン使用率が常時表示されます。
+
 ```bash
-/context show
+# 方法1: /experimentコマンドで有効化（推奨）
+> /experiment
+# メニューから「Context Usage Indicator」を選択してONに
+
+# 方法2: 設定コマンドで有効化
+q settings set chat.enableContextUsageIndicator true
 ```
 
-**出力例**:
-```
-Context Information:
-Total tokens: 30000/80000 (37.5%)
+**プロンプトでの表示**:
 
-Files (15):
-1. README.md - 5000 tokens
-2. .amazonq/rules/coding.md - 3000 tokens
-3. .amazonq/rules/api-design.md - 2500 tokens
-4. architecture.md - 4000 tokens
-5. api-spec.md - 3500 tokens
-...
+有効化すると、プロンプトにトークン使用率が常時表示されます：
+
+```
+[default] 37% > 
+[default] 61% > 
+[default] 73% > ⚠️  警告レベル
 ```
 
 **確認すべきポイント**:
-- 総トークン数
-- 使用率（%）
-- ファイルごとのトークン数
+- プロンプトの%表示を確認
+- 作業中に常時監視できる
+- 75%に近づいたら最適化を検討
 
-💡 **初心者向けポイント**: `/context show`は定期的に実行しましょう。
+💡 **初心者向けポイント**: プロンプトの%表示を見るだけで、トークン使用量を常時監視できます。
+
+📝 **詳細**: Context Usage Indicatorの詳細は[実験的機能ガイド](../../02_features/07_experimental.md#-context-usage-indicator)を参照
 
 #### 手順2: 75%制限との比較
 
 **判断基準**:
-- **0-50%**: 安全圏 - 問題なし
-- **50-60%**: 注意 - 監視を強化
-- **60-70%**: 警戒 - 最適化を検討
-- **70-75%**: 危険 - すぐに最適化
-- **75%以上**: 制限超過 - 自動的にファイルがドロップ
+- **0-50%**: 🟢 安全圏 - 問題なし
+- **50-60%**: 🟡 注意 - 監視を強化
+- **60-70%**: 🟠 警戒 - 最適化を検討
+- **70-75%**: 🔴 危険 - すぐに最適化
+- **75%以上**: ⛔ 制限超過 - 自動的にファイルがドロップ
 
 **対策のタイミング**:
 ```
@@ -1301,7 +1307,61 @@ Files (15):
 75%以上 → 緊急対応
 ```
 
-#### 手順3: 必要に応じて調整
+#### 手順3: 詳細確認が必要な場合は `/context show`
+
+**使用タイミング**:
+- %が高くなった時の原因調査
+- どのファイルがトークンを消費しているか確認
+- 最適化の対象ファイルを特定
+
+**コマンド**:
+```bash
+/context show
+```
+
+**出力例**:
+```
+👤 Agent (default):
+    README.md (1 match)
+    .amazonq/rules/**/*.md
+
+💬 Session (temporary):
+    /home/user/.amazonq/rules/default.md (1 match)
+
+2 matched files in use:
+💬 /home/user/.amazonq/rules/default.md (~400 tkns)
+👤 /home/user/projects/myapp/README.md (~2620 tkns)
+
+Total: ~3020 tokens
+```
+
+**確認すべきポイント**:
+- 総トークン数（`Total: ~XXXX tokens`）
+- Agent設定のファイル（👤マーク）
+- Session追加のファイル（💬マーク）
+- 各ファイルのトークン数（`~XXX tkns`）
+
+📝 **実例**: トークン使用量が高い場合の調査
+
+**状況**: プロンプトに `[default] 73%` と表示
+
+**ステップ1**: `/context show`で詳細確認
+```bash
+/context show
+```
+
+**ステップ2**: トークン数の多いファイルを特定
+```
+👤 /home/user/projects/myapp/README.md (~5000 tkns)  ← 大きい
+👤 /home/user/projects/myapp/docs/api.md (~3500 tkns)  ← 大きい
+💬 /home/user/.amazonq/rules/default.md (~400 tkns)
+```
+
+**ステップ3**: 最適化を実施
+- 大きいファイルを除外
+- または、必要な部分のみを抽出
+
+#### 手順4: 必要に応じて調整
 
 **調整方法**:
 1. 不要なファイルを削除
