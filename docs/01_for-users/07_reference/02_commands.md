@@ -709,7 +709,48 @@ q mcp import <config-file>
 
 **使用シーン**: コンテキストウィンドウの使用状況を確認する / どの情報がコンテキストに含まれているか確認する
 
-**使用方法**: `/context`
+**使用方法**: 
+```
+/context [サブコマンド] [オプション]
+```
+
+**サブコマンド**:
+- `show`: コンテキスト情報を表示
+- `add <path>`: ファイルをコンテキストに追加
+- `remove <pattern>`: ファイルをコンテキストから削除
+- `clear`: すべてのコンテキストファイルをクリア
+
+**コンテキストファイルの制限**:
+- 最大サイズ: コンテキストウィンドウの75%
+- 超過時: 自動的にドロップされ、警告が表示される
+
+**`add`コマンドのオプション**:
+- `--force`: サイズ制限を無視して強制追加
+
+**使用例**:
+```bash
+# コンテキスト情報を表示
+/context show
+
+# ファイルを追加
+/context add README.md
+
+# サイズ制限を無視して追加（注意が必要）
+/context add --force large-file.md
+
+# パターンで削除
+/context remove "*.test.js"
+
+# すべてクリア
+/context clear
+```
+
+**警告メッセージ**:
+```
+Total token count exceeds limit: 150000.
+The following files will be automatically dropped when interacting with Q.
+Consider removing them.
+```
 
 **関連コマンド**: `/clear`, `/knowledge`, `/experiment`, `/compact`
 
@@ -1065,9 +1106,26 @@ Collecting logs...
 
 **目的**: Q CLIの使用状況を表示する
 
-**使用シーン**: トークン使用量を確認する / コストを把握する
+**使用シーン**: トークン使用量を確認する / コストを把握する / コンテキストウィンドウの使用率を確認する
 
 **使用方法**: `/usage`
+
+**表示内容**:
+- コンテキストトークン数
+- アシスタントトークン数
+- ツールトークン数
+- ユーザートークン数
+- 合計使用率（%）
+
+**使用率の計算式**:
+```
+使用率 = (合計トークン数 / コンテキストウィンドウサイズ) × 100
+```
+
+**推奨アクション**:
+- 使用率が70%を超えたら: `/compact`の実行を検討
+- 使用率が90%を超えたら: `/compact`の実行を推奨
+- 使用率が100%に近づくと: 自動要約が実行される
 
 **関連コマンド**: `/context`, `/model`, `/compact`
 
@@ -1107,7 +1165,31 @@ Collecting logs...
 - 新しいトピックを始める前
 - 複雑なツール操作の後
 
-**使用方法**: `/compact`
+**使用方法**: 
+```
+/compact [オプション]
+```
+
+**オプション**:
+- `--messages-to-exclude <N>`: 最新のN個のメッセージペアを要約から除外（デフォルト: 0）
+- `--truncate-large-messages <true|false>`: 大きなメッセージを切り詰める（デフォルト: false）
+- `--max-message-length <N>`: メッセージの最大長（デフォルト: 400,000文字）
+- `--show-summary`: 要約内容を表示
+
+**使用例**:
+```bash
+# 基本的な要約
+/compact
+
+# 最新の2個のメッセージペアを除外
+/compact --messages-to-exclude 2
+
+# 大きなメッセージを切り詰める
+/compact --truncate-large-messages true --max-message-length 100000
+
+# 要約を表示
+/compact --show-summary
+```
 
 **動作**: 
 - AI生成の要約を作成
