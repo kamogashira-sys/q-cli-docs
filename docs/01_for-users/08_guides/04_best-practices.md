@@ -415,6 +415,252 @@ credentials/
 
 ---
 
+### 4.1.5 コンテキストサイズとチューニング
+
+#### なぜ重要か
+
+1. **制限値の理解**: Q CLIには変更できない制限値がある
+   - ハードコードされた値を理解する
+   - 制限内で最適化する
+   - 制限を超えた場合の対処法を知る
+
+2. **パフォーマンス最適化**: 適切なサイズ管理で快適な動作
+   - 応答速度の向上
+   - メモリ使用量の削減
+   - 安定した動作
+
+3. **トラブル回避**: 制限値を超えた場合の問題を防ぐ
+   - 自動ドロップの回避
+   - エラーの防止
+   - 予期しない動作の回避
+
+#### ハードコードされた制限値
+
+Q CLIには以下のハードコードされた制限値があり、ユーザーが変更できません：
+
+**メッセージサイズ制限**:
+
+| 項目 | 制限値 | 説明 |
+|------|--------|------|
+| ユーザーメッセージ | 400,000文字 | 実際のサービス制限は600,000文字 |
+| ツールレスポンス | 400,000文字 | 実際のサービス制限は800,000文字 |
+| 会話履歴 | 10,000メッセージ | 会話履歴の最大長 |
+| カレントディレクトリパス | 256文字 | パスの最大長 |
+
+**画像関連制限**:
+
+| 項目 | 制限値 |
+|------|--------|
+| 1リクエストあたりの最大画像数 | 10枚 |
+| 1画像あたりの最大サイズ | 10MB |
+
+**コンテキストウィンドウ**:
+
+| 項目 | 値 | 説明 |
+|------|-----|------|
+| デフォルトコンテキストウィンドウ | 200,000トークン | モデル情報が取得できない場合 |
+| コンテキストファイル最大サイズ | コンテキストウィンドウの75% | 自動計算 |
+
+**計算例**:
+- Claude Sonnet 4 (200,000トークン): 最大 150,000 トークン
+- GPT (128,000トークン): 最大 96,000 トークン
+
+💡 **初心者向けポイント**: これらの値は変更できません。制限内で最適化することが重要です。
+
+#### 設定可能な項目
+
+唯一設定可能なコンテキスト関連項目：
+
+**自動コンパクションの制御**:
+
+```bash
+# 自動要約を無効化（非推奨）
+q settings set chat.disableAutoCompaction true
+
+# 自動要約を有効化（デフォルト）
+q settings set chat.disableAutoCompaction false
+```
+
+⚠️ **注意**: 自動要約を無効化すると、コンテキストウィンドウがオーバーフローした際にエラーが発生する可能性があります。
+
+#### コンテキスト管理のベストプラクティス
+
+**1. 定期的な使用状況確認**
+
+```bash
+# 使用率を確認
+/usage
+
+# 出力例:
+# Context tokens: 45000
+# Assistant tokens: 12000
+# Tool tokens: 8000
+# User tokens: 5000
+# Total: 70000/200000 (35%)
+
+# 使用率が80%を超えたら要約を検討
+/compact
+```
+
+**2. コンテキストファイルの管理**
+
+```bash
+# コンテキストファイルの状態確認
+/context show
+
+# 出力例:
+# Total tokens: 30000/150000 (20%)
+# Files: 5
+# - README.md: 5000 tokens
+# - architecture.md: 8000 tokens
+# - .amazonq/rules/coding.md: 3000 tokens
+# - docs/api.md: 10000 tokens
+# - CONTRIBUTING.md: 4000 tokens
+
+# 不要なファイルを削除
+/context remove docs/api.md
+
+# すべてクリア
+/context clear
+```
+
+**3. 大きなファイルの扱い**
+
+コンテキストファイルの合計サイズはコンテキストウィンドウの75%まで：
+
+```bash
+# 通常の追加（75%制限あり）
+/context add large-file.md
+
+# 警告が表示される場合:
+# Total token count exceeds limit: 150000.
+# The following files will be automatically dropped when interacting with Q.
+# Consider removing them.
+
+# 強制追加（注意が必要）
+/context add --force large-file.md
+```
+
+⚠️ **注意**: `--force`フラグを使用すると制限を無視できますが、パフォーマンスに影響する可能性があります。
+
+**4. 会話の要約戦略**
+
+```bash
+# 基本的な要約
+/compact
+
+# 最新の会話を保持して要約（最新3個のメッセージペアを除外）
+/compact --messages-to-exclude 3
+
+# 大きなメッセージを切り詰めて要約
+/compact --truncate-large-messages true --max-message-length 100000
+
+# 要約内容を確認
+/compact --show-summary
+```
+
+#### 何を意識するか
+
+- **使用率が80%を超えたら要約を検討**
+- **コンテキストファイルは75%制限を意識**
+- **自動要約は有効のまま（デフォルト）が推奨**
+- **`--force`フラグは慎重に使用**
+
+💡 **初心者向けポイント**: 定期的に`/usage`と`/context show`で状況を確認する習慣をつけましょう。
+
+📝 **良い例** - 定期的な監視:
+
+```bash
+# 作業開始時に確認
+/usage
+/context show
+
+# 使用率が高い場合は要約
+/compact --messages-to-exclude 2
+
+# 不要なファイルを削除
+/context remove old-design.md
+```
+
+📝 **悪い例** - 無計画な使用:
+
+```bash
+# 確認せずに大量のファイルを追加
+/context add **/*.md
+
+# 自動要約を無効化
+q settings set chat.disableAutoCompaction true
+
+# 強制追加を乱用
+/context add --force huge-file1.md
+/context add --force huge-file2.md
+/context add --force huge-file3.md
+```
+
+⚠️ **よくある間違い**: 
+- 使用状況を確認せずにファイルを追加し続ける
+- 自動要約を無効化して放置する
+- `--force`フラグを安易に使用する
+
+#### トラブルシューティング
+
+**問題1: コンテキストウィンドウがすぐに一杯になる**
+
+症状:
+- 頻繁に自動要約が実行される
+- 「conversation is getting lengthy」という警告が表示される
+
+解決策:
+```bash
+# 1. 使用状況を確認
+/usage
+
+# 2. コンテキストファイルを確認
+/context show
+
+# 3. 不要なファイルを削除
+/context remove <pattern>
+
+# 4. 会話を要約
+/compact
+```
+
+**問題2: ファイルが自動的にドロップされる**
+
+症状:
+```
+Total token count exceeds limit: 150000.
+The following files will be automatically dropped when interacting with Q.
+Consider removing them.
+```
+
+解決策:
+```bash
+# 1. 重要なファイルのみを追加
+/context clear
+/context add README.md
+/context add architecture.md
+
+# 2. 強制追加（注意が必要）
+/context add --force large-file.md
+
+# 3. より大きなコンテキストウィンドウを持つモデルを使用
+/model claude-sonnet-4
+```
+
+**問題3: 自動要約を無効化したい**
+
+⚠️ **注意**: 自動要約を無効化すると、コンテキストウィンドウがオーバーフローした際にエラーが発生する可能性があります。
+
+設定方法:
+```bash
+q settings set chat.disableAutoCompaction true
+```
+
+推奨: 自動要約は有効のまま、必要に応じて手動で`/compact`を実行する方が安全です。
+
+---
+
 ### 4.2 アプローチ選択の思考プロセス
 
 #### 4.2.1 ステップ1: サイズと量の評価
@@ -2125,6 +2371,202 @@ q chat --agent my-project
 
 ---
 
+## 🔧 コンテキストサイズとチューニング
+
+### ハードコードされた制限値
+
+Q CLIには以下のハードコードされた制限値があり、**ユーザーが変更できません**：
+
+#### メッセージサイズ制限
+
+| 項目 | 制限値 | 説明 |
+|------|--------|------|
+| ユーザーメッセージ | 400,000文字 | 実際のサービス制限は600,000文字 |
+| ツールレスポンス | 400,000文字 | 実際のサービス制限は800,000文字 |
+| 会話履歴 | 10,000メッセージ | 会話履歴の最大長 |
+| カレントディレクトリパス | 256文字 | パスの最大長 |
+
+#### 画像関連制限
+
+| 項目 | 制限値 |
+|------|--------|
+| 1リクエストあたりの最大画像数 | 10枚 |
+| 1画像あたりの最大サイズ | 10MB |
+
+#### コンテキストウィンドウ
+
+| 項目 | 値 | 説明 |
+|------|-----|------|
+| デフォルトコンテキストウィンドウ | 200,000トークン | モデル情報が取得できない場合 |
+| コンテキストファイル最大サイズ | コンテキストウィンドウの75% | 計算式: `context_window_tokens * 3 / 4` |
+
+**計算例**:
+- Claude Sonnet 4 (200,000トークン): 最大 150,000 トークン
+- GPT (128,000トークン): 最大 96,000 トークン
+
+**ソースコード**: `crates/chat-cli/src/cli/chat/consts.rs`, `crates/chat-cli/src/cli/chat/context.rs`
+
+---
+
+### 設定可能な項目
+
+唯一設定可能なコンテキスト関連項目：
+
+#### 自動コンパクションの制御
+
+```bash
+# 自動要約を無効化（非推奨）
+q settings set chat.disableAutoCompaction true
+
+# 自動要約を有効化（デフォルト）
+q settings set chat.disableAutoCompaction false
+```
+
+**注意**: 自動要約を無効化すると、コンテキストウィンドウがオーバーフローした際にエラーが発生する可能性があります。
+
+---
+
+### コンテキスト管理のベストプラクティス
+
+#### 1. 定期的な使用状況確認
+
+```bash
+# 使用率を確認
+/usage
+
+# 使用率が80%を超えたら要約を検討
+/compact
+```
+
+**推奨アクション**:
+- 70%以下: 正常範囲
+- 70-80%: 要約を検討
+- 80-90%: 要約を推奨
+- 90%以上: すぐに要約を実行
+
+#### 2. コンテキストファイルの管理
+
+```bash
+# コンテキストファイルの状態確認
+/context show
+
+# 不要なファイルを削除
+/context remove <pattern>
+
+# すべてクリア
+/context clear
+```
+
+**制限事項**:
+- コンテキストファイルの合計サイズはコンテキストウィンドウの75%まで
+- 超過すると自動的にドロップされる
+- `--force`フラグで強制追加可能（注意が必要）
+
+#### 3. 大きなファイルの扱い
+
+**問題**: コンテキストファイルが75%制限を超える
+
+**解決策**:
+```bash
+# 重要なファイルのみを追加
+/context clear
+/context add README.md
+/context add docs/architecture.md
+
+# 強制追加（パフォーマンスに影響する可能性あり）
+/context add --force large-file.md
+```
+
+#### 4. 会話の要約戦略
+
+```bash
+# 基本的な要約
+/compact
+
+# 最新の会話を保持して要約
+/compact --messages-to-exclude 3
+
+# 大きなメッセージを切り詰めて要約
+/compact --truncate-large-messages true --max-message-length 100000
+
+# 要約内容を確認
+/compact --show-summary
+```
+
+**コンパクション戦略のデフォルト値**:
+- `messages_to_exclude`: 0
+- `truncate_large_messages`: false
+- `max_message_length`: 400,000文字
+
+---
+
+### トラブルシューティング
+
+#### 問題: コンテキストウィンドウがすぐに一杯になる
+
+**症状**:
+```
+⚠️ This conversation is getting lengthy.
+To ensure continued smooth operation, please use /compact to summarize the conversation.
+```
+
+**原因**:
+- 大量のコンテキストファイルを追加している
+- 長い会話を続けている
+- 大きなツールレスポンスが含まれている
+
+**解決策**:
+1. 使用状況を確認:
+   ```bash
+   /usage
+   ```
+
+2. コンテキストファイルを確認:
+   ```bash
+   /context show
+   ```
+
+3. 不要なコンテキストファイルを削除:
+   ```bash
+   /context remove <pattern>
+   ```
+
+4. 会話を要約:
+   ```bash
+   /compact
+   ```
+
+#### 問題: ファイルが自動的にドロップされる
+
+**症状**:
+```
+Total token count exceeds limit: 150000.
+The following files will be automatically dropped when interacting with Q.
+Consider removing them.
+```
+
+**原因**:
+- コンテキストファイルの合計サイズがコンテキストウィンドウの75%を超えている
+
+**解決策**:
+1. 重要なファイルのみを追加:
+   ```bash
+   /context clear
+   /context add important-file.md
+   ```
+
+2. 強制追加（注意が必要）:
+   ```bash
+   /context add --force large-file.md
+   ```
+
+3. より大きなコンテキストウィンドウを持つモデルを使用:
+   ```bash
+   /model claude-sonnet-4
+   ```
+
+---
+
 ## まとめ（Part3）
 
 ### 重要なポイント
@@ -2144,6 +2586,12 @@ q chat --agent my-project
    - 個人設定は除外
    - 機密情報は除外
    - ドキュメント化
+
+4. **コンテキストサイズとチューニング**
+   - ハードコード制限値の理解
+   - 唯一の設定可能項目: `chat.disableAutoCompaction`
+   - 定期的な使用状況確認
+   - 適切な要約戦略
 
 ### 第4章全体のまとめ
 
@@ -2169,6 +2617,8 @@ q chat --agent my-project
 **出典**:
 - [AWS公式ドキュメント - Best practices](https://docs.aws.amazon.com/amazonq/)
 - [AWS公式ドキュメント - Security best practices](https://docs.aws.amazon.com/amazonq/)
+- [Q CLI ソースコード - consts.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/cli/chat/consts.rs)
+- [Q CLI ソースコード - context.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/cli/chat/context.rs)
 
 ---
 

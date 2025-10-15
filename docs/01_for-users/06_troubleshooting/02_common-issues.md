@@ -524,9 +524,215 @@ q restart
 
 ---
 
+## コンテキスト管理の問題
+
+### 問題14: コンテキストウィンドウがすぐに一杯になる
+
+**症状**:
+- 頻繁に自動要約が実行される
+- 「conversation is getting lengthy」という警告が表示される
+- 応答が遅くなる
+
+**原因**:
+- 大量のコンテキストファイルを追加している
+- 長い会話を続けている
+- 大きなツールレスポンスが含まれている
+
+**解決方法**:
+
+1. 使用状況を確認:
+   ```bash
+   /usage
+   
+   # 出力例:
+   # Context tokens: 45000
+   # Assistant tokens: 12000
+   # Tool tokens: 8000
+   # User tokens: 5000
+   # Total: 70000/200000 (35%)
+   ```
+
+2. コンテキストファイルを確認:
+   ```bash
+   /context show
+   
+   # 出力例:
+   # Total tokens: 30000/150000 (20%)
+   # Files: 15
+   # - README.md: 5000 tokens
+   # - .amazonq/rules/coding.md: 3000 tokens
+   # ...
+   ```
+
+3. 不要なコンテキストファイルを削除:
+   ```bash
+   # 特定のファイルを削除
+   /context remove old-design.md
+   
+   # パターンで削除
+   /context remove docs/old-*.md
+   
+   # すべてクリア
+   /context clear
+   ```
+
+4. 会話を要約:
+   ```bash
+   # 基本的な要約
+   /compact
+   
+   # 最新の会話を保持して要約
+   /compact --messages-to-exclude 2
+   
+   # 大きなメッセージを切り詰めて要約
+   /compact --truncate-large-messages true --max-message-length 100000
+   ```
+
+**予防策**:
+- 定期的に`/usage`で使用率を確認
+- 使用率が80%を超えたら要約を実行
+- 不要なコンテキストファイルは削除
+
+---
+
+### 問題15: ファイルが自動的にドロップされる
+
+**症状**:
+```
+Total token count exceeds limit: 150000.
+The following files will be automatically dropped when interacting with Q.
+Consider removing them.
+- large-file1.md
+- large-file2.md
+```
+
+**原因**:
+- コンテキストファイルの合計サイズがコンテキストウィンドウの75%を超えている
+- 大きなファイルを追加している
+
+**解決方法**:
+
+1. 重要なファイルのみを追加:
+   ```bash
+   # すべてクリア
+   /context clear
+   
+   # 重要なファイルのみ追加
+   /context add README.md
+   /context add architecture.md
+   /context add .amazonq/rules/coding.md
+   ```
+
+2. 強制追加（注意が必要）:
+   ```bash
+   # サイズ制限を無視して追加
+   /context add --force large-file.md
+   ```
+   
+   ⚠️ **注意**: `--force`フラグを使用すると制限を無視できますが、パフォーマンスに影響する可能性があります。
+
+3. より大きなコンテキストウィンドウを持つモデルを使用:
+   ```bash
+   # Claude Sonnet 4 (200,000トークン)
+   /model claude-sonnet-4
+   
+   # 使用可能なモデルを確認
+   /model list
+   ```
+
+**予防策**:
+- コンテキストファイルの合計サイズを75%以内に保つ
+- 大きなファイルは分割する
+- 定期的に`/context show`で状態を確認
+
+---
+
+### 問題16: 自動要約を無効化したい
+
+**症状**:
+- 自動要約が頻繁に実行される
+- 会話の流れが途切れる
+
+**注意**: 自動要約を無効化すると、コンテキストウィンドウがオーバーフローした際にエラーが発生する可能性があります。
+
+**設定方法**:
+```bash
+# 自動要約を無効化（非推奨）
+q settings set chat.disableAutoCompaction true
+
+# 自動要約を有効化（デフォルト）
+q settings set chat.disableAutoCompaction false
+```
+
+**推奨**: 自動要約は有効のまま、必要に応じて手動で`/compact`を実行する方が安全です。
+
+**代替案**:
+```bash
+# 手動で要約を実行
+/compact
+
+# 最新の会話を保持して要約
+/compact --messages-to-exclude 3
+
+# 要約内容を確認
+/compact --show-summary
+```
+
+---
+
+### 問題17: コンテキストファイルのサイズがわからない
+
+**症状**:
+- どのファイルが大きいかわからない
+- トークン数が不明
+
+**解決方法**:
+
+1. コンテキストファイルの状態を確認:
+   ```bash
+   /context show
+   
+   # 出力例:
+   # Total tokens: 30000/150000 (20%)
+   # Files: 5
+   # - README.md: 5000 tokens
+   # - architecture.md: 8000 tokens
+   # - .amazonq/rules/coding.md: 3000 tokens
+   # - docs/api.md: 10000 tokens
+   # - CONTRIBUTING.md: 4000 tokens
+   ```
+
+2. 使用率を確認:
+   ```bash
+   /usage
+   
+   # 出力例:
+   # Context tokens: 45000
+   # Assistant tokens: 12000
+   # Tool tokens: 8000
+   # User tokens: 5000
+   # Total: 70000/200000 (35%)
+   ```
+
+3. 大きなファイルを特定して削除:
+   ```bash
+   # 大きなファイルを削除
+   /context remove docs/api.md
+   
+   # 再度確認
+   /context show
+   ```
+
+**予防策**:
+- 定期的に`/context show`で状態を確認
+- 大きなファイルは分割する
+- 不要なファイルは削除
+
+---
+
 ## ネットワーク関連の問題
 
-### 問題14: OAuth認証が失敗する
+### 問題18: OAuth認証が失敗する
 
 **エラーメッセージ**:
 ```
@@ -556,7 +762,7 @@ sudo ufw allow 7777
 
 ---
 
-### 問題15: テレメトリが送信されない
+### 問題19: テレメトリが送信されない
 
 **症状**:
 - アクティビティダッシュボードにデータが表示されない
