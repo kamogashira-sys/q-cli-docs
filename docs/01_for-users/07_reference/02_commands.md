@@ -890,14 +890,19 @@ q settings set EnabledCheckpointing true
 
 **使用方法**:
 ```
-/knowledge show                    # ナレッジベース情報を表示
+/knowledge show                    # ナレッジベース情報を表示（v1.18.0+: statusと統合）
 /knowledge add <path>              # ファイル/ディレクトリを追加
+/knowledge add -n <name> -p <path> # 名前とパスを指定して追加（v1.18.0+）
 /knowledge remove <path>           # エントリを削除
 /knowledge update <path>           # エントリを更新
 /knowledge clear                   # すべてのエントリを削除
-/knowledge status                  # バックグラウンド処理の状態
 /knowledge cancel                  # バックグラウンド処理をキャンセル
 ```
+
+**v1.18.0の変更点**:
+- `show` と `status` コマンドが統合されました
+- `--path` (`-p`) と `--name` (`-n`) 引数が追加されました
+- より一貫性のあるインターフェースを提供
 
 **有効化方法**:
 ```bash
@@ -910,8 +915,15 @@ q settings set chat.enableKnowledge true
 # プロジェクトドキュメントをインデックス化
 /knowledge add docs/ --include "*.md"
 
+# 名前とパスを指定して追加（v1.18.0+）
+/knowledge add -n myproject -p /path/to/project
+/knowledge add --name docs --path /path/to/docs
+
 # ソースコードを追加（テストファイルを除外）
 /knowledge add src/ --exclude "*.test.js"
+
+# 統合されたshowコマンド（エントリと操作の両方を表示）
+/knowledge show
 ```
 
 **注意点**:
@@ -936,6 +948,34 @@ q settings set chat.enableKnowledge true
 ---
 
 ### 開発者向け
+
+#### `/logdump` - ログ収集（v1.18.0+）
+
+**目的**: サポート調査のためにログファイルを収集し、ZIPアーカイブとして出力する
+
+**説明**: トラブルシューティング時に必要なログファイルを自動的に収集し、タイムスタンプ付きのZIPファイルとして保存します。
+
+**使用シーン**: 問題発生時にログを収集してサポートチームに提出する / デバッグ情報を効率的に収集する
+
+**使用方法**: `/logdump`
+
+**出力形式**: `q-logs-YYYY-MM-DDTHH-MM-SSZ.zip`
+
+**使用例**:
+```
+> /logdump
+
+Collecting logs...
+✓ Successfully created q-logs-2025-10-14T07-11-01Z.zip with 5 log files
+```
+
+**注意点**:
+- ⚠️ ログファイルには機密情報が含まれる可能性があります
+- ⚠️ 提出前に内容を確認してください
+
+**関連コマンド**: `/help`, `/version`
+
+---
 
 #### `/tools` - ツール一覧
 
@@ -967,20 +1007,28 @@ q settings set chat.enableKnowledge true
 
 **説明**: 特定のイベント（Agent起動、ツール実行前後など）で自動的にコマンドを実行できます。
 
-**使用シーン**: ツール実行前にセキュリティチェックを実行したい / コマンド実行をログに記録したい
+**使用シーン**: ツール実行前にセキュリティチェックを実行したい / コマンド実行をログに記録したい / 会話ターン終了時に後処理を実行したい
 
 **Hook種類**:
 - **AgentSpawn** - Agent起動時
 - **UserPromptSubmit** - ユーザープロンプト送信時
 - **PreToolUse** - ツール実行前
 - **PostToolUse** - ツール実行後
-- **Stop** - Assistantの応答完了時
+- **Stop** - Assistantの応答完了時（v1.18.0+）
+
+**Stop Hook（v1.18.0+）**:
+- 各会話ターンの終了時に自動実行
+- コンパイル、テスト、フォーマット、クリーンアップなどの後処理に最適
+- デフォルトタイムアウト: 30秒（設定可能）
+- 終了コード0で成功、その他はSTDERRを警告として表示
 
 **使用方法**: `/hooks`
 
 **注意点**: Hooksはagent設定ファイルで定義
 
 **関連コマンド**: `/tools`, `/agent`
+
+**詳細**: リポジトリの `docs/hooks.md` を参照
 
 ---
 

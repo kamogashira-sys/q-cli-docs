@@ -12,6 +12,20 @@
 
 ## 最新バージョン
 
+### v1.18.0（2025-10-13）
+
+**主要な変更**:
+- 🎉 **[実験的] Delegate Tool**: バックグラウンドで独立して動作するエージェントプロセスの起動・管理機能
+- 🔧 **Stop Hook機能**: 会話ターン終了時に実行されるライフサイクルフック
+- 📝 **Knowledge コマンド統合**: `/knowledge status` と `/knowledge show` の統合、`--path` と `--name` 引数の追加
+- 🛠️ **`/logdump` コマンド**: サポート調査用のログファイル収集機能
+- ⚙️ **Experiment Manager強化**: 実験的機能の一元管理システムの改善
+- 🔌 **MCP Prompts改善**: 引数なしでのMCPプロンプト呼び出しをサポート
+
+**詳細**: [v1.18.0リリースノート](https://github.com/aws/amazon-q-developer-cli/releases/tag/1.18.0)
+
+---
+
 ### v1.17.1（2025-10-01）
 
 **主要な変更**:
