@@ -159,10 +159,18 @@ python hello.py
 
 ### トラブルシューティング
 
-エラーが発生した場合は、`q chat`と`@history`タグを使用してヘルプを求めることができます。
+エラーが発生した場合は、`q chat`を使用してヘルプを求めることができます。
 
 ```bash
-q chat "@history Help me resolve this error"
+q chat "Help me resolve this error"
+```
+
+または、対話モードで直接質問することもできます：
+
+```bash
+q chat
+# チャット内で質問
+> I got an error when running the command. How can I fix it?
 ```
 
 > 💡 **詳しい使用例**:
