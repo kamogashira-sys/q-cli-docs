@@ -790,21 +790,28 @@ q settings set chat.enableTangentMode true
 
 ### Agent・設定
 
-#### `/agent` - Agent切り替え
+#### `/agent` - Agent管理
 
-**目的**: 使用するAgentを切り替える
+**目的**: Agentの管理と切り替え
 
 **使用シーン**: プロジェクト固有のAgent設定を使用する / 異なるタスクに最適化されたAgentに切り替える
 
-**使用方法**:
+**主要サブコマンド**:
 ```
-/agent [Agent名]
+/agent list                    # Agent一覧を表示
+/agent swap [Agent名]          # Agentを切り替え（引数なしで対話的選択）
+/agent create --name <name>    # 新しいAgentを作成
+/agent edit --name <name>      # 既存のAgentを編集
+/agent generate                # AIを使ってAgent設定を生成
+/agent schema                  # Agent設定のスキーマを表示
+/agent set-default --name <name>  # デフォルトAgentを設定
 ```
 
 **使用例**:
 ```bash
-/agent              # Agent一覧を表示
-/agent rust-agent   # 特定のAgentに切り替え
+/agent list              # Agent一覧を表示
+/agent swap              # 対話的にAgentを選択
+/agent swap rust-agent   # 特定のAgentに切り替え
 ```
 
 **関連コマンド**: `/tools`, `/hooks`, `/mcp`, `/prompts`

@@ -944,7 +944,12 @@ q --agent my-agent
 
 #### チャット内で切り替え
 ```
-> /agent my-agent
+> /agent swap my-agent
+```
+
+または引数なしで対話的に選択：
+```
+> /agent swap
 ```
 
 ---
