@@ -716,21 +716,23 @@ q mcp import <config-file>
 
 **サブコマンド**:
 - `show`: コンテキスト情報を表示
+  - `--expand`: 各ファイルの内容を展開表示
 - `add <path>`: ファイルをコンテキストに追加
-- `remove <pattern>`: ファイルをコンテキストから削除
+  - `--force` (`-f`): サイズ制限を無視して強制追加
+- `remove <pattern>` (alias: `rm`): ファイルをコンテキストから削除
 - `clear`: すべてのコンテキストファイルをクリア
 
 **コンテキストファイルの制限**:
 - 最大サイズ: コンテキストウィンドウの75%
 - 超過時: 自動的にドロップされ、警告が表示される
 
-**`add`コマンドのオプション**:
-- `--force`: サイズ制限を無視して強制追加
-
 **使用例**:
 ```bash
 # コンテキスト情報を表示
 /context show
+
+# 詳細表示（ファイル内容を展開）
+/context show --expand
 
 # ファイルを追加
 /context add README.md
@@ -740,6 +742,9 @@ q mcp import <config-file>
 
 # パターンで削除
 /context remove "*.test.js"
+
+# エイリアスを使用して削除
+/context rm "*.test.js"
 
 # すべてクリア
 /context clear
