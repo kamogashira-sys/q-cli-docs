@@ -946,10 +946,10 @@ q settings set EnabledCheckpointing true
 /knowledge show                    # ナレッジベース情報を表示（v1.18.0+: statusと統合）
 /knowledge add <path>              # ファイル/ディレクトリを追加
 /knowledge add -n <name> -p <path> # 名前とパスを指定して追加（v1.18.0+）
-/knowledge remove <path>           # エントリを削除
+/knowledge remove <path>           # エントリを削除（alias: rm）
 /knowledge update <path>           # エントリを更新
 /knowledge clear                   # すべてのエントリを削除
-/knowledge cancel                  # バックグラウンド処理をキャンセル
+/knowledge cancel [operation_id]   # バックグラウンド処理をキャンセル（IDなしで最新をキャンセル）
 ```
 
 **v1.18.0の変更点**:
@@ -966,14 +966,21 @@ q settings set chat.enableKnowledge true
 **使用例**:
 ```bash
 # プロジェクトドキュメントをインデックス化
-/knowledge add docs/ --include "*.md"
+/knowledge add -n docs -p docs/ --include "*.md"
 
-# 名前とパスを指定して追加（v1.18.0+）
-/knowledge add -n myproject -p /path/to/project
-/knowledge add --name docs --path /path/to/docs
+# インデックスタイプを指定（Fast: 高速、Best: 高精度）
+/knowledge add -n myproject -p /path/to/project --index-type Best
 
 # ソースコードを追加（テストファイルを除外）
-/knowledge add src/ --exclude "*.test.js"
+/knowledge add -n src -p src/ --exclude "*.test.js" --exclude "node_modules/**"
+
+# エントリを削除
+/knowledge remove docs/
+/knowledge rm docs/  # エイリアスを使用
+
+# バックグラウンド処理をキャンセル
+/knowledge cancel              # 最新の処理をキャンセル
+/knowledge cancel abc123       # 特定の処理をキャンセル
 
 # 統合されたshowコマンド（エントリと操作の両方を表示）
 /knowledge show
