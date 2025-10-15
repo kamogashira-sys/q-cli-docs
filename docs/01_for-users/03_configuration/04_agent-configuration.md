@@ -76,15 +76,33 @@ Agentは、Q CLIの動作を定義する設定ファイルです。以下をカ�
 | `$schema` | string | - | スキーマURL |
 | `description` | string | null | Agent説明 |
 | `prompt` | string | null | システムプロンプト。文字列または `file://` URIで外部ファイルを参照可能（v1.18.0+） |
-| `mcpServers` | object | {} | MCPサーバー設定 |
-| `tools` | array | ["*"] | 利用可能ツール一覧 |
+| `mcpServers` | object | {} | MCPサーバー設定（[詳細](#mcpservers設定)） |
+| `tools` | array | [] | 利用可能ツール一覧。`@{SERVER}/tool`形式でMCPツールを指定 |
 | `toolAliases` | object | {} | ツール名エイリアス |
-| `allowedTools` | array | DEFAULT_APPROVE | 自動承認ツール一覧 |
-| `resources` | array | デフォルトリソース | リソースファイル（[詳細](../08_guides/README.md)） |
-| `hooks` | object | {} | フック設定 |
+| `allowedTools` | array | [] | 明示的に許可されたツール一覧 |
+| `resources` | array | [] | リソースファイル（`file://`形式、[詳細](../08_guides/README.md)） |
+| `hooks` | object | {} | フック設定（`userPromptSubmit`, `agentSpawn`） |
 | `toolsSettings` | object | {} | ツール固有設定 |
-| `useLegacyMcpJson` | boolean | true | レガシーMCP設定の使用 |
+| `useLegacyMcpJson` | boolean | false | レガシーMCP設定（`~/.aws/amazonq/mcp.json`）の使用 |
 | `model` | string | null | 使用モデルID |
+
+#### mcpServers設定
+
+MCPサーバーの詳細設定：
+
+| フィールド | 型 | デフォルト | 必須 | 説明 |
+|-----------|-----|-----------|------|------|
+| `type` | string | "stdio" | No | トランスポートタイプ（`stdio` or `http`） |
+| `command` | string | - | Yes | 起動コマンド |
+| `args` | array | [] | No | コマンド引数 |
+| `env` | object | null | No | 環境変数 |
+| `url` | string | "" | No | HTTPエンドポイント（type=httpの場合） |
+| `headers` | object | {} | No | HTTPヘッダー（type=httpの場合） |
+| `oauth` | object | null | No | OAuth設定 |
+| `oauth.redirectUri` | string | null | No | リダイレクトURI（例: "127.0.0.1:7778"） |
+| `oauthScopes` | array | ["openid", "email", "profile", "offline_access"] | No | OAuthスコープ |
+| `timeout` | integer | 120000 | No | タイムアウト（ミリ秒） |
+| `disabled` | boolean | false | No | 無効化フラグ |
 
 ---
 
