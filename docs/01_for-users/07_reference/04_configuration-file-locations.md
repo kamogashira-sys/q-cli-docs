@@ -44,11 +44,42 @@ Amazon Q CLIの設定ファイルは複数の場所に配置され、それぞ�
 └── history                # チャット履歴
 
 ~/.aws/amazonq/
-└── cli-agents/
-    ├── aws-expert.json     # グローバルAgent例1
-    ├── python-dev.json     # グローバルAgent例2
-    └── security.json       # グローバルAgent例3
+├── cli-agents/             # Agent設定ファイル（グローバル）
+│   ├── aws-expert.json     # グローバルAgent例1
+│   ├── python-dev.json     # グローバルAgent例2
+│   └── security.json       # グローバルAgent例3
+├── cli-checkpoints/        # チェックポイントファイル
+├── history/                # シェルコマンド履歴
+├── knowledge_bases/        # ナレッジベース
+├── prompts/                # プロンプト設定
+├── .cli_bash_history       # CLI履歴
+└── mcpAdmin/               # MCP管理ファイル
+    └── mcp-state.json      # MCP状態管理
 ```
+
+#### 📁 ファイル・ディレクトリの詳細
+
+**`~/.local/share/amazon-q/` 配下**:
+
+| ファイル/ディレクトリ | 用途 | 内容 |
+|---------------------|------|------|
+| `settings.json` | グローバル設定 | Q CLI全体の設定（Knowledge、テレメトリ、チャット設定など） |
+| `data.sqlite3` | データベース | 認証情報、状態管理、会話履歴、シェル履歴を保存するSQLiteデータベース<br>**テーブル**: `migrations`, `history`, `state`, `auth_kv`, `conversations` |
+| `history/` | チャット履歴 | チャットセッションの履歴ファイル（rustylineによる入力履歴） |
+
+**`~/.aws/amazonq/` 配下**:
+
+| ファイル/ディレクトリ | 用途 | 内容 |
+|---------------------|------|------|
+| `cli-agents/` | Agent設定 | グローバルAgent設定ファイル（`*.json`） |
+| `cli-checkpoints/` | チェックポイント | 会話のチェックポイント（スナップショット）を保存 |
+| `history/` | シェル履歴 | シェルコマンドの実行履歴 |
+| `knowledge_bases/` | ナレッジベース | Knowledge機能で使用するインデックスファイル |
+| `prompts/` | プロンプト設定 | グローバルプロンプト設定ファイル |
+| `.cli_bash_history` | CLI履歴 | Q CLI内部のbashコマンド履歴 |
+| `mcpAdmin/` | MCP管理 | MCPサーバーの状態管理ファイル |
+
+**💡 重要**: これらのファイルは自動的に作成・管理されます。手動での編集は推奨されません（`settings.json`とAgent設定ファイルを除く）。
 
 ### 環境変数による配置変更
 
