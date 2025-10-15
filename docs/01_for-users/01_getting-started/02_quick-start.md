@@ -26,8 +26,33 @@ brew install amazon-q
 
 ### Linux（Ubuntu/Debian）
 
+**Ubuntu/Debianの場合（.debパッケージ）**:
+
 ```bash
-curl -fsSL https://d2eo22ngex1n9g.cloudfront.net/releases/amazon-q-developer-cli/latest/install.sh | bash
+# ダウンロード
+wget https://desktop-release.q.us-east-1.amazonaws.com/latest/amazon-q.deb
+
+# インストール
+sudo apt-get install -f
+sudo dpkg -i amazon-q.deb
+```
+
+**その他のLinuxディストリビューション（ZIPファイル）**:
+
+```bash
+# x86-64の場合
+curl --proto '=https' --tlsv1.2 -sSf \
+  "https://desktop-release.q.us-east-1.amazonaws.com/latest/q-x86_64-linux.zip" \
+  -o "q.zip"
+unzip q.zip
+./q/install.sh
+
+# ARM (aarch64)の場合
+curl --proto '=https' --tlsv1.2 -sSf \
+  "https://desktop-release.q.us-east-1.amazonaws.com/latest/q-aarch64-linux.zip" \
+  -o "q.zip"
+unzip q.zip
+./q/install.sh
 ```
 
 > 💡 **その他のOS・詳細な手順**: [インストールガイド](01_installation.md)を参照
