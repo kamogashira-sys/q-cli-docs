@@ -181,7 +181,7 @@
 
 **macOS (Homebrew)**:
 ```bash
-brew install amazon-q
+brew install --cask amazon-q
 ```
 
 **Linux**:
