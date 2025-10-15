@@ -48,13 +48,65 @@ ssh user@remote-host
 
 #### ステップ2: Amazon Q CLIをインストール
 
-```bash
-# Linuxの場合
-curl -fsSL https://desktop-release.q.us-east-1.amazonaws.com/latest/install.sh | bash
+**Linux x86-64の場合**:
 
-# macOSの場合
+```bash
+# 1. ZIPファイルをダウンロード
+curl --proto '=https' --tlsv1.2 -sSf \
+  "https://desktop-release.q.us-east-1.amazonaws.com/latest/q-x86_64-linux.zip" \
+  -o "q.zip"
+
+# 2. 解凍
+unzip q.zip
+
+# 3. インストール（~/.local/binにインストール）
+./q/install.sh
+```
+
+**Linux ARM (aarch64)の場合**:
+
+```bash
+# 1. ZIPファイルをダウンロード
+curl --proto '=https' --tlsv1.2 -sSf \
+  "https://desktop-release.q.us-east-1.amazonaws.com/latest/q-aarch64-linux.zip" \
+  -o "q.zip"
+
+# 2. 解凍
+unzip q.zip
+
+# 3. インストール
+./q/install.sh
+```
+
+**古いglibc環境（glibc < 2.34）の場合**:
+
+```bash
+# glibc バージョン確認
+ldd --version
+
+# musl版をダウンロード（x86-64）
+curl --proto '=https' --tlsv1.2 -sSf \
+  "https://desktop-release.q.us-east-1.amazonaws.com/latest/q-x86_64-linux-musl.zip" \
+  -o "q.zip"
+
+# または musl版（ARM）
+curl --proto '=https' --tlsv1.2 -sSf \
+  "https://desktop-release.q.us-east-1.amazonaws.com/latest/q-aarch64-linux-musl.zip" \
+  -o "q.zip"
+
+# 解凍とインストール
+unzip q.zip
+./q/install.sh
+```
+
+**macOSの場合**:
+
+```bash
+# Homebrewでインストール
 brew install --cask amazon-q
 ```
+
+> **💡 ヒント**: SSH環境ではGUI不要の最小版（ZIP）を使用します。デフォルトで`~/.local/bin`にインストールされるため、root権限は不要です。
 
 #### ステップ3: 認証
 
