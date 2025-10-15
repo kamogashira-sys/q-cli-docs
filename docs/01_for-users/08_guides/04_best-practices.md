@@ -492,13 +492,15 @@ q settings set chat.disableAutoCompaction false
 /usage
 
 # 出力例:
-# Context tokens: 45000
-# Assistant tokens: 12000
-# Tool tokens: 8000
-# User tokens: 5000
-# Total: 70000/200000 (35%)
+# Current context window (112530 of 200k tokens used) 56.27%
+#
+# Context files: ~3090 tokens (1.54%)
+# Tools: ~52480 tokens (26.24%)
+# AI responses: ~32830 tokens (16.42%)
+# Your prompts: ~24130 tokens (12.07%)
 
-# 使用率が80%を超えたら要約を検討
+# 使用率が60%を超えたら、どの要素が多いか確認
+# 80%を超えたら要約を検討
 /compact
 ```
 
