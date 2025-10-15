@@ -2,7 +2,7 @@
 
 **所要時間**: 15-20分  
 **対象**: 体系的に学びたい方  
-**最終更新**: 2025-10-12
+**最終更新**: 2025-10-15
 
 ---
 
@@ -155,8 +155,17 @@ q agent list
 ### Agent切り替え（チャット内）
 
 ```
-> /agent aws-specialist
+> /agent swap aws-all
 ```
+
+**利用可能なサブコマンド**:
+- `/agent list` - 利用可能なAgentを一覧表示
+- `/agent swap <name>` - 指定したAgentに切り替え
+- `/agent create <name>` - 新しいAgentを作成
+- `/agent edit <name>` - 既存のAgentを編集
+- `/agent generate` - AIを使ってAgent設定を生成
+- `/agent schema` - Agent設定のスキーマを表示
+- `/agent set-default <name>` - デフォルトAgentを設定
 
 ### Agent切り替え（起動時）
 
@@ -364,4 +373,4 @@ q login
 ---
 
 **作成日**: 2025-10-11  
-**最終更新日**: 2025-10-11
+**最終更新日**: 2025-10-15
