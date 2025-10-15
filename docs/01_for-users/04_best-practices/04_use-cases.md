@@ -809,6 +809,140 @@ Collecting logs...
 
 ---
 
+## 🎯 コンテキスト管理の実践例
+
+### シナリオ1: 大規模プロジェクトでの作業
+
+#### 課題
+大量のファイルを参照しながら作業したいが、コンテキストウィンドウの制限がある。
+
+#### 解決策
+
+**1. 重要なファイルのみを追加**
+
+```bash
+# チャットセッションを開始
+q chat
+
+# コンテキストファイルを追加
+/context add README.md
+/context add docs/architecture.md
+/context add src/main.rs
+```
+
+**2. 使用状況を定期的に確認**
+
+```bash
+# 使用率を確認
+/usage
+
+# 出力例:
+# Context tokens: 45000
+# Assistant tokens: 12000
+# Tool tokens: 8000
+# User tokens: 5000
+# Total: 70000/200000 (35%)
+```
+
+**3. コンテキストファイルの状態を確認**
+
+```bash
+# コンテキストファイルを確認
+/context show
+
+# 出力例:
+# Total tokens: 30000/150000 (20%)
+# Files: 3
+# - README.md: 5000 tokens
+# - docs/architecture.md: 15000 tokens
+# - src/main.rs: 10000 tokens
+```
+
+**4. 75%を超えそうな場合は不要なファイルを削除**
+
+```bash
+# 不要なファイルを削除
+/context remove docs/old-design.md
+
+# 再度確認
+/context show
+```
+
+**ベストプラクティス**:
+- 作業開始時に必要最小限のファイルを追加
+- 定期的に`/usage`で使用率を確認
+- 使用率が60%を超えたら不要なファイルを削除
+- 作業が変わったらコンテキストをクリア
+
+---
+
+### シナリオ2: 長時間の会話セッション
+
+#### 課題
+長時間の会話でコンテキストウィンドウが一杯になる。
+
+#### 解決策
+
+**1. 定期的に使用率を確認**
+
+```bash
+# 使用率を確認
+/usage
+
+# 出力例:
+# Context tokens: 120000
+# Assistant tokens: 35000
+# Tool tokens: 15000
+# User tokens: 10000
+# Total: 180000/200000 (90%)
+```
+
+**2. 80%を超えたら要約を実行**
+
+```bash
+# 最新の2個のメッセージペアを保持して要約
+/compact --messages-to-exclude 2
+
+# 要約後の使用率を確認
+/usage
+
+# 出力例:
+# Total: 100000/200000 (50%)
+```
+
+**3. 重要な会話はCheckpointで保存**
+
+```bash
+# 重要な議論を保存
+/checkpoint save important-discussion
+
+# 後で復元
+/checkpoint restore important-discussion
+```
+
+**4. 新しいトピックは新しいセッションで**
+
+```bash
+# 現在のセッションを終了
+/clear
+
+# 新しいセッションを開始
+q chat
+```
+
+**ベストプラクティス**:
+- 1時間ごとに`/usage`で使用率を確認
+- 使用率が80%を超えたら`/compact`を実行
+- 重要な会話は`/checkpoint`で保存
+- トピックが変わったら新しいセッションを開始
+
+**予防策**:
+- 自動要約は有効のまま（デフォルト）
+- 大きなファイルは分割して追加
+- 不要なコンテキストファイルは削除
+
+---
+
 ## 🔗 関連ドキュメント
 
 - [Agent設定](03_configuration/04_agent-configuration.md)
@@ -816,6 +950,7 @@ Collecting logs...
 - [設定例集](03_configuration/07_examples.md)
 - [ベストプラクティス](04_best-practices/01_configuration.md)
 - [実験的機能](02_features/07_experimental.md)
+- [コンテキスト管理ガイド](../08_guides/README.md)
 
 ---
 
