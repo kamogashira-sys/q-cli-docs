@@ -1,7 +1,8 @@
 # Amazon Q CLI 設定ベストプラクティス
 
 **作成日**: 2025-10-08  
-**対象バージョン**: v1.17.0以降
+**最終更新**: 2025-10-15  
+**対象バージョン**: v1.18.0以降
 
 ## 概要
 
@@ -617,6 +618,75 @@ q settings chat.disableMarkdownRendering false
 
 ---
 
+## v1.18.0新機能の推奨設定
+
+### Stop Hook設定（v1.18.0+）
+
+会話ターン終了時に自動処理を実行する推奨設定：
+
+**コンパイル自動実行**:
+```json
+{
+  "hooks": {
+    "stop": {
+      "command": "cargo build",
+      "timeout": 60000
+    }
+  }
+}
+```
+
+**テスト自動実行**:
+```json
+{
+  "hooks": {
+    "stop": {
+      "command": "npm test",
+      "timeout": 120000
+    }
+  }
+}
+```
+
+**コードフォーマット自動実行**:
+```json
+{
+  "hooks": {
+    "stop": {
+      "command": "prettier --write .",
+      "timeout": 30000
+    }
+  }
+}
+```
+
+### Delegate Tool設定（v1.18.0+）
+
+バックグラウンドタスク管理の推奨設定：
+
+**有効化**:
+```bash
+q settings set chat.enableDelegate true
+```
+
+**安全な使用のためのAgent設定**:
+```json
+{
+  "name": "safe-delegate-agent",
+  "tools": ["fs_read", "execute_bash"],
+  "allowedPaths": [
+    "/home/user/projects/test-project"
+  ]
+}
+```
+
+**推奨される使用シナリオ**:
+- 大規模プロジェクトでの並行作業
+- 複数のマイクロサービス開発
+- 長時間実行タスクのバックグラウンド処理
+
+---
+
 ## 参考リンク
 
 - [Agent設定ガイド](../03_configuration/04_agent-configuration.md)
@@ -630,4 +700,4 @@ q settings chat.disableMarkdownRendering false
 ---
 
 **ドキュメント作成日**: 2025-10-08  
-**最終更新**: 2025-10-11
+**最終更新**: 2025-10-15
