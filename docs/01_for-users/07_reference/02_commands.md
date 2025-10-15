@@ -170,30 +170,47 @@ q agent <SUBCOMMAND>
 ```
 
 **サブコマンド**:
-- `list` - Agent一覧を表示
+- `list` - Agent一覧を表示（グローバル + ローカル）
 - `create` - Agent設定を作成
-- `edit <name>` - Agent設定を編集
-- `validate <name>` - Agent設定を検証
+  - `--name` (`-n`): Agent名
+  - `--directory` (`-d`): 保存先ディレクトリ（省略時はグローバル）
+  - `--from` (`-f`): ベースとなるAgent名
+- `edit` - Agent設定を編集
+  - `--name` (`-n`): Agent名
+- `validate` - Agent設定を検証
+  - `--path` (`-p`): 設定ファイルパス
 - `migrate` - プロファイルをAgentに移行
+  - `--force`: 既存Agentを上書き
 - `set-default` - デフォルトAgentを設定
+  - `--name` (`-n`): Agent名
 
 **使用例**:
 ```bash
 # Agent一覧
 q agent list
 
-# Agent作成
-q agent create
+# Agent作成（グローバル）
+q agent create --name my-agent
+
+# 既存Agentをベースに作成
+q agent create --name new-agent --from my-agent
+
+# ローカルディレクトリに作成
+q agent create --name local-agent --directory ./.amazonq/cli-agents
 
 # Agent編集
-q agent edit my-agent
+q agent edit --name my-agent
 
 # Agent検証
-q agent validate my-agent
+q agent validate --path ~/.aws/amazonq/cli-agents/my-agent.json
 
 # デフォルトAgent設定
-q agent set-default my-agent
+q agent set-default --name my-agent
 ```
+
+**チャット内コマンドとの違い**:
+- **CLI (`q agent`)**: Agent設定の管理（作成、編集、検証）
+- **チャット内 (`/agent`)**: ランタイムでのAgent切り替え、AI生成、スキーマ表示
 
 ---
 
