@@ -1,4 +1,4 @@
-# Amazon Q Developer CLI 調査プロジェクト
+# 猫でもわかるAmazon Q Developer CLI 使い方まとめ
 
 ## 🚀 クイックスタート
 
