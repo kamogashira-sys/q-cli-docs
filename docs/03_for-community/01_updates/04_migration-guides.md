@@ -4,11 +4,94 @@
 
 ## 📋 目次
 
+- [v1.17.x → v1.18.x](#v117x--v118x)
 - [v1.16.x → v1.17.x](#v116x--v117x)
 - [v1.15.x → v1.16.x](#v115x--v116x)
 - [v1.14.x → v1.15.x](#v114x--v115x)
 - [v1.13.x → v1.14.x](#v113x--v114x)
 - [一般的な移行手順](#一般的な移行手順)
+
+---
+
+## v1.17.x → v1.18.x
+
+### 概要
+v1.18.0では、Delegate Tool、Stop Hook、Knowledge コマンド統合、/logdump コマンドなど、6つの主要な新機能が追加されました。
+
+### 破壊的変更
+なし（後方互換性あり）
+
+### 推奨される変更
+
+#### 1. Knowledgeコマンドの更新
+`/knowledge status` と `/knowledge show` が統合されました：
+
+**旧コマンド（v1.17.x以前）**:
+```
+/knowledge status  # バックグラウンド処理の状態
+/knowledge show    # ナレッジベース情報を表示
+```
+
+**新コマンド（v1.18.0+）**:
+```
+/knowledge show    # statusとshowが統合（エントリと操作の両方を表示）
+```
+
+**新しい引数オプション**:
+```
+/knowledge add -n myproject -p /path/to/project
+/knowledge add --name docs --path /path/to/docs
+```
+
+#### 2. 実験的機能の有効化（オプション）
+新しい実験的機能を試す場合：
+
+```bash
+# Delegate Toolを有効化
+q settings set chat.enableDelegate true
+
+# または /experiment コマンドで有効化
+/experiment
+# メニューから「Delegate」を選択
+```
+
+#### 3. Stop Hookの追加（オプション）
+会話ターン終了時に自動処理を実行したい場合、Agent設定にStop Hookを追加：
+
+```json
+{
+  "hooks": {
+    "stop": {
+      "command": "npm run format",
+      "timeout": 30000
+    }
+  }
+}
+```
+
+**使用例**:
+- コンパイル: `"command": "cargo build"`
+- テスト実行: `"command": "npm test"`
+- フォーマット: `"command": "prettier --write ."`
+
+#### 4. ログ収集の活用
+トラブルシューティング時に新しい `/logdump` コマンドを使用：
+
+```
+/logdump
+```
+
+ZIPファイルが生成され、サポートチームへの提出が容易になります。
+
+### 互換性
+- **既存の設定**: すべて引き続き動作
+- **既存のコマンド**: 変更なし（`/knowledge status` は削除されましたが、`/knowledge show` で同等の機能を提供）
+- **実験的機能**: デフォルトで無効のため、既存のワークフローに影響なし
+
+### 移行手順
+1. Q CLIをv1.18.0にアップグレード
+2. `/knowledge status` を使用している場合は `/knowledge show` に変更
+3. 必要に応じて新機能を有効化（オプション）
 
 ---
 

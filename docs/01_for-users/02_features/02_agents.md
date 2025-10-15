@@ -1238,6 +1238,86 @@ q settings chat.defaultAgent
 
 ---
 
+### Stop Hook（v1.18.0+）
+
+Stop Hookは、会話ターン終了時（Assistantの応答完了時）に自動的に実行されるフックです。
+
+**主な用途**:
+- コンパイル
+- テスト実行
+- コードフォーマット
+- クリーンアップ処理
+
+**設定例**:
+```json
+{
+  "hooks": {
+    "stop": {
+      "command": "npm run format",
+      "timeout": 30000
+    }
+  }
+}
+```
+
+**実用例**:
+
+**1. コンパイル**:
+```json
+{
+  "hooks": {
+    "stop": {
+      "command": "cargo build",
+      "timeout": 60000
+    }
+  }
+}
+```
+
+**2. テスト実行**:
+```json
+{
+  "hooks": {
+    "stop": {
+      "command": "npm test",
+      "timeout": 120000
+    }
+  }
+}
+```
+
+**3. コードフォーマット**:
+```json
+{
+  "hooks": {
+    "stop": {
+      "command": "prettier --write .",
+      "timeout": 30000
+    }
+  }
+}
+```
+
+**フックイベント形式**:
+```json
+{
+  "hook_event_name": "stop",
+  "cwd": "/current/working/directory"
+}
+```
+
+**終了コードの動作**:
+- **0**: フック成功
+- **その他**: STDERRを警告として表示
+
+**注意事項**:
+- デフォルトタイムアウト: 30秒（設定可能）
+- Stop Hookはツール固有ではないため、matcherは使用しない
+
+**詳細**: リポジトリの `docs/hooks.md` を参照
+
+---
+
 ## 📚 関連ドキュメント
 
 - [Agent設定ガイド](../03_configuration/04_agent-configuration.md)
