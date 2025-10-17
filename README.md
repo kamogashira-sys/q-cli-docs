@@ -1,4 +1,4 @@
-# 猫でもわかるAmazon Q Developer CLI 使い方まとめ
+# 猫でもわかるAmazon Q Developer CLI 解体新書
 
 ## 🚀 クイックスタート
 
