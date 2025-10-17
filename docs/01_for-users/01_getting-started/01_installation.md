@@ -561,6 +561,10 @@ Q CLIには組み込みのアップデート機能があります：
 # Q CLIのアップデート
 q update
 
+# 最新版の場合の出力例
+No updates available,
+1.18.1 is the latest version.
+
 # バージョン確認
 q --version
 ```
