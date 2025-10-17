@@ -9,12 +9,12 @@
 
 - [実験的機能とは](#実験的機能とは)
 - [Tangent Mode](#tangent-mode)
-- [Introspect Tool](#introspect-tool)
-- [To-Do List](#to-do-list)
-- [Agent Delegate Tool](#agent-delegate-tool)
 - [Context Usage Indicator](#context-usage-indicator)
+- [Knowledge](#knowledge)
 - [Thinking（思考過程表示）](#thinking思考過程表示)
-- [Delegate Mode](#delegate-mode)
+- [Checkpointing](#checkpointing)
+- [Delegate](#delegate)
+- [TODO Lists](#todo-lists)
 - [注意事項](#注意事項)
 
 ---
@@ -146,46 +146,7 @@ q settings set chat.enableDelegate true
 
 ---
 
-## 🔍 Introspect Tool
-
-**追加バージョン**: v1.15.0
-
-### 概要
-Q CLI自身の状態や設定を確認できる自己認識ツールです。
-
-### 実現される機能
-- **設定の確認**: 現在の設定値を表示
-- **状態の確認**: Q CLIの内部状態を確認
-- **デバッグ支援**: 問題の診断に役立つ情報を提供
-
-### 有効化
-
-**方法1: `/experiment`コマンドを使用（推奨）**
-
-```
-> /experiment
-```
-
-メニューから「Introspect Tool」を選択してONに切り替えます。
-
-### 使用例
-
-```bash
-# Q CLIの状態を確認
-> introspect
-
-# 特定の設定を確認
-> introspect settings
-```
-
-### ユースケース
-- **トラブルシューティング**: 設定の問題を診断
-- **設定の確認**: 現在の設定値を確認
-- **学習**: Q CLIの内部動作を理解
-
----
-
-## ✅ To-Do List
+## ✅ TODO Lists
 
 **追加バージョン**: v1.15.0
 
@@ -227,55 +188,7 @@ Q CLI内でタスクを管理できる機能です。
 
 ---
 
-## 🤖 Agent Delegate Tool
-
-**追加バージョン**: v1.18.0
-
-### 概要
-バックグラウンドで独立して動作するエージェントプロセスを起動・管理する機能です。
-
-### 実現される機能
-- **バックグラウンド実行**: 長時間実行タスクをバックグラウンドで実行
-- **独立したエージェント**: メインの会話とは別のエージェントプロセス
-- **環境変数サポート**: エージェントに環境変数を渡すことが可能
-- **EDITORパース**: エディタ設定の自動解析
-
-### 有効化
-
-**方法1: `/experiment`コマンドを使用（推奨）**
-
-```
-> /experiment
-```
-
-メニューから「Agent Delegate Tool」を選択してONに切り替えます。
-
-### 使用例
-
-```bash
-# バックグラウンドエージェントを起動
-> delegate start "長時間実行タスク"
-
-# エージェントの状態を確認
-> delegate status
-
-# エージェントを停止
-> delegate stop
-```
-
-### ユースケース
-- **長時間タスク**: ビルドやテストなどの長時間実行タスク
-- **並行作業**: メインの作業を続けながらバックグラウンドで別タスク
-- **自動化**: 定期的なタスクの自動実行
-
-### 注意事項
-- **上級者向け**: 設定が複雑で、理解が必要
-- **リソース消費**: バックグラウンドプロセスがリソースを消費
-- **安定性**: アルファ版のため、予期しない動作の可能性
-
----
-
-## 📊 Context Usage Indicator
+## 📊 Context Usage Percentage
 
 **追加バージョン**: v1.17.0
 
@@ -442,14 +355,14 @@ q settings show chat.enableThinking
 
 ---
 
-## 🤖 Delegate Tool（v1.18.0+）
+## 🤖 Delegate（v1.18.0+）
 
 ### 概要
 バックグラウンドで独立して動作するエージェントプロセスを起動・管理する機能です。複数のエージェントを並行して管理し、それぞれに1つのタスクを委譲できます。
 
 > **⚠️ 重要な安全性に関する警告**
 > 
-> Delegate Toolは強力な機能ですが、以下の点に十分注意してください：
+> Delegateは強力な機能ですが、以下の点に十分注意してください：
 > 
 > - **ファイル操作**: AIが自動的にファイルを作成・変更・削除する可能性があります
 > - **コマンド実行**: システムコマンドが自動実行される場合があります
