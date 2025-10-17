@@ -555,6 +555,16 @@ Homebrew以外でインストールした場合は、最新版を再度ダウン
 
 #### Linux環境でのアップデート
 
+Q CLIには組み込みのアップデート機能があります：
+
+```bash
+# Q CLIのアップデート
+q update
+
+# バージョン確認
+q --version
+```
+
 ##### ⚠️ 重要な注意事項
 
 現在、Linux環境では`q update`コマンドが正常に動作しない場合があります（[ISSUE #3066](https://github.com/aws/amazon-q-developer-cli/issues/3066)、[#2120](https://github.com/aws/amazon-q-developer-cli/issues/2120)、[#841](https://github.com/aws/amazon-q-developer-cli/issues/841)）。
