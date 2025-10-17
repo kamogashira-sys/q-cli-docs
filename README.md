@@ -105,6 +105,8 @@ Amazon Q Developer CLI（Q CLI）は、AWSが提供する**AI駆動**の開発�
 
 ### バージョン履歴（v1.13.0～v1.18.1）
 
+**[→ 詳細なバージョン履歴を見る](docs/03_for-community/01_updates/03_version-history-v1.13-latest.md)**
+
 - **期間**: 2025-07-31 ～ 2025-10-14（2ヶ月半）
 - **PR数**: 140+件
 - **新規コントリビューター**: 13名
@@ -113,6 +115,8 @@ Amazon Q Developer CLI（Q CLI）は、AWSが提供する**AI駆動**の開発�
   - MCP進化（rmcp移行、リモート対応、OAuth統合）
   - Knowledge機能ベータ改善（BM25サポート）
   - セキュリティ強化（execute_bash権限厳格化、fs_read制限）
+
+**[→ 変更履歴・ロードマップを見る](docs/03_for-community/01_updates/)**
 
 ### ロードマップ
 
