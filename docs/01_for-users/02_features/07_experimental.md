@@ -8,13 +8,12 @@
 ## 📋 目次
 
 - [実験的機能とは](#実験的機能とは)
+- [実験的機能の比較](#実験的機能の比較)
 - [Tangent Mode](#tangent-mode)
-- [Context Usage Indicator](#context-usage-indicator)
-- [Knowledge](#knowledge)
-- [Thinking（思考過程表示）](#thinking思考過程表示)
-- [Checkpointing](#checkpointing)
-- [Delegate](#delegate)
 - [TODO Lists](#todo-lists)
+- [Context Usage Percentage](#context-usage-percentage)
+- [Thinking（思考過程表示）](#thinking思考過程表示)
+- [Delegate](#delegate)
 - [注意事項](#注意事項)
 
 ---
