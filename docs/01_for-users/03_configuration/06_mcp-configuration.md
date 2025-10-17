@@ -1,6 +1,6 @@
 # MCP設定ガイド
 
-**最終更新**: 2025-10-11  
+**最終更新**: 2025-10-18  
 **対象バージョン**: v1.17.0以降
 
 ---
@@ -11,8 +11,16 @@
 
 ### 🔗 AWS公式MCPサーバー
 
-AWS公式のMCPサーバーは以下のリポジトリで提供されています：
-**[https://github.com/awslabs/mcp](https://github.com/awslabs/mcp)**
+> **重要**: AWS公式MCPサーバーの最新情報は、以下の公式リポジトリを参照してください。
+>
+> **[AWS Labs MCP - GitHub](https://github.com/awslabs/mcp)**
+>
+> このリポジトリには以下が含まれます：
+> - 利用可能なMCPサーバー一覧
+> - 各サーバーの詳細ドキュメント
+> - インストール手順と設定例
+> - トラブルシューティング
+> - 最新のアップデート情報
 
 ---
 
@@ -25,6 +33,62 @@ MCP（Model Context Protocol）は、AIモデルと外部ツールを接続す�
 - データベースアクセス
 - カスタムツールの追加
 - サードパーティサービスとの統合
+
+---
+
+## 🛠️ 利用可能なAWS MCPサーバー
+
+AWS Labsは、AWSサービスと連携する高品質なMCPサーバーを提供しています。
+
+### 主要なMCPサーバー
+
+以下は代表的なAWS公式MCPサーバーです。
+
+| サーバー名 | 用途 | 主な機能 |
+|-----------|------|---------|
+| **AWS MCP** | AWS操作 | EC2、S3、Lambda等のAWSサービス操作 |
+| **Bedrock MCP** | 生成AI | Amazon Bedrockモデルの呼び出し |
+| **CloudWatch MCP** | 監視・ログ | ログ検索、メトリクス取得 |
+| **DynamoDB MCP** | データベース | DynamoDBテーブル操作 |
+| **S3 MCP** | ストレージ | S3バケット操作、ファイル管理 |
+
+> **💡 最新情報**: 利用可能なサーバーの完全なリストと詳細は、**[AWS Labs MCP公式リポジトリ](https://github.com/awslabs/mcp)** を参照してください。
+
+### クイックスタート
+
+AWS公式MCPサーバーの基本的な使い方：
+
+**1. 公式リポジトリで詳細を確認**
+
+[AWS Labs MCP](https://github.com/awslabs/mcp)にアクセスし、使用したいサーバーのREADMEを確認します。
+
+**2. Agent設定に追加**
+
+```json
+{
+  "name": "my-agent",
+  "mcpServers": {
+    "aws": {
+      "command": "npx",
+      "args": ["-y", "@aws/mcp-server-aws"]
+    }
+  }
+}
+```
+
+**3. Q CLIで使用**
+
+```bash
+q agent use my-agent
+q chat
+```
+
+チャット内で指示：
+```
+> EC2インスタンスの一覧を表示して
+```
+
+> **⚠️ 注意**: 各サーバーのインストール方法、設定オプション、認証情報の設定、トラブルシューティングは、**[公式リポジトリ](https://github.com/awslabs/mcp)** を参照してください。
 
 ---
 
@@ -693,6 +757,7 @@ MCP設定に関する問題が発生した場合は、[トラブルシューテ�
 - **[Agent設定](04_agent-configuration.md)** - Agent設定の詳細
 - **[環境変数](05_environment-variables.md)** - 環境変数の使い方
 - **[設定例集](07_examples.md)** - 実践的な設定例
+- **[k6を使った負荷テストの自動化](../04_best-practices/05_load-testing-with-k6.md)** - Playwright MCPの実践例
 
 ---
 

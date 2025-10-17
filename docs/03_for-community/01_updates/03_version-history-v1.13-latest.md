@@ -1,18 +1,98 @@
-# Amazon Q CLI バージョンアップ履歴 (v1.13.0 - v1.17.1)
+# Amazon Q CLI バージョンアップ履歴 (v1.13.0 - latest)
 
-**調査日**: 2025-10-12  
-**対象バージョン**: v1.13.0 ～ v1.17.1  
-**リリース期間**: 2025-07-31 ～ 2025-10-01
+**調査日**: 2025-10-18  
+**対象バージョン**: v1.13.0 ～ v1.18.1  
+**リリース期間**: 2025-07-31 ～ 2025-10-14
 
 ## 概要
 
-この期間で4つのメジャー/マイナーバージョンがリリースされました。主な変更点は以下の通りです：
+この期間で8つのメジャー/マイナーバージョンがリリースされました。主な変更点は以下の通りです：
 
-- **Agent機能の大幅強化**: 設定スキーマ、管理コマンド、バリデーション機能の追加
-- **MCP (Model Context Protocol) の進化**: リモートMCP対応、OAuth認証、rmcpへの移行
-- **Knowledge機能のベータ改善**: BM25サポート、非同期クライアントのリファクタリング
+- **Agent機能の大幅強化**: 設定スキーマ、管理コマンド、バリデーション機能、Delegate tool
+- **MCP (Model Context Protocol) の進化**: リモートMCP対応、OAuth認証、rmcpへの移行、SSEサポート
+- **Knowledge機能のベータ改善**: BM25サポート、非同期クライアントのリファクタリング、コマンド統合
+- **実験的機能の拡充**: Tangent mode、Experiment manager、To-do list、/logdump
 - **ユーザー体験の向上**: コンテキスト使用率表示、チェックポイント機能、プロンプト管理強化
 - **セキュリティ強化**: execute_bash権限の厳格化、fs_read信頼範囲の制限
+
+---
+
+## v1.18.1 (2025-10-14)
+
+### バグフィックス
+
+- **バージョン報告の修正**: バージョン情報表示の軽微な不具合を修正
+  - 古いバージョンが報告される問題を解決
+
+### 統計
+
+- コミット数: 1件
+- コントリビューター: Brandon Kiser
+
+### リンク
+
+- [GitHub Release](https://github.com/aws/amazon-q-developer-cli/releases/tag/1.18.1)
+- [Full Changelog](https://github.com/aws/amazon-q-developer-cli/compare/1.18.0...1.18.1)
+
+---
+
+## v1.18.0 (2025-10-13)
+
+### 主要機能追加
+
+#### [実験的] Agent Delegate Tool
+- バックグラウンドで独立して動作するエージェントプロセスの起動・管理機能 (#3073)
+- 長時間実行タスクの委譲が可能に
+- 環境変数のサポート追加 (#3094)
+- EDITORパース機能の追加 (#3104)
+
+#### Stop Hook機能
+- 会話ターン終了時に実行されるライフサイクルフック (#3070)
+- カスタム処理の実行が可能に
+
+#### Knowledge機能の統合
+- `/knowledge status` と `/knowledge show` コマンドの統合 (#3052)
+- `--path` と `--name` 引数の追加
+- コマンド体系の簡素化
+
+#### `/logdump`コマンド
+- サポート調査用のログファイル収集機能 (#2539)
+- トラブルシューティングの効率化
+
+#### Experiment Manager強化
+- 実験的機能の一元管理システムの改善 (#3054, #3062)
+- 機能の有効化・無効化が容易に
+- ビルトインツールのリロード修正 (#3012)
+
+#### MCP関連の改善
+- 引数なしでのMCPプロンプト呼び出しをサポート (#3018)
+- SSEサポート追加 (#2995)
+- rmcpアップグレード (#3109)
+
+### その他の改善
+
+- チェックポイントシステムの信頼性向上とエラーハンドリング改善 (#3041)
+- 会話長の最大制限削除 (#3038)
+- 複数ターンチェックポイント問題の修正 (#3063)
+- ランタイムモデルの更新 (#3083)
+- Changelogレンダリングの改善とプロンプトコマンドの明確化 (#3048)
+- `/reply`コマンドの提案 (#2680)
+- フィードの更新 (#3005, #3043)
+- メッセージの定数化 (#3080)
+- Clippyの修正 (#3072)
+- タイポ修正 (#3061)
+- Windowsターゲットのテスト修正 (#3040)
+- rmcp型変更のテスト修正 (#3037)
+
+### 統計
+
+- コミット数: 28件
+- コントリビューター: Brandon Kiser, Dhanasekar Karuppasamy, Felix Ding, Hugo Costa, James Hood, Kenneth Sanchez V, Kyosuke Konishi, Niko Matsakis, Zoe Lin, kkashilk, manishmv79
+
+### リンク
+
+- [GitHub Release](https://github.com/aws/amazon-q-developer-cli/releases/tag/1.18.0)
+- [Full Changelog](https://github.com/aws/amazon-q-developer-cli/compare/v1.17.1...1.18.0)
 
 ---
 
@@ -172,6 +252,96 @@
 
 ---
 
+## v1.15.0 (2025-09-02)
+
+### 主要機能追加
+
+#### [実験的] Tangent Mode
+- コンテキスト分離された会話のためのTangentモード追加 (#2634)
+- 独立した会話スレッドの管理が可能に
+- Tangentモード期間追跡テレメトリの追加 (#2710)
+- `/tangent`コマンドの実験的機能ゲート追加 (#2720, #2721)
+- Tangentへのサマリ追加と正しい表示ラベル (#2725)
+
+#### [実験的] Introspect Tool
+- Q CLI自己認識ツールの追加 (#2677)
+- Q CLI自身の状態や設定を確認可能に
+- 実験的機能ゲートの追加 (#2720)
+- ビルトインツールのドキュメント追加 (#2727)
+
+#### Agent機能の拡張
+- Agent-scoped Knowledge Base実装 (#2647)
+  - エージェント固有のナレッジベース
+  - コンテキスト特化型検索機能
+- Agent Hot Swap機能 (#2637)
+  - 実行中のエージェント切り替えが可能に
+- ワイルドカードパターンマッチング (#2612)
+  - `allowedTools`でのワイルドカード対応
+- Agent Generate機能の初期実装 (#2690, #2732, #2741)
+  - エージェント設定の自動生成（ワークショップ用）
+  - バグ修正とCTRL+C処理改善
+- ツール権限の修正 (#2619)
+
+#### To-Do List機能
+- タスク管理機能の追加 (#2533)
+- 実験的機能としての位置づけ (#2740)
+- バグ修正 (#2729)
+
+#### `/experiment`コマンド
+- 実験的機能の切り替えコマンド追加 (#2711)
+- 機能の有効化・無効化が容易に
+
+### MCP関連の改善
+
+- MCP管理レベル設定の追加 (#2639)
+  - GetProfileによる設定管理
+- MCPツール名のテレメトリ追加 (#2655)
+  - 利用可能なツール名と選択されたツール名の追跡
+
+### テレメトリとメトリクス
+
+- Agent貢献追跡のテレメトリサポート (#2699)
+- Q CLIによる行追加/削除の絶対値使用 (#2737)
+- Q CLIによる貢献行数の計算修正 (#2738)
+- リトライインターセプター警告メッセージの更新 (#2709)
+
+### その他の改善
+
+- タイムスタンプへのローカルタイムゾーン情報追加 (#2654)
+- SendTelemetry API検証エラーの短期修正 (#2694)
+- ドロップダウンの範囲外問題修正 (#2726)
+- マルチセレクト中のCTRL+C処理修正 (#2741)
+- PIDのunwrap問題修正 (#2657)
+- CI修正 (#2658)
+- Cargo nightly fmt適用 (#2664)
+- フォーマット修正 (#2697)
+- Q Developer Smithyクライアント更新とファイル再フォーマット (#2698)
+
+### CI/CD
+
+- リリース通知用のGitHub Action追加 (#2625)
+
+### バージョン管理
+
+- v1.14.1へのバージョンアップ (#2662)
+- v1.15.0へのバージョンアップ (#2719)
+
+### 新規コントリビューター
+
+1名の新規コントリビューターが参加:
+- @kiran-garre
+
+### 統計
+
+- コミット数: 35件
+- コントリビューター: 7名（新規1名）
+
+### リンク
+
+- [Full Changelog](https://github.com/aws/amazon-q-developer-cli/compare/v1.14.0...v.1.15.0)
+
+---
+
 ## v1.13.0 (2025-07-31)
 
 ### 主要機能追加
@@ -320,10 +490,14 @@
 |-----------|-----------|-------------|---------------------|
 | v1.13.0   | 2025-07-31 | 70+         | 6名                 |
 | v1.14.0   | 2025-08-18 | 11          | 0名                 |
+| v1.15.0   | 2025-09-02 | 35          | 1名                 |
 | v1.16.0   | 2025-09-17 | 40+         | 7名                 |
 | v1.17.0   | 2025-09-29 | 14          | 0名                 |
+| v1.17.1   | 2025-10-01 | 2           | 0名                 |
+| v1.18.0   | 2025-10-13 | 28          | 0名                 |
+| v1.18.1   | 2025-10-14 | 1           | 0名                 |
 
-**合計**: 135+ PRs、13名の新規コントリビューター
+**合計**: 200+ PRs、14名の新規コントリビューター
 
 ---
 
@@ -354,10 +528,14 @@
 - [GitHub Repository](https://github.com/aws/amazon-q-developer-cli)
 - [Full Changelog v1.13.0](https://github.com/aws/amazon-q-developer-cli/compare/v1.10.1...v1.13.0)
 - [Full Changelog v1.14.0](https://github.com/aws/amazon-q-developer-cli/compare/v1.13.3...v1.14.0)
+- [Full Changelog v1.15.0](https://github.com/aws/amazon-q-developer-cli/compare/v1.14.0...v.1.15.0)
 - [Full Changelog v1.16.0](https://github.com/aws/amazon-q-developer-cli/compare/v.1.15.0...v1.16.0)
 - [Full Changelog v1.17.0](https://github.com/aws/amazon-q-developer-cli/compare/v1.16.2...v1.17.0)
+- [Full Changelog v1.17.1](https://github.com/aws/amazon-q-developer-cli/compare/v1.17.0...v1.17.1)
+- [Full Changelog v1.18.0](https://github.com/aws/amazon-q-developer-cli/compare/v1.17.1...1.18.0)
+- [Full Changelog v1.18.1](https://github.com/aws/amazon-q-developer-cli/compare/1.18.0...1.18.1)
 
 ---
 
 **ドキュメント作成日**: 2025-10-08  
-**最終更新**: 2025-10-08
+**最終更新**: 2025-10-18
