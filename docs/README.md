@@ -2,7 +2,7 @@
 
 **最終更新**: 2025-10-13  
 **対象バージョン**: v1.17.0以降  
-**総ドキュメント数**: 79文書
+**総ドキュメント数**: 80文書
 
 ---
 
@@ -251,7 +251,7 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 
 ---
 
-### 📚 Reference（リファレンス）- 全6文書
+### 📚 Reference（リファレンス）- 全7文書
 
 詳細な仕様や完全なリストを確認したい方向けのリファレンスです。
 
@@ -262,7 +262,8 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 | 3 | [設定ファイル配置マップ](01_for-users/07_reference/04_configuration-file-locations.md) | 中級 | 5種類の設定ファイル配置マップ、ディレクトリ構造、実践例 |
 | 4 | [環境変数リファレンス](01_for-users/03_configuration/05_environment-variables.md) | 中級〜上級 | 全環境変数リスト、Q CLI固有18項目、AWS/システム変数 |
 | 5 | [コマンドリファレンス](01_for-users/07_reference/02_commands.md) | 初級〜中級 | 全コマンドリスト、サブコマンド、オプション |
-| 6 | [用語集](01_for-users/07_reference/01_glossary.md) | 初級 | Amazon Q CLI用語集、Agent/MCP/Knowledge等の定義 |
+| 6 | [用語集](01_for-users/07_reference/01_glossary.md) | 初級 | Amazon Q CLI用語集、Agent/MCP/Knowledge等の定義（33用語） |
+| 7 | [完全版用語辞書](01_for-users/07_reference/06_terminology-dictionary.md) | 中級 | 公式リポジトリから抽出した全用語（322用語） |
 
 ---
 
@@ -326,7 +327,7 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 → [トラブルシューティング](01_for-users/06_troubleshooting/)（3文書）で解決方法を探してください
 
 #### 詳細な仕様を知りたい
-→ [リファレンス](01_for-users/07_reference/)（6文書）で完全なリストを確認してください
+→ [リファレンス](01_for-users/07_reference/)（7文書）で完全なリストを確認してください
 
 #### コントリビューションしたい
 → [Developer Guide](02_for-developers/)（9文書）で開発方法を確認してください
@@ -346,7 +347,7 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 | User Guide - Best Practices | 6 | 中級〜上級 |
 | User Guide - Deployment | 2 | 中級〜上級 |
 | User Guide - Troubleshooting | 3 | 初級〜中級 |
-| User Guide - Reference | 6 | 初級〜上級 |
+| User Guide - Reference | 7 | 初級〜上級 |
 | Developer Guide - Architecture | 5 | 上級 |
 | Developer Guide - Contributing | 4 | 上級 |
 | Community - Updates | 5 | 初級〜上級 |
@@ -355,7 +356,7 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 | Issues | 1 | 中級〜上級 |
 | Meta | 5 | 中級〜上級 |
 | Top Level | 4 | - |
-| **合計** | **78** | - |
+| **合計** | **79** | - |
 
 ### 対象ユーザー別文書数
 
