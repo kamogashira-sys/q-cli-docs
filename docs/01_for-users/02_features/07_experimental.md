@@ -7,14 +7,14 @@
 
 ## 📋 目次
 
-- [実験的機能とは](#実験的機能とは)
-- [実験的機能の比較](#実験的機能の比較)
-- [Tangent Mode](#tangent-mode)
-- [TODO Lists](#todo-lists)
-- [Context Usage Percentage](#context-usage-percentage)
-- [Thinking（思考過程表示）](#thinking思考過程表示)
-- [Delegate](#delegate)
-- [注意事項](#注意事項)
+- [実験的機能とは](#-実験的機能とは)
+- [実験的機能の比較](#-実験的機能の比較)
+- [Tangent Mode](#-tangent-mode)
+- [TODO Lists](#-todo-lists)
+- [Context Usage Percentage](#-context-usage-percentage)
+- [Thinking（思考過程表示）](#-thinking思考過程表示)
+- [Delegate](#-delegatev1180)
+- [注意事項](#️-注意事項)
 
 ---
 
