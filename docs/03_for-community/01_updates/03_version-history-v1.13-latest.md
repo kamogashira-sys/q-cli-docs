@@ -258,6 +258,9 @@
 
 ## v1.15.0 (2025-09-02)
 
+> **注**: GitHubのタグ名は`v.1.15.0`（ドット付き）ですが、正式なバージョン番号は`v1.15.0`です。
+> - **GitHub Release**: [v.1.15.0](https://github.com/aws/amazon-q-developer-cli/releases/tag/v.1.15.0)
+
 ### 主要機能追加
 
 #### [実験的] Tangent Mode

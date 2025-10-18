@@ -464,11 +464,20 @@ Windows環境での詳細なセットアップ方法については、以下の�
 
 ## 🌐 プロキシ設定
 
-Amazon Q Developer CLI（v1.8.0以降）は、エンタープライズ環境で一般的に使用されるプロキシサーバーをサポートしています。CLIは標準的なプロキシ環境変数を自動的に認識します。
+Amazon Q Developer CLIは、HTTPクライアントライブラリ（`reqwest`）を使用しており、標準的なプロキシ環境変数を認識します。
+
+**技術的根拠**:
+- ソースコード: [`Cargo.toml`](https://github.com/aws/amazon-q-developer-cli/blob/main/Cargo.toml)で`reqwest`の`socks`フィーチャーが有効化されている
+- 実装: [`http_client.rs`](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/aws_common/http_client.rs)でAWS SDKとの統合でプロキシサポートが実装されている
+
+> **⚠️ 重要な注意事項**
+> 
+> プロキシサポートは技術的に実装されていますが、**公式ドキュメントには明示的に記載されていません**。
+> 実際の動作は環境によって異なる可能性があります。本番環境での使用前に十分なテストを実施してください。
 
 ### 環境変数の設定
 
-シェルで以下の環境変数を設定してプロキシを構成します：
+`reqwest`ライブラリは以下の環境変数を自動的に認識します：
 
 ```bash
 # HTTP proxy（非SSL通信用）
@@ -490,13 +499,12 @@ export HTTP_PROXY=http://username:password@proxy.company.com:8080
 export HTTPS_PROXY=http://username:password@proxy.company.com:8080
 ```
 
-### SOCKSプロキシサポート
+### SOCKSプロキシ
 
-Amazon Q CLIはSOCKSプロキシもサポートしています：
+`reqwest`の`socks`フィーチャーによりSOCKSプロキシもサポートされています：
 
 ```bash
-export HTTP_PROXY=socks5://proxy.company.com:1080
-export HTTPS_PROXY=socks5://proxy.company.com:1080
+export ALL_PROXY=socks5://proxy.company.com:1080
 ```
 
 ### プロキシ設定の確認
@@ -507,7 +515,7 @@ export HTTPS_PROXY=socks5://proxy.company.com:1080
 q doctor
 ```
 
-### プロキシ関連のトラブルシューティング
+### トラブルシューティング
 
 プロキシ関連の接続問題が発生した場合：
 
@@ -515,6 +523,9 @@ q doctor
 - 企業ファイアウォールがAWSエンドポイントへの接続を許可しているか確認
 - SSL証明書検証が失敗する場合はIT管理者に連絡
 - プロキシサーバーが必要なプロトコルをサポートしているか確認
+
+**参考情報**:
+- [reqwest プロキシドキュメント](https://docs.rs/reqwest/latest/reqwest/struct.ClientBuilder.html#method.proxy)
 
 ---
 
