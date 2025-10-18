@@ -91,6 +91,7 @@
 
 **凡例**
 - *1: 英語のまま使用
+- *2: Rust型名は英語のまま使用
 
 ---
 
@@ -103,7 +104,7 @@
 | Auto-Tangent Mode | 自動タンジェントモード | - | [詳細](01_glossary.md) |
 | Delegate | デリゲート | - | [詳細](01_glossary.md) |
 | Enable auto-tangent for introspect questions | Introspect質問で自動タンジェントを有効化 | - | - |
-| EnabledThinking | EnabledThinking | Rust内部実装用の型 | [詳細](01_glossary.md) Rust型名は英語のまま使用 |
+| EnabledThinking | EnabledThinking | Rust内部実装用の型 | [詳細](01_glossary.md) *2 |
 | Enabling Tangent Mode | Tangent Modeの有効化 | - | [詳細](01_glossary.md) |
 | Enter Tangent Mode | Tangent Modeに入る | - | [詳細](01_glossary.md) |
 | Exit Tangent Mode | Tangent Modeを終了 | - | [詳細](01_glossary.md) |
@@ -120,6 +121,7 @@
 
 **凡例**
 - *1: 英語のまま使用
+- *2: Rust型名は英語のまま使用
 
 ---
 
@@ -139,6 +141,7 @@
 
 **凡例**
 - *1: 英語のまま使用
+- *2: Rust型名は英語のまま使用
 
 ---
 
@@ -155,47 +158,47 @@
 | `/todos resume` | `/todos resume` | 技術用語 | *1 |
 | `/todos view` | `/todos view` | 技術用語 | *1 |
 | `todo_list` vs. `/todos` | `todo_list`と`/todos`の違い | - | - |
-| AddContextRequest | AddContextRequest | Rust内部実装用の型 | [詳細](01_glossary.md) Rust型名は英語のまま使用 |
+| AddContextRequest | AddContextRequest | Rust内部実装用の型 | [詳細](01_glossary.md) *2 |
 | allowedTools | allowedTools | 技術用語 | [詳細](01_glossary.md) *1 |
 | AllowedTools Field | allowedToolsフィールド | - | [詳細](01_glossary.md) |
 | Amazon Q CLI | Amazon Q CLI | Amazon Q Developer CLIの略称 | - |
 | args | args | 技術用語 | *1 |
 | Asking Q to make a TODO list: | QにTODOリストを作成させる: | - | - |
-| AsyncSemanticSearchClient | AsyncSemanticSearchClient | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| AsyncSemanticSearchClient | AsyncSemanticSearchClient | Rust内部実装用の型 | *2 |
 | Available Tools | 利用可能なツール | - | [詳細](01_glossary.md) |
-| BackgroundWorker | BackgroundWorker | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| BackgroundWorker | BackgroundWorker | Rust内部実装用の型 | *2 |
 | Basic Usage | 基本的な使い方 | 基礎的な使用方法 | - |
 | Behavior | 動作 | - | - |
-| BenchmarkResults | BenchmarkResults | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| BenchmarkResults | BenchmarkResults | Rust内部実装用の型 | *2 |
 | Best | 最良 | 最も良い品質を示す（Knowledge indexのindex-type） | - |
 | Best Practices | ベストプラクティス | - | - |
-| BM25Context | BM25Context | Rust内部実装用の型 | [詳細](01_glossary.md) Rust型名は英語のまま使用 |
-| BM25DataPoint | BM25DataPoint | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| BM25Index | BM25Index | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| Builder | Builder | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| BM25Context | BM25Context | Rust内部実装用の型 | [詳細](01_glossary.md) *2 |
+| BM25DataPoint | BM25DataPoint | Rust内部実装用の型 | *2 |
+| BM25Index | BM25Index | Rust内部実装用の型 | *2 |
+| Builder | Builder | Rust内部実装用の型 | *2 |
 | Built-in Tools | ビルトインツール | - | [詳細](01_glossary.md) |
 | Caching | キャッシング | - | - |
-| CandleTextEmbedder | CandleTextEmbedder | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| CandleTextEmbedder | CandleTextEmbedder | Rust内部実装用の型 | *2 |
 | Change shortcut key (default: t) | ショートカットキーの変更（デフォルト: t） | - | - |
-| ChatMessage | ChatMessage | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| ChatResponseStream | ChatResponseStream | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| ChatResponseStreamUnmarshaller | ChatResponseStreamUnmarshaller | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| ChatMessage | ChatMessage | Rust内部実装用の型 | *2 |
+| ChatResponseStream | ChatResponseStream | Rust内部実装用の型 | *2 |
+| ChatResponseStreamUnmarshaller | ChatResponseStreamUnmarshaller | Rust内部実装用の型 | *2 |
 | Check/reset shortcut key | Check/reset shortcut key | 技術用語または型名 | *1 |
-| CitationTarget | CitationTarget | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| Client | Client | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| CitationTarget | CitationTarget | Rust内部実装用の型 | *2 |
+| Client | Client | Rust内部実装用の型 | *2 |
 | command | コマンド | 実行する命令（小文字形式） | - |
 | Commands | コマンド | 実行可能な命令 | - |
 | Complete Example | Complete Example | 技術用語または型名 | *1 |
-| Config | Config | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| Config | Config | Rust内部実装用の型 | *2 |
 | Configuration | 設定 | - | - |
 | Configuration Options | 設定オプション | 設定可能な項目や選択肢 | - |
-| ContextCreator | ContextCreator | Rust内部実装用の型 | [詳細](01_glossary.md) Rust型名は英語のまま使用 |
-| ContextManager | ContextManager | Rust内部実装用の型 | [詳細](01_glossary.md) Rust型名は英語のまま使用 |
-| ContextTruncationScheme | ContextTruncationScheme | Rust内部実装用の型 | [詳細](01_glossary.md) Rust型名は英語のまま使用 |
+| ContextCreator | ContextCreator | Rust内部実装用の型 | [詳細](01_glossary.md) *2 |
+| ContextManager | ContextManager | Rust内部実装用の型 | [詳細](01_glossary.md) *2 |
+| ContextTruncationScheme | ContextTruncationScheme | Rust内部実装用の型 | [詳細](01_glossary.md) *2 |
 | Contributing | 貢献 | - | - |
 | Create a Custom Default | カスタムデフォルトの作成 | - | - |
 | Customizing Default Behavior | デフォルト動作のカスタマイズ | - | - |
-| DataPoint | DataPoint | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| DataPoint | DataPoint | Rust内部実装用の型 | *2 |
 | Default | デフォルト | 初期設定、標準設定 | - |
 | Default Resources | デフォルトリソース | - | - |
 | Defining Hooks | フックの定義 | - | [詳細](01_glossary.md) |
@@ -204,12 +207,12 @@
 | Directory Creation | ディレクトリ作成 | - | - |
 | disabled | disabled | 技術用語 | *1 |
 | Effective Searching | Effective Searching | 技術用語または型名 | *1 |
-| EmbeddingType | EmbeddingType | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| EnabledTodoList | EnabledTodoList | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| EmbeddingType | EmbeddingType | Rust内部実装用の型 | *2 |
+| EnabledTodoList | EnabledTodoList | Rust内部実装用の型 | *2 |
 | env | env | 技術用語 | *1 |
 | Error | エラー | - | - |
-| ErrorCodeClassifier | ErrorCodeClassifier | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| EventReceiver | EventReceiver | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| ErrorCodeClassifier | ErrorCodeClassifier | Rust内部実装用の型 | *2 |
+| EventReceiver | EventReceiver | Rust内部実装用の型 | *2 |
 | Exact Matches | 完全一致 | - | - |
 | Example 1: Exploring Alternatives | Example 1: Exploring Alternatives | 技術用語または型名 | *1 |
 | Example 2: Getting Q CLI Help | Example 2: Getting Q CLI Help | 技術用語または型名 | *1 |
@@ -217,27 +220,27 @@
 | Example 4: Keeping Useful Information | Example 4: Keeping Useful Information | 技術用語または型名 | *1 |
 | Example Usage | Example Usage | 技術用語または型名 | *1 |
 | Example Workflow | ワークフロー例 | - | - |
-| ExampleErrorCodeClassifier | ExampleErrorCodeClassifier | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| ExampleErrorCodeClassifier | ExampleErrorCodeClassifier | Rust内部実装用の型 | *2 |
 | Examples | 例 | - | - |
 | Execute_bash Tool | Execute_bashツール | Bashコマンド実行ツール | [詳細](01_glossary.md) |
-| ExportResultArchive | ExportResultArchive | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| ExportResultArchiveError | ExportResultArchiveError | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| ExportResultArchive | ExportResultArchive | Rust内部実装用の型 | *2 |
+| ExportResultArchiveError | ExportResultArchiveError | Rust内部実装用の型 | *2 |
 | Fast | 高速 | 処理速度が速いことを示す（Knowledge indexのindex-type） | - |
 | File Type Support | File Type Support | 技術用語または型名 | *1 |
 | File URI Examples | ファイルURI例 | - | - |
 | File URI Path Resolution | ファイルURIパス解決 | - | - |
-| FileProcessor | FileProcessor | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| FileProcessor | FileProcessor | Rust内部実装用の型 | *2 |
 | Files Not Being Indexed | Files Not Being Indexed | 技術用語または型名 | *1 |
-| FileType | FileType | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| FileType | FileType | Rust内部実装用の型 | *2 |
 | Folder Structure | フォルダ構造 | - | - |
 | ForeverSleep | ForeverSleep | 永続的なスリープ状態を表すRust型 | - |
 | Fs_read Tool | Fs_readツール | ファイル読み取りツール | [詳細](01_glossary.md) |
 | Fs_write Tool | Fs_writeツール | ファイル書き込みツール | [詳細](01_glossary.md) |
 | Fuzzy Search Support | ファジー検索サポート | - | - |
-| GenerateAssistantResponse | GenerateAssistantResponse | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| GenerateAssistantResponseError | GenerateAssistantResponseError | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| GenerateTaskAssistPlan | GenerateTaskAssistPlan | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| GenerateTaskAssistPlanError | GenerateTaskAssistPlanError | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| GenerateAssistantResponse | GenerateAssistantResponse | Rust内部実装用の型 | *2 |
+| GenerateAssistantResponseError | GenerateAssistantResponseError | Rust内部実装用の型 | *2 |
+| GenerateTaskAssistPlan | GenerateTaskAssistPlan | Rust内部実装用の型 | *2 |
+| GenerateTaskAssistPlanError | GenerateTaskAssistPlanError | Rust内部実装用の型 | *2 |
 | Getting Started | はじめに | - | - |
 | Global | グローバル | 全体に適用される設定や範囲 | - |
 | headers | headers | 技術用語 | *1 |
@@ -247,32 +250,32 @@
 | Hooks | フック | 特定のイベント発生時に実行される処理 | [詳細](01_glossary.md) |
 | hooks | hooks | 技術用語 | [詳細](01_glossary.md) *1 |
 | Hooks Field | Hooks Field | 技術用語または型名 | [詳細](01_glossary.md) *1 |
-| HostedModelClient | HostedModelClient | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| HostedModelClient | HostedModelClient | Rust内部実装用の型 | *2 |
 | How It Works | 仕組み | 動作原理や内部構造の説明 | - |
 | If development-helper doesn't exist, falls back to built-in default | If development-helper doesn't exist, falls back to built-in default | 技術用語または型名 | *1 |
 | Important Limitations | 重要な制限事項 | - | - |
 | Important Notes | 重要な注意事項 | - | - |
 | Indexing Process | Indexing Process | 技術用語または型名 | *1 |
-| IndexingJob | IndexingJob | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| IndexingParams | IndexingParams | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| IndexingJob | IndexingJob | Rust内部実装用の型 | *2 |
+| IndexingParams | IndexingParams | Rust内部実装用の型 | *2 |
 | Installation | インストール | - | - |
 | Interactive Selection | 対話的選択 | - | - |
-| InternalServerExceptionReason | InternalServerExceptionReason | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| InternalServerExceptionReason | InternalServerExceptionReason | Rust内部実装用の型 | *2 |
 | Introspect Tool | Introspectツール | Q CLI自身の情報を提供するツール | [詳細](01_glossary.md) |
 | Keyboard Shortcut | キーボードショートカット | - | - |
 | Keyboard Shortcut Not Working | Keyboard Shortcut Not Working | 技術用語または型名 | *1 |
-| KnowledgeContext | KnowledgeContext | Rust内部実装用の型 | [詳細](01_glossary.md) Rust型名は英語のまま使用 |
+| KnowledgeContext | KnowledgeContext | Rust内部実装用の型 | [詳細](01_glossary.md) *2 |
 | Licensing | ライセンス | - | - |
 | Limitations | 制限事項 | 機能の制約や限界 | - |
 | Lists Not Loading | リストが読み込まれません | - | - |
 | Managing Large Projects | Managing Large Projects | 技術用語または型名 | *1 |
 | Managing Lists | リストの管理 | - | - |
 | Metric | Metric | メトリクス測定用のRust型 | - |
-| MockTextEmbedder | MockTextEmbedder | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| ModelConfig | ModelConfig | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| ModelDownloader | ModelDownloader | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| ModelType | ModelType | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| ModelValidator | ModelValidator | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| MockTextEmbedder | MockTextEmbedder | Rust内部実装用の型 | *2 |
+| ModelConfig | ModelConfig | Rust内部実装用の型 | *2 |
+| ModelDownloader | ModelDownloader | Rust内部実装用の型 | *2 |
+| ModelType | ModelType | Rust内部実装用の型 | *2 |
+| ModelValidator | ModelValidator | Rust内部実装用の型 | *2 |
 | name | name | 技術用語 | *1 |
 | Name Field | nameフィールド | - | - |
 | Naming Conflicts | 名前の競合 | - | - |
@@ -280,65 +283,65 @@
 | No Lists Available | 利用可能なリストがありません | - | - |
 | oauth | oauth | 技術用語 | [詳細](01_glossary.md) *1 |
 | oauthScopes | oauthScopes | 技術用語 | [詳細](01_glossary.md) *1 |
-| OnnxModelType | OnnxModelType | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| OperationHandle | OperationHandle | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| OperationManager | OperationManager | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| OperationStatus | OperationStatus | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| OperationType | OperationType | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| OnnxModelType | OnnxModelType | Rust内部実装用の型 | *2 |
+| OperationHandle | OperationHandle | Rust内部実装用の型 | *2 |
+| OperationManager | OperationManager | Rust内部実装用の型 | *2 |
+| OperationStatus | OperationStatus | Rust内部実装用の型 | *2 |
+| OperationType | OperationType | Rust内部実装用の型 | *2 |
 | Or enable via settings | Or enable via settings | 技術用語または型名 | *1 |
 | Override for specific task | Override for specific task | 技術用語または型名 | *1 |
-| Params | Params | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| Params | Params | Rust内部実装用の型 | *2 |
 | Pattern Filtering Best Practices | Pattern Filtering Best Practices | 技術用語または型名 | *1 |
 | Pattern Issues | Pattern Issues | 技術用語または型名 | *1 |
 | Pattern Matching Rules | パターンマッチングルール | - | - |
-| PatternFilter | PatternFilter | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| PatternFilter | PatternFilter | Rust内部実装用の型 | *2 |
 | Performance Considerations | Performance Considerations | 技術用語または型名 | *1 |
 | Performance Issues | Performance Issues | 技術用語または型名 | *1 |
-| Persistence | Persistence | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| Persistence | Persistence | Rust内部実装用の型 | *2 |
 | PostToolUse | PostToolUse | ツール使用後のフック | [詳細](01_glossary.md) |
 | Prerequisites | 前提条件 | - | - |
 | PreToolUse | PreToolUse | ツール使用前のフック | [詳細](01_glossary.md) |
-| ProgressInfo | ProgressInfo | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| ProgressStatus | ProgressStatus | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| ProgressInfo | ProgressInfo | Rust内部実装用の型 | *2 |
+| ProgressStatus | ProgressStatus | Rust内部実装用の型 | *2 |
 | Project Layout | プロジェクト構成 | - | - |
 | redirectUri | redirectUri | 技術用語 | *1 |
 | Related Features | 関連機能 | 関係する他の機能 | - |
 | Report_issue Tool | Report_issueツール | 問題報告ツール | [詳細](01_glossary.md) |
 | resources | resources | 技術用語 | *1 |
 | Resources Field | resourcesフィールド | - | - |
-| ResultArchiveStreamUnmarshaller | ResultArchiveStreamUnmarshaller | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| ResultArchiveStreamUnmarshaller | ResultArchiveStreamUnmarshaller | Rust内部実装用の型 | *2 |
 | Resuming a TODO list (after selecting): | Resuming a TODO list (after selecting): | 技術用語または型名 | *1 |
 | Search Capabilities | Search Capabilities | 技術用語または型名 | *1 |
 | Search Not Finding Expected Results | Search Not Finding Expected Results | 技術用語または型名 | *1 |
-| SearchResult | SearchResult | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| SearchResult | SearchResult | Rust内部実装用の型 | *2 |
 | Security | セキュリティ | - | - |
 | Selecting a TODO list to view: | 表示するTODOリストを選択: | - | - |
-| SemanticContext | SemanticContext | Rust内部実装用の型 | [詳細](01_glossary.md) Rust型名は英語のまま使用 |
-| SemanticSearchClient | SemanticSearchClient | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| SemanticSearchConfig | SemanticSearchConfig | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| SemanticSearchError | SemanticSearchError | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| SendMessage | SendMessage | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| SendMessageError | SendMessageError | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| SemanticContext | SemanticContext | Rust内部実装用の型 | [詳細](01_glossary.md) *2 |
+| SemanticSearchClient | SemanticSearchClient | Rust内部実装用の型 | *2 |
+| SemanticSearchConfig | SemanticSearchConfig | Rust内部実装用の型 | *2 |
+| SemanticSearchError | SemanticSearchError | Rust内部実装用の型 | *2 |
+| SendMessage | SendMessage | Rust内部実装用の型 | *2 |
+| SendMessageError | SendMessageError | Rust内部実装用の型 | *2 |
 | Server | サーバー | サービスを提供するシステム | - |
-| ServiceQuotaExceededExceptionReason | ServiceQuotaExceededExceptionReason | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| ServiceQuotaExceededExceptionReason | ServiceQuotaExceededExceptionReason | Rust内部実装用の型 | *2 |
 | Set your preferred default | Set your preferred default | 技術用語または型名 | *1 |
 | Settings Integration | 設定統合 | - | - |
 | Stop | Stop | 停止時のフック | [詳細](01_glossary.md) |
 | Storage | ストレージ | - | - |
 | Storage and Persistence | Storage and Persistence | 技術用語または型名 | *1 |
-| Summary | Summary | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| Summary | Summary | Rust内部実装用の型 | *2 |
 | Switch back to default | Switch back to default | 技術用語または型名 | *1 |
-| SystemStatus | SystemStatus | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| TextEmbedder | TextEmbedder | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| TFTextEmbedder | TFTextEmbedder | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| SystemStatus | SystemStatus | Rust内部実装用の型 | *2 |
+| TextEmbedder | TextEmbedder | Rust内部実装用の型 | *2 |
+| TFTextEmbedder | TFTextEmbedder | Rust内部実装用の型 | *2 |
 | The preserved entry (question + answer about debugging techniques) is now part of main conversation | The preserved entry (question + answer about debugging techniques) is now part of main conversation | 技術用語または型名 | *1 |
 | This will override defaults with explicit patterns | This will override defaults with explicit patterns | 技術用語または型名 | *1 |
 | This will use the default patterns | This will use the default patterns | 技術用語または型名 | *1 |
 | This will use your default setting | This will use your default setting | 技術用語または型名 | *1 |
-| ThrottlingExceptionReason | ThrottlingExceptionReason | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| ThrottlingExceptionReason | ThrottlingExceptionReason | Rust内部実装用の型 | *2 |
 | Timeout | タイムアウト | - | - |
 | timeout | timeout | 技術用語 | *1 |
-| Tips | Tips | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| Tips | Tips | Rust内部実装用の型 | *2 |
 | TODO List Storage | TODOリストストレージ | - | - |
 | TODO Lists | TODOリスト | - | - |
 | Token | トークン | テキストの最小単位、コンテキストウィンドウの計測単位 | [詳細](01_glossary.md) |
@@ -350,13 +353,13 @@
 | Tools Field | toolsフィールド | - | [詳細](01_glossary.md) |
 | toolsSettings | toolsSettings | 技術用語 | [詳細](01_glossary.md) *1 |
 | ToolsSettings Field | toolsSettingsフィールド | - | [詳細](01_glossary.md) |
-| TransformationDownloadArtifactType | TransformationDownloadArtifactType | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| TransformationDownloadArtifactType | TransformationDownloadArtifactType | Rust内部実装用の型 | *2 |
 | Troubleshooting | トラブルシューティング | - | - |
 | Trusted Tools | 信頼されたツール | - | [詳細](01_glossary.md) |
 | type | type | 技術用語 | *1 |
-| Unhandled | Unhandled | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| UnknownVariantError | UnknownVariantError | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| UnknownVariantValue | UnknownVariantValue | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| Unhandled | Unhandled | Rust内部実装用の型 | *2 |
+| UnknownVariantError | UnknownVariantError | Rust内部実装用の型 | *2 |
+| UnknownVariantValue | UnknownVariantValue | Rust内部実装用の型 | *2 |
 | UriModifierInterceptor | UriModifierInterceptor | URI変更を傍受するRust型 | - |
 | url | url | 技術用語 | *1 |
 | Usage | 使用方法 | - | [詳細](01_glossary.md) |
@@ -364,7 +367,7 @@
 | Use_aws Tool | Use_awsツール | AWS操作ツール | [詳細](01_glossary.md) |
 | User | ユーザー | システムの利用者 | - |
 | User Default Not Found | ユーザーデフォルトが見つかりません | - | - |
-| VectorIndex | VectorIndex | Rust内部実装用の型 | Rust型名は英語のまま使用 |
+| VectorIndex | VectorIndex | Rust内部実装用の型 | *2 |
 | Version | バージョン | ソフトウェアのリリース番号 | - |
 | What It Provides | 提供される機能 | - | - |
 | When NOT to Use | When NOT to Use | 技術用語または型名 | *1 |
@@ -373,6 +376,7 @@
 
 **凡例**
 - *1: 英語のまま使用
+- *2: Rust型名は英語のまま使用
 
 ---
 
@@ -392,6 +396,7 @@
 
 **凡例**
 - *1: 英語のまま使用
+- *2: Rust型名は英語のまま使用
 
 ---
 
@@ -409,6 +414,7 @@
 
 **凡例**
 - *1: 英語のまま使用
+- *2: Rust型名は英語のまま使用
 
 ---
 
@@ -426,7 +432,7 @@
 
 | バージョン | 日付 | 変更内容 |
 |-----------|------|---------|
-| v2.1.0 | 2025-10-18 | サイト全体の用語チェックに基づき6用語追加（Server, Default, Version, Global, User, Token）<br/>表形式に変更（可読性向上、75%の行数削減）<br/>注記列を横並びに変更（GitHub互換性向上）<br/>注記を記号化（*1: 英語のまま使用） |
+| v2.1.0 | 2025-10-18 | サイト全体の用語チェックに基づき6用語追加（Server, Default, Version, Global, User, Token）<br/>表形式に変更（可読性向上、75%の行数削減）<br/>注記列を横並びに変更（GitHub互換性向上）<br/>注記を記号化（*1: 英語のまま使用、*2: Rust型名は英語のまま使用） |
 | v2.0.0 | 2025-10-18 | Phase 3完了: 全278用語の翻訳完了（100%達成） |
 | v1.0.0 | 2025-10-18 | 初版リリース: 公式リポジトリから316用語を抽出 |
 
