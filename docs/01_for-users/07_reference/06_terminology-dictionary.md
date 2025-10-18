@@ -34,9 +34,9 @@
 
 | 英語 | 日本語 | 説明 | 注記 |
 |------|--------|------|------|
-| 1. Command-Line Specified Agent | 1. Command-Line Specified Agent | - | [詳細](01_glossary.md) 見出しは英語のまま使用 |
-| 2. User-Defined Default Agent | 2. User-Defined Default Agent | - | [詳細](01_glossary.md) 見出しは英語のまま使用 |
-| 3. Built-in Default Agent | 3. Built-in Default Agent | - | [詳細](01_glossary.md) 見出しは英語のまま使用 |
+| 1. Command-Line Specified Agent | 1. Command-Line Specified Agent | - | [詳細](01_glossary.md) |
+| 2. User-Defined Default Agent | 2. User-Defined Default Agent | - | [詳細](01_glossary.md) |
+| 3. Built-in Default Agent | 3. Built-in Default Agent | - | [詳細](01_glossary.md) |
 | `/knowledge add --name <name> --path <path> [--include pattern] [--exclude pattern] [--index-type Fast\|Best]` | `/knowledge add --name <name> --path <path> [--include pattern] [--exclude pattern] [--index-type Fast\|Best]` | コア概念 | 英語のまま使用 |
 | `/knowledge cancel [operation_id]` | `/knowledge cancel [operation_id]` | コア概念 | 英語のまま使用 |
 | `/knowledge clear` | `/knowledge clear` | コア概念 | 英語のまま使用 |
@@ -138,9 +138,9 @@
 | 英語 | 日本語 | 説明 | 注記 |
 |------|--------|------|------|
 | $schema | $schema | 技術用語 | 英語のまま使用 |
-| 1. Clone repo | 1. Clone repo | - | 見出しは英語のまま使用 |
-| 2. Install the Rust toolchain using [Rustup](https://rustup.rs): | 2. Install the Rust toolchain using [Rustup](https://rustup.rs): | - | [詳細](01_glossary.md) 見出しは英語のまま使用 |
-| 3. Develop locally | 3. Develop locally | - | 見出しは英語のまま使用 |
+| 1. Clone repo | 1. Clone repo | - | - |
+| 2. Install the Rust toolchain using [Rustup](https://rustup.rs): | 2. Install the Rust toolchain using [Rustup](https://rustup.rs): | - | [詳細](01_glossary.md) |
+| 3. Develop locally | 3. Develop locally | - | - |
 | `/clear-finished` | `/clear-finished` | 技術用語 | 英語のまま使用 |
 | `/todos delete [--all]` | `/todos delete [--all]` | 技術用語 | 英語のまま使用 |
 | `/todos resume` | `/todos resume` | 技術用語 | 英語のまま使用 |
