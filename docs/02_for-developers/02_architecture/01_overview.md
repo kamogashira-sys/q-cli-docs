@@ -11,6 +11,17 @@
 
 ## 🏗️ システム構成
 
+> **💡 このセクションについて**
+> 
+> このシステム構成は、Q CLIのソースコード調査に基づいています。
+> 
+> **出典**: [Cargo.toml](https://github.com/aws/amazon-q-developer-cli/blob/main/Cargo.toml) - Workspace構成の定義
+> 
+> **検証方法**:
+> - Cargo.tomlで全crateのメンバーを確認
+> - 各crateのディレクトリ構造を確認
+> - 依存関係をCargo.tomlで確認
+
 Amazon Q CLIは、Rustで実装されたモノレポ構成のプロジェクトです。
 
 ### Workspace構成（8つのcrate）
