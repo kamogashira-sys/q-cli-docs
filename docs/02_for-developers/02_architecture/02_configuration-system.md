@@ -23,6 +23,29 @@ Amazon Q CLIの設定システムは、柔軟で拡張可能なアーキテク�
 
 ## 🔧 設定システムのアーキテクチャ
 
+> **💡 このセクションについて**
+> 
+> この設定システムのアーキテクチャは、Q CLIのソースコード実装に基づいています。
+> 
+> **出典**:
+> - **設定の読み込みフロー**: [crates/chat-cli/src/cli/chat/mod.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/cli/chat/mod.rs) - `ChatArgs::execute`メソッド
+> - **優先順位の実装**: [crates/chat-cli/src/cli/chat/mod.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/cli/chat/mod.rs) - L367-395（モデル選択の優先順位）
+> - **環境変数展開**: [crates/chat-cli/src/mcp_client/client.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/mcp_client/client.rs) - `substitute_env_vars`関数（L113-127）
+> - **設定値の取得**: [crates/chat-cli/src/database/settings.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/database/settings.rs) - `Settings::get`/`get_int_or`メソッド
+> - **Agent設定読み込み**: [crates/chat-cli/src/cli/agent/mod.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/cli/agent/mod.rs) - `Agent::load`/`Agents::load`メソッド
+> 
+> **検証方法**:
+> - `ChatArgs::execute`で設定読み込みフローを確認
+> - モデル選択の優先順位実装（CLI引数 > Agent設定 > デフォルト）を確認
+> - `substitute_env_vars`で`${env:VAR_NAME}`展開を確認
+> - `Settings::get_int_or`でデフォルト値フォールバックを確認
+> 
+> **実装の詳細**:
+> - **優先順位**: CLI引数（L367）> Agent設定（L379）> デフォルト値（L360）
+> - **環境変数展開**: 正規表現`\$\{env:([^}]+)\}`でパターンマッチ（L116）
+> - **デフォルト値**: `get_int_or`メソッドで値がない場合にデフォルト値を返す（L250-251）
+> - **Agent読み込み**: `Agents::load`でローカル/グローバルAgentを読み込み（L500-600）
+
 ### 設定の読み込みフロー
 
 ```mermaid
