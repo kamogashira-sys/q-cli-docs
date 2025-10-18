@@ -85,6 +85,19 @@ Amazon Q CLIの開発ロードマップと今後の計画について説明し�
 
 ## 完了した機能
 
+### v1.18.1（2025-10-14）
+- ✅ バージョン報告の修正
+
+### v1.18.0（2025-10-13）
+- ✅ Delegate Tool（実験的機能）
+- ✅ Stop Hook機能
+- ✅ Knowledge コマンド統合
+- ✅ PDF対応（Knowledge）
+- ✅ file:// URI対応（Agent prompts）
+- ✅ `/logdump` コマンド
+- ✅ Experiment Manager強化
+- ✅ MCP Prompts改善
+
 ### v1.17.0（2025-09-29）
 - ✅ Knowledge機能のBM25サポート
 - ✅ セキュリティ強化（execute_bash権限）
