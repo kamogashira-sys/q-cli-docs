@@ -102,6 +102,8 @@ alias qr='q chat --resume'
 | `/exit` | `/quit`と同じ。チャットセッションを終了する | 作業を終了する時（`/quit`の別名） |
 | `/clear` | 現在の会話履歴をクリア。新しい話題を始める時に便利 | 会話が長くなりすぎた時、全く別の話題に切り替える時 |
 
+**出典**: [AWS公式ドキュメント - チャットコマンド](https://docs.aws.amazon.com/ja_jp/amazonq/latest/qdeveloper-ug/command-line-chat-commands.html)
+
 ### 会話管理
 
 | コマンド | 詳細説明 | 使用シーン |
