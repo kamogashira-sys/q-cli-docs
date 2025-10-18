@@ -156,6 +156,29 @@ classDiagram
 
 ## 設定読み込みのシーケンス図
 
+> **💡 このセクションについて**
+> 
+> この設定読み込みのシーケンス図は、Q CLIのソースコード実装に基づいています。
+> 
+> **出典**:
+> - **設定コマンド実行**: [crates/chat-cli/src/cli/settings.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/cli/settings.rs) - `SettingsArgs::execute`メソッド（L58-150）
+> - **Settings初期化**: [crates/chat-cli/src/database/settings.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/database/settings.rs) - `Settings::new`メソッド（L190-217）
+> - **設定値の保存**: [crates/chat-cli/src/database/settings.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/database/settings.rs) - `Settings::set`メソッド（L227-231）
+> - **ファイル保存**: [crates/chat-cli/src/database/settings.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/database/settings.rs) - `Settings::save_to_file`メソッド（L254-285）
+> 
+> **検証方法**:
+> - `SettingsArgs::execute`で設定コマンドの処理フローを確認
+> - `Settings::new`でファイル存在確認と読み込み処理を確認
+> - `Settings::set`で内部Map更新と自動保存を確認
+> - `save_to_file`でJSON書き込み処理を確認
+> 
+> **実装の詳細**:
+> - **ファイル存在確認**: `path.exists()`で確認（L205）
+> - **ファイル読み込み**: `File::open`→`read_to_end`→`serde_json::from_slice`（L206-209）
+> - **ファイル作成**: `File::create`→`write_all(b"{}")`（L211-213）
+> - **設定値更新**: `self.0.insert(key.to_string(), value.into())`（L228）
+> - **自動保存**: `set`メソッド内で`save_to_file()`を呼び出し（L229）
+
 ```mermaid
 sequenceDiagram
     participant User as ユーザー
