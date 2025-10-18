@@ -258,6 +258,10 @@ Amazon Q Developerは以下の規制・基準に対応：
 
 ### セキュリティガイド
 - [セキュリティ概要](01_security-overview.md)
+- [ファイルアクセス制御](03_file-access-control.md)
+- [AWS API制御](04_aws-api-control.md)
+- [認証情報管理](05_credentials-management.md)
+- [trust-all安全使用ガイド](06_trust-all-safety.md)
 
 ### 設定ガイド
 - [テレメトリー設定](../03_configuration/06_telemetry.md)
