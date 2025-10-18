@@ -139,6 +139,8 @@ q chat --agent back-end
 
 ### ステップ3: Agentでできること（4つの機能）
 
+**出典**: [AWS公式ドキュメント - カスタムエージェント設定リファレンス](https://docs.aws.amazon.com/ja_jp/amazonq/latest/qdeveloper-ug/command-line-custom-agents-configuration.html)
+
 #### 機能1: MCPサーバーの切り替え
 
 **何ができる？**: タスクに必要な外部ツールだけを有効化
