@@ -42,3 +42,6 @@ venv/
 # Script results
 *-results.txt
 *-check-results.txt
+
+# Q CLI logs
+q-logs-*.zip
