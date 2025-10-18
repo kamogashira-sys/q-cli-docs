@@ -398,6 +398,17 @@ Agentファイルが存在しない場合、Q CLIは自動的にデフォルトA
 
 ## 🔧 MCP設定スキーマ
 
+> **💡 このセクションについて**
+> 
+> このスキーマは、Q CLIのソースコード調査に基づいています。
+> 
+> **出典**: [ソースコード](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/cli/chat/tools/custom_tool.rs) - `CustomToolConfig` 構造体の定義
+> 
+> **検証方法**:
+> - ソースコードで全フィールドの定義を確認
+> - 各フィールドの型、デフォルト値、必須/任意を確認
+> - serdeアトリビュートでシリアライズ動作を確認
+
 ### 基本構造
 
 ```json
