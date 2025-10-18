@@ -133,6 +133,33 @@ graph TD
 
 ## 📖 ドキュメント構成
 
+### 📁 ディレクトリ構造
+
+```
+docs/
+├── 01_for-users/              # ユーザーガイド（65文書）
+│   ├── 01_getting-started/    # 入門ガイド（5文書）
+│   ├── 02_features/           # 機能ガイド（8文書）
+│   ├── 03_configuration/      # 設定ガイド（9文書）
+│   ├── 04_best-practices/     # ベストプラクティス（6文書）
+│   ├── 05_deployment/         # デプロイメント（4文書）
+│   ├── 06_troubleshooting/    # トラブルシューティング（3文書）
+│   ├── 07_reference/          # リファレンス（10文書）
+│   ├── 08_guides/             # コンテキスト管理ガイド（9文書）
+│   └── 09_security/           # セキュリティ（7文書）
+├── 02_for-developers/         # 開発者ガイド（7文書）
+│   ├── 01_contributing/       # コントリビューション（3文書）
+│   └── 02_architecture/       # アーキテクチャ（5文書）
+└── 03_for-community/          # コミュニティ（13文書）
+    ├── 01_updates/            # アップデート情報（5文書）
+    ├── 02_community/          # コミュニティ（4文書）
+    └── 03_analysis/           # 分析レポート（4文書）
+```
+
+> 💡 **詳細なファイル一覧**: 全95ファイルの完全なツリー構造は[こちら](file-structure.md)
+
+---
+
 ### 🎯 Getting Started（初心者向け）- 全5文書
 
 Amazon Q CLIを初めて使う方向けのガイドです。
