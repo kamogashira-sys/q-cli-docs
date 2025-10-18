@@ -34,7 +34,7 @@ graph LR
 
 Q CLIの応答品質は**コンテキスト管理**で決まります。以下のガイドで体系的に学習できます：
 
-#### 📚 **[コンテキスト管理完全ガイド](docs/01_for-users/08_guides/README.md)** ← 必読！
+#### 📚 **[コンテキスト管理完全ガイド](docs/01_for-users/08_guides/README.md)** ← ⭐必読！
 
 全8章構成の包括的ガイド：
 1. **[本質編](docs/01_for-users/08_guides/01_essence.md)** - コンテキストとは何か（15分）
