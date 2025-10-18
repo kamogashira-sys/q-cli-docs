@@ -171,6 +171,10 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 ### AI・機械学習
 - 「生成AIの教科書」
 - 「大規模言語モデル入門」
+- [「AWS生成AIアプリ構築実践ガイド」](https://www.amazon.co.jp/dp/B0FL1GW56V) - 針原 佳貴 著
+- [「AIエージェント開発/運用入門 [生成AI深掘りガイド]」](https://www.amazon.co.jp/dp/B0FJL96W2Z) - 御田 稔 著
+- [「やさしいMCP入門」](https://www.amazon.co.jp/dp/B0FFGMH7V4) - 御田稔 著
+- [「Amazon Bedrock 生成AIアプリ開発入門 [AWS深掘りガイド]」](https://www.amazon.co.jp/dp/B0CY28Z13G) - 御田 稔 著
 
 ### AWS
 - 「AWS認定資格試験テキスト」
