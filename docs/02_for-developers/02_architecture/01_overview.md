@@ -67,6 +67,23 @@ graph TB
 
 ## 🔄 レイヤー構造
 
+> **💡 このセクションについて**
+> 
+> このレイヤー構造は、chat-cliのソースコード構造に基づいています。
+> 
+> **出典**: [crates/chat-cli/src/](https://github.com/aws/amazon-q-developer-cli/tree/main/crates/chat-cli/src) - ディレクトリ構造
+> 
+> **検証方法**:
+> - ソースコードのディレクトリ構造を確認
+> - 各モジュールの責務を確認
+> - モジュール間の依存関係を確認
+> 
+> **レイヤー分類**:
+> - **Presentation Layer**: cli/, theme/
+> - **Application Layer**: cli/chat/, cli/agent/, cli/experiment/, cli/settings/, cli/user/
+> - **Domain Layer**: auth/, mcp_client/, api_client/
+> - **Infrastructure Layer**: database/, os/, util/, telemetry/
+
 chat-cliは4層アーキテクチャで構成されています：
 
 ```mermaid
