@@ -77,8 +77,6 @@ graph LR
     
     style Exp fill:#fff3cd
     style Knowledge fill:#e3f2fd
-    style Checkpoint fill:#e3f2fd
-    style TODO fill:#e3f2fd
     style Tangent fill:#e3f2fd
     style Thinking fill:#e3f2fd
     style Delegate fill:#e3f2fd
