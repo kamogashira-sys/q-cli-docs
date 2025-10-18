@@ -64,6 +64,8 @@
 
 **詳細**: [v1.17.0リリースノート](https://github.com/aws/amazon-q-developer-cli/releases/tag/v1.17.0)
 
+---
+
 ### v1.16.0（2025-09-15）
 
 **Agent機能の成熟化**:
