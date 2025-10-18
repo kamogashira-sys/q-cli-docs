@@ -37,12 +37,12 @@
 | 1. Command-Line Specified Agent | 1. Command-Line Specified Agent | - | [詳細](01_glossary.md) |
 | 2. User-Defined Default Agent | 2. User-Defined Default Agent | - | [詳細](01_glossary.md) |
 | 3. Built-in Default Agent | 3. Built-in Default Agent | - | [詳細](01_glossary.md) |
-| `/knowledge add --name <name> --path <path> [--include pattern] [--exclude pattern] [--index-type Fast\|Best]` | `/knowledge add --name <name> --path <path> [--include pattern] [--exclude pattern] [--index-type Fast\|Best]` | コア概念 | 英語のまま使用 |
-| `/knowledge cancel [operation_id]` | `/knowledge cancel [operation_id]` | コア概念 | 英語のまま使用 |
-| `/knowledge clear` | `/knowledge clear` | コア概念 | 英語のまま使用 |
-| `/knowledge remove <identifier>` | `/knowledge remove <identifier>` | コア概念 | 英語のまま使用 |
-| `/knowledge show` | `/knowledge show` | コア概念 | 英語のまま使用 |
-| `/knowledge update <path>` | `/knowledge update <path>` | コア概念 | 英語のまま使用 |
+| `/knowledge add --name <name> --path <path> [--include pattern] [--exclude pattern] [--index-type Fast\|Best]` | `/knowledge add --name <name> --path <path> [--include pattern] [--exclude pattern] [--index-type Fast\|Best]` | コア概念 | *1 |
+| `/knowledge cancel [operation_id]` | `/knowledge cancel [operation_id]` | コア概念 | *1 |
+| `/knowledge clear` | `/knowledge clear` | コア概念 | *1 |
+| `/knowledge remove <identifier>` | `/knowledge remove <identifier>` | コア概念 | *1 |
+| `/knowledge show` | `/knowledge show` | コア概念 | *1 |
+| `/knowledge update <path>` | `/knowledge update <path>` | コア概念 | *1 |
 | Agent File Locations | Agentファイルの場所 | Agent設定ファイルが保存される場所 | [詳細](01_glossary.md) |
 | Agent Format | Agent形式 | Agent設定ファイルの構造と書式 | [詳細](01_glossary.md) |
 | Agent Not Found | Agentが見つかりません | - | [詳細](01_glossary.md) |
@@ -89,6 +89,9 @@
 | Using Tool Settings in Agent Configuration | Agent設定でのツール設定の使用 | - | [詳細](01_glossary.md) |
 | Working with default agent | デフォルトAgentでの作業 | - | [詳細](01_glossary.md) |
 
+**凡例**
+- *1: 英語のまま使用
+
 ---
 
 ### 機能（19用語）
@@ -106,14 +109,17 @@
 | Exit Tangent Mode | Tangent Modeを終了 | - | [詳細](01_glossary.md) |
 | Exit Tangent Mode with Tail | Tangent Modeを保持して終了 | - | [詳細](01_glossary.md) |
 | In Tangent Mode | Tangent Mode中 | - | [詳細](01_glossary.md) |
-| Lost in Tangent Mode | Lost in Tangent Mode | 機能 | [詳細](01_glossary.md) 英語のまま使用 |
-| model | model | 機能 | 英語のまま使用 |
+| Lost in Tangent Mode | Lost in Tangent Mode | 機能 | [詳細](01_glossary.md) *1 |
+| model | model | 機能 | *1 |
 | Model Field | modelフィールド | - | - |
 | Tangent Mode | タンジェントモード | - | [詳細](01_glossary.md) |
-| Tangent Mode Not Working | Tangent Mode Not Working | 機能 | [詳細](01_glossary.md) 英語のまま使用 |
+| Tangent Mode Not Working | Tangent Mode Not Working | 機能 | [詳細](01_glossary.md) *1 |
 | Thinking | シンキング | - | [詳細](01_glossary.md) |
 | TODO Management | TODO管理 | - | - |
 | When to Use Tangent Mode | Tangent Modeを使用するタイミング | - | [詳細](01_glossary.md) |
+
+**凡例**
+- *1: 英語のまま使用
 
 ---
 
@@ -131,26 +137,29 @@
 | /tangent | /tangent | - | コマンドは英語のまま使用 |
 | /todos | /todos | - | コマンドは英語のまま使用 |
 
+**凡例**
+- *1: 英語のまま使用
+
 ---
 
 ### 技術用語（224用語）
 
 | 英語 | 日本語 | 説明 | 注記 |
 |------|--------|------|------|
-| $schema | $schema | 技術用語 | 英語のまま使用 |
+| $schema | $schema | 技術用語 | *1 |
 | 1. Clone repo | 1. Clone repo | - | - |
 | 2. Install the Rust toolchain using [Rustup](https://rustup.rs): | 2. Install the Rust toolchain using [Rustup](https://rustup.rs): | - | [詳細](01_glossary.md) |
 | 3. Develop locally | 3. Develop locally | - | - |
-| `/clear-finished` | `/clear-finished` | 技術用語 | 英語のまま使用 |
-| `/todos delete [--all]` | `/todos delete [--all]` | 技術用語 | 英語のまま使用 |
-| `/todos resume` | `/todos resume` | 技術用語 | 英語のまま使用 |
-| `/todos view` | `/todos view` | 技術用語 | 英語のまま使用 |
+| `/clear-finished` | `/clear-finished` | 技術用語 | *1 |
+| `/todos delete [--all]` | `/todos delete [--all]` | 技術用語 | *1 |
+| `/todos resume` | `/todos resume` | 技術用語 | *1 |
+| `/todos view` | `/todos view` | 技術用語 | *1 |
 | `todo_list` vs. `/todos` | `todo_list`と`/todos`の違い | - | - |
 | AddContextRequest | AddContextRequest | Rust内部実装用の型 | [詳細](01_glossary.md) Rust型名は英語のまま使用 |
-| allowedTools | allowedTools | 技術用語 | [詳細](01_glossary.md) 英語のまま使用 |
+| allowedTools | allowedTools | 技術用語 | [詳細](01_glossary.md) *1 |
 | AllowedTools Field | allowedToolsフィールド | - | [詳細](01_glossary.md) |
 | Amazon Q CLI | Amazon Q CLI | Amazon Q Developer CLIの略称 | - |
-| args | args | 技術用語 | 英語のまま使用 |
+| args | args | 技術用語 | *1 |
 | Asking Q to make a TODO list: | QにTODOリストを作成させる: | - | - |
 | AsyncSemanticSearchClient | AsyncSemanticSearchClient | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Available Tools | 利用可能なツール | - | [詳細](01_glossary.md) |
@@ -171,12 +180,12 @@
 | ChatMessage | ChatMessage | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | ChatResponseStream | ChatResponseStream | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | ChatResponseStreamUnmarshaller | ChatResponseStreamUnmarshaller | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| Check/reset shortcut key | Check/reset shortcut key | 技術用語または型名 | 英語のまま使用 |
+| Check/reset shortcut key | Check/reset shortcut key | 技術用語または型名 | *1 |
 | CitationTarget | CitationTarget | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Client | Client | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | command | コマンド | 実行する命令（小文字形式） | - |
 | Commands | コマンド | 実行可能な命令 | - |
-| Complete Example | Complete Example | 技術用語または型名 | 英語のまま使用 |
+| Complete Example | Complete Example | 技術用語または型名 | *1 |
 | Config | Config | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Configuration | 設定 | - | - |
 | Configuration Options | 設定オプション | 設定可能な項目や選択肢 | - |
@@ -190,23 +199,23 @@
 | Default | デフォルト | 初期設定、標準設定 | - |
 | Default Resources | デフォルトリソース | - | - |
 | Defining Hooks | フックの定義 | - | [詳細](01_glossary.md) |
-| description | description | 技術用語 | 英語のまま使用 |
+| description | description | 技術用語 | *1 |
 | Description Field | descriptionフィールド | - | - |
 | Directory Creation | ディレクトリ作成 | - | - |
-| disabled | disabled | 技術用語 | 英語のまま使用 |
-| Effective Searching | Effective Searching | 技術用語または型名 | 英語のまま使用 |
+| disabled | disabled | 技術用語 | *1 |
+| Effective Searching | Effective Searching | 技術用語または型名 | *1 |
 | EmbeddingType | EmbeddingType | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | EnabledTodoList | EnabledTodoList | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| env | env | 技術用語 | 英語のまま使用 |
+| env | env | 技術用語 | *1 |
 | Error | エラー | - | - |
 | ErrorCodeClassifier | ErrorCodeClassifier | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | EventReceiver | EventReceiver | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Exact Matches | 完全一致 | - | - |
-| Example 1: Exploring Alternatives | Example 1: Exploring Alternatives | 技術用語または型名 | 英語のまま使用 |
-| Example 2: Getting Q CLI Help | Example 2: Getting Q CLI Help | 技術用語または型名 | 英語のまま使用 |
-| Example 3: Clarifying Requirements | Example 3: Clarifying Requirements | 技術用語または型名 | 英語のまま使用 |
-| Example 4: Keeping Useful Information | Example 4: Keeping Useful Information | 技術用語または型名 | 英語のまま使用 |
-| Example Usage | Example Usage | 技術用語または型名 | 英語のまま使用 |
+| Example 1: Exploring Alternatives | Example 1: Exploring Alternatives | 技術用語または型名 | *1 |
+| Example 2: Getting Q CLI Help | Example 2: Getting Q CLI Help | 技術用語または型名 | *1 |
+| Example 3: Clarifying Requirements | Example 3: Clarifying Requirements | 技術用語または型名 | *1 |
+| Example 4: Keeping Useful Information | Example 4: Keeping Useful Information | 技術用語または型名 | *1 |
+| Example Usage | Example Usage | 技術用語または型名 | *1 |
 | Example Workflow | ワークフロー例 | - | - |
 | ExampleErrorCodeClassifier | ExampleErrorCodeClassifier | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Examples | 例 | - | - |
@@ -214,11 +223,11 @@
 | ExportResultArchive | ExportResultArchive | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | ExportResultArchiveError | ExportResultArchiveError | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Fast | 高速 | 処理速度が速いことを示す（Knowledge indexのindex-type） | - |
-| File Type Support | File Type Support | 技術用語または型名 | 英語のまま使用 |
+| File Type Support | File Type Support | 技術用語または型名 | *1 |
 | File URI Examples | ファイルURI例 | - | - |
 | File URI Path Resolution | ファイルURIパス解決 | - | - |
 | FileProcessor | FileProcessor | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| Files Not Being Indexed | Files Not Being Indexed | 技術用語または型名 | 英語のまま使用 |
+| Files Not Being Indexed | Files Not Being Indexed | 技術用語または型名 | *1 |
 | FileType | FileType | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Folder Structure | フォルダ構造 | - | - |
 | ForeverSleep | ForeverSleep | 永続的なスリープ状態を表すRust型 | - |
@@ -231,19 +240,19 @@
 | GenerateTaskAssistPlanError | GenerateTaskAssistPlanError | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Getting Started | はじめに | - | - |
 | Global | グローバル | 全体に適用される設定や範囲 | - |
-| headers | headers | 技術用語 | 英語のまま使用 |
+| headers | headers | 技術用語 | *1 |
 | Hook Event | フックイベント | - | [詳細](01_glossary.md) |
 | Hook Output | フック出力 | - | [詳細](01_glossary.md) |
 | Hook Types | フックタイプ | - | [詳細](01_glossary.md) |
 | Hooks | フック | 特定のイベント発生時に実行される処理 | [詳細](01_glossary.md) |
-| hooks | hooks | 技術用語 | [詳細](01_glossary.md) 英語のまま使用 |
-| Hooks Field | Hooks Field | 技術用語または型名 | [詳細](01_glossary.md) 英語のまま使用 |
+| hooks | hooks | 技術用語 | [詳細](01_glossary.md) *1 |
+| Hooks Field | Hooks Field | 技術用語または型名 | [詳細](01_glossary.md) *1 |
 | HostedModelClient | HostedModelClient | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | How It Works | 仕組み | 動作原理や内部構造の説明 | - |
-| If development-helper doesn't exist, falls back to built-in default | If development-helper doesn't exist, falls back to built-in default | 技術用語または型名 | 英語のまま使用 |
+| If development-helper doesn't exist, falls back to built-in default | If development-helper doesn't exist, falls back to built-in default | 技術用語または型名 | *1 |
 | Important Limitations | 重要な制限事項 | - | - |
 | Important Notes | 重要な注意事項 | - | - |
-| Indexing Process | Indexing Process | 技術用語または型名 | 英語のまま使用 |
+| Indexing Process | Indexing Process | 技術用語または型名 | *1 |
 | IndexingJob | IndexingJob | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | IndexingParams | IndexingParams | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Installation | インストール | - | - |
@@ -251,12 +260,12 @@
 | InternalServerExceptionReason | InternalServerExceptionReason | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Introspect Tool | Introspectツール | Q CLI自身の情報を提供するツール | [詳細](01_glossary.md) |
 | Keyboard Shortcut | キーボードショートカット | - | - |
-| Keyboard Shortcut Not Working | Keyboard Shortcut Not Working | 技術用語または型名 | 英語のまま使用 |
+| Keyboard Shortcut Not Working | Keyboard Shortcut Not Working | 技術用語または型名 | *1 |
 | KnowledgeContext | KnowledgeContext | Rust内部実装用の型 | [詳細](01_glossary.md) Rust型名は英語のまま使用 |
 | Licensing | ライセンス | - | - |
 | Limitations | 制限事項 | 機能の制約や限界 | - |
 | Lists Not Loading | リストが読み込まれません | - | - |
-| Managing Large Projects | Managing Large Projects | 技術用語または型名 | 英語のまま使用 |
+| Managing Large Projects | Managing Large Projects | 技術用語または型名 | *1 |
 | Managing Lists | リストの管理 | - | - |
 | Metric | Metric | メトリクス測定用のRust型 | - |
 | MockTextEmbedder | MockTextEmbedder | Rust内部実装用の型 | Rust型名は英語のまま使用 |
@@ -264,27 +273,27 @@
 | ModelDownloader | ModelDownloader | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | ModelType | ModelType | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | ModelValidator | ModelValidator | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| name | name | 技術用語 | 英語のまま使用 |
+| name | name | 技術用語 | *1 |
 | Name Field | nameフィールド | - | - |
 | Naming Conflicts | 名前の競合 | - | - |
 | Native Tool Patterns | ネイティブツールパターン | - | [詳細](01_glossary.md) |
 | No Lists Available | 利用可能なリストがありません | - | - |
-| oauth | oauth | 技術用語 | [詳細](01_glossary.md) 英語のまま使用 |
-| oauthScopes | oauthScopes | 技術用語 | [詳細](01_glossary.md) 英語のまま使用 |
+| oauth | oauth | 技術用語 | [詳細](01_glossary.md) *1 |
+| oauthScopes | oauthScopes | 技術用語 | [詳細](01_glossary.md) *1 |
 | OnnxModelType | OnnxModelType | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | OperationHandle | OperationHandle | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | OperationManager | OperationManager | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | OperationStatus | OperationStatus | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | OperationType | OperationType | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| Or enable via settings | Or enable via settings | 技術用語または型名 | 英語のまま使用 |
-| Override for specific task | Override for specific task | 技術用語または型名 | 英語のまま使用 |
+| Or enable via settings | Or enable via settings | 技術用語または型名 | *1 |
+| Override for specific task | Override for specific task | 技術用語または型名 | *1 |
 | Params | Params | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| Pattern Filtering Best Practices | Pattern Filtering Best Practices | 技術用語または型名 | 英語のまま使用 |
-| Pattern Issues | Pattern Issues | 技術用語または型名 | 英語のまま使用 |
+| Pattern Filtering Best Practices | Pattern Filtering Best Practices | 技術用語または型名 | *1 |
+| Pattern Issues | Pattern Issues | 技術用語または型名 | *1 |
 | Pattern Matching Rules | パターンマッチングルール | - | - |
 | PatternFilter | PatternFilter | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| Performance Considerations | Performance Considerations | 技術用語または型名 | 英語のまま使用 |
-| Performance Issues | Performance Issues | 技術用語または型名 | 英語のまま使用 |
+| Performance Considerations | Performance Considerations | 技術用語または型名 | *1 |
+| Performance Issues | Performance Issues | 技術用語または型名 | *1 |
 | Persistence | Persistence | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | PostToolUse | PostToolUse | ツール使用後のフック | [詳細](01_glossary.md) |
 | Prerequisites | 前提条件 | - | - |
@@ -292,15 +301,15 @@
 | ProgressInfo | ProgressInfo | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | ProgressStatus | ProgressStatus | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Project Layout | プロジェクト構成 | - | - |
-| redirectUri | redirectUri | 技術用語 | 英語のまま使用 |
+| redirectUri | redirectUri | 技術用語 | *1 |
 | Related Features | 関連機能 | 関係する他の機能 | - |
 | Report_issue Tool | Report_issueツール | 問題報告ツール | [詳細](01_glossary.md) |
-| resources | resources | 技術用語 | 英語のまま使用 |
+| resources | resources | 技術用語 | *1 |
 | Resources Field | resourcesフィールド | - | - |
 | ResultArchiveStreamUnmarshaller | ResultArchiveStreamUnmarshaller | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| Resuming a TODO list (after selecting): | Resuming a TODO list (after selecting): | 技術用語または型名 | 英語のまま使用 |
-| Search Capabilities | Search Capabilities | 技術用語または型名 | 英語のまま使用 |
-| Search Not Finding Expected Results | Search Not Finding Expected Results | 技術用語または型名 | 英語のまま使用 |
+| Resuming a TODO list (after selecting): | Resuming a TODO list (after selecting): | 技術用語または型名 | *1 |
+| Search Capabilities | Search Capabilities | 技術用語または型名 | *1 |
+| Search Not Finding Expected Results | Search Not Finding Expected Results | 技術用語または型名 | *1 |
 | SearchResult | SearchResult | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Security | セキュリティ | - | - |
 | Selecting a TODO list to view: | 表示するTODOリストを選択: | - | - |
@@ -312,44 +321,44 @@
 | SendMessageError | SendMessageError | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Server | サーバー | サービスを提供するシステム | - |
 | ServiceQuotaExceededExceptionReason | ServiceQuotaExceededExceptionReason | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| Set your preferred default | Set your preferred default | 技術用語または型名 | 英語のまま使用 |
+| Set your preferred default | Set your preferred default | 技術用語または型名 | *1 |
 | Settings Integration | 設定統合 | - | - |
 | Stop | Stop | 停止時のフック | [詳細](01_glossary.md) |
 | Storage | ストレージ | - | - |
-| Storage and Persistence | Storage and Persistence | 技術用語または型名 | 英語のまま使用 |
+| Storage and Persistence | Storage and Persistence | 技術用語または型名 | *1 |
 | Summary | Summary | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| Switch back to default | Switch back to default | 技術用語または型名 | 英語のまま使用 |
+| Switch back to default | Switch back to default | 技術用語または型名 | *1 |
 | SystemStatus | SystemStatus | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | TextEmbedder | TextEmbedder | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | TFTextEmbedder | TFTextEmbedder | Rust内部実装用の型 | Rust型名は英語のまま使用 |
-| The preserved entry (question + answer about debugging techniques) is now part of main conversation | The preserved entry (question + answer about debugging techniques) is now part of main conversation | 技術用語または型名 | 英語のまま使用 |
-| This will override defaults with explicit patterns | This will override defaults with explicit patterns | 技術用語または型名 | 英語のまま使用 |
-| This will use the default patterns | This will use the default patterns | 技術用語または型名 | 英語のまま使用 |
-| This will use your default setting | This will use your default setting | 技術用語または型名 | 英語のまま使用 |
+| The preserved entry (question + answer about debugging techniques) is now part of main conversation | The preserved entry (question + answer about debugging techniques) is now part of main conversation | 技術用語または型名 | *1 |
+| This will override defaults with explicit patterns | This will override defaults with explicit patterns | 技術用語または型名 | *1 |
+| This will use the default patterns | This will use the default patterns | 技術用語または型名 | *1 |
+| This will use your default setting | This will use your default setting | 技術用語または型名 | *1 |
 | ThrottlingExceptionReason | ThrottlingExceptionReason | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Timeout | タイムアウト | - | - |
-| timeout | timeout | 技術用語 | 英語のまま使用 |
+| timeout | timeout | 技術用語 | *1 |
 | Tips | Tips | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | TODO List Storage | TODOリストストレージ | - | - |
 | TODO Lists | TODOリスト | - | - |
 | Token | トークン | テキストの最小単位、コンテキストウィンドウの計測単位 | [詳細](01_glossary.md) |
 | Tool Matching | ツールマッチング | - | [詳細](01_glossary.md) |
 | Tool Permissions | ツール権限 | - | [詳細](01_glossary.md) |
-| toolAliases | toolAliases | 技術用語 | [詳細](01_glossary.md) 英語のまま使用 |
+| toolAliases | toolAliases | 技術用語 | [詳細](01_glossary.md) *1 |
 | ToolAliases Field | toolAliasesフィールド | - | [詳細](01_glossary.md) |
-| tools | tools | 技術用語 | [詳細](01_glossary.md) 英語のまま使用 |
+| tools | tools | 技術用語 | [詳細](01_glossary.md) *1 |
 | Tools Field | toolsフィールド | - | [詳細](01_glossary.md) |
-| toolsSettings | toolsSettings | 技術用語 | [詳細](01_glossary.md) 英語のまま使用 |
+| toolsSettings | toolsSettings | 技術用語 | [詳細](01_glossary.md) *1 |
 | ToolsSettings Field | toolsSettingsフィールド | - | [詳細](01_glossary.md) |
 | TransformationDownloadArtifactType | TransformationDownloadArtifactType | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Troubleshooting | トラブルシューティング | - | - |
 | Trusted Tools | 信頼されたツール | - | [詳細](01_glossary.md) |
-| type | type | 技術用語 | 英語のまま使用 |
+| type | type | 技術用語 | *1 |
 | Unhandled | Unhandled | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | UnknownVariantError | UnknownVariantError | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | UnknownVariantValue | UnknownVariantValue | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | UriModifierInterceptor | UriModifierInterceptor | URI変更を傍受するRust型 | - |
-| url | url | 技術用語 | 英語のまま使用 |
+| url | url | 技術用語 | *1 |
 | Usage | 使用方法 | - | [詳細](01_glossary.md) |
 | Usage Examples | 使用例 | 実際の使い方の例 | - |
 | Use_aws Tool | Use_awsツール | AWS操作ツール | [詳細](01_glossary.md) |
@@ -358,9 +367,12 @@
 | VectorIndex | VectorIndex | Rust内部実装用の型 | Rust型名は英語のまま使用 |
 | Version | バージョン | ソフトウェアのリリース番号 | - |
 | What It Provides | 提供される機能 | - | - |
-| When NOT to Use | When NOT to Use | 技術用語または型名 | 英語のまま使用 |
+| When NOT to Use | When NOT to Use | 技術用語または型名 | *1 |
 | Wildcard Patterns | ワイルドカードパターン | - | - |
 | Workflow Integration | ワークフロー統合 | - | - |
+
+**凡例**
+- *1: 英語のまま使用
 
 ---
 
@@ -378,6 +390,9 @@
 | Visual Indicators | 視覚的インジケーター | - | - |
 | with warning message | 警告メッセージ付き | - | - |
 
+**凡例**
+- *1: 英語のまま使用
+
 ---
 
 ### 実験的機能（7用語）
@@ -391,6 +406,9 @@
 | Managing Experiments | 実験的機能の管理 | - | - |
 | Thinking Tool (experimental) | Thinkingツール（実験的） | 思考過程表示ツール | [詳細](01_glossary.md) |
 | TODO List Tool (experimental) | TODO Listツール（実験的） | TODOリスト管理ツール | [詳細](01_glossary.md) |
+
+**凡例**
+- *1: 英語のまま使用
 
 ---
 
@@ -408,7 +426,7 @@
 
 | バージョン | 日付 | 変更内容 |
 |-----------|------|---------|
-| v2.1.0 | 2025-10-18 | サイト全体の用語チェックに基づき6用語追加（Server, Default, Version, Global, User, Token）<br/>表形式に変更（可読性向上、75%の行数削減）<br/>注記列を横並びに変更（GitHub互換性向上） |
+| v2.1.0 | 2025-10-18 | サイト全体の用語チェックに基づき6用語追加（Server, Default, Version, Global, User, Token）<br/>表形式に変更（可読性向上、75%の行数削減）<br/>注記列を横並びに変更（GitHub互換性向上）<br/>注記を記号化（*1: 英語のまま使用） |
 | v2.0.0 | 2025-10-18 | Phase 3完了: 全278用語の翻訳完了（100%達成） |
 | v1.0.0 | 2025-10-18 | 初版リリース: 公式リポジトリから316用語を抽出 |
 
