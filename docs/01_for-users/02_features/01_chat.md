@@ -13,6 +13,11 @@
 
 Amazon Q CLIの中心となるチャット機能について説明します。AIアシスタントとの対話を通じて、コード生成、質問応答、タスク実行などを行えます。
 
+### 参考リンク
+
+- [Amazon Q CLI GitHub](https://github.com/aws/amazon-q-developer-cli) - 公式リポジトリ
+- [AWS公式ドキュメント](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html) - コマンドライン機能の詳細
+
 ---
 
 ## 🚀 基本操作
@@ -557,13 +562,6 @@ q settings chat.enableHistoryHints true
 - [Checkpoint機能](05_checkpoints.md)
 - [グローバル設定](../03_configuration/03_global-settings.md)
 - [コマンドリファレンス](../07_reference/02_commands.md)
-
----
-
-## 🔗 参考リンク
-
-- [Amazon Q CLI GitHub](https://github.com/aws/amazon-q-developer-cli)
-- [AWS公式ドキュメント](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html)
 
 ---
 
