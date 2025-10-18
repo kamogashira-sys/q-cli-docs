@@ -413,6 +413,6 @@ substitute_env_vars()
 ---
 
 **ドキュメント作成日**: 2025-10-08  
-**最終更新**: 2025-10-08 18:17 JST  
+最終更新: 2025-10-08  
 **対象バージョン**: v1.17.0  
 **ソースコード**: `crates/chat-cli/src/` (amazon-q-developer-cli)

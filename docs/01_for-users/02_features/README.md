@@ -55,8 +55,8 @@ graph LR
     Exp --> Checkpointing["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/05_checkpoints.md'>Checkpointing</a>"]
     Exp --> TodoLists["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/01_chat.md#todo%E7%AE%A1%E7%90%86'>TODO Lists</a>"]
     Exp --> Tangent["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/01_chat.md#%E4%BC%9A%E8%A9%B1%E7%AE%A1%E7%90%86'>Tangent Mode</a>"]
-    Exp --> Thinking[Thinking]
-    Exp --> Delegate[Delegate]
+    Exp --> Thinking["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/07_experimental.md#-thinking%E6%80%9D%E8%80%83%E9%81%8E%E7%A8%8B%E8%A1%A8%E7%A4%BA'>Thinking</a>"]
+    Exp --> Delegate["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/07_experimental.md#-delegatev1180'>Delegate</a>"]
     Exp --> ContextUsage["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/08_guides/04_best-practices.md#%E6%89%8B%E9%A0%861-context-usage-indicator-%E3%81%A7%E5%B8%B8%E6%99%82%E7%9B%A3%E8%A6%96%E6%8E%A8%E5%A5%A8'>Context Usage Percentage</a>"]
     
     Agent --> SSH["<a href='https://github.com/kamogashira-sys/q-cli-docs/blob/main/docs/01_for-users/02_features/06_ssh-remote.md'>SSH/リモート接続</a>"]
