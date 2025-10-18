@@ -16,6 +16,33 @@
 
 ## 設定関連ファイルの構造
 
+> **💡 このセクションについて**
+> 
+> この設定関連ファイルの構造は、Q CLIのソースコード実装に基づいています。
+> 
+> **出典**:
+> - **ファイル構造**: [crates/chat-cli/src/](https://github.com/aws/amazon-q-developer-cli/tree/main/crates/chat-cli/src) - 実際のディレクトリ構造
+> - **Setting enum**: [crates/chat-cli/src/database/settings.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/database/settings.rs) - L16-85（35項目の定義）
+> - **Settings構造体**: [crates/chat-cli/src/database/settings.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/database/settings.rs) - L186-290（メソッド定義）
+> - **環境変数展開**: [crates/chat-cli/src/mcp_client/client.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/mcp_client/client.rs) - L113-127（substitute_env_vars関数）
+> - **環境変数定義**: [crates/chat-cli/src/util/consts.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/util/consts.rs) - L20-60（env_varモジュール）
+> - **パス定義**: [crates/chat-cli/src/util/directories.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/util/directories.rs) - settings_path等の関数
+> 
+> **検証方法**:
+> - `find`コマンドで実際のファイル構造を確認
+> - `Setting` enumの項目数を確認（35項目）
+> - `Settings`構造体のメソッド一覧を確認（10メソッド）
+> - `substitute_env_vars`関数の実装を確認
+> - `env_var`モジュールのマクロ定義を確認
+> - `settings_path`関数の実装を確認
+> 
+> **実装の詳細**:
+> - **Setting enum**: 35項目、`as_ref()`で文字列変換、`strum`で説明付与
+> - **Settingsメソッド**: `new`, `get`, `set`, `remove`, `get_bool`, `get_string`, `get_int`, `get_int_or`, `save_to_file`, `map`
+> - **環境変数展開**: 正規表現`\$\{env:([^}]+)\}`でマッチ、存在しない場合は元の文字列保持
+> - **環境変数定義**: `define_env_vars!`マクロで定義、`ALL`配列で管理
+> - **パス定義**: `settings_path() -> fig_data_dir()/settings.json`
+
 ```mermaid
 graph TD
     subgraph CLI["CLI Layer (cli/)"]
