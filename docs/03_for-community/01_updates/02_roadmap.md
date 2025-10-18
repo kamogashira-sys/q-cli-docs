@@ -31,41 +31,12 @@ Amazon Q CLIの開発ロードマップと今後の計画について説明し�
 
 ## 優先度の高い機能
 
-### 1. Windows Support (#2602)
-**ステータス**: 🔴 オープン  
-**優先度**: 最高  
-**説明**: Windows環境での完全サポート
-
-**影響**:
-- エンタープライズ採用の主要ブロッカー
-- 多くのエンタープライズ環境はWindows中心
-
-### 2. Remote MCP Servers (#2706)
-**ステータス**: 🔴 オープン  
-**優先度**: 最高  
-**説明**: リモートMCPサーバーのサポート
-
-**影響**:
-- エンタープライズツールとの統合に必須
-- OAuth統合と組み合わせて使用
-
-### 3. UX Rewrite using Ratatui (#2550)
-**ステータス**: 🔴 オープン  
-**優先度**: 高  
-**説明**: Ratatuiを使用したUXの全面刷新
-
-**影響**:
-- 実質的な「Q v2」
-- ユーザー体験の大幅改善
-
-### 4. ADC Support (#2600)
-**ステータス**: 🔴 オープン  
-**優先度**: 高  
-**説明**: Application Default Credentials (ADC)のサポート
-
-**影響**:
-- エンタープライズネットワーク環境での制限解消
-- 認証の簡素化
+| # | 機能 | ステータス | 優先度 | 主な影響 | ISSUE |
+|---|------|-----------|--------|---------|-------|
+| 1 | **Windows Support** | 🔴 オープン | 🔥 最高 | • エンタープライズ採用の主要ブロッカー<br>• 多くのエンタープライズ環境はWindows中心 | [#2602](https://github.com/aws/amazon-q-developer-cli/issues/2602) |
+| 2 | **Remote MCP Servers** | 🔴 オープン | 🔥 最高 | • エンタープライズツールとの統合に必須<br>• OAuth統合と組み合わせて使用 | [#2706](https://github.com/aws/amazon-q-developer-cli/issues/2706) |
+| 3 | **UX Rewrite using Ratatui** | 🔴 オープン | ⚡ 高 | • 実質的な「Q v2」<br>• ユーザー体験の大幅改善 | [#2550](https://github.com/aws/amazon-q-developer-cli/issues/2550) |
+| 4 | **ADC Support** | 🔴 オープン | ⚡ 高 | • エンタープライズネットワーク環境での制限解消<br>• 認証の簡素化 | [#2600](https://github.com/aws/amazon-q-developer-cli/issues/2600) |
 
 ---
 
