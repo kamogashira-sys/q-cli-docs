@@ -13,6 +13,12 @@
 
 Agentは、Amazon Q CLIの動作をカスタマイズする機能です。システムプロンプト、利用可能なツール、MCPサーバー連携などを設定できます。
 
+### 参考資料
+
+- **[AWSブログ: Amazon Q Developer CLI カスタムエージェントで開発の混乱を乗り越えよう](https://aws.amazon.com/jp/blogs/news/overcome-development-disarray-with-amazon-q-developer-cli-custom-agents/)** - Agent機能の公式解説
+- [Agent設定ガイド](../03_configuration/04_agent-configuration.md) - 設定項目の詳細
+- [MCP設定ガイド](../03_configuration/06_mcp-configuration.md) - MCPサーバー連携
+
 ---
 
 ## 🚀 クイックナビゲーション
@@ -353,12 +359,6 @@ q chat --agent back-end
 3. ✅ 簡単なAgentを作成する（MCPサーバーなし）
 4. ✅ MCPサーバーを追加する
 5. ✅ 複数のAgentを使い分ける
-
-#### 参考資料
-
-- [AWSブログ: Amazon Q Developer CLI カスタムエージェントで開発の混乱を乗り越えよう](https://aws.amazon.com/jp/blogs/news/overcome-development-disarray-with-amazon-q-developer-cli-custom-agents/)
-- [Agent設定ガイド](../03_configuration/04_agent-configuration.md)
-- [MCP設定ガイド](../03_configuration/06_mcp-configuration.md)
 
 ---
 
