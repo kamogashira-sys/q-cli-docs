@@ -364,6 +364,17 @@ q chat --agent back-end
 
 ## 🔄 レガシーMCP設定からの移行ガイド
 
+> **💡 このセクションについて**
+> 
+> このガイドは、Q CLIのソースコード調査と[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)の技術仕様に基づいて作成されました。
+> 
+> **検証済み項目**:
+> - すべてのJSON例をjqで検証
+> - すべてのフィールド名をソースコードで確認
+> - すべてのパスをソースコードで確認
+> - MCP設定の優先順位を[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)と照合
+> - `useLegacyMcpJson`の動作をソースコードで確認
+
 ### 移行が必要な理由
 
 レガシーMCP設定（`~/.aws/amazonq/mcp.json`、`.amazonq/mcp.json`）は後方互換性のために維持されていますが、Agent設定に統合することで以下のメリットがあります：
