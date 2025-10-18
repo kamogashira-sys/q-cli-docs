@@ -105,6 +105,49 @@ alias q="q --untrust-use-aws"
 export Q_TELEMETRY_ENABLED=false
 ```
 
+> **💡 ファイルアクセス制限について**
+> 
+> `--untrust-fs-read`を設定すると、**Q CLIがファイルを読み込む前に、毎回あなたに確認を求める**ようになります。
+> 
+> **具体例**:
+> ```bash
+> # 設定なし: 自動実行
+> q chat "config.jsonの内容を教えて"
+> # → cat config.json が自動実行される
+> 
+> # 設定あり: 確認が必要
+> alias q="q --untrust-fs-read"
+> q chat "config.jsonの内容を教えて"
+> # → ⚠️ このファイルを読み込みますか？ [y/n]
+> ```
+> 
+> **保護される機密情報**:
+> - 🔑 `.env` - 環境変数（APIキー、パスワード）
+> - 🔑 `config/secrets.json` - 認証情報
+> - 🔑 `~/.aws/credentials` - AWS認証情報
+> - 🔑 `~/.ssh/id_rsa` - SSH秘密鍵
+> - 📊 `customer_data.csv` - 顧客データ
+> - ⚙️ `production.config` - 本番環境設定
+> 
+> **防止できるリスク**:
+> - ❌ 機密情報の意図しない読み込み
+> - ❌ 個人情報の漏洩
+> - ❌ 大量ファイルの無制限アクセス
+> 
+> **対象操作**:
+> - すべてのファイル読み込み（テキスト、JSON、YAML等）
+> - サブディレクトリのファイルも含む
+> 
+> **推奨シーン**:
+> - ✅ 機密情報を含むプロジェクト
+> - ✅ 個人情報を扱うプロジェクト
+> - ✅ 本番環境の設定ファイルを扱う
+> - ✅ 複数のプロジェクトを同時に作業
+> 
+> **補足**: Q CLIはデフォルトで`~/.aws/credentials`、`~/.ssh/`、`.env`を保護していますが、`--untrust-fs-read`は**すべてのファイル**を保護します。
+> 
+> 詳細: [ファイルアクセス制御](03_file-access-control.md)
+
 > **💡 AWS API制限について**
 > 
 > `--untrust-use-aws`を設定すると、**Q CLIがAWS APIを呼び出す前に、毎回あなたに確認を求める**ようになります。
