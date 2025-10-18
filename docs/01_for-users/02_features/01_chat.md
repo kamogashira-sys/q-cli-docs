@@ -272,6 +272,8 @@ Pro Tips:
 
 Q CLIのAIは、以下の内部ツール（ネイティブツール）を使ってファイル操作やコマンド実行を行います。
 
+**出典**: Q CLI内部実装（`/tools`コマンドで確認可能）、[GitHubリポジトリ](https://github.com/aws/amazon-q-developer-cli)
+
 ### 内部ツール一覧
 
 | ツール名 | 機能 | 主な用途 |
