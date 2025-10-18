@@ -217,6 +217,8 @@ q chat --agent back-end
 
 ### ステップ4: 実践例
 
+**出典**: [AWS公式ドキュメント - カスタムエージェントの例](https://docs.aws.amazon.com/ja_jp/amazonq/latest/qdeveloper-ug/command-line-custom-agents-examples.html)
+
 #### 例1: フロントエンド開発者向けAgent
 
 **用途**: React + Figmaでのフロントエンド開発
