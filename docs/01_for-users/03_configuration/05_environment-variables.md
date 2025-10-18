@@ -397,3 +397,15 @@ q chat  # -vオプションなし
 **ドキュメント作成日**: 2025-10-08  
 最終更新: 2025-10-08  
 **ソースコード**: `crates/chat-cli/src/util/consts.rs`, `crates/chat-cli/src/mcp_client/client.rs` (v1.17.0)
+---
+
+**関連トピック**:
+- [設定優先順位ガイド](02_priority-rules.md)
+- [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
+- [FAQ](../06_troubleshooting/01_faq.md)
+
+## 関連ドキュメント
+
+- [セキュリティ概要](../09_security/01_security-overview.md) - セキュリティ設定の基本
+- [テレメトリー設定](../03_configuration/06_telemetry.md) - テレメトリー環境変数の詳細
+- [エンタープライズ展開ガイド](../05_deployment/01_enterprise-deployment.md) - 組織での環境変数管理

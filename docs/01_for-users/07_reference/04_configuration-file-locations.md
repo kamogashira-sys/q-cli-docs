@@ -269,7 +269,7 @@ Linux環境では、以下の環境変数により配置場所が変更されま
 5. **グローバル設定** - `~/.local/share/amazon-q/settings.json`
 6. **デフォルト値** - Amazon Q CLI組み込みのデフォルト
 
-**詳細**: [設定優先順位ガイド](../03_configuration/02_priority-rules.md)
+**詳細**: [設定優先順位ガイド](../03_configuration/../03_configuration/02_priority-rules.md)
 
 ---
 
@@ -508,7 +508,7 @@ ls ~/.local/share/amazon-q/settings.json
 
 ## 📚 関連ドキュメント
 
-- [設定優先順位ガイド](../03_configuration/02_priority-rules.md) - 設定の優先順位の詳細
+- [設定優先順位ガイド](../03_configuration/../03_configuration/02_priority-rules.md) - 設定の優先順位の詳細
 - [Agent設定ガイド](../03_configuration/04_agent-configuration.md) - Agent設定の詳細
 - [MCP設定ガイド](../03_configuration/06_mcp-configuration.md) - MCPサーバー設定の詳細
 - [環境変数ガイド](../03_configuration/05_environment-variables.md) - 環境変数の詳細
@@ -518,3 +518,9 @@ ls ~/.local/share/amazon-q/settings.json
 
 **作成日**: 2025-10-11  
 最終更新: 2025-10-11
+---
+
+**関連トピック**:
+- [設定優先順位ガイド](../03_configuration/02_priority-rules.md)
+- [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
+- [FAQ](../06_troubleshooting/01_faq.md)

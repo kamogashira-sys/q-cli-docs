@@ -595,7 +595,7 @@ Part2では、応用実装パターンと実装時の注意点を学びます。
 
 **出典**:
 - [実装コード](/crates/chat-cli/src/cli/agent/mod.rs)
-- [Agent機能ドキュメント](docs/01_for-users/02_features/02_agents.md)
+- [Agent機能ドキュメント](../02_features/02_agents.md)
 # 第5章 Part2: 応用実装パターンと注意点
 
 ### 5.3 応用実装パターン
@@ -1375,8 +1375,8 @@ find . -name "architecture.md"
 ---
 
 **出典**:
-- [Agent機能ドキュメント](docs/01_for-users/02_features/02_agents.md)
-- [Agent設定ドキュメント](docs/01_for-users/03_configuration/04_agent-configuration.md)
+- [Agent機能ドキュメント](../02_features/02_agents.md)
+- [Agent設定ドキュメント](../03_configuration/04_agent-configuration.md)
 
 ---
 

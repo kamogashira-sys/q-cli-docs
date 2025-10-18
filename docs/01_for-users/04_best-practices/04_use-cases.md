@@ -1033,13 +1033,18 @@ q chat
 
 ## 🔗 関連ドキュメント
 
-- [Agent設定](03_configuration/04_agent-configuration.md)
-- [MCP設定](03_configuration/06_mcp-configuration.md)
-- [設定例集](03_configuration/07_examples.md)
-- [ベストプラクティス](04_best-practices/01_configuration.md)
-- [実験的機能](02_features/07_experimental.md)
+- [Agent設定](../03_configuration/04_agent-configuration.md)
+- [MCP設定](../03_configuration/06_mcp-configuration.md)
+- [設定例集](../03_configuration/07_examples.md)
+- [ベストプラクティス](../04_best-practices/01_configuration.md)
+- [実験的機能](../02_features/07_experimental.md)
 - [コンテキスト管理ガイド](../08_guides/README.md)
 
 ---
 
 最終更新: 2025-10-15
+---
+
+**関連トピック**:
+- [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
+- [FAQ](../06_troubleshooting/01_faq.md)

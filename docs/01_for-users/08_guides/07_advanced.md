@@ -390,14 +390,14 @@ function getUser() {}
 # ルール一覧
 
 ## 一般
-- [コーディング規約](coding.md)
-- [API設計規約](api-design.md)
-- [デプロイメント規約](deployment.md)
+- [コーディング規約](coding.md)  # 例示（実際のファイルは作成してください）
+- [API設計規約](api-design.md)  # 例示（実際のファイルは作成してください）
+- [デプロイメント規約](deployment.md)  # 例示（実際のファイルは作成してください）
 
 ## AWS
-- [Lambda規約](aws/lambda.md)
-- [DynamoDB規約](aws/dynamodb.md)
-- [S3規約](aws/s3.md)
+- [Lambda規約](aws/lambda.md)  # 例示（実際のファイルは作成してください）
+- [DynamoDB規約](aws/dynamodb.md)  # 例示（実際のファイルは作成してください）
+- [S3規約](aws/s3.md)  # 例示（実際のファイルは作成してください）
 ```
 
 💡 **初心者向けポイント**: 分割しすぎると管理が大変になります。適度な分割を心がけましょう。
@@ -614,7 +614,7 @@ q chat --agent project-standard-agent
 ```
 
 ### トラブルシューティング
-- ファイルが読み込まれない → [トラブルシューティングガイド](../docs/troubleshooting.md)
+- ファイルが読み込まれない → [トラブルシューティングガイド](../06_troubleshooting/02_common-issues.md)
 - トークン制限を超える → ファイルを削減
 ```
 

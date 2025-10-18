@@ -684,6 +684,6 @@ find .amazonq/rules/ -name "*.md"
 ---
 
 **出典**:
-- [コマンドリファレンス](docs/01_for-users/07_reference/02_commands.md)
-- [用語集](docs/01_for-users/07_reference/01_glossary.md)
+- [コマンドリファレンス](../07_reference/02_commands.md)
+- [用語集](../07_reference/01_glossary.md)
 - [JSON Schema](/crates/chat-cli/src/cli/agent/schema.json)

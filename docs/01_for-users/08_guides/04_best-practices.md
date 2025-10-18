@@ -2625,4 +2625,8 @@ Consider removing them.
 ---
 
 **次の章**: [第5章: 実践ガイド](05_practical-guide.md)
+---
 
+**関連トピック**:
+- [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
+- [FAQ](../06_troubleshooting/01_faq.md)

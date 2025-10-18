@@ -455,9 +455,7 @@ q
 
 **A**: コンテキストファイルの合計サイズは、コンテキストウィンドウの75%までです。
 
-**計算例**:
-- Claude Sonnet 4 (200,000トークン): 最大 150,000 トークン
-- GPT (128,000トークン): 最大 96,000 トークン
+詳細な計算例とモデル別の制限については、[コンテキストウィンドウ制限リファレンス](../07_reference/07_context-window-limits.md)をご覧ください。
 
 **確認方法**:
 ```bash
@@ -647,3 +645,15 @@ q settings all
 ---
 
 最終更新: 2025-10-12
+---
+
+**関連トピック**:
+- [コンテキストウィンドウ制限](../07_reference/07_context-window-limits.md)
+- [設定リファレンス](../07_reference/03_settings-reference.md)
+
+## 関連ドキュメント
+
+- [セキュリティ概要](../09_security/01_security-overview.md) - セキュリティに関するFAQ
+- [データプライバシー](../09_security/02_data-privacy.md) - プライバシーに関する質問
+- [料金プラン比較](../05_deployment/02_pricing-comparison.md) - プランに関する質問
+- [エンタープライズ展開ガイド](../05_deployment/01_enterprise-deployment.md) - 展開に関する質問

@@ -527,7 +527,7 @@ Part2では、残りの問題とデバッグ手法を学びます。
 ---
 
 **出典**:
-- [トラブルシューティングガイド](docs/01_for-users/06_troubleshooting/02_common-issues.md)
+- [トラブルシューティングガイド](../06_troubleshooting/02_common-issues.md)
 # 第6章 Part2: 残りの問題とデバッグ手法
 
 #### 6.2.3 問題3: ワイルドカードがマッチしない
@@ -1088,10 +1088,14 @@ ls -la doc/architecture.md
 ---
 
 **出典**:
-- [トラブルシューティングガイド](docs/01_for-users/06_troubleshooting/02_common-issues.md)
-- [コマンドリファレンス](docs/01_for-users/07_reference/02_commands.md)
+- [トラブルシューティングガイド](../06_troubleshooting/02_common-issues.md)
+- [コマンドリファレンス](../07_reference/02_commands.md)
 
 ---
 
 **次の章**: [第7章: 高度なトピック](07_advanced.md)
+---
 
+**関連トピック**:
+- [コンテキストウィンドウ制限](../07_reference/07_context-window-limits.md)
+- [設定リファレンス](../07_reference/03_settings-reference.md)

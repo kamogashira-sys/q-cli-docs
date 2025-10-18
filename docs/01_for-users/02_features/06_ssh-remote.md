@@ -21,6 +21,77 @@ Amazon Q CLIはSSH経由でリモートマシンでも使用できます。こ�
 
 ---
 
+## 🔧 SSH統合のセットアップ
+
+Amazon Q CLIは、ローカルマシンとリモートマシン間でSSH統合を提供します。この機能により、ローカルのAmazon Q CLIからリモートマシン上でコマンドを実行できます。
+
+### ローカルマシン（macOS）の設定
+
+ローカルmacOSマシンからSSH統合を有効にします：
+
+```bash
+q integrations install ssh
+```
+
+### リモートマシン（Linux）の設定
+
+リモートLinuxマシンでSSH統合を設定します：
+
+#### ステップ1: SSH server設定を編集
+
+```bash
+sudo -e /etc/ssh/sshd_config
+```
+
+#### ステップ2: 設定を追加
+
+ファイルの末尾に以下を追加：
+
+```
+AcceptEnv Q_SET_PARENT
+AllowStreamLocalForwarding yes
+```
+
+**設定の説明**:
+- `AcceptEnv Q_SET_PARENT`: Amazon Q CLIが必要とする環境変数を受け入れる
+- `AllowStreamLocalForwarding yes`: ローカルストリーム転送を許可
+
+#### ステップ3: SSH serviceを再起動
+
+```bash
+sudo systemctl restart sshd
+```
+
+#### ステップ4: SSH再接続
+
+現在のSSHセッションを終了し、再接続します。
+
+#### ステップ5: Amazon Q CLIにログイン
+
+```bash
+q login
+```
+
+#### ステップ6: 確認
+
+```bash
+q doctor
+```
+
+### 既知の制限事項
+
+**症状**: Amazon Q desktop clientが終了すると、以下のエラーメッセージが繰り返し表示される：
+
+```
+connect to /var/folders/.../cwrun/remote.sock port -2 failed: Connection refused
+```
+
+**解決方法**:
+- SSHセッションを終了して再接続
+- または、Amazon Q desktop clientを再起動
+
+---
+
 ## 🚀 セットアップ
 
 ### 前提条件
@@ -111,8 +182,8 @@ brew install --cask amazon-q
 #### ステップ3: 認証
 
 ```bash
-# デバイスフローで認証（ブラウザリダイレクトなし）
-q login --use-device-flow
+# 認証
+q login
 
 # 表示されたURLをローカルブラウザで開く
 # 認証コードを入力
@@ -124,11 +195,11 @@ q login --use-device-flow
 
 ```bash
 # bashの場合
-echo 'eval "$(q --shell-integration bash)"' >> ~/.bashrc
+echo 'eval "$(q init bash)"' >> ~/.bashrc
 source ~/.bashrc
 
 # zshの場合
-echo 'eval "$(q --shell-integration zsh)"' >> ~/.zshrc
+echo 'eval "$(q init zsh)"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
@@ -230,6 +301,39 @@ export HTTPS_PROXY=http://proxy.example.com:8080
 # 再試行
 q whoami
 ```
+
+---
+
+### SSH統合の問題
+
+**症状**: SSH統合が機能しない
+
+**解決方法**:
+
+1. **診断ツールで確認**:
+```bash
+q doctor
+```
+
+2. **ローカルとリモートの設定を確認**:
+   - ローカル（macOS）: `q integrations install ssh`が実行済みか
+   - リモート（Linux）: sshd_configに必要な設定が追加されているか
+
+3. **SSH server設定を確認**:
+```bash
+# リモートマシンで確認
+sudo grep -E "AcceptEnv|AllowStreamLocalForwarding" /etc/ssh/sshd_config
+```
+
+期待される出力:
+```
+AcceptEnv Q_SET_PARENT
+AllowStreamLocalForwarding yes
+```
+
+4. **正しいバージョンを使用しているか確認**:
+   - glibc 2.34+: 標準版
+   - glibc < 2.34: musl版
 
 ---
 

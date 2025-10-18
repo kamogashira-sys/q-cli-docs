@@ -304,6 +304,88 @@ q
 
 ---
 
+### Linux（zip file - GUI不要）
+
+GUI環境がない場合や、最小限のインストールを希望する場合は、zip fileを使用できます。
+
+**特徴**:
+- GUI不要
+- `q`（チャット）と`qterm`（インライン補完）のみ
+- SSH経由での使用に最適
+- 軽量インストール
+
+#### 前提条件
+
+**システム要件**:
+- glibc 2.34以降（ほとんどの2021年以降のLinuxディストリビューション）
+- 古いディストリビューション（glibc < 2.34）の場合はmusl版を使用
+- 対応アーキテクチャ: x86_64、aarch64（ARM）
+- 対応ディストリビューション: Fedora、Ubuntu、Amazon Linux 2023
+
+**glibc バージョンの確認**:
+```bash
+ldd --version
+```
+
+- **2.34以降**: 標準版を使用
+- **2.34未満**: musl版を使用
+
+#### ステップ1: ダウンロード
+
+**標準版（glibc 2.34+）**:
+
+x86-64:
+```bash
+curl --proto '=https' --tlsv1.2 -sSf \
+  "https://desktop-release.q.us-east-1.amazonaws.com/latest/q-x86_64-linux.zip" \
+  -o "q.zip"
+```
+
+ARM (aarch64):
+```bash
+curl --proto '=https' --tlsv1.2 -sSf \
+  "https://desktop-release.q.us-east-1.amazonaws.com/latest/q-aarch64-linux.zip" \
+  -o "q.zip"
+```
+
+**musl版（glibc < 2.34）**:
+
+x86-64:
+```bash
+curl --proto '=https' --tlsv1.2 -sSf \
+  "https://desktop-release.q.us-east-1.amazonaws.com/latest/q-x86_64-linux-musl.zip" \
+  -o "q.zip"
+```
+
+ARM (aarch64):
+```bash
+curl --proto '=https' --tlsv1.2 -sSf \
+  "https://desktop-release.q.us-east-1.amazonaws.com/latest/q-aarch64-linux-musl.zip" \
+  -o "q.zip"
+```
+
+#### ステップ2: インストール
+
+```bash
+# 解凍
+unzip q.zip
+
+# インストール実行
+./q/install.sh
+```
+
+**インストール先**: デフォルトでは`~/.local/bin`にインストールされます。
+
+#### ステップ3: 認証
+
+```bash
+q
+```
+
+初回起動時に認証画面が表示されます。[認証設定](#-認証設定)セクションを参照してください。
+
+---
+
 ### その他のLinuxディストリビューション（AppImage）
 
 Ubuntu以外のLinuxディストリビューション（Fedora、CentOS、Arch Linuxなど）では、AppImage形式を使用できます。
@@ -373,6 +455,62 @@ WSL内で、上記の[Linux](#-linux)セクションの手順に従ってイン�
 Windows環境での詳細なセットアップ方法については、以下のブログ記事を参照してください：
 
 - [The Essential Guide to Installing Amazon Q CLI on Windows](https://dev.to/aws/the-essential-guide-to-installing-amazon-q-developer-cli-on-windows-lmh)
+
+---
+
+## 🌐 プロキシ設定
+
+Amazon Q Developer CLI（v1.8.0以降）は、エンタープライズ環境で一般的に使用されるプロキシサーバーをサポートしています。CLIは標準的なプロキシ環境変数を自動的に認識します。
+
+### 環境変数の設定
+
+シェルで以下の環境変数を設定してプロキシを構成します：
+
+```bash
+# HTTP proxy（非SSL通信用）
+export HTTP_PROXY=http://proxy.company.com:8080
+
+# HTTPS proxy（SSL通信用）
+export HTTPS_PROXY=http://proxy.company.com:8080
+
+# プロキシをバイパスするドメイン
+export NO_PROXY=localhost,127.0.0.1,.company.com
+```
+
+### 認証付きプロキシ
+
+認証が必要なプロキシの場合：
+
+```bash
+export HTTP_PROXY=http://username:password@proxy.company.com:8080
+export HTTPS_PROXY=http://username:password@proxy.company.com:8080
+```
+
+### SOCKSプロキシサポート
+
+Amazon Q CLIはSOCKSプロキシもサポートしています：
+
+```bash
+export HTTP_PROXY=socks5://proxy.company.com:1080
+export HTTPS_PROXY=socks5://proxy.company.com:1080
+```
+
+### プロキシ設定の確認
+
+プロキシ環境変数を設定した後、接続をテストします：
+
+```bash
+q doctor
+```
+
+### プロキシ関連のトラブルシューティング
+
+プロキシ関連の接続問題が発生した場合：
+
+- プロキシサーバーのアクセス可能性と認証情報を確認
+- 企業ファイアウォールがAWSエンドポイントへの接続を許可しているか確認
+- SSL証明書検証が失敗する場合はIT管理者に連絡
+- プロキシサーバーが必要なプロトコルをサポートしているか確認
 
 ---
 

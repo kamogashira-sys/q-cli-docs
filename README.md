@@ -128,12 +128,20 @@ Amazon Q Developer CLI（Q CLI）は、AWSが提供する**AI駆動**の開発�
   3. UX Rewrite using Ratatui (#2550) - 実質的な「Qv2」
   4. ADC Support (#2600)
 
+### セキュリティとプライバシー
+
+Q CLIのセキュリティとプライバシーについて理解することは重要です：
+
+- **[セキュリティ概要](docs/01_for-users/09_security/01_security-overview.md)** - セキュリティの基本原則とトピック
+- **[データプライバシー](docs/01_for-users/09_security/02_data-privacy.md)** - データの取り扱いとプライバシー保護
+- **[テレメトリー設定](docs/01_for-users/09_security/03_telemetry.md)** - 使用状況データの収集と無効化方法
+
 ### Pro/Enterpriseプランのメリット
 
 - **データプライバシー保護**: コンテンツ（質問、コード、応答）がサービス改善やモデル学習に使用されない
 - **Freeプランとの違い**: Freeプランではコンテンツがサービス改善に使用される可能性がある
 - **エンタープライズ適合性**: 機密情報を扱う組織に最適
-- **詳細**: [AWS公式ドキュメント](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/service-improvement.html)
+- **詳細**: [料金プラン比較](docs/01_for-users/10_enterprise/01_pricing-comparison.md)
 
 ### エンタープライズ採用への障壁
 
@@ -141,6 +149,8 @@ Amazon Q Developer CLI（Q CLI）は、AWSが提供する**AI駆動**の開発�
 2. **リモートMCP + OAuth未完成** - エンタープライズツールとの統合困難
 3. **ADC未対応** - エンタープライズネットワーク環境での制限
 4. **管理機能の不足** - 使用状況の可視化、管理者ダッシュボード
+
+**詳細**: [エンタープライズ展開ガイド](docs/01_for-users/10_enterprise/03_deployment-guide.md)、[セキュリティチェックリスト](docs/01_for-users/10_enterprise/02_security-checklist.md)
 
 ---
 

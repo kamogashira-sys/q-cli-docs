@@ -1226,3 +1226,8 @@ GitHub ISSUEを報告
 
 **ドキュメント作成日**: 2025-10-08  
 最終更新: 2025-10-08
+---
+
+**関連トピック**:
+- [コンテキストウィンドウ制限](../07_reference/07_context-window-limits.md)
+- [設定リファレンス](../07_reference/03_settings-reference.md)
