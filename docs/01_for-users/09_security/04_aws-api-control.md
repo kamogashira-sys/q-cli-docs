@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [セキュリティガイド](README.md) > 04 Aws Api Control
+
+---
+
 # AWS API制御ガイド
 
 **最終更新**: 2025-10-18  
@@ -408,3 +412,13 @@ aws iam simulate-principal-policy \
 1. **AWS公式**: [AWS Security](https://aws.amazon.com/security/)
 2. **GitHub**: [amazon-q-developer-cli/issues](https://github.com/aws/amazon-q-developer-cli/issues)
 3. **ドキュメント**: [トラブルシューティング](../06_troubleshooting/02_common-issues.md)
+
+---
+
+## 📖 ナビゲーション
+
+← **前へ**: [ファイルアクセス制御](03_file-access-control.md) | **次へ**: [認証情報管理](05_credentials-management.md) →
+
+---
+
+**最終更新**: 2025-10-18

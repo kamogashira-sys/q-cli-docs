@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [設定ガイド](README.md) > 02 Priority Rules
+
+---
+
 # Amazon Q CLI 設定優先順位ガイド
 
 **作成日**: 2025-10-08  

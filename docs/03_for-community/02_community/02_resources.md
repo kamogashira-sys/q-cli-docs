@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [コミュニティ](../README.md) > [コミュニティリソース](README.md) > 02 Resources
+
+---
+
 # リソース集
 
 Amazon Q CLIに関する役立つリソースをまとめています。

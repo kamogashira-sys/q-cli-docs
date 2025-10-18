@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [機能ガイド](README.md) > 04 Keyboard Shortcuts
+
+---
+
 # キーボードショートカット
 
 最終更新: 2025-10-11  

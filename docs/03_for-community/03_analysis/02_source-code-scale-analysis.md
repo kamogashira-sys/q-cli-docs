@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [コミュニティ](../README.md) > [分析レポート](README.md) > 02 Source Code Scale Analysis
+
+---
+
 # Amazon Q CLI ソースコード規模分析
 
 **分析日**: 2025-10-09  

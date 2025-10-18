@@ -1,3 +1,7 @@
+[ホーム](../README.md) > [04_issues](README.md)
+
+---
+
 # Issues - 課題管理
 
 **最終更新**: 2025-10-11

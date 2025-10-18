@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [セキュリティガイド](README.md) > 02 Data Privacy
+
+---
+
 # データプライバシーガイド
 
 **最終更新**: 2025-10-18  
@@ -309,6 +313,14 @@ Amazon Q Developerは以下の規制・基準に対応：
 - [料金プラン比較](../05_deployment/02_pricing-comparison.md) - プランごとのプライバシー保護
 
 ---
+
+## 📖 ナビゲーション
+
+← **前へ**: [セキュリティ概要](01_security-overview.md) | **次へ**: [ファイルアクセス制御](03_file-access-control.md) →
+
+---
+
+**最終更新**: 2025-10-18
 
 **参考資料**:
 - [AWS Data Privacy FAQ](https://aws.amazon.com/compliance/data-privacy-faq/)

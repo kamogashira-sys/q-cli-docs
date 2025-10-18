@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [コミュニティ](../README.md) > [コミュニティリソース](README.md) > 01 Showcase
+
+---
+
 # ユースケース紹介
 
 Amazon Q CLIの実際の活用事例を紹介します。

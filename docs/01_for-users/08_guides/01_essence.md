@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [コンテキスト管理ガイド](README.md) > 01 Essence
+
+---
+
 ## 1. コンテキストの本質
 
 ---
@@ -325,5 +329,11 @@ Note: Context modifications via slash command is temporary.
 
 ---
 
-**次の章**: [第2章: コンテキストの仕組みと管理](02_mechanism.md)
+## 📖 ナビゲーション
+
+**次へ**: [第2章: コンテキストの仕組みと管理](02_mechanism.md) →
+
+---
+
+**最終更新**: 2025-10-18
 

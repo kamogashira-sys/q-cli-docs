@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [ベストプラクティス](README.md) > 01 Configuration
+
+---
+
 # Amazon Q CLI 設定ベストプラクティス
 
 **作成日**: 2025-10-08  

@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [リファレンス](README.md) > 03 Settings Reference
+
+---
+
 # Amazon Q CLI 設定項目完全リファレンス
 
 **作成日**: 2025-10-08  

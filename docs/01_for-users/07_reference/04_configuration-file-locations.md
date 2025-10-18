@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [リファレンス](README.md) > 04 Configuration File Locations
+
+---
+
 # 設定ファイル配置マップ
 
 最終更新: 2025-10-11  

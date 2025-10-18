@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [コミュニティ](../README.md) > [アップデート情報](README.md) > 01 Changelog
+
+---
+
 # 変更履歴（Changelog）
 
 このページでは、Amazon Q CLIの主要なバージョンアップデートと変更内容を記録しています。

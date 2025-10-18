@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [開発者ガイド](../README.md) > [アーキテクチャ](README.md) > 02 Configuration System
+
+---
+
 # 設定システム詳細
 
 最終更新: 2025-10-11

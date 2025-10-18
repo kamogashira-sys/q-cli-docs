@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [設定ガイド](README.md) > 03 Global Settings
+
+---
+
 # グローバル設定
 
 最終更新: 2025-10-15  

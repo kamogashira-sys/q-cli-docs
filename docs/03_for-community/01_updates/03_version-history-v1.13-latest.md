@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [コミュニティ](../README.md) > [アップデート情報](README.md) > 03 Version History V1.13 Latest
+
+---
+
 # Amazon Q CLI バージョンアップ履歴 (v1.13.0 - latest)
 
 **調査日**: 2025-10-18  

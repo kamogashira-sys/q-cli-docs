@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [設定ガイド](README.md) > 04 Agent Configuration
+
+---
+
 # Agent設定ガイド
 
 最終更新: 2025-10-15  

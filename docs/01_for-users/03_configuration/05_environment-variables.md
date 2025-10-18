@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [設定ガイド](README.md) > 05 Environment Variables
+
+---
+
 # Amazon Q CLI 環境変数ガイド
 
 **作成日**: 2025-10-08  
