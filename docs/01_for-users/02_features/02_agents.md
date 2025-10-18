@@ -324,6 +324,13 @@ q chat --agent back-end
 
 ### ステップ5: 今すぐ始める
 
+> **💡 このセクションについて**
+> 
+> AWSブログ「[Amazon Q Developer CLI カスタムエージェントで開発の混乱を乗り越えよう](https://aws.amazon.com/jp/blogs/news/overcome-development-disarray-with-amazon-q-developer-cli-custom-agents/)」の「カスタムエージェントの使用」セクションを参考に、初心者向けの段階的な学習手順として再構成しました。
+> 
+> - **AWSブログの内容**: エージェント切り替えの実践例（`q chat --agent front-end`など）
+> - **このセクションの独自内容**: `q agent list`コマンド、推奨する学習順序（5ステップ）、段階的な実践手順
+
 #### 最初の一歩
 
 1. **デフォルトAgentを確認**
