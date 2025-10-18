@@ -159,6 +159,28 @@ graph TB
 
 ## 🔄 データフロー
 
+> **💡 このセクションについて**
+> 
+> このデータフローは、Q CLIのソースコード実装に基づいています。
+> 
+> **出典**:
+> - **チャットセッションのフロー**: [crates/chat-cli/src/cli/chat/mod.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/cli/chat/mod.rs) - `ChatArgs::execute`メソッド
+> - **Agent読み込み**: [crates/chat-cli/src/cli/agent/mod.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/cli/agent/mod.rs) - `Agents::load`メソッド
+> - **設定管理**: [crates/chat-cli/src/database/settings.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/database/settings.rs) - `Settings`構造体
+> 
+> **検証方法**:
+> - `ChatArgs::execute`でチャットセッション開始処理を確認
+> - `Agents::load`でAgent読み込みとMCP初期化を確認
+> - `Settings::get`/`Settings::set`で設定の読み書きを確認
+> - Agent設定の優先順位処理を確認
+> 
+> **実装の詳細**:
+> - **チャットセッション開始**: `ChatArgs::execute` (L229-350) - Agent読み込み、MCP初期化、会話ID生成
+> - **Agent読み込み**: `Agents::load` (L500-600) - ローカル/グローバルAgent読み込み、レガシーMCP移行
+> - **Agent設定読み込み**: `Agent::load` (L375-405) - JSON解析、スキーマ検証、MCP設定統合
+> - **設定読み込み**: `Settings::get` (L223) - SQLiteから設定値を取得
+> - **設定保存**: `Settings::set` (L228-231) - 設定値をSQLiteに保存
+
 ### チャットセッションのフロー
 
 ```mermaid
