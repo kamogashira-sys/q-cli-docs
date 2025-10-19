@@ -33,7 +33,7 @@
 | 4 | [MCP設定](06_mcp-configuration.md) | 中級 | MCPサーバー設定、stdio/HTTP接続 |
 | 5 | [テレメトリー設定](06_telemetry.md) | 全レベル | テレメトリー設定、オプトアウト方法 |
 | 6 | [環境変数](05_environment-variables.md) | 中級 | 23項目の環境変数、設定方法 |
-| 7 | [設定優先順位](02_priority-rules.md) | 中級 | 5段階の優先順位、読み込みフロー |
+| 7 | [設定優先順位](02_priority-rules.md) | 中級 | 4段階の優先順位、読み込みフロー |
 | 8 | [設定例集](07_examples.md) | 全レベル | 実践的な設定例、ユースケース別 |
 
 ---
