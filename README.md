@@ -6,9 +6,9 @@
 
 ```mermaid
 graph LR
-    A[📖 ドキュメント確認<br/>5分] --> B[💻 インストール<br/>10分]
-    B --> C[🚀 クイックスタート<br/>5分]
-    C --> D[👣 最初の一歩<br/>15分]
+    A[📖 ドキュメント確認] --> B[💻 インストール]
+    B --> C[🚀 クイックスタート]
+    C --> D[👣 最初の一歩]
     
     style A fill:#fff3cd
     style B fill:#d1ecf1
@@ -16,10 +16,10 @@ graph LR
     style D fill:#f8d7da
 ```
 
-1. **[📖 ドキュメントサイト全体を確認](docs/README.md)** ← ⭐まずここから！（5分）
-2. **[💻 インストール](docs/01_for-users/01_getting-started/01_installation.md)** - Q CLIのインストール方法（10分）
-3. **[🚀 クイックスタート](docs/01_for-users/01_getting-started/02_quick-start.md)** - 5分で始めるQ CLI（5分）
-4. **[👣 最初の一歩](docs/01_for-users/01_getting-started/03_first-steps.md)** - 基本的な使い方（15分）
+1. **[📖 ドキュメントサイト全体を確認](docs/README.md)** ← ⭐まずここから！
+2. **[💻 インストール](docs/01_for-users/01_getting-started/01_installation.md)** - Q CLIのインストール方法
+3. **[🚀 クイックスタート](docs/01_for-users/01_getting-started/02_quick-start.md)** - 5分で始めるQ CLI
+4. **[👣 最初の一歩](docs/01_for-users/01_getting-started/03_first-steps.md)** - 基本的な使い方
 
 ### 設定を始める
 
@@ -37,14 +37,14 @@ Q CLIの応答品質は**コンテキスト管理**で決まります。以下�
 #### 📚 **[コンテキスト管理完全ガイド](docs/01_for-users/08_guides/README.md)** ← ⭐必読！
 
 全8章構成の包括的ガイド：
-1. **[本質編](docs/01_for-users/08_guides/01_essence.md)** - コンテキストとは何か（15分）
-2. **[仕組み編](docs/01_for-users/08_guides/02_mechanism.md)** - 内部動作の理解（20分）
-3. **[効果編](docs/01_for-users/08_guides/03_effects.md)** - 何ができるか（15分）
-4. **[ベストプラクティス編](docs/01_for-users/08_guides/04_best-practices.md)** - 設計原則と実装パターン（45分）
-5. **[実践ガイド編](docs/01_for-users/08_guides/05_practical-guide.md)** - プロジェクト別実装例（30分）
-6. **[トラブルシューティング編](docs/01_for-users/08_guides/06_troubleshooting.md)** - 問題解決（20分）
-7. **[上級編](docs/01_for-users/08_guides/07_advanced.md)** - 最適化とチーム開発（20分）
-8. **[リファレンス編](docs/01_for-users/08_guides/08_reference.md)** - 技術仕様とFAQ（15分）
+1. **[本質編](docs/01_for-users/08_guides/01_essence.md)** - コンテキストとは何か
+2. **[仕組み編](docs/01_for-users/08_guides/02_mechanism.md)** - 内部動作の理解
+3. **[効果編](docs/01_for-users/08_guides/03_effects.md)** - 何ができるか
+4. **[ベストプラクティス編](docs/01_for-users/08_guides/04_best-practices.md)** - 設計原則と実装パターン
+5. **[実践ガイド編](docs/01_for-users/08_guides/05_practical-guide.md)** - プロジェクト別実装例
+6. **[トラブルシューティング編](docs/01_for-users/08_guides/06_troubleshooting.md)** - 問題解決
+7. **[上級編](docs/01_for-users/08_guides/07_advanced.md)** - 最適化とチーム開発
+8. **[リファレンス編](docs/01_for-users/08_guides/08_reference.md)** - 技術仕様とFAQ
 
 > **💡 学習の進め方**
 > - **初心者**: 第1章→第3章→第5章（基本を理解して実践）
@@ -134,14 +134,14 @@ Q CLIのセキュリティとプライバシーについて理解することは
 
 - **[セキュリティ概要](docs/01_for-users/09_security/01_security-overview.md)** - セキュリティの基本原則とトピック
 - **[データプライバシー](docs/01_for-users/09_security/02_data-privacy.md)** - データの取り扱いとプライバシー保護
-- **[テレメトリー設定](docs/01_for-users/09_security/03_telemetry.md)** - 使用状況データの収集と無効化方法
+- **[テレメトリー設定](docs/01_for-users/03_configuration/06_telemetry.md)** - 使用状況データの収集と無効化方法
 
 ### Pro/Enterpriseプランのメリット
 
 - **データプライバシー保護**: コンテンツ（質問、コード、応答）がサービス改善やモデル学習に使用されない
 - **Freeプランとの違い**: Freeプランではコンテンツがサービス改善に使用される可能性がある
 - **エンタープライズ適合性**: 機密情報を扱う組織に最適
-- **詳細**: [料金プラン比較](docs/01_for-users/10_enterprise/01_pricing-comparison.md)
+- **詳細**: [料金プラン比較](docs/01_for-users/05_deployment/02_pricing-comparison.md)
 
 ### エンタープライズ採用への障壁
 
@@ -150,7 +150,7 @@ Q CLIのセキュリティとプライバシーについて理解することは
 3. **ADC未対応** - エンタープライズネットワーク環境での制限
 4. **管理機能の不足** - 使用状況の可視化、管理者ダッシュボード
 
-**詳細**: [エンタープライズ展開ガイド](docs/01_for-users/10_enterprise/03_deployment-guide.md)、[セキュリティチェックリスト](docs/01_for-users/10_enterprise/02_security-checklist.md)
+**詳細**: [エンタープライズ展開ガイド](docs/01_for-users/05_deployment/01_enterprise-deployment.md)、[セキュリティチェックリスト](docs/01_for-users/05_deployment/03_security-checklist.md)
 
 ---
 
