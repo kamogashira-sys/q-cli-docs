@@ -27,35 +27,16 @@ Amazon Q Developer CLIを安全に使用するためのセキュリティ情報�
 
 ### 学習順序（推奨）
 
-1. **[セキュリティ概要](01_security-overview.md)** ← まずここから！
-   - 所要時間: 15分
-   - 対象: 初級〜中級
-   - 内容: AWS責任共有モデル、主要セキュリティトピック、環境別推奨設定
+| # | ドキュメント | 対象 | 内容 |
+|---|-------------|------|------|
+| 1 | [セキュリティ概要](01_security-overview.md) ⭐ | 初級〜中級 | AWS責任共有モデル、主要セキュリティトピック、環境別推奨設定 |
+| 2 | [データプライバシー](02_data-privacy.md) | 初級〜中級 | Free vs Pro/Enterpriseプラン、サービス改善データ使用、オプトアウト |
+| 3 | [ファイルアクセス制御](03_file-access-control.md) | 中級 | fs_readツール制御、機密ファイル保護、環境別設定 |
+| 4 | [AWS API制御](04_aws-api-control.md) | 中級 | use_awsツール制御、IAMポリシー制限、コスト管理 |
+| 5 | [認証情報管理](05_credentials-management.md) | 中級 | AWS Builder ID、IAM Identity Center、ベストプラクティス |
+| 6 | [trust-all安全使用](06_trust-all-safety.md) | 中級〜上級 | trust-allの危険性、安全な使用方法、チェックリスト |
 
-2. **[データプライバシー](02_data-privacy.md)**
-   - 所要時間: 10分
-   - 対象: 初級〜中級
-   - 内容: Free vs Pro/Enterpriseプラン、サービス改善データ使用、オプトアウト
-
-3. **[ファイルアクセス制御](03_file-access-control.md)**
-   - 所要時間: 20分
-   - 対象: 中級
-   - 内容: fs_readツール制御、機密ファイル保護、環境別設定
-
-4. **[AWS API制御](04_aws-api-control.md)**
-   - 所要時間: 20分
-   - 対象: 中級
-   - 内容: use_awsツール制御、IAMポリシー制限、コスト管理
-
-5. **[認証情報管理](05_credentials-management.md)**
-   - 所要時間: 20分
-   - 対象: 中級
-   - 内容: AWS Builder ID、IAM Identity Center、ベストプラクティス
-
-6. **[trust-all安全使用](06_trust-all-safety.md)**
-   - 所要時間: 15分
-   - 対象: 中級〜上級
-   - 内容: trust-allの危険性、安全な使用方法、チェックリスト
+⭐ = まずここから！
 
 ### トピック別
 
