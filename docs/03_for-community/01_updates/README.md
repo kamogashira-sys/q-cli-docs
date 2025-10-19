@@ -52,8 +52,8 @@ Amazon Q CLIの最新情報や今後の開発計画を提供します。
 |---|-------------|------|
 | 1 | [変更履歴](01_changelog.md) | バージョン別の変更履歴 |
 | 2 | [ロードマップ](02_roadmap.md) | 今後の開発計画とISSUE分析 |
-| 3 | [バージョン履歴 v1.13-latest](03_version-history-v1.13-latest.md) | v1.13.0～v1.18.1の詳細な変更履歴（200+ PRs） |
-| 4 | [マイグレーションガイド](04_migration-guides.md) | バージョン間の移行ガイド |
+| 3 | [バージョンアップ履歴 v1.13-latest](03_version-history-v1.13-latest.md) | v1.13.0～v1.18.1の詳細な変更履歴（200+ PRs） |
+| 4 | [マイグレーション](04_migration-guides.md) | バージョン間の移行ガイド |
 
 **総文書数**: 4文書（README.md除く）
 
