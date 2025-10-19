@@ -116,8 +116,6 @@ Amazon Q Developer CLI（Q CLI）は、AWSが提供する**AI駆動**の開発�
   - Knowledge機能ベータ改善（BM25サポート）
   - セキュリティ強化（execute_bash権限厳格化、fs_read制限）
 
-**[→ 変更履歴・ロードマップを見る](docs/03_for-community/01_updates/)**
-
 ### ロードマップ
 
 - **総アイテム数**: 35件（オープン: 28件、クローズド: 7件）
