@@ -33,7 +33,7 @@
 #### IAM Identity Center設定
 
 - [ ] **IAM Identity Centerの有効化**
-  - サポートリージョン: us-east-1, us-west-2, eu-west-1, eu-central-1
+  - 任意のサポートされているAWSリージョンで有効化可能（グローバルに利用可能）
   - 組織全体のユーザー管理
 
 - [ ] **外部IDプロバイダー連携**（オプション）
