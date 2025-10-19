@@ -176,11 +176,58 @@ telemetry:
 - データは指定されたAWSリージョンで処理
 - 一部の機能はクロスリージョン処理が必要
 
-**クロスリージョン処理が発生する機能**:
-- グローバルなモデル推論
-- 特定の高度な機能
+### クロスリージョン推論（Cross-region Inference）
 
-**詳細**: [Cross-region processing in Amazon Q Developer](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/cross-region-processing.html)
+Amazon Q Developerは、パフォーマンスと信頼性向上のため、**地域内の複数リージョン**にトラフィックを分散します。
+
+**地域別の推論リージョン**:
+
+| 地域 | 推論が実行されるリージョン |
+|------|------------------------|
+| **United States** | US East (N. Virginia) `us-east-1`<br>US West (Oregon) `us-west-2`<br>US East (Ohio) `us-east-2` |
+| **Europe** | Europe (Frankfurt) `eu-central-1`<br>Europe (Ireland) `eu-west-1`<br>Europe (Paris) `eu-west-3`<br>Europe (Stockholm) `eu-north-1` |
+| **Asia Pacific**\* | Asia Pacific (Mumbai) `ap-south-1`<br>Asia Pacific (Seoul) `ap-northeast-2`<br>Asia Pacific (Singapore) `ap-southeast-1`<br>Asia Pacific (Sydney) `ap-southeast-2`<br>**Asia Pacific (Tokyo) `ap-northeast-1`** |
+
+\*Asia Pacificのクロスリージョン推論は、Amazon Q generative SQL機能をAsia Pacific (Seoul)リージョンで使用する場合のみサポートされています。
+
+> **💡 重要なポイント**
+> 
+> - ✅ **地域内に限定**: 米国のリクエストは米国内のリージョンのみ、欧州のリクエストは欧州内のリージョンのみ、アジア太平洋のリクエストはアジア太平洋内のリージョンのみで処理
+> - ✅ **東京リージョン対応**: Asia Pacificの推論リージョンに東京（ap-northeast-1）が含まれる
+> - ✅ **データ保存場所は不変**: クロスリージョン推論はデータの保存場所を変更しない
+> - ✅ **暗号化通信**: すべてのデータはAWSのセキュアネットワークで暗号化して転送
+> - ✅ **追加コストなし**: クロスリージョン推論に追加料金は発生しない
+> 
+> **利用可能な地域**:
+> - 🌎 **United States**: 米国内の3リージョンで推論を分散
+> - 🌍 **Europe**: 欧州内の4リージョンで推論を分散
+> - 🌏 **Asia Pacific**: アジア太平洋内の5リージョン（東京含む）で推論を分散
+>   - **制限事項**: 現在はAmazon Q generative SQL機能をAsia Pacific (Seoul)リージョンで使用する場合のみ
+> 
+> **出典**: [Cross-region processing in Amazon Q Developer - Supported regions for Amazon Q Developer cross-region inference](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/cross-region-processing.html#inference-regions) (2025-10-19確認)
+
+**メリット**:
+- 🚀 高需要時のスループット向上と回復力強化
+- ⚡ パフォーマンス改善
+- 🎯 最新機能へのアクセス（最も強力なLLMを使用）
+
+**出典**: [Cross-region processing in Amazon Q Developer - Cross-region inference](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/cross-region-processing.html) (2025-10-19確認)
+
+### クロスリージョンコール（Cross-region Calls）
+
+Amazon Qが**異なるリージョンのAWSリソース情報を取得**する必要がある場合に発生します。
+
+**例**:
+```bash
+# 複数リージョンのEC2インスタンスを確認
+q chat "全リージョンのEC2インスタンスを教えて"
+# → us-east-1、ap-northeast-1等、各リージョンにAPIコールが発生
+```
+
+**無効化方法**:
+IAMポリシーでAmazon Qの代理API呼び出しを拒否できます。ただし、API呼び出しが必要な機能は使用できなくなります。
+
+**出典**: [Cross-region processing in Amazon Q Developer - Cross-region calls](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/cross-region-processing.html) (2025-10-19確認)
 
 ---
 
