@@ -4,9 +4,11 @@
 
 # Amazon Q CLI ドキュメント
 
-**最終更新**: 2025-10-18  
+**最終更新**: 2025-10-19  
 **対象バージョン**: v1.17.0以降  
-**総ドキュメント数**: 91文書
+**総ドキュメント数**: 94文書（カテゴリ別ドキュメント）
+
+> 💡 **補足**: この数値はカテゴリ別に分類されたドキュメントの数です。トップレベルのナビゲーション用ドキュメント（README.md、file-structure.md、index.md、quick-reference.md、topic-index.md）は含まれていません。
 
 ---
 
@@ -137,14 +139,14 @@ graph TD
 
 ```
 docs/
-├── 01_for-users/              # ユーザーガイド（65文書）
+├── 01_for-users/              # ユーザーガイド（68文書）
 │   ├── 01_getting-started/    # 入門ガイド（5文書）
 │   ├── 02_features/           # 機能ガイド（8文書）
 │   ├── 03_configuration/      # 設定ガイド（9文書）
 │   ├── 04_best-practices/     # ベストプラクティス（6文書）
 │   ├── 05_deployment/         # デプロイメント（4文書）
 │   ├── 06_troubleshooting/    # トラブルシューティング（3文書）
-│   ├── 07_reference/          # リファレンス（10文書）
+│   ├── 07_reference/          # リファレンス（11文書）
 │   ├── 08_guides/             # コンテキスト管理ガイド（9文書）
 │   └── 09_security/           # セキュリティ（7文書）
 ├── 02_for-developers/         # 開発者ガイド（7文書）
@@ -172,7 +174,7 @@ Amazon Q CLIを初めて使う方向けのガイドです。
 | 4 | [最初の一歩](01_for-users/01_getting-started/03_first-steps.md) | 初級 | 基本操作、チャット/ファイル操作/コマンド実行、Agent切り替え、履歴管理 |
 | 5 | [料金プラン](01_for-users/01_getting-started/04_pricing.md) | 初級 | Free/Proプランの違い、料金体系、エンタープライズ向けオプション |
 
-**次のステップ**: Getting Startedを完了したら、[設定ガイド](#設定ガイド8文書)でQ CLIをカスタマイズしましょう。
+**次のステップ**: Getting Startedを完了したら、[設定ガイド](#設定ガイド9文書)でQ CLIをカスタマイズしましょう。
 
 ---
 
@@ -180,7 +182,7 @@ Amazon Q CLIを初めて使う方向けのガイドです。
 
 Amazon Q CLIの機能と設定を詳しく学びたい方向けのガイドです。
 
-#### 設定ガイド（8文書）
+#### 設定ガイド（9文書）
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
@@ -190,8 +192,9 @@ Amazon Q CLIの機能と設定を詳しく学びたい方向けのガイドで�
 | 4 | [Agent設定](01_for-users/03_configuration/04_agent-configuration.md) | 中級 | JSONスキーマ、グローバル/ローカルAgent、必須/オプションフィールド、検証方法 |
 | 5 | [MCP設定](01_for-users/03_configuration/06_mcp-configuration.md) | 中級 | MCPサーバー設定、stdio/HTTP接続、OAuth認証、環境変数展開 |
 | 6 | [環境変数](01_for-users/03_configuration/05_environment-variables.md) | 中級 | 23項目、Q CLI固有18項目、設定方法、実践パターン |
-| 7 | [優先順位ルール](01_for-users/03_configuration/02_priority-rules.md) | 中級 | 5段階優先順位（CLI引数→環境変数→ローカルAgent→グローバルAgent→デフォルト）、フロー図 |
-| 8 | [設定例集](01_for-users/03_configuration/07_examples.md) | 中級 | 実践的な設定例、ユースケース別（開発/本番/チーム） |
+| 7 | [テレメトリー設定](01_for-users/03_configuration/06_telemetry.md) | 初級〜中級 | テレメトリーデータ収集、オプトアウト方法、プライバシー設定 |
+| 8 | [優先順位ルール](01_for-users/03_configuration/02_priority-rules.md) | 中級 | 5段階優先順位（CLI引数→環境変数→ローカルAgent→グローバルAgent→デフォルト）、フロー図 |
+| 9 | [設定例集](01_for-users/03_configuration/07_examples.md) | 中級 | 実践的な設定例、ユースケース別（開発/本番/チーム） |
 
 **次のステップ**: 設定をカスタマイズしたら、[機能ガイド](#機能ガイド8文書)で各機能の使い方を学びましょう。
 
@@ -233,7 +236,7 @@ Q CLIの応答品質は**コンテキスト管理**で決まります。全8章�
 > - **中級者**: 第4章→第5章→第6章（ベストプラクティスを習得）
 > - **上級者**: 第7章→第8章（最適化とチーム開発）
 
-**次のステップ**: コンテキスト管理を理解したら、[ベストプラクティス](#ベストプラクティス5文書)で効果的な使い方を学びましょう。
+**次のステップ**: コンテキスト管理を理解したら、[ベストプラクティス](#ベストプラクティス6文書)で効果的な使い方を学びましょう。
 
 #### エンタープライズ導入（4文書）
 
@@ -309,7 +312,7 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 
 ---
 
-### 📚 Reference（リファレンス）- 全8文書
+### 📚 Reference（リファレンス）- 全11文書
 
 詳細な仕様や完全なリストを確認したい方向けのリファレンスです。
 
@@ -319,10 +322,13 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 | 2 | [設定項目リファレンス](01_for-users/07_reference/03_settings-reference.md) | 中級〜上級 | 全35設定項目、カテゴリ別分類（テレメトリ/チャット/Knowledge/MCP） |
 | 3 | [設定ファイル配置マップ](01_for-users/07_reference/04_configuration-file-locations.md) | 中級 | 5種類の設定ファイル配置マップ、ディレクトリ構造、実践例 |
 | 4 | [環境変数リファレンス](01_for-users/03_configuration/05_environment-variables.md) | 中級〜上級 | 全環境変数リスト、Q CLI固有18項目、AWS/システム変数 |
-| 5 | [コマンドリファレンス](01_for-users/07_reference/02_commands.md) | 初級〜中級 | 全コマンドリスト、サブコマンド、オプション |
-| 6 | [用語集](01_for-users/07_reference/01_glossary.md) | 初級 | Amazon Q CLI用語集、Agent/MCP/Knowledge等の定義（33用語） |
-| 7 | [完全版用語辞書](01_for-users/07_reference/06_terminology-dictionary.md) | 中級 | 公式リポジトリから抽出した全用語（322用語） |
-| 8 | [コンテキストウィンドウ制限](01_for-users/07_reference/07_context-window-limits.md) | 中級 | モデル別トークン制限、コンテキスト管理の重要性 |
+| 5 | [サポート環境](01_for-users/07_reference/05_supported-environments.md) | 初級〜中級 | 対応OS、アーキテクチャ、システム要件、サポートされるターミナル |
+| 6 | [コマンドリファレンス](01_for-users/07_reference/02_commands.md) | 初級〜中級 | 全コマンドリスト、サブコマンド、オプション |
+| 7 | [用語集](01_for-users/07_reference/01_glossary.md) | 初級 | Amazon Q CLI用語集、Agent/MCP/Knowledge等の定義（33用語） |
+| 8 | [完全版用語辞書](01_for-users/07_reference/06_terminology-dictionary.md) | 中級 | 公式リポジトリから抽出した全用語（322用語） |
+| 9 | [コンテキストウィンドウ制限](01_for-users/07_reference/07_context-window-limits.md) | 中級 | モデル別トークン制限、コンテキスト管理の重要性 |
+| 10 | [クイックリファレンス](01_for-users/07_reference/08_quick-reference.md) | 初級〜中級 | よく使うコマンドと設定の早見表、トラブルシューティング |
+| 11 | [トピック別インデックス](01_for-users/07_reference/09_topic-index.md) | 初級〜中級 | やりたいことから適切なドキュメントを発見、トピック別分類 |
 
 ---
 
