@@ -24,12 +24,13 @@ Q CLIのインストールから高度な活用方法まで、ユーザーが必
 |-----------|--------|------|
 | [Getting Started](01_getting-started/) | 5 | インストールと基本的な使い方 |
 | [Features](02_features/) | 8 | 各機能の使い方 |
-| [Configuration](03_configuration/) | 8 | 設定方法の詳細 |
-| [Best Practices](04_best-practices/) | 5 | 推奨される使い方 |
-| [Deployment](05_deployment/) | 2 | エンタープライズ導入 |
+| [Configuration](03_configuration/) | 9 | 設定方法の詳細 |
+| [Best Practices](04_best-practices/) | 6 | 推奨される使い方 |
+| [Deployment](05_deployment/) | 4 | エンタープライズ導入 |
 | [Troubleshooting](06_troubleshooting/) | 3 | 問題解決 |
-| [Reference](07_reference/) | 6 | リファレンス情報 |
+| [Reference](07_reference/) | 10 | リファレンス情報 |
 | [Guides](08_guides/) | 9 | 包括的なガイド（コンテキスト管理） |
+| [Security](09_security/) | 7 | セキュリティとプライバシー |
 
 ## 🚀 推奨学習順序
 
@@ -38,12 +39,19 @@ Q CLIのインストールから高度な活用方法まで、ユーザーが必
 2. [Configuration](03_configuration/) - 基本的な設定
 3. [Features](02_features/) - 各機能の理解
 4. **[Guides - コンテキスト管理](08_guides/)** - 応答品質を最大化【重要】
+5. [Security](09_security/) - セキュリティとプライバシー【重要】
 
 ### Q CLIの応答品質を最大化したい方【最重要】
 **[コンテキスト管理完全ガイド](08_guides/)** を体系的に学習してください：
 - 第1章: コンテキストの本質（15分）
 - 第3章: 効果と特徴（15分）
 - 第5章: 実践ガイド（30分）
+
+### セキュリティを重視する方【重要】
+1. [Security - セキュリティ概要](09_security/01_security-overview.md) - AWS責任共有モデル、主要トピック
+2. [Security - データプライバシー](09_security/02_data-privacy.md) - データの取り扱いとオプトアウト
+3. [Configuration](03_configuration/) - セキュアな設定
+4. [Best Practices - セキュリティ](04_best-practices/02_security.md) - セキュリティのベストプラクティス
 
 ### 設定をカスタマイズしたい方
 1. [Configuration](03_configuration/) - 詳細な設定方法
@@ -58,4 +66,4 @@ Q CLIのインストールから高度な活用方法まで、ユーザーが必
 
 ---
 
-**最終更新**: 2025-10-13
+**最終更新**: 2025-10-19
