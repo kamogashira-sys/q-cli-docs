@@ -392,8 +392,8 @@ aws iam simulate-principal-policy \
 - [認証情報管理](05_credentials-management.md)
 
 ### 設定ガイド
-- [Agent設定](../03_configuration/04_agent-configuration.md)
-- [環境変数](../03_configuration/05_environment-variables.md)
+- [Agent設定](../03_configuration/03_agent-configuration.md)
+- [環境変数](../03_configuration/06_environment-variables.md)
 
 ### エンタープライズ展開
 - [セキュリティチェックリスト](../05_deployment/03_security-checklist.md)

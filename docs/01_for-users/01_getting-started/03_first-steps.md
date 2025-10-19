@@ -363,7 +363,7 @@ q login
 
 - **[チャット機能](../02_features/01_chat.md)** - チャット機能の詳細
 - **[Agent機能](../02_features/02_agents.md)** - Agentのカスタマイズ
-- **[MCP 設定](../03_configuration/06_mcp-configuration.md)** - 外部ツールとの連携
+- **[MCP 設定](../03_configuration/04_mcp-configuration.md)** - 外部ツールとの連携
 
 ### 設定を最適化する
 

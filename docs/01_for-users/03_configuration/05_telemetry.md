@@ -308,9 +308,9 @@ sudo tcpdump -i any -n host telemetry.amazonq.aws
 
 ### 設定ガイド
 - [設定概要](01_overview.md)
-- [設定優先順位](02_priority-rules.md)
-- [環境変数](05_environment-variables.md)
-- [Agent設定](04_agent-configuration.md)
+- [設定優先順位](07_priority-rules.md)
+- [環境変数](06_environment-variables.md)
+- [Agent設定](03_agent-configuration.md)
 
 ### AWS公式ドキュメント
 - [Amazon Q Developer service improvement](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/service-improvement.html)
@@ -359,4 +359,4 @@ q chat
 
 ## 関連ドキュメント
 
-- [テレメトリー設定](../03_configuration/06_telemetry.md) - テレメトリー設定の完全ガイド
+- [テレメトリー設定](../03_configuration/05_telemetry.md) - テレメトリー設定の完全ガイド

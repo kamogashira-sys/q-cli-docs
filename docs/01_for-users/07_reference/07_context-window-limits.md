@@ -149,4 +149,4 @@ context:
 - [FAQ](../06_troubleshooting/01_faq.md)
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
 - [コンテキスト管理ベストプラクティス](../08_guides/04_best-practices.md)
-- [Agent設定ガイド](../03_configuration/04_agent-configuration.md)
+- [Agent設定ガイド](../03_configuration/03_agent-configuration.md)

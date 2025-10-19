@@ -26,7 +26,7 @@ graph LR
 1. **基本設定を確認**: [Getting Started](docs/01_for-users/01_getting-started/README.md)
 2. **環境変数を設定**: [環境変数ガイド](docs/01_for-users/03_configuration/05_environment-variables.md)
 3. **Agent設定を作成**: [Agent設定ガイド](docs/01_for-users/03_configuration/04_agent-configuration.md)
-4. **設定を確認**: [設定優先順位ガイド](docs/01_for-users/03_configuration/02_priority-rules.md)
+4. **設定を確認**: [設定優先順位ガイド](docs/01_for-users/03_configuration/07_priority-rules.md)
 
 ### 🎯 コンテキスト管理を理解する【重要】
 
@@ -56,7 +56,7 @@ Q CLIの応答品質は**コンテキスト管理**で決まります。以下�
 問題が発生した場合：
 1. [コンテキスト管理トラブルシューティング](docs/01_for-users/08_guides/06_troubleshooting.md)を確認
 2. [一般的なトラブルシューティング](docs/01_for-users/06_troubleshooting/02_common-issues.md)を確認
-3. [設定優先順位ガイド](docs/01_for-users/03_configuration/02_priority-rules.md)で優先順位を理解
+3. [設定優先順位ガイド](docs/01_for-users/03_configuration/07_priority-rules.md)で優先順位を理解
 4. [GitHub ISSUE](https://github.com/aws/amazon-q-developer-cli/issues)で既知の問題を検索
 
 ---
@@ -132,7 +132,7 @@ Q CLIのセキュリティとプライバシーについて理解することは
 
 - **[セキュリティ概要](docs/01_for-users/09_security/01_security-overview.md)** - セキュリティの基本原則とトピック
 - **[データプライバシー](docs/01_for-users/09_security/02_data-privacy.md)** - データの取り扱いとプライバシー保護
-- **[テレメトリー設定](docs/01_for-users/03_configuration/06_telemetry.md)** - 使用状況データの収集と無効化方法
+- **[テレメトリー設定](docs/01_for-users/03_configuration/05_telemetry.md)** - 使用状況データの収集と無効化方法
 
 ### Pro/Enterpriseプランのメリット
 

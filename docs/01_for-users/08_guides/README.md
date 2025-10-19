@@ -98,7 +98,7 @@ AI: 了解しました。現在のREADMEには「インストール方法」と�
 ## 📖 関連ドキュメント
 
 - [Agent機能](../02_features/02_agents.md) - Agent機能の詳細
-- [Agent設定](../03_configuration/04_agent-configuration.md) - Agent設定の詳細
+- [Agent設定](../03_configuration/03_agent-configuration.md) - Agent設定の詳細
 - [コマンドリファレンス](../07_reference/02_commands.md) - コマンドの詳細
 
 ---

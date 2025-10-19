@@ -566,9 +566,9 @@ aws iam get-user-policy --user-name your-user --policy-name XRayAccess
 ## 🔗 関連ドキュメント
 
 - **[実践的ユースケース](04_use-cases.md)** - 他のユースケース例
-- **[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)** - MCP設定の詳細
-- **[Agent設定ガイド](../03_configuration/04_agent-configuration.md)** - Agent設定の詳細
-- **[環境変数ガイド](../03_configuration/05_environment-variables.md)** - 環境変数の設定
+- **[MCP設定ガイド](../03_configuration/04_mcp-configuration.md)** - MCP設定の詳細
+- **[Agent設定ガイド](../03_configuration/03_agent-configuration.md)** - Agent設定の詳細
+- **[環境変数ガイド](../03_configuration/06_environment-variables.md)** - 環境変数の設定
 
 ### 外部リンク
 

@@ -390,11 +390,11 @@ q chat  # -vオプションなし
 
 ## 参考リンク
 
-- [設定優先順位ガイド](02_priority-rules.md) - 設定の優先順位と図解
+- [設定優先順位ガイド](07_priority-rules.md) - 設定の優先順位と図解
 - [設定項目完全リファレンス](../07_reference/03_settings-reference.md)
 - [推奨設定ガイド](../04_best-practices/01_configuration.md)
 - [ベストプラクティス](../04_best-practices/01_configuration.md)
-- [Agent設定ファイル完全仕様](04_agent-configuration.md)
+- [Agent設定ファイル完全仕様](03_agent-configuration.md)
 
 ---
 
@@ -404,12 +404,12 @@ q chat  # -vオプションなし
 ---
 
 **関連トピック**:
-- [設定優先順位ガイド](02_priority-rules.md)
+- [設定優先順位ガイド](07_priority-rules.md)
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
 - [FAQ](../06_troubleshooting/01_faq.md)
 
 ## 関連ドキュメント
 
 - [セキュリティ概要](../09_security/01_security-overview.md) - セキュリティ設定の基本
-- [テレメトリー設定](../03_configuration/06_telemetry.md) - テレメトリー環境変数の詳細
+- [テレメトリー設定](../03_configuration/05_telemetry.md) - テレメトリー環境変数の詳細
 - [エンタープライズ展開ガイド](../05_deployment/01_enterprise-deployment.md) - 組織での環境変数管理

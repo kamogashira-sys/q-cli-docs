@@ -443,9 +443,9 @@ Agent設定ファイルのスキーマバージョン。
 - **[完全版用語辞書](06_terminology-dictionary.md)** - 322用語の詳細な説明と使用例
   - 本ドキュメントは主要な33用語の簡潔な説明
   - 完全版は公式リポジトリから抽出した全用語を網羅
-- **[Agent設定ガイド](../03_configuration/04_agent-configuration.md)**
-- **[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)**
-- **[設定優先順位](../03_configuration/02_priority-rules.md)**
+- **[Agent設定ガイド](../03_configuration/03_agent-configuration.md)**
+- **[MCP設定ガイド](../03_configuration/04_mcp-configuration.md)**
+- **[設定優先順位](../03_configuration/07_priority-rules.md)**
 - **[実験的機能](../02_features/07_experimental.md)**
 
 ---

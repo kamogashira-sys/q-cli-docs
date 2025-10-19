@@ -188,7 +188,7 @@ Linux環境では、以下の環境変数により配置場所が変更されま
 - 汎用的なタスク（AWS操作、コードレビューなど）
 - チーム全体で共有するAgent設定
 
-**詳細**: [Agent設定ガイド](../03_configuration/04_agent-configuration.md)
+**詳細**: [Agent設定ガイド](../03_configuration/03_agent-configuration.md)
 
 ---
 
@@ -219,7 +219,7 @@ Linux環境では、以下の環境変数により配置場所が変更されま
 - プロジェクト専用のツールやMCPサーバーを使用
 - チーム内でプロジェクト設定を共有（Git管理）
 
-**詳細**: [Agent設定ガイド](../03_configuration/04_agent-configuration.md)
+**詳細**: [Agent設定ガイド](../03_configuration/03_agent-configuration.md)
 
 ---
 
@@ -256,7 +256,7 @@ Linux環境では、以下の環境変数により配置場所が変更されま
 - 環境変数
 - 接続タイプ（stdio/HTTP）
 
-**詳細**: [MCP設定ガイド](../03_configuration/06_mcp-configuration.md)
+**詳細**: [MCP設定ガイド](../03_configuration/04_mcp-configuration.md)
 
 ---
 
@@ -273,7 +273,7 @@ Linux環境では、以下の環境変数により配置場所が変更されま
 5. **グローバル設定** - `~/.local/share/amazon-q/settings.json`
 6. **デフォルト値** - Amazon Q CLI組み込みのデフォルト
 
-**詳細**: [設定優先順位ガイド](../03_configuration/../03_configuration/02_priority-rules.md)
+**詳細**: [設定優先順位ガイド](../03_configuration/../03_configuration/07_priority-rules.md)
 
 ---
 
@@ -512,10 +512,10 @@ ls ~/.local/share/amazon-q/settings.json
 
 ## 📚 関連ドキュメント
 
-- [設定優先順位ガイド](../03_configuration/../03_configuration/02_priority-rules.md) - 設定の優先順位の詳細
-- [Agent設定ガイド](../03_configuration/04_agent-configuration.md) - Agent設定の詳細
-- [MCP設定ガイド](../03_configuration/06_mcp-configuration.md) - MCPサーバー設定の詳細
-- [環境変数ガイド](../03_configuration/05_environment-variables.md) - 環境変数の詳細
+- [設定優先順位ガイド](../03_configuration/../03_configuration/07_priority-rules.md) - 設定の優先順位の詳細
+- [Agent設定ガイド](../03_configuration/03_agent-configuration.md) - Agent設定の詳細
+- [MCP設定ガイド](../03_configuration/04_mcp-configuration.md) - MCPサーバー設定の詳細
+- [環境変数ガイド](../03_configuration/06_environment-variables.md) - 環境変数の詳細
 - [設定項目リファレンス](03_settings-reference.md) - 全設定項目の一覧
 
 ---
@@ -525,6 +525,6 @@ ls ~/.local/share/amazon-q/settings.json
 ---
 
 **関連トピック**:
-- [設定優先順位ガイド](../03_configuration/02_priority-rules.md)
+- [設定優先順位ガイド](../03_configuration/07_priority-rules.md)
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
 - [FAQ](../06_troubleshooting/01_faq.md)

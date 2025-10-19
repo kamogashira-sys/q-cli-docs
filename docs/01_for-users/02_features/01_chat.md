@@ -560,7 +560,7 @@ q settings chat.enableHistoryHints true
 - [Agent機能](02_agents.md)
 - [Knowledge機能](../04_best-practices/03_performance.md#-knowledge-base最適化)
 - [Checkpoint機能](05_checkpoints.md)
-- [グローバル設定](../03_configuration/03_global-settings.md)
+- [グローバル設定](../03_configuration/02_global-settings.md)
 - [コマンドリファレンス](../07_reference/02_commands.md)
 
 ---

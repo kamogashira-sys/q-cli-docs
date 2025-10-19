@@ -1380,7 +1380,7 @@ find . -name "architecture.md"
 
 **出典**:
 - [Agent機能ドキュメント](../02_features/02_agents.md)
-- [Agent設定ドキュメント](../03_configuration/04_agent-configuration.md)
+- [Agent設定ドキュメント](../03_configuration/03_agent-configuration.md)
 
 ---
 

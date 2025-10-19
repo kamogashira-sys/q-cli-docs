@@ -1267,9 +1267,9 @@ Collecting logs...
 ## 📚 関連ドキュメント
 
 - [チャット機能ガイド](../02_features/01_chat.md)
-- [Agent設定ガイド](../03_configuration/04_agent-configuration.md)
+- [Agent設定ガイド](../03_configuration/03_agent-configuration.md)
 - [設定項目リファレンス](03_settings-reference.md)
-- [環境変数リファレンス](../03_configuration/05_environment-variables.md)
+- [環境変数リファレンス](../03_configuration/06_environment-variables.md)
 
 ---
 

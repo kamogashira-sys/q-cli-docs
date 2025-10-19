@@ -152,9 +152,9 @@ Amazon Q> /tools untrust use_aws
 ### 設定
 
 - **[設定システム概要](01_for-users/03_configuration/01_overview.md)** - 設定システム全体像
-- **[Agent設定](01_for-users/03_configuration/04_agent-configuration.md)** - Agent設定の詳細
-- **[MCP設定](01_for-users/03_configuration/06_mcp-configuration.md)** - MCPサーバー設定
-- **[環境変数](01_for-users/03_configuration/05_environment-variables.md)** - 環境変数一覧
+- **[Agent設定](01_for-users/03_configuration/03_agent-configuration.md)** - Agent設定の詳細
+- **[MCP設定](01_for-users/03_configuration/04_mcp-configuration.md)** - MCPサーバー設定
+- **[環境変数](01_for-users/03_configuration/06_environment-variables.md)** - 環境変数一覧
 
 ### セキュリティ
 

@@ -36,7 +36,7 @@ Q CLIを効果的に活用するための詳細な情報を提供しています
 ### 重要なガイド
 
 - **[🎯 コンテキスト管理完全ガイド](01_for-users/08_guides/README.md)** - Q CLI活用の最重要ガイド
-- **[⚙️ Agent設定ガイド](01_for-users/03_configuration/04_agent-configuration.md)** - プロジェクトごとのカスタマイズ
+- **[⚙️ Agent設定ガイド](01_for-users/03_configuration/03_agent-configuration.md)** - プロジェクトごとのカスタマイズ
 - **[🔧 トラブルシューティング](01_for-users/06_troubleshooting/02_common-issues.md)** - よくある問題と解決方法
 
 ### リファレンス

@@ -80,7 +80,7 @@
 
 **必須**: 以下のドキュメントを更新
 
-1. `docs/user-guide/03_configuration/05_environment-variables.md`
+1. `docs/user-guide/03_configuration/06_environment-variables.md`
    - 適切なセクション（コア、qterm、デバッグ等）に追加
    - 説明と使用例を記載
 

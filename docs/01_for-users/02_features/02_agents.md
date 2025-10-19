@@ -16,8 +16,8 @@ Agentは、Amazon Q CLIの動作をカスタマイズする機能です。シス
 ### 参考資料
 
 - **[AWSブログ: Amazon Q Developer CLI カスタムエージェントで開発の混乱を乗り越えよう](https://aws.amazon.com/jp/blogs/news/overcome-development-disarray-with-amazon-q-developer-cli-custom-agents/)** - Agent機能の公式解説
-- [Agent設定ガイド](../03_configuration/04_agent-configuration.md) - 設定項目の詳細
-- [MCP設定ガイド](../03_configuration/06_mcp-configuration.md) - MCPサーバー連携
+- [Agent設定ガイド](../03_configuration/03_agent-configuration.md) - 設定項目の詳細
+- [MCP設定ガイド](../03_configuration/04_mcp-configuration.md) - MCPサーバー連携
 
 ---
 
@@ -350,7 +350,7 @@ q chat --agent back-end
    ```
 
 3. **自分のAgentを作成する**
-   - [Agent設定ガイド](../03_configuration/04_agent-configuration.md)を参照
+   - [Agent設定ガイド](../03_configuration/03_agent-configuration.md)を参照
 
 #### 推奨する学習順序
 
@@ -366,13 +366,13 @@ q chat --agent back-end
 
 > **💡 このセクションについて**
 > 
-> このガイドは、Q CLIのソースコード調査と[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)の技術仕様に基づいて作成されました。
+> このガイドは、Q CLIのソースコード調査と[MCP設定ガイド](../03_configuration/04_mcp-configuration.md)の技術仕様に基づいて作成されました。
 > 
 > **検証済み項目**:
 > - すべてのJSON例をjqで検証
 > - すべてのフィールド名をソースコードで確認
 > - すべてのパスをソースコードで確認
-> - MCP設定の優先順位を[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)と照合
+> - MCP設定の優先順位を[MCP設定ガイド](../03_configuration/04_mcp-configuration.md)と照合
 > - `useLegacyMcpJson`の動作をソースコードで確認
 
 ### 移行が必要な理由
@@ -1023,9 +1023,9 @@ q settings chat.defaultAgent
 
 より詳細な設定方法については、以下のドキュメントを参照してください：
 
-- **[Agent設定ガイド](../03_configuration/04_agent-configuration.md)** - 詳細な設定方法
-- **[設定例集](../03_configuration/07_examples.md)** - 実践的な設定例
-- **[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)** - MCPサーバー連携
+- **[Agent設定ガイド](../03_configuration/03_agent-configuration.md)** - 詳細な設定方法
+- **[設定例集](../03_configuration/08_examples.md)** - 実践的な設定例
+- **[MCP設定ガイド](../03_configuration/04_mcp-configuration.md)** - MCPサーバー連携
 
 ---
 
@@ -1351,9 +1351,9 @@ Stop Hookは、会話ターン終了時（Assistantの応答完了時）に自�
 
 ## 📚 関連ドキュメント
 
-- [Agent設定ガイド](../03_configuration/04_agent-configuration.md)
-- [MCP設定ガイド](../03_configuration/06_mcp-configuration.md)
-- [設定例集](../03_configuration/07_examples.md)
+- [Agent設定ガイド](../03_configuration/03_agent-configuration.md)
+- [MCP設定ガイド](../03_configuration/04_mcp-configuration.md)
+- [設定例集](../03_configuration/08_examples.md)
 
 ---
 

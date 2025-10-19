@@ -32,13 +32,13 @@ docs/
 │   │   └── README.md
 │   ├── 03_configuration/              # 設定ガイド（9文書）
 │   │   ├── 01_overview.md
-│   │   ├── 02_priority-rules.md
-│   │   ├── 03_global-settings.md
-│   │   ├── 04_agent-configuration.md
-│   │   ├── 05_environment-variables.md
-│   │   ├── 06_mcp-configuration.md
-│   │   ├── 06_telemetry.md
-│   │   ├── 07_examples.md
+│   │   ├── 07_priority-rules.md
+│   │   ├── 02_global-settings.md
+│   │   ├── 03_agent-configuration.md
+│   │   ├── 06_environment-variables.md
+│   │   ├── 04_mcp-configuration.md
+│   │   ├── 05_telemetry.md
+│   │   ├── 08_examples.md
 │   │   └── README.md
 │   ├── 04_best-practices/             # ベストプラクティス（6文書）
 │   │   ├── 01_configuration.md

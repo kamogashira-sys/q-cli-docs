@@ -50,19 +50,19 @@
 ### 基本設定
 
 - **[設定システム概要](01_for-users/03_configuration/01_overview.md)** - 設定システム全体像、5段階優先順位、4種類の設定
-- **[優先順位ルール](01_for-users/03_configuration/02_priority-rules.md)** - 5段階優先順位の詳細、フロー図
-- **[グローバル設定](01_for-users/03_configuration/03_global-settings.md)** - settings.json、35項目（テレメトリ/チャット/Knowledge/デフォルトAgent）
+- **[優先順位ルール](01_for-users/03_configuration/07_priority-rules.md)** - 5段階優先順位の詳細、フロー図
+- **[グローバル設定](01_for-users/03_configuration/02_global-settings.md)** - settings.json、35項目（テレメトリ/チャット/Knowledge/デフォルトAgent）
 
 ### 高度な設定
 
-- **[Agent設定](01_for-users/03_configuration/04_agent-configuration.md)** - JSONスキーマ、グローバル/ローカルAgent、必須/オプションフィールド、検証方法
-- **[MCP設定](01_for-users/03_configuration/06_mcp-configuration.md)** - MCPサーバー設定、stdio/HTTP接続、OAuth認証、環境変数展開
-- **[環境変数](01_for-users/03_configuration/05_environment-variables.md)** - 23項目、Q CLI固有18項目、設定方法、実践パターン
-- **[テレメトリー設定](01_for-users/03_configuration/06_telemetry.md)** - テレメトリー制御、プライバシー保護、無効化方法
+- **[Agent設定](01_for-users/03_configuration/03_agent-configuration.md)** - JSONスキーマ、グローバル/ローカルAgent、必須/オプションフィールド、検証方法
+- **[MCP設定](01_for-users/03_configuration/04_mcp-configuration.md)** - MCPサーバー設定、stdio/HTTP接続、OAuth認証、環境変数展開
+- **[環境変数](01_for-users/03_configuration/06_environment-variables.md)** - 23項目、Q CLI固有18項目、設定方法、実践パターン
+- **[テレメトリー設定](01_for-users/03_configuration/05_telemetry.md)** - テレメトリー制御、プライバシー保護、無効化方法
 
 ### 実践例
 
-- **[設定例集](01_for-users/03_configuration/07_examples.md)** - 実践的な設定例、ユースケース別（開発/本番/チーム）
+- **[設定例集](01_for-users/03_configuration/08_examples.md)** - 実践的な設定例、ユースケース別（開発/本番/チーム）
 - **[設定のベストプラクティス](01_for-users/04_best-practices/01_configuration.md)** - Agent設定、MCP設定、セキュリティ、パフォーマンス最適化
 
 ---

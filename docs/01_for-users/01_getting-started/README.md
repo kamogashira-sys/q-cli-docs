@@ -130,19 +130,19 @@ Getting Startedを完了したら、以下のセクションに進んでくだ�
 ### 機能を学ぶ
 - **[チャット機能](../02_features/01_chat.md)** - チャット機能の詳細
 - **[Agent機能](../02_features/02_agents.md)** - Agentのカスタマイズ
-- **[MCP 設定](../03_configuration/06_mcp-configuration.md)** - 外部ツールとの連携
+- **[MCP 設定](../03_configuration/04_mcp-configuration.md)** - 外部ツールとの連携
 
 ### MCPサーバーで機能拡張
 
 Q CLIは、MCPサーバーを追加することで機能を拡張できます。
 
 - **[AWS Labs MCP](https://github.com/awslabs/mcp)** - AWS公式MCPサーバー（最新情報）
-- **[MCP設定ガイド](../03_configuration/06_mcp-configuration.md)** - 設定方法
+- **[MCP設定ガイド](../03_configuration/04_mcp-configuration.md)** - 設定方法
 
 ### 設定をカスタマイズする
 - **[設定ガイド](../03_configuration/01_overview.md)** - 設定の全体像
-- **[Agent設定](../03_configuration/04_agent-configuration.md)** - Agent設定の詳細
-- **[設定例集](../03_configuration/07_examples.md)** - 実践的な設定例
+- **[Agent設定](../03_configuration/03_agent-configuration.md)** - Agent設定の詳細
+- **[設定例集](../03_configuration/08_examples.md)** - 実践的な設定例
 
 ### ベストプラクティスを学ぶ
 - **[設定のベストプラクティス](../04_best-practices/01_configuration.md)** - 推奨設定

@@ -693,9 +693,9 @@ q settings set chat.enableDelegate true
 
 ## 参考リンク
 
-- [Agent設定ガイド](../03_configuration/04_agent-configuration.md)
-- [MCP設定ガイド](../03_configuration/06_mcp-configuration.md)
-- [環境変数ガイド](../03_configuration/05_environment-variables.md)
+- [Agent設定ガイド](../03_configuration/03_agent-configuration.md)
+- [MCP設定ガイド](../03_configuration/04_mcp-configuration.md)
+- [環境変数ガイド](../03_configuration/06_environment-variables.md)
 - [トラブルシューティング](../06_troubleshooting/02_common-issues.md)
 - [セキュリティベストプラクティス](02_security.md)
 - [パフォーマンス最適化](03_performance.md)
@@ -708,6 +708,6 @@ q settings set chat.enableDelegate true
 ---
 
 **関連トピック**:
-- [設定優先順位ガイド](../03_configuration/02_priority-rules.md)
+- [設定優先順位ガイド](../03_configuration/07_priority-rules.md)
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
 - [FAQ](../06_troubleshooting/01_faq.md)

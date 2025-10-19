@@ -61,7 +61,7 @@ Amazon Q Developer CLIを安全に使用するためのセキュリティ情報�
 1. **[セキュリティ概要](01_security-overview.md)** を読む（15分）
 2. **プラン選択**を検討（Free vs Pro/Enterprise）
 3. **[データプライバシーガイド](02_data-privacy.md)** で設定方法を確認（10分）
-4. **[テレメトリー設定](../03_configuration/06_telemetry.md)** を適用（5分）
+4. **[テレメトリー設定](../03_configuration/05_telemetry.md)** を適用（5分）
 
 ### 機密情報を扱う環境
 
@@ -194,9 +194,9 @@ export Q_TELEMETRY_ENABLED=false
 ## 🔗 関連ドキュメント
 
 ### 設定ガイド
-- [テレメトリー設定](../03_configuration/06_telemetry.md)
-- [Agent設定](../03_configuration/04_agent-configuration.md)
-- [環境変数](../03_configuration/05_environment-variables.md)
+- [テレメトリー設定](../03_configuration/05_telemetry.md)
+- [Agent設定](../03_configuration/03_agent-configuration.md)
+- [環境変数](../03_configuration/06_environment-variables.md)
 
 ### エンタープライズ展開
 - [エンタープライズ導入ガイド](../05_deployment/01_enterprise-deployment.md)

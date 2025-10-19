@@ -467,9 +467,9 @@ tail -f ~/.aws/amazonq/logs/q-cli.log | grep "config"
 ## 📚 参考リソース
 
 - [設定項目完全リファレンス](../../01_for-users/07_reference/03_settings-reference.md) - 全35設定項目
-- [設定優先順位ガイド](../../01_for-users/03_configuration/02_priority-rules.md) - 優先順位の詳細
-- [Agent設定ガイド](../../01_for-users/03_configuration/04_agent-configuration.md) - Agent設定の使い方
-- [環境変数ガイド](../../01_for-users/03_configuration/05_environment-variables.md) - 環境変数の使い方
+- [設定優先順位ガイド](../../01_for-users/03_configuration/07_priority-rules.md) - 優先順位の詳細
+- [Agent設定ガイド](../../01_for-users/03_configuration/03_agent-configuration.md) - Agent設定の使い方
+- [環境変数ガイド](../../01_for-users/03_configuration/06_environment-variables.md) - 環境変数の使い方
 
 ---
 

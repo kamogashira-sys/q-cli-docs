@@ -448,7 +448,7 @@ aws cloudtrail create-trail \
 
 ### 設定ガイド
 - [インストールガイド](../01_getting-started/01_installation.md)
-- [環境変数](../03_configuration/05_environment-variables.md)
+- [環境変数](../03_configuration/06_environment-variables.md)
 
 ### エンタープライズ展開
 - [エンタープライズ導入ガイド](../05_deployment/01_enterprise-deployment.md)

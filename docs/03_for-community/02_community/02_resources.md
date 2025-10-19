@@ -47,14 +47,14 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 
 #### 設定
 - [設定システム概要](../../01_for-users/03_configuration/01_overview.md) - 設定の全体像
-- [Agent設定](../../01_for-users/03_configuration/04_agent-configuration.md) - カスタムAgent作成
-- [MCP設定](../../01_for-users/03_configuration/06_mcp-configuration.md) - MCPサーバー統合
+- [Agent設定](../../01_for-users/03_configuration/03_agent-configuration.md) - カスタムAgent作成
+- [MCP設定](../../01_for-users/03_configuration/04_mcp-configuration.md) - MCPサーバー統合
 
 ### 中級者向け
 
 #### 機能活用
 - [Agent機能](../../01_for-users/02_features/02_agents.md) - Agent機能の詳細
-- [MCP設定](../../01_for-users/03_configuration/06_mcp-configuration.md) - MCP統合の活用
+- [MCP設定](../../01_for-users/03_configuration/04_mcp-configuration.md) - MCP統合の活用
 - [Knowledge機能](../../01_for-users/04_best-practices/03_performance.md#-knowledge-base最適化) - Knowledge Base活用
 
 #### ベストプラクティス
@@ -153,8 +153,8 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 4. [設定システム概要](../../01_for-users/03_configuration/01_overview.md)
 
 ### 中級者向け学習パス
-1. [Agent設定](../../01_for-users/03_configuration/04_agent-configuration.md)
-2. [MCP統合](../../01_for-users/03_configuration/06_mcp-configuration.md)
+1. [Agent設定](../../01_for-users/03_configuration/03_agent-configuration.md)
+2. [MCP統合](../../01_for-users/03_configuration/04_mcp-configuration.md)
 3. [Knowledge活用](../../01_for-users/04_best-practices/03_performance.md#-knowledge-base最適化)
 4. [ベストプラクティス](../../01_for-users/04_best-practices/01_configuration.md)
 

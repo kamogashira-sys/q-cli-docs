@@ -340,8 +340,8 @@ vim ~/.local/share/amazon-q/settings.json
 
 - [設定システム概要](01_overview.md)
 - [設定項目完全リファレンス](../07_reference/03_settings-reference.md)
-- [設定例集](07_examples.md)
-- [設定優先順位ガイド](02_priority-rules.md)
+- [設定例集](08_examples.md)
+- [設定優先順位ガイド](07_priority-rules.md)
 
 ---
 
@@ -358,10 +358,10 @@ vim ~/.local/share/amazon-q/settings.json
 ---
 
 **関連トピック**:
-- [設定優先順位ガイド](02_priority-rules.md)
+- [設定優先順位ガイド](07_priority-rules.md)
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
 - [FAQ](../06_troubleshooting/01_faq.md)
 
 ## 関連ドキュメント
 
-- [テレメトリー設定](../03_configuration/06_telemetry.md) - テレメトリー設定の詳細
+- [テレメトリー設定](../03_configuration/05_telemetry.md) - テレメトリー設定の詳細

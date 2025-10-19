@@ -500,10 +500,10 @@ rm ~/.aws/amazonq/settings.json
 ## 📚 関連ドキュメント
 
 - **[設定システム概要](01_overview.md)** - 設定の全体像
-- **[Agent設定](04_agent-configuration.md)** - Agent設定の詳細
-- **[MCP設定](06_mcp-configuration.md)** - MCP設定の詳細
-- **[環境変数](05_environment-variables.md)** - 環境変数の使い方
-- **[優先順位ルール](02_priority-rules.md)** - 設定の優先順位
+- **[Agent設定](03_agent-configuration.md)** - Agent設定の詳細
+- **[MCP設定](04_mcp-configuration.md)** - MCP設定の詳細
+- **[環境変数](06_environment-variables.md)** - 環境変数の使い方
+- **[優先順位ルール](07_priority-rules.md)** - 設定の優先順位
 
 ---
 
@@ -514,6 +514,6 @@ rm ~/.aws/amazonq/settings.json
 ---
 
 **関連トピック**:
-- [設定優先順位ガイド](02_priority-rules.md)
+- [設定優先順位ガイド](07_priority-rules.md)
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
 - [FAQ](../06_troubleshooting/01_faq.md)

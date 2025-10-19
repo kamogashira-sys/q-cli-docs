@@ -87,7 +87,7 @@ q settings chat.enableThinking
 ### 次のステップ
 
 - より詳細な設定は [全設定項目一覧](#-全設定項目一覧全35項目) を参照
-- 設定の優先順位は [設定優先順位ガイド](../03_configuration/02_priority-rules.md) を参照
+- 設定の優先順位は [設定優先順位ガイド](../03_configuration/07_priority-rules.md) を参照
 - 推奨設定は [推奨設定ガイド](../04_best-practices/01_configuration.md) を参照
 
 ---
@@ -115,7 +115,7 @@ q settings chat.enableThinking
 3. **環境変数で設定**:
    - 一部の設定項目は環境変数でも設定可能
 
-詳細は [設定優先順位ガイド](../03_configuration/02_priority-rules.md) を参照してください。
+詳細は [設定優先順位ガイド](../03_configuration/07_priority-rules.md) を参照してください。
 
 ---
 
@@ -428,8 +428,8 @@ cp ~/.local/share/amazon-q/settings.json ~/.local/share/amazon-q/settings.json.b
 ## 参考リンク
 
 - [推奨設定ガイド](../04_best-practices/01_configuration.md)
-- [環境変数ガイド](../03_configuration/05_environment-variables.md)
-- [設定優先順位](../03_configuration/02_priority-rules.md)
+- [環境変数ガイド](../03_configuration/06_environment-variables.md)
+- [設定優先順位](../03_configuration/07_priority-rules.md)
 - [ベストプラクティス](../04_best-practices/01_configuration.md)
 - [コンテキスト管理ガイド](../08_guides/04_best-practices.md#コンテキストサイズとチューニング)
 

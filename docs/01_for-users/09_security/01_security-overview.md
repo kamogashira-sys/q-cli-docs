@@ -92,7 +92,7 @@ Amazon Q> /tools untrust use_aws
 - Freeプラン: オプトアウト可能
 - Pro/Enterpriseプラン: デフォルトで保護
 
-**詳細**: [テレメトリー設定ガイド](../03_configuration/06_telemetry.md)
+**詳細**: [テレメトリー設定ガイド](../03_configuration/05_telemetry.md)
 
 ---
 
@@ -266,7 +266,7 @@ rules: |
   - ファイル削除前に確認を求める
 ```
 
-**詳細**: [プロジェクトルールガイド](../03_configuration/04_agent-configuration.md)
+**詳細**: [プロジェクトルールガイド](../03_configuration/03_agent-configuration.md)
 
 ---
 
@@ -307,9 +307,9 @@ rules: |
 - [trust-all安全使用ガイド](06_trust-all-safety.md)
 
 ### 設定ガイド
-- [テレメトリー設定](../03_configuration/06_telemetry.md)
-- [Agent設定](../03_configuration/04_agent-configuration.md)
-- [環境変数](../03_configuration/05_environment-variables.md)
+- [テレメトリー設定](../03_configuration/05_telemetry.md)
+- [Agent設定](../03_configuration/03_agent-configuration.md)
+- [環境変数](../03_configuration/06_environment-variables.md)
 
 ### エンタープライズ展開
 - [料金プラン比較](../05_deployment/02_pricing-comparison.md)

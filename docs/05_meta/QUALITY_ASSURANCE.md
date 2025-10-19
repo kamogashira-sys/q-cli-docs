@@ -184,8 +184,8 @@ Q CLIドキュメントと実装の整合性を維持し、誤りの再発を防
 ### 環境変数追加時
 
 1. 実装に環境変数を追加
-2. `docs/user-guide/03_configuration/05_environment-variables.md`を更新
-3. `docs/user-guide/03_configuration/05_environment-variables.md`を更新
+2. `docs/user-guide/03_configuration/06_environment-variables.md`を更新
+3. `docs/user-guide/03_configuration/06_environment-variables.md`を更新
 4. 環境変数確認用チェックリストを実施
 
 ### 設定項目追加時

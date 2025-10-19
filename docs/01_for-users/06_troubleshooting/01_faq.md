@@ -91,9 +91,9 @@ rm -rf ~/.aws/amazonq
 4. [チャット機能](../02_features/01_chat.md)
 
 **中級者向け（3-5時間）**:
-1. [Agent設定](../03_configuration/04_agent-configuration.md)
-2. [MCP設定](../03_configuration/06_mcp-configuration.md)
-3. [設定例集](../03_configuration/07_examples.md)
+1. [Agent設定](../03_configuration/03_agent-configuration.md)
+2. [MCP設定](../03_configuration/04_mcp-configuration.md)
+3. [設定例集](../03_configuration/08_examples.md)
 4. [ベストプラクティス](../04_best-practices/01_configuration.md)
 
 **上級者向け（5時間以上）**:
@@ -189,7 +189,7 @@ q settings list
 env | grep Q_
 ```
 
-詳細は[優先順位ルール](../03_configuration/02_priority-rules.md)を参照。
+詳細は[優先順位ルール](../03_configuration/07_priority-rules.md)を参照。
 
 ### Agentが見つかりません
 **よくある原因**:
@@ -255,7 +255,7 @@ Agent設定ファイルにMCPサーバーを追加します。
 }
 ```
 
-詳細は[MCP設定](../03_configuration/06_mcp-configuration.md)を参照。
+詳細は[MCP設定](../03_configuration/04_mcp-configuration.md)を参照。
 
 ### カスタムAgentの作成方法は？
 コマンドでAgentを作成し、設定ファイルを編集します。
@@ -272,7 +272,7 @@ mkdir -p .q/agents
 vi .q/agents/my-custom-agent.json
 ```
 
-詳細は[Agent設定](../03_configuration/04_agent-configuration.md)を参照。
+詳細は[Agent設定](../03_configuration/03_agent-configuration.md)を参照。
 
 ### MCPサーバーのデバッグ方法は？
 ログレベルを上げてMCPサーバーの動作を確認します。
@@ -290,7 +290,7 @@ tail -f /run/user/$(id -u)/qlog/mcp-*.log
 tail -f /tmp/qlog/mcp-*.log
 ```
 
-詳細は[MCP設定](../03_configuration/06_mcp-configuration.md#トラブルシューティング)を参照。
+詳細は[MCP設定](../03_configuration/04_mcp-configuration.md#トラブルシューティング)を参照。
 
 ### Agent設定のバックアップ方法は？
 Agent設定ファイルをバックアップします。
@@ -319,7 +319,7 @@ MCP（Model Context Protocol）は、外部ツールと連携するためのプ�
 - stdio: ローカルプロセス
 - HTTP: リモートサーバー
 
-詳細は[MCP設定](../03_configuration/06_mcp-configuration.md)を参照。
+詳細は[MCP設定](../03_configuration/04_mcp-configuration.md)を参照。
 
 ### Knowledge機能とは？
 プロジェクトのドキュメントやコードを検索できる機能です。
@@ -579,7 +579,7 @@ Agent設定でツール権限を細かく制御できます。
 - `fs_read`: 必要なパスのみ許可
 - `autoAllowReadonly`: 無効化（v1.16.0+）
 
-詳細は[Agent設定](../03_configuration/04_agent-configuration.md#️-ツール設定)を参照。
+詳細は[Agent設定](../03_configuration/03_agent-configuration.md#️-ツール設定)を参照。
 
 ---
 

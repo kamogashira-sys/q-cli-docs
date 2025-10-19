@@ -200,13 +200,13 @@ Amazon Q CLIの機能と設定を詳しく学びたい方向けのガイドで�
 |---|------------|------------|---------|
 | 1 | [README](01_for-users/03_configuration/README.md) | 初級 | 設定ガイドセクションの概要とナビゲーション |
 | 2 | [設定システム概要](01_for-users/03_configuration/01_overview.md) | 初級〜中級 | 設定システム全体像、5段階優先順位、4種類の設定（グローバル/Agent/MCP/環境変数） |
-| 3 | [グローバル設定](01_for-users/03_configuration/03_global-settings.md) | 初級 | settings.json、35項目（テレメトリ/チャット/Knowledge/デフォルトAgent） |
-| 4 | [Agent設定](01_for-users/03_configuration/04_agent-configuration.md) | 中級 | JSONスキーマ、グローバル/ローカルAgent、必須/オプションフィールド、検証方法 |
-| 5 | [MCP設定](01_for-users/03_configuration/06_mcp-configuration.md) | 中級 | MCPサーバー設定、stdio/HTTP接続、OAuth認証、環境変数展開 |
-| 6 | [環境変数](01_for-users/03_configuration/05_environment-variables.md) | 中級 | 23項目、Q CLI固有18項目、設定方法、実践パターン |
-| 7 | [テレメトリー設定](01_for-users/03_configuration/06_telemetry.md) | 初級〜中級 | テレメトリーデータ収集、オプトアウト方法、プライバシー設定 |
-| 8 | [優先順位ルール](01_for-users/03_configuration/02_priority-rules.md) | 中級 | 5段階優先順位（CLI引数→環境変数→ローカルAgent→グローバルAgent→デフォルト）、フロー図 |
-| 9 | [設定例集](01_for-users/03_configuration/07_examples.md) | 中級 | 実践的な設定例、ユースケース別（開発/本番/チーム） |
+| 3 | [グローバル設定](01_for-users/03_configuration/02_global-settings.md) | 初級 | settings.json、35項目（テレメトリ/チャット/Knowledge/デフォルトAgent） |
+| 4 | [Agent設定](01_for-users/03_configuration/03_agent-configuration.md) | 中級 | JSONスキーマ、グローバル/ローカルAgent、必須/オプションフィールド、検証方法 |
+| 5 | [MCP設定](01_for-users/03_configuration/04_mcp-configuration.md) | 中級 | MCPサーバー設定、stdio/HTTP接続、OAuth認証、環境変数展開 |
+| 6 | [環境変数](01_for-users/03_configuration/06_environment-variables.md) | 中級 | 23項目、Q CLI固有18項目、設定方法、実践パターン |
+| 7 | [テレメトリー設定](01_for-users/03_configuration/05_telemetry.md) | 初級〜中級 | テレメトリーデータ収集、オプトアウト方法、プライバシー設定 |
+| 8 | [優先順位ルール](01_for-users/03_configuration/07_priority-rules.md) | 中級 | 5段階優先順位（CLI引数→環境変数→ローカルAgent→グローバルAgent→デフォルト）、フロー図 |
+| 9 | [設定例集](01_for-users/03_configuration/08_examples.md) | 中級 | 実践的な設定例、ユースケース別（開発/本番/チーム） |
 
 **次のステップ**: 設定をカスタマイズしたら、[機能ガイド](#機能ガイド8文書)で各機能の使い方を学びましょう。
 
@@ -333,7 +333,7 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 | 1 | [README](01_for-users/07_reference/README.md) | 中級 | Referenceセクションの概要 |
 | 2 | [設定項目リファレンス](01_for-users/07_reference/03_settings-reference.md) | 中級〜上級 | 全35設定項目、カテゴリ別分類（テレメトリ/チャット/Knowledge/MCP） |
 | 3 | [設定ファイル配置マップ](01_for-users/07_reference/04_configuration-file-locations.md) | 中級 | 5種類の設定ファイル配置マップ、ディレクトリ構造、実践例 |
-| 4 | [環境変数リファレンス](01_for-users/03_configuration/05_environment-variables.md) | 中級〜上級 | 全環境変数リスト、Q CLI固有18項目、AWS/システム変数 |
+| 4 | [環境変数リファレンス](01_for-users/03_configuration/06_environment-variables.md) | 中級〜上級 | 全環境変数リスト、Q CLI固有18項目、AWS/システム変数 |
 | 5 | [サポート環境](01_for-users/07_reference/05_supported-environments.md) | 初級〜中級 | 対応OS、アーキテクチャ、システム要件、サポートされるターミナル |
 | 6 | [コマンドリファレンス](01_for-users/07_reference/02_commands.md) | 初級〜中級 | 全コマンドリスト、サブコマンド、オプション |
 | 7 | [用語集](01_for-users/07_reference/01_glossary.md) | 初級 | Amazon Q CLI用語集、Agent/MCP/Knowledge等の定義（33用語） |
@@ -453,7 +453,7 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 
 ### よく使うドキュメント
 - [クイックスタート](01_for-users/01_getting-started/02_quick-start.md) - 5分で始める
-- [Agent設定](01_for-users/03_configuration/04_agent-configuration.md) - Agent設定の詳細
+- [Agent設定](01_for-users/03_configuration/03_agent-configuration.md) - Agent設定の詳細
 - [よくある問題](01_for-users/06_troubleshooting/02_common-issues.md) - トラブルシューティング
 - [設定項目リファレンス](01_for-users/07_reference/03_settings-reference.md) - 全設定項目
 

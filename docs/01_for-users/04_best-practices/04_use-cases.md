@@ -1037,9 +1037,9 @@ q chat
 
 ## 🔗 関連ドキュメント
 
-- [Agent設定](../03_configuration/04_agent-configuration.md)
-- [MCP設定](../03_configuration/06_mcp-configuration.md)
-- [設定例集](../03_configuration/07_examples.md)
+- [Agent設定](../03_configuration/03_agent-configuration.md)
+- [MCP設定](../03_configuration/04_mcp-configuration.md)
+- [設定例集](../03_configuration/08_examples.md)
 - [ベストプラクティス](../04_best-practices/01_configuration.md)
 - [実験的機能](../02_features/07_experimental.md)
 - [コンテキスト管理ガイド](../08_guides/README.md)

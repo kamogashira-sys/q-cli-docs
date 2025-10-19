@@ -299,7 +299,7 @@ cat ~/.amazonq/mcp.json
 - **[チャット機能](../02_features/01_chat.md)** - チャット機能の詳細
 - **[Agent機能](../02_features/02_agents.md)** - Agent機能の詳細
 - **[設定概要](../03_configuration/01_overview.md)** - 設定システムの全体像
-- **[環境変数](../03_configuration/05_environment-variables.md)** - 環境変数の詳細
+- **[環境変数](../03_configuration/06_environment-variables.md)** - 環境変数の詳細
 - **[コマンドリファレンス](./02_commands.md)** - 全コマンド一覧
 
 ### トラブルシューティング

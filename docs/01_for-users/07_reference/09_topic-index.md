@@ -27,7 +27,7 @@
 
 - **[セキュリティ概要](../09_security/01_security-overview.md)** - セキュリティの基本原則とトピック
 - **[データプライバシー](../09_security/02_data-privacy.md)** - データの取り扱いとプライバシー保護
-- **[テレメトリー設定](../03_configuration/06_telemetry.md)** - 使用状況データの収集と無効化方法
+- **[テレメトリー設定](../03_configuration/05_telemetry.md)** - 使用状況データの収集と無効化方法
 
 ### アクセス制御
 
@@ -48,15 +48,15 @@
 ### 基本設定
 
 - **[設定概要](../03_configuration/01_overview.md)** - 設定システムの全体像
-- **[設定優先順位](../03_configuration/02_priority-rules.md)** - 設定の優先順位ルール
-- **[グローバル設定](../03_configuration/03_global-settings.md)** - グローバル設定ファイル
-- **[Agent設定](../03_configuration/04_agent-configuration.md)** - Agent設定ファイル
+- **[設定優先順位](../03_configuration/07_priority-rules.md)** - 設定の優先順位ルール
+- **[グローバル設定](../03_configuration/02_global-settings.md)** - グローバル設定ファイル
+- **[Agent設定](../03_configuration/03_agent-configuration.md)** - Agent設定ファイル
 
 ### 高度な設定
 
-- **[環境変数](../03_configuration/05_environment-variables.md)** - 環境変数の詳細
-- **[MCP設定](../03_configuration/06_mcp-configuration.md)** - MCP（Model Context Protocol）設定
-- **[設定例](../03_configuration/07_examples.md)** - 実践的な設定例
+- **[環境変数](../03_configuration/06_environment-variables.md)** - 環境変数の詳細
+- **[MCP設定](../03_configuration/04_mcp-configuration.md)** - MCP（Model Context Protocol）設定
+- **[設定例](../03_configuration/08_examples.md)** - 実践的な設定例
 
 ### ベストプラクティス
 
@@ -133,8 +133,8 @@
 
 ### 設定関連
 
-- **[設定優先順位](../03_configuration/02_priority-rules.md)** - 設定が反映されない場合
-- **[設定例](../03_configuration/07_examples.md)** - 動作する設定例
+- **[設定優先順位](../03_configuration/07_priority-rules.md)** - 設定が反映されない場合
+- **[設定例](../03_configuration/08_examples.md)** - 動作する設定例
 
 ---
 
@@ -167,7 +167,7 @@
 
 ### 高度な機能
 
-- **[MCP設定](../03_configuration/06_mcp-configuration.md)** - MCPサーバーとの連携
+- **[MCP設定](../03_configuration/04_mcp-configuration.md)** - MCPサーバーとの連携
 - **[実験的機能](../02_features/07_experimental.md)** - ベータ機能の活用
 
 ### パフォーマンス
@@ -212,8 +212,8 @@
 ### カスタマイズする
 
 1. **[設定概要](../03_configuration/01_overview.md)** - 設定システムの理解
-2. **[Agent設定](../03_configuration/04_agent-configuration.md)** - Agentのカスタマイズ
-3. **[設定例](../03_configuration/07_examples.md)** - 実践的な設定例
+2. **[Agent設定](../03_configuration/03_agent-configuration.md)** - Agentのカスタマイズ
+3. **[設定例](../03_configuration/08_examples.md)** - 実践的な設定例
 
 ### 問題を解決する
 
