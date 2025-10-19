@@ -231,17 +231,17 @@ Amazon Q CLIの機能と設定を詳しく学びたい方向けのガイドで�
 
 Q CLIの応答品質は**コンテキスト管理**で決まります。全8章構成の包括的ガイドで体系的に学習できます。
 
-| # | ドキュメント | 対象ユーザー | 主な内容 | 所要時間 |
-|---|------------|------------|---------|---------|
-| 1 | [README](01_for-users/08_guides/README.md) | 初級〜上級 | ガイド全体の概要、学習パス、各章の位置づけ | 5分 |
-| 2 | [本質編](01_for-users/08_guides/01_essence.md) | 初級 | コンテキストとは何か、なぜ重要か、基本概念 | 15分 |
-| 3 | [仕組み編](01_for-users/08_guides/02_mechanism.md) | 初級〜中級 | 内部動作の理解、3つの提供方法、処理フロー | 20分 |
-| 4 | [効果編](01_for-users/08_guides/03_effects.md) | 初級〜中級 | 何ができるか、Agent Resources/Session Context/Knowledge Bases | 15分 |
-| 5 | [ベストプラクティス編](01_for-users/08_guides/04_best-practices.md) | 中級 | 設計原則、アプローチ選択、実装パターン、最適化 | 45分 |
-| 6 | [実践ガイド編](01_for-users/08_guides/05_practical-guide.md) | 中級 | プロジェクト別実装例、基本/応用パターン、アンチパターン | 30分 |
-| 7 | [トラブルシューティング編](01_for-users/08_guides/06_troubleshooting.md) | 中級 | 問題診断、一般的な問題、デバッグ技法 | 20分 |
-| 8 | [上級編](01_for-users/08_guides/07_advanced.md) | 上級 | 最適化戦略、チーム開発、内部実装の理解 | 20分 |
-| 9 | [リファレンス編](01_for-users/08_guides/08_reference.md) | 中級〜上級 | コマンドリファレンス、技術仕様、用語集、FAQ | 15分 |
+| # | ドキュメント | 対象ユーザー | 主な内容 |
+|---|------------|------------|---------|
+| 1 | [README](01_for-users/08_guides/README.md) | 初級〜上級 | ガイド全体の概要、学習パス、各章の位置づけ |
+| 2 | [本質編](01_for-users/08_guides/01_essence.md) | 初級 | コンテキストとは何か、なぜ重要か、基本概念 |
+| 3 | [仕組み編](01_for-users/08_guides/02_mechanism.md) | 初級〜中級 | 内部動作の理解、3つの提供方法、処理フロー |
+| 4 | [効果編](01_for-users/08_guides/03_effects.md) | 初級〜中級 | 何ができるか、Agent Resources/Session Context/Knowledge Bases |
+| 5 | [ベストプラクティス編](01_for-users/08_guides/04_best-practices.md) | 中級 | 設計原則、アプローチ選択、実装パターン、最適化 |
+| 6 | [実践ガイド編](01_for-users/08_guides/05_practical-guide.md) | 中級 | プロジェクト別実装例、基本/応用パターン、アンチパターン |
+| 7 | [トラブルシューティング編](01_for-users/08_guides/06_troubleshooting.md) | 中級 | 問題診断、一般的な問題、デバッグ技法 |
+| 8 | [上級編](01_for-users/08_guides/07_advanced.md) | 上級 | 最適化戦略、チーム開発、内部実装の理解 |
+| 9 | [リファレンス編](01_for-users/08_guides/08_reference.md) | 中級〜上級 | コマンドリファレンス、技術仕様、用語集、FAQ |
 
 > **💡 学習の進め方**
 > - **初心者**: 第1章→第3章→第5章（基本を理解して実践）

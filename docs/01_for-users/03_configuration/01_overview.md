@@ -263,16 +263,16 @@ q agent edit my-agent
 
 コンテキスト管理の詳細なガイドは、[コンテキスト管理完全ガイド](../08_guides/README.md)を参照してください：
 
-| ガイド | 内容 | 所要時間 |
-|--------|------|---------|
-| [本質編](../08_guides/01_essence.md) | コンテキストとは何か | 15分 |
-| [仕組み編](../08_guides/02_mechanism.md) | 内部動作の理解 | 20分 |
-| [効果編](../08_guides/03_effects.md) | 何ができるか | 15分 |
-| [ベストプラクティス編](../08_guides/04_best-practices.md) | 設計原則と実装パターン | 45分 |
-| [実践ガイド編](../08_guides/05_practical-guide.md) | プロジェクト別実装例 | 30分 |
-| [トラブルシューティング編](../08_guides/06_troubleshooting.md) | 問題解決 | 20分 |
-| [上級編](../08_guides/07_advanced.md) | 最適化とチーム開発 | 20分 |
-| [リファレンス編](../08_guides/08_reference.md) | 技術仕様とFAQ | 15分 |
+| ガイド | 内容 |
+|--------|------|
+| [本質編](../08_guides/01_essence.md) | コンテキストとは何か |
+| [仕組み編](../08_guides/02_mechanism.md) | 内部動作の理解 |
+| [効果編](../08_guides/03_effects.md) | 何ができるか |
+| [ベストプラクティス編](../08_guides/04_best-practices.md) | 設計原則と実装パターン |
+| [実践ガイド編](../08_guides/05_practical-guide.md) | プロジェクト別実装例 |
+| [トラブルシューティング編](../08_guides/06_troubleshooting.md) | 問題解決 |
+| [上級編](../08_guides/07_advanced.md) | 最適化とチーム開発 |
+| [リファレンス編](../08_guides/08_reference.md) | 技術仕様とFAQ |
 
 **学習パス**:
 - **初心者**: 本質編 → 効果編 → 実践ガイド編

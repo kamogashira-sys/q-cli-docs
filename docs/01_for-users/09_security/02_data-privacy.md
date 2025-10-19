@@ -110,8 +110,6 @@
 > - □ VS Code（設定画面）
 > - □ JetBrains IDE（設定画面）
 > - □ Q CLI（コマンドライン/設定ファイル）
-> 
-> **所要時間**: 全環境で約15-20分
 
 #### 1. AWS Management Console / モバイルアプリ / Webサイト
 
