@@ -31,6 +31,7 @@ Q CLIのインストールから高度な活用方法まで、ユーザーが必
 | [Reference](07_reference/) | 10 | リファレンス情報 |
 | [Guides](08_guides/) | 9 | 包括的なガイド（コンテキスト管理） |
 | [Security](09_security/) | 7 | セキュリティとプライバシー |
+| [File Specifications](10_file-specifications/) | 1 | ファイルフォーマット仕様 |
 
 ## 🚀 推奨学習順序
 
@@ -46,6 +47,11 @@ Q CLIのインストールから高度な活用方法まで、ユーザーが必
 - 第1章: コンテキストの本質（15分）
 - 第3章: 効果と特徴（15分）
 - 第5章: 実践ガイド（30分）
+
+### 技術的な詳細を知りたい方
+1. [Architecture](../02_for-developers/02_architecture/) - アーキテクチャ
+2. [File Specifications](10_file-specifications/) - ファイル仕様
+3. [Reference](07_reference/) - リファレンス情報
 
 ### セキュリティを重視する方【重要】
 1. [Security - セキュリティ概要](09_security/01_security-overview.md) - AWS責任共有モデル、主要トピック
