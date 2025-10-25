@@ -8,12 +8,300 @@
 
 ## 📋 目次
 
+- [v1.18.x → v1.19.0](#v118x--v1190)
 - [v1.17.x → v1.18.x](#v117x--v118x)
 - [v1.16.x → v1.17.x](#v116x--v117x)
 - [v1.15.x → v1.16.x](#v115x--v116x)
 - [v1.14.x → v1.15.x](#v114x--v115x)
 - [v1.13.x → v1.14.x](#v113x--v114x)
 - [一般的な移行手順](#一般的な移行手順)
+
+---
+
+## v1.18.x → v1.19.0
+
+### 概要
+v1.19.0では、Knowledge PDF対応、画像ペースト機能、セキュリティ強化（bash tool deny_by_default）など、9つの主要な機能追加・変更が行われました。
+
+### 破壊的変更
+
+#### 1. `--resume`動作の変更（重要）
+**変更内容**: `--resume`フラグを明示的に指定した場合のみ、前回の会話をデータベースから読み込むように変更されました。
+
+**変更前（v1.18.x以前）**:
+```bash
+q chat "続きを教えて"  # 自動的に前回の会話を継続
+```
+
+**変更後（v1.19.0+）**:
+```bash
+q chat "続きを教えて"           # 新しい会話として開始
+q chat --resume "続きを教えて"  # 前回の会話を継続（明示的指定が必要）
+```
+
+**影響範囲**:
+- スクリプトやエイリアスで会話継続を前提としている場合、`--resume`フラグの追加が必要
+- 対話的な使用では、意図しない会話継続を防げるため、より予測可能な動作に
+
+#### 2. bash toolのデフォルト動作変更（セキュリティ強化）
+**変更内容**: `deny_by_default`モードが追加され、bashコマンドの実行がデフォルトで拒否されるようになりました。
+
+**変更前**: すべてのbashコマンドが実行可能
+**変更後**: 明示的に許可されたコマンドのみ実行可能
+
+### 推奨される変更
+
+#### 1. 会話継続の明示化
+スクリプトやエイリアスで会話継続を使用している場合、`--resume`を追加：
+
+**更新前**:
+```bash
+# エイリアス例
+alias qc='q chat'
+```
+
+**更新後**:
+```bash
+# 会話継続用エイリアス
+alias qc='q chat'
+alias qcr='q chat --resume'  # 会話継続用
+```
+
+#### 2. bash tool権限の明示的設定
+Agent設定でbashコマンドの許可リストを定義：
+
+```json
+{
+  "tools": {
+    "execute_bash": {
+      "enabled": true,
+      "denyByDefault": true,
+      "allowedCommands": [
+        "ls", "cat", "grep", "find",
+        "git status", "git log", "git diff",
+        "npm test", "npm run build"
+      ]
+    }
+  }
+}
+```
+
+**セキュリティベストプラクティス**:
+- 必要最小限のコマンドのみ許可
+- ワイルドカード（`*`）の使用は避ける
+- 定期的に許可リストを見直す
+
+#### 3. Knowledge PDF機能の活用
+PDFドキュメントをナレッジベースに追加：
+
+```bash
+# PDFファイルを含むディレクトリをインデックス化
+q knowledge add --name docs --path /path/to/pdf-docs
+
+# 特定のPDFファイルを追加
+q knowledge add --name manual --path /path/to/manual.pdf
+```
+
+**対応フォーマット**:
+- PDF（新規対応）
+- Markdown
+- テキストファイル
+- ソースコード
+
+#### 4. 画像ペースト機能の活用
+チャット内で画像を直接貼り付け：
+
+```bash
+# チャットを開始
+q chat
+
+# チャット内でキーバインディングを使用
+# Ctrl+V または Cmd+V で画像を貼り付け
+```
+
+**使用例**:
+- スクリーンショットの共有
+- エラー画面の説明
+- 図表の分析依頼
+
+#### 5. OAuth redirect URI設定（オプション）
+カスタムOAuth redirect URIを設定する場合：
+
+```bash
+# 環境変数で設定
+export Q_OAUTH_REDIRECT_URI="http://localhost:8080/callback"
+
+# または設定ファイルで指定
+q settings set auth.oauthRedirectUri "http://localhost:8080/callback"
+```
+
+#### 6. HTTP MCP headers環境変数の活用
+MCP HTTPヘッダーを環境変数で管理：
+
+```json
+{
+  "mcpServers": {
+    "my-api": {
+      "transport": "http",
+      "url": "https://api.example.com",
+      "headers": {
+        "Authorization": "${env:API_TOKEN}",
+        "X-Custom-Header": "${env:CUSTOM_VALUE}"
+      }
+    }
+  }
+}
+```
+
+#### 7. builtin tool namespaceの活用
+ツール権限を名前空間で管理：
+
+```json
+{
+  "tools": {
+    "builtin:fs_read": {
+      "enabled": true,
+      "allowedPaths": ["~/projects/**"]
+    },
+    "builtin:execute_bash": {
+      "enabled": true,
+      "denyByDefault": true,
+      "allowedCommands": ["ls", "cat"]
+    }
+  }
+}
+```
+
+#### 8. /logdump --mcpオプションの活用
+MCPサーバーのログも含めて収集：
+
+```bash
+# 通常のログダンプ
+/logdump
+
+# MCPログも含める
+/logdump --mcp
+```
+
+### 互換性
+- **既存の設定**: すべて引き続き動作（bash tool権限は要確認）
+- **既存のコマンド**: `--resume`なしの場合、新しい会話として開始される
+- **実験的機能**: 引き続き利用可能
+
+### 移行手順
+
+#### 必須手順
+1. **Q CLIをv1.19.0にアップグレード**
+   ```bash
+   brew update && brew upgrade amazon-q
+   # または
+   npm update -g @aws/amazon-q-developer-cli
+   ```
+
+2. **bash tool権限の設定**
+   ```bash
+   # Agent設定を編集
+   q agent edit
+   
+   # allowedCommandsを追加
+   # 上記の「bash tool権限の明示的設定」を参照
+   ```
+
+3. **動作確認**
+   ```bash
+   # 新しい会話の開始
+   q chat "Hello"
+   
+   # 会話継続の確認
+   q chat --resume "続きを教えて"
+   
+   # bash実行の確認
+   q chat "lsコマンドを実行して"
+   ```
+
+#### オプション手順
+4. **会話継続エイリアスの追加**（推奨）
+   ```bash
+   # ~/.bashrc または ~/.zshrc に追加
+   alias qcr='q chat --resume'
+   ```
+
+5. **PDF Knowledge機能の試用**（オプション）
+   ```bash
+   q knowledge add --name docs --path /path/to/pdfs
+   ```
+
+6. **画像ペースト機能の試用**（オプション）
+   ```bash
+   q chat
+   # Ctrl+V で画像を貼り付け
+   ```
+
+### トラブルシューティング
+
+#### 問題1: bashコマンドが実行できない
+**症状**: `execute_bash`ツールが拒否される
+
+**解決方法**:
+```json
+{
+  "tools": {
+    "execute_bash": {
+      "enabled": true,
+      "denyByDefault": false  // 一時的に無効化（非推奨）
+    }
+  }
+}
+```
+
+または、許可リストを追加（推奨）：
+```json
+{
+  "tools": {
+    "execute_bash": {
+      "enabled": true,
+      "denyByDefault": true,
+      "allowedCommands": ["必要なコマンドを追加"]
+    }
+  }
+}
+```
+
+#### 問題2: 会話が継続されない
+**症状**: 前回の会話が読み込まれない
+
+**解決方法**:
+```bash
+# --resumeフラグを追加
+q chat --resume "続きを教えて"
+```
+
+#### 問題3: PDFがインデックス化されない
+**症状**: PDFファイルがKnowledgeに追加されない
+
+**解決方法**:
+```bash
+# ファイルパスを確認
+ls -la /path/to/pdf
+
+# 明示的にPDFを指定
+q knowledge add --name manual --path /path/to/manual.pdf
+
+# インデックス状態を確認
+q knowledge show
+```
+
+### セキュリティ上の注意
+
+#### bash tool deny_by_defaultの重要性
+- **デフォルトで有効化を推奨**: セキュリティリスクを最小化
+- **許可リストは最小限に**: 必要なコマンドのみ許可
+- **定期的な見直し**: 不要になったコマンドは削除
+
+#### 環境変数の安全な管理
+- **機密情報は環境変数で**: 設定ファイルに直接記載しない
+- **`.env`ファイルの除外**: `.gitignore`に追加
+- **権限の適切な設定**: `chmod 600 ~/.env`
 
 ---
 
@@ -406,4 +694,4 @@ q settings chat.enableKnowledge
 2. [GitHub Issues](https://github.com/aws/amazon-q-developer-cli/issues)で既知の問題を検索
 3. 新しいIssueを作成して報告
 
-最終更新: 2025-10-09
+最終更新: 2025-10-25
