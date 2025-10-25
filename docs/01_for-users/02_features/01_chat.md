@@ -117,7 +117,7 @@ alias qr='q chat --resume'
 | `/load [ファイル名]` | 保存した会話をファイルから読み込んで復元。過去の会話を継続できる | 以前の会話を再開したい時、別のセッションで保存した会話を引き継ぐ時 |
 | `/tangent` | Tangentモード（会話の分岐）に入る/戻る。キーボードショートカット: `Ctrl+T` | メインの会話を保持したまま、別の話題を試したい時 |
 
-> **🧪 実験的機能**: Tangent Mode機能は開発中です。`q settings set chat.enableTangentMode true`または`/experiment`で有効化してください。
+> **🧪 実験的機能**: Tangent Mode機能は開発中です。`q settings chat.enableTangentMode true`または`/experiment`で有効化してください。
 
 ### コンテキスト管理
 
@@ -128,7 +128,7 @@ alias qr='q chat --resume'
 
 ### Knowledge管理
 
-> **🧪 実験的機能**: Knowledge機能は開発中です。`q settings set chat.enableKnowledge true`で有効化してください。
+> **🧪 実験的機能**: Knowledge機能は開発中です。`q settings chat.enableKnowledge true`で有効化してください。
 
 | コマンド | 詳細説明 | 使用シーン |
 |---------|---------|-----------|
@@ -166,7 +166,7 @@ Knowledge機能は以下のファイル形式をサポートしています：
 
 ### Checkpoint管理
 
-> **🧪 実験的機能**: Checkpoint機能は開発中です。`q settings set EnabledCheckpointing true`で有効化してください。詳細は[Checkpoint機能ガイド](05_checkpoints.md)を参照してください。
+> **🧪 実験的機能**: Checkpoint機能は開発中です。`q settings chat.enableCheckpoint true`で有効化してください。詳細は[Checkpoint機能ガイド](05_checkpoints.md)を参照してください。
 
 | コマンド | 詳細説明 | 使用シーン |
 |---------|---------|-----------|
@@ -180,7 +180,7 @@ Knowledge機能は以下のファイル形式をサポートしています：
 
 ### TODO管理
 
-> **🧪 実験的機能**: TODO機能は開発中です。`q settings set chat.enableTodoList true`で有効化してください。
+> **🧪 実験的機能**: TODO機能は開発中です。`q settings chat.enableTodoList true`で有効化してください。
 
 | コマンド | 詳細説明 | 使用シーン |
 |---------|---------|-----------|

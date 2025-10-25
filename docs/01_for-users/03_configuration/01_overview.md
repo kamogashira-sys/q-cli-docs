@@ -171,19 +171,19 @@ Amazon Q CLIの設定ファイルは、グローバル（ユーザー全体）�
 ### 設定の表示
 ```bash
 # すべての設定を表示
-q settings show
+q settings list
 
 # 特定の設定を表示
-q settings show chat.maxContextTokens
+q settings chat.maxContextTokens
 ```
 
 ### 設定の変更
 ```bash
 # 設定ファイルを開く
-q settings edit
+q settings open
 
 # 特定の設定を変更
-q settings set chat.maxContextTokens 10000
+q settings chat.maxContextTokens 10000
 ```
 
 ### Agent管理
@@ -192,7 +192,7 @@ q settings set chat.maxContextTokens 10000
 q agent list
 
 # Agent切り替え
-q agent use my-agent
+q agent set-default my-agent
 
 # Agent編集
 q agent edit my-agent

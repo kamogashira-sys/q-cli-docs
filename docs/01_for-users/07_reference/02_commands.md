@@ -334,7 +334,7 @@ q settings [OPTIONS] [KEY] [VALUE]
 **使用例**:
 ```bash
 # すべての設定を表示
-q settings all
+q settings list
 
 # 特定の設定を取得
 q settings chat.enableThinking
@@ -802,7 +802,7 @@ Ctrl+T            # キーボードショートカット
 
 **有効化方法**:
 ```bash
-q settings set chat.enableTangentMode true
+q settings chat.enableTangentMode true
 # または /experiment で有効化
 ```
 
@@ -909,7 +909,7 @@ q settings set chat.enableTangentMode true
 
 **有効化方法**:
 ```bash
-q settings set chat.enableTodoList true
+q settings chat.enableTodoList true
 # または /experiment で有効化
 ```
 
@@ -939,7 +939,7 @@ q settings set chat.enableTodoList true
 
 **有効化方法**:
 ```bash
-q settings set EnabledCheckpointing true
+q settings chat.enableCheckpoint true
 # または /experiment で有効化
 ```
 
@@ -980,7 +980,7 @@ q settings set EnabledCheckpointing true
 
 **有効化方法**:
 ```bash
-q settings set chat.enableKnowledge true
+q settings chat.enableKnowledge true
 # または /experiment で有効化
 ```
 
@@ -1238,7 +1238,7 @@ Collecting logs...
 - 以降の応答では要約を参照
 
 **自動実行**: コンテキストウィンドウがオーバーフローすると自動実行される  
-**無効化**: `q settings set chat.disableAutoCompaction true`
+**無効化**: `q settings chat.disableAutoCompaction true`
 
 **関連コマンド**: `/context`, `/usage`
 
