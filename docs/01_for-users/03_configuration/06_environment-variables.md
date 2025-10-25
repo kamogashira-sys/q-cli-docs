@@ -399,8 +399,7 @@ q chat  # -vオプションなし
 ---
 
 **ドキュメント作成日**: 2025-10-08  
-**最終更新**: 2025-10-08  
-**ソースコード**: `crates/chat-cli/src/util/consts.rs`, `crates/chat-cli/src/mcp_client/client.rs` (v1.17.0)
+**最終更新**: 2025-10-08
 ---
 
 **関連トピック**:
