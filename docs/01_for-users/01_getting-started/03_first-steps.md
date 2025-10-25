@@ -44,7 +44,7 @@ q
 ### 基本的な質問
 
 ```
-> What is the difference between Python and JavaScript?
+> PythonとJavaScriptの違いは何ですか？
 ```
 
 Amazon Q CLIが詳しく説明してくれます。
@@ -52,13 +52,13 @@ Amazon Q CLIが詳しく説明してくれます。
 ### コードの生成
 
 ```
-> Write a function to calculate factorial in Python
+> Pythonで階乗を計算する関数を書いて
 ```
 
 ### コードの説明
 
 ```
-> Explain this code:
+> このコードを説明して:
 def factorial(n):
     return 1 if n <= 1 else n * factorial(n-1)
 ```
@@ -66,11 +66,11 @@ def factorial(n):
 ### マルチターン会話
 
 ```
-> Create a Python class for a simple calculator
+> シンプルな電卓のPythonクラスを作成して
 
 # Amazon Q CLIが応答
 
-> Add a method to calculate square root
+> 平方根を計算するメソッドを追加して
 
 # Amazon Q CLIが前の文脈を理解して追加
 ```
@@ -84,13 +84,13 @@ def factorial(n):
 Amazon Q CLIは自動的にカレントディレクトリのファイルにアクセスできます。
 
 ```
-> Read the contents of README.md
+> README.mdの内容を読み込んで
 ```
 
 ### ファイルの作成
 
 ```
-> Create a file named test.py with a simple hello world program
+> test.pyという名前のファイルを作成して、シンプルなhello worldプログラムを書いて
 ```
 
 Amazon Q CLIがファイルを作成します。
@@ -98,7 +98,7 @@ Amazon Q CLIがファイルを作成します。
 ### ファイルの編集
 
 ```
-> Modify test.py to accept a name as command line argument
+> test.pyを修正して、コマンドライン引数で名前を受け取れるようにして
 ```
 
 Amazon Q CLIがファイルを編集します。
@@ -106,7 +106,7 @@ Amazon Q CLIがファイルを編集します。
 ### 複数ファイルの操作
 
 ```
-> Create a Python project with main.py, utils.py, and README.md
+> main.py、utils.py、README.mdを含むPythonプロジェクトを作成して
 ```
 
 ---
@@ -116,7 +116,7 @@ Amazon Q CLIがファイルを編集します。
 ### シンプルなコマンド
 
 ```
-> Run ls -la
+> ls -laを実行して
 ```
 
 Amazon Q CLIがコマンドを実行し、結果を表示します。
@@ -124,7 +124,7 @@ Amazon Q CLIがコマンドを実行し、結果を表示します。
 ### 複雑なコマンド
 
 ```
-> Find all Python files in the current directory and count lines of code
+> カレントディレクトリ内の全てのPythonファイルを見つけて、コード行数を数えて
 ```
 
 Amazon Q CLIが適切なコマンドを生成・実行します。
@@ -132,11 +132,11 @@ Amazon Q CLIが適切なコマンドを生成・実行します。
 ### Git操作
 
 ```
-> Show git status
+> gitのステータスを表示して
 
-> Create a new branch named feature/new-feature
+> feature/new-featureという名前の新しいブランチを作成して
 
-> Commit all changes with message "Add new feature"
+> 全ての変更を"Add new feature"というメッセージでコミットして
 ```
 
 ---
@@ -298,32 +298,32 @@ q settings open
 
 ❌ **悪い例**:
 ```
-> Fix this
+> これを修正して
 ```
 
 ✅ **良い例**:
 ```
-> Fix the syntax error in line 10 of main.py
+> main.pyの10行目の構文エラーを修正して
 ```
 
 ### 2. コンテキストを提供する
 
 ```
-> I'm working on a Flask web application. Create a route for user login.
+> Flaskのウェブアプリケーションを開発しています。ユーザーログイン用のルートを作成して
 ```
 
 ### 3. 段階的に進める
 
 ```
-> Create a basic Flask app
+> 基本的なFlaskアプリを作成して
 
 # 確認後
 
-> Add user authentication
+> ユーザー認証を追加して
 
 # 確認後
 
-> Add database integration
+> データベース統合を追加して
 ```
 
 ### 4. 結果を確認する
