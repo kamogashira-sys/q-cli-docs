@@ -43,10 +43,10 @@ q --version
 q
 
 # 設定確認
-q config list
+q settings list
 
 # グローバル設定編集
-q config edit
+q settings open
 ```
 
 ---
@@ -225,7 +225,7 @@ q
 
 ```bash
 # 設定確認
-q config list
+q settings list
 
 # ログ確認
 tail -f ~/.amazonq/logs/q.log
