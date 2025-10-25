@@ -4,43 +4,119 @@
 
 # Amazon Q CLI バージョンアップ履歴 (v1.13.0 - latest)
 
-**調査日**: 2025-10-18  
-**対象バージョン**: v1.13.0 ～ v1.18.1  
-**リリース期間**: 2025-07-31 ～ 2025-10-14
+**調査日**: 2025-10-25  
+**対象バージョン**: v1.13.0 ～ v1.19.0  
+**リリース期間**: 2025-07-31 ～ 2025-10-25
 
 ## 概要
 
-この期間で8つのメジャー/マイナーバージョンがリリースされました。主な変更点は以下の通りです：
+この期間で9つのメジャー/マイナーバージョンがリリースされました。主な変更点は以下の通りです：
 
 - **Agent機能の大幅強化**: 設定スキーマ、管理コマンド、バリデーション機能、Delegate tool
 - **MCP (Model Context Protocol) の進化**: リモートMCP対応、OAuth認証、rmcpへの移行、SSEサポート
-- **Knowledge機能のベータ改善**: BM25サポート、非同期クライアントのリファクタリング、コマンド統合
+- **Knowledge機能のベータ改善**: BM25サポート、非同期クライアントのリファクタリング、コマンド統合、PDF対応
 - **実験的機能の拡充**: Tangent mode、Experiment manager、To-do list、/logdump
-- **ユーザー体験の向上**: コンテキスト使用率表示、チェックポイント機能、プロンプト管理強化
-- **セキュリティ強化**: execute_bash権限の厳格化、fs_read信頼範囲の制限
+- **ユーザー体験の向上**: コンテキスト使用率表示、チェックポイント機能、プロンプト管理強化、画像ペースト
+- **セキュリティ強化**: execute_bash権限の厳格化、fs_read信頼範囲の制限、deny_by_default、builtin namespace
+
+---
+
+## v1.19.0 (2025-10-25)
+
+### 主要機能追加
+
+#### Knowledge PDF対応
+- PDFファイルのインデックス化をサポート (#3151)
+- Knowledge機能の対応フォーマット拡張
+
+#### 画像ペースト対応
+- チャット内で画像の貼り付けをサポート (#3088)
+- キーバインディングの追加
+- `/paste`コマンドの追加
+- ユーザー体験の向上
+
+#### OAuth redirect URI設定
+- 設定可能なOAuth redirect URIを追加 (#3124)
+- 認証フローのカスタマイズが可能に
+
+#### HTTP MCP headers環境変数
+- MCP HTTP headersの環境変数サポート (#3075)
+- 認証ヘッダーの設定が容易に
+
+### セキュリティ強化
+
+#### bash tool deny_by_default
+- bashコマンドツールのデフォルト拒否モードをサポート (#2999)
+- セキュリティポリシーの厳格化
+- ホワイトリスト方式の採用
+
+#### builtin tool namespace
+- ツール権限管理用のビルトイン名前空間を追加 (#3205)
+- `@builtin`プレフィックスによる権限管理
+- 権限管理の細粒度化
+
+#### find -fls無効化
+- セキュリティ上の理由でfindコマンドの`-fls`オプションを無効化 (#3033)
+
+### UX改善
+
+#### settings list表示改善
+- 設定一覧の表示を改善 (#3167)
+- 可読性の向上
+
+#### /logdump --mcp対応
+- MCPオプションをlogdumpコマンドに追加 (#3143)
+- トラブルシューティングの効率化
+
+### 動作変更
+
+#### --resume動作変更
+- `--resume`指定時のみDBから前回会話を読み込む (#3133)
+- 明示的な動作に変更
+
+### バグフィックス
+
+- **checkpoint**: メッセージ切り詰め時のクラッシュ修正 (#3137)
+- **chat**: UTF-8境界を正しく処理するよう修正 (#3087)
+- **schemas**: transport typeのJSON schema参照を修正 (#3128)
+- **session**: セッション期限切れ時の不明瞭なエラーを修正 (#3208)
+- **knowledge**: 移行時のagentディレクトリ移動問題を修正 (#3225)
+- **persist**: コンテキスト付き会話保存の修正 (#3217)
+- その他の軽微な修正
+
+### その他の改善
+
+- 色の一元管理 (#3113)
+- 古いsemantic_searchフォルダ移行処理の削除 (#3142)
+- stdoutフラッシュ改善（ツール情報表示） (#3156)
+- chat CLI UI改修準備 (#3112)
+- README.md: Homebrewインストール手順追加 (#3172)
+- constants.rsのタイポ修正 (#3175)
+- フォーマット修正とAWS SDK behavior versions更新 (#3223)
+- CIパイプライン失敗の解決 (#3235)
+- Windowsテスト失敗の修正 (#3236)
+
+### 統計
+
+- PR数: 29件
+- 新規コントリビューター: 8名
+  - @csantanapr
+  - @joshrutkowski
+  - @rationull
+  - @ke4qqq
+  - @pahud
+  - @Sbozzolo
+  - @MitchCDisney
+  - @lociko
+
+### リンク
+
+- [GitHub Release](https://github.com/aws/amazon-q-developer-cli/releases/tag/v1.19.0)
+- [Full Changelog](https://github.com/aws/amazon-q-developer-cli/compare/1.18.0...v.1.19.0)
 
 ---
 
 ## v1.18.1 (2025-10-14)
-
-### バグフィックス
-
-- **バージョン報告の修正**: バージョン情報表示の軽微な不具合を修正
-  - 古いバージョンが報告される問題を解決
-
-### 統計
-
-- コミット数: 1件
-- コントリビューター: Brandon Kiser
-
-### リンク
-
-- [GitHub Release](https://github.com/aws/amazon-q-developer-cli/releases/tag/1.18.1)
-- [Full Changelog](https://github.com/aws/amazon-q-developer-cli/compare/1.18.0...1.18.1)
-
----
-
-## v1.18.0 (2025-10-13)
 
 ### 主要機能追加
 

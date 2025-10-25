@@ -25,11 +25,11 @@ Q CLIのインストールから高度な活用方法まで、ユーザーが必
 | [Getting Started](01_getting-started/) | 5 | インストールと基本的な使い方 |
 | [Features](02_features/) | 8 | 各機能の使い方 |
 | [Configuration](03_configuration/) | 9 | 設定方法の詳細 |
-| [Best Practices](04_best-practices/) | 6 | 推奨される使い方 |
+| [Best Practices](04_best-practices/) | 7 | 推奨される使い方（Agent Hooks比較含む） |
 | [Deployment](05_deployment/) | 4 | エンタープライズ導入 |
 | [Troubleshooting](06_troubleshooting/) | 3 | 問題解決 |
 | [Reference](07_reference/) | 10 | リファレンス情報 |
-| [Guides](08_guides/) | 9 | 包括的なガイド（コンテキスト管理） |
+| [Guides](08_guides/) | 10 | 包括的なガイド（コンテキスト管理、ワークフロー自動化） |
 | [Security](09_security/) | 7 | セキュリティとプライバシー |
 | [File Specifications](10_file-specifications/) | 1 | ファイルフォーマット仕様 |
 
@@ -64,6 +64,11 @@ Q CLIのインストールから高度な活用方法まで、ユーザーが必
 2. [Best Practices](04_best-practices/) - 推奨設定
 3. [Reference](07_reference/) - 設定項目リファレンス
 4. **[Guides - コンテキスト管理](08_guides/)** - 高度な最適化
+
+### ワークフローを自動化したい方【NEW】
+1. **[Guides - ワークフロー自動化](08_guides/09_workflow-automation.md)** - Agent Hooksの実践ガイド
+2. [Best Practices - Agent Hooks比較](04_best-practices/05_agent-hooks-comparison.md) - Kiroとの比較
+3. [Configuration - Agent設定](03_configuration/03_agent-configuration.md) - Hooks設定の技術仕様
 
 ### 問題を解決したい方
 1. [Guides - トラブルシューティング編](08_guides/06_troubleshooting.md) - コンテキスト関連の問題

@@ -287,6 +287,116 @@ Agentが参照できるファイルを指定します。
 | `PostToolUse` | ツール実行後 | ツール実行後にトリガー |
 | `Stop` | アシスタント応答完了時 | アシスタントの応答完了時にトリガー |
 
+#### フックの詳細仕様
+
+##### AgentSpawn
+- **タイミング**: Agent起動時（1回のみ）
+- **用途**: 環境初期化、設定検証、依存関係チェック
+- **終了コード**: 0=成功、その他=失敗（Agent起動中止）
+
+##### UserPromptSubmit
+- **タイミング**: ユーザーがプロンプトを送信した直後
+- **用途**: プロンプト検証、コンテキスト追加、ログ記録
+- **終了コード**: 0=成功、その他=失敗（プロンプト処理中止）
+
+##### PreToolUse
+- **タイミング**: ツール実行直前
+- **用途**: ツール実行の許可/拒否、パラメータ検証、セキュリティチェック
+- **終了コード**: 0=許可、2=ブロック、その他=失敗
+
+##### PostToolUse
+- **タイミング**: ツール実行直後
+- **用途**: 結果の検証、ログ記録、後処理
+- **終了コード**: 0=成功、その他=失敗
+
+##### Stop
+- **タイミング**: Agent終了時
+- **用途**: クリーンアップ、統計情報の保存、リソース解放
+- **終了コード**: 0=成功、その他=失敗
+
+#### Tool Matcher
+
+Tool Matcherは、どのツールに対してHookを実行するかを指定します：
+
+**サポートされるパターン**:
+- `fs_*`: ワイルドカード（すべてのファイルシステムツール）
+- `@git`: MCPサーバー全体
+- `@git/status`: MCPサーバーの特定ツール
+- `execute_bash`: 特定ツール
+
+**設定例**:
+```json
+{
+  "hooks": [
+    {
+      "trigger": "PreToolUse",
+      "tool_matcher": "fs_*",
+      "command": ["./scripts/check-file-access.sh"]
+    },
+    {
+      "trigger": "PreToolUse",
+      "tool_matcher": "@git",
+      "command": ["./scripts/check-git-access.sh"]
+    }
+  ]
+}
+```
+
+#### キャッシング機能
+
+重複実行を回避するためのキャッシング機能：
+
+```json
+{
+  "hooks": [
+    {
+      "trigger": "PreToolUse",
+      "tool_matcher": "fs_*",
+      "command": ["./scripts/expensive-check.sh"],
+      "cache_ttl_seconds": 300
+    }
+  ]
+}
+```
+
+- **cache_ttl_seconds**: キャッシュの有効期限（秒）
+- **用途**: 高コストな処理の重複実行を回避
+
+#### タイムアウト制御
+
+```json
+{
+  "hooks": [
+    {
+      "trigger": "PreToolUse",
+      "tool_matcher": "execute_bash",
+      "command": ["./scripts/security-scan.sh"],
+      "timeout_ms": 5000
+    }
+  ]
+}
+```
+
+- **デフォルト**: 30秒
+- **timeout_ms**: ミリ秒単位でタイムアウトを指定
+
+#### 環境変数
+
+Hookスクリプトで利用可能な環境変数：
+
+| 環境変数 | 説明 | 例 |
+|---------|------|-----|
+| `Q_HOOK_TRIGGER` | トリガータイプ | `PreToolUse` |
+| `Q_HOOK_TOOL_NAME` | ツール名 | `fs_write` |
+| `Q_HOOK_TOOL_PARAMS` | ツールパラメータ（JSON） | `{"path": "/tmp/file.txt"}` |
+
+**使用例**:
+```bash
+#!/bin/bash
+FILE_PATH=$(echo "${Q_HOOK_TOOL_PARAMS}" | jq -r '.path')
+echo "Processing: $FILE_PATH"
+```
+
 ### フック設定例
 
 ```json

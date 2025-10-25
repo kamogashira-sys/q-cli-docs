@@ -5,7 +5,11 @@
 # .cli_bash_history ファイルフォーマット仕様書
 
 **作成日**: 2025-10-24  
+**最終更新**: 2025-10-25  
 **対象バージョン**: Amazon Q Developer CLI v1.18.1+  
+**ソースコード**: `crates/chat-cli/src/util/directories.rs`, `crates/chat-cli/src/cli/chat/prompt.rs`, `crates/chat-cli/src/cli/chat/input_source.rs`  
+**コミットハッシュ**: `63278298f451fd57ee439a2614bbac6a62da3870`  
+**コミット日時**: 2025-10-13 12:44:25 -0700  
 **ファイルパス**: `~/.aws/amazonq/.cli_bash_history`
 
 ---
@@ -114,11 +118,11 @@
 
 ### ソースコード参照
 
-| 機能 | ファイルパス | 行数目安 |
-|------|-------------|---------|
-| パス定義 | `crates/chat-cli/src/util/directories.rs` | 〜30 |
-| 履歴読み込み | `crates/chat-cli/src/cli/chat/prompt.rs` | 〜200 |
-| 履歴保存 | `crates/chat-cli/src/cli/chat/input_source.rs` | 〜150 |
+| 機能 | ファイルパス | 行番号 |
+|------|-------------|--------|
+| パス定義 | `crates/chat-cli/src/util/directories.rs` | 50, 165-166 |
+| 履歴読み込み | `crates/chat-cli/src/cli/chat/prompt.rs` | 18, 470, 502 |
+| 履歴保存 | `crates/chat-cli/src/cli/chat/input_source.rs` | 55, 103-104, 119, 136 |
 
 ---
 

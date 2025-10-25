@@ -1537,7 +1537,7 @@ q settings set chat.enableContextUsageIndicator true
 
 💡 **初心者向けポイント**: プロンプトの%表示を見るだけで、トークン使用量を常時監視できます。
 
-📝 **詳細**: Context Usage Indicatorの詳細は[実験的機能ガイド](../../02_features/07_experimental.md#-context-usage-percentage)を参照
+📝 **詳細**: Context Usage Indicatorの詳細は[実験的機能ガイド](../02_features/07_experimental.md#-context-usage-percentage)を参照
 
 #### 手順2: 75%制限との比較
 

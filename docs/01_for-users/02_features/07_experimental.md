@@ -13,6 +13,7 @@
 
 - [実験的機能とは](#-実験的機能とは)
 - [実験的機能の比較](#-実験的機能の比較)
+- [Knowledge](#-knowledge)
 - [Tangent Mode](#-tangent-mode)
 - [TODO Lists](#-todo-lists)
 - [Context Usage Percentage](#-context-usage-percentage)
@@ -97,6 +98,82 @@ q settings set chat.enableThinking true
 ```bash
 q settings set chat.enableDelegate true
 ```
+
+---
+
+## 📚 Knowledge
+
+**追加バージョン**: v1.15.0（GitHubタグ: `v.1.15.0`）  
+**PDF対応**: v1.19.0以降
+
+### 概要
+プロジェクト固有の情報を永続的に保存し、会話のコンテキストとして活用する機能です。
+
+### 実現される機能
+- **永続的コンテキスト**: プロジェクト情報を会話間で保持
+- **ファイルインデックス化**: ドキュメントやコードを検索可能に
+- **自動コンテキスト注入**: 関連情報を自動的に会話に含める
+
+### 対応ファイル形式
+
+- テキストファイル（.txt、.md等）
+- ソースコードファイル
+- **PDF（v1.19.0以降）** ← NEW
+
+**出典**: [PR #3151](https://github.com/aws/amazon-q-developer-cli/pull/3151)
+
+### 有効化
+
+**方法1: `/experiment`コマンドを使用（推奨）**
+
+```
+> /experiment
+```
+
+メニューから「Knowledge」を選択してONに切り替えます。
+
+**方法2: 設定コマンドを使用**
+
+```bash
+q settings set chat.enableKnowledge true
+```
+
+### 使用例
+
+```bash
+# Knowledgeにファイルを追加
+> /knowledge add docs/
+
+# Knowledge内を検索
+> /knowledge search "認証"
+
+# Knowledge状態を確認
+> /knowledge status
+
+# Knowledgeをクリア
+> /knowledge clear
+```
+
+### ユースケース
+- **プロジェクトドキュメント管理**: READMEや設計書を常に参照可能に
+- **コードベース理解**: 既存コードを学習させて質問に回答
+- **技術仕様の保持**: API仕様やガイドラインを永続化
+
+### 関連コマンド
+
+Knowledge機能は9つのサブコマンドを提供します：
+
+| サブコマンド | 説明 |
+|------------|------|
+| `help` | ヘルプ表示 |
+| `show` | Knowledge内容表示 |
+| `add` | ファイル/ディレクトリ追加 |
+| `remove` | ファイル削除 |
+| `clear` | すべてクリア |
+| `search` | Knowledge内検索 |
+| `update` | Knowledge更新 |
+| `status` | 状態確認 |
+| `cancel` | 処理キャンセル |
 
 ---
 

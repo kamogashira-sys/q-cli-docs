@@ -15,6 +15,23 @@
 
 ## 最新バージョン
 
+### v1.19.0（2025-10-25）
+
+**主要な変更**:
+- 🎉 **Knowledge PDF対応**: PDFファイルのインデックス化をサポート
+- 🖼️ **画像ペースト対応**: チャット内で画像の貼り付けとキーバインディングをサポート
+- 🔐 **OAuth redirect URI設定**: 設定可能なOAuth redirect URIを追加
+- 🌐 **HTTP MCP headers環境変数**: MCP HTTP headersの環境変数サポート
+- 🛡️ **bash tool deny_by_default**: bashコマンドツールのデフォルト拒否モードをサポート
+- 🔧 **builtin tool namespace**: ツール権限管理用のビルトイン名前空間を追加
+- 📊 **settings list表示改善**: 設定一覧の表示を改善
+- 🔍 **/logdump --mcp対応**: MCPオプションをlogdumpコマンドに追加
+- 🔄 **--resume動作変更**: --resume指定時のみDBから前回会話を読み込む
+
+**詳細**: [v1.19.0リリースノート](https://github.com/aws/amazon-q-developer-cli/releases/tag/v1.19.0)
+
+---
+
 ### v1.18.1（2025-10-14）
 
 **主要な変更**:

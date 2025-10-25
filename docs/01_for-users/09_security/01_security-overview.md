@@ -64,6 +64,42 @@ echo 'alias q="q --untrust-fs-read"' >> ~/.bashrc
 
 ---
 
+### 2-1. Bashコマンド実行制御（v1.19.0以降）
+
+**deny_by_default モード**:
+
+v1.19.0以降、`execute_bash`ツールでデフォルト拒否モードをサポート：
+
+```json
+{
+  "toolsSettings": {
+    "execute_bash": {
+      "denyByDefault": true,
+      "allowedCommands": ["ls", "cat", "grep", "find"]
+    }
+  }
+}
+```
+
+**セキュリティ上のメリット**:
+- ✅ ホワイトリスト方式の採用
+- ✅ 意図しないコマンド実行の防止
+- ✅ 監査ログの明確化
+
+**builtin tool namespace**:
+
+ビルトインツールの権限管理用名前空間（v1.19.0以降）：
+
+- ツールごとの細粒度な権限設定
+- `@builtin` 名前空間での一元管理
+- セキュリティポリシーの明確化
+
+**出典**: 
+- [PR #2999](https://github.com/aws/amazon-q-developer-cli/pull/2999) - deny_by_default
+- [PR #3205](https://github.com/aws/amazon-q-developer-cli/pull/3205) - builtin namespace
+
+---
+
 ### 3. AWS API呼び出し制御
 
 **リスク**:

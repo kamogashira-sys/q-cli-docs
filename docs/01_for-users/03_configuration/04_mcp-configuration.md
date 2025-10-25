@@ -483,7 +483,11 @@ Agentファイルが存在しない場合、Q CLIは自動的にデフォルトA
 
 ## 🔐 環境変数の使用
 
+**HTTP headers環境変数サポート**: v1.19.0以降で正式サポート（[PR #3075](https://github.com/aws/amazon-q-developer-cli/pull/3075)）
+
 ### 基本的な使い方
+
+HTTP MCPサーバーのheadersで環境変数を使用できます：
 
 ```json
 {
@@ -498,6 +502,11 @@ Agentファイルが存在しない場合、Q CLIは自動的にデフォルトA
   }
 }
 ```
+
+**メリット**:
+- ✅ 認証情報の安全な管理
+- ✅ 環境ごとの設定切り替え
+- ✅ バージョン管理から機密情報を除外
 
 ### 環境変数の設定
 
@@ -556,6 +565,33 @@ echo "GITHUB_TOKEN=your-token-here" >> .env
 1. Amazon Q CLIがブラウザを開く
 2. ユーザーが認証
 3. トークンが自動的に管理される
+
+### OAuth redirect URI設定（v1.19.0以降）
+
+カスタムredirect URIを指定できます：
+
+```json
+{
+  "mcpServers": {
+    "my-server": {
+      "type": "http",
+      "url": "https://api.example.com",
+      "oauth": {
+        "redirectUri": "127.0.0.1:7778"
+      }
+    }
+  }
+}
+```
+
+**デフォルト動作**: 指定しない場合、OSが自動的に利用可能なポートを割り当てます。
+
+**メリット**:
+- ✅ ファイアウォール設定の簡素化
+- ✅ 固定ポートでの動作保証
+- ✅ 複数サーバーの同時起動
+
+**出典**: [PR #3124](https://github.com/aws/amazon-q-developer-cli/pull/3124)
 
 ---
 

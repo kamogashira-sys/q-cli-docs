@@ -178,7 +178,7 @@ export Q_TELEMETRY_ENABLED=false
 > - ⚠️ 問題発生時、テレメトリーデータがあるとサポートが容易になります
 > - ✅ 収集されるデータは匿名化されています
 > 
-> 詳細: [テレメトリー設定](../09_security/03_telemetry.md)、[データプライバシー](02_data-privacy.md)
+> 詳細: [データプライバシー](02_data-privacy.md)
 
 ### Agent設定での制御
 
@@ -207,8 +207,8 @@ export Q_TELEMETRY_ENABLED=false
 - [セキュリティベストプラクティス](../04_best-practices/02_security.md)
 
 ### その他
-- [クイックリファレンス](../quick-reference.md)
-- [トピック別インデックス](../topic-index.md)
+- [クイックリファレンス](../07_reference/08_quick-reference.md)
+- [トピック別インデックス](../07_reference/09_topic-index.md)
 
 ---
 

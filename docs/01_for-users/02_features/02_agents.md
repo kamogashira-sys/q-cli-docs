@@ -1019,6 +1019,54 @@ q settings chat.defaultAgent
 
 ---
 
+## 🔧 Agent Hooksによるワークフロー自動化
+
+Agent Hooksは、Agent実行時の特定のタイミングでスクリプトを自動実行する機能です。
+ファイル保存時の自動フォーマット、コミット前のテスト実行など、開発ワークフローを自動化できます。
+
+### 5種類のトリガー
+
+- **AgentSpawn**: Agent起動時
+- **UserPromptSubmit**: プロンプト送信時
+- **PreToolUse**: ツール実行前（ブロック可能）
+- **PostToolUse**: ツール実行後
+- **Stop**: Agent終了時
+
+### クイックスタート
+
+最も簡単な例として、ファイル保存時にメッセージを表示するHookを作成します：
+
+```json
+{
+  "name": "hello-hook",
+  "description": "Hello World Hook",
+  "hooks": [
+    {
+      "trigger": "PostToolUse",
+      "tool_matcher": "fs_write",
+      "command": ["echo", "✅ File saved!"]
+    }
+  ]
+}
+```
+
+### 実践的なユースケース
+
+1. **自動フォーマット**: ファイル保存時にPrettier/Blackを実行
+2. **コミット前テスト**: Gitコミット前に自動テスト実行
+3. **セキュリティスキャン**: 依存関係ファイル変更時にスキャン
+4. **コード品質チェック**: コミット前にlinter実行
+
+### 詳細情報
+
+Agent Hooksの詳細な使い方は以下のドキュメントを参照してください：
+
+- **[実践ガイド](../08_guides/09_workflow-automation.md)** - すぐに使える実装例とトラブルシューティング
+- **[Kiro比較](../04_best-practices/05_agent-hooks-comparison.md)** - Kiroとの機能比較とエンタープライズ視点
+- **[設定詳細](../03_configuration/03_agent-configuration.md#利用可能なフック)** - Hooks設定の技術仕様
+
+---
+
 ## 📚 詳細ガイド
 
 より詳細な設定方法については、以下のドキュメントを参照してください：

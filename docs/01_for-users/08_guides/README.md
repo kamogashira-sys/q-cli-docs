@@ -55,6 +55,12 @@ AI: 了解しました。現在のREADMEには「インストール方法」と�
    - トークン制限内での効果的な設定
    - プロジェクトタイプ別のベストプラクティス
 
+### 実例から学ぶ
+
+AI駆動開発におけるコンテキストの実践事例: [AI 駆動開発におけるコミュニティと AWS CDK の価値](https://speakerdeck.com/konokenj/community-and-cdk-at-ai-driven-development) (Kenji Kono)
+
+詳細は [第1章: コンテキストの本質](01_essence.md) の関連リソースをご覧ください。
+
 💡 **このガイドの目標**: コンテキスト管理を理解し、Q CLIの応答品質を最大化すること
 
 ---
