@@ -268,7 +268,7 @@ Knowledge Baseから情報を検索します。
 ### 設定の確認
 
 ```bash
-q settings all
+q settings list
 ```
 
 ### 設定の変更

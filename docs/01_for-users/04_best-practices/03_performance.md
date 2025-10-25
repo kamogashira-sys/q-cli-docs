@@ -643,7 +643,7 @@ grep "slow\|timeout\|latency" /run/user/$(id -u)/qlog/qchat.log
 
 ```bash
 # 全設定を表示
-q settings all
+q settings list
 
 # 特定の設定を確認
 q settings knowledge.maxFiles

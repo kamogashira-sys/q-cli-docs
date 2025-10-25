@@ -479,10 +479,10 @@ Q CLIには以下のハードコードされた制限値があり、ユーザー
 
 ```bash
 # 自動要約を無効化（非推奨）
-q settings set chat.disableAutoCompaction true
+q settings chat.disableAutoCompaction true
 
 # 自動要約を有効化（デフォルト）
-q settings set chat.disableAutoCompaction false
+q settings chat.disableAutoCompaction false
 ```
 
 ⚠️ **注意**: 自動要約を無効化すると、コンテキストウィンドウがオーバーフローした際にエラーが発生する可能性があります。
@@ -595,7 +595,7 @@ q settings set chat.disableAutoCompaction false
 /context add **/*.md
 
 # 自動要約を無効化
-q settings set chat.disableAutoCompaction true
+q settings chat.disableAutoCompaction true
 
 # 強制追加を乱用
 /context add --force huge-file1.md
@@ -660,7 +660,7 @@ Consider removing them.
 
 設定方法:
 ```bash
-q settings set chat.disableAutoCompaction true
+q settings chat.disableAutoCompaction true
 ```
 
 推奨: 自動要約は有効のまま、必要に応じて手動で`/compact`を実行する方が安全です。
@@ -1517,7 +1517,7 @@ Context Usage Indicator は実験的機能です。プロンプトにトーク�
 # メニューから「Context Usage Indicator」を選択してONに
 
 # 方法2: 設定コマンドで有効化
-q settings set chat.enableContextUsageIndicator true
+q settings chat.enableContextUsageIndicator true
 ```
 
 **プロンプトでの表示**:
@@ -1658,7 +1658,7 @@ Total: ~3020 tokens
 
 4. **自動実行の注意**
    - コンテキストウィンドウが80%に達すると自動実行の通知
-   - 無効化: `q settings set chat.disableAutoCompaction true`
+   - 無効化: `q settings chat.disableAutoCompaction true`
 
 📝 **詳細**: [AWS公式ドキュメント - Chat history compaction](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/ide-chat-history-compaction.html)
 
@@ -2422,10 +2422,10 @@ Q CLIには以下のハードコードされた制限値があり、**ユーザ�
 
 ```bash
 # 自動要約を無効化（非推奨）
-q settings set chat.disableAutoCompaction true
+q settings chat.disableAutoCompaction true
 
 # 自動要約を有効化（デフォルト）
-q settings set chat.disableAutoCompaction false
+q settings chat.disableAutoCompaction false
 ```
 
 **注意**: 自動要約を無効化すると、コンテキストウィンドウがオーバーフローした際にエラーが発生する可能性があります。

@@ -76,7 +76,7 @@ q settings chat.enableCheckpoint true
 
 ```bash
 # すべての設定を確認
-q settings all
+q settings list
 
 # 特定の設定を確認
 q settings chat.enableThinking
@@ -265,7 +265,7 @@ q settings <key> <value>
 q settings --delete <key>
 
 # 全設定の表示
-q settings all
+q settings list
 ```
 
 ### 設定ファイルを直接編集

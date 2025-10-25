@@ -118,7 +118,7 @@ echo $Q_LOG_LEVEL
 env | grep Q_
 
 # Amazon Q CLIから確認
-q settings show
+q settings list
 ```
 
 ---

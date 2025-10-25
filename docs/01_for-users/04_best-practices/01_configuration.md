@@ -396,7 +396,7 @@ project/
 
 ```bash
 # 1. 設定の確認
-q settings all
+q settings list
 
 # 2. Agent一覧の確認
 q agent list
@@ -670,7 +670,7 @@ q settings chat.disableMarkdownRendering false
 
 **有効化**:
 ```bash
-q settings set chat.enableDelegate true
+q settings chat.enableDelegate true
 ```
 
 **安全な使用のためのAgent設定**:

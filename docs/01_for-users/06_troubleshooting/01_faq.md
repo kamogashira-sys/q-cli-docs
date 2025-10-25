@@ -230,10 +230,10 @@ Agentは、Q CLIの動作をカスタマイズする設定ファイルです。
 q agent list
 
 # Agent切り替え
-q agent use <agent-name>
+q agent set-default <agent-name>
 
 # 現在のAgent確認
-q agent current
+q agent list
 ```
 
 ### MCPサーバーの追加方法は？
@@ -333,7 +333,7 @@ MCP（Model Context Protocol）は、外部ツールと連携するためのプ�
 **有効化方法**:
 ```bash
 # Knowledge機能を有効化
-q settings set knowledge.enabled true
+q settings knowledge.enabled true
 
 # インデックス作成
 # Knowledge機能は設定で有効化: q settings chat.enableKnowledge true
@@ -371,7 +371,7 @@ q settings set knowledge.enabled true
 ps aux | grep q
 
 # Knowledge機能を無効化
-q settings set knowledge.enabled false
+q settings knowledge.enabled false
 ```
 
 ### ログファイルの場所は？
@@ -504,10 +504,10 @@ q
 **設定方法**（非推奨）:
 ```bash
 # 自動要約を無効化
-q settings set chat.disableAutoCompaction true
+q settings chat.disableAutoCompaction true
 
 # 自動要約を有効化（デフォルト）
-q settings set chat.disableAutoCompaction false
+q settings chat.disableAutoCompaction false
 ```
 
 **推奨**: 自動要約は有効のまま、必要に応じて手動で`/compact`を実行する方が安全です。
@@ -638,7 +638,7 @@ Agent設定でツール権限を細かく制御できます。
 q login --status
 
 # 設定を確認
-q settings all
+q settings list
 ```
 
 **AWSコンソールでの確認**:

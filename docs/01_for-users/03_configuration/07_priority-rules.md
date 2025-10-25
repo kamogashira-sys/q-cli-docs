@@ -438,7 +438,7 @@ env | grep AMAZON_Q
 env | grep Q_
 
 # 3. Agent設定を確認
-q agent show my-agent
+q agent list my-agent
 
 # 4. グローバル設定を確認
 q settings

@@ -241,7 +241,7 @@ q chat
 ### 設定の確認
 
 ```bash
-q settings all
+q settings list
 ```
 
 ### チャットの終了

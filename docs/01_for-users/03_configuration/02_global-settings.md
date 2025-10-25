@@ -325,7 +325,7 @@ q settings --delete chat.enableThinking
 
 ### 方法3: すべての設定を表示
 ```bash
-q settings all
+q settings list
 ```
 
 ### 方法4: 手動編集

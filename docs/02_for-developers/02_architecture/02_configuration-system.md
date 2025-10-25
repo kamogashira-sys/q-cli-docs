@@ -448,7 +448,7 @@ q settings list
 q settings get chat.model
 
 # Agent設定を表示
-q agent show <agent-name>
+q agent list <agent-name>
 ```
 
 ### 設定の優先順位を確認

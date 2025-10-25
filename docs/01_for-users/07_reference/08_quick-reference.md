@@ -98,7 +98,7 @@ q agent edit my-agent
 q agent delete my-agent
 
 # Agent情報表示
-q agent show my-agent
+q agent list my-agent
 ```
 
 ### Agent設定ファイル

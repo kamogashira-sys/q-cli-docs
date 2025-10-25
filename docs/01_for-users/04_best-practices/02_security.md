@@ -506,7 +506,7 @@ q agent validate my-agent
 q agent list
 
 # Agent詳細の確認
-q agent show my-agent
+q agent list my-agent
 ```
 
 ### デバッグログの活用

@@ -118,7 +118,7 @@ cat > ~/.aws/amazonq/agents/load-test.json << 'EOF'
 EOF
 
 # 2. Agentに切り替え
-q agent use load-test
+q agent set-default load-test
 
 # 3. チャットを開始
 q chat
@@ -195,7 +195,7 @@ Playwright MCPを使用して、ユーザー操作をキャプチャします。
 
 ```bash
 # Agentに切り替え
-q agent use load-test
+q agent set-default load-test
 
 # チャットを開始
 q chat

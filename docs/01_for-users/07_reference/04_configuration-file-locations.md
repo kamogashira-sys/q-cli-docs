@@ -379,7 +379,7 @@ cat ~/.local/share/amazon-q/settings.json
 
 ```bash
 # グローバル設定でthinkingを無効化
-q settings set chat.enableThinking false
+q settings chat.enableThinking false
 
 # 環境変数で上書き
 export Q_ENABLE_THINKING=true
@@ -450,7 +450,7 @@ q chat --agent <agent-name>
 
 ```bash
 # 設定の優先順位を確認
-q settings show --all
+q settings --all
 
 # 環境変数を確認
 env | grep Q_

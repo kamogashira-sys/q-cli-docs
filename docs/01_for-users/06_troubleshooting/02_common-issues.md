@@ -22,7 +22,7 @@
 q doctor
 
 # 設定の確認
-q settings all
+q settings list
 
 # Agent一覧の確認
 q agent list
@@ -312,7 +312,7 @@ q restart
 q settings open
 
 # 5. 全設定を確認
-q settings all
+q settings list
 ```
 
 ---
@@ -662,10 +662,10 @@ Consider removing them.
 **設定方法**:
 ```bash
 # 自動要約を無効化（非推奨）
-q settings set chat.disableAutoCompaction true
+q settings chat.disableAutoCompaction true
 
 # 自動要約を有効化（デフォルト）
-q settings set chat.disableAutoCompaction false
+q settings chat.disableAutoCompaction false
 ```
 
 **推奨**: 自動要約は有効のまま、必要に応じて手動で`/compact`を実行する方が安全です。
@@ -803,7 +803,7 @@ q doctor
 q doctor
 
 # 2. 設定を確認
-q settings all
+q settings list
 
 # 3. Agent設定を確認
 q agent list
@@ -1140,7 +1140,7 @@ export MY_API_KEY=test_value
 
 # Amazon Q CLIを再起動して確認
 q restart
-q agent show test
+q agent list test
 ```
 
 ### 競合の解決
@@ -1198,7 +1198,7 @@ q doctor 実行
     ↓ No
 ┌─────────────────┐
 │ 設定関連？      │ → Yes → 設定を確認
-│                 │         - q settings all
+│                 │         - q settings list
 │                 │         - 設定ファイル確認
 └─────────────────┘         - Amazon Q CLI再起動
     ↓ No

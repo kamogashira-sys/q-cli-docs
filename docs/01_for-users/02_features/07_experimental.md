@@ -46,10 +46,10 @@
 
 ```bash
 # 設定ファイルで有効化
-q settings edit
+q settings open
 
 # または、コマンドで有効化
-q settings set <設定キー> true
+q settings <設定キー> true
 ```
 
 ---
@@ -84,19 +84,19 @@ q settings set <設定キー> true
 #### 初心者の方
 まずは**Context Usage Indicator**から始めましょう。
 ```bash
-q settings set chat.enableContextUsageIndicator true
+q settings chat.enableContextUsageIndicator true
 ```
 
 #### 中級者の方
 **Thinking**を有効にして、AIの思考過程を学びましょう。
 ```bash
-q settings set chat.enableThinking true
+q settings chat.enableThinking true
 ```
 
 #### 上級者の方
 **Delegate Tool**でバックグラウンドタスクを管理できます。
 ```bash
-q settings set chat.enableDelegate true
+q settings chat.enableDelegate true
 ```
 
 ---
@@ -135,7 +135,7 @@ q settings set chat.enableDelegate true
 **方法2: 設定コマンドを使用**
 
 ```bash
-q settings set chat.enableKnowledge true
+q settings chat.enableKnowledge true
 ```
 
 ### 使用例
@@ -293,7 +293,7 @@ Q CLI内でタスクを管理できる機能です。
 **方法2: 設定コマンドを使用**
 
 ```bash
-q settings set chat.enableContextUsageIndicator true
+q settings chat.enableContextUsageIndicator true
 ```
 
 ### 使用例
@@ -343,7 +343,7 @@ Assistant: こちらがコードレビューです...
 #### 表示されない場合
 ```bash
 # 設定を確認
-q settings show chat.enableContextUsageIndicator
+q settings chat.enableContextUsageIndicator
 
 # 再起動
 q restart
@@ -382,7 +382,7 @@ AIの思考過程をリアルタイムで表示する機能です。
 **方法2: 設定コマンドを使用**
 
 ```bash
-q settings set chat.enableThinking true
+q settings chat.enableThinking true
 ```
 
 ### 使用例
@@ -424,13 +424,13 @@ AIの判断が適切かを確認
 ### 有効/無効の切り替え
 ```bash
 # 有効化
-q settings set chat.enableThinking true
+q settings chat.enableThinking true
 
 # 無効化
-q settings set chat.enableThinking false
+q settings chat.enableThinking false
 
 # 現在の設定を確認
-q settings show chat.enableThinking
+q settings chat.enableThinking
 ```
 
 ---
@@ -475,7 +475,7 @@ q settings show chat.enableThinking
 **方法2: 設定コマンドを使用**
 
 ```bash
-q settings set chat.enableDelegate true
+q settings chat.enableDelegate true
 ```
 
 ### 操作方法
@@ -723,7 +723,7 @@ tail -f ~/.local/share/amazon-q/logs/q-cli.log
 #### タイムアウトする場合
 ```bash
 # タイムアウト時間を延長
-q settings set chat.delegateTimeout 600
+q settings chat.delegateTimeout 600
 ```
 
 ---

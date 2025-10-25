@@ -83,7 +83,7 @@ AWS公式MCPサーバーの基本的な使い方：
 **3. Q CLIで使用**
 
 ```bash
-q agent use my-agent
+q agent set-default my-agent
 q chat
 ```
 
@@ -766,7 +766,7 @@ echo "GITHUB_TOKEN=your-token-here" >> .env
 
 ```bash
 # Agent設定を確認
-q agent show my-agent
+q agent list my-agent
 ```
 
 ### MCPサーバーの無効化

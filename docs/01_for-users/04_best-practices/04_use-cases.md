@@ -63,7 +63,7 @@ q chat
 
 ```bash
 # 開発用Agentに切り替え
-q agent use developer
+q agent set-default developer
 
 # 環境変数を確認
 q chat
@@ -82,7 +82,7 @@ q chat
 
 ```bash
 # Agent切り替え
-q agent use developer
+q agent set-default developer
 
 # 実装方法を相談
 q chat
@@ -141,7 +141,7 @@ q chat
 
 ```bash
 # コードレビューAgentに切り替え
-q agent use code-reviewer
+q agent set-default code-reviewer
 
 # リファクタリング提案
 q chat
@@ -180,7 +180,7 @@ q chat
 
 ```bash
 # コードレビューAgentに切り替え
-q agent use code-reviewer
+q agent set-default code-reviewer
 
 # PRの内容を確認
 q chat
@@ -227,7 +227,7 @@ q chat
 
 ```bash
 # ドキュメントAgentに切り替え
-q agent use documentation-writer
+q agent set-default documentation-writer
 
 # README生成
 q chat
@@ -266,7 +266,7 @@ q chat
 
 ```bash
 # AWS SpecialistAgentに切り替え
-q agent use aws-specialist
+q agent set-default aws-specialist
 
 # リソース一覧
 q chat
@@ -712,7 +712,7 @@ Q CLIは、Playwright MCPとk6を組み合わせることで、負荷テスト�
 
 ```bash
 # 負荷テスト用Agentに切り替え
-q agent use load-test
+q agent set-default load-test
 
 # シナリオキャプチャ
 q chat
@@ -777,10 +777,10 @@ AWS Summit 2024での発表動画。Q CLIとPlaywright MCP、k6を組み合わ�
 
 ```bash
 # よく使うAgentをエイリアス化
-alias qdev='q agent use developer'
-alias qreview='q agent use code-reviewer'
-alias qdoc='q agent use documentation-writer'
-alias qaws='q agent use aws-specialist'
+alias qdev='q agent set-default developer'
+alias qreview='q agent set-default code-reviewer'
+alias qdoc='q agent set-default documentation-writer'
+alias qaws='q agent set-default aws-specialist'
 ```
 
 ### チェックポイントの活用
@@ -818,7 +818,7 @@ q chat
 
 ```bash
 # Delegate機能を有効化
-q settings set chat.enableDelegate true
+q settings chat.enableDelegate true
 
 # チャットセッション内で
 q chat
@@ -861,7 +861,7 @@ q chat
 
 **使用方法**:
 ```bash
-q agent use auto-format
+q agent set-default auto-format
 q chat
 ```
 

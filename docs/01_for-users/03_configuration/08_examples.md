@@ -416,7 +416,7 @@ q settings chat.defaultAgent team-agent
 
 ```bash
 # 全設定を確認
-q settings all
+q settings list
 
 # 特定の設定を確認
 q settings chat.defaultAgent
@@ -426,7 +426,7 @@ q settings chat.defaultAgent
 
 ```bash
 # 設定をエクスポート
-q settings all > ~/q-settings-backup.txt
+q settings list > ~/q-settings-backup.txt
 
 # Agent設定をバックアップ
 cp -r ~/.aws/amazonq/cli-agents ~/q-agents-backup
