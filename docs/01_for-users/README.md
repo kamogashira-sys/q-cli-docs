@@ -49,7 +49,7 @@ Q CLIのインストールから高度な活用方法まで、ユーザーが必
 - 第5章: 実践ガイド（30分）
 
 ### 技術的な詳細を知りたい方
-1. [Architecture](../02_for-developers/02_architecture/) - アーキテクチャ
+1. [Architecture](../02_for-developers/02_architecture/README.md) - アーキテクチャ
 2. [File Specifications](10_file-specifications/) - ファイル仕様
 3. [Reference](07_reference/) - リファレンス情報
 
