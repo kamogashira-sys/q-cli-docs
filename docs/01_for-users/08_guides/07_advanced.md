@@ -918,8 +918,8 @@ AIが利用可能
 ---
 
 **出典**:
-- [実装コード](/crates/chat-cli/src/cli/agent/mod.rs)
-- [JSON Schema](/crates/chat-cli/src/cli/agent/schema.json)
+- [実装コード](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/cli/agent/mod.rs)
+- [JSON Schema](https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json)
 
 ---
 

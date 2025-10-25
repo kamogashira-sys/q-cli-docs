@@ -37,7 +37,7 @@ pub enum ApiClientError {
 
 **新しいエラー型を作成する場合**:
 ```rust
-// crates/chat-cli/src/my_module/mod.rs
+// crates/chat-cli/src/my_module/mod.rs（例示用パス）
 use thiserror::Error;
 
 #[derive(Debug, Error)]
@@ -343,7 +343,7 @@ impl ReasonCode for ApiClientError {
 ### 例2: 新しいモジュールエラーの作成
 
 ```rust
-// crates/chat-cli/src/my_module/error.rs
+// crates/chat-cli/src/my_module/error.rs（例示用パス）
 
 use thiserror::Error;
 

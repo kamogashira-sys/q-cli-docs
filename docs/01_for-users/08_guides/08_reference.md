@@ -700,4 +700,4 @@ find .amazonq/rules/ -name "*.md"
 **出典**:
 - [コマンドリファレンス](../07_reference/02_commands.md)
 - [用語集](../07_reference/01_glossary.md)
-- [JSON Schema](/crates/chat-cli/src/cli/agent/schema.json)
+- [JSON Schema](https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json)
