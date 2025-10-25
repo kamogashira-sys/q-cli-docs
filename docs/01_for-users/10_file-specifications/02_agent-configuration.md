@@ -12,7 +12,7 @@
 | **ファイル形式** | JSON |
 | **エンコーディング** | UTF-8 |
 | **改行コード** | LF (Unix形式) |
-| **JSONスキーマ** | `schemas/agent-v1.json` |
+| **JSONスキーマ** | ローカル: `schemas/agent-v1.json` / [GitHub](https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json) |
 | **スキーマバージョン** | JSON Schema Draft-07 |
 
 ### ファイル配置場所
@@ -390,7 +390,7 @@ const DEFAULT_APPROVE = [
 
 **JSONスキーマ検証**
 
-- スキーマファイル: `schemas/agent-v1.json`
+- スキーマファイル: ローカル `schemas/agent-v1.json` / [GitHub](https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json)
 - 検証ライブラリ: `jsonschema` crate
 - 検証タイミング: ファイル読み込み時
 
@@ -594,7 +594,7 @@ Agent config is malformed at /name: 'name' is a required property
 **解決方法**
 1. 必須フィールド（`name`）を追加
 2. フィールド名のスペルを確認（camelCase）
-3. スキーマファイル（`schemas/agent-v1.json`）を参照
+3. スキーマファイル（ローカル: `schemas/agent-v1.json` / [GitHub](https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json)）を参照
 
 #### 問題4: file:// URIが解決できない
 
@@ -661,7 +661,7 @@ Failed to start MCP server 'filesystem'
 | ファイル | 説明 |
 |---------|------|
 | `crates/chat-cli/src/cli/agent/mod.rs` | Agent構造体定義、読み込み/書き込み処理 |
-| `schemas/agent-v1.json` | JSONスキーマ定義 |
+| `schemas/agent-v1.json` ([GitHub](https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json)) | JSONスキーマ定義 |
 
 **コミットハッシュ**: `63278298f451fd57ee439a2614bbac6a62da3870`  
 **コミット日時**: 2025-10-13 12:44:25 -0700

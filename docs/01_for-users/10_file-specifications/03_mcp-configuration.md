@@ -12,7 +12,7 @@
 | **ファイル形式** | JSON |
 | **エンコーディング** | UTF-8 |
 | **改行コード** | LF (Unix形式) |
-| **JSONスキーマ** | `schemas/agent-v1.json`（mcpServersフィールド） |
+| **JSONスキーマ** | ローカル: `schemas/agent-v1.json`（mcpServersフィールド） / [GitHub](https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json) |
 | **スキーマバージョン** | JSON Schema Draft-07 |
 
 ### ファイル配置場所
@@ -640,7 +640,7 @@ MCP server from mcp.json not loaded
 |---------|------|
 | `crates/chat-cli/src/cli/agent/mcp_config.rs` | McpServerConfig構造体定義 |
 | `crates/chat-cli/src/cli/chat/tools/custom_tool.rs` | CustomToolConfig構造体定義 |
-| `schemas/agent-v1.json` | JSONスキーマ定義（mcpServersフィールド） |
+| `schemas/agent-v1.json` ([GitHub](https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json)) | JSONスキーマ定義（mcpServersフィールド） |
 
 **コミットハッシュ**: `63278298f451fd57ee439a2614bbac6a62da3870`  
 **コミット日時**: 2025-10-13 12:44:25 -0700

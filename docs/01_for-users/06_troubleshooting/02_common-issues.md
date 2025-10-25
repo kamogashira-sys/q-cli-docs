@@ -167,7 +167,8 @@ Error: Invalid agent configuration
 cat .amazonq/cli-agents/my-agent.json | jq .
 
 # スキーマに対してバリデーション
-# schemas/agent-v1.json を参照
+# ローカル: schemas/agent-v1.json
+# GitHub: https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json
 
 # 最小限の有効な設定例
 cat > .aws/amazonq/cli-agents/my-agent.json << 'EOF'
