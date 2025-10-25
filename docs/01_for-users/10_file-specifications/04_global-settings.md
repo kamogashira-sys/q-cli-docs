@@ -469,7 +469,7 @@ q settings --delete <key>
 
 **全設定の表示**
 ```bash
-q settings all
+q settings list
 ```
 
 **設定ファイルを開く**
@@ -649,7 +649,7 @@ No value associated with <key>
 
 **解決方法**
 1. 設定キーのスペルを確認
-2. `q settings all`で全設定を確認
+2. `q settings list`で全設定を確認
 3. デフォルト値が使用されている可能性
 
 #### 問題4: 設定ファイルを開けない

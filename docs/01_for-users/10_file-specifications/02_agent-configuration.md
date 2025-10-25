@@ -537,7 +537,9 @@ EOF
 - 次回`q chat`実行時に反映
 
 **プログラム更新**
-- `q agent edit <agent-name>`コマンド（将来実装予定）
+```bash
+q agent edit --name <agent-name>
+```
 
 ### 削除
 

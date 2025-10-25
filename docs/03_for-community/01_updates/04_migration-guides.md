@@ -94,13 +94,13 @@ Agent設定でbashコマンドの許可リストを定義：
 #### 3. Knowledge PDF機能の活用
 PDFドキュメントをナレッジベースに追加：
 
+**Knowledge機能の有効化**:
 ```bash
-# PDFファイルを含むディレクトリをインデックス化
-q knowledge add --name docs --path /path/to/pdf-docs
-
-# 特定のPDFファイルを追加
-q knowledge add --name manual --path /path/to/manual.pdf
+# Knowledge機能を有効化
+q settings chat.enableKnowledge true
 ```
+
+Knowledge機能が有効な場合、Q CLIは自動的にプロジェクトディレクトリ内のPDFファイルをインデックス化します。
 
 **対応フォーマット**:
 - PDF（新規対応）
@@ -132,7 +132,7 @@ q chat
 export Q_OAUTH_REDIRECT_URI="http://localhost:8080/callback"
 
 # または設定ファイルで指定
-q settings set auth.oauthRedirectUri "http://localhost:8080/callback"
+q settings auth.oauthRedirectUri "http://localhost:8080/callback"
 ```
 
 #### 6. HTTP MCP headers環境変数の活用
@@ -284,11 +284,11 @@ q chat --resume "続きを教えて"
 # ファイルパスを確認
 ls -la /path/to/pdf
 
-# 明示的にPDFを指定
-q knowledge add --name manual --path /path/to/manual.pdf
+# Knowledge機能が有効か確認
+q settings chat.enableKnowledge
 
-# インデックス状態を確認
-q knowledge show
+# Knowledge設定を確認
+q settings list | grep knowledge
 ```
 
 ### セキュリティ上の注意
@@ -340,7 +340,7 @@ v1.18.0では、Delegate Tool、Stop Hook、Knowledge コマンド統合、/logd
 
 ```bash
 # Delegate Toolを有効化
-q settings set chat.enableDelegate true
+q settings chat.enableDelegate true
 
 # または /experiment コマンドで有効化
 /experiment
@@ -479,10 +479,10 @@ v1.16.0では、Agent機能の成熟化とMCPのrmcp移行が行われました�
 q agent list
 
 # Agent編集
-q agent edit my-agent
+q agent edit --name my-agent
 
-# Agent切り替え
-q agent use my-agent
+# デフォルトAgent設定
+q agent set-default
 ```
 
 #### 2. MCP設定の移行
@@ -490,7 +490,7 @@ q agent use my-agent
 
 ```bash
 # 設定ファイルを開く
-q settings edit
+q settings open
 
 # mcpServers形式に変更
 # transport: "stdio" または "http" を明示
@@ -651,7 +651,7 @@ q agent validate
 q chat "Hello"
 
 # MCPサーバーの確認
-q settings show | grep mcp
+q settings list | grep mcp
 
 # Knowledge機能の確認
 q settings chat.enableKnowledge

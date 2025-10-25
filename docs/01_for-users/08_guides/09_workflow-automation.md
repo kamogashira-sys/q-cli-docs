@@ -123,7 +123,7 @@ vi ~/.aws/amazonq/cli-agents/hello-hook.json
 ### ステップ2: Agentの起動
 
 ```bash
-q --agent hello-hook
+q chat --agent hello-hook
 ```
 
 ### ステップ3: 動作確認
@@ -218,7 +218,7 @@ vi ~/.aws/amazonq/cli-agents/auto-format-agent.json
 #### ステップ3: 使用
 
 ```bash
-q --agent auto-format-agent
+q chat --agent auto-format-agent
 ```
 
 ---
