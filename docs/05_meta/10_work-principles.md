@@ -183,13 +183,13 @@ cat schemas/agent-v1.json | jq '.required'
 **自動化ツールの活用**:
 ```bash
 # ファイル数カウント
-./06_scripts/count-files.sh
+./scripts/count-files.sh
 
 # 日付整合性チェック
-./06_scripts/check-dates.sh
+./scripts/check-dates.sh
 
 # 環境変数検索
-./06_scripts/search-env-var.sh Q_DEBUG
+./scripts/search-env-var.sh Q_DEBUG
 ```
 
 **記録の作成**:

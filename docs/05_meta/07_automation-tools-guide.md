@@ -16,7 +16,7 @@
 | check-dates.sh | 日付整合性チェック | 日付不一致の検出 |
 | search-env-var.sh | 環境変数検索 | 削除操作の安全性確保 |
 
-**配置場所**: `/06_scripts/`
+**配置場所**: `/scripts/`
 
 ---
 
@@ -53,19 +53,19 @@ cd q-cli-docs
 
 **ステップ2: 実行権限の付与**
 ```bash
-chmod +x 06_scripts/*.sh
+chmod +x scripts/*.sh
 ```
 
 **ステップ3: 動作確認**
 ```bash
 # ファイル数カウント
-./06_scripts/count-files.sh
+./scripts/count-files.sh
 
 # 日付チェック
-./06_scripts/check-dates.sh
+./scripts/check-dates.sh
 
 # 環境変数検索（テスト）
-./06_scripts/search-env-var.sh Q_DEBUG
+./scripts/search-env-var.sh Q_DEBUG
 ```
 
 ---
@@ -91,7 +91,7 @@ chmod +x 06_scripts/*.sh
 **基本的な使用**:
 ```bash
 cd /home/katoh/projects/q-cli-docs
-./06_scripts/count-files.sh
+./scripts/count-files.sh
 ```
 
 **出力例**:
@@ -171,7 +171,7 @@ docs直下: 5 文書
 **基本的な使用**:
 ```bash
 cd /home/katoh/projects/q-cli-docs
-./06_scripts/check-dates.sh
+./scripts/check-dates.sh
 ```
 
 **出力例**:
@@ -249,7 +249,7 @@ cd /home/katoh/projects/q-cli-docs
 **基本的な使用**:
 ```bash
 cd /home/katoh/projects/q-cli-docs
-./06_scripts/search-env-var.sh Q_DEBUG
+./scripts/search-env-var.sh Q_DEBUG
 ```
 
 **出力例**:
@@ -291,7 +291,7 @@ crates/chat-cli/src/main.rs:28:    if env::var("Q_DEBUG").is_ok() {
 **環境変数削除前**（必須）:
 ```bash
 # ステップ1: 使用箇所確認
-./06_scripts/search-env-var.sh Q_VARIABLE_NAME
+./scripts/search-env-var.sh Q_VARIABLE_NAME
 
 # ステップ2: 使用箇所0件を確認
 # 使用箇所数: 0
@@ -301,7 +301,7 @@ crates/chat-cli/src/main.rs:28:    if env::var("Q_DEBUG").is_ok() {
 # ステップ4: 削除実行
 
 # ステップ5: 再確認
-./06_scripts/search-env-var.sh Q_VARIABLE_NAME
+./scripts/search-env-var.sh Q_VARIABLE_NAME
 ```
 
 **定期チェック時**:
@@ -322,7 +322,7 @@ crates/chat-cli/src/main.rs:28:    if env::var("Q_DEBUG").is_ok() {
 ```bash
 # プロジェクトルートで実行
 cd /home/katoh/projects/q-cli-docs
-./06_scripts/count-files.sh
+./scripts/count-files.sh
 ```
 
 ---

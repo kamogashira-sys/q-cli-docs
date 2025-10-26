@@ -1087,10 +1087,10 @@ curl -I "https://github.com/aws/amazon-q-developer-cli/compare/vX.Y.Z-1...vX.Y.Z
 
 ```bash
 # 日付整合性チェック
-./06_scripts/check-dates.sh
+./scripts/check-dates.sh
 
 # ファイル数確認
-./06_scripts/count-files.sh
+./scripts/count-files.sh
 ```
 
 #### チェックリスト
