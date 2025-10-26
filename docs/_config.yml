@@ -23,10 +23,10 @@ author: Q CLI Documentation Project
 # Navigation
 header_pages:
   - README.md
-  - getting-started/README.md
-  - user-guide/README.md
-  - developer-guide/README.md
-  - reference/README.md
+  - 01_for-users/README.md
+  - 02_for-developers/README.md
+  - 03_for-community/README.md
+  - 05_meta/README.md
 
 # Exclude from processing
 exclude:
