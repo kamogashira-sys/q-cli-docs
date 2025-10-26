@@ -422,7 +422,7 @@ fn validate_config(config: &Config) -> Result<()> {
 
 ## 🔗 関連ドキュメント
 
-- [エラーメッセージ管理の概要](05_error-management-overview.md)
+- [エラーメッセージ管理の概要](03_error-management-overview.md)
 - [エラーメッセージ一覧](../../01_for-users/07_reference/10_error-messages.md)
 - [コントリビューションガイド](README.md)
 

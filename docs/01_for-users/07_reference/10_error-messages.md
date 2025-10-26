@@ -143,8 +143,8 @@
 - [FAQ](../06_troubleshooting/01_faq.md)
 - [設定ガイド](../03_configuration/README.md)
 - [コマンドリファレンス](02_commands.md)
-- [エラー管理概要](../../02_for-developers/01_contributing/05_error-management-overview.md) - 開発者向け
-- [エラーメッセージ追加ガイド](../../02_for-developers/01_contributing/06_adding-error-messages.md) - 開発者向け
+- [エラー管理概要](../../02_for-developers/01_contributing/03_error-management-overview.md) - 開発者向け
+- [エラーメッセージ追加ガイド](../../02_for-developers/01_contributing/04_adding-error-messages.md) - 開発者向け
 
 ---
 
