@@ -97,7 +97,7 @@ Phase 3: 検証と品質確認（必須）
 cd /path/to/q-cli-docs
 
 # 作業記録ディレクトリ
-mkdir -p /home/katoh/work_records/$(date +%Y%m%d)
+mkdir -p /path/to/work_records/$(date +%Y%m%d)
 ```
 
 **GitHubアクセストークン**（オプション）:
@@ -1120,7 +1120,7 @@ git push origin main
 
 ## 作業記録
 
-作業記録テンプレート: `/home/katoh/work_records/YYYYMMDD/YYYYMMDDHHmm_vX.Y.Z_update_worklog.md`
+作業記録テンプレート: `/path/to/work_records/YYYYMMDD/YYYYMMDDHHmm_vX.Y.Z_update_worklog.md`
 
 ---
 

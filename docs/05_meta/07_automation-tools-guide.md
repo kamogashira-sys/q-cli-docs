@@ -90,7 +90,7 @@ chmod +x scripts/*.sh
 
 **基本的な使用**:
 ```bash
-cd /home/katoh/projects/q-cli-docs
+cd /path/to/q-cli-docs
 ./scripts/count-files.sh
 ```
 
@@ -170,7 +170,7 @@ docs直下: 5 文書
 
 **基本的な使用**:
 ```bash
-cd /home/katoh/projects/q-cli-docs
+cd /path/to/q-cli-docs
 ./scripts/check-dates.sh
 ```
 
@@ -248,7 +248,7 @@ cd /home/katoh/projects/q-cli-docs
 
 **基本的な使用**:
 ```bash
-cd /home/katoh/projects/q-cli-docs
+cd /path/to/q-cli-docs
 ./scripts/search-env-var.sh Q_DEBUG
 ```
 
@@ -321,7 +321,7 @@ crates/chat-cli/src/main.rs:28:    if env::var("Q_DEBUG").is_ok() {
 **解決方法**:
 ```bash
 # プロジェクトルートで実行
-cd /home/katoh/projects/q-cli-docs
+cd /path/to/q-cli-docs
 ./scripts/count-files.sh
 ```
 

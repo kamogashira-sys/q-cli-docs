@@ -29,7 +29,7 @@ Phase 1-3での具体的な実践例を紹介します。
 **具体的な手順**:
 ```bash
 # ステップ1: 作業記録の収集
-find /home/katoh/work_records -name "*.md" -type f
+find /path/to/work_records -name "*.md" -type f
 
 # ステップ2: 問題の抽出
 grep -r "修正\|エラー\|誤り" work_records/
