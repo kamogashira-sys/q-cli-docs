@@ -2,7 +2,7 @@
 
 ---
 
-# Amazon Q CLI 設定項目完全リファレンス
+# 設定項目完全リファレンス
 
 **ソースコード**: `crates/chat-cli/src/database/settings.rs`  
 **対象バージョン**: v1.18.0以降

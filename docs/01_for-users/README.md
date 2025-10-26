@@ -2,7 +2,7 @@
 
 ---
 
-# For Users - ユーザー向けガイド
+# For Users - ユーザー向け
 
 Amazon Q CLIを使う方向けのドキュメントです。
 

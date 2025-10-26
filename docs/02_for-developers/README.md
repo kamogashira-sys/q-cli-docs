@@ -2,7 +2,7 @@
 
 ---
 
-# Developer Guide - 開発者向けガイド
+# Developer Guide
 
 
 ---

@@ -2,7 +2,7 @@
 
 ---
 
-# インストールガイド
+# インストール
 
 **参照**: [AWS公式ドキュメント](https://docs.aws.amazon.com/ja_jp/amazonq/latest/qdeveloper-ug/command-line-installing.html)
 

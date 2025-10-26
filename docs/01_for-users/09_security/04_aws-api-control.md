@@ -2,7 +2,7 @@
 
 ---
 
-# AWS API制御ガイド
+# AWS API制御
 
 **対象**: Amazon Q Developer CLI
 

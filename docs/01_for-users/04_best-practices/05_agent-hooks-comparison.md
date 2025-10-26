@@ -2,7 +2,7 @@
 
 ---
 
-# Agent Hooks vs Kiro AIエージェントフック 比較ガイド
+# Agent Hooks vs Kiro AIエージェントフック比較
 
 **対象バージョン**: v1.17.0以降  
 **難易度**: 中級

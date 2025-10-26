@@ -2,7 +2,7 @@
 
 ---
 
-# Amazon Q CLI 環境変数ガイド
+# 環境変数
 
 **ソースコード**: `crates/chat-cli/src/util/consts.rs`, `crates/chat-cli/src/mcp_client/client.rs`  
 **対象バージョン**: v1.17.0以降

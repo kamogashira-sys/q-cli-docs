@@ -2,7 +2,7 @@
 
 ---
 
-# 認証情報管理ガイド
+# 認証情報管理
 
 **対象**: Amazon Q Developer CLI
 

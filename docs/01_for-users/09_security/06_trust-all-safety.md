@@ -2,7 +2,7 @@
 
 ---
 
-# trust-all安全使用ガイド
+# trust-all安全使用
 
 **対象**: Amazon Q Developer CLI
 
