@@ -376,9 +376,7 @@ rules: |
 
 **次へ**: [データプライバシー](02_data-privacy.md) →
 
----
 
-最終更新: 2025-10-18
 
 **参考資料**:
 - [AWS責任共有モデル](https://aws.amazon.com/compliance/shared-responsibility-model/)
@@ -387,4 +385,4 @@ rules: |
 
 ---
 
-最終更新: 2025-10-18
+最終更新: 2025-10-26

@@ -473,10 +473,8 @@ aws cloudtrail create-trail \
 
 ← **前へ**: [AWS API制御](04_aws-api-control.md) | **次へ**: [trust-all安全使用](06_trust-all-safety.md) →
 
----
 
-最終更新: 2025-10-18
 
 ---
 
-最終更新: 2025-10-18
+最終更新: 2025-10-26

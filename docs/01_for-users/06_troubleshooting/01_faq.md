@@ -645,9 +645,7 @@ q settings list
 2. Amazon Q Developer → Settings
 3. Usage & Billing を確認
 
----
 
-最終更新: 2025-10-26
 ---
 
 **関連トピック**:

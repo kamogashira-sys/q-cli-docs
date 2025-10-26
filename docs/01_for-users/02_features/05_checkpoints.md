@@ -162,9 +162,7 @@ Checkpointを使用する前に、初期化が必要です：
 - [グローバル設定](../03_configuration/02_global-settings.md)
 - [実験的機能](07_experimental.md)
 
----
 
-最終更新: 2025-10-26
 ---
 
 **関連トピック**:

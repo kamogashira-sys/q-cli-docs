@@ -584,9 +584,7 @@ q settings chat.enableHistoryHints true
 - [グローバル設定](../03_configuration/02_global-settings.md)
 - [コマンドリファレンス](../07_reference/02_commands.md)
 
----
 
-最終更新: 2025-10-26
 
 ---
 

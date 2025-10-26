@@ -209,11 +209,9 @@ export Q_TELEMETRY_ENABLED=false
 - [クイックリファレンス](../07_reference/08_quick-reference.md)
 - [トピック別インデックス](../07_reference/09_topic-index.md)
 
----
 
-最終更新: 2025-10-18  
 **対象バージョン**: v1.17.0以降
 
 ---
 
-最終更新: 2025-10-18
+最終更新: 2025-10-26

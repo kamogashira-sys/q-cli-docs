@@ -390,9 +390,7 @@ Amazon Q Developerは以下の規制・基準に対応：
 
 ← **前へ**: [セキュリティ概要](01_security-overview.md) | **次へ**: [ファイルアクセス制御](03_file-access-control.md) →
 
----
 
-最終更新: 2025-10-18
 
 **参考資料**:
 - [AWS Data Privacy FAQ](https://aws.amazon.com/compliance/data-privacy-faq/)
@@ -400,4 +398,4 @@ Amazon Q Developerは以下の規制・基準に対応：
 
 ---
 
-最終更新: 2025-10-18
+最終更新: 2025-10-26

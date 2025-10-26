@@ -418,10 +418,8 @@ aws iam simulate-principal-policy \
 
 ← **前へ**: [ファイルアクセス制御](03_file-access-control.md) | **次へ**: [認証情報管理](05_credentials-management.md) →
 
----
 
-最終更新: 2025-10-18
 
 ---
 
-最終更新: 2025-10-18
+最終更新: 2025-10-26
