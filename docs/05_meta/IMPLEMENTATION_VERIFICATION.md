@@ -1,10 +1,12 @@
-[ホーム](../README.md) > [05_meta](README.md) > Implementation Verification Checklist
+[ホーム](../README.md) > [05_meta](README.md) > Implementation Verification
 
 ---
 
-# 実装照合チェックリスト
+# 実装照合プロセス
 
 **目的**: ドキュメントと実装の整合性を保証する
+
+> **関連**: このプロセスは[品質保証プロセス](QUALITY_ASSURANCE.md)の一部です
 
 ---
 
@@ -190,4 +192,12 @@ ________________
 
 ---
 
-作成日: 2025-10-09
+## 関連ドキュメント
+
+- [品質保証プロセス](QUALITY_ASSURANCE.md) - 全体的な品質保証の原則とチェックリスト
+- [コントリビューションガイドライン](CONTRIBUTING.md) - ドキュメント作成の基本ルール
+
+---
+
+作成日: 2025-10-09  
+最終更新: 2025-10-26
