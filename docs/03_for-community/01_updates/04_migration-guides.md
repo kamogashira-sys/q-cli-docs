@@ -694,4 +694,4 @@ q settings chat.enableKnowledge
 2. [GitHub Issues](https://github.com/aws/amazon-q-developer-cli/issues)で既知の問題を検索
 3. 新しいIssueを作成して報告
 
-最終更新: %Y->-
+最終更新: 2025-10-26

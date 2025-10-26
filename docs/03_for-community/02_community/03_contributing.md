@@ -273,4 +273,4 @@ git push origin feature/your-feature-name
 
 あなたの貢献がAmazon Q CLIをより良いものにします。ご協力ありがとうございます！
 
-最終更新: %Y->-
+最終更新: 2025-10-26
