@@ -75,7 +75,7 @@ done
 **テスト**:
 ```bash
 # 実行テスト
-./scripts/count-files.sh
+./06_scripts/count-files.sh
 
 # 結果確認
 # 全ファイル数: 109
@@ -242,7 +242,7 @@ for md_file in Path("docs").glob("**/*.md"):
 **具体的な手順**:
 ```bash
 # ステップ1: ツール実行
-./scripts/check-dates.sh
+./06_scripts/check-dates.sh
 
 # ステップ2: 不一致の確認
 # ❌ docs/05_meta/README.md

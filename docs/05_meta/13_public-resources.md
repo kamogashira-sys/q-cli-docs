@@ -12,8 +12,8 @@
 
 | カテゴリ | 配置場所 | 説明 |
 |---------|---------|------|
-| 自動化ツール | `/scripts/` | 品質チェック自動化スクリプト |
-| チェックリスト | `/templates/` | 作業品質確保用チェックリスト |
+| 自動化ツール | `/06_scripts/` | 品質チェック自動化スクリプト |
+| チェックリスト | `/07_templates/` | 作業品質確保用チェックリスト |
 | メタドキュメント | `/docs/05_meta/` | 品質保証プロセス文書 |
 
 ---
@@ -31,7 +31,7 @@
 
 **使用方法**:
 ```bash
-./scripts/count-files.sh
+./06_scripts/count-files.sh
 ```
 
 **詳細**: [自動化ツール使用ガイド](07_automation-tools-guide.md#count-filessh)
@@ -49,7 +49,7 @@
 
 **使用方法**:
 ```bash
-./scripts/check-dates.sh [ディレクトリパス]
+./06_scripts/check-dates.sh [ディレクトリパス]
 ```
 
 **詳細**: [自動化ツール使用ガイド](07_automation-tools-guide.md#check-datessh)
@@ -67,7 +67,7 @@
 
 **使用方法**:
 ```bash
-./scripts/search-env-var.sh 環境変数名
+./06_scripts/search-env-var.sh 環境変数名
 ```
 
 **詳細**: [自動化ツール使用ガイド](07_automation-tools-guide.md#search-env-varsh)
@@ -84,7 +84,7 @@
 
 **使用方法**:
 ```bash
-./scripts/validate_commands.sh
+./06_scripts/validate_commands.sh
 ```
 
 ---
@@ -99,7 +99,7 @@
 
 **使用方法**:
 ```bash
-./scripts/validate_config_keys.sh
+./06_scripts/validate_config_keys.sh
 ```
 
 ---

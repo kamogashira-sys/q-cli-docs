@@ -123,7 +123,7 @@
 # 機能: 使用箇所の全検索、削除可否判定
 ```
 
-**配置**: `/scripts/`
+**配置**: `/06_scripts/`
 
 **詳細**: [公開リソース一覧](13_public-resources.md#自動化ツールscripts) | [自動化ツール使用ガイド](07_automation-tools-guide.md)
 
@@ -137,7 +137,7 @@
 3. 削除操作チェックリスト（10項目）
 4. 文書品質チェックリスト（13項目）
 
-**配置**: `/templates/`
+**配置**: `/07_templates/`
 
 **詳細**: [公開リソース一覧](13_public-resources.md#チェックリストtemplates) | [チェックリスト活用ガイド](08_checklist-guide.md)
 
@@ -270,7 +270,7 @@ for md_file in Path("docs").glob("**/*.md"):
 **検証方法**:
 ```bash
 # check-dates.shツールを使用
-./scripts/check-dates.sh
+./06_scripts/check-dates.sh
 
 # Git日付とドキュメント日付を比較
 git_date=$(git log -1 --format="%ad" --date=format:"%Y-%m-%d" -- "$file")
@@ -347,10 +347,10 @@ fi
 python3 check_links.py
 
 # 日付整合性チェック
-./scripts/check-dates.sh
+./06_scripts/check-dates.sh
 
 # ファイル数カウント
-./scripts/count-files.sh
+./06_scripts/count-files.sh
 ```
 
 **所要時間**: 5分以内
@@ -426,10 +426,10 @@ python3 check_links.py
 **自動測定**:
 ```bash
 # ファイル数
-./scripts/count-files.sh
+./06_scripts/count-files.sh
 
 # 日付整合性
-./scripts/check-dates.sh
+./06_scripts/check-dates.sh
 
 # リンク切れ
 python3 check_links.py

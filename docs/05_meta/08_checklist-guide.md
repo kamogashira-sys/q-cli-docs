@@ -17,7 +17,7 @@
 | 3 | 削除操作 | 削除前後の確認 | 10項目 | 削除時 |
 | 4 | 文書品質 | ドキュメント品質 | 13項目 | 全作業時 |
 
-**配置場所**: `/templates/`
+**配置場所**: `/07_templates/`
 
 ---
 
@@ -226,7 +226,7 @@ q chat "Hello"
   - なぜ削除するか記録
   
 - [ ] **使用箇所を全検索**
-  - `./scripts/search-env-var.sh 変数名`
+  - `./06_scripts/search-env-var.sh 変数名`
   - `rg "削除対象" docs/`
   
 - [ ] **使用箇所0件を確認**
@@ -265,7 +265,7 @@ q chat "Hello"
 **環境変数の削除**:
 ```bash
 # ステップ1: 使用箇所検索
-./scripts/search-env-var.sh Q_OLD_VARIABLE
+./06_scripts/search-env-var.sh Q_OLD_VARIABLE
 # 結果: 使用箇所数: 0
 
 # ステップ2: レビュー承認
@@ -275,7 +275,7 @@ q chat "Hello"
 # （該当箇所を削除）
 
 # ステップ4: 再確認
-./scripts/search-env-var.sh Q_OLD_VARIABLE
+./06_scripts/search-env-var.sh Q_OLD_VARIABLE
 # 結果: 使用箇所数: 0（ドキュメントからも削除済み）
 
 # ステップ5: リンク切れ確認
@@ -358,7 +358,7 @@ python3 check_links.py
 python3 check_links.py
 
 # ステップ2: 日付チェック
-./scripts/check-dates.sh
+./06_scripts/check-dates.sh
 
 # ステップ3: フォーマット確認
 # - 日付が最下部にあるか

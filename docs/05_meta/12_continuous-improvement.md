@@ -121,7 +121,7 @@ python3 check_links.py
 **ステップ2: 使用箇所確認**
 ```bash
 # 環境変数の場合
-./scripts/search-env-var.sh 変数名
+./06_scripts/search-env-var.sh 変数名
 
 # ファイルの場合
 grep -r "ファイル名" docs/
@@ -157,10 +157,10 @@ python3 check_links.py
 python3 check_links.py
 
 # 日付整合性チェック
-./scripts/check-dates.sh
+./06_scripts/check-dates.sh
 
 # ファイル数カウント
-./scripts/count-files.sh
+./06_scripts/count-files.sh
 ```
 
 **所要時間**: 5分以内
@@ -330,8 +330,8 @@ python3 check_links.py
 **週次測定**:
 ```bash
 # 自動測定
-./scripts/count-files.sh > weekly_check.log
-./scripts/check-dates.sh >> weekly_check.log
+./06_scripts/count-files.sh > weekly_check.log
+./06_scripts/check-dates.sh >> weekly_check.log
 python3 check_links.py >> weekly_check.log
 
 # 結果の記録
