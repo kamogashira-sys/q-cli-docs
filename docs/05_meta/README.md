@@ -27,6 +27,7 @@
 | 11 | [quality-assurance-examples.md](11_quality-assurance-examples.md) | 品質保証の実践例 |
 | 12 | [continuous-improvement.md](12_continuous-improvement.md) | 継続的改善ガイド |
 | 13 | [public-resources.md](13_public-resources.md) | 公開リソース一覧（ツール・チェックリスト） |
+| 14 | [version-update-procedure.md](14_version-update-procedure.md) | バージョンアップ対応手順書 |
 
 ---
 
