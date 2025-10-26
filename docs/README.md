@@ -397,26 +397,15 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 
 ### 目的別ガイド
 
-#### Amazon Q CLIを始めたい
-→ [Getting Started](01_for-users/01_getting-started/) セクション（5文書）から始めてください
-
-#### 設定を変更したい
-→ [設定ガイド](01_for-users/03_configuration/)（8文書）で設定方法を確認してください
-
-#### 特定の機能を使いたい
-→ [機能ガイド](01_for-users/02_features/)（8文書）で各機能の使い方を確認してください
-
-#### Q CLIの応答品質を最大化したい【重要】
-→ [コンテキスト管理ガイド](01_for-users/08_guides/)（9文書）で体系的に学習してください
-
-#### 問題を解決したい
-→ [トラブルシューティング](01_for-users/06_troubleshooting/)（3文書）で解決方法を探してください
-
-#### 詳細な仕様を知りたい
-→ [リファレンス](01_for-users/07_reference/)（7文書）で完全なリストを確認してください
-
-#### コントリビューションしたい
-→ [Developer Guide](02_for-developers/)（9文書）で開発方法を確認してください
+| やりたいこと | 参照先 | 文書数 |
+|------------|--------|--------|
+| Amazon Q CLIを始めたい | [Getting Started](01_for-users/01_getting-started/) | 5文書 |
+| 設定を変更したい | [設定ガイド](01_for-users/03_configuration/) | 8文書 |
+| 特定の機能を使いたい | [機能ガイド](01_for-users/02_features/) | 8文書 |
+| **Q CLIの応答品質を最大化したい【重要】** | [コンテキスト管理ガイド](01_for-users/08_guides/) | 9文書 |
+| 問題を解決したい | [トラブルシューティング](01_for-users/06_troubleshooting/) | 3文書 |
+| 詳細な仕様を知りたい | [リファレンス](01_for-users/07_reference/) | 7文書 |
+| コントリビューションしたい | [Developer Guide](02_for-developers/) | 9文書 |
 
 ---
 
