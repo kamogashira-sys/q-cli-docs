@@ -182,4 +182,4 @@ Amazon Q CLIの開発ロードマップと今後の計画について説明し�
 - [GitHub Discussions](https://github.com/aws/amazon-q-developer-cli/discussions)
 - [GitHub Issues](https://github.com/aws/amazon-q-developer-cli/issues)
 
-最終更新: 2025-10-25
+最終更新: %Y->-

@@ -219,4 +219,4 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 - [GitHub Discussions](https://github.com/aws/amazon-q-developer-cli/discussions)
 - [コミュニティ](README.md)
 
-最終更新: 2025-10-09
+最終更新: %Y->-
