@@ -85,5 +85,5 @@ rg "filename.md" docs/
 
 ---
 
-作成日: YYYY-MM-DD  
-最終更新: YYYY-MM-DD
+作成日: 2025-10-26  
+最終更新: 2025-10-26
