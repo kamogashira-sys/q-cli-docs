@@ -4,7 +4,7 @@
 
 # AWS API制御ガイド
 
-**最終更新**: 2025-10-18  
+最終更新: 2025-10-18  
 **対象**: Amazon Q Developer CLI
 
 ---
@@ -421,4 +421,4 @@ aws iam simulate-principal-policy \
 
 ---
 
-**最終更新**: 2025-10-18
+最終更新: 2025-10-18
