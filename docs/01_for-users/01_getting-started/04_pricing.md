@@ -4,7 +4,6 @@
 
 # 料金情報
 
-最終更新: 2025-10-26
 
 ---
 
@@ -103,3 +102,7 @@ AWS Billing Dashboardで使用量と料金を確認できます：
 **関連トピック**:
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
 - [FAQ](../06_troubleshooting/01_faq.md)
+
+---
+
+最終更新: 2025-10-26

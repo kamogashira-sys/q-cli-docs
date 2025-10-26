@@ -4,7 +4,6 @@
 
 # 料金プラン比較ガイド
 
-最終更新: 2025-10-18  
 **対象**: Amazon Q Developer
 
 ---
@@ -304,3 +303,7 @@ aws q list-subscriptions
 - [Amazon Q Developer Pricing](https://aws.amazon.com/q/developer/pricing/)
 - [AWS Pricing Calculator](https://calculator.aws/)
 - [AWS Cost Management](https://aws.amazon.com/aws-cost-management/)
+
+---
+
+最終更新: 2025-10-18

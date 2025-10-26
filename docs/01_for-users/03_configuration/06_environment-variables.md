@@ -4,7 +4,6 @@
 
 # Amazon Q CLI 環境変数ガイド
 
-作成日: 2025-10-08  
 **ソースコード**: `crates/chat-cli/src/util/consts.rs`, `crates/chat-cli/src/mcp_client/client.rs`  
 **対象バージョン**: v1.17.0以降
 
@@ -412,3 +411,7 @@ q chat  # -vオプションなし
 - [セキュリティ概要](../09_security/01_security-overview.md) - セキュリティ設定の基本
 - [テレメトリー設定](../03_configuration/05_telemetry.md) - テレメトリー環境変数の詳細
 - [エンタープライズ展開ガイド](../05_deployment/01_enterprise-deployment.md) - 組織での環境変数管理
+
+---
+
+作成日: 2025-10-08

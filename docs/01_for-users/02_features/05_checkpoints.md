@@ -4,7 +4,6 @@
 
 # Checkpoint機能（実験的機能）
 
-最終更新: 2025-10-26
 
 ---
 
@@ -171,3 +170,7 @@ Checkpointを使用する前に、初期化が必要です：
 **関連トピック**:
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
 - [FAQ](../06_troubleshooting/01_faq.md)
+
+---
+
+最終更新: 2025-10-26

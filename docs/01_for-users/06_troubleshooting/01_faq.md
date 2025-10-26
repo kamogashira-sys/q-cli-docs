@@ -4,7 +4,6 @@
 
 # FAQ - よくある質問
 
-最終更新: 2025-10-26
 
 ---
 
@@ -661,3 +660,7 @@ q settings list
 - [データプライバシー](../09_security/02_data-privacy.md) - プライバシーに関する質問
 - [料金プラン比較](../05_deployment/02_pricing-comparison.md) - プランに関する質問
 - [エンタープライズ展開ガイド](../05_deployment/01_enterprise-deployment.md) - 展開に関する質問
+
+---
+
+最終更新: 2025-10-26

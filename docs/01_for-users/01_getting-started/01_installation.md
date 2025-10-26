@@ -4,7 +4,6 @@
 
 # インストールガイド
 
-最終更新: 2025-10-26  
 **参照**: [AWS公式ドキュメント](https://docs.aws.amazon.com/ja_jp/amazonq/latest/qdeveloper-ug/command-line-installing.html)
 
 ---
@@ -956,4 +955,8 @@ q issue
 ---
 
 作成日: 2025-10-11  
+最終更新: 2025-10-26
+
+---
+
 最終更新: 2025-10-26

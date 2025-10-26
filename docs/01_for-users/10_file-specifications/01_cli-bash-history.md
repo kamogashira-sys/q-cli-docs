@@ -4,8 +4,6 @@
 
 # .cli_bash_history ファイルフォーマット仕様書
 
-作成日: 2025-10-24  
-最終更新: 2025-10-25  
 **対象バージョン**: Amazon Q Developer CLI v1.18.1+  
 **ソースコード**: `crates/chat-cli/src/util/directories.rs`, `crates/chat-cli/src/cli/chat/prompt.rs`, `crates/chat-cli/src/cli/chat/input_source.rs`  
 **コミットハッシュ**: `63278298f451fd57ee439a2614bbac6a62da3870`  
@@ -303,3 +301,8 @@ AWS CLIのインストール方法は？
 
 **作成者**: Amazon Q Developer CLI  
 **調査方法**: ソースコード解析 + 実ファイル確認
+
+---
+
+作成日: 2025-10-24  
+最終更新: 2025-10-25

@@ -4,8 +4,6 @@
 
 # Amazon Q CLI 設定項目完全リファレンス
 
-作成日: 2025-10-08  
-最終更新: 2025-10-26  
 **ソースコード**: `crates/chat-cli/src/database/settings.rs`  
 **対象バージョン**: v1.18.0以降
 
@@ -438,3 +436,8 @@ cp ~/.local/share/amazon-q/settings.json ~/.local/share/amazon-q/settings.json.b
 **ドキュメント作成日**: 2025-10-08  
 最終更新: 2025-10-26  
 **ソースコード**: `crates/chat-cli/src/database/settings.rs`, `crates/chat-cli/src/cli/chat/consts.rs` (v1.18.0)
+
+---
+
+作成日: 2025-10-08  
+最終更新: 2025-10-26

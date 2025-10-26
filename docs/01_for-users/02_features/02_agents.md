@@ -4,7 +4,6 @@
 
 # Agent機能
 
-最終更新: 2025-10-26  
 **対象バージョン**: v1.17.0以降
 
 ---
@@ -1423,3 +1422,7 @@ Stop Hookは、会話ターン終了時（Assistantの応答完了時）に自�
 **関連トピック**:
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
 - [FAQ](../06_troubleshooting/01_faq.md)
+
+---
+
+最終更新: 2025-10-26

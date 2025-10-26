@@ -4,7 +4,6 @@
 
 # Getting Started - はじめに
 
-最終更新: 2025-10-11
 
 ---
 
@@ -182,3 +181,7 @@ Q CLIは、MCPサーバーを追加することで機能を拡張できます。
 - [セキュリティ概要](../09_security/01_security-overview.md) - セキュリティの基本原則
 - [料金プラン比較ガイド](../05_deployment/02_pricing-comparison.md) - Free/Pro/Enterpriseプランの違い
 - [エンタープライズ導入ガイド](../05_deployment/01_enterprise-deployment.md) - 組織での導入方法
+
+---
+
+最終更新: 2025-10-11

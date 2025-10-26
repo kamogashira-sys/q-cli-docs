@@ -4,7 +4,6 @@
 
 # Developer Guide - 開発者向けガイド
 
-最終更新: 2025-10-19
 
 ---
 
@@ -92,3 +91,7 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 - [Tokio](https://tokio.rs/) - 非同期ランタイム
 - [AWS SDK for Rust](https://aws.amazon.com/sdk-for-rust/) - AWS統合
 - [MCP](https://modelcontextprotocol.io/) - Model Context Protocol
+
+---
+
+最終更新: 2025-10-19

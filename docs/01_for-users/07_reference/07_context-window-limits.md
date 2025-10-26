@@ -4,7 +4,6 @@
 
 # コンテキストウィンドウ制限
 
-最終更新: 2025-10-18
 
 ---
 
@@ -150,3 +149,7 @@ context:
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
 - [コンテキスト管理ベストプラクティス](../08_guides/04_best-practices.md)
 - [Agent設定ガイド](../03_configuration/03_agent-configuration.md)
+
+---
+
+最終更新: 2025-10-18

@@ -4,7 +4,6 @@
 
 # チャット機能
 
-最終更新: 2025-10-26  
 **対象バージョン**: v1.17.0以降
 
 ---
@@ -584,6 +583,10 @@ q settings chat.enableHistoryHints true
 - [Checkpoint機能](05_checkpoints.md)
 - [グローバル設定](../03_configuration/02_global-settings.md)
 - [コマンドリファレンス](../07_reference/02_commands.md)
+
+---
+
+最終更新: 2025-10-26
 
 ---
 

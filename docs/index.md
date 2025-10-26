@@ -4,7 +4,6 @@
 
 # Amazon Q Developer CLI 解体新書
 
-最終更新: 2025-10-18
 
 ---
 
@@ -103,3 +102,7 @@ Q CLIを効果的に活用するための詳細な情報を提供しています
 
 **プロジェクト管理**: [GitHub](https://github.com/aws/amazon-q-developer-cli)  
 **ライセンス**: MIT License
+
+---
+
+最終更新: 2025-10-18

@@ -4,7 +4,6 @@
 
 # セキュリティ概要
 
-最終更新: 2025-10-18  
 **対象**: Amazon Q Developer CLI
 
 ---
@@ -385,3 +384,7 @@ rules: |
 - [AWS責任共有モデル](https://aws.amazon.com/compliance/shared-responsibility-model/)
 - [AWS Security Best Practices](https://aws.amazon.com/architecture/security-identity-compliance/)
 - [Amazon Q Developer公式ドキュメント](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/)
+
+---
+
+最終更新: 2025-10-18

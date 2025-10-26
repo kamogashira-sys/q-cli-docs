@@ -5,7 +5,6 @@
 # 最初の一歩 - Amazon Q CLIの基本操作
 
 **対象**: 体系的に学びたい方  
-最終更新: 2025-10-26
 
 ---
 
@@ -398,3 +397,7 @@ q login
 **関連トピック**:
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
 - [FAQ](../06_troubleshooting/01_faq.md)
+
+---
+
+最終更新: 2025-10-26

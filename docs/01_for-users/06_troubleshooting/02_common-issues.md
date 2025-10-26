@@ -4,7 +4,6 @@
 
 # Amazon Q CLI 設定トラブルシューティング
 
-作成日: 2025-10-08  
 **対象バージョン**: v1.17.0以降
 
 ## 概要
@@ -1236,3 +1235,7 @@ GitHub ISSUEを報告
 **関連トピック**:
 - [コンテキストウィンドウ制限](../07_reference/07_context-window-limits.md)
 - [設定リファレンス](../07_reference/03_settings-reference.md)
+
+---
+
+作成日: 2025-10-08

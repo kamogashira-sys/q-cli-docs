@@ -4,7 +4,6 @@
 
 # セキュリティのベストプラクティス
 
-最終更新: 2025-10-26  
 **対象バージョン**: v1.17.0以降
 
 ---
@@ -738,3 +737,7 @@ aws organizations put-policy \
 - [データプライバシー](../09_security/02_data-privacy.md) - データの取り扱い
 - [テレメトリー設定](../03_configuration/05_telemetry.md) - 使用状況データの管理
 - [セキュリティチェックリスト](../05_deployment/03_security-checklist.md) - 設定確認項目
+
+---
+
+最終更新: 2025-10-26

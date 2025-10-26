@@ -1,6 +1,5 @@
 # 会話状態仕様書
 
-最終更新: 2025-10-25  
 **対象バージョン**: v1.18.1以降  
 **ソースコード**: `crates/chat-cli/src/cli/chat/conversation.rs`
 
@@ -446,3 +445,7 @@ if let Some(duration) = conversation.get_tangent_duration_seconds() {
 - タンジェントモードは実験的な機能であり、予期しない動作が発生する可能性があります
 - チェックポイント機能はGitリポジトリ内でのみ使用可能です
 - 非シリアライズフィールド（tool_manager、agents）は復元後に再設定が必要です
+
+---
+
+最終更新: 2025-10-25

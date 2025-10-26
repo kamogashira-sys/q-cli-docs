@@ -4,7 +4,6 @@
 
 # データプライバシーガイド
 
-最終更新: 2025-10-18  
 **対象**: Amazon Q Developer CLI
 
 ---
@@ -398,3 +397,7 @@ Amazon Q Developerは以下の規制・基準に対応：
 **参考資料**:
 - [AWS Data Privacy FAQ](https://aws.amazon.com/compliance/data-privacy-faq/)
 - [AWS Shared Responsibility Model and GDPR](https://aws.amazon.com/blogs/security/the-aws-shared-responsibility-model-and-gdpr/)
+
+---
+
+最終更新: 2025-10-18

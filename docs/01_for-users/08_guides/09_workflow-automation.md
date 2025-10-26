@@ -4,7 +4,6 @@
 
 # Agent Hooksによるワークフロー自動化 実践ガイド
 
-最終更新: 2025-10-25  
 **対象バージョン**: v1.17.0以降  
 **難易度**: 中級〜上級
 
@@ -850,3 +849,7 @@ echo "Processing file: $(basename $FILE_PATH)"
 **作成者**: Amazon Q Developer CLI  
 **レビュー**: katoh  
 **バージョン**: 1.0
+
+---
+
+最終更新: 2025-10-25

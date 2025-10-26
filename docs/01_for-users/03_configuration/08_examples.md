@@ -4,7 +4,6 @@
 
 # 設定例集
 
-最終更新: 2025-10-26  
 **対象バージョン**: v1.17.0以降
 
 ---
@@ -517,3 +516,7 @@ rm ~/.aws/amazonq/settings.json
 - [設定優先順位ガイド](07_priority-rules.md)
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
 - [FAQ](../06_troubleshooting/01_faq.md)
+
+---
+
+最終更新: 2025-10-26

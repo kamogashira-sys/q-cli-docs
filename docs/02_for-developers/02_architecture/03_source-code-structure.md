@@ -4,7 +4,6 @@
 
 # Amazon Q CLI ソースコード構造マップ
 
-作成日: 2025-10-08  
 **対象バージョン**: v1.17.0  
 **ソースコード**: `crates/chat-cli/src/`
 
@@ -470,3 +469,7 @@ substitute_env_vars()
 最終更新: 2025-10-26  
 **対象バージョン**: v1.17.0  
 **ソースコード**: `crates/chat-cli/src/` (amazon-q-developer-cli)
+
+---
+
+作成日: 2025-10-08

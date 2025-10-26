@@ -4,7 +4,6 @@
 
 # Issues - 課題管理
 
-最終更新: 2025-10-19
 
 ---
 
@@ -37,3 +36,7 @@
 
 - **[CONTRIBUTING](../05_meta/CONTRIBUTING.md)** - コントリビューションガイド
 - **[QUALITY_ASSURANCE](../05_meta/QUALITY_ASSURANCE.md)** - 品質保証プロセス
+
+---
+
+最終更新: 2025-10-19
