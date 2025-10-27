@@ -28,6 +28,7 @@
 | 12 | [continuous-improvement.md](12_continuous-improvement.md) | 継続的改善ガイド |
 | 13 | [public-resources.md](13_public-resources.md) | 公開リソース一覧（ツール・チェックリスト） |
 | 14 | [version-update-procedure.md](14_version-update-procedure.md) | バージョンアップ対応手順書 |
+| 15 | [work-principles-enforcement-system.md](15_work-principles-enforcement-system.md) | 作業原則強制適用システム |
 
 ---
 
