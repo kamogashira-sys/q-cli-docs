@@ -274,20 +274,48 @@ q settings chat.enableTodoList true
 
 ### 重要な注意事項
 
-**ユーザーコマンドとAIツールの区別**:
+#### 実装の二重構造
 
-1. **`/todos`コマンド**（ユーザーが実行）
+TODO Lists機能は**2つの異なるインターフェース**を持つ：
+
+```
+┌─────────────────────────────────────────────────┐
+│ TODO Lists機能の実装構造                          │
+├─────────────────────────────────────────────────┤
+│                                                 │
+│ 1. ユーザーインターフェース（CLIコマンド）          │
+│    ├─ /todos view                               │
+│    ├─ /todos resume                             │
+│    ├─ /todos clear-finished                     │
+│    └─ /todos delete                             │
+│                                                 │
+│ 2. AIインターフェース（MCPツール）                 │
+│    ├─ todo_list create                          │
+│    ├─ todo_list complete                        │
+│    ├─ todo_list add                             │
+│    ├─ todo_list remove                          │
+│    ├─ todo_list load                            │
+│    └─ todo_list lookup                          │
+│                                                 │
+└─────────────────────────────────────────────────┘
+```
+
+この二重構造により、以下のように役割が分担されています：
+
+**1. `/todos`コマンド**（ユーザーが実行）
    - `/todos view` - TODOリスト一覧を表示
    - `/todos resume` - 中断したTODOを再開
    - `/todos clear-finished` - 完了したTODOを削除
    - `/todos delete` - TODOを削除
 
-2. **`todo_list`ツール**（AIが自動実行）
+**2. `todo_list`ツール**（AIが自動実行）
    - `create` - TODOリストを作成
    - `complete` - タスクを完了
    - `add` - タスクを追加
    - `remove` - タスクを削除
-   - ユーザーは直接実行できません
+   - `load` - TODOリストを読み込み
+   - `lookup` - TODO検索
+   - ⚠️ ユーザーは直接実行できません
 
 ### ユースケース
 - **複数ステップの作業管理**: AIが自動的にタスクを分割して管理
