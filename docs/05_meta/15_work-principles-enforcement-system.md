@@ -5,8 +5,8 @@
 # 作業原則強制適用システム
 
 **作成日時**: 2025-10-28 00:23 JST  
-**更新日時**: 2025-10-28 02:35 JST  
-**ステータス**: ✅ 実装完了・動作確認済み
+**更新日時**: 2025-10-28 02:48 JST  
+**ステータス**: ✅ 実装完了・動作確認済み（システムプロンプト再適用機能追加）
 
 ---
 
@@ -45,6 +45,10 @@ Q CLI起動
     ↓
 重要ツール実行時（fs_write, execute_bash, use_aws）
     ↓
+カウンター+1（実行回数管理）
+    ↓
+20回毎？ → Yes: システムプロンプト全内容再表示
+    ↓
 preToolUse Hook実行（確認メッセージ表示）
     ↓
 ツール実行継続
@@ -56,6 +60,8 @@ preToolUse Hook実行（確認メッセージ表示）
 - ✅ **軽量**: 平均0.08秒で高速動作
 - ✅ **選択的**: 重要ツールのみ対象
 - ✅ **保守性**: シンプルな構成で管理容易
+- ✅ **忘却防止**: 20回毎のシステムプロンプト再表示
+- ✅ **持続性**: 長時間使用時の効果維持
 
 ---
 
@@ -147,9 +153,21 @@ preToolUse Hook実行（確認メッセージ表示）
 # 環境変数から情報取得
 TOOL_NAME="$Q_HOOK_TOOL_NAME"
 TRIGGER="$Q_HOOK_TRIGGER"
+INTERACTION_COUNT_FILE="$HOME/.amazonq/.interaction-count"
+REAPPLY_THRESHOLD=20  # 20回のツール実行後
 
-# システムプロンプトで作業原則が適用されているため、
-# Hookでは簡潔な確認のみ実行
+# インタラクション回数をカウント
+CURRENT_COUNT=$(cat "$INTERACTION_COUNT_FILE" 2>/dev/null || echo 0)
+NEW_COUNT=$((CURRENT_COUNT + 1))
+echo "$NEW_COUNT" > "$INTERACTION_COUNT_FILE"
+
+# 閾値に達したら再適用
+if [ $((NEW_COUNT % REAPPLY_THRESHOLD)) -eq 0 ]; then
+    echo "🔄 作業原則リマインダー（${REAPPLY_THRESHOLD}回目のツール実行）:"
+    cat "$HOME/.amazonq/rules/system-prompt.md"
+    echo ""
+fi
+
 echo "🔍 作業原則適用中: $TOOL_NAME 実行前チェック完了"
 ```
 
@@ -161,7 +179,8 @@ echo "🔍 作業原則適用中: $TOOL_NAME 実行前チェック完了"
 |---------|------|--------|------|
 | `~/.amazonq/rules/system-prompt.md` | システムプロンプト | ~1.6KB | 644 |
 | `~/.aws/amazonq/cli-agents/default.json` | Agent設定 | ~8KB | 644 |
-| `~/.local/bin/smart-work-principles-check` | Hook スクリプト | ~295B | 755 |
+| `~/.local/bin/smart-work-principles-check` | Hook スクリプト | ~800B | 755 |
+| `~/.amazonq/.interaction-count` | ツール実行回数管理 | ~10B | 644 |
 
 ---
 
@@ -196,9 +215,21 @@ cat > ~/.local/bin/smart-work-principles-check << 'EOF'
 # 環境変数から情報取得
 TOOL_NAME="$Q_HOOK_TOOL_NAME"
 TRIGGER="$Q_HOOK_TRIGGER"
+INTERACTION_COUNT_FILE="$HOME/.amazonq/.interaction-count"
+REAPPLY_THRESHOLD=20  # 20回のツール実行後
 
-# システムプロンプトで作業原則が適用されているため、
-# Hookでは簡潔な確認のみ実行
+# インタラクション回数をカウント
+CURRENT_COUNT=$(cat "$INTERACTION_COUNT_FILE" 2>/dev/null || echo 0)
+NEW_COUNT=$((CURRENT_COUNT + 1))
+echo "$NEW_COUNT" > "$INTERACTION_COUNT_FILE"
+
+# 閾値に達したら再適用
+if [ $((NEW_COUNT % REAPPLY_THRESHOLD)) -eq 0 ]; then
+    echo "🔄 作業原則リマインダー（${REAPPLY_THRESHOLD}回目のツール実行）:"
+    cat "$HOME/.amazonq/rules/system-prompt.md"
+    echo ""
+fi
+
 echo "🔍 作業原則適用中: $TOOL_NAME 実行前チェック完了"
 EOF
 
@@ -310,9 +341,23 @@ q chat
 
 ### Hook実行時の表示例
 
+#### 通常時（1-19回目）
 ```
-重要ツール実行時:
 ✓ 3 of 3 hooks finished in 0.08 s
+🔍 作業原則適用中: fs_write 実行前チェック完了
+
+[ツール実行継続]
+```
+
+#### 20回毎のリマインダー表示
+```
+✓ 3 of 3 hooks finished in 0.08 s
+🔄 作業原則リマインダー（20回目のツール実行）:
+# Q CLI作業原則システムプロンプト
+
+あなたは以下の作業原則に厳格に従って作業します：
+[システムプロンプト全内容が表示]
+
 🔍 作業原則適用中: fs_write 実行前チェック完了
 
 [ツール実行継続]
@@ -324,6 +369,13 @@ q chat
 - ソースコード確認の徹底
 - 実装検証の実施
 - 品質重視の作業継続
+
+### システムプロンプト再適用機能
+
+- **20回毎のリマインダー**: ツール実行20回毎にシステムプロンプト全内容を再表示
+- **忘却防止**: 長時間使用やコンパクション後の効果維持
+- **カウンター管理**: `~/.amazonq/.interaction-count`で実行回数を管理
+- **自動リセット**: 20の倍数で自動的にリマインダー実行
 
 ---
 
@@ -408,5 +460,5 @@ jq '.prompt' ~/.aws/amazonq/cli-agents/default.json
 
 **作成者**: Amazon Q Developer CLI  
 **作成日時**: 2025-10-28 00:23 JST  
-**更新日時**: 2025-10-28 02:35 JST  
-**ステータス**: ✅ 実装完了・動作確認済み
+**更新日時**: 2025-10-28 02:48 JST  
+**ステータス**: ✅ 実装完了・動作確認済み（システムプロンプト再適用機能追加）
