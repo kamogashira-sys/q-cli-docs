@@ -2635,12 +2635,13 @@ Consider removing them.
 
 ← **前へ**: [第3章: コンテキストの効果と特徴](03_effects.md) | **次へ**: [第5章: 実践ガイド](05_practical-guide.md) →
 
----
-
-最終更新: 2025-10-18
 
 ---
 
 **関連トピック**:
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
 - [FAQ](../06_troubleshooting/01_faq.md)
+
+---
+
+最終更新: 2025-10-18

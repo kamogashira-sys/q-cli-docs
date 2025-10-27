@@ -99,8 +99,9 @@
    - `docs/user-guide/03_configuration/`配下の関連ファイル
 
 **確認**: 設定項目確認用チェックリストを実施
-- 場所: `~/q-cli-work/checklists/settings-checklist.md`
-- 推奨時間: 7分
+- 場所: [settings-checklist.md](settings-checklist.md)
+- Agent設定・MCP設定・グローバル設定の正確性を確認
+- hooks構造、Stop Hook説明、フィールド名の確認
 
 #### ファイルパスを変更する場合
 
@@ -114,7 +115,8 @@
    - デフォルトパスの説明
 
 **確認**: ファイルパス確認用チェックリストを実施
-- 場所: `~/q-cli-work/checklists/file-paths-checklist.md`
+- 場所: [file-paths-checklist.md](file-paths-checklist.md)
+- パス形式、Q CLI関連パス、OS依存性の確認
 
 ### プルリクエスト作成時
 
@@ -141,5 +143,4 @@
 
 ---
 
-作成日: 2025-10-09  
 最終更新: 2025-10-26

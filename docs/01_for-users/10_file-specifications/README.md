@@ -26,25 +26,12 @@ Amazon Q CLIが使用する各種ファイルのフォーマット仕様を提�
 | # | ファイル | 対象ユーザー | 主な内容 |
 |---|---------|-------------|---------|
 | 1 | [.cli_bash_history](01_cli-bash-history.md) | 中級〜上級 | チャット履歴ファイル、rustyline FileHistory形式 |
-
----
-
-## 🔮 今後追加予定
-
-以下のファイル仕様を順次追加予定です：
-
-### 設定系
-- **Agent設定** (`agent.json`) - Agent設定JSONスキーマ
-- **MCP設定** (`mcp.json`) - MCPサーバー設定
-- **グローバル設定** (`settings.json`) - グローバル設定
-
-### データ系
-- **チェックポイント** - チェックポイントファイル形式
-- **ナレッジベース** - ナレッジベースファイル形式
-- **会話履歴** - チャット会話履歴
-
-### 管理系
-- **MCP状態管理** (`mcp-state.json`) - MCP状態ファイル
+| 2 | [Agent設定ファイル](02_agent-configuration.md) | 中級〜上級 | agent.json仕様、JSONスキーマ、フィールド定義 |
+| 3 | [MCP設定ファイル](03_mcp-configuration.md) | 中級〜上級 | mcp.json仕様、サーバー設定、環境変数展開 |
+| 4 | [グローバル設定ファイル](04_global-settings.md) | 中級〜上級 | settings.json仕様、設定項目、デフォルト値 |
+| 5 | [チェックポイント](05_checkpoint.md) | 中級〜上級 | チェックポイントファイル形式、保存・復元操作 |
+| 6 | [会話状態](06_conversation_state.md) | 中級〜上級 | 会話状態ファイル形式、メッセージ履歴管理 |
+| 7 | [メッセージ構造](07_message_structures.md) | 中級〜上級 | メッセージ構造仕様、コンテンツタイプ、ツール呼び出し |
 
 ---
 
@@ -52,10 +39,13 @@ Amazon Q CLIが使用する各種ファイルのフォーマット仕様を提�
 
 ### ファイル構造を理解したい方
 1. **[.cli_bash_history](01_cli-bash-history.md)** - 最もシンプルな形式
+2. **[Agent設定ファイル](02_agent-configuration.md)** - Agent設定の詳細
+3. **[MCP設定ファイル](03_mcp-configuration.md)** - MCP設定の詳細
 
 ### トラブルシューティング
 1. **[.cli_bash_history](01_cli-bash-history.md)** - 履歴関連の問題
-2. [トラブルシューティング](../06_troubleshooting/) - 一般的な問題
+2. **[会話状態](06_conversation_state.md)** - 会話履歴の問題
+3. [トラブルシューティング](../06_troubleshooting/) - 一般的な問題
 
 ---
 
@@ -71,8 +61,7 @@ Amazon Q CLIが使用する各種ファイルのフォーマット仕様を提�
 
 ---
 
-作成日: 2025-10-24
 
 ---
 
-最終更新: 2025-10-24
+最終更新: 2025-10-27

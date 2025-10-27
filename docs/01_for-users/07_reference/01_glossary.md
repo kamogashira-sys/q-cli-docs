@@ -449,8 +449,6 @@ Agent設定ファイルのスキーマバージョン。
 
 ---
 
----
-
 ## 🔗 外部リンク
 
 - [MCP仕様](https://modelcontextprotocol.io/)
@@ -458,8 +456,6 @@ Agent設定ファイルのスキーマバージョン。
 - [GitHub リポジトリ](https://github.com/aws/amazon-q-developer-cli)
 
 ---
-
-作成日: 2025-10-11  
 
 
 ---

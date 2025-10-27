@@ -472,8 +472,6 @@ tail -f ~/.aws/amazonq/logs/q-cli.log | grep "config"
 
 ---
 
-作成日: 2025-10-11  
-
 
 ---
 

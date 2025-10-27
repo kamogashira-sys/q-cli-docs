@@ -31,7 +31,7 @@ Q CLIのインストールから高度な活用方法まで、ユーザーが必
 | [Reference](07_reference/) | 10 | リファレンス情報 |
 | [Guides](08_guides/) | 10 | 包括的なガイド（コンテキスト管理、ワークフロー自動化） |
 | [Security](09_security/) | 7 | セキュリティとプライバシー |
-| [File Specifications](10_file-specifications/) | 1 | ファイルフォーマット仕様 |
+| [File Specifications](10_file-specifications/) | 7 | ファイルフォーマット仕様 |
 
 ## 🚀 推奨学習順序
 

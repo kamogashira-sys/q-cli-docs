@@ -291,8 +291,6 @@ rust-lldb target/debug/q
 
 ---
 
-作成日: 2025-10-11  
-
 
 ---
 

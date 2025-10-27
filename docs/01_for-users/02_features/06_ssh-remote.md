@@ -416,8 +416,6 @@ chmod 600 ~/.local/share/amazon-q/settings.json
 
 ---
 
-作成日: 2025-10-11  
-
 
 ---
 

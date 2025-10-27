@@ -209,8 +209,9 @@ q chat --agent back-end
 {
   "hooks": {
     "agentSpawn": [
-      { "command": "git status" },
-      { "command": "npm run" }
+      {
+        "command": "git status && npm run"
+      }
     ]
   }
 }
@@ -253,7 +254,9 @@ q chat --agent back-end
   ],
   "hooks": {
     "agentSpawn": [
-      { "command": "git status" }
+      {
+        "command": "git status"
+      }
     ]
   }
 }
@@ -307,7 +310,9 @@ q chat --agent front-end
   ],
   "hooks": {
     "agentSpawn": [
-      { "command": "git status" }
+      {
+        "command": "git status"
+      }
     ]
   }
 }
@@ -1039,13 +1044,14 @@ Agent Hooksは、Agent実行時の特定のタイミングでスクリプトを�
 {
   "name": "hello-hook",
   "description": "Hello World Hook",
-  "hooks": [
-    {
-      "trigger": "PostToolUse",
-      "tool_matcher": "fs_write",
-      "command": ["echo", "✅ File saved!"]
-    }
-  ]
+  "hooks": {
+    "postToolUse": [
+      {
+        "matcher": "fs_write",
+        "command": "echo '✅ File saved!'"
+      }
+    ]
+  }
 }
 ```
 
@@ -1135,7 +1141,11 @@ Agent Hooksの詳細な使い方は以下のドキュメントを参照してく
     "file://.amazonq/rules/react-preferences.md"
   ],
   "hooks": {
-    "prePrompt": ["git status"]
+    "agentSpawn": [
+      {
+        "command": "git status"
+      }
+    ]
   }
 }
 ```
@@ -1180,7 +1190,11 @@ Agent Hooksの詳細な使い方は以下のドキュメントを参照してく
     "file://.amazonq/rules/sql-preferences.md"
   ],
   "hooks": {
-    "prePrompt": ["git status"]
+    "agentSpawn": [
+      {
+        "command": "git status"
+      }
+    ]
   }
 }
 ```
@@ -1273,13 +1287,17 @@ Agent Hooksの詳細な使い方は以下のドキュメントを参照してく
 
 ### hooksによる動的コンテキスト
 
-`hooks`を使用すると、プロンプト実行前に自動的にコマンドを実行し、その結果をコンテキストに含めることができます。
+`hooks`を使用すると、Agent起動時やユーザープロンプト送信時に自動的にコマンドを実行し、その結果をコンテキストに含めることができます。
 
 **git status実行例**:
 ```json
 {
   "hooks": {
-    "prePrompt": ["git status"]
+    "userPromptSubmit": [
+      {
+        "command": "git status"
+      }
+    ]
   }
 }
 ```
@@ -1288,9 +1306,10 @@ Agent Hooksの詳細な使い方は以下のドキュメントを参照してく
 ```json
 {
   "hooks": {
-    "prePrompt": [
-      "git status",
-      "git diff --stat"
+    "userPromptSubmit": [
+      {
+        "command": "git status && git diff --stat"
+      }
     ]
   }
 }
@@ -1300,9 +1319,10 @@ Agent Hooksの詳細な使い方は以下のドキュメントを参照してく
 ```json
 {
   "hooks": {
-    "prePrompt": [
-      "git status",
-      "npm list --depth=0"
+    "userPromptSubmit": [
+      {
+        "command": "git status && npm list --depth=0"
+      }
     ]
   }
 }
@@ -1330,10 +1350,12 @@ Stop Hookは、会話ターン終了時（Assistantの応答完了時）に自�
 ```json
 {
   "hooks": {
-    "stop": {
-      "command": "npm run format",
-      "timeout": 30000
-    }
+    "stop": [
+      {
+        "command": "npm run format",
+        "timeout_ms": 30000
+      }
+    ]
   }
 }
 ```
@@ -1344,10 +1366,12 @@ Stop Hookは、会話ターン終了時（Assistantの応答完了時）に自�
 ```json
 {
   "hooks": {
-    "stop": {
-      "command": "cargo build",
-      "timeout": 60000
-    }
+    "stop": [
+      {
+        "command": "cargo build",
+        "timeout_ms": 60000
+      }
+    ]
   }
 }
 ```
@@ -1356,10 +1380,12 @@ Stop Hookは、会話ターン終了時（Assistantの応答完了時）に自�
 ```json
 {
   "hooks": {
-    "stop": {
-      "command": "npm test",
-      "timeout": 120000
-    }
+    "stop": [
+      {
+        "command": "npm test",
+        "timeout_ms": 120000
+      }
+    ]
   }
 }
 ```
@@ -1368,10 +1394,12 @@ Stop Hookは、会話ターン終了時（Assistantの応答完了時）に自�
 ```json
 {
   "hooks": {
-    "stop": {
-      "command": "prettier --write .",
-      "timeout": 30000
-    }
+    "stop": [
+      {
+        "command": "prettier --write .",
+        "timeout_ms": 30000
+      }
+    ]
   }
 }
 ```
@@ -1414,8 +1442,6 @@ Stop Hookは、会話ターン終了時（Assistantの応答完了時）に自�
 - GitHubソース: `crates/chat-cli/src/cli/agent/`
 - 確認バージョン: v1.17.0
 - 確認日: 2025-10-09
-
-作成日: 2025-10-11  
 
 ---
 

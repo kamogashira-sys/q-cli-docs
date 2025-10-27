@@ -78,13 +78,13 @@ Agentは、Q CLIの動作を定義する設定ファイルです。以下をカ�
 |-----------|-----|-----------|------|
 | `$schema` | string | - | スキーマURL |
 | `description` | string | null | Agent説明 |
-| `prompt` | string | null | システムプロンプト。文字列または `file://` URIで外部ファイルを参照可能（v1.18.0+） |
+| `prompt` | string | null | システムプロンプト。文字列または `file://` URIで外部ファイルを参照可能（v1.19.0+） |
 | `mcpServers` | object | {} | MCPサーバー設定（[詳細](#mcpservers設定)） |
 | `tools` | array | [] | 利用可能ツール一覧。`@{SERVER}/tool`形式でMCPツールを指定 |
 | `toolAliases` | object | {} | ツール名エイリアス |
 | `allowedTools` | array | [] | 明示的に許可されたツール一覧 |
 | `resources` | array | [] | リソースファイル（`file://`形式、[詳細](../08_guides/README.md)） |
-| `hooks` | object | {} | フック設定（`userPromptSubmit`, `agentSpawn`） |
+| `hooks` | object | {} | フック設定（`userPromptSubmit`, `agentSpawn`, `preToolUse`, `stop`） |
 | `toolsSettings` | object | {} | ツール固有設定 |
 | `useLegacyMcpJson` | boolean | false | レガシーMCP設定（`~/.aws/amazonq/mcp.json`）の使用 |
 | `model` | string | null | 使用モデルID |
@@ -122,12 +122,21 @@ MCPサーバーの詳細設定：
 }
 ```
 
-### プロンプトの外部ファイル化（v1.18.0+）
+### プロンプトの外部ファイル化（v1.19.0+）
 
 長く複雑なプロンプトは、外部ファイルとして管理できます。
 
-#### 構文
+#### 基本的な使い方
 
+**従来の方法（インラインプロンプト）**:
+```json
+{
+  "name": "my-agent",
+  "prompt": "あなたは親切で知識豊富なアシスタントです。"
+}
+```
+
+**新機能（File URI参照）**:
 ```json
 {
   "name": "my-agent",
@@ -137,56 +146,172 @@ MCPサーバーの詳細設定：
 
 #### パス解決ルール
 
-- **相対パス**: Agent設定ファイル（.json）のディレクトリを基準に解決
-- **絶対パス**: そのまま使用
-- **Glob非対応**: ワイルドカード（`*`, `?`）は使用不可
+##### 1. 相対パス
+Agent設定ファイル（.json）のディレクトリを基準に解決されます。
 
-#### 実践例
-
-**ディレクトリ構造**:
-```
-my-project/
-├── .q/
-│   └── agents/
-│       ├── code-reviewer.json
-│       └── prompts/
-│           └── system.txt
-```
-
-**Agent設定ファイル（code-reviewer.json）**:
 ```json
 {
-  "name": "code-reviewer",
-  "description": "コードレビュー専門エージェント",
-  "prompt": "file://./prompts/system.txt"
+  "prompt": "file://./prompt.md"
+}
+```
+→ Agent設定ファイルと同じディレクトリの`prompt.md`
+
+```json
+{
+  "prompt": "file://../shared/prompt.md"
+}
+```
+→ 親ディレクトリの`shared/prompt.md`
+
+##### 2. 絶対パス
+そのまま使用されます。
+
+```json
+{
+  "prompt": "file:///home/user/prompts/agent.md"
 }
 ```
 
-**プロンプトファイル（system.txt）**:
-```text
-あなたは経験豊富なコードレビュアーです。
-以下のガイドラインに従ってコードをレビューしてください：
+#### 実用例
 
-1. コードの可読性
-2. パフォーマンス
-3. セキュリティ
-4. ベストプラクティスの遵守
+##### 例1: プロジェクト内のプロンプト管理
+
+**ディレクトリ構造**:
+```
+~/.amazonq/agents/
+├── aws-expert.json
+└── prompts/
+    └── aws-expert.md
+```
+
+**Agent設定ファイル（aws-expert.json）**:
+```json
+{
+  "name": "aws-expert",
+  "description": "AWS infrastructure specialist",
+  "prompt": "file://./prompts/aws-expert.md"
+}
+```
+
+**プロンプトファイル（aws-expert.md）**:
+```markdown
+# AWS Infrastructure Expert
+
+あなたは経験豊富なAWSインフラストラクチャスペシャリストです。
+
+## 専門分野
+- EC2、Lambda、ECS/Fargateなどのコンピューティングサービス
+- VPC、Route 53、CloudFrontなどのネットワーキング
+- IAM、Security Groups、NACLなどのセキュリティ
+
+## 回答方針
+1. AWSのベストプラクティスに基づいて回答
+2. コスト最適化を考慮
+3. セキュリティを最優先
+4. 具体的なコード例を提供
+```
+
+##### 例2: 共有プロンプトの利用
+
+複数のAgentで同じプロンプトを共有:
+
+```json
+// agent1.json
+{
+  "name": "agent1",
+  "prompt": "file://../shared/base-prompt.md"
+}
+
+// agent2.json
+{
+  "name": "agent2",
+  "prompt": "file://../shared/base-prompt.md"
+}
+```
+
+##### 例3: チーム間でのプロンプト共有
+
+```json
+{
+  "prompt": "file:///team/shared-prompts/standard-agent.md"
+}
 ```
 
 #### メリット
 
-- ✅ プロンプトをバージョン管理しやすい
-- ✅ 複数のAgentでプロンプトを再利用可能
-- ✅ Agent設定ファイルがシンプルに
-- ✅ プロンプトの編集が容易
+- ✅ **可読性**: 長いプロンプトをMarkdownファイルで管理
+- ✅ **保守性**: バージョン管理、編集が容易
+- ✅ **再利用性**: 複数Agentでプロンプトを共有
+- ✅ **柔軟性**: 相対パス・絶対パスの両方をサポート
+- ✅ **互換性**: 既存のインラインプロンプトも引き続き動作
 
-#### resourcesとの違い
+#### ベストプラクティス
+
+##### 1. ファイル配置
+
+**推奨構造**:
+```
+~/.amazonq/agents/
+├── my-agent.json
+└── prompts/
+    ├── my-agent.md
+    ├── shared-context.md
+    └── templates/
+        └── base.md
+```
+
+##### 2. プロンプトファイルの命名
+
+- Agent名と一致させる: `aws-expert.json` → `aws-expert.md`
+- 用途を明確にする: `rust-debugging.md`, `aws-security.md`
+
+##### 3. バージョン管理
+
+```bash
+# プロンプトファイルをGit管理
+cd ~/.amazonq/agents/prompts
+git init
+git add *.md
+git commit -m "Initial prompt templates"
+```
+
+##### 4. 相対パスの活用
+
+```json
+{
+  "prompt": "file://./prompts/agent.md"  // ✅ 推奨
+}
+```
+
+絶対パスは環境依存になるため、可能な限り相対パスを使用。
+
+#### promptとresourcesの違い
 
 | 項目 | prompt | resources |
 |------|--------|-----------|
 | **相対パスの基準** | Agent設定ファイルのディレクトリ | 作業ディレクトリ（cwd） |
-| **Glob対応** | ❌ 非対応 | ✅ 対応 |
-| **用途** | プロンプトテキストの読み込み | コンテキストファイルの読み込み |
+| **Glob対応** | ❌ 非対応 | ✅ 対応（`**/*.md`など） |
+| **用途** | 単一プロンプトファイル参照 | 複数リソースファイル参照 |
+| **複数ファイル** | ❌ 非対応 | ✅ 対応 |
+
+#### エラーハンドリング
+
+ファイルが見つからない場合、明確なエラーメッセージが表示されます:
+
+```
+Error: File not found: /path/to/prompt.md
+```
+
+**よくあるエラー**:
+- 無効なURI形式（`http://`など）
+- ファイルが存在しない
+- ファイル読み込み権限がない
+
+#### 注意事項
+
+1. **後方互換性**: インラインプロンプトは引き続きサポート
+2. **セキュリティ**: ファイルシステムへのアクセス権限が必要
+3. **Glob非対応**: ワイルドカード（`*`, `?`）は使用不可
 
 ---
 
@@ -309,9 +434,9 @@ Agentが参照できるファイルを指定します。
 - **終了コード**: 0=成功、その他=失敗
 
 ##### Stop
-- **タイミング**: Agent終了時
-- **用途**: クリーンアップ、統計情報の保存、リソース解放
-- **終了コード**: 0=成功、その他=失敗
+- **タイミング**: アシスタント応答完了時（会話ターン終了時）
+- **用途**: コンパイル、テスト実行、コードフォーマット、クリーンアップ処理
+- **終了コード**: 0=成功、その他=警告として表示
 
 #### Tool Matcher
 
@@ -326,18 +451,18 @@ Tool Matcherは、どのツールに対してHookを実行するかを指定し�
 **設定例**:
 ```json
 {
-  "hooks": [
-    {
-      "trigger": "PreToolUse",
-      "tool_matcher": "fs_*",
-      "command": ["./scripts/check-file-access.sh"]
-    },
-    {
-      "trigger": "PreToolUse",
-      "tool_matcher": "@git",
-      "command": ["./scripts/check-git-access.sh"]
-    }
-  ]
+  "hooks": {
+    "preToolUse": [
+      {
+        "matcher": "fs_*",
+        "command": "./scripts/check-file-access.sh"
+      },
+      {
+        "matcher": "@git",
+        "command": "./scripts/check-git-access.sh"
+      }
+    ]
+  }
 }
 ```
 
@@ -347,14 +472,15 @@ Tool Matcherは、どのツールに対してHookを実行するかを指定し�
 
 ```json
 {
-  "hooks": [
-    {
-      "trigger": "PreToolUse",
-      "tool_matcher": "fs_*",
-      "command": ["./scripts/expensive-check.sh"],
-      "cache_ttl_seconds": 300
-    }
-  ]
+  "hooks": {
+    "preToolUse": [
+      {
+        "matcher": "fs_*",
+        "command": "./scripts/expensive-check.sh",
+        "cache_ttl_seconds": 300
+      }
+    ]
+  }
 }
 ```
 
@@ -365,14 +491,15 @@ Tool Matcherは、どのツールに対してHookを実行するかを指定し�
 
 ```json
 {
-  "hooks": [
-    {
-      "trigger": "PreToolUse",
-      "tool_matcher": "execute_bash",
-      "command": ["./scripts/security-scan.sh"],
-      "timeout_ms": 5000
-    }
-  ]
+  "hooks": {
+    "preToolUse": [
+      {
+        "matcher": "execute_bash",
+        "command": "./scripts/security-scan.sh",
+        "timeout_ms": 5000
+      }
+    ]
+  }
 }
 ```
 
@@ -401,18 +528,21 @@ echo "Processing: $FILE_PATH"
 ```json
 {
   "hooks": {
-    "AgentSpawn": {
-      "command": "echo 'Agent started'",
-      "async": false
-    },
-    "PreToolUse": {
-      "command": "echo 'Executing tool: ${tool_name}'",
-      "async": true
-    },
-    "Stop": {
-      "command": "echo 'Response completed'",
-      "async": false
-    }
+    "agentSpawn": [
+      {
+        "command": "echo 'Agent started'"
+      }
+    ],
+    "preToolUse": [
+      {
+        "command": "echo 'Executing tool: ${tool_name}'"
+      }
+    ],
+    "stop": [
+      {
+        "command": "echo 'Response completed'"
+      }
+    ]
   }
 }
 ```
@@ -648,9 +778,9 @@ $TMPDIR/qlog/
 **Step 1: 最小構成で動作確認**
 ```json
 {
-  "version": "1.0",
+  "$schema": "https://github.com/aws/amazon-q-developer-cli/blob/main/schemas/agent-v1.json",
   "name": "test-agent",
-  "systemPrompt": "You are a helpful assistant.",
+  "prompt": "You are a helpful assistant.",
   "tools": ["*"]
 }
 ```
@@ -658,9 +788,9 @@ $TMPDIR/qlog/
 **Step 2: ツールを追加**
 ```json
 {
-  "version": "1.0",
+  "$schema": "https://github.com/aws/amazon-q-developer-cli/blob/main/schemas/agent-v1.json",
   "name": "test-agent",
-  "systemPrompt": "You are a helpful assistant.",
+  "prompt": "You are a helpful assistant.",
   "tools": ["fs_read", "fs_write"]
 }
 ```
@@ -668,11 +798,17 @@ $TMPDIR/qlog/
 **Step 3: MCPサーバーを追加**
 ```json
 {
-  "version": "1.0",
+  "$schema": "https://github.com/aws/amazon-q-developer-cli/blob/main/schemas/agent-v1.json",
   "name": "test-agent",
-  "systemPrompt": "You are a helpful assistant.",
+  "prompt": "You are a helpful assistant.",
   "tools": ["fs_read", "fs_write"],
-  "mcpServers": ["my-mcp-server"]
+  "mcpServers": {
+    "my-mcp-server": {
+      "command": "node",
+      "args": ["server.js"]
+    }
+  }
+}
 }
 ```
 
@@ -734,8 +870,6 @@ Agent設定の実践的な使い方とベストプラクティスは、[コン�
 - [GitHub リポジトリ](https://github.com/aws/amazon-q-developer-cli)
 
 ---
-
-作成日: 2025-10-11  
 
 
 ## 関連ドキュメント

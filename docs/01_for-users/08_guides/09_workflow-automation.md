@@ -82,9 +82,9 @@ graph LR
 - **終了コード**: 0=成功、その他=失敗
 
 #### Stop
-- **タイミング**: Agent終了時
-- **用途**: クリーンアップ、統計情報の保存、リソース解放
-- **終了コード**: 0=成功、その他=失敗
+- **タイミング**: アシスタント応答完了時（会話ターン終了時）
+- **用途**: コンパイル、テスト実行、コードフォーマット、クリーンアップ処理
+- **終了コード**: 0=成功、その他=警告として表示
 
 ### 学習の進め方
 
@@ -109,13 +109,14 @@ vi ~/.aws/amazonq/cli-agents/hello-hook.json
 {
   "name": "hello-hook",
   "description": "Hello World Hook",
-  "hooks": [
-    {
-      "trigger": "PostToolUse",
-      "tool_matcher": "fs_write",
-      "command": ["echo", "✅ File saved!"]
-    }
-  ]
+  "hooks": {
+    "postToolUse": [
+      {
+        "matcher": "fs_write",
+        "command": "echo '✅ File saved!'"
+      }
+    ]
+  }
 }
 ```
 
@@ -203,14 +204,15 @@ vi ~/.aws/amazonq/cli-agents/auto-format-agent.json
 {
   "name": "auto-format-agent",
   "description": "ファイル保存時に自動フォーマット",
-  "hooks": [
-    {
-      "trigger": "PostToolUse",
-      "tool_matcher": "fs_write",
-      "command": ["~/.aws/amazonq/scripts/auto-format.sh"],
-      "timeout_ms": 10000
-    }
-  ]
+  "hooks": {
+    "postToolUse": [
+      {
+        "matcher": "fs_write",
+        "command": "~/.aws/amazonq/scripts/auto-format.sh",
+        "timeout_ms": 10000
+      }
+    ]
+  }
 }
 ```
 
@@ -282,15 +284,16 @@ vi ~/.aws/amazonq/cli-agents/test-before-commit.json
 {
   "name": "test-before-commit",
   "description": "コミット前にテストを実行",
-  "hooks": [
-    {
-      "trigger": "PreToolUse",
-      "tool_matcher": "@git/commit",
-      "command": ["~/.aws/amazonq/scripts/run-tests.sh"],
-      "timeout_ms": 60000,
-      "cache_ttl_seconds": 60
-    }
-  ]
+  "hooks": {
+    "preToolUse": [
+      {
+        "matcher": "@git/commit",
+        "command": "~/.aws/amazonq/scripts/run-tests.sh",
+        "timeout_ms": 60000,
+        "cache_ttl_seconds": 60
+      }
+    ]
+  }
 }
 ```
 
@@ -362,14 +365,15 @@ vi ~/.aws/amazonq/cli-agents/security-scan-agent.json
 {
   "name": "security-scan-agent",
   "description": "依存関係ファイルのセキュリティスキャン",
-  "hooks": [
-    {
-      "trigger": "PostToolUse",
-      "tool_matcher": "fs_write",
-      "command": ["~/.aws/amazonq/scripts/security-scan.sh"],
-      "cache_ttl_seconds": 300
-    }
-  ]
+  "hooks": {
+    "postToolUse": [
+      {
+        "matcher": "fs_write",
+        "command": "~/.aws/amazonq/scripts/security-scan.sh",
+        "cache_ttl_seconds": 300
+      }
+    ]
+  }
 }
 ```
 
@@ -457,14 +461,15 @@ vi ~/.aws/amazonq/cli-agents/quality-check-agent.json
 {
   "name": "quality-check-agent",
   "description": "コミット前のコード品質チェック",
-  "hooks": [
-    {
-      "trigger": "PreToolUse",
-      "tool_matcher": "@git/commit",
-      "command": ["~/.aws/amazonq/scripts/quality-check.sh"],
-      "timeout_ms": 30000
-    }
-  ]
+  "hooks": {
+    "preToolUse": [
+      {
+        "matcher": "@git/commit",
+        "command": "~/.aws/amazonq/scripts/quality-check.sh",
+        "timeout_ms": 30000
+      }
+    ]
+  }
 }
 ```
 
@@ -482,33 +487,33 @@ vi ~/.aws/amazonq/cli-agents/full-automation-agent.json
 {
   "name": "full-automation-agent",
   "description": "完全自動化Agent",
-  "hooks": [
-    {
-      "trigger": "PostToolUse",
-      "tool_matcher": "fs_write",
-      "command": ["~/.aws/amazonq/scripts/auto-format.sh"],
-      "timeout_ms": 10000
-    },
-    {
-      "trigger": "PostToolUse",
-      "tool_matcher": "fs_write",
-      "command": ["~/.aws/amazonq/scripts/security-scan.sh"],
-      "cache_ttl_seconds": 300
-    },
-    {
-      "trigger": "PreToolUse",
-      "tool_matcher": "@git/commit",
-      "command": ["~/.aws/amazonq/scripts/run-tests.sh"],
-      "timeout_ms": 60000,
-      "cache_ttl_seconds": 60
-    },
-    {
-      "trigger": "PreToolUse",
-      "tool_matcher": "@git/commit",
-      "command": ["~/.aws/amazonq/scripts/quality-check.sh"],
-      "timeout_ms": 30000
-    }
-  ]
+  "hooks": {
+    "postToolUse": [
+      {
+        "matcher": "fs_write",
+        "command": "~/.aws/amazonq/scripts/auto-format.sh",
+        "timeout_ms": 10000
+      },
+      {
+        "matcher": "fs_write",
+        "command": "~/.aws/amazonq/scripts/security-scan.sh",
+        "cache_ttl_seconds": 300
+      }
+    ],
+    "preToolUse": [
+      {
+        "matcher": "@git/commit",
+        "command": "~/.aws/amazonq/scripts/run-tests.sh",
+        "timeout_ms": 60000,
+        "cache_ttl_seconds": 60
+      },
+      {
+        "matcher": "@git/commit",
+        "command": "~/.aws/amazonq/scripts/quality-check.sh",
+        "timeout_ms": 30000
+      }
+    ]
+  }
 }
 ```
 
@@ -748,14 +753,15 @@ exit $EXIT_CODE
 
 ```json
 {
-  "hooks": [
-    {
-      "trigger": "PreToolUse",
-      "tool_matcher": "fs_*",
-      "command": ["~/.aws/amazonq/scripts/expensive-check.sh"],
-      "cache_ttl_seconds": 300  // 5分間キャッシュ
-    }
-  ]
+  "hooks": {
+    "preToolUse": [
+      {
+        "matcher": "fs_*",
+        "command": "~/.aws/amazonq/scripts/expensive-check.sh",
+        "cache_ttl_seconds": 300
+      }
+    ]
+  }
 }
 ```
 

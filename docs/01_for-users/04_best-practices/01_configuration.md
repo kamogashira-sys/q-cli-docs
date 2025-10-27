@@ -701,7 +701,6 @@ q settings chat.enableDelegate true
 
 ---
 
-**ドキュメント作成日**: 2025-10-08  
 
 ---
 
@@ -712,5 +711,4 @@ q settings chat.enableDelegate true
 
 ---
 
-作成日: 2025-10-08  
 最終更新: 2025-10-26

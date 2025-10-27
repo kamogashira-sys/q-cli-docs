@@ -5,7 +5,7 @@
 # ドキュメント
 
 **対象バージョン**: v1.19.0以降  
-**総ドキュメント数**: 114文書
+**総ドキュメント数**: 97文書
 
 > 💡 **補足**: この数値はカテゴリ別に分類されたドキュメントの数です。
 
@@ -138,8 +138,8 @@ graph TD
 
 ```
 docs/
-├── 01_for-users/              # ユーザーガイド（73文書）
-│   ├── 01_getting-started/    # 入門ガイド（5文書）
+├── 01_for-users/              # ユーザーガイド（62文書）
+│   ├── 01_getting-started/    # 入門ガイド（4文書）
 │   ├── 02_features/           # 機能ガイド（8文書）
 │   ├── 03_configuration/      # 設定ガイド（9文書）
 │   ├── 04_best-practices/     # ベストプラクティス（7文書）
@@ -275,13 +275,20 @@ Q CLIの応答品質は**コンテキスト管理**で決まります。全8章�
 | 6 | [認証情報管理](01_for-users/09_security/05_credentials-management.md) | 中級 | AWS Builder ID/IAM Identity Center、ベストプラクティス、暗号化 |
 | 7 | [trust-all安全使用](01_for-users/09_security/06_trust-all-safety.md) | 中級〜上級 | trust-allの危険性、安全な使用方法、チェックリスト |
 
-**次のステップ**: セキュリティを理解したら、[ファイル仕様](#ファイル仕様1文書)で技術的な詳細を学びましょう。
+**次のステップ**: セキュリティを理解したら、[ファイル仕様](#ファイル仕様8文書)で技術的な詳細を学びましょう。
 
-#### ファイル仕様（1文書）
+#### ファイル仕様（8文書）
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
-| 1 | [.cli_bash_history](01_for-users/10_file-specifications/01_cli-bash-history.md) | 中級〜上級 | チャット履歴ファイル、rustyline FileHistory形式、管理操作 |
+| 1 | [README](01_for-users/10_file-specifications/README.md) | 中級〜上級 | ファイル仕様セクションの概要 |
+| 2 | [.cli_bash_history](01_for-users/10_file-specifications/01_cli-bash-history.md) | 中級〜上級 | チャット履歴ファイル、rustyline FileHistory形式、管理操作 |
+| 3 | [Agent設定ファイル](01_for-users/10_file-specifications/02_agent-configuration.md) | 中級〜上級 | agent.json仕様、JSONスキーマ、フィールド定義 |
+| 4 | [MCP設定ファイル](01_for-users/10_file-specifications/03_mcp-configuration.md) | 中級〜上級 | mcp.json仕様、サーバー設定、環境変数展開 |
+| 5 | [グローバル設定ファイル](01_for-users/10_file-specifications/04_global-settings.md) | 中級〜上級 | settings.json仕様、設定項目、デフォルト値 |
+| 6 | [チェックポイント](01_for-users/10_file-specifications/05_checkpoint.md) | 中級〜上級 | チェックポイントファイル形式、保存・復元操作 |
+| 7 | [会話状態](01_for-users/10_file-specifications/06_conversation_state.md) | 中級〜上級 | 会話状態ファイル形式、メッセージ履歴管理 |
+| 8 | [メッセージ構造](01_for-users/10_file-specifications/07_message_structures.md) | 中級〜上級 | メッセージ構造仕様、コンテンツタイプ、ツール呼び出し |
 
 **次のステップ**: ファイル仕様を理解したら、[ベストプラクティス](#ベストプラクティス6文書)で効果的な使い方を学びましょう。
 
@@ -495,6 +502,4 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 - **[Amazon Q Developer](https://aws.amazon.com/q/developer/)** - 公式サイト
 
 ---
-
-作成日: 2025-10-11  
 最終更新: 2025-10-26

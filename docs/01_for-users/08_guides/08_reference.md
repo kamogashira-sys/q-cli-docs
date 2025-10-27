@@ -687,17 +687,16 @@ find .amazonq/rules/ -name "*.md"
 
 ---
 
----
-
 ## 📖 ナビゲーション
 
 ← **前へ**: [第7章: 高度なトピック](07_advanced.md)
 
----
-
-最終更新: 2025-10-18
 
 **出典**:
 - [コマンドリファレンス](../07_reference/02_commands.md)
 - [用語集](../07_reference/01_glossary.md)
 - [JSON Schema](https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json)
+
+---
+
+最終更新: 2025-10-18

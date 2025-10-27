@@ -51,7 +51,6 @@ Windows環境での完全なサポート実現
 ---
 
 #### 2. ADC Support (#2600)
-作成日: 2025-08-13  
 **ステータス**: オープン  
 **コメント数**: 0
 
@@ -65,7 +64,6 @@ AWS Direct Connect (ADC) リージョンでのサポート
 ---
 
 #### 3. Enterprise Dashboard Metrics (#2601)
-作成日: 2025-08-13  
 **ステータス**: オープン  
 **コメント数**: 0
 
@@ -81,7 +79,6 @@ AWS Direct Connect (ADC) リージョンでのサポート
 ---
 
 #### 4. Social Login (#2674)
-作成日: 2025-08-22  
 **ステータス**: オープン  
 **コメント数**: 1
 
@@ -95,7 +92,6 @@ AWS Direct Connect (ADC) リージョンでのサポート
 ### 🟠 高優先（MCP機能拡張）
 
 #### 5. Remote MCP Servers (#2706) ⭐
-作成日: 2025-08-27  
 **ステータス**: オープン  
 **コメント数**: 7
 
@@ -133,7 +129,6 @@ AWS Direct Connect (ADC) リージョンでのサポート
 ---
 
 #### 6. MCP Resources Support (#1462)
-作成日: 2025-05-01  
 **ステータス**: オープン  
 **ラベル**: Roadmap, MCP
 
@@ -147,7 +142,6 @@ MCPリソースのサポート追加
 ### 🟡 中優先（UX/UI改善）
 
 #### 7. UX Rewrite using Ratatui (#2550) ⭐⭐
-作成日: 2025-08-11  
 **ステータス**: オープン  
 **コメント数**: 0
 
@@ -168,7 +162,6 @@ Ratatui（または代替TUIライブラリ）を使用したUXの全面書き�
 ---
 
 #### 8. Voice Input (#2552)
-作成日: 2025-08-11  
 **ステータス**: オープン  
 **コメント数**: 0
 
@@ -180,7 +173,6 @@ Ratatui（または代替TUIライブラリ）を使用したUXの全面書き�
 ---
 
 #### 9. Preference Tool & UX (#1142)
-作成日: 2025-04-08  
 **ステータス**: オープン
 
 **概要**:
@@ -193,7 +185,6 @@ Ratatui（または代替TUIライブラリ）を使用したUXの全面書き�
 ### 🟢 中優先（開発者体験）
 
 #### 10. Checkpoints (#2548) ⭐
-作成日: 2025-08-11  
 **ステータス**: オープン  
 **コメント数**: 1
 
@@ -212,7 +203,6 @@ Ratatui（または代替TUIライブラリ）を使用したUXの全面書き�
 ---
 
 #### 11. Subagents (#2549)
-作成日: 2025-08-11  
 **ステータス**: オープン  
 **コメント数**: 1
 
@@ -229,7 +219,6 @@ Ratatui（または代替TUIライブラリ）を使用したUXの全面書き�
 ---
 
 #### 12. LSP Integration (#2599)
-作成日: 2025-08-13  
 **ステータス**: オープン  
 **コメント数**: 1
 
@@ -246,7 +235,6 @@ Language Server Protocol (LSP) 統合
 ---
 
 #### 13. Agent Runtime Library (#2554)
-作成日: 2025-08-11  
 **ステータス**: オープン  
 **コメント数**: 0
 
@@ -263,7 +251,6 @@ Language Server Protocol (LSP) 統合
 ---
 
 #### 14. Todo Tool (#2547)
-作成日: 2025-08-11  
 **ステータス**: オープン  
 **コメント数**: 1
 
@@ -282,7 +269,6 @@ Todoツールの実装
 ---
 
 #### 15. Knowledge Bases (#2557)
-作成日: 2025-08-11  
 **ステータス**: オープン  
 **コメント数**: 1
 
@@ -303,7 +289,6 @@ Knowledge Base機能の正式リリース
 ### 🔵 低優先（品質保証・運用）
 
 #### 16. E2E Testing Framework - 50 tests (#2556)
-作成日: 2025-08-11  
 **ステータス**: オープン  
 **コメント数**: 1
 
@@ -315,7 +300,6 @@ Knowledge Base機能の正式リリース
 ---
 
 #### 17. E2E Testing Framework - Python Script & Report (#2735)
-作成日: 2025-08-29  
 **ステータス**: オープン  
 **コメント数**: 0
 
@@ -327,7 +311,6 @@ PythonスクリプトとレポートによるE2Eテストフレームワーク
 ---
 
 #### 18. Ops Dashboard (#2716)
-作成日: 2025-08-28  
 **ステータス**: オープン  
 **コメント数**: 0
 
@@ -339,7 +322,6 @@ PythonスクリプトとレポートによるE2Eテストフレームワーク
 ---
 
 #### 19. CLI Observability (CloudWatch Embedded Metrics) (#1021)
-作成日: 2025-03-31  
 **ステータス**: オープン
 
 **概要**:
@@ -352,7 +334,6 @@ CloudWatch Embedded Metricsを使用したCLI可観測性
 ### ✅ 完了済みロードマップアイテム
 
 #### 20. MCP Server Support (#863)
-作成日: 2025-03-20  
 **ステータス**: クローズド
 
 **概要**: MCPサーバーサポートの基本実装
@@ -360,7 +341,6 @@ CloudWatch Embedded Metricsを使用したCLI可観測性
 ---
 
 #### 21. Persistent Conversations (#978)
-作成日: 2025-03-27  
 **ステータス**: クローズド
 
 **概要**: 永続的な会話のサポート
@@ -376,7 +356,6 @@ CloudWatch Embedded Metricsを使用したCLI可観測性
 ---
 
 #### 23. Context Hooks (#1050)
-作成日: 2025-04-02  
 **ステータス**: クローズド
 
 **概要**: コンテキストフック機能
@@ -384,7 +363,6 @@ CloudWatch Embedded Metricsを使用したCLI可観測性
 ---
 
 #### 24. Web Search (#1245)
-作成日: 2025-04-15  
 **ステータス**: クローズド
 
 **概要**: Web検索機能
@@ -392,7 +370,6 @@ CloudWatch Embedded Metricsを使用したCLI可観測性
 ---
 
 #### 25. Profile-specific MCP Server Configuration (#1391)
-作成日: 2025-04-28  
 **ステータス**: クローズド
 
 **概要**: プロファイル固有のMCPサーバー設定（現在はAgent設定に統合）
@@ -400,7 +377,6 @@ CloudWatch Embedded Metricsを使用したCLI可観測性
 ---
 
 #### 26. Per-session Support for /context (#1447)
-作成日: 2025-04-30  
 **ステータス**: クローズド
 
 **概要**: セッション単位の/contextサポート
@@ -408,7 +384,6 @@ CloudWatch Embedded Metricsを使用したCLI可観測性
 ---
 
 #### 27. Improve Agentic Execution UI (#998)
-作成日: 2025-03-28  
 **ステータス**: クローズド
 
 **概要**: エージェント実行UIの改善
@@ -416,7 +391,6 @@ CloudWatch Embedded Metricsを使用したCLI可観測性
 ---
 
 #### 28. Gracefully Handle Context Window Validation Errors (#885)
-作成日: 2025-03-21  
 **ステータス**: クローズド
 
 **概要**: コンテキストウィンドウ検証エラーの適切な処理
@@ -426,7 +400,6 @@ CloudWatch Embedded Metricsを使用したCLI可観測性
 ### 🔄 その他のオープンアイテム
 
 #### 29. Region Expansion (#1121)
-作成日: 2025-04-07  
 **ステータス**: オープン
 
 **概要**: リージョン拡張
@@ -434,7 +407,6 @@ CloudWatch Embedded Metricsを使用したCLI可観測性
 ---
 
 #### 30. Run Commands in User's Shell Environment (#1030)
-作成日: 2025-04-01  
 **ステータス**: オープン  
 **ラベル**: good first issue, Roadmap
 
@@ -443,7 +415,6 @@ CloudWatch Embedded Metricsを使用したCLI可観測性
 ---
 
 #### 31. Saved Prompts (#1360)
-作成日: 2025-04-25  
 **ステータス**: オープン
 
 **概要**: 保存されたプロンプトのサポート
@@ -451,7 +422,6 @@ CloudWatch Embedded Metricsを使用したCLI可観測性
 ---
 
 #### 32. /prompts Create Subcommand (#1342)
-作成日: 2025-04-24  
 **ステータス**: オープン
 
 **概要**: CLI内からプロンプトを作成する/prompts createサブコマンド
@@ -459,12 +429,9 @@ CloudWatch Embedded Metricsを使用したCLI可観測性
 ---
 
 #### 33. Auto-approve Specific Tools (#1938)
-作成日: 2025-05-22  
 **ステータス**: オープン
 
 **概要**: 特定ツールの自動承認機能
-
----
 
 ---
 
@@ -679,10 +646,4 @@ GitHubのISSUE、PR、ディスカッションを徹底的に調査しました�
 
 ---
 
-**ドキュメント作成日**: 2025-10-08  
 最終更新: 2025-10-26  
-**次回更新予定**: 2025-11-08（月次更新）
-
----
-
-作成日: 2025-08-13

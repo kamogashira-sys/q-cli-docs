@@ -119,28 +119,41 @@ Agent設定ファイルは、Q CLIの動作を宣言的にカスタマイズす�
 | `$schema` | string | ❌ | - | JSONスキーマURL |
 | `name` | string | ✅ | - | Agent名（一意である必要がある） |
 | `description` | string/null | ❌ | null | Agent説明（ユーザー向け） |
-| `prompt` | string/null | ❌ | null | システムプロンプト（file://サポート） |
+| `prompt` | string/null | ❌ | null | システムプロンプト（file:// URIサポート、v1.19.0+） |
 | `model` | string/null | ❌ | null | モデルID |
 
 #### promptフィールドの詳細
 
-**インラインテキスト**
+**対応バージョン**: v1.19.0以降
+
+**インラインテキスト**（従来の方法）
 ```json
 {
   "prompt": "あなたはPythonの専門家です。"
 }
 ```
 
-**file:// URI参照**
+**file:// URI参照**（v1.19.0+）
 ```json
 {
   "prompt": "file://./my-prompt.md"
 }
 ```
 
-- 相対パス: Agent設定ファイルからの相対パス
-- 絶対パス: システムの絶対パス
-- ファイルが見つからない場合: エラー
+**パス解決ルール**:
+- **相対パス**: Agent設定ファイル（.json）のディレクトリを基準に解決
+- **絶対パス**: システムの絶対パスとして解決
+- **Glob非対応**: ワイルドカード（`*`, `?`）は使用不可
+
+**エラー処理**:
+- ファイルが見つからない場合: `File not found` エラー
+- 無効なURI形式: `Invalid URI` エラー
+- 読み込み権限がない場合: `Read error` エラー
+
+**技術仕様**:
+- 実装モジュール: `crates/chat-cli/src/util/file_uri.rs`
+- 解決メソッド: `resolve_file_uri(uri: &str, base_path: &Path)`
+- サポートされるプロトコル: `file://` のみ
 
 ### 4.2 mcpServersフィールド
 
@@ -298,6 +311,8 @@ const DEFAULT_APPROVE = [
 |---------|-------------|
 | `userPromptSubmit` | ユーザーがプロンプトを送信した時 |
 | `agentSpawn` | Agentが起動した時 |
+| `preToolUse` | ツール実行前 |
+| `stop` | アシスタント応答完了時（会話ターン終了時） |
 
 **構造**
 ```json
@@ -311,6 +326,16 @@ const DEFAULT_APPROVE = [
     "userPromptSubmit": [
       {
         "command": "echo 'プロンプト送信'"
+      }
+    ],
+    "preToolUse": [
+      {
+        "command": "echo 'ツール実行: ${tool_name}'"
+      }
+    ],
+    "stop": [
+      {
+        "command": "echo '応答完了'"
       }
     ]
   }
@@ -673,5 +698,4 @@ Failed to start MCP server 'filesystem'
 
 ---
 
-最終更新: 2025-10-25  
-**ドキュメントバージョン**: 1.0
+最終更新: 2025-10-25

@@ -485,10 +485,14 @@ Delegate Toolは以下の3つの操作をサポートします：
 ```json
 {
   "operation": "launch",
-  "agent": "rust-agent",
+  "agent": "rust-agent",  // オプション（省略時は "q_cli_default" を使用）
   "task": "Create snake game"
 }
 ```
+
+- `operation`: 操作タイプ（"launch"）
+- `agent`: エージェント名（オプション、省略時は "q_cli_default" を使用）
+- `task`: 実行するタスクの説明
 
 #### 2. ステータス確認（status）
 ```json
@@ -753,8 +757,6 @@ q settings chat.delegateTimeout 600
 - [トラブルシューティング](../06_troubleshooting/02_common-issues.md) - 問題解決
 
 ---
-
-作成日: 2025-10-11  
 
 ---
 

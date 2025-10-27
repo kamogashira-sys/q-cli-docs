@@ -118,9 +118,9 @@ graph LR
 - **終了コード**: 0=成功、その他=失敗
 
 #### Stop
-- **タイミング**: Agent終了時
-- **用途**: クリーンアップ、統計情報の保存、リソース解放
-- **終了コード**: 0=成功、その他=失敗
+- **タイミング**: アシスタント応答完了時（会話ターン終了時）
+- **用途**: コンパイル、テスト実行、コードフォーマット、クリーンアップ処理
+- **終了コード**: 0=成功、その他=警告として表示
 
 ### 3.2 Tool Matcher
 
@@ -128,23 +128,20 @@ Tool Matcherは、どのツールに対してHookを実行するかを指定し�
 
 ```json
 {
-  "hooks": [
-    {
-      "trigger": "PreToolUse",
-      "tool_matcher": "fs_*",
-      "command": ["./scripts/check-file-access.sh"]
+  "hooks": {
+    "pretooluse_fs": {
+      "matcher": "fs_*",
+      "command": "./scripts/check-file-access.sh"
     },
-    {
-      "trigger": "PreToolUse",
-      "tool_matcher": "@git",
-      "command": ["./scripts/check-git-access.sh"]
+    "pretooluse_git": {
+      "matcher": "@git",
+      "command": "./scripts/check-git-access.sh"
     },
-    {
-      "trigger": "PreToolUse",
-      "tool_matcher": "@git/status",
-      "command": ["./scripts/log-git-status.sh"]
+    "pretooluse_git_status": {
+      "matcher": "@git/status",
+      "command": "./scripts/log-git-status.sh"
     }
-  ]
+  }
 }
 ```
 
@@ -160,14 +157,13 @@ Tool Matcherは、どのツールに対してHookを実行するかを指定し�
 
 ```json
 {
-  "hooks": [
-    {
-      "trigger": "PreToolUse",
-      "tool_matcher": "fs_*",
-      "command": ["./scripts/expensive-check.sh"],
+  "hooks": {
+    "pretooluse": {
+      "matcher": "fs_*",
+      "command": "./scripts/expensive-check.sh",
       "cache_ttl_seconds": 300
     }
-  ]
+  }
 }
 ```
 
@@ -178,14 +174,13 @@ Tool Matcherは、どのツールに対してHookを実行するかを指定し�
 
 ```json
 {
-  "hooks": [
-    {
-      "trigger": "PreToolUse",
-      "tool_matcher": "execute_bash",
-      "command": ["./scripts/security-scan.sh"],
+  "hooks": {
+    "pretooluse": {
+      "matcher": "execute_bash",
+      "command": "./scripts/security-scan.sh",
       "timeout_ms": 5000
     }
-  ]
+  }
 }
 ```
 

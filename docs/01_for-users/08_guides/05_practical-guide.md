@@ -598,7 +598,7 @@ Part2では、応用実装パターンと実装時の注意点を学びます。
 ---
 
 **出典**:
-- [実装コード](/crates/chat-cli/src/cli/agent/mod.rs)
+- [実装コード](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/cli/agent/mod.rs)
 - [Agent機能ドキュメント](../02_features/02_agents.md)
 # 第5章 Part2: 応用実装パターンと注意点
 

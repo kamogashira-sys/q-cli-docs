@@ -1104,12 +1104,13 @@ ls -la doc/architecture.md
 
 ← **前へ**: [第5章: 実践ガイド](05_practical-guide.md) | **次へ**: [第7章: 高度なトピック](07_advanced.md) →
 
----
-
-最終更新: 2025-10-18
 
 ---
 
 **関連トピック**:
 - [コンテキストウィンドウ制限](../07_reference/07_context-window-limits.md)
 - [設定リファレンス](../07_reference/03_settings-reference.md)
+
+---
+
+最終更新: 2025-10-18

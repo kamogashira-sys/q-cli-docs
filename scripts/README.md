@@ -65,10 +65,10 @@
 全ファイル数: 118
 
 カテゴリ別:
-  01_for-users: 73 文書
-  02_for-developers: 11 文書
-  03_for-community: 14 文書
-  04_issues: 1 文書
+  01_for-users: 62 文書
+  02_for-developers: 8 文書
+  03_for-community: 10 文書
+  04_issues: 0 文書
   05_meta: 14 文書
 
 README除外: 97 文書

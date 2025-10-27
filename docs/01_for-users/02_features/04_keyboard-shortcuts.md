@@ -411,7 +411,6 @@ q settings chat.delegateModeKey e
 
 ---
 
-作成日: 2025-10-11
 ---
 
 **関連トピック**:

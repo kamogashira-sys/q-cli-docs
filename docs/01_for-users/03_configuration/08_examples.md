@@ -506,12 +506,6 @@ rm ~/.aws/amazonq/settings.json
 
 ---
 
----
-
-作成日: 2025-10-11  
-
----
-
 **関連トピック**:
 - [設定優先順位ガイド](07_priority-rules.md)
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
