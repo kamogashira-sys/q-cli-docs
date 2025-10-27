@@ -312,6 +312,7 @@ const DEFAULT_APPROVE = [
 | `userPromptSubmit` | ユーザーがプロンプトを送信した時 |
 | `agentSpawn` | Agentが起動した時 |
 | `preToolUse` | ツール実行前 |
+| `postToolUse` | ツール実行後 |
 | `stop` | アシスタント応答完了時（会話ターン終了時） |
 
 **構造**
@@ -330,7 +331,16 @@ const DEFAULT_APPROVE = [
     ],
     "preToolUse": [
       {
-        "command": "echo 'ツール実行: ${tool_name}'"
+        "command": "echo 'ツール実行: ${tool_name}'",
+        "matcher": "fs_*",
+        "timeout_ms": 30000,
+        "max_output_size": 10240,
+        "cache_ttl_seconds": 0
+      }
+    ],
+    "postToolUse": [
+      {
+        "command": "echo 'ツール完了: ${tool_name}'"
       }
     ],
     "stop": [

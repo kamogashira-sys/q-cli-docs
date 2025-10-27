@@ -84,7 +84,7 @@ Agentは、Q CLIの動作を定義する設定ファイルです。以下をカ�
 | `toolAliases` | object | {} | ツール名エイリアス |
 | `allowedTools` | array | [] | 明示的に許可されたツール一覧 |
 | `resources` | array | [] | リソースファイル（`file://`形式、[詳細](../08_guides/README.md)） |
-| `hooks` | object | {} | フック設定（`userPromptSubmit`, `agentSpawn`, `preToolUse`, `stop`） |
+| `hooks` | object | {} | フック設定（`userPromptSubmit`, `agentSpawn`, `preToolUse`, `postToolUse`, `stop`） |
 | `toolsSettings` | object | {} | ツール固有設定 |
 | `useLegacyMcpJson` | boolean | false | レガシーMCP設定（`~/.aws/amazonq/mcp.json`）の使用 |
 | `model` | string | null | 使用モデルID |
@@ -438,6 +438,18 @@ Agentが参照できるファイルを指定します。
 - **用途**: コンパイル、テスト実行、コードフォーマット、クリーンアップ処理
 - **終了コード**: 0=成功、その他=警告として表示
 
+#### フック設定項目
+
+各フックで設定可能な項目：
+
+| 項目 | 型 | デフォルト | 説明 |
+|------|----|-----------|----- |
+| `command` | string | - | 実行するコマンド（必須） |
+| `timeout_ms` | number | 30000 | タイムアウト時間（ミリ秒） |
+| `max_output_size` | number | 10240 | 最大出力サイズ（バイト） |
+| `cache_ttl_seconds` | number | 0 | キャッシュ有効期限（秒、0=無効） |
+| `matcher` | string | - | ツール名マッチングパターン（preToolUse/postToolUseのみ） |
+
 #### Tool Matcher
 
 Tool Matcherは、どのツールに対してHookを実行するかを指定します：
@@ -447,6 +459,19 @@ Tool Matcherは、どのツールに対してHookを実行するかを指定し�
 - `@git`: MCPサーバー全体
 - `@git/status`: MCPサーバーの特定ツール
 - `execute_bash`: 特定ツール
+- `fs_write`: 特定ツール
+- `use_aws`: 特定ツール
+
+**主要ツール名一覧**:
+- **ファイル操作**: `fs_read`, `fs_write`
+- **実行系**: `execute_bash`, `use_aws`
+- **MCP**: `@{server_name}`, `@{server_name}/{tool_name}`
+
+**Globパターン詳細**:
+- `*`: 任意の文字列
+- `?`: 任意の1文字
+- `[abc]`: 文字クラス
+- `{a,b}`: 選択肢
 
 **設定例**:
 ```json
@@ -455,11 +480,19 @@ Tool Matcherは、どのツールに対してHookを実行するかを指定し�
     "preToolUse": [
       {
         "matcher": "fs_*",
-        "command": "./scripts/check-file-access.sh"
+        "command": "./scripts/check-file-access.sh",
+        "timeout_ms": 5000,
+        "cache_ttl_seconds": 60
       },
       {
         "matcher": "@git",
-        "command": "./scripts/check-git-access.sh"
+        "command": "./scripts/check-git-access.sh",
+        "max_output_size": 2048
+      },
+      {
+        "matcher": "execute_bash",
+        "command": "./scripts/security-scan.sh",
+        "timeout_ms": 10000
       }
     ]
   }
@@ -477,14 +510,15 @@ Tool Matcherは、どのツールに対してHookを実行するかを指定し�
       {
         "matcher": "fs_*",
         "command": "./scripts/expensive-check.sh",
-        "cache_ttl_seconds": 300
+        "cache_ttl_seconds": 300,
+        "timeout_ms": 15000
       }
     ]
   }
 }
 ```
 
-- **cache_ttl_seconds**: キャッシュの有効期限（秒）
+- **cache_ttl_seconds**: キャッシュの有効期限（秒、デフォルト: 0）
 - **用途**: 高コストな処理の重複実行を回避
 
 #### タイムアウト制御
@@ -496,15 +530,17 @@ Tool Matcherは、どのツールに対してHookを実行するかを指定し�
       {
         "matcher": "execute_bash",
         "command": "./scripts/security-scan.sh",
-        "timeout_ms": 5000
+        "timeout_ms": 5000,
+        "max_output_size": 4096
       }
     ]
   }
 }
 ```
 
-- **デフォルト**: 30秒
+- **デフォルト**: 30,000ms（30秒）
 - **timeout_ms**: ミリ秒単位でタイムアウトを指定
+- **max_output_size**: 出力サイズ制限（デフォルト: 10,240バイト）
 
 #### 環境変数
 
