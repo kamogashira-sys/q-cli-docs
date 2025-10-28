@@ -30,7 +30,8 @@ Amazon Q CLIを効果的に使うためのベストプラクティスを紹介�
 | 2 | [セキュリティベストプラクティス](02_security.md) | 中級者以上 | セキュリティのベストプラクティス |
 | 3 | [パフォーマンス最適化](03_performance.md) | 中級者以上 | パフォーマンス向上のヒント |
 | 4 | [実践的ユースケース](04_use-cases.md) | 初級〜中級 | 1日の作業フロー、プロジェクト別設定テンプレート |
-| 5 | [k6負荷テスト自動化](05_load-testing-with-k6.md) | 中級〜上級 | Playwright MCP + k6による負荷テスト自動化 |
+| 5 | [Agent Hooks比較](05_agent-hooks-comparison.md) | 中級 | Agent Hooks vs Kiro AIエージェントフック比較 |
+| 6 | [k6負荷テスト自動化](06_load-testing-with-k6.md) | 中級〜上級 | Playwright MCP + k6による負荷テスト自動化 |
 
 ---
 

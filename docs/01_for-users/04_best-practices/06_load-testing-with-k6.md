@@ -1,4 +1,4 @@
-[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [ベストプラクティス](README.md) > 05 Load Testing With K6
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [ベストプラクティス](README.md) > 06 Load Testing With K6
 
 ---
 
