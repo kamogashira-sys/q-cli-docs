@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "version": "2.0.0",
+    "created": "2025-11-01T10:40:00+09:00",
+    "description": "4つの情報源を統合したデータ"
+  },
+  "sources": {
+    "source_code": {
+      "priority": 1,
+      "description": "Q CLIソースコードから抽出",
+      "paths": {
+        "agent_dir": "~/.aws/amazonq/cli-agents",
+        "subagents_dir": ".amazonq/.subagents",
+        "mcp_config": "~/.aws/amazonq/mcp.json",
+        "global_config": "~/.aws/amazonq/config.toml",
+        "knowledge_dir": "~/.aws/amazonq/knowledge",
+        "prompts_dir": "~/.aws/amazonq/prompts"
+      },
+      "env_vars": {
+        "Q_LOG_LEVEL": {
+          "default": "info",
+          "type": "string",
+          "description": "ログレベル"
+        },
+        "Q_TELEMETRY_ENABLED": {
+          "default": "true",
+          "type": "boolean",
+          "description": "テレメトリー有効化"
+        },
+        "Q_AGENT_NAME": {
+          "default": null,
+          "type": "string",
+          "description": "Agent名"
+        },
+        "Q_AGENT_PATH": {
+          "default": null,
+          "type": "string",
+          "description": "Agentパス"
+        },
+        "Q_MCP_CONFIG_PATH": {
+          "default": "~/.aws/amazonq/mcp.json",
+          "type": "string",
+          "description": "MCP設定ファイルパス"
+        }
+      }
+    },
+    "research": {
+      "priority": 2,
+      "description": "過去の調査結果",
+      "env_vars_count": 70,
+      "paths_verified": true,
+      "last_updated": "2025-11-01"
+    },
+    "schema": {
+      "priority": 3,
+      "description": "JSON Schema定義",
+      "agent_schema": "schemas/agent-config.schema.json",
+      "mcp_schema": "schemas/mcp-config.schema.json"
+    },
+    "documentation": {
+      "priority": 4,
+      "description": "検証対象ドキュメント",
+      "files_count": 119,
+      "last_validated": "2025-11-01"
+    }
+  },
+  "validation_rules": {
+    "path_patterns": [
+      "~/.amazonq/agents",
+      "~/.aws/amazonq/.subagents",
+      "~/.config/amazonq/agents",
+      ".amazonq/agents"
+    ],
+    "env_var_patterns": [
+      "Q_[A-Z_]+",
+      "AWS_[A-Z_]+"
+    ]
+  }
+}
