@@ -20,7 +20,8 @@ cd "$(dirname "$0")/.."
 errors=0
 checked=0
 
-find docs -name "*.md" -type f | while read file; do
+# パイプを使わずにプロセス置換を使用
+while read file; do
     # Git更新日
     git_date=$(git log -1 --format="%ad" --date=format:"%Y-%m-%d" -- "$file" 2>/dev/null || echo "")
     
@@ -43,7 +44,7 @@ find docs -name "*.md" -type f | while read file; do
         echo "   Git: $git_date, Doc: $doc_date"
         errors=$((errors + 1))
     fi
-done
+done < <(find docs -name "*.md" -type f)
 
 echo ""
 echo "チェック対象: $checked ファイル"
