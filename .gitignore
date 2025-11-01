@@ -1,6 +1,10 @@
 # Backup directories
 docs.backup.*
 
+# Backup files
+*.bak
+*-results.txt
+
 # Python
 __pycache__/
 *.py[cod]
