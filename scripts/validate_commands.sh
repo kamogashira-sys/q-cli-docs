@@ -1,6 +1,6 @@
 #!/bin/bash
 # scripts/validate_commands.sh
-# コマンド検証スクリプト（改善版）
+# コマンド検証スクリプト（GitHub Actions対応版）
 
 set -e
 
@@ -8,7 +8,30 @@ echo "=== Q CLI コマンド検証 ==="
 
 # 1. 実在するコマンドリストを生成
 echo "1. 実在するコマンドを取得中..."
-q --help-all 2>&1 | grep "^  " | awk '{print $1}' | sort > /tmp/valid_commands.txt
+
+# Q CLIがインストールされているか確認
+if command -v q &> /dev/null; then
+  # ローカル環境: q --help-all から取得
+  q --help-all 2>&1 | grep "^  " | awk '{print $1}' | sort > /tmp/valid_commands.txt
+else
+  # GitHub Actions環境: 既知のコマンドリストを使用
+  cat > /tmp/valid_commands.txt << 'EOF'
+agent
+chat
+debug
+diagnostic
+doctor
+inline
+login
+logout
+profile
+settings
+translate
+user
+whoami
+EOF
+fi
+
 echo "   実在するコマンド数: $(wc -l < /tmp/valid_commands.txt)"
 
 # 2. 全ドキュメントからCLIコマンドを抽出（コメント除外、コロン前まで）
