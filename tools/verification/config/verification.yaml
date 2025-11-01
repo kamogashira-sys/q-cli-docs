@@ -1,0 +1,77 @@
+# Verification Tool Configuration
+
+# Source paths
+sources:
+  repository: "/tmp/q-cli-source"
+  schemas: "crates/amzn-toolkit-telemetry/schemas"
+  docs: "/home/katoh/projects/q-cli-docs/docs"
+
+# Validation settings
+validation:
+  # Setting values validation
+  setting_values:
+    enabled: true
+    strict_mode: true
+  
+  # Enum values validation
+  enum_values:
+    enabled: true
+    case_sensitive: true
+  
+  # Command options validation
+  command_options:
+    enabled: true
+    check_aliases: true
+  
+  # Data types validation
+  data_types:
+    enabled: true
+    check_nullability: true
+  
+  # Schema validation
+  schema:
+    enabled: true
+    check_required: true
+
+# Reporting settings
+reporting:
+  # Output formats
+  formats:
+    - console
+    - json
+    - html
+  
+  # Output directory
+  output_dir: "reports"
+  
+  # Verbosity level (0-3)
+  verbosity: 1
+  
+  # Show warnings
+  show_warnings: true
+
+# Performance settings
+performance:
+  # Quick verification timeout (seconds)
+  quick_timeout: 10
+  
+  # Full verification timeout (seconds)
+  full_timeout: 300
+  
+  # Parallel execution
+  parallel: true
+  max_workers: 4
+
+# CI/CD integration
+ci:
+  # Fail on warnings
+  fail_on_warnings: false
+  
+  # Fail on errors
+  fail_on_errors: true
+  
+  # Generate artifacts
+  generate_artifacts: true
+  
+  # Artifact retention (days)
+  artifact_retention: 30

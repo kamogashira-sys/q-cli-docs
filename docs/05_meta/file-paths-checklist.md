@@ -54,7 +54,7 @@
 - [ ] `~/.aws/amazonq/cli-agents/<agent-name>.json` - Agent設定ファイル
 
 #### MCP設定
-- [ ] `~/.config/amazonq/mcp.json` - MCP設定ファイル
+- [ ] `~/.aws/amazonq/mcp.json` - MCP設定ファイル
 
 #### Knowledge
 - [ ] `~/.amazonq/knowledge/` - Knowledgeディレクトリ
@@ -306,7 +306,7 @@ eval echo "~/.local/share/amazon-q/settings.json"
 - グローバル設定: `~/.config/amazonq/`
 - ユーザーデータ: `~/.amazonq/`
 - Agent設定: `~/.aws/amazonq/cli-agents/`
-- MCP設定: `~/.config/amazonq/mcp.json`
+- MCP設定: `~/.aws/amazonq/mcp.json`
 - Knowledge: `~/.amazonq/knowledge/`
 
 ### 関連チェックリスト

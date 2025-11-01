@@ -198,7 +198,7 @@ grep -A 10 -B 5 "snapshot_.*_path" crates/chat-cli/src/util/directories.rs
 ### 設定関連
 - [ ] `settings.json`のパス: `~/.local/share/amazon-q/settings.json`
 - [ ] Agent設定パス: `~/.aws/amazonq/cli-agents/`
-- [ ] MCP設定パス: `~/.config/amazonq/mcp.json`
+- [ ] MCP設定パス: `~/.aws/amazonq/mcp.json`
 - [ ] 設定優先順位の実装確認
 
 ### ログ関連
