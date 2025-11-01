@@ -415,4 +415,4 @@ let stats = manager.compute_stats_between(&prev_tag, current_tag)?;
 
 ---
 
-最終更新: 2025-10-25
+最終更新: 2025-10-26

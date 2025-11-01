@@ -823,4 +823,4 @@ q settings chat.delegateTimeout 600
 
 ---
 
-最終更新: 2025-10-26
+最終更新: 2025-11-01

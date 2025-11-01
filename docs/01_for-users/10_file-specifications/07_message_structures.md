@@ -448,4 +448,4 @@ let response = AssistantMessage::new_tool_use(
 
 ---
 
-最終更新: 2025-10-25
+最終更新: 2025-10-26

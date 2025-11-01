@@ -475,4 +475,4 @@ tail -f ~/.aws/amazonq/logs/q-cli.log | grep "config"
 
 ---
 
-最終更新: 2025-10-26
+最終更新: 2025-10-27

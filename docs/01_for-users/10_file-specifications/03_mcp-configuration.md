@@ -653,4 +653,4 @@ MCP server from mcp.json not loaded
 
 ---
 
-最終更新: 2025-10-25
+最終更新: 2025-10-27

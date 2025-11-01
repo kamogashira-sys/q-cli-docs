@@ -448,4 +448,4 @@ if let Some(duration) = conversation.get_tangent_duration_seconds() {
 
 ---
 
-最終更新: 2025-10-25
+最終更新: 2025-10-26

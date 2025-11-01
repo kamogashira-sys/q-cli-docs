@@ -682,4 +682,4 @@ q settings chat.enableHistoryHints true
 
 ---
 
-最終更新: 2025-10-26
+最終更新: 2025-11-01
