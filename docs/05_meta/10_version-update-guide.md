@@ -1,13 +1,24 @@
-[ホーム](../README.md) > [Meta](README.md) > バージョンアップ対応手順書
+[ホーム](../README.md) > [Meta](README.md) > バージョンアップ対応ガイド
 
 ---
 
-# Q CLI バージョンアップ対応手順書
+# バージョンアップ対応ガイド
 
-**最終更新**: 2025-10-26  
+**最終更新**: 2025-11-01  
 **対象読者**: ドキュメントメンテナー、コントリビューター  
 **前提条件**: Git、ripgrep、jq、curlがインストール済み  
 **所要時間**: 約1-2時間（バージョンの変更規模による）
+
+---
+
+## 関連ガイド
+
+このガイドを読む前に、以下を確認してください：
+
+- **[品質原則](04_quality-principles.md)** - 作業の基本原則（必読）
+- **[自動化ツール](05_automation-tools.md)** - 検証ツールの使い方
+- **[教訓集](07_lessons-learned.md)** - 過去の失敗と対策
+- **[日常ワークフロー](09_daily-workflow.md)** - 通常の作業フロー
 
 ---
 
@@ -20,8 +31,7 @@
 5. [Phase 2: 機能ドキュメント更新](#phase-2-機能ドキュメント更新推奨)
 6. [Phase 3: 検証と品質確認](#phase-3-検証と品質確認必須)
 7. [最終確認](#最終確認)
-8. [作業記録](#作業記録)
-9. [トラブルシューティング](#トラブルシューティング)
+8. [トラブルシューティング](#トラブルシューティング)
 
 ---
 
@@ -33,33 +43,23 @@ Q CLIの新バージョンリリース時に、本サイトのドキュメント
 
 ### 重要な原則
 
-**1. 作業品質が最優先**
-- 作業時間は考慮しない
-- いきすぎた効率化はしない
-- 妥協しない
+本ガイドは[品質原則](04_quality-principles.md)に基づいています。特に重要な3原則：
 
-**2. 正確性の確保**
-- 思い込みで書かない
-- 推測で書かない
-- すべて検証する
+1. **作業品質が最優先** - 時間より正確性
+2. **正確性の確保** - 推測禁止、すべて検証
+3. **完全性の追求** - 漏れを許さない
 
-**3. 完全性の追求**
-- 漏れを許さない
-- 中途半端にしない
-- 最後まで徹底する
+詳細は[品質原則](04_quality-principles.md)を参照してください。
 
-### 過去の教訓
+### Phase 0の重要性
 
-**事例**: todosコマンドをtodoと誤記（v1.18.0対応時）
+**過去の教訓**: todosコマンドをtodoと誤記（v1.18.0対応時）
 
-**原因**:
-- リリースノートのみを参照
-- ソースコード確認を怠った
+**原因**: リリースノートのみ参照、ソースコード確認を怠った
 
-**対策**:
-- ✅ Phase 0でソースコード確認を必須化
-- ✅ コマンド名、設定項目名を直接確認
-- ✅ 推測に基づく記述を排除
+**対策**: Phase 0でソースコード確認を必須化
+
+詳細は[教訓集](07_lessons-learned.md)を参照してください。
 
 ### 作業フロー
 
@@ -1083,8 +1083,6 @@ curl -I "https://github.com/aws/amazon-q-developer-cli/compare/vX.Y.Z-1...vX.Y.Z
 
 ### ドキュメント品質チェック
 
-#### 使用ツール
-
 ```bash
 # 日付整合性チェック
 ./scripts/check-dates.sh
@@ -1093,11 +1091,7 @@ curl -I "https://github.com/aws/amazon-q-developer-cli/compare/vX.Y.Z-1...vX.Y.Z
 ./scripts/count-files.sh
 ```
 
-#### チェックリスト
-
-- [ ] 日付が統一されている
-- [ ] リンク切れがない
-- [ ] ファイル数が正確
+詳細は[自動化ツール](05_automation-tools.md)を参照してください。
 
 ---
 
@@ -1106,21 +1100,16 @@ curl -I "https://github.com/aws/amazon-q-developer-cli/compare/vX.Y.Z-1...vX.Y.Z
 ```bash
 # 変更確認
 git status
-git diff
 
 # コミット
 git add docs/03_for-community/01_updates/
-git commit -m "docs: Q CLI vX.Y.Z対応"
+git commit -m "docs: update version history for vX.Y.Z"
 
 # プッシュ
 git push origin main
 ```
 
----
-
-## 作業記録
-
-作業記録テンプレート: `/path/to/work_records/YYYYMMDD/YYYYMMDDHHmm_vX.Y.Z_update_worklog.md`
+詳細なGit操作は[日常ワークフロー](09_daily-workflow.md)を参照してください。
 
 ---
 
