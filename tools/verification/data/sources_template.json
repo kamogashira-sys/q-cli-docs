@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "version": "2.0.2",
+    "version": "2.0.3",
     "created": "2025-11-01T10:40:00+09:00",
-    "updated": "2025-11-01T11:00:00+09:00",
+    "updated": "2025-11-01T11:09:00+09:00",
     "description": "4つの情報源を統合したデータ"
   },
   "sources": {
@@ -102,6 +102,21 @@
           "default": null,
           "type": "string",
           "description": "バンドルメタデータへのパスをオーバーライド"
+        },
+        "Q_MAX_CONTEXT_TOKENS": {
+          "default": null,
+          "type": "string",
+          "description": "最大コンテキストトークン数を指定"
+        },
+        "Q_ENABLE_THINKING": {
+          "default": null,
+          "type": "string",
+          "description": "Thinking機能を有効化"
+        },
+        "Q_KNOWLEDGE_ENABLED": {
+          "default": "true",
+          "type": "string",
+          "description": "Knowledge機能を有効化"
         }
       }
     },
