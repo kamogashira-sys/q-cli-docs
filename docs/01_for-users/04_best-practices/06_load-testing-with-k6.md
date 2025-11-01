@@ -588,4 +588,4 @@ aws iam get-user-policy --user-name your-user --policy-name XRayAccess
 
 ---
 
-最終更新: 2025-10-28
+最終更新: 2025-11-01

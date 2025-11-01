@@ -738,4 +738,4 @@ aws organizations put-policy \
 
 ---
 
-最終更新: 2025-10-27
+最終更新: 2025-11-01

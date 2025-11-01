@@ -436,4 +436,4 @@ cp ~/.local/share/amazon-q/settings.json ~/.local/share/amazon-q/settings.json.b
 
 ---
 
-最終更新: 2025-10-27
+最終更新: 2025-11-01
