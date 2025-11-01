@@ -97,6 +97,11 @@ class EnvValidator:
         # XDG
         'XDG_DATA_HOME',
         'XDG_CONFIG_HOME',
+        'XDG_CURRENT_DESKTOP',
+        'XDG_SESSION_TYPE',
+        
+        # OAuth
+        'Q_OAUTH_REDIRECT_URI',
         
         # Build/Internal (not for users)
         'Q_BUILD_DATETIME',
@@ -152,6 +157,9 @@ class EnvValidator:
             matches = re.finditer(pattern, content)
             for match in matches:
                 var_name = match.group(1)
+                # Skip very short names (likely prefixes or examples)
+                if len(var_name) <= 2:
+                    continue
                 # Only consider Q_ or AWS_ or system vars
                 if var_name.startswith(('Q_', 'AWS_', 'XDG_')) or var_name in {'HOME', 'EDITOR', 'TERM', 'CI', 'CODESPACES', 'PATH', 'USER', 'PWD', 'QTERM_SESSION_ID', 'PROCESS_LAUNCHED_BY_Q', 'AMAZON_Q_SIGV4'}:
                     found_vars.add((var_name, match.start()))
@@ -195,7 +203,8 @@ class EnvValidator:
                 return True
         
         # Check if it's a placeholder/example variable
-        if any(placeholder in var_name for placeholder in ['VARIABLE', 'VAR', 'NEW', 'OLD', 'CUSTOM', 'MY_', 'YOUR_', 'EXAMPLE']):
+        placeholder_keywords = ['VARIABLE', 'VAR', 'NEW', 'OLD', 'CUSTOM', 'MY_', 'YOUR_', 'EXAMPLE', 'AGENT']
+        if any(keyword in var_name for keyword in placeholder_keywords):
             return True
         
         return False
