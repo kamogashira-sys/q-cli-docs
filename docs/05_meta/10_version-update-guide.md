@@ -1236,6 +1236,8 @@ grep -r -i "agent.*path\|path.*agent" docs/ --include="*.md" -l
 - [v1.19.3-impact-analysis.md](../../v1.19.3-impact-analysis.md)
 - [v1.19.3-document-impact-detailed.md](../../v1.19.3-document-impact-detailed.md)
 
+
 ---
 
-最終更新: 2025-11-01
+**最終更新**: 2025-11-01
+**メンテナー**: ドキュメントチーム
