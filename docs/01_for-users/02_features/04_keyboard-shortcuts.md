@@ -252,7 +252,7 @@ q settings chat.autocompletionKey Tab
 
 #### 2. 設定ファイルで設定
 
-`~/.amazonq/settings.json` を編集：
+`~/.local/share/amazon-q/settings.json` を編集：
 
 ```json
 {
@@ -379,10 +379,10 @@ Ctrl+T
 
 ```bash
 # 設定ファイルの確認
-ls -la ~/.amazonq/settings.json
+ls -la ~/.local/share/amazon-q/settings.json
 
 # 権限の修正（必要な場合）
-chmod 644 ~/.amazonq/settings.json
+chmod 644 ~/.local/share/amazon-q/settings.json
 ```
 
 ### Q3: Ctrl+Dが終了とDelegateモードの両方に割り当てられている

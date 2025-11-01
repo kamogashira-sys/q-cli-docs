@@ -137,7 +137,7 @@ q agent list my-agent
 |------|------|
 | グローバル設定 | `~/.amazonq/config.toml` |
 | Agent設定 | `./.q/agents/<name>.json` |
-| MCP設定 | `~/.amazonq/mcp.json` |
+| MCP設定 | `~/.aws/amazonq/mcp.json` |
 
 ---
 
@@ -188,7 +188,7 @@ enabled = true
 | `Q_TELEMETRY_ENABLED` | テレメトリー制御 | `false` |
 | `Q_CHAT_MODEL` | チャットモデル | `anthropic.claude-3-5-sonnet-20241022-v2:0` |
 | `Q_KNOWLEDGE_ENABLED` | Knowledge機能 | `true` |
-| `Q_MCP_CONFIG_PATH` | MCP設定パス | `~/.amazonq/mcp.json` |
+| `Q_MCP_CONFIG_PATH` | MCP設定パス | `~/.aws/amazonq/mcp.json` |
 | `AWS_PROFILE` | AWSプロファイル | `default` |
 | `AWS_REGION` | AWSリージョン | `us-east-1` |
 
@@ -261,7 +261,7 @@ ls -la .q/agents/
 
 ```bash
 # MCP設定確認
-cat ~/.amazonq/mcp.json
+cat ~/.aws/amazonq/mcp.json
 
 # MCPサーバー再起動
 # (MCPサーバーのドキュメント参照)

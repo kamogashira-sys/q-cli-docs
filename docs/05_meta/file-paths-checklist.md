@@ -79,7 +79,7 @@
 
 **正しい例**:
 ```
-~/.config/amazonq/settings.json
+~/.local/share/amazon-q/settings.json
 /usr/local/bin/q
 ```
 
@@ -253,7 +253,7 @@ C:/Users/username/.config/amazonq/settings.json
 #### パスの存在確認
 ```bash
 # ファイルの存在確認
-ls -la ~/.config/amazonq/settings.json
+ls -la ~/.local/share/amazon-q/settings.json
 
 # ディレクトリの存在確認
 ls -la ~/.aws/amazonq/cli-agents/
@@ -272,7 +272,7 @@ echo $PATH
 realpath ./my-agent.json
 
 # 環境変数を含むパスの解決
-eval echo "~/.config/amazonq/settings.json"
+eval echo "~/.local/share/amazon-q/settings.json"
 ```
 
 ---
