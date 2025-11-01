@@ -1,15 +1,18 @@
-.PHONY: help install test lint clean quick full
+.PHONY: help install test lint clean quick full validate-paths validate-env validate-all
 
 help:
 	@echo "Q CLI Verification Tools - Makefile"
 	@echo ""
 	@echo "Available targets:"
-	@echo "  install    - Install dependencies"
-	@echo "  test       - Run all tests"
-	@echo "  lint       - Run linters"
-	@echo "  clean      - Clean temporary files"
-	@echo "  quick      - Run quick verification (< 10s)"
-	@echo "  full       - Run full verification (< 5min)"
+	@echo "  install         - Install dependencies"
+	@echo "  test            - Run all tests"
+	@echo "  lint            - Run linters"
+	@echo "  clean           - Clean temporary files"
+	@echo "  quick           - Run quick verification (< 10s)"
+	@echo "  full            - Run full verification (< 5min)"
+	@echo "  validate-paths  - Validate file paths in documentation"
+	@echo "  validate-env    - Validate environment variables"
+	@echo "  validate-all    - Run all validations (paths + env)"
 
 install:
 	pip install -r requirements.txt
@@ -35,3 +38,12 @@ quick:
 
 full:
 	./orchestrators/verify.sh --full
+
+validate-paths:
+	python orchestrators/validate_paths.py ../../docs
+
+validate-env:
+	@echo "Environment variable validation is part of validate-all"
+
+validate-all:
+	python orchestrators/integrated_validator.py ../../docs

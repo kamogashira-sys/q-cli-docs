@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://kamogashira-sys.github.io/q-cli-docs/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1

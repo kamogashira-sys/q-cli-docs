@@ -1,0 +1,64 @@
+name: Validate Documentation
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'docs/**'
+      - 'tools/verification/**'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'docs/**'
+      - 'tools/verification/**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+    
+    - name: Install dependencies
+      working-directory: tools/verification
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Run path validation
+      working-directory: tools/verification
+      run: |
+        python orchestrators/validate_paths.py ../../docs
+    
+    - name: Run integrated validation
+      working-directory: tools/verification
+      run: |
+        python orchestrators/integrated_validator.py ../../docs
+    
+    - name: Run unit tests
+      working-directory: tools/verification
+      run: |
+        pip install pytest pytest-cov
+        pytest tests/unit/test_path_validator.py tests/unit/test_env_validator.py -v
+    
+    - name: Generate validation report
+      if: always()
+      working-directory: tools/verification
+      run: |
+        python orchestrators/integrated_validator.py ../../docs --json > validation-report.json
+    
+    - name: Upload validation report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: validation-report
+        path: tools/verification/validation-report.json
+        retention-days: 30
