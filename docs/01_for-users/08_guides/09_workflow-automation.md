@@ -852,10 +852,282 @@ echo "Processing file: $(basename $FILE_PATH)"
 
 ---
 
-**作成者**: Amazon Q Developer CLI  
-**レビュー**: katoh  
-**バージョン**: 1.0
+## 9. Q CLIとシェルスクリプトの統合（v1.19.3以降）
+
+v1.19.3以降、chat出力がstdoutに出力されるため、シェルスクリプトとの統合が容易になりました。
+
+### 基本的な統合パターン
+
+#### パターン1: レポート生成の自動化
+
+```bash
+#!/bin/bash
+# daily-report.sh - 日次レポート生成スクリプト
+
+# Q CLIでレポート生成
+q chat "今日のタスクをまとめて" > /tmp/daily-report.txt
+
+# レポートをSlackに送信
+curl -X POST -H 'Content-type: application/json' \
+  --data "{\"text\":\"$(cat /tmp/daily-report.txt)\"}" \
+  $SLACK_WEBHOOK_URL
+
+# クリーンアップ
+rm /tmp/daily-report.txt
+```
+
+#### パターン2: コードレビューの自動化
+
+```bash
+#!/bin/bash
+# auto-review.sh - プルリクエスト自動レビュー
+
+# 変更差分を取得
+DIFF=$(git diff main...HEAD)
+
+# Q CLIでレビュー実行
+echo "$DIFF" | q chat "このdiffをレビューして" > review.txt
+
+# レビュー結果をGitHub PRにコメント
+gh pr comment $PR_NUMBER --body-file review.txt
+
+# クリーンアップ
+rm review.txt
+```
+
+#### パターン3: ログ分析の自動化
+
+```bash
+#!/bin/bash
+# analyze-logs.sh - エラーログ分析
+
+# エラーログを抽出
+grep "ERROR" /var/log/app.log > /tmp/errors.log
+
+# Q CLIで分析
+q chat "このエラーログを分析して" < /tmp/errors.log > /tmp/analysis.txt
+
+# 分析結果をメール送信
+mail -s "Error Log Analysis" ops@example.com < /tmp/analysis.txt
+
+# クリーンアップ
+rm /tmp/errors.log /tmp/analysis.txt
+```
+
+### CI/CDパイプライン統合
+
+#### GitHub Actions統合
+
+```yaml
+name: AI Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  ai-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install Q CLI
+        run: |
+          # Q CLIのインストール
+          curl -fsSL https://q.aws.dev/install.sh | bash
+      
+      - name: AI Code Review
+        run: |
+          # 差分を取得してレビュー
+          git diff origin/main...HEAD > diff.txt
+          q chat "このdiffをレビューして" < diff.txt > review.txt
+      
+      - name: Post Review Comment
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const review = fs.readFileSync('review.txt', 'utf8');
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: review
+            });
+```
+
+#### GitLab CI統合
+
+```yaml
+ai-review:
+  stage: review
+  script:
+    - git diff origin/main...HEAD > diff.txt
+    - q chat "このdiffをレビューして" < diff.txt > review.txt
+    - |
+      curl --request POST \
+        --header "PRIVATE-TOKEN: $CI_JOB_TOKEN" \
+        --data "body=$(cat review.txt)" \
+        "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests/$CI_MERGE_REQUEST_IID/notes"
+  only:
+    - merge_requests
+```
+
+### データ処理パイプライン
+
+#### JSON処理パイプライン
+
+```bash
+#!/bin/bash
+# data-pipeline.sh - データ処理パイプライン
+
+# Q CLIでデータ取得
+q chat "APIからユーザーデータを取得してJSON形式で出力" | \
+  # jqで整形
+  jq '.' | \
+  # Pythonで処理
+  python3 process.py | \
+  # 結果を保存
+  tee output.json
+```
+
+#### CSV変換パイプライン
+
+```bash
+#!/bin/bash
+# csv-to-json.sh - CSV→JSON変換パイプライン
+
+# Q CLIでCSVをJSONに変換
+q chat "このCSVをJSONに変換して" < input.csv | \
+  # バリデーション
+  jq 'if type == "array" then . else error("Invalid JSON") end' | \
+  # データベースにインポート
+  psql -d mydb -c "COPY mytable FROM STDIN WITH (FORMAT json)"
+```
+
+### 監視とアラート
+
+#### システム監視スクリプト
+
+```bash
+#!/bin/bash
+# monitor.sh - システム監視とアラート
+
+# システムメトリクスを収集
+METRICS=$(top -bn1 | head -20)
+
+# Q CLIで分析
+ANALYSIS=$(echo "$METRICS" | q chat "このシステムメトリクスを分析して問題があれば報告")
+
+# 問題があればアラート送信
+if echo "$ANALYSIS" | grep -i "warning\|error\|critical"; then
+  echo "$ANALYSIS" | mail -s "System Alert" ops@example.com
+fi
+```
+
+#### ログ監視スクリプト
+
+```bash
+#!/bin/bash
+# log-monitor.sh - リアルタイムログ監視
+
+# ログをリアルタイム監視
+tail -f /var/log/app.log | while read line; do
+  # エラーを検出
+  if echo "$line" | grep -i "error"; then
+    # Q CLIで分析
+    ANALYSIS=$(echo "$line" | q chat "このエラーの原因と対処法を教えて")
+    
+    # Slackに通知
+    curl -X POST -H 'Content-type: application/json' \
+      --data "{\"text\":\"Error detected: $ANALYSIS\"}" \
+      $SLACK_WEBHOOK_URL
+  fi
+done
+```
+
+### ベストプラクティス
+
+#### 1. エラーハンドリング
+
+```bash
+#!/bin/bash
+set -euo pipefail  # エラー時に即座に終了
+
+# Q CLI実行
+if ! q chat "タスクを実行" > output.txt 2> error.txt; then
+  echo "Q CLI failed: $(cat error.txt)" >&2
+  exit 1
+fi
+```
+
+#### 2. タイムアウト設定
+
+```bash
+#!/bin/bash
+
+# タイムアウト付きで実行（5分）
+timeout 300 q chat "長時間タスク" > output.txt || {
+  echo "Timeout occurred" >&2
+  exit 1
+}
+```
+
+#### 3. リトライロジック
+
+```bash
+#!/bin/bash
+
+# リトライ付き実行
+MAX_RETRIES=3
+RETRY_COUNT=0
+
+while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+  if q chat "タスクを実行" > output.txt; then
+    break
+  fi
+  
+  RETRY_COUNT=$((RETRY_COUNT + 1))
+  echo "Retry $RETRY_COUNT/$MAX_RETRIES" >&2
+  sleep 5
+done
+
+if [ $RETRY_COUNT -eq $MAX_RETRIES ]; then
+  echo "Max retries reached" >&2
+  exit 1
+fi
+```
+
+#### 4. ログ記録
+
+```bash
+#!/bin/bash
+
+# ログファイルに記録
+LOG_FILE="/var/log/q-cli-automation.log"
+
+{
+  echo "$(date): Starting automation"
+  q chat "タスクを実行" | tee output.txt
+  echo "$(date): Completed"
+} >> "$LOG_FILE" 2>&1
+```
+
+### 注意事項
+
+- **非対話モード**: パイプライン処理では `--no-interactive` オプションを推奨
+- **認証**: CI/CD環境では適切な認証設定が必要
+- **レート制限**: API呼び出し回数に注意
+- **セキュリティ**: 機密情報をログに出力しない
+
+**出典**: PR #3277
 
 ---
 
-最終更新: 2025-10-25
+**作成者**: Amazon Q Developer CLI  
+**レビュー**: katoh  
+**バージョン**: 1.1
+
+---
+
+最終更新: 2025-11-01

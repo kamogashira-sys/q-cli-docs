@@ -483,6 +483,90 @@ AWS CLIコマンドを実行してAWSリソースを操作します。
 
 ---
 
+## 🔄 パイプライン処理（v1.19.3以降）
+
+v1.19.3以降、chat出力がstdoutに出力されるため、シェルのパイプライン処理やリダイレクトが可能になりました。
+
+### 基本的な使用例
+
+**ファイルへのリダイレクト**:
+```bash
+# レポートをファイルに保存
+q chat "今日のタスクをまとめて" > daily-report.txt
+
+# エラーログの分析結果を保存
+q chat "エラーログを分析して" > analysis.txt
+```
+
+**パイプライン処理**:
+```bash
+# Markdown出力をフィルタリング
+q chat "ファイル一覧を取得" | grep ".md"
+
+# JSON出力を整形
+q chat "設定をJSON形式で出力" | jq '.'
+
+# 複数のコマンドを連携
+q chat "データを取得" | sort | uniq
+```
+
+### 実用例
+
+**ログ分析パイプライン**:
+```bash
+# エラーログを分析して結果を保存
+q chat "エラーログを分析" | tee analysis.txt
+
+# 分析結果をメール送信
+q chat "レポートを生成" | mail -s "Daily Report" team@example.com
+```
+
+**データ変換パイプライン**:
+```bash
+# CSVをJSONに変換して処理
+q chat "CSVをJSONに変換" | jq '.' | python process.py
+
+# データを取得して可視化
+q chat "統計データを取得" | gnuplot -e "plot '-' with lines"
+```
+
+**CI/CDパイプライン統合**:
+```bash
+# コードレビューの自動化
+git diff | q chat "このdiffをレビューして" > review.txt
+
+# テスト結果の分析
+pytest --json | q chat "テスト結果を分析して" > test-analysis.txt
+```
+
+### シェルスクリプトとの統合
+
+```bash
+#!/bin/bash
+# daily-report.sh - 日次レポート生成スクリプト
+
+# Q CLIでレポート生成
+q chat "今日のタスクをまとめて" > /tmp/daily-report.txt
+
+# レポートをSlackに送信
+curl -X POST -H 'Content-type: application/json' \
+  --data "{\"text\":\"$(cat /tmp/daily-report.txt)\"}" \
+  $SLACK_WEBHOOK_URL
+
+# クリーンアップ
+rm /tmp/daily-report.txt
+```
+
+### 注意事項
+
+- **非対話モード推奨**: パイプライン処理では `--no-interactive` オプションの使用を推奨
+- **エラー処理**: パイプラインでエラーが発生した場合の処理を考慮
+- **タイムアウト**: 長時間実行される処理では適切なタイムアウト設定を
+
+**出典**: PR #3277
+
+---
+
 ## 💡 効果的な使い方のTips
 
 ### 1. 明確な指示

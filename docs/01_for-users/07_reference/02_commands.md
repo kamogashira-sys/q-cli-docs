@@ -117,7 +117,18 @@ q chat --model anthropic.claude-3-5-sonnet-20241022-v2:0
 
 # 全てのツールを自動承認
 q chat --trust-all-tools
+
+# パイプライン処理（v1.19.3以降）
+q chat "レポートを生成" > report.txt
+q chat "データ取得" | jq '.'
 ```
+
+**出力（v1.19.3以降）**:
+- chat出力はstdoutに出力されます
+- パイプライン処理やリダイレクトが可能です
+- シェルスクリプトとの統合が容易になりました
+
+**出典**: PR #3277
 
 ---
 
