@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "version": "2.0.1",
+    "version": "2.0.2",
     "created": "2025-11-01T10:40:00+09:00",
-    "updated": "2025-11-01T10:48:00+09:00",
+    "updated": "2025-11-01T11:00:00+09:00",
     "description": "4つの情報源を統合したデータ"
   },
   "sources": {
@@ -67,6 +67,41 @@
           "default": null,
           "type": "string",
           "description": "テレメトリを無効化（値は問わない）"
+        },
+        "Q_SHELL": {
+          "default": null,
+          "type": "string",
+          "description": "qtermで使用するシェル"
+        },
+        "Q_ZDOTDIR": {
+          "default": null,
+          "type": "string",
+          "description": "ZDOTDIR環境変数をオーバーライド"
+        },
+        "Q_DEBUG_SHELL": {
+          "default": null,
+          "type": "string",
+          "description": "シェルデバッグモードを有効化（値は問わない）"
+        },
+        "Q_FAKE_IS_REMOTE": {
+          "default": null,
+          "type": "string",
+          "description": "リモート環境をシミュレート（テスト用、値は問わない）"
+        },
+        "Q_CODESPACES": {
+          "default": null,
+          "type": "string",
+          "description": "Codespaces環境を示す（値は問わない）"
+        },
+        "Q_CI": {
+          "default": null,
+          "type": "string",
+          "description": "CI環境を示す（値は問わない）"
+        },
+        "Q_BUNDLE_METADATA_PATH": {
+          "default": null,
+          "type": "string",
+          "description": "バンドルメタデータへのパスをオーバーライド"
         }
       }
     },
