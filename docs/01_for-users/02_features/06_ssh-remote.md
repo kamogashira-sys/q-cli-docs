@@ -266,7 +266,7 @@ Agent設定もリモートマシンで使用できます。
 
 ```bash
 # ローカルのAgent設定を転送
-scp ~/.config/amazonq/agents/my-agent.json user@remote-host:~/.config/amazonq/agents/
+scp ~/.aws/amazonq/cli-agents/my-agent.json user@remote-host:~/.aws/amazonq/cli-agents/
 
 # リモートマシンで確認
 q agent list

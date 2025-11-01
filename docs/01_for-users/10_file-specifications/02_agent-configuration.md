@@ -20,7 +20,7 @@
 | 種別 | パス | 説明 |
 |------|------|------|
 | **グローバルAgent** | `~/.aws/amazonq/agents/*.json` | 全プロジェクトで使用可能 |
-| **ワークスペースAgent** | `./.amazonq/agents/*.json` | プロジェクト固有 |
+| **ワークスペースAgent** | `./.amazonq/cli-agents/*.json` | プロジェクト固有 |
 | **サンプル** | `~/.aws/amazonq/agents/example.example.json` | 自動生成されるサンプル |
 
 **注意**: `.example.json`拡張子のファイルは読み込まれません。
@@ -547,8 +547,8 @@ cat > ~/.aws/amazonq/agents/my-agent.json << 'EOF'
 EOF
 
 # ワークスペースAgent
-mkdir -p .amazonq/agents
-cat > .amazonq/agents/project-agent.json << 'EOF'
+mkdir -p .amazonq/cli-agents
+cat > .amazonq/cli-agents/project-agent.json << 'EOF'
 {
   "name": "project-agent"
 }
@@ -562,7 +562,7 @@ EOF
 - `q chat --agent <agent-name>`で特定のAgentを指定
 
 **読み込み順序**
-1. ワークスペースAgent（`./.amazonq/agents/*.json`）
+1. ワークスペースAgent（`./.amazonq/cli-agents/*.json`）
 2. グローバルAgent（`~/.aws/amazonq/agents/*.json`）
 
 ### 更新
@@ -583,7 +583,7 @@ q agent edit --name <agent-name>
 rm ~/.aws/amazonq/agents/my-agent.json
 
 # ワークスペースAgent
-rm .amazonq/agents/project-agent.json
+rm .amazonq/cli-agents/project-agent.json
 ```
 
 ---
@@ -605,7 +605,7 @@ Agent 'my-agent' not found
 |------|---------|
 | ファイル名が`.json`で終わっていない | `.json`拡張子に変更 |
 | `.example.json`拡張子になっている | `.json`に変更 |
-| ファイルが正しいディレクトリにない | `~/.aws/amazonq/agents/`または`./.amazonq/agents/`に配置 |
+| ファイルが正しいディレクトリにない | `~/.aws/amazonq/cli-agents/`または`./.amazonq/cli-agents/`に配置 |
 
 #### 問題2: JSON構文エラー
 

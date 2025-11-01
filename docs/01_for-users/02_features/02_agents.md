@@ -960,7 +960,7 @@ q agent list
 ```
 aws-all            ~/.aws/amazonq/cli-agents
 default            ~/.aws/amazonq/cli-agents
-my-custom-agent    ~/.config/amazonq/agents
+my-custom-agent    ~/.aws/amazonq/cli-agents
 ```
 
 ---

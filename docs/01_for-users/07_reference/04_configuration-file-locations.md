@@ -30,8 +30,8 @@ Amazon Q CLIの設定ファイルは複数の場所に配置され、それぞ�
 | ファイル | パス | スコープ | 用途 |
 |---------|------|---------|------|
 | **グローバル設定** | `~/.local/share/amazon-q/settings.json` | グローバル | Amazon Q CLI全体の設定（Knowledge設定を含む） |
-| **グローバルAgent** | `~/.config/amazonq/agents/*.json` | グローバル | すべてのプロジェクトで使用可能なAgent |
-| **ローカルAgent** | `.amazonq/agents/*.json` | プロジェクト | 特定のプロジェクト専用のAgent |
+| **グローバルAgent** | `~/.aws/amazonq/cli-agents/*.json` | グローバル | すべてのプロジェクトで使用可能なAgent |
+| **ローカルAgent** | `.amazonq/cli-agents/*.json` | プロジェクト | 特定のプロジェクト専用のAgent |
 | **MCP設定** | `~/.config/amazonq/mcp.json` | グローバル | MCPサーバー設定 |
 
 ---

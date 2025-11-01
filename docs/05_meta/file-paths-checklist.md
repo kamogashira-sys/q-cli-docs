@@ -27,7 +27,7 @@
 **正しい例**:
 ```
 ~/.config/amazonq/
-~/.amazonq/agents/
+~/.aws/amazonq/cli-agents/
 ```
 
 #### 相対パス
@@ -50,8 +50,8 @@
 - [ ] `./.amazonq/` - プロジェクト設定
 
 #### Agent設定
-- [ ] `~/.amazonq/agents/` - Agent設定ディレクトリ
-- [ ] `~/.amazonq/agents/<agent-name>.json` - Agent設定ファイル
+- [ ] `~/.aws/amazonq/cli-agents/` - Agent設定ディレクトリ
+- [ ] `~/.aws/amazonq/cli-agents/<agent-name>.json` - Agent設定ファイル
 
 #### MCP設定
 - [ ] `~/.config/amazonq/mcp.json` - MCP設定ファイル
@@ -256,7 +256,7 @@ C:/Users/username/.config/amazonq/settings.json
 ls -la ~/.config/amazonq/settings.json
 
 # ディレクトリの存在確認
-ls -la ~/.amazonq/agents/
+ls -la ~/.aws/amazonq/cli-agents/
 ```
 
 #### 環境変数の確認
@@ -305,7 +305,7 @@ eval echo "~/.config/amazonq/settings.json"
 ### Q CLI関連パス
 - グローバル設定: `~/.config/amazonq/`
 - ユーザーデータ: `~/.amazonq/`
-- Agent設定: `~/.amazonq/agents/`
+- Agent設定: `~/.aws/amazonq/cli-agents/`
 - MCP設定: `~/.config/amazonq/mcp.json`
 - Knowledge: `~/.amazonq/knowledge/`
 

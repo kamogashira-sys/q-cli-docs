@@ -171,7 +171,7 @@ Amazon Q CLIが実行できる機能単位。ファイル操作、コマンド�
 - `list`: 利用可能なエージェント一覧
 
 **技術的詳細**:
-- 状態保存: `~/.aws/amazonq/.subagents/`
+- 状態保存: `.amazonq/.subagents/`
 - PIDベースのプロセス監視
 - 1エージェントにつき1タスク
 

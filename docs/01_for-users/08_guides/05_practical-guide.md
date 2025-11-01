@@ -853,7 +853,7 @@ fi
 
 **Agent1: フロントエンド開発用**
 
-`.amazonq/agents/frontend.json`:
+`.amazonq/cli-agents/frontend.json`:
 ```json
 {
   "name": "frontend-agent",
@@ -880,7 +880,7 @@ fi
 
 **Agent2: バックエンド開発用**
 
-`.amazonq/agents/backend.json`:
+`.amazonq/cli-agents/backend.json`:
 ```json
 {
   "name": "backend-agent",
@@ -906,7 +906,7 @@ fi
 
 **Agent3: インフラ管理用**
 
-`.amazonq/agents/infrastructure.json`:
+`.amazonq/cli-agents/infrastructure.json`:
 ```json
 {
   "name": "infrastructure-agent",

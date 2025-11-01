@@ -178,7 +178,7 @@ Agent設定ファイル（.json）のディレクトリを基準に解決され�
 
 **ディレクトリ構造**:
 ```
-~/.amazonq/agents/
+~/.aws/amazonq/cli-agents/
 ├── aws-expert.json
 └── prompts/
     └── aws-expert.md
@@ -251,7 +251,7 @@ Agent設定ファイル（.json）のディレクトリを基準に解決され�
 
 **推奨構造**:
 ```
-~/.amazonq/agents/
+~/.aws/amazonq/cli-agents/
 ├── my-agent.json
 └── prompts/
     ├── my-agent.md
@@ -269,7 +269,7 @@ Agent設定ファイル（.json）のディレクトリを基準に解決され�
 
 ```bash
 # プロンプトファイルをGit管理
-cd ~/.amazonq/agents/prompts
+cd ~/.aws/amazonq/cli-agents/prompts
 git init
 git add *.md
 git commit -m "Initial prompt templates"
@@ -714,7 +714,7 @@ q agent list
 
 **期待される出力**:
 ```
-my-agent           ~/.config/amazonq/agents
+my-agent           ~/.aws/amazonq/cli-agents
 default            ~/.aws/amazonq/cli-agents
 ```
 
