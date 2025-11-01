@@ -1240,4 +1240,3 @@ grep -r -i "agent.*path\|path.*agent" docs/ --include="*.md" -l
 ---
 
 **最終更新**: 2025-11-01
-**メンテナー**: ドキュメントチーム

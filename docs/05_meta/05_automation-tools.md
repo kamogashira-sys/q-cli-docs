@@ -417,4 +417,3 @@ python3 validators/v2_validator.py ../../docs
 ---
 
 **最終更新**: 2025-11-01
-**メンテナー**: ドキュメントチーム

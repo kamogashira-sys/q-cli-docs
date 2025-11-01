@@ -650,29 +650,29 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.10'
-    
+
     - name: Install dependencies
       run: |
         cd tools/verification
         pip install -r requirements.txt
-    
+
     - name: Run validators
       run: |
         cd tools/verification
         make validate-all
-    
+
     - name: Check dates
       run: |
         ./scripts/check-dates.sh
-    
+
     - name: Count files
       run: |
         ./scripts/count-files.sh
@@ -719,5 +719,4 @@ exit 0
 
 ---
 
-**最終更新**: 2025-11-01  
-**メンテナー**: ドキュメントチーム
+**最終更新**: 2025-11-01

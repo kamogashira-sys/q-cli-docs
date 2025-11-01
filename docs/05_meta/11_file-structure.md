@@ -249,22 +249,22 @@ graph TD
     B -->|開発者| D[02_for-developers/]
     B -->|コミュニティ| E[03_for-community/]
     B -->|メタ情報| F[05_meta/]
-    
+
     C --> G{トピックは?}
     G -->|入門| H[01_getting-started/]
     G -->|機能説明| I[02_features/]
     G -->|設定| J[03_configuration/]
     G -->|その他| K[適切なサブカテゴリ]
-    
+
     D --> L{トピックは?}
     L -->|貢献方法| M[01_contributing/]
     L -->|内部構造| N[02_architecture/]
-    
+
     E --> O{トピックは?}
     O -->|更新情報| P[01_updates/]
     O -->|コミュニティ| Q[02_community/]
     O -->|分析| R[03_analysis/]
-    
+
     F --> S{トピックは?}
     S -->|品質保証| T[品質保証関連]
     S -->|実践ガイド| U[実践ガイド]
@@ -564,5 +564,4 @@ tree docs/01_for-users/11_new-category/
 
 ---
 
-**最終更新**: 2025-11-01  
-**メンテナー**: ドキュメントチーム
+**最終更新**: 2025-11-01
