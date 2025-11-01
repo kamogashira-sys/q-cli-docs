@@ -407,8 +407,75 @@ python3 validators/v2_validator.py ../../docs
 
 ---
 
+## 新規ツール作成時の注意
+
+### テンプレートの使用（推奨）
+
+新しいチェックツールは**テンプレートから作成**することを強く推奨します。
+
+```bash
+# テンプレートから作成
+./tools/create-check-tool.sh check-your-tool "Check for your issue"
+
+# 生成されるファイル
+# - tools/check-your-tool.sh（ツール本体）
+# - tools/test-check-your-tool.sh（テスト）
+```
+
+**メリット**:
+- ✅ ベストプラクティスが組み込まれている
+- ✅ テストが必須化される
+- ✅ 5分で作成可能
+
+詳細: [tools/templates/README.md](../../tools/templates/README.md)
+
+### 必須チェック
+
+新しいチェックツールを作成する際は、**[ツール作成チェックリスト](14_tool-creation-checklist.md)** を必ず確認してください。
+
+### 重要な原則
+
+1. **既知のバグでテストする**
+   - 正常系だけでなく異常系も必須
+   - 検出できることを確認してから使用
+
+2. **出力を必ず確認する**
+   - リダイレクトで結果を捨てない
+   - 何を検出したか明示する
+   - 終了コードだけで判断しない
+
+3. **シンプルな手法を選ぶ**
+   - 複雑な正規表現より行単位処理
+   - デバッグしやすい実装
+   - 保守性を重視
+
+### ツールテスト検証
+
+全てのチェックツールにはテストファイルが必要です：
+
+```bash
+# テスト存在確認
+./tools/verify-tool-tests.sh
+
+# 出力例
+✅ check-consecutive-separators.sh has test
+✅ check-your-tool.sh has test
+✅ All tools have tests
+```
+
+**pre-commitフック**で自動的にチェックされます。
+
+### 過去の失敗例
+
+連続区切り線チェックツール（2025-11-01）で、grep -Pzo + リダイレクトにより実際には何も検出できていなかった問題が発生しました。
+
+詳細: [問題分析と教訓 - 問題9](07_lessons-learned.md#問題9-テストツールの検証不足)
+
+---
+
 ## 関連ドキュメント
 
+- **[ツール作成チェックリスト](14_tool-creation-checklist.md)** - 新規ツール作成時の必須チェック
 - **[手動チェック](06_manual-checks.md)** - 4つのチェックリスト
 - **[日常的な作業フロー](09_daily-workflow.md)** - 新規作成・更新・削除
 - **[公開リソース一覧](12_resources.md)** - 全リソースの一覧

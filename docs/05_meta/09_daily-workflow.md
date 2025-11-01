@@ -675,6 +675,96 @@ rg "filename.md" docs/
 
 ---
 
+## ツール作成時
+
+### ステップ1: テンプレートから作成（推奨）
+
+```bash
+# テンプレートから作成
+./tools/create-check-tool.sh check-your-tool "Check for your issue"
+
+# 生成されるファイル
+# - tools/check-your-tool.sh
+# - tools/test-check-your-tool.sh
+```
+
+### ステップ2: チェックリスト確認
+
+**必須**: [ツール作成チェックリスト](14_tool-creation-checklist.md)を確認
+
+### ステップ3: 実装前準備
+
+```bash
+# 既知のバグファイルを準備
+cat > /tmp/test-bug.md << 'EOF'
+[既知のバグ内容]
+EOF
+
+# 正常ファイルを準備
+cat > /tmp/test-normal.md << 'EOF'
+[正常な内容]
+EOF
+```
+
+### ステップ4: 実装
+
+```bash
+# ツールを実装
+vim tools/check-your-tool.sh
+# → check_file()関数を実装
+# → [WHAT]を置換
+
+# テストを実装
+vim tools/test-check-your-tool.sh
+# → 既知のバグ内容を追加（Test 1）
+# → 正常な内容を追加（Test 2）
+```
+
+### ステップ5: テスト（必須）
+
+```bash
+# テスト実行
+./tools/test-check-your-tool.sh
+
+# 期待される出力
+# Test 1: Known bug detection
+# ✅ Test 1 passed: Known bug detected
+# Test 2: Normal case
+# ✅ Test 2 passed: No false positive
+# ✅ All tests passed
+```
+
+### ステップ6: 動作確認
+
+```bash
+# 実際のファイルで確認
+./tools/check-your-tool.sh docs/
+
+# 出力内容を目視確認
+# → ファイル名、行番号、問題内容が表示されるか
+```
+
+### ステップ7: 統合
+
+```bash
+# pre-commitフックに追加（自動検証される）
+vim .git/hooks/pre-commit
+
+# ドキュメント更新
+vim docs/05_meta/05_automation-tools.md
+```
+
+### ステップ8: 最終確認
+
+- [ ] テンプレートから作成した
+- [ ] 既知のバグで検出できた
+- [ ] 正常ファイルで誤検出なし
+- [ ] 出力内容を確認した
+- [ ] テストが合格した
+- [ ] ドキュメント更新した
+
+---
+
 ## 次に読むべきドキュメント
 
 ### 詳細を知りたい方

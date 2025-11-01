@@ -36,6 +36,7 @@
 11. **[ファイル構造](11_file-structure.md)** - ディレクトリ構造
 12. **[命名規則](12_naming-conventions.md)** - ファイル命名ルール
 13. **[検証ツール](13_validation-reference.md)** - ツール技術仕様
+14. **[ツール作成チェックリスト](14_tool-creation-checklist.md)** - 新規ツール作成時の必須チェック
 
 ---
 
@@ -66,13 +67,14 @@
 | 09 | [daily-workflow.md](09_daily-workflow.md) | 日常的な作業フロー |
 | 10 | [version-update-guide.md](10_version-update-guide.md) | バージョンアップ対応 |
 
-### 詳細リファレンス（11-13）
+### 詳細リファレンス（11-14）
 
 | # | ドキュメント | 内容 |
 |---|-------------|------|
 | 11 | [file-structure.md](11_file-structure.md) | ファイル構造リファレンス |
 | 12 | [naming-conventions.md](12_naming-conventions.md) | 命名規則リファレンス |
 | 13 | [validation-reference.md](13_validation-reference.md) | 検証ツールリファレンス |
+| 14 | [tool-creation-checklist.md](14_tool-creation-checklist.md) | ツール作成チェックリスト |
 
 ---
 
