@@ -33,6 +33,7 @@ class EnvValidator:
         'Q_AGENT_NAME',
         'Q_AGENT_PATH',
         'Q_AGENT_CONFIG',
+        'Q_AGENT',
         
         # MCP configuration
         'Q_MCP_CONFIG_PATH',

@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "version": "2.0.3",
+    "version": "2.0.4",
     "created": "2025-11-01T10:40:00+09:00",
-    "updated": "2025-11-01T11:09:00+09:00",
+    "updated": "2025-11-01T11:37:00+09:00",
     "description": "4つの情報源を統合したデータ"
   },
   "sources": {
@@ -117,6 +117,31 @@
           "default": "true",
           "type": "string",
           "description": "Knowledge機能を有効化"
+        },
+        "Q_DEBUG": {
+          "default": null,
+          "type": "string",
+          "description": "デバッグモードを有効化"
+        },
+        "Q_CLI_CLIENT_APPLICATION": {
+          "default": null,
+          "type": "string",
+          "description": "クライアントアプリケーションの識別子"
+        },
+        "Q_DISABLE_TRUECOLOR": {
+          "default": null,
+          "type": "string",
+          "description": "Trueカラー表示を無効化"
+        },
+        "Q_MOCK_CHAT_RESPONSE": {
+          "default": null,
+          "type": "string",
+          "description": "チャット応答をモック（テスト用）"
+        },
+        "Q_AGENT": {
+          "default": null,
+          "type": "string",
+          "description": "Agent名を環境変数で指定"
         }
       }
     },
