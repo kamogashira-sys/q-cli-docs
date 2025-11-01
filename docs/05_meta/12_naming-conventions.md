@@ -386,22 +386,7 @@ settings-checklist.md
 
 ## 例外ケース
 
-### Case 1: 旧ファイルの共存
-
-**状況**: Case C実装中の05_meta/
-
-```
-05_meta/
-├── 01_overview.md              # 新（Case C）
-├── 01_CONTRIBUTING.md          # 旧
-├── 02_why-quality-matters.md   # 新（Case C）
-├── 02_QUALITY_ASSURANCE.md     # 旧
-...
-```
-
-**対応**: Phase 3で旧ファイルを削除予定
-
-### Case 2: 大文字ファイル
+### Case 1: 大文字ファイル
 
 **状況**: 重要なメタファイル
 
@@ -413,7 +398,7 @@ settings-checklist.md
 
 **理由**: GitHub慣習、視認性
 
-### Case 3: 番号なしファイル
+### Case 2: 番号なしファイル
 
 **状況**: チェックリスト、テンプレート
 
