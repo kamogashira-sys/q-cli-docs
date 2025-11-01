@@ -1,7 +1,8 @@
 {
   "metadata": {
-    "version": "2.0.0",
+    "version": "2.0.1",
     "created": "2025-11-01T10:40:00+09:00",
+    "updated": "2025-11-01T10:48:00+09:00",
     "description": "4つの情報源を統合したデータ"
   },
   "sources": {
@@ -41,6 +42,31 @@
           "default": "~/.aws/amazonq/mcp.json",
           "type": "string",
           "description": "MCP設定ファイルパス"
+        },
+        "Q_AGENT_CONFIG": {
+          "default": null,
+          "type": "string",
+          "description": "Agent設定ファイルのパスを環境変数で指定"
+        },
+        "Q_CHAT_MODEL": {
+          "default": "anthropic.claude-3-5-sonnet-20241022-v2:0",
+          "type": "string",
+          "description": "チャットで使用するモデルを指定"
+        },
+        "Q_OAUTH_REDIRECT_URI": {
+          "default": null,
+          "type": "string",
+          "description": "OAuthフローで使用するリダイレクトURIを指定"
+        },
+        "Q_LOG_STDOUT": {
+          "default": null,
+          "type": "string",
+          "description": "標準出力へのログ出力を有効化（値は問わない）"
+        },
+        "Q_DISABLE_TELEMETRY": {
+          "default": null,
+          "type": "string",
+          "description": "テレメトリを無効化（値は問わない）"
         }
       }
     },
