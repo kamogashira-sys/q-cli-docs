@@ -34,12 +34,24 @@ fi
 
 echo "   実在するコマンド数: $(wc -l < /tmp/valid_commands.txt)"
 
-# 2. 全ドキュメントからCLIコマンドを抽出（コメント除外、コロン前まで）
+# 2. 全ドキュメントからCLIコマンドを抽出（コードブロック内のみ）
 echo "2. ドキュメントからCLIコマンドを抽出中..."
-find docs -name "*.md" -type f -exec grep -hn "^q [a-z]" {} \; 2>/dev/null | \
-  grep -v "#" | \
-  sed 's/:/ /' | \
-  awk '{print $1":"$2" "$3}' > /tmp/all_cli_commands.txt || true
+
+# コードブロック内のコマンドのみを抽出
+find docs -name "*.md" -type f | while read file; do
+  # awkでコードブロック内のみを処理
+  awk '
+    /^```bash/ { in_code=1; next }
+    /^```/ { in_code=0; next }
+    in_code && /^q [a-z]/ { 
+      # コメント行を除外
+      if ($0 !~ /#/) {
+        print FILENAME":"NR":"$0
+      }
+    }
+  ' FILENAME="$file" "$file"
+done | sed 's/:/ /' | awk '{print $1":"$2" "$3}' > /tmp/all_cli_commands.txt || true
+
 echo "   抽出したコマンド行数: $(wc -l < /tmp/all_cli_commands.txt)"
 
 # 3. チャット内コマンドとの混同を検出
