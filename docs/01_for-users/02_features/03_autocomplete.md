@@ -148,8 +148,6 @@ Q CLIには**Tab補完機能**が実装されており、チャット内で効�
 
 ---
 
----
-
 **関連トピック**:
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
 - [FAQ](../06_troubleshooting/01_faq.md)

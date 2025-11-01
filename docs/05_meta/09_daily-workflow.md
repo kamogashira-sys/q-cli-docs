@@ -71,6 +71,10 @@ rg "機能名" --type rust
 # v2.0バリデーター
 cd tools/verification
 python3 validators/v2_validator.py ../../docs
+
+# 連続区切り線チェック
+cd ../..
+./tools/check-consecutive-separators.sh
 ```
 
 ---
@@ -80,7 +84,9 @@ python3 validators/v2_validator.py ../../docs
 ```bash
 git add docs/
 git commit -m "docs: 新規ドキュメント追加"
+# pre-commitフックで自動チェック実行
 git push origin your-branch
+# pre-pushフックで自動チェック実行
 ```
 
 ---
@@ -684,4 +690,4 @@ rg "filename.md" docs/
 
 ---
 
-**最終更新**: 2025-11-01
+最終更新: 2025-11-01

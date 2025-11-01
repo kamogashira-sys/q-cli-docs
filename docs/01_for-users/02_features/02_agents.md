@@ -4,7 +4,23 @@
 
 # Agent機能
 
-**対象バージョン**: v1.17.0以降
+**ドキュメント対象バージョン**: v1.13.0以降
+
+> **Note**: Agent機能はv1.13.0で本格導入されました。
+
+## バージョン別主要機能
+
+- **v1.13.0**: Agent機能の本格導入
+  - Persona有効化 (#2222)
+  - Agentスキーマ (#2273)
+  - Agent管理コマンド
+  - MCP JSON後方互換性 (#2292)
+- **v1.14.0**: ツール権限オーバーライド
+- **v1.15.0**: Agent generate機能、Agent-scopedナレッジベース
+- **v1.16.0**: Agent edit subcommand、AGENTS.md、modelフィールドサポート
+- **v1.17.0**: （特記事項なし）
+- **v1.18.0**: （特記事項なし）
+- **v1.19.0**: file:// URI support for agent prompts
 
 ---
 

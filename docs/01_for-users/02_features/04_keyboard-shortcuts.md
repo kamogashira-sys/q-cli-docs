@@ -4,7 +4,10 @@
 
 # キーボードショートカット
 
-**対象バージョン**: v1.17.0以降
+**ドキュメント対象バージョン**: v1.13.0以降
+
+> **Note**: キーボードショートカット機能の実装時期は調査範囲外です。
+> 本サイトではv1.13.0以降の機能を対象に記述しています。
 
 ---
 
@@ -408,8 +411,6 @@ q settings chat.delegateModeKey e
 - [グローバル設定](../03_configuration/02_global-settings.md) - キーバインド設定の詳細
 - [推奨設定](../04_best-practices/01_configuration.md) - Tangentモードの設定
 - [設定項目リファレンス](../07_reference/03_settings-reference.md) - 全設定項目の一覧
-
----
 
 ---
 
