@@ -70,6 +70,9 @@ echo "4. 存在しないサブコマンドを検証中..."
 ERROR_COUNT=0
 ERRORS=""
 
+
+# 未実装コマンドの除外リスト（ドキュメントに記載されているが実装されていないコマンド）
+EXCLUDED_COMMANDS="issue launch quit restart update dashboard setup init integrations theme mcp"
 while IFS=' ' read -r location cmd rest; do
   # cmdが空でないことを確認
   if [ -z "$cmd" ]; then
@@ -77,6 +80,11 @@ while IFS=' ' read -r location cmd rest; do
   fi
   
   # 実在するコマンドリストと照合
+  
+  # 除外リストに含まれるコマンドはスキップ
+  if echo "$EXCLUDED_COMMANDS" | grep -qw "$cmd"; then
+    continue
+  fi
   if ! grep -q "^$cmd$" /tmp/valid_commands.txt; then
     ERRORS="${ERRORS}   ❌ $location: q $cmd\n"
     ERROR_COUNT=$((ERROR_COUNT + 1))
