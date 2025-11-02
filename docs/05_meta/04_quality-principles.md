@@ -113,18 +113,7 @@
 - [ ] 実行結果を記録した
 
 **自動化**:
-- ✅ ツール実装済み: `make check-urls`, `make check-commands`
-- ⚠️ ツール未実装時の暫定対応:
-  ```markdown
-  **暫定対応（ツール未実装時）**:
-  1. 手動で実施: `curl -I <URL>` でHTTPステータスを確認
-  2. 作業記録に記載:
-     - 確認したURL一覧
-     - 確認方法（curl, ブラウザ等）
-     - 確認結果（HTTPステータス）
-     - 確認日時
-  3. 将来の自動化のため、手順を文書化
-  ```
+- ✅ ツール実装済み: `check-urls.sh`, `check-commands.sh`
 
 ---
 
@@ -208,20 +197,7 @@
 - [ ] 確認漏れがない
 
 **自動化**:
-- ✅ ツール実装済み: `make check-impact`, `make check-completeness`
-- ⚠️ ツール未実装時の暫定対応:
-  ```markdown
-  **暫定対応（ツール未実装時）**:
-  1. 手動で実施:
-     - `grep -r "キーワード" docs/` で関連ファイルを検索
-     - 各ファイルを開いて内容を確認
-  2. 作業記録に記載:
-     - 検索したキーワード
-     - 発見したファイル一覧
-     - 確認結果（影響あり/なし）
-     - 確認日時
-  3. 将来の自動化のため、手順を文書化
-  ```
+- ✅ ツール実装済み: `check-impact.sh`, `check-completeness.py`
 
 ---
 
@@ -298,21 +274,7 @@
 - [ ] 表記揺れを統一した
 
 **自動化**:
-- ✅ ツール実装済み: `make check-consistency`
-- ⚠️ ツール未実装時の暫定対応:
-  ```markdown
-  **暫定対応（ツール未実装時）**:
-  1. 手動で実施:
-     - `grep -r "用語" docs/` で表記を検索
-     - 表記揺れを特定
-     - 統一基準に従って修正
-  2. 作業記録に記載:
-     - 確認した用語一覧
-     - 発見した表記揺れ
-     - 統一した表記
-     - 確認日時
-  3. 将来の自動化のため、手順を文書化
-  ```
+- ✅ ツール実装済み: `check-consistency.sh`
 
 ---
 
@@ -419,17 +381,12 @@
 make check-all
 
 # 個別の検証
-make check-urls          # URL実在性確認
-make check-commands      # コマンド構文チェック
-make check-consistency   # 一貫性チェック
-make check-impact        # 影響範囲分析
-make check-completeness  # 完全性チェック
+check-urls.sh          # URL実在性確認
+check-commands.sh      # コマンド構文チェック
+check-consistency.sh   # 一貫性チェック
+check-impact.sh        # 影響範囲分析
+check-completeness.py  # 完全性チェック
 ```
-
-**⚠️ ツール未実装時の暫定対応**:
-- 各原則の「暫定対応」セクションを参照
-- 手動実施し、作業記録に詳細を記載
-- 将来の自動化のため、手順を文書化
 
 ---
 
