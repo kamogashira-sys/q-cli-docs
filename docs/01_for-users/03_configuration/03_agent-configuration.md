@@ -111,6 +111,37 @@ MCPサーバーの詳細設定：
 
 ---
 
+## 設定項目
+
+Agent設定ファイルは**13項目**の設定をサポートしています。
+
+### 必須項目
+
+| 項目 | 型 | 説明 |
+|------|-----|------|
+| `name` | string | Agent名（ファイル名と一致させる） |
+
+### オプション項目
+
+| 項目 | 型 | デフォルト | 説明 |
+|------|-----|-----------|------|
+| `$schema` | string | - | スキーマURL（検証用） |
+| `description` | string\|null | null | Agent説明 |
+| `prompt` | string\|null | null | システムプロンプト（インラインまたはfile://） |
+| `mcpServers` | object | {} | MCPサーバー設定 |
+| `tools` | array | [] | 利用可能ツール一覧 |
+| `toolAliases` | object | {} | ツール名エイリアス |
+| `allowedTools` | array | [] | 許可されたツール |
+| `resources` | array | [] | リソースファイル（file://形式） |
+| `hooks` | object | {} | フック設定 |
+| `toolsSettings` | object | {} | ツール固有設定 |
+| `useLegacyMcpJson` | boolean | false | レガシーMCP設定の使用 |
+| `model` | string\|null | null | 使用モデルID |
+
+**出典**: [agent-v1.json](https://github.com/aws/amazon-q-developer-cli/blob/main/schemas/agent-v1.json)
+
+---
+
 ## 📄 基本的なAgent設定例
 
 ### シンプルなAgent
@@ -856,7 +887,9 @@ $TMPDIR/qlog/
 
 ---
 
-## 設定例
+## 例
+
+以下は、実際に動作するAgent設定の例です。
 
 基本的な設定例については、[設定例集](08_examples.md)を参照してください。
 
