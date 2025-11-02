@@ -419,7 +419,4 @@ chmod 600 ~/.local/share/amazon-q/settings.json
 
 ---
 
-
----
-
 最終更新: 2025-11-01

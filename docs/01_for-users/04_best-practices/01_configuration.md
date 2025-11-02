@@ -703,9 +703,6 @@ q settings chat.enableDelegate true
 
 ---
 
-
----
-
 **関連トピック**:
 - [設定優先順位ガイド](../03_configuration/07_priority-rules.md)
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)

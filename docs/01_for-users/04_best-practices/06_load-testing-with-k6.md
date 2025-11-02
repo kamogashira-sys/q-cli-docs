@@ -579,9 +579,6 @@ aws iam get-user-policy --user-name your-user --policy-name XRayAccess
 
 ---
 
-
----
-
 **関連トピック**:
 - [よくある問題と解決方法](../06_troubleshooting/02_common-issues.md)
 - [FAQ](../06_troubleshooting/01_faq.md)
