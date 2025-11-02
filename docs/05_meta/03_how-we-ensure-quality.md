@@ -63,7 +63,7 @@
 - URLの実在性を確認する
 
 **実践手段**:
-- 自動化ツール: `validate_commands.sh`, URL確認ツール（実装予定）
+- 自動化ツール: `validate_commands.sh`, `check-urls.sh`
 - 手動チェック: [動作確認チェックリスト](#動作確認チェックリスト)
 
 **詳細**: [作業原則詳細](04_quality-principles.md#原則2-動作を確認する)
@@ -95,7 +95,7 @@
 - 完全性を確認する
 
 **実践手段**:
-- 自動化ツール: `make check-impact`（実装予定）, `make check-completeness`（実装予定）
+- 自動化ツール: `check-impact.sh`, `check-completeness.py`
 - 手動チェック: 影響範囲チェックリスト
 
 **詳細**: [作業原則詳細](04_quality-principles.md#原則4-影響範囲と完全性を確認する)
@@ -124,7 +124,7 @@
 - 表記揺れを統一する
 
 **実践手段**:
-- 自動化ツール: `make check-consistency`（実装予定）
+- 自動化ツール: `check-consistency.sh`
 - 手動チェック: 重要な用語、パス、コマンドを検索
 
 **詳細**: [作業原則詳細](04_quality-principles.md#原則6-一貫性を確認する)
@@ -183,10 +183,15 @@
 
 ### scripts/ - ドキュメントフォーマットチェック
 
-**5つのツール**で、ドキュメントの形式を自動チェック：
+**10のツール**で、ドキュメントの形式と内容を自動チェック：
 
 | ツール | チェック内容 | 効果 |
 |--------|------------|------|
+| check-urls.sh | URLが有効か | リンク切れを防止 |
+| check-consistency.sh | 表記揺れがないか | 一貫性を保証 |
+| check-commands.sh | コマンド例が正しいか | 存在しないコマンドを防止 |
+| check-impact.sh | 影響範囲を分析 | 変更の影響を把握 |
+| check-completeness.py | ドキュメントが完全か | 不完全なドキュメントを防止 |
 | count-files.sh | ファイル数が正しいか | ファイル数不一致を防止 |
 | check-dates.sh | 日付が最新か | 日付不整合を防止 |
 | search-env-var.sh | 環境変数の使用箇所 | 削除エラーを防止 |
