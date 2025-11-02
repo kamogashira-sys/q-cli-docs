@@ -249,7 +249,7 @@ $ ./scripts/check-urls.sh --sample 5
 **検証内容**:
 4つの一貫性チェック：
 1. **Q CLI表記**: Q-CLI、q-cli（除外: q-cli-docs、ログファイル、パス）
-2. **Agent設定パス**: ~/.amazonq/agents、~/.config/amazonq/agents
+2. **Agent設定パス**: 正しいパスは `~/.aws/amazonq/cli-agents`
 3. **Amazon Q Developer CLI表記**: Amazon Q CLI、AmazonQ CLI
 4. **コマンド表記**: q-chat（除外: 例示、アンカーリンク）
 

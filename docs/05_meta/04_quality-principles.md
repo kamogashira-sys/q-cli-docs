@@ -255,7 +255,7 @@
 
 1. **一貫性の確認項目**:
    - 用語の統一（例: Agent vs agent）
-   - パスの統一（例: `~/.aws/amazonq/cli-agents` vs `~/.amazonq/agents`）
+   - パスの統一（例: `~/.aws/amazonq/cli-agents`）
    - コマンドの統一（例: `q chat` vs `q-chat`）
    - バージョンの統一（例: v1.19.3 vs 1.19.3）
 
