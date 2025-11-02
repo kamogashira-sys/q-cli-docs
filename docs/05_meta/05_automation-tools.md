@@ -13,10 +13,10 @@
 ### 3つのツール群
 
 ```
-1. scripts/ - ドキュメントフォーマットチェック（5ツール）
+1. scripts/ - ドキュメントフォーマットチェック（7ツール）
    ├─ 軽量、高速
    ├─ Git hookで自動実行
-   └─ ファイル数、日付、コマンド、設定キー
+   └─ ファイル数、日付、コマンド、設定キー、URL、一貫性
 
 2. tools/verification/ - 内容の正確性チェック（8バリデーター）
    ├─ ソースコード、スキーマ、ドキュメントの整合性
@@ -171,6 +171,109 @@ docs/01_for-users/08_guides/06_troubleshooting.md:123:
 - **自動実行**: Git commitフック
 - 設定例追加時
 - スキーマ更新後
+
+---
+
+### 2-6. check-urls.sh
+
+**目的**: ドキュメント内のURLが有効であることを確認
+
+**使用方法**:
+```bash
+# 通常モード（全URLチェック）
+./scripts/check-urls.sh
+
+# ドライランモード（URL抽出のみ）
+./scripts/check-urls.sh --dry-run
+
+# サンプルモード（最初の10URLのみチェック）
+./scripts/check-urls.sh --sample 10
+```
+
+**検証内容**:
+- ドキュメント内のすべてのURLを抽出（215個）
+- 各URLの実在性を確認（HTTP status code）
+- 無効なURLを検出
+- 以下を自動スキップ:
+  - ローカルホストURL
+  - example.com/org
+  - プレースホルダー（$, XXXX, vX.Y.Z）
+  - プロキシURL
+  - GitHub API（認証必要）
+
+**出力例**:
+```bash
+$ ./scripts/check-urls.sh --sample 5
+=== URL実在性チェック ===
+
+🔍 URLを抽出中...
+   抽出したURL数: 215
+
+=== サンプルモード（最初の5件のみチェック） ===
+🔍 URLをチェック中...
+
+=== チェック結果 ===
+チェック対象: 5 URL
+チェック実施: 3 URL
+スキップ: 2 URL
+エラー: 0 URL
+
+✅ すべてのURLが有効です
+```
+
+**活用シーン**:
+- 新規ドキュメント作成後
+- 外部リンク追加時
+- 定期チェック（月次）
+
+**注意事項**:
+- 全URLチェックは約30分かかります
+- サンプルモードでの事前確認を推奨
+
+---
+
+### 2-7. check-consistency.sh
+
+**目的**: 用語、パス、コマンドの表記揺れを検出
+
+**使用方法**:
+```bash
+./scripts/check-consistency.sh
+```
+
+**検証内容**:
+4つの一貫性チェック：
+1. **Q CLI表記**: Q-CLI、q-cli（除外: q-cli-docs、ログファイル、パス）
+2. **Agent設定パス**: ~/.amazonq/agents、~/.config/amazonq/agents
+3. **Amazon Q Developer CLI表記**: Amazon Q CLI、AmazonQ CLI
+4. **コマンド表記**: q-chat（除外: 例示、アンカーリンク）
+
+**出力例**:
+```bash
+$ ./scripts/check-consistency.sh
+=== 一貫性チェック ===
+
+🔍 チェック中: Q CLI表記
+🔍 チェック中: Agent設定パス
+🔍 チェック中: Amazon Q Developer CLI表記
+❌ 不一致を検出: Amazon Q Developer CLI
+   正しい表記: 'Amazon Q Developer CLI'
+   誤った表記が見つかりました:
+     docs/README.md:16:Amazon Q CLI（Amazon Q CLI）は...
+     ... 他 15 件
+
+🔍 チェック中: コマンド表記
+=== チェック結果 ===
+チェック項目: 4
+不一致: 1
+
+❌ 一貫性チェックに失敗しました
+```
+
+**活用シーン**:
+- ドキュメント更新後
+- 新規ドキュメント作成後
+- 定期チェック（週次）
 
 ---
 
