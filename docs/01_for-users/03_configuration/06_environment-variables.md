@@ -151,6 +151,8 @@ export AWS_PROFILE=my-profile  # スペースがない場合は不要
 
 ## Amazon Q CLI固有の環境変数
 
+Amazon Q CLIは**29個**の環境変数をサポートしています。
+
 ### コア環境変数
 
 | 環境変数 | 説明 | 使用例 |
@@ -301,50 +303,231 @@ q chat
 
 ---
 
-## 使用例
+## ユースケース別の設定例
 
-### 開発環境でのデバッグ
+### 1. プライバシー重視の設定
+
+テレメトリを無効化し、最小限のデータ送信で使用します。
+
+```bash
+# テレメトリを無効化
+export Q_DISABLE_TELEMETRY=1
+
+# 確認
+q settings list | grep telemetry
+```
+
+**適用シーン**:
+- 機密情報を扱うプロジェクト
+- 企業のセキュリティポリシーに準拠
+- プライバシーを重視する個人開発
+
+---
+
+### 2. デバッグ・トラブルシューティング
+
+問題発生時の詳細なログを取得します。
 
 ```bash
 # デバッグログを有効化
 export Q_LOG_LEVEL=debug
 export Q_LOG_STDOUT=1
 
-# Amazon Q CLIを起動
+# Q CLIを起動
 q chat
+
+# ログファイルの確認（macOS）
+tail -f ~/Library/Logs/Amazon\ Q/qchat.log
+
+# ログファイルの確認（Linux）
+tail -f ~/.local/share/amazon-q/logs/qchat.log
 ```
 
-### カスタムシェルの使用
+**適用シーン**:
+- 認証エラーのトラブルシューティング
+- MCP接続の問題調査
+- バグ報告のための情報収集
+
+---
+
+### 3. プロジェクト固有の設定
+
+プロジェクトごとに異なる設定を適用します。
 
 ```bash
-# チャットで使用するシェルを変更
+# プロジェクトルートに .envrc を作成（direnv使用）
+cat > .envrc << 'EOF'
+# プロジェクト固有の設定
+export Q_LOG_LEVEL=info
+export AWS_PROFILE=my-project
+export AWS_REGION=ap-northeast-1
+
+# MCP設定で使用する環境変数
+export PROJECT_ROOT=$(pwd)
+export API_KEY=your-api-key-here
+EOF
+
+# direnvを有効化
+direnv allow
+
+# 確認
+echo $Q_LOG_LEVEL
+echo $AWS_PROFILE
+```
+
+**適用シーン**:
+- 複数のAWSアカウントを使い分ける
+- プロジェクトごとに異なるAgent設定
+- チーム開発での設定の統一
+
+---
+
+### 4. CI/CD環境での設定
+
+自動化環境でQ CLIを使用します。
+
+```bash
+# CI環境を示す
+export Q_CI=1
+export CI=true
+
+# テレメトリを無効化
+export Q_DISABLE_TELEMETRY=1
+
+# ログレベルを設定
+export Q_LOG_LEVEL=info
+
+# 非対話モードでの実行
+q chat --non-interactive "コードレビューを実行"
+```
+
+**適用シーン**:
+- GitHub Actions、GitLab CI
+- 自動コードレビュー
+- 自動テスト生成
+
+**注意**: CI環境では認証情報の管理に注意してください。
+
+---
+
+### 5. リモート開発環境での設定
+
+SSH、Codespaces、WSLなどのリモート環境で使用します。
+
+```bash
+# Codespaces環境を示す
+export Q_CODESPACES=1
+export CODESPACES=true
+
+# リモート環境をシミュレート（テスト用）
+export Q_FAKE_IS_REMOTE=1
+
+# カスタムシェルを指定
+export Q_SHELL=/bin/zsh
 export AMAZON_Q_CHAT_SHELL=zsh
 
-# Amazon Q CLIを起動
+# Q CLIを起動
 q chat
 ```
 
-### MCP設定での環境変数使用
+**適用シーン**:
+- GitHub Codespaces
+- AWS Cloud9
+- SSH経由のリモート開発
+- WSL2環境
+
+---
+
+### 6. カスタムデータディレクトリ
+
+設定ファイルやログの保存場所をカスタマイズします。
 
 ```bash
-# APIキーを環境変数に設定
-export MY_API_KEY=your-api-key-here
+# カスタムデータディレクトリを指定（Linux）
+export XDG_DATA_HOME="$HOME/custom-data"
 
-# Agent設定ファイルで使用
-# ~/.aws/amazonq/cli-agents/my-agent.json
+# 結果
+# 設定ファイル: $HOME/custom-data/amazon-q/settings.json
+# ログファイル: $HOME/custom-data/amazon-q/logs/
+
+# Q CLIを起動
+q chat
+
+# 確認
+ls -la $HOME/custom-data/amazon-q/
+```
+
+**適用シーン**:
+- ディスク容量の制約がある環境
+- 複数のQ CLI環境を管理
+- バックアップの簡素化
+
+**注意**: macOSでは`XDG_DATA_HOME`は使用されません。
+
+---
+
+### 7. MCP開発・テスト環境
+
+MCPサーバーの開発やテストを行います。
+
+```bash
+# デバッグログを有効化
+export Q_LOG_LEVEL=trace
+export Q_LOG_STDOUT=1
+
+# MCPサーバーのパスを環境変数で指定
+export MCP_SERVER_PATH="$HOME/mcp-servers/my-server"
+export API_KEY="test-api-key"
+
+# Agent設定で環境変数を使用
+# ~/.aws/amazonq/cli-agents/mcp-dev.json
+cat > ~/.aws/amazonq/cli-agents/mcp-dev.json << 'EOF'
 {
-  "name": "my-agent",
+  "name": "mcp-dev",
+  "description": "MCP開発用Agent",
   "mcpServers": {
-    "api-server": {
+    "my-server": {
       "command": "node",
-      "args": ["server.js"],
+      "args": ["${env:MCP_SERVER_PATH}/index.js"],
       "env": {
-        "API_KEY": "${env:MY_API_KEY}"
+        "API_KEY": "${env:API_KEY}",
+        "DEBUG": "true"
       }
     }
   }
 }
+EOF
+
+# Agentを使用
+q chat --agent mcp-dev
 ```
+
+**適用シーン**:
+- MCPサーバーの開発
+- MCPサーバーのテスト
+- 複数のMCP設定の切り替え
+
+---
+
+### 8. パフォーマンス最適化
+
+表示やパフォーマンスを最適化します。
+
+```bash
+# Trueカラー表示を無効化（パフォーマンス向上）
+export Q_DISABLE_TRUECOLOR=1
+
+# ログレベルを最小化
+export Q_LOG_LEVEL=error
+
+# Q CLIを起動
+q chat
+```
+
+**適用シーン**:
+- 低スペックマシン
+- ターミナルがTrueカラーに非対応
+- パフォーマンスを優先
 
 ---
 
