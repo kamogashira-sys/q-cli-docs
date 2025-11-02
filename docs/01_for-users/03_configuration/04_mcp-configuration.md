@@ -427,20 +427,34 @@ Agentファイルが存在しない場合、Q CLIは自動的にデフォルトA
 }
 ```
 
-### 設定項目
+---
 
-| フィールド | 型 | デフォルト | 必須 | 説明 |
-|-----------|-----|-----------|------|------|
-| `type` | "stdio" \| "http" | "stdio" | No | トランスポートタイプ |
-| `url` | string | "" | No | HTTPサーバーのURL |
-| `headers` | object | {} | No | HTTPヘッダー |
-| `oauth` | object/null | - | No | OAuth設定 |
-| `oauthScopes` | array | ["openid", "email", "profile", "offline_access"] | No | OAuth スコープ |
-| `command` | string | "" | Yes | 起動コマンド |
-| `args` | array | [] | No | コマンド引数 |
-| `env` | object | null | No | 環境変数 |
-| `timeout` | integer | 120000 | No | タイムアウト（ミリ秒） |
-| `disabled` | boolean | false | No | 無効化フラグ |
+## 設定項目
+
+MCP設定は**11項目**の設定をサポートしています。
+
+### 必須項目
+
+| 項目 | 型 | 説明 |
+|------|-----|------|
+| `command` | string | 起動コマンド |
+
+### オプション項目
+
+| 項目 | 型 | デフォルト | 説明 |
+|------|-----|-----------|------|
+| `type` | "stdio"\|"http" | "stdio" | トランスポートタイプ |
+| `url` | string | "" | HTTPサーバーのURL |
+| `headers` | object | {} | HTTPヘッダー |
+| `oauth` | object\|null | null | OAuth設定 |
+| `oauth.redirectUri` | string\|null | null | リダイレクトURI |
+| `oauthScopes` | array | ["openid", "email", "profile", "offline_access"] | OAuthスコープ |
+| `args` | array | [] | コマンド引数 |
+| `env` | object\|null | null | 環境変数 |
+| `timeout` | integer | 120000 | タイムアウト（ミリ秒） |
+| `disabled` | boolean | false | 無効化フラグ |
+
+**出典**: [agent-v1.json](https://github.com/aws/amazon-q-developer-cli/blob/main/schemas/agent-v1.json) - mcpServers定義
 
 ---
 
@@ -620,7 +634,9 @@ echo "GITHUB_TOKEN=your-token-here" >> .env
 
 ---
 
-## 🎨 設定例
+## 例
+
+以下は、実際に動作するMCP設定の例です。
 
 ### AWS Documentation MCP Server（推奨）
 
@@ -804,18 +820,6 @@ MCP設定に関する問題が発生した場合は、[トラブルシューテ�
 - [MCP設定のトラブルシューティング](../06_troubleshooting/02_common-issues.md#mcp関連の問題)
 - [Agent設定のトラブルシューティング](../06_troubleshooting/02_common-issues.md#agent関連の問題)
 - [よくある質問](../06_troubleshooting/01_faq.md)
-
----
-
-## 設定例
-
-基本的な設定例については、[設定例集](08_examples.md)を参照してください。
-
-**主な設定例**:
-- Agent設定の実践例
-- MCP設定の実践例
-- ユースケース別設定
-- セキュリティ設定
 
 ---
 ## 📚 関連ドキュメント
