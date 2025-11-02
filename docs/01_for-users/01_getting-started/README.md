@@ -10,17 +10,9 @@
 
 Getting Startedを始める前に、以下を確認してください：
 
-### 必須要件
-
-- **OS**: macOS、Linux、またはWindows（WSL2経由）
+- **OS**: macOS、Linux
 - **インターネット接続**: インストールと認証に必要
 - **AWS Builder IDまたはIAM Identity Center**: 認証に必要（無料で作成可能）
-
-### 推奨環境
-
-- **ターミナル**: bash、zsh、fishなどのシェル
-- **ディスク容量**: 最低500MB以上
-- **メモリ**: 最低2GB以上のRAM
 
 > 💡 詳細は [インストールガイド - 前提条件](01_installation.md#-前提条件)を参照
 

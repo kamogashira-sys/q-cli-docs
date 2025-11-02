@@ -22,15 +22,9 @@
 
 ### 必須要件
 
-- **OS**: macOS、Linux（Ubuntu/Debian推奨）、またはWindows（WSL2経由）
+- **OS**: macOS、Linux（Ubuntu/Debian推奨）
 - **インターネット接続**: インストールと認証に必要
 - **AWS Builder IDまたはIAM Identity Center**: 認証に必要（無料で作成可能）
-
-### 推奨環境
-
-- **ターミナル**: bash、zsh、fishなどのシェル
-- **ディスク容量**: 最低500MB以上の空き容量
-- **メモリ**: 最低2GB以上のRAM
 
 > 💡 **詳細な要件**: [インストールガイド - 前提条件](01_installation.md#-前提条件)を参照
 
@@ -104,7 +98,9 @@ which q
 
 **期待される出力例**:
 - macOS: `/Applications/Amazon Q.app/Contents/Resources/q`
-- Linux: `/usr/local/bin/q`
+- Linux: `~/.local/bin/q`
+
+> 💡 詳細は [インストールガイド - インストール後のファイル配置](01_installation.md#-インストール後のファイル配置)を参照
 
 ### トラブルシューティング
 
