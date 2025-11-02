@@ -28,7 +28,7 @@ Amazon Q CLIの中心となるチャット機能について説明します。AI
 
 ### 参考リンク
 
-- [Amazon Q CLI GitHub](https://github.com/aws/amazon-q-developer-cli) - 公式リポジトリ
+- [Amazon Q Developer CLI GitHub](https://github.com/aws/amazon-q-developer-cli) - 公式リポジトリ
 - [AWS公式ドキュメント](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html) - コマンドライン機能の詳細
 
 ---

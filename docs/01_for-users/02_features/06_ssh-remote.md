@@ -414,7 +414,7 @@ chmod 600 ~/.local/share/amazon-q/settings.json
 ## 📚 参考リンク
 
 ### AWS公式ドキュメント
-- [Amazon Q CLI ドキュメント](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html)
+- [Amazon Q Developer CLI ドキュメント](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html)
 - [AWS Builder ID](https://docs.aws.amazon.com/general/latest/gr/aws_builder_id.html)
 
 ---

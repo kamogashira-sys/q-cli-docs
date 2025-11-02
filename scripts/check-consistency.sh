@@ -51,10 +51,11 @@ fi
 echo "🔍 チェック中: Agent設定パス"
 total_checks=$((total_checks + 1))
 
-# 誤ったパス表記を検索（例示を除く）
+# 誤ったパス表記を検索（例示とツールドキュメントを除く）
 matches=$(grep -rn -E '~/.amazonq/agents|~/.config/amazonq/agents' docs/ --include="*.md" | \
     grep -v "例:" | \
-    grep -v "例）" || true)
+    grep -v "例）" | \
+    grep -v "05_automation-tools.md" || true)
 
 if [ -n "$matches" ]; then
     echo "❌ 不一致を検出: Agent設定パス"
@@ -75,8 +76,10 @@ fi
 echo "🔍 チェック中: Amazon Q Developer CLI表記"
 total_checks=$((total_checks + 1))
 
-# 誤った表記を検索
-matches=$(grep -rn -E '\bAmazon Q CLI\b|\bAmazonQ CLI\b' docs/ --include="*.md" || true)
+# 誤った表記を検索（ツールドキュメントと用語辞書を除く）
+matches=$(grep -rn -E '\bAmazon Q CLI\b|\bAmazonQ CLI\b' docs/ --include="*.md" | \
+    grep -v "05_automation-tools.md" | \
+    grep -v "06_terminology-dictionary.md" || true)
 
 if [ -n "$matches" ]; then
     echo "❌ 不一致を検出: Amazon Q Developer CLI"
@@ -97,11 +100,12 @@ fi
 echo "🔍 チェック中: コマンド表記"
 total_checks=$((total_checks + 1))
 
-# q-chat（ハイフン付き）を検索（例示とアンカーリンクを除く）
+# q-chat（ハイフン付き）を検索（例示、アンカーリンク、ツールドキュメントを除く）
 matches=$(grep -rn -E '\bq-chat\b' docs/ --include="*.md" | \
     grep -v "例:" | \
     grep -v "例）" | \
-    grep -v "#q-chat" || true)
+    grep -v "#q-chat" | \
+    grep -v "05_automation-tools.md" || true)
 
 if [ -n "$matches" ]; then
     echo "❌ 不一致を検出: コマンド表記"

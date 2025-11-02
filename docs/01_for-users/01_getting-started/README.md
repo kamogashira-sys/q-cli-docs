@@ -9,7 +9,7 @@
 
 ## 🎯 このセクションについて
 
-Getting Startedセクションでは、Amazon Q CLI（Amazon Q CLI）を初めて使う方向けに、インストールから基本的な使い方までを段階的に説明します。
+Getting Startedセクションでは、Amazon Q Developer CLI（Q CLI）を初めて使う方向けに、インストールから基本的な使い方までを段階的に説明します。
 
 ---
 

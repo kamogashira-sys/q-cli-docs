@@ -84,7 +84,7 @@ q
 **認証完了の確認**:
 ```bash
 ✓ Authentication successful
-Welcome to Amazon Q CLI!
+Welcome to Amazon Q Developer CLI!
 ```
 
 > 💡 **認証の詳細・トラブルシューティング**: [インストールガイド - 認証設定](01_installation.md#-認証設定)を参照

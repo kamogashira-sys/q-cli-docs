@@ -140,7 +140,7 @@
 
 | プロジェクト | 言語 | 総行数（推定） | 特徴 |
 |-------------|------|---------------|------|
-| **Amazon Amazon Q CLI** | Rust | 263,043 | 大規模、モジュール化、AWS統合 |
+| **Amazon Q Developer CLI** | Rust | 263,043 | 大規模、モジュール化、AWS統合 |
 | AWS CLI v2 | Python | 200,000+ | Python、boto3ベース |
 | GitHub CLI | Go | 100,000+ | Go、シンプル |
 | Terraform | Go | 500,000+ | Go、大規模 |
@@ -176,7 +176,7 @@
 
 | 項目 | 内容 |
 |------|------|
-| **開発チーム** | Amazon Amazon Q CLI Team |
+| **開発チーム** | Amazon Q Developer CLI Team |
 | **主要開発者** | Chay Nabors, Brandon Kiser, Felix Ding |
 | **連絡先** | q-cli@amazon.com |
 | **ホームページ** | https://aws.amazon.com/q/ |

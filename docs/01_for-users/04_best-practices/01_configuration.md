@@ -235,7 +235,7 @@ EOF
 
 # バージョン管理に含める
 git add .amazonq/
-git commit -m "Add project-specific Amazon Q CLI agent"
+git commit -m "Add project-specific Amazon Q Developer CLI agent"
 ```
 
 ### 2. ルールファイルの活用
@@ -265,9 +265,9 @@ EOF
 # プロジェクトREADMEにQ CLI設定を記載
 cat >> README.md << 'EOF'
 
-## Amazon Q CLI Setup
+## Amazon Q Developer CLI Setup
 
-1. Install Amazon Q CLI
+1. Install Amazon Q Developer CLI
 2. Use the project-specific agent:
    q chat --agent project-helper
 3. Set as default (optional):

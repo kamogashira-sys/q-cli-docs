@@ -831,7 +831,7 @@ MCP設定に関する問題が発生した場合は、[トラブルシューテ�
 
 - [MCP 公式サイト](https://modelcontextprotocol.io/)
 - [MCP GitHub](https://github.com/modelcontextprotocol)
-- [Amazon Q CLI GitHub](https://github.com/aws/amazon-q-developer-cli)
+- [Amazon Q Developer CLI GitHub](https://github.com/aws/amazon-q-developer-cli)
 
 ## 関連ドキュメント
 

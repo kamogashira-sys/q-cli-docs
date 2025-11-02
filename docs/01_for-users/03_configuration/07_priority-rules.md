@@ -114,7 +114,7 @@ Agent設定やMCP設定で`${env:VAR_NAME}`構文を使用した場合の展開�
 ```mermaid
 sequenceDiagram
     participant User as ユーザー
-    participant CLI as Amazon Q CLI
+    participant CLI as Amazon Q Developer CLI
     participant Agent as Agent設定
     participant Env as 環境変数
     participant MCP as MCPサーバー

@@ -159,7 +159,7 @@
 | AddContextRequest | AddContextRequest | Rust内部実装用の型 | [詳細](01_glossary.md) *2 |
 | allowedTools | allowedTools | 技術用語 | [詳細](01_glossary.md) *1 |
 | AllowedTools Field | allowedToolsフィールド | - | [詳細](01_glossary.md) |
-| Amazon Q CLI | Amazon Q CLI | Amazon Q Developer CLIの略称 | - |
+| Amazon Q CLI | Q CLI | Amazon Q Developer CLIの略称 | - |
 | args | args | 技術用語 | *1 |
 | Asking Q to make a TODO list: | QにTODOリストを作成させる: | - | - |
 | AsyncSemanticSearchClient | AsyncSemanticSearchClient | Rust内部実装用の型 | *2 |

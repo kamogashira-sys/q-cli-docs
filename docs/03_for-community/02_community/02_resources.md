@@ -20,7 +20,7 @@ Amazon Q CLIに関する役立つリソースをまとめています。
 ## 公式リソース
 
 ### ドキュメント
-- [Amazon Q CLI GitHub](https://github.com/aws/amazon-q-developer-cli) - 公式リポジトリ
+- [Amazon Q Developer CLI GitHub](https://github.com/aws/amazon-q-developer-cli) - 公式リポジトリ
 - [Amazon Q Developer](https://aws.amazon.com/q/developer/) - 公式サイト
 - [AWS Documentation](https://docs.aws.amazon.com/) - AWS公式ドキュメント
 

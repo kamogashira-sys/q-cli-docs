@@ -457,7 +457,7 @@ WSL内で、上記の[Linux](#-linux)セクションの手順に従ってイン�
 
 Windows環境での詳細なセットアップ方法については、以下のブログ記事を参照してください：
 
-- [The Essential Guide to Installing Amazon Q CLI on Windows](https://dev.to/aws/the-essential-guide-to-installing-amazon-q-developer-cli-on-windows-lmh)
+- [The Essential Guide to Installing Amazon Q Developer CLI on Windows](https://dev.to/aws/the-essential-guide-to-installing-amazon-q-developer-cli-on-windows-lmh)
 
 ---
 
