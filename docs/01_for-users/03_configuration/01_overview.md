@@ -124,6 +124,33 @@ Amazon Q CLIの設定ファイルは、グローバル（ユーザー全体）�
     └── mcp-state.json       # MCP状態管理
 ```
 
+> **⚠️ Agent使用時のMCP設定について**
+> 
+> Agent使用時、グローバルMCP設定（`~/.aws/amazonq/mcp.json`）は**デフォルトでは参照されません**。
+> 
+> **動作の詳細**:
+> - **デフォルト**: Agent設定内の `mcpServers` のみが使用される
+> - **グローバルMCPも使用する場合**: Agent設定に `"use_legacy_mcp_json": true` を追加
+> 
+> **設定例**:
+> ```json
+> {
+>   "version": "2025-08-22",
+>   "mcpServers": {
+>     "my-server": { ... }
+>   },
+>   "use_legacy_mcp_json": true  // グローバルMCP設定も読み込む
+> }
+> ```
+> 
+> **優先順位**:
+> 1. Agent設定内の `mcpServers` （常に優先）
+> 2. グローバル `mcp.json` （`use_legacy_mcp_json: true` の場合のみ）
+> 
+> 同じ名前のMCPサーバーがある場合、Agent設定が優先されます。
+> 
+> 詳細: [Agent設定](03_agent-configuration.md#mcp統合)、[MCP設定](04_mcp-configuration.md)
+
 ### ローカル設定ディレクトリ（ワークスペース固有）
 
 ```
