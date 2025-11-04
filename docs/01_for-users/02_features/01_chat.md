@@ -129,9 +129,9 @@ alias qr='q chat --resume'
 |---------|------|-----------|
 | `/save <パス> [オプション]` | 現在の会話をJSONファイルに保存。`-f`オプションで既存ファイルを上書き可能 | 重要な会話を記録したい時、後で参照したい会話を保存する時 |
 | `/load <パス>` | 保存した会話をファイルから読み込んで復元。過去の会話を継続できる | 以前の会話を再開したい時、別のセッションで保存した会話を引き継ぐ時 |
-| `/tangent` | Tangentモード（会話の分岐）に入る/戻る。キーボードショートカット: `Ctrl+T` | メインの会話を保持したまま、別の話題を試したい時 |
+| `/tangent [サブコマンド]` | （Beta）Tangentモード（会話の分岐）に入る/戻る。`tail`サブコマンドで最後のエントリを保持して終了。要設定: `q settings chat.enableTangentMode true` | メインの会話を保持したまま、別の話題を試したい時 |
 
-> **🧪 実験的機能**: Tangent Mode機能は開発中です。`q settings chat.enableTangentMode true`または`/experiment`で有効化してください。
+> **🧪 Beta機能**: Tangent Mode機能は開発中です。`q settings chat.enableTangentMode true`または`/experiment`で有効化してください。
 
 ### コンテキスト管理
 

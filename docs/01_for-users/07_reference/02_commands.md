@@ -832,8 +832,12 @@ Consider removing them.
 **使用方法**:
 ```
 /tangent          # Tangentモードに入る/戻る
+/tangent tail     # Tangentモードを終了し、最後の会話エントリを保持
 Ctrl+T            # キーボードショートカット
 ```
+
+**サブコマンド**:
+- `tail`: Tangentモードを終了し、最後の会話エントリ（質問+応答）を保持
 
 **有効化方法**:
 ```bash
@@ -842,8 +846,9 @@ q settings chat.enableTangentMode true
 ```
 
 **注意点**:
-- ⚠️ 実験的機能（デフォルトで無効）
-- ⚠️ チェックポイント以降の会話は保存されない
+- ⚠️ Beta機能（デフォルトで無効）
+- ⚠️ 設定が必要: `q settings chat.enableTangentMode true`
+- ⚠️ チェックポイント以降の会話は保存されない（`tail`使用時を除く）
 
 **関連コマンド**: `/checkpoint`, `/experiment`
 
