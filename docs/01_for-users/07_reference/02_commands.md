@@ -666,7 +666,7 @@ q mcp import <config-file>
 
 **使用方法**: `/help`
 
-**関連コマンド**: `/whatsnew`, `/changelog`
+**関連コマンド**: `/changelog`
 
 ---
 
@@ -1191,19 +1191,7 @@ Collecting logs...
 
 **使用方法**: `/changelog`
 
-**関連コマンド**: `/whatsnew`, `/issue`
-
----
-
-#### `/whatsnew` - 新機能表示
-
-**目的**: 最新バージョンの新機能を表示する
-
-**使用シーン**: アップデート後に新機能を確認する / 実験的機能を発見する
-
-**使用方法**: `/whatsnew`
-
-**関連コマンド**: `/changelog`, `/experiment`, `/help`
+**関連コマンド**: `/issue`
 
 ---
 
@@ -1272,7 +1260,7 @@ Collecting logs...
 
 **注意点**: 報告内容に機密情報が含まれないよう注意
 
-**関連コマンド**: `/changelog`, `/whatsnew`
+**関連コマンド**: `/changelog`
 
 ---
 
