@@ -180,17 +180,17 @@ Knowledge機能は以下のファイル形式をサポートしています：
 
 ### Checkpoint管理
 
-> **🧪 実験的機能**: Checkpoint機能は開発中です。`q settings chat.enableCheckpoint true`で有効化してください。詳細は[Checkpoint機能ガイド](05_checkpoints.md)を参照してください。
+> **🧪 Beta・実験的機能**: Checkpoint機能は開発中です。ワークスペースのチェックポイントを管理します（会話のチェックポイントではありません）。機能は変更・削除される可能性があります。`q settings chat.enableCheckpoint true`で有効化してください。詳細は[Checkpoint機能ガイド](05_checkpoints.md)を参照してください。
 
 | コマンド | 詳細説明 | 使用シーン |
 |---------|---------|-----------|
-| [`/checkpoint init`](05_checkpoints.md#使い方) | Checkpoint機能を初期化。会話の保存ポイントを作成できるようになる | 長い会話セッションを開始する前に、保存機能を有効化したい時 |
-| [`/checkpoint list`](05_checkpoints.md#checkpoint一覧) | 保存されているCheckpointの一覧を表示。`--limit`オプションで表示数を制限可能 | 過去のどの時点に戻れるか確認したい時 |
-| `/checkpoint expand <tag>` | 指定したタグのCheckpoint詳細を表示。会話内容のプレビューを確認できる | Checkpointの内容を確認してから復元するか判断したい時 |
-| `/checkpoint diff <tag1> [tag2]` | 2つのCheckpoint間の差分を表示。会話の変化を比較できる | どの時点でどんな変更があったか確認したい時 |
-| [`/checkpoint restore [<tag>]`](05_checkpoints.md#checkpoint復元) | 指定したCheckpointに会話を復元。タグ省略時は最新のCheckpointに戻る | 会話が脱線した時、以前の状態に戻りたい時 |
+| [`/checkpoint init`](05_checkpoints.md#使い方) | チェックポイントを手動で初期化 | チェックポイント機能を開始する時 |
+| [`/checkpoint list`](05_checkpoints.md#checkpoint一覧) | 全てのチェックポイントを一覧表示 | 利用可能なチェックポイントを確認したい時 |
+| [`/checkpoint restore [<tag>]`](05_checkpoints.md#checkpoint復元) | 指定したチェックポイントにワークスペースを復元 | 以前の状態に戻したい時 |
+| `/checkpoint expand <tag>` | 指定したチェックポイントの詳細を表示 | チェックポイントの内容を確認したい時 |
+| `/checkpoint diff <tag1> [tag2]` | 2つのチェックポイント間の差分を表示 | 変更内容を確認したい時 |
 | [`/checkpoint restore <tag> --hard`](05_checkpoints.md#復元モード) | Checkpointに完全復元。復元後の会話履歴は削除される | 完全に以前の状態からやり直したい時 |
-| `/checkpoint clean` | 古いCheckpointを削除してストレージを整理 | Checkpointが増えすぎた時、不要なものを削除したい時 |
+| `/checkpoint clean` | シャドウリポジトリを削除 | チェックポイントデータを完全に削除したい時 |
 
 ### TODO管理
 
