@@ -720,13 +720,19 @@ q mcp import <config-file>
 
 **使用方法**:
 ```
-/save [ファイル名]
+/save <パス> [オプション]
 ```
+
+**引数**:
+- `<PATH>`: 会話を保存するファイルパス（必須）
+
+**オプション**:
+- `-f, --force`: 既存ファイルを上書き
 
 **使用例**:
 ```bash
-/save                      # デフォルトのファイル名で保存
-/save my-conversation.json # 指定したファイル名で保存
+/save my-conversation.json              # 指定したファイル名で保存
+/save my-conversation.json --force      # 既存ファイルを上書き
 ```
 
 **関連コマンド**: `/load`
