@@ -1003,7 +1003,7 @@ q settings chat.enableCheckpoint true
 
 #### `/knowledge` - Knowledge管理
 
-**目的**: プロジェクトドキュメントやコードを永続的なナレッジベースとして保存し、セッション間で情報を共有する
+**目的**: （Beta）プロジェクトドキュメントやコードを永続的なナレッジベースとして保存し、セッション間で情報を共有する
 
 **説明**: ファイルやディレクトリをインデックス化して永続的なナレッジベースを構築します。セマンティック検索により、関連する情報を効率的に取得できます。
 
@@ -1030,6 +1030,11 @@ q settings chat.enableCheckpoint true
 q settings chat.enableKnowledge true
 # または /experiment で有効化
 ```
+
+**注意点**:
+- ⚠️ Beta機能のため、設定が必要: `q settings chat.enableKnowledge true`
+- ⚠️ 永続的なコンテキストストレージを提供
+- ⚠️ バックグラウンドでインデックス化を実行
 
 **使用例**:
 ```bash

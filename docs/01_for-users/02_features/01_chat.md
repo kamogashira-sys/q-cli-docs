@@ -142,7 +142,7 @@ alias qr='q chat --resume'
 
 ### Knowledge管理
 
-> **🧪 実験的機能**: Knowledge機能は開発中です。`q settings chat.enableKnowledge true`で有効化してください。
+> **🧪 Beta機能**: Knowledge機能は開発中です。`q settings chat.enableKnowledge true`で有効化してください。
 
 | コマンド | 詳細説明 | 使用シーン |
 |---------|---------|-----------|
