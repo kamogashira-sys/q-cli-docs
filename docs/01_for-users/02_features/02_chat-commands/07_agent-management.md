@@ -266,8 +266,8 @@ q settings list | grep model
 # 正確なモデル名で再試行
 /model claude-3-5-sonnet-20241022
 
-# 権限を確認
-q auth status
+# Q CLIの認証状態を確認
+q --version
 ```
 
 #### 問題4: Agent設定が反映されない
