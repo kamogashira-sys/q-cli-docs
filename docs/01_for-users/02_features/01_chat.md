@@ -116,17 +116,17 @@ alias qr='q chat --resume'
 
 | カテゴリ | コマンド数 | 主要コマンド |
 |----------|------------|--------------|
-| [基本コマンド](#基本コマンド) | 5コマンド | help, quit, exit, clear, paste |
-| [会話管理](#会話管理) | 3コマンド | save, load, tangent |
-| [コンテキスト管理](#コンテキスト管理) | 3コマンド | context, compact, hooks |
-| [プロンプト管理](#プロンプト管理) | 2コマンド | prompts, editor |
-| [Knowledge管理](#knowledge管理) | 6コマンド | knowledge操作 |
-| [Checkpoint管理](#checkpoint管理) | 6コマンド | checkpoint操作 |
-| [TODO管理](#todo管理) | 4コマンド | todos操作 |
-| [Agent管理](#agent管理) | 5コマンド | agent, model, experiment |
-| [開発者向けコマンド](#開発者向けコマンド) | 4コマンド | logdump, tools, mcp, reply |
-| [情報表示](#情報表示) | 3コマンド | usage, changelog, subscribe |
-| [問題報告](#問題報告) | 1コマンド | issue |
+| [基本コマンド](#基本コマンド) | 5コマンド | [help](#基本コマンド), [quit](#基本コマンド), [exit](#基本コマンド), [clear](#基本コマンド), [paste](#基本コマンド) |
+| [会話管理](#会話管理) | 3コマンド | [save](#会話管理), [load](#会話管理), [tangent](#会話管理) |
+| [コンテキスト管理](#コンテキスト管理) | 3コマンド | [context](#コンテキスト管理), [compact](#コンテキスト管理), [hooks](#コンテキスト管理) |
+| [プロンプト管理](#プロンプト管理) | 2コマンド | [prompts](#プロンプト管理), [editor](#プロンプト管理) |
+| [Knowledge管理](#knowledge管理) | 6コマンド | [knowledge](#knowledge管理)操作 |
+| [Checkpoint管理](#checkpoint管理) | 6コマンド | [checkpoint](#checkpoint管理)操作 |
+| [TODO管理](#todo管理) | 4コマンド | [todos](#todo管理)操作 |
+| [Agent管理](#agent管理) | 5コマンド | [agent](#agent管理), [model](#agent管理), [experiment](#agent管理) |
+| [開発者向けコマンド](#開発者向けコマンド) | 4コマンド | [logdump](#開発者向けコマンド), [tools](#開発者向けコマンド), [mcp](#開発者向けコマンド), [reply](#開発者向けコマンド) |
+| [情報表示](#情報表示) | 3コマンド | [usage](#情報表示), [changelog](#情報表示), [subscribe](#情報表示) |
+| [問題報告](#問題報告) | 1コマンド | [issue](#問題報告) |
 
 **🔍 よく使うコマンド**:
 - `/help` - コマンドヘルプ
