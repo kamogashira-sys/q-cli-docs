@@ -113,17 +113,20 @@ alias qr='q chat --resume'
 チャットセッション内で使用できる特殊コマンドです。**全25コマンド**を機能別に分類しています。
 
 **📋 コマンド分類**:
-- [基本コマンド](#基本コマンド) (5コマンド) - help, quit, exit, clear, paste
-- [会話管理](#会話管理) (3コマンド) - save, load, tangent
-- [コンテキスト管理](#コンテキスト管理) (3コマンド) - context, compact, hooks
-- [プロンプト管理](#プロンプト管理) (2コマンド) - prompts, editor
-- [Knowledge管理](#knowledge管理) (6コマンド) - knowledge操作
-- [Checkpoint管理](#checkpoint管理) (6コマンド) - checkpoint操作
-- [TODO管理](#todo管理) (4コマンド) - todos操作
-- [Agent管理](#agent管理) (5コマンド) - agent, model, experiment
-- [開発者向けコマンド](#開発者向けコマンド) (4コマンド) - logdump, tools, mcp, reply
-- [情報表示](#情報表示) (3コマンド) - usage, changelog, subscribe
-- [問題報告](#問題報告) (1コマンド) - issue
+
+| カテゴリ | コマンド数 | 主要コマンド |
+|----------|------------|--------------|
+| [基本コマンド](#基本コマンド) | 5コマンド | help, quit, exit, clear, paste |
+| [会話管理](#会話管理) | 3コマンド | save, load, tangent |
+| [コンテキスト管理](#コンテキスト管理) | 3コマンド | context, compact, hooks |
+| [プロンプト管理](#プロンプト管理) | 2コマンド | prompts, editor |
+| [Knowledge管理](#knowledge管理) | 6コマンド | knowledge操作 |
+| [Checkpoint管理](#checkpoint管理) | 6コマンド | checkpoint操作 |
+| [TODO管理](#todo管理) | 4コマンド | todos操作 |
+| [Agent管理](#agent管理) | 5コマンド | agent, model, experiment |
+| [開発者向けコマンド](#開発者向けコマンド) | 4コマンド | logdump, tools, mcp, reply |
+| [情報表示](#情報表示) | 3コマンド | usage, changelog, subscribe |
+| [問題報告](#問題報告) | 1コマンド | issue |
 
 **🔍 よく使うコマンド**:
 - `/help` - コマンドヘルプ
