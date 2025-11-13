@@ -5,7 +5,7 @@
 # ドキュメント
 
 **対象バージョン**: v1.19.5以降  
-**総ドキュメント数**: 116文書
+**総ドキュメント数**: 124文書
 
 > 💡 **補足**: この数値はカテゴリ別に分類されたドキュメントの数です。
 
@@ -138,9 +138,9 @@ graph TD
 
 ```
 docs/
-├── 01_for-users/              # ユーザーガイド（73文書）
+├── 01_for-users/              # ユーザーガイド（81文書）
 │   ├── 01_getting-started/    # 入門ガイド（4文書）
-│   ├── 02_features/           # 機能ガイド（8文書）
+│   ├── 02_features/           # 機能ガイド（16文書）
 │   ├── 03_configuration/      # 設定ガイド（9文書）
 │   ├── 04_best-practices/     # ベストプラクティス（7文書）
 │   ├── 05_deployment/         # デプロイメント（4文書）
@@ -210,18 +210,19 @@ Amazon Q CLIの機能と設定を詳しく学びたい方向けのガイドで�
 
 **次のステップ**: 設定をカスタマイズしたら、[機能ガイド](#機能ガイド8文書)で各機能の使い方を学びましょう。
 
-#### 機能ガイド（8文書）
+#### 機能ガイド（16文書）
 
 | # | ドキュメント | 対象ユーザー | 主な内容 |
 |---|------------|------------|---------|
-| 1 | [README](01_for-users/02_features/README.md) | 初級〜中級 | Featuresセクションの概要 |
-| 2 | [チャット機能](01_for-users/02_features/01_chat.md) | 初級 | 基本操作、チャットコマンド（/help, /agent, /context）、Tips |
-| 3 | [Agent機能](01_for-users/02_features/02_agents.md) | 中級 | Agent概要、管理コマンド（list/切り替え）、カスタマイズ項目 |
-| 4 | [オートコンプリート](01_for-users/02_features/03_autocomplete.md) | 初級 | オートコンプリート機能、設定、使い方 |
-| 5 | [Checkpoint機能](01_for-users/02_features/05_checkpoints.md) | 初級〜中級 | チェックポイント機能、保存/復元、自動保存設定 |
-| 6 | [キーボードショートカット](01_for-users/02_features/04_keyboard-shortcuts.md) | 初級〜中級 | ショートカット一覧、Tangent/Skim/Delegateモード、カスタマイズ |
-| 7 | [SSH/リモート接続](01_for-users/02_features/06_ssh-remote.md) | 中級 | リモート環境での使用、SSH接続、設定方法 |
-| 8 | [実験的機能](01_for-users/02_features/07_experimental.md) | 上級 | 実験的機能、Delegate Mode、安全性警告、ベストプラクティス |
+| 1 | [README](01_for-users/02_features/README.md) | 初級〜中級 | Featuresセクションの概要、チャットコマンド詳細ガイドへのナビゲーション |
+| 2 | [チャット機能](01_for-users/02_features/01_chat.md) | 初級 | 基本操作、25コマンドの分類、初心者向け学習導線 |
+| 3-10 | [チャットコマンド詳細](01_for-users/02_features/02_chat-commands/) | 初級〜上級 | 8分類の詳細ガイド（基本・コンテキスト・プロンプト・Knowledge・Checkpoint・TODO・Agent・開発者向け） |
+| 11 | [Agent機能](01_for-users/02_features/02_agents.md) | 中級 | Agent概要、管理コマンド（list/切り替え）、カスタマイズ項目 |
+| 12 | [オートコンプリート](01_for-users/02_features/03_autocomplete.md) | 初級 | オートコンプリート機能、設定、使い方 |
+| 13 | [Checkpoint機能](01_for-users/02_features/05_checkpoints.md) | 初級〜中級 | チェックポイント機能、保存/復元、自動保存設定 |
+| 14 | [キーボードショートカット](01_for-users/02_features/04_keyboard-shortcuts.md) | 初級〜中級 | ショートカット一覧、Tangent/Skim/Delegateモード、カスタマイズ |
+| 15 | [SSH/リモート接続](01_for-users/02_features/06_ssh-remote.md) | 中級 | リモート環境での使用、SSH接続、設定方法 |
+| 16 | [実験的機能](01_for-users/02_features/07_experimental.md) | 上級 | 実験的機能、Delegate Mode、安全性警告、ベストプラクティス |
 
 **次のステップ**: 機能を理解したら、[コンテキスト管理ガイド](#コンテキスト管理ガイド9文書)でQ CLIの応答品質を最大化する方法を学びましょう。
 
