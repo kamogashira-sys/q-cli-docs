@@ -86,7 +86,7 @@ Agentは、Q CLIの動作を定義する設定ファイルです。以下をカ�
 | `toolAliases` | object | {} | ツール名エイリアス |
 | `allowedTools` | array | [] | 明示的に許可されたツール一覧 |
 | `resources` | array | [] | リソースファイル（`file://`形式、[詳細](../08_guides/README.md)） |
-| `hooks` | object | {} | フック設定（`userPromptSubmit`, `agentSpawn`, `preToolUse`, `postToolUse`, `stop`） |
+| `hooks` | object | {} | フック設定（`userPromptSubmit`, `agentSpawn`, `preToolUse`, `postToolUse`） |
 | `toolsSettings` | object | {} | ツール固有設定 |
 | `useLegacyMcpJson` | boolean | false | レガシーMCP設定（`~/.aws/amazonq/mcp.json`）の使用 |
 | `model` | string | null | 使用モデルID |
@@ -442,7 +442,6 @@ Agentが参照できるファイルを指定します。
 | `UserPromptSubmit` | ユーザーメッセージ送信時 | ユーザーメッセージ送信ごとにトリガー |
 | `PreToolUse` | ツール実行前 | ツール実行前にトリガー |
 | `PostToolUse` | ツール実行後 | ツール実行後にトリガー |
-| `Stop` | アシスタント応答完了時 | アシスタントの応答完了時にトリガー |
 
 #### フックの詳細仕様
 
@@ -465,11 +464,6 @@ Agentが参照できるファイルを指定します。
 - **タイミング**: ツール実行直後
 - **用途**: 結果の検証、ログ記録、後処理
 - **終了コード**: 0=成功、その他=失敗
-
-##### Stop
-- **タイミング**: アシスタント応答完了時（会話ターン終了時）
-- **用途**: コンパイル、テスト実行、コードフォーマット、クリーンアップ処理
-- **終了コード**: 0=成功、その他=警告として表示
 
 #### フック設定項目
 
@@ -605,11 +599,6 @@ echo "Processing: $FILE_PATH"
     "preToolUse": [
       {
         "command": "echo 'Executing tool: ${tool_name}'"
-      }
-    ],
-    "stop": [
-      {
-        "command": "echo 'Response completed'"
       }
     ]
   }
