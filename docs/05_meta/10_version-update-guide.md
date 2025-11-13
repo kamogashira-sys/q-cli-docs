@@ -4,7 +4,7 @@
 
 # バージョンアップ対応ガイド
 
-**最終更新**: 2025-11-01  
+**最終更新**: 2025-11-13  
 **対象読者**: ドキュメントメンテナー、コントリビューター  
 **前提条件**: Git、ripgrep、jq、curlがインストール済み  
 **所要時間**: 約1-2時間（バージョンの変更規模による）
@@ -698,6 +698,120 @@ code docs/03_for-community/01_updates/01_changelog.md
 
 主要な変更カテゴリに新バージョンの内容を追加：
 
+---
+
+### 作業1-3: トップレベルREADME.md更新
+
+#### 対象ファイル
+
+`README.md`（プロジェクトルート）
+
+#### 目的
+
+プロジェクトのメインページの統計情報とバージョン情報を最新化します。
+
+#### 手順
+
+**ステップ1: バージョン履歴セクション更新**
+
+```markdown
+### バージョン履歴（v1.13.0～vX.Y.Z）
+
+**[→ 詳細なバージョン履歴を見る](docs/03_for-community/01_updates/03_version-history-v1.13-latest.md)**
+
+- **期間**: 2025-07-31 ～ YYYY-MM-DD（約X ヶ月）
+- **最新バージョン**: vX.Y.Z (YYYY-MM-DD)
+- **主要機能**:
+  - [新バージョンの主要機能を追記]
+```
+
+**ステップ2: 統計情報の実測値確認**
+
+```bash
+# 設定項目数を実測
+grep -E "^\| \`[a-z]" docs/01_for-users/07_reference/03_settings-reference.md | wc -l
+
+# 環境変数数を実測
+grep -E "^\| \`[A-Z_]+" docs/01_for-users/03_configuration/06_environment-variables.md | grep -v "環境変数" | wc -l
+
+# ファイル数を実測
+find docs -name "*.md" -not -name "*.bak" | wc -l
+```
+
+**ステップ3: 統計情報更新**
+
+実測値を使用して以下を更新：
+
+```markdown
+### 設定システム
+
+- **設定項目**: XX項目（実測値）
+- **環境変数**: XX項目（実測値）
+```
+
+#### チェックリスト
+
+- [ ] バージョン履歴の期間更新
+- [ ] 最新バージョン番号更新
+- [ ] 主要機能の追記
+- [ ] 設定項目数を実測値で更新
+- [ ] 環境変数数を実測値で更新
+- [ ] 推測ではなく実測値を使用
+
+---
+
+### 作業1-4: docs/README.md更新
+
+#### 対象ファイル
+
+`docs/README.md`
+
+#### 目的
+
+ドキュメントサイトのメインページの統計情報を最新化します。
+
+#### 手順
+
+**ステップ1: 総ドキュメント数の実測**
+
+```bash
+# 実際のファイル数を確認（.bakファイル除く）
+find docs -name "*.md" -not -name "*.bak" | wc -l
+
+# カテゴリ別ファイル数を確認
+find docs -name "*.md" -not -name "*.bak" | grep -E "^docs/[0-9]+_" | cut -d'/' -f2 | sort | uniq -c
+```
+
+**ステップ2: ヘッダー情報更新**
+
+```markdown
+**対象バージョン**: vX.Y.Z以降  
+**総ドキュメント数**: XXX文書（実測値）
+```
+
+**ステップ3: カテゴリ別構成更新**
+
+実測値を使用してカテゴリ別文書数を更新：
+
+```markdown
+## 📊 カテゴリ別構成
+
+- **01_for-users**: XX文書（実測値）
+- **02_for-developers**: XX文書（実測値）
+- **03_for-community**: XX文書（実測値）
+- **04_issues**: XX文書（実測値）
+- **05_meta**: XX文書（実測値）
+```
+
+#### チェックリスト
+
+- [ ] 総ドキュメント数を実測値で更新
+- [ ] カテゴリ別文書数を実測値で更新
+- [ ] 対象バージョンを最新に更新
+- [ ] 推測ではなく実測値を使用
+
+---
+
 ```markdown
 ### 主な変更点
 
@@ -799,6 +913,8 @@ code docs/03_for-community/01_updates/01_changelog.md
 
 - [ ] changelog.md更新完了
 - [ ] version-history.md更新完了
+- [ ] **README.md更新完了**
+- [ ] **docs/README.md更新完了**
 - [ ] 全PR番号記載済み
 - [ ] 全リンク追加済み
 
@@ -806,6 +922,7 @@ code docs/03_for-community/01_updates/01_changelog.md
 
 - [ ] Phase 0で確認した名称を使用
 - [ ] リリースノートの内容を正確に反映
+- [ ] **統計情報を実測値で更新**
 - [ ] 推測表現なし
 - [ ] 出典記載済み
 
@@ -1189,6 +1306,98 @@ curl -I "https://github.com/aws/amazon-q-developer-cli/compare/vX.Y.Z-1...vX.Y.Z
 
 ---
 
+### 検証7: 統計情報の整合性確認
+
+#### 目的
+
+README.mdとdocs/README.mdの統計情報が実測値と一致することを確認します。
+
+#### 手順
+
+**ステップ1: 実測値の取得**
+
+```bash
+# 総ドキュメント数
+find docs -name "*.md" -not -name "*.bak" | wc -l
+
+# カテゴリ別ファイル数
+find docs -name "*.md" -not -name "*.bak" | grep -E "^docs/[0-9]+_" | cut -d'/' -f2 | sort | uniq -c
+
+# 設定項目数
+grep -E "^\| \`[a-z]" docs/01_for-users/07_reference/03_settings-reference.md | wc -l
+
+# 環境変数数
+grep -E "^\| \`[A-Z_]+" docs/01_for-users/03_configuration/06_environment-variables.md | grep -v "環境変数" | wc -l
+```
+
+**ステップ2: 整合性確認**
+
+| 項目 | README.md記載 | docs/README.md記載 | 実測値 | 整合性 |
+|------|-------------|------------------|--------|--------|
+| 総ドキュメント数 | XX文書 | XX文書 | XX文書 | ✅/❌ |
+| 01_for-users | XX文書 | XX文書 | XX文書 | ✅/❌ |
+| 設定項目数 | XX項目 | - | XX項目 | ✅/❌ |
+| 環境変数数 | XX項目 | - | XX項目 | ✅/❌ |
+
+#### チェックリスト
+
+- [ ] 総ドキュメント数が実測値と一致
+- [ ] カテゴリ別文書数が実測値と一致
+- [ ] 設定項目数が実測値と一致
+- [ ] 環境変数数が実測値と一致
+- [ ] 不整合がある場合は修正済み
+
+---
+
+### 検証8: バージョン番号記載ファイルの確認
+
+#### 目的
+
+新バージョンで機能追加があった場合、関連ファイルのバージョン表記更新が必要かを確認します。
+
+#### 手順
+
+**ステップ1: バージョン番号記載ファイルの特定**
+
+```bash
+# vX.Y.Z記載ファイルを検索
+grep -r "v1\.19\." docs/ --include="*.md" -l
+
+# 新バージョンの機能に関連するファイルを特定
+grep -r "新機能キーワード" docs/ --include="*.md" -l
+```
+
+**ステップ2: 更新要否の判定**
+
+各ファイルについて以下を確認：
+
+| ファイル | 記載内容 | 新バージョン関連 | 更新要否 |
+|---------|---------|----------------|---------|
+| file1.md | vX.Y.Z機能説明 | ✅ | 要更新 |
+| file2.md | vX.Y.Z以前の機能 | ❌ | 更新不要 |
+
+**ステップ3: 必要に応じて更新**
+
+更新が必要なファイルについて、適切なバージョン表記を追加：
+
+```markdown
+### 機能名（vX.Y.Z以降）
+
+新機能の説明...
+
+**出典**: PR #XXXX
+```
+
+#### チェックリスト
+
+- [ ] バージョン番号記載ファイルを特定
+- [ ] 新バージョン関連ファイルを確認
+- [ ] 更新要否を判定
+- [ ] 必要なファイルを更新
+- [ ] 出典を記載
+
+---
+
 ## Phase 3 完了チェックリスト
 
 ### 検証結果
@@ -1201,6 +1410,8 @@ curl -I "https://github.com/aws/amazon-q-developer-cli/compare/vX.Y.Z-1...vX.Y.Z
 | リンク切れ | ✅/❌ | X件 |
 | 表記統一 | ✅/❌ | X件 |
 | 出典記載 | ✅/❌ | X件 |
+| **統計情報の整合性** | ✅/❌ | X件 |
+| **バージョン番号記載ファイル** | ✅/❌ | X件 |
 
 ### 総合判定
 
@@ -1239,6 +1450,241 @@ git push origin main
 ```
 
 詳細なGit操作は[日常ワークフロー](09_daily-workflow.md)を参照してください。
+
+---
+
+## 🛠️ 品質向上ツール案
+
+### 統計情報自動同期ツール
+
+#### 目的
+
+手動更新による統計情報の不整合を防止し、常に正確な数値を維持します。
+
+#### 提案ツール1: update-statistics.sh
+
+```bash
+#!/bin/bash
+# scripts/update-statistics.sh
+
+set -e
+
+echo "📊 統計情報を更新中..."
+
+# 実測値を取得
+TOTAL_DOCS=$(find docs -name "*.md" -not -name "*.bak" | wc -l)
+USERS_DOCS=$(find docs/01_for-users -name "*.md" -not -name "*.bak" | wc -l)
+DEVELOPERS_DOCS=$(find docs/02_for-developers -name "*.md" -not -name "*.bak" | wc -l)
+COMMUNITY_DOCS=$(find docs/03_for-community -name "*.md" -not -name "*.bak" | wc -l)
+ISSUES_DOCS=$(find docs/04_issues -name "*.md" -not -name "*.bak" | wc -l)
+META_DOCS=$(find docs/05_meta -name "*.md" -not -name "*.bak" | wc -l)
+
+SETTINGS_COUNT=$(grep -E "^\| \`[a-z]" docs/01_for-users/07_reference/03_settings-reference.md | wc -l)
+ENV_VARS_COUNT=$(grep -E "^\| \`[A-Z_]+" docs/01_for-users/03_configuration/06_environment-variables.md | grep -v "環境変数" | wc -l)
+
+# README.md更新
+sed -i "s/総ドキュメント数**: [0-9]*文書/総ドキュメント数**: ${TOTAL_DOCS}文書/g" README.md
+sed -i "s/設定項目**: [0-9]*項目/設定項目**: ${SETTINGS_COUNT}項目/g" README.md
+sed -i "s/環境変数**: [0-9]*項目/環境変数**: ${ENV_VARS_COUNT}項目/g" README.md
+
+# docs/README.md更新
+sed -i "s/総ドキュメント数**: [0-9]*文書/総ドキュメント数**: ${TOTAL_DOCS}文書/g" docs/README.md
+
+echo "✅ 統計情報を更新しました"
+echo "   総ドキュメント数: ${TOTAL_DOCS}文書"
+echo "   設定項目数: ${SETTINGS_COUNT}項目"
+echo "   環境変数数: ${ENV_VARS_COUNT}項目"
+```
+
+#### 提案ツール2: validate-statistics.sh
+
+```bash
+#!/bin/bash
+# scripts/validate-statistics.sh
+
+set -e
+
+echo "🔍 統計情報の整合性を検証中..."
+
+# 実測値を取得
+ACTUAL_TOTAL=$(find docs -name "*.md" -not -name "*.bak" | wc -l)
+ACTUAL_SETTINGS=$(grep -E "^\| \`[a-z]" docs/01_for-users/07_reference/03_settings-reference.md | wc -l)
+ACTUAL_ENV_VARS=$(grep -E "^\| \`[A-Z_]+" docs/01_for-users/03_configuration/06_environment-variables.md | grep -v "環境変数" | wc -l)
+
+# README.mdから記載値を取得
+README_TOTAL=$(grep "総ドキュメント数" README.md | grep -o "[0-9]*" | head -1)
+README_SETTINGS=$(grep "設定項目" README.md | grep -o "[0-9]*" | head -1)
+README_ENV_VARS=$(grep "環境変数" README.md | grep -o "[0-9]*" | head -1)
+
+# docs/README.mdから記載値を取得
+DOCS_README_TOTAL=$(grep "総ドキュメント数" docs/README.md | grep -o "[0-9]*" | head -1)
+
+# 整合性チェック
+ERRORS=0
+
+if [ "$ACTUAL_TOTAL" != "$README_TOTAL" ]; then
+    echo "❌ README.md: 総ドキュメント数不整合 (記載:${README_TOTAL}, 実測:${ACTUAL_TOTAL})"
+    ERRORS=$((ERRORS + 1))
+fi
+
+if [ "$ACTUAL_TOTAL" != "$DOCS_README_TOTAL" ]; then
+    echo "❌ docs/README.md: 総ドキュメント数不整合 (記載:${DOCS_README_TOTAL}, 実測:${ACTUAL_TOTAL})"
+    ERRORS=$((ERRORS + 1))
+fi
+
+if [ "$ACTUAL_SETTINGS" != "$README_SETTINGS" ]; then
+    echo "❌ README.md: 設定項目数不整合 (記載:${README_SETTINGS}, 実測:${ACTUAL_SETTINGS})"
+    ERRORS=$((ERRORS + 1))
+fi
+
+if [ "$ACTUAL_ENV_VARS" != "$README_ENV_VARS" ]; then
+    echo "❌ README.md: 環境変数数不整合 (記載:${README_ENV_VARS}, 実測:${ACTUAL_ENV_VARS})"
+    ERRORS=$((ERRORS + 1))
+fi
+
+if [ $ERRORS -eq 0 ]; then
+    echo "✅ すべての統計情報が整合しています"
+    exit 0
+else
+    echo "⚠️  ${ERRORS}件の不整合が発見されました"
+    echo "💡 修正するには: ./scripts/update-statistics.sh を実行してください"
+    exit 1
+fi
+```
+
+### バージョン番号記載ファイル検出ツール
+
+#### 提案ツール3: find-version-references.sh
+
+```bash
+#!/bin/bash
+# scripts/find-version-references.sh
+
+VERSION=${1:-"v1.19"}
+
+echo "🔍 バージョン番号記載ファイルを検索中: ${VERSION}"
+
+# バージョン番号記載ファイルを検索
+FILES=$(grep -r "${VERSION}" docs/ --include="*.md" -l | sort)
+
+if [ -z "$FILES" ]; then
+    echo "✅ ${VERSION}の記載ファイルは見つかりませんでした"
+    exit 0
+fi
+
+echo "📄 ${VERSION}記載ファイル:"
+echo "$FILES" | while read file; do
+    LINES=$(grep -n "${VERSION}" "$file" | head -3)
+    echo "  📁 $file"
+    echo "$LINES" | sed 's/^/    /'
+    echo ""
+done
+
+echo "💡 これらのファイルで新バージョン関連の更新が必要か確認してください"
+```
+
+### 自動化統合ツール
+
+#### 提案ツール4: version-update-assistant.sh
+
+```bash
+#!/bin/bash
+# scripts/version-update-assistant.sh
+
+NEW_VERSION=$1
+
+if [ -z "$NEW_VERSION" ]; then
+    echo "使用方法: $0 <新バージョン> (例: v1.19.4)"
+    exit 1
+fi
+
+echo "🚀 ${NEW_VERSION} バージョンアップ支援ツール"
+echo ""
+
+# Phase 0支援
+echo "📊 Phase 0: ソースコード分析支援"
+echo "  1. ソースコードクローン用コマンド:"
+echo "     git clone --depth 1 --branch ${NEW_VERSION} https://github.com/aws/amazon-q-developer-cli.git q-cli-${NEW_VERSION}"
+echo ""
+
+# Phase 1支援
+echo "📝 Phase 1: バージョン履歴更新支援"
+echo "  2. 統計情報更新:"
+./scripts/validate-statistics.sh
+echo ""
+
+# Phase 3支援
+echo "🔍 Phase 3: 検証支援"
+echo "  3. バージョン番号記載ファイル確認:"
+./scripts/find-version-references.sh "${NEW_VERSION%.*}"
+echo ""
+
+echo "✅ バージョンアップ支援完了"
+echo "💡 詳細な手順は docs/05_meta/10_version-update-guide.md を参照してください"
+```
+
+### GitHub Actions統合
+
+#### 提案ツール5: .github/workflows/statistics-check.yml
+
+```yaml
+name: Statistics Validation
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**/*.md'
+      - 'README.md'
+  push:
+    branches: [ main ]
+
+jobs:
+  validate-statistics:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Validate Statistics
+      run: |
+        chmod +x scripts/validate-statistics.sh
+        ./scripts/validate-statistics.sh
+    
+    - name: Check for Version References
+      run: |
+        chmod +x scripts/find-version-references.sh
+        ./scripts/find-version-references.sh "v1.19"
+```
+
+### 使用方法
+
+#### 日常的な使用
+
+```bash
+# 統計情報の検証
+./scripts/validate-statistics.sh
+
+# 統計情報の自動更新
+./scripts/update-statistics.sh
+
+# バージョン番号記載ファイルの確認
+./scripts/find-version-references.sh v1.19
+```
+
+#### バージョンアップ時の使用
+
+```bash
+# バージョンアップ支援ツールの実行
+./scripts/version-update-assistant.sh v1.19.4
+```
+
+### 導入効果
+
+| 課題 | 現状 | 改善後 |
+|------|------|--------|
+| 統計情報の不整合 | 手動更新で漏れ発生 | 自動検証・更新で防止 |
+| バージョン番号確認漏れ | 手動検索で見落とし | 自動検出で網羅 |
+| 作業効率 | 手動作業で時間消費 | 自動化で時間短縮 |
+| 品質保証 | 人的ミスのリスク | 機械的チェックで安定 |
 
 ---
 
@@ -1546,10 +1992,12 @@ Phase 1（バージョン履歴更新）に進みます。
 
 ---
 
-## Phase 1: バージョン履歴更新（6項目）
+## Phase 1: バージョン履歴更新（8項目）
 
 - [ ] changelog.md更新完了
 - [ ] version-history.md更新完了
+- [ ] **README.md更新完了**
+- [ ] **docs/README.md更新完了**
 - [ ] ヘッダー情報更新完了
 - [ ] 概要セクション更新完了
 - [ ] 新バージョンセクション追加完了
@@ -1567,7 +2015,7 @@ Phase 1（バージョン履歴更新）に進みます。
 
 ---
 
-## Phase 3: 検証と品質確認（6項目）
+## Phase 3: 検証と品質確認（8項目）
 
 - [ ] PR番号の存在確認
 - [ ] コントリビューター名確認
@@ -1575,6 +2023,8 @@ Phase 1（バージョン履歴更新）に進みます。
 - [ ] リンク切れチェック
 - [ ] 表記統一確認
 - [ ] 出典記載確認
+- [ ] **統計情報の整合性確認**
+- [ ] **バージョン番号記載ファイル確認**
 
 ---
 
@@ -1590,19 +2040,20 @@ Phase 1（バージョン履歴更新）に進みます。
 
 - [ ] Phase 0で確認した名称を使用
 - [ ] リリースノートの内容を正確に反映
+- [ ] **統計情報を実測値で更新**
 - [ ] 推測表現なし
 - [ ] 出典記載済み
 - [ ] 過去の誤記がないか再確認済み
 
 ---
 
-**総チェック項目数**: 36項目  
+**総チェック項目数**: 35項目  
 **完了項目数**: ___項目  
 **完了率**: ___%
 
 ---
 
-**最終更新**: YYYY-MM-DD
+**最終更新**: 2025-11-13
 ```
 
 ---
