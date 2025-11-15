@@ -59,17 +59,17 @@ Q CLIは人間の脳のように、**短期記憶**と**長期記憶**の2種類
 
 ```mermaid
 graph TB
-    subgraph "あなた"
+    subgraph user[" "]
         User[ユーザー]
     end
     
-    subgraph "Q CLI"
+    subgraph qcli[" "]
         STM[短期記憶<br/>今の会話]
         LTM[長期記憶<br/>過去の要約]
         Compact[/compact<br/>コマンド]
     end
     
-    subgraph "保存場所"
+    subgraph storage[" "]
         DB[(データベース<br/>~/.local/share/amazon-q/<br/>data.sqlite3)]
     end
     
@@ -128,20 +128,20 @@ Q CLIは**作業フォルダごと**に別々の記憶を持っています。
 
 ```mermaid
 graph TB
-    subgraph "あなたのPC"
+    subgraph pc[" "]
         Home[ホームディレクトリ]
         ProjectA[~/projects/website/]
         ProjectB[~/projects/api/]
         ProjectC[~/documents/]
     end
     
-    subgraph "Q CLIの記憶"
+    subgraph memory[" "]
         MemA[記憶A<br/>websiteの会話]
         MemB[記憶B<br/>apiの会話]
         MemC[記憶C<br/>documentsの会話]
     end
     
-    subgraph "データベース"
+    subgraph database[" "]
         DB[(~/.local/share/amazon-q/<br/>data.sqlite3)]
     end
     
@@ -231,15 +231,15 @@ graph LR
 
 ```mermaid
 graph TB
-    subgraph "実行前"
+    subgraph before[" "]
         Before[短期記憶<br/>━━━━━━━━━━<br/>質問1: ファイル作成<br/>回答1: 作成しました<br/>質問2: 修正方法<br/>回答2: こうします<br/>質問3: テスト方法<br/>回答3: これです<br/>...<br/>質問20まで]
     end
     
-    subgraph "/compact実行"
+    subgraph compact[" "]
         Compact[AIが要約作成<br/>━━━━━━━━━━<br/>重要な情報だけ抽出]
     end
     
-    subgraph "実行後"
+    subgraph after[" "]
         After[短期記憶<br/>━━━━━━━━━━<br/>スッキリ！]
         Summary[長期記憶<br/>━━━━━━━━━━<br/>要約: ファイル作成と<br/>修正、テストについて<br/>議論しました]
     end
@@ -262,15 +262,15 @@ graph TB
 
 ```mermaid
 graph TB
-    subgraph "あなたのPC"
+    subgraph yourpc[" "]
         Home[~/ ホームディレクトリ]
     end
     
-    subgraph "会話履歴"
+    subgraph conversation[" "]
         DB[~/.local/share/amazon-q/<br/>data.sqlite3<br/>━━━━━━━━━━<br/>• 短期記憶<br/>• 長期記憶<br/>• /compact後の要約]
     end
     
-    subgraph "Knowledge Base"
+    subgraph knowledge[" "]
         KB[~/.aws/amazonq/<br/>knowledge_bases/<br/>━━━━━━━━━━<br/>• プロジェクトのファイル<br/>• コードの索引<br/>• エージェント別に管理]
     end
     
