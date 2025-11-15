@@ -66,7 +66,7 @@ Q CLIのインストールから高度な活用方法まで、ユーザーが必
 4. **[Guides - コンテキスト管理](08_guides/)** - 高度な最適化
 
 ### ワークフローを自動化したい方【NEW】
-1. **[Guides - ワークフロー自動化](08_guides/09_workflow-automation.md)** - Agent Hooksの実践ガイド
+1. **[Guides - ワークフロー自動化](08_guides/10_workflow-automation.md)** - Agent Hooksの実践ガイド
 2. [Best Practices - Agent Hooks比較](04_best-practices/05_agent-hooks-comparison.md) - Kiroとの比較
 3. [Configuration - Agent設定](03_configuration/03_agent-configuration.md) - Hooks設定の技術仕様
 

@@ -350,7 +350,7 @@ Tool Matcherは、どのツールに対してHookを実行するかを指定し�
 
 ## 📚 関連ドキュメント
 
-- **[実践ガイド](../08_guides/09_workflow-automation.md)** - Agent Hooksの実践的な使い方
+- **[実践ガイド](../08_guides/10_workflow-automation.md)** - Agent Hooksの実践的な使い方
 - **[Agent設定ガイド](../03_configuration/03_agent-configuration.md)** - Hooks設定の技術仕様
 - **[Agent機能](../02_features/02_agents.md)** - Agent機能の概要
 
