@@ -15,7 +15,7 @@ AWS技術者として、Q CLIの可能性をもっと多くの人に知っても
 ## 公式リポジトリ
 
 - GitHub: https://github.com/aws/amazon-q-developer-cli
-- 対象バージョン: v1.19.5以降
+- 対象バージョン: v1.19.6以降
 
 ---
 
