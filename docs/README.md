@@ -503,4 +503,4 @@ Amazon Q CLIの内部構造を理解したい方、コントリビューショ�
 - **[Amazon Q Developer](https://aws.amazon.com/q/developer/)** - 公式サイト
 
 ---
-最終更新: 2025-11-01
+最終更新: 2025-11-15
