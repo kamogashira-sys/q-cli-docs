@@ -66,7 +66,7 @@ graph TB
     subgraph qcli[" "]
         STM[短期記憶<br/>今の会話]
         LTM[長期記憶<br/>過去の要約]
-        Compact[/compact<br/>コマンド]
+        Compact[compact<br/>コマンド]
     end
     
     subgraph storage[" "]
