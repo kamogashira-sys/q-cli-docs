@@ -4,12 +4,12 @@
 
 # バージョンアップ履歴 (v1.13.0 - latest)
 
-**調査日**: 2025-11-15  
-**リリース期間**: 2025-07-31 ～ 2025-11-13
+**調査日**: 2025-12-14  
+**リリース期間**: 2025-07-31 ～ 2025-11-17
 
 ## 概要
 
-この期間で11つのメジャー/マイナーバージョンがリリースされました。主な変更点は以下の通りです：
+この期間で12つのメジャー/マイナーバージョンがリリースされました。主な変更点は以下の通りです：
 
 - **Agent機能の大幅強化**: 設定スキーマ、管理コマンド、バリデーション機能、Delegate tool
 - **MCP (Model Context Protocol) の進化**: リモートMCP対応、OAuth認証、rmcpへの移行、SSEサポート
@@ -17,6 +17,50 @@
 - **実験的機能の拡充**: Tangent mode、Experiment manager、To-do list、/logdump
 - **ユーザー体験の向上**: コンテキスト使用率表示、チェックポイント機能、プロンプト管理強化、画像ペースト
 - **セキュリティ強化**: execute_bash権限の厳格化、fs_read信頼範囲の制限、deny_by_default、builtin namespace
+
+---
+
+## v1.19.7 (2025-11-17)
+
+### Kiroアップデート告知機能
+
+#### Kiro CLIアップデート告知の追加
+- Q CLIからKiro CLIへの移行を促す告知機能を追加
+- 告知内容: 既存のワークフローと購読は変更なしで継続、手動更新または11/24の自動更新
+- 学習リンク: kiro.dev/cli-upgrade
+- ライセンス: AWS Intellectual Property License (kiro.dev/license)
+- 影響範囲:
+  - `constants.rs`に`kiro_upgrade_announcement()`関数追加
+  - チャット起動時に告知を表示（最大5回）
+  - データベースで表示回数を管理
+- PR番号: #3433, #3452, #3454
+- 作成者: @zixlin7, @dingfeli
+
+#### 告知表示回数の調整
+- Kiroアップデート告知の最大表示回数を2回から5回に変更
+- 定数: `KIRO_UPGRADE_MAX_SHOW_COUNT` 2 → 5
+- 理由: より多くのユーザーに告知を届けるため
+- 影響範囲: `crates/chat-cli/src/cli/chat/mod.rs`
+- PR番号: #3457
+- 作成者: @brandonskiser
+
+### バージョン管理
+
+#### バージョンバンプ
+- v1.19.7への更新
+- 内部的なバージョン番号とfeed.jsonの更新
+- PR番号: #3453
+- 作成者: @dingfeli
+
+### 統計
+
+- PR数: 5件
+- 新規コントリビューター: 0名
+
+### リンク
+
+- [GitHub Release](https://github.com/aws/amazon-q-developer-cli/releases/tag/v1.19.7)
+- [Full Changelog](https://github.com/aws/amazon-q-developer-cli/compare/v1.19.6...v1.19.7)
 
 ---
 

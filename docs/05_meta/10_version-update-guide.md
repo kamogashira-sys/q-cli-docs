@@ -1604,7 +1604,7 @@ echo ""
 # Phase 0支援
 echo "📊 Phase 0: ソースコード分析支援"
 echo "  1. ソースコードクローン用コマンド:"
-echo "     git clone --depth 1 --branch ${NEW_VERSION} https://github.com/aws/amazon-q-developer-cli.git q-cli-${NEW_VERSION}"
+echo "     git clone --depth 1 --branch ${NEW_VERSION} https://github.com/aws/amazon-q-developer-cli.git amazon-q-developer-cli-${NEW_VERSION}"
 echo ""
 
 # Phase 1支援
