@@ -2,19 +2,20 @@
 
 ## 📢 重要なお知らせ - Amazon Q CLIの今後について
 
-**Amazon Q Developer CLI（Q CLI）をご利用いただき、ありがとうございました。**
+**Amazon Q Developer CLI 解体新書をご利用いただき、ありがとうございました。**
 
 2025年11月17日のv1.19.7リリースを最後に、Amazon Q CLIはオープンソースプロジェクトとしての積極的な開発を終了いたします。今後は**重要なセキュリティ修正のみ**が提供される予定です。
 
 ### 🔄 Kiro CLIへの移行について
 
-Amazon Q Developer CLIは、**[Kiro CLI](https://kiro.dev/cli/)** として生まれ変わりました（2025年11月頃より利用可能）：
+Amazon Q Developer CLIは、**[Kiro CLI](https://kiro.dev/cli/)** として生まれ変わりました（v1.19.7リリース（2025年11月17日）の翌日に公式発表）：
 
 - **新しい名称**: Kiro CLI
 - **開発形態**: クローズドソース製品
 - **ライセンス**: AWS Intellectual Property License
 - **継続性**: 既存のワークフローと購読はそのまま継続
 - **最新機能**: Kiro CLIで提供
+- **Issue管理**: [GitHub - kirodotdev/Kiro](https://github.com/kirodotdev/Kiro) で継続
 
 ### 📖 このサイトの価値
 
