@@ -8,7 +8,7 @@
 
 ### 🔄 Kiro CLIへの移行について
 
-Amazon Q Developer CLIは、**[Kiro CLI](https://kiro.dev/cli/)** として新たに生まれ変わります：
+Amazon Q Developer CLIは、**[Kiro CLI](https://kiro.dev/cli/)** として生まれ変わりました（2025年11月頃より利用可能）：
 
 - **新しい名称**: Kiro CLI
 - **開発形態**: クローズドソース製品
