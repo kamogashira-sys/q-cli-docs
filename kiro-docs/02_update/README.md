@@ -24,23 +24,13 @@ kiro-cli version --changelog=all
 
 ## 🔄 主要なアップデート
 
-### 最新バージョン（v1.23.1 - 2025-12-23）
-- Plan Agentのセキュリティ強化
-- Grep/Globツールの実行詳細追加
-- MCPサーバー表示問題の修正
-
-### 大型アップデート（v1.23.0 - 2025-12-18）
-- **Subagents**: 並列タスク実行機能
-- **Plan Agent**: 構造化実装計画機能
-- **Grep/Globツール**: 高速ファイル検索
-- **Multi-Session**: セッション管理機能
-
-### 革新的機能（v1.22.0 - 2025-12-11）
-- **Code Intelligence**: LSP統合による高精度コード理解
-- **Knowledge Index**: 自動インデックス化機能
-
-### Web機能追加（v1.21.0 - 2025-11-25）
-- **Web Search & Fetch**: リアルタイムWeb情報アクセス
+| バージョン | リリース日 | 主要機能 | 概要 |
+|-----------|-----------|----------|------|
+| **v1.23.1** | 2025-12-23 | セキュリティ強化 | Plan Agentセキュリティ強化、Grep/Glob実行詳細追加、MCPサーバー表示修正 |
+| **v1.23.0** | 2025-12-18 | 大型アップデート | Subagents、Plan Agent、Multi-Session、Grep/Globツール |
+| **v1.22.0** | 2025-12-11 | Code Intelligence | LSP統合による高精度コード理解、Knowledge Index |
+| **v1.21.0** | 2025-11-25 | Web機能 | Web Search & Fetch、リアルタイムWeb情報アクセス |
+| **v1.20.0** | 2025-11-17 | 初回リリース | Auto Agent導入、Social Login対応、Claude Haiku 4.5 |
 
 ## 📈 バージョン進化の流れ
 

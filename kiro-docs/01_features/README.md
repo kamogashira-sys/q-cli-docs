@@ -1,78 +1,16 @@
-# アップデート情報
+# 主要アップデート情報
 
 ## 📋 機能概要
 
-Kiro CLIの主要機能は以下の5つのカテゴリに分類されます：
+| 機能 | リリース | 概要 | 主要機能 |
+|------|----------|------|----------|
+| **[LSP統合機能（Code Intelligence）](01_LSP.md)** | v1.22.0<br/>（2025-12-11） | Language Server Protocol統合による高精度コード理解 | Go-to-definition、Find references、Hover情報、Diagnostics |
+| **[サブエージェント機能（Subagents）](02_Subagents.md)** | v1.23.0<br/>（2025-12-18） | 複雑なタスクを専門エージェントに委譲し並列実行 | 自律実行、リアルタイム進捗追跡、結果の自動集約 |
+| **[Planエージェント機能（Plan Agent）](03_PlanAgent.md)** | v1.23.0<br/>（2025-12-18） | アイデアを構造化された実装計画に変換 | 要件収集、リサーチ分析、実装計画作成、計画引き継ぎ |
+| **[マルチセッション機能（Multi-Session Support）](04_MultiSession.md)** | v1.23.0<br/>（2025-12-18） | 複数のチャットセッションを効率的に管理 | セッションピッカー、自動保存、ディレクトリベース管理 |
+| **[Grep/Globツール機能（Grep/Glob Tools）](05_GrepGlob.md)** | v1.23.0<br/>（2025-12-18） | 高速なファイル検索を実現する2つのビルトインツール | 正規表現検索、Globパターン検索、.gitignore自動尊重 |
 
-### 1. [LSP統合機能（Code Intelligence）](01_LSP.md)
-- **リリース**: v1.22.0（2025-12-11）
-- **概要**: Language Server Protocol統合による高精度コード理解
-- **主要機能**: Go-to-definition、Find references、Hover情報、Diagnostics
 
-### 2. [サブエージェント機能（Subagents）](02_Subagents.md)
-- **リリース**: v1.23.0（2025-12-18）
-- **概要**: 複雑なタスクを専門エージェントに委譲し並列実行
-- **主要機能**: 自律実行、リアルタイム進捗追跡、結果の自動集約
-
-### 3. [Planエージェント機能（Plan Agent）](03_PlanAgent.md)
-- **リリース**: v1.23.0（2025-12-18）
-- **概要**: アイデアを構造化された実装計画に変換
-- **主要機能**: 要件収集、リサーチ分析、実装計画作成、計画引き継ぎ
-
-### 4. [マルチセッション機能（Multi-Session Support）](04_MultiSession.md)
-- **リリース**: v1.23.0（2025-12-18）
-- **概要**: 複数のチャットセッションを効率的に管理
-- **主要機能**: セッションピッカー、自動保存、ディレクトリベース管理
-
-### 5. [Grep/Globツール機能（Grep/Glob Tools）](05_GrepGlob.md)
-- **リリース**: v1.23.0（2025-12-18）
-- **概要**: 高速なファイル検索を実現する2つのビルトインツール
-- **主要機能**: 正規表現検索、Globパターン検索、.gitignore自動尊重
-
-## 🔄 機能間の相関図
-
-```mermaid
-graph TB
-    subgraph "Kiro CLI v1.22.0+"
-        LSP[LSP統合機能<br/>Code Intelligence<br/>v1.22.0]
-    end
-    
-    subgraph "Kiro CLI v1.23.0"
-        Plan[Planエージェント<br/>Plan Agent<br/>v1.23.0]
-        Sub[サブエージェント<br/>Subagents<br/>v1.23.0]
-        Multi[マルチセッション<br/>Multi-Session<br/>v1.23.0]
-        Grep[Grep/Globツール<br/>Search Tools<br/>v1.23.0]
-    end
-    
-    subgraph "開発ワークフロー"
-        Planning[計画立案]
-        Implementation[実装]
-        Management[管理]
-    end
-    
-    %% 機能間の関係
-    Plan --> Sub
-    Plan --> LSP
-    Sub --> LSP
-    Sub --> Grep
-    LSP --> Grep
-    
-    %% ワークフローとの関係
-    Plan --> Planning
-    Sub --> Implementation
-    LSP --> Implementation
-    Grep --> Implementation
-    Multi --> Management
-    
-    %% スタイル
-    classDef v122 fill:#e1f5fe
-    classDef v123 fill:#f3e5f5
-    classDef workflow fill:#fff3e0
-    
-    class LSP v122
-    class Plan,Sub,Multi,Grep v123
-    class Planning,Implementation,Management workflow
-```
 
 ## 🔗 機能間の連携
 
