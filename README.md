@@ -217,6 +217,7 @@ Amazon Q Developer CLI（Q CLI）は、AWSが提供する**AI駆動**の開発�
 
 Q CLIのセキュリティとプライバシーについて理解することは重要です：
 
+- **[セキュリティアーキテクチャ設計思想](docs/01_for-users/09_security/00_security-architecture.md)** - なぜユーザーアカウント配下にインストールされるのか
 - **[セキュリティ概要](docs/01_for-users/09_security/01_security-overview.md)** - セキュリティの基本原則とトピック
 - **[データプライバシー](docs/01_for-users/09_security/02_data-privacy.md)** - データの取り扱いとプライバシー保護
 - **[テレメトリー設定](docs/01_for-users/03_configuration/05_telemetry.md)** - 使用状況データの収集と無効化方法

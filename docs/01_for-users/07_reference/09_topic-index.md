@@ -23,9 +23,13 @@
 
 ## セキュリティ
 
+### 設計思想と基本原則
+
+- **[セキュリティアーキテクチャ設計思想](../09_security/00_security-architecture.md)** - 設計思想とユーザーインストールの理由
+- **[セキュリティ概要](../09_security/01_security-overview.md)** - セキュリティの基本原則とトピック
+
 ### データプライバシー
 
-- **[セキュリティ概要](../09_security/01_security-overview.md)** - セキュリティの基本原則とトピック
 - **[データプライバシー](../09_security/02_data-privacy.md)** - データの取り扱いとプライバシー保護
 - **[テレメトリー設定](../03_configuration/05_telemetry.md)** - 使用状況データの収集と無効化方法
 
