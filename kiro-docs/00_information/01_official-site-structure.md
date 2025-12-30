@@ -46,20 +46,17 @@ Kiro CLI公式サイト（https://kiro.dev/cli/）の画面遷移とページ構
 | ├── | **Autonomous agent** [(/autonomous-agent/)](https://kiro.dev/autonomous-agent/) | 自律エージェント機能 |
 | ├── | **Enterprise** [(/enterprise/)](https://kiro.dev/enterprise/) | 企業向け機能とソリューション。組織レベルの管理機能、AWS セキュリティ基準、IP補償、各種統合 |
 | ├── | **Pricing** [(/pricing/)](https://kiro.dev/pricing/) | 料金体系とプラン比較。Free($0)、Pro($20)、Pro+($40)、Power($200)、超過分$0.04/クレジット |
-| ├── | **Docs** [(/docs/)](https://kiro.dev/docs/) | 包括的な技術ドキュメント |
+| ├── | **Docs** [(/docs/cli/)](https://kiro.dev/docs/cli/) | CLI専用技術ドキュメント |
 | │　├── | **Getting Started** | |
-| │　│　├── | Installation [(/docs/getting-started/installation/)](https://kiro.dev/docs/getting-started/installation/) | インストール手順 |
-| │　│　└── | First Project [(/docs/getting-started/first-project/)](https://kiro.dev/docs/getting-started/first-project/) | 初回プロジェクト作成 |
+| │　│　└── | Installation [(/docs/cli/installation/)](https://kiro.dev/docs/cli/installation/) | CLIインストール手順 |
 | │　├── | **Core Capabilities** | |
-| │　│　├── | Specs [(/docs/specs/)](https://kiro.dev/docs/specs/) | 構造化仕様書機能 |
-| │　│　├── | Hooks [(/docs/hooks/)](https://kiro.dev/docs/hooks/) | 自動化トリガー |
-| │　│　├── | Agentic Chat [(/docs/chat/)](https://kiro.dev/docs/chat/) | AI対話機能 |
-| │　│　├── | Steering [(/docs/steering/)](https://kiro.dev/docs/steering/) | AIガイダンス設定 |
-| │　│　├── | MCP Servers [(/docs/mcp/)](https://kiro.dev/docs/mcp/) | 外部ツール接続 |
+| │　│　├── | Interactive Chat [(/docs/cli/chat/)](https://kiro.dev/docs/cli/chat/) | ターミナルでのAI対話機能 |
+| │　│　├── | Custom Agents [(/docs/cli/custom-agents/)](https://kiro.dev/docs/cli/custom-agents/) | ワークフロー特化エージェント |
+| │　│　├── | Smart Hooks [(/docs/cli/hooks/)](https://kiro.dev/docs/cli/hooks/) | インテリジェントな自動化フック |
+| │　│　├── | Agent Steering [(/docs/cli/steering/)](https://kiro.dev/docs/cli/steering/) | エージェントのガイダンス設定 |
+| │　│　├── | MCP Integration [(/docs/cli/mcp/)](https://kiro.dev/docs/cli/mcp/) | 外部ツール・データソース接続 |
+| │　│　├── | Auto Complete [(/docs/cli/autocomplete/)](https://kiro.dev/docs/cli/autocomplete/) | コンテキスト認識型補完 |
 | │　│　└── | Privacy First [(/docs/privacy-and-security/)](https://kiro.dev/docs/privacy-and-security/) | プライバシー・セキュリティ |
-| │　└── | **Learning Resources** | |
-| │　　　├── | Your First Project [(/docs/getting-started/first-project/)](https://kiro.dev/docs/getting-started/first-project/) | 初回プロジェクトガイド |
-| │　　　└── | Interactive Tutorial [(/docs/guides/learn-by-playing/)](https://kiro.dev/docs/guides/learn-by-playing/) | ゲーム形式学習 |
 | ├── | **Resources** | |
 | │　├── | Blog [(/blog/)](https://kiro.dev/blog/) | 技術ブログ |
 | │　├── | Changelog [(/changelog/)](https://kiro.dev/changelog/) | バージョン履歴 |
@@ -81,8 +78,8 @@ Kiro CLI公式サイト（https://kiro.dev/cli/）の画面遷移とページ構
 - **Workflow Optimization**: スマートフックによる反復タスク自動化
 
 ### エンタープライズ活用
-- **Spec-driven Development**: 実行可能な仕様書による開発
-- **Collaborative Agents**: チーム協調型AI開発
+- **Custom Automation**: 特化エージェントによるワークフロー自動化
+- **Team Standardization**: チームレベルのベストプラクティス適用
 - **Quality Assurance**: ベストプラクティス強制とコード品質向上
 - **Security Compliance**: AWS セキュリティ基準準拠
 - **Integration Flexibility**: 既存ツールチェーンとの統合
@@ -90,7 +87,7 @@ Kiro CLI公式サイト（https://kiro.dev/cli/）の画面遷移とページ構
 ## 🔗 関連リンク
 
 - **[Kiro CLI公式サイト](https://kiro.dev/cli/)**
-- **[Kiro公式ドキュメント](https://kiro.dev/docs/)**
+- **[Kiro CLI専用ドキュメント](https://kiro.dev/docs/cli/)**
 - **[Kiro GitHub リポジトリ](https://github.com/kirodotdev/Kiro)**
 - **[Kiro Discord コミュニティ](https://discord.gg/kirodotdev)**
 - **[Kiro公式ブログ](https://kiro.dev/blog/)**
