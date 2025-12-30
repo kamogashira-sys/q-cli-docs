@@ -33,12 +33,18 @@ Kiro CLI（旧Amazon Q Developer CLI）の最新情報とアップデートを�
 
 ```
 kiro-docs/
+├── 00_information/   # 基本情報・公式サイト情報
 ├── 01_features/      # 機能詳細ガイド
 ├── 02_update/        # アップデート情報
 └── 03_deployment/    # デプロイメント・環境構築
 ```
 
 ## 📚 主要ドキュメント
+
+### [00_information/ - 基本情報・公式サイト情報](00_information/README.md)
+Kiro CLI の基本情報と公式サイトの構造について説明したドキュメント集です。
+
+- **[公式サイト構造](00_information/01_official-site-structure.md)** - Kiro CLI公式サイトの画面遷移とページ構成
 
 ### [01_features/ - 機能詳細ガイド](01_features/README.md)
 Kiro CLIの主要機能について詳細に解説したドキュメント集です。
