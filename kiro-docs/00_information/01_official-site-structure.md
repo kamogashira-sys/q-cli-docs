@@ -36,7 +36,7 @@ Kiro CLI公式サイト（https://kiro.dev/cli/）の画面遷移とページ構
 | **ルート** | [https://kiro.dev/](https://kiro.dev/) | |
 | ├── | **CLI** [(/cli/)](https://kiro.dev/cli/) | ターミナルでのプロンプトからコード、デプロイまでの流れを紹介。カスタムエージェント、高度なコンテキスト管理、MCP統合などの主要機能を説明 |
 | │　├── | Interactive Chat [(/docs/cli/chat/)](https://kiro.dev/docs/cli/chat/) | ターミナルでの自然言語対話機能 |
-| │　├── | Custom Agents [(/docs/cli/custom-agents/)](https://kiro.dev/docs/cli/custom-agents/) | ワークフロー特化エージェント作成 |
+| │　├── | Custom Agents [(/docs/cli/custom-agents/)](https://kiro.dev/docs/cli/custom-agents/) | ワークフロー特化エージェント作成。Creating custom agents、Agent configuration reference、Agent Examples、Troubleshooting custom agents |
 | │　├── | MCP Integration [(/docs/cli/mcp/)](https://kiro.dev/docs/cli/mcp/) | 外部ツール・データソース接続 |
 | │　├── | Smart Hooks [(/docs/cli/hooks/)](https://kiro.dev/docs/cli/hooks/) | インテリジェントな自動化フック |
 | │　├── | Agent Steering [(/docs/cli/steering/)](https://kiro.dev/docs/cli/steering/) | エージェントのガイダンス設定 |
@@ -50,12 +50,12 @@ Kiro CLI公式サイト（https://kiro.dev/cli/）の画面遷移とページ構
 | │　├── | **Getting Started** | |
 | │　│　└── | Installation [(/docs/cli/installation/)](https://kiro.dev/docs/cli/installation/) | CLIインストール手順 |
 | │　├── | **Core Capabilities** | |
-| │　│　├── | Interactive Chat [(/docs/cli/chat/)](https://kiro.dev/docs/cli/chat/) | ターミナルでのAI対話機能 |
+| │　│　├── | Interactive Chat [(/docs/cli/chat/)](https://kiro.dev/docs/cli/chat/) | ターミナルでのAI対話機能。Starting a session、Multi-line statements、Conversation persistence、Model selection、Authentication |
 | │　│　├── | Custom Agents [(/docs/cli/custom-agents/)](https://kiro.dev/docs/cli/custom-agents/) | ワークフロー特化エージェント |
-| │　│　├── | Smart Hooks [(/docs/cli/hooks/)](https://kiro.dev/docs/cli/hooks/) | インテリジェントな自動化フック |
-| │　│　├── | Agent Steering [(/docs/cli/steering/)](https://kiro.dev/docs/cli/steering/) | エージェントのガイダンス設定 |
-| │　│　├── | MCP Integration [(/docs/cli/mcp/)](https://kiro.dev/docs/cli/mcp/) | 外部ツール・データソース接続 |
-| │　│　├── | Auto Complete [(/docs/cli/autocomplete/)](https://kiro.dev/docs/cli/autocomplete/) | コンテキスト認識型補完 |
+| │　│　├── | Smart Hooks [(/docs/cli/hooks/)](https://kiro.dev/docs/cli/hooks/) | インテリジェントな自動化フック。Hook types（AgentSpawn、UserPromptSubmit、PreToolUse、PostToolUse、Stop）、Tool matching、Examples |
+| │　│　├── | Agent Steering [(/docs/cli/steering/)](https://kiro.dev/docs/cli/steering/) | エージェントのガイダンス設定。Steering file scope（Workspace、Global、Team）、Foundational steering files、Creating custom steering files、Best practices |
+| │　│　├── | MCP Integration [(/docs/cli/mcp/)](https://kiro.dev/docs/cli/mcp/) | 外部ツール・データソース接続。Setting up MCP（Command line、mcp.json file、Agent configuration）、Troubleshooting、Examples、Security Best Practices |
+| │　│　├── | Auto Complete [(/docs/cli/autocomplete/)](https://kiro.dev/docs/cli/autocomplete/) | コンテキスト認識型補完。Autocomplete dropdown menu、Inline suggestions、Configuration、Supported tools、Troubleshooting |
 | │　│　└── | Privacy First [(/docs/privacy-and-security/)](https://kiro.dev/docs/privacy-and-security/) | プライバシー・セキュリティ |
 | ├── | **Resources** | |
 | │　├── | Blog [(/blog/)](https://kiro.dev/blog/) | 技術ブログ |
