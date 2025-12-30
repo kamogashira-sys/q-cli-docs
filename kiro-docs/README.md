@@ -34,7 +34,8 @@ Kiro CLI（旧Amazon Q Developer CLI）の最新情報とアップデートを�
 ```
 kiro-docs/
 ├── 01_features/      # 機能詳細ガイド
-└── 02_update/        # アップデート情報
+├── 02_update/        # アップデート情報
+└── 03_deployment/    # デプロイメント・環境構築
 ```
 
 ## 📚 主要ドキュメント
@@ -52,6 +53,11 @@ Kiro CLIの主要機能について詳細に解説したドキュメント集で
 Kiro CLIのバージョン履歴とアップデート情報を管理しています。
 
 - **[変更履歴](02_update/01_changelog.md)** - 全バージョンの詳細な変更内容
+
+### [03_deployment/ - デプロイメント・環境構築](03_deployment/README.md)
+Kiro CLI の環境構築とデプロイメントに関するガイド集です。
+
+- **[AWS Samples Code Server](03_deployment/01_aws-samples-code-server.md)** - EC2上でのKiro CLI開発環境構築
 
 ## 更新方針
 
