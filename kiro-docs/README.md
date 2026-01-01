@@ -54,6 +54,7 @@ Kiro CLIの主要機能について詳細に解説したドキュメント集で
 - **[Planエージェント機能](01_features/03_PlanAgent.md)** - 構造化実装計画機能
 - **[マルチセッション機能](01_features/04_MultiSession.md)** - セッション管理機能
 - **[Grep/Globツール](01_features/05_GrepGlob.md)** - 高速ファイル検索機能
+- **[/usage コマンド](01_features/06_UsageCommand.md)** - 使用量・契約プラン確認機能
 
 ### [02_update/ - アップデート情報](02_update/README.md)
 Kiro CLIのバージョン履歴とアップデート情報を管理しています。
