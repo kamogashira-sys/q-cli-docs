@@ -5,21 +5,9 @@
 # ドキュメント
 
 **対象バージョン**: v1.19.6以降  
-**総ドキュメント数**: 128文書
+**総ドキュメント数**: 127文書
 
 > 💡 **補足**: この数値はカテゴリ別に分類されたドキュメントの数です。
-
----
-
-## 📚 ドキュメント一覧
-
-### 🔬 AWS技術調査レポート
-
-- **[AWS Local Zones + NLB DNS Affinity 分析](aws-local-zones-nlb-dns-affinity-analysis.md)** - ローカルアベイラビリティゾーンとNetwork Load BalancerのDNS Affinity機能を組み合わせた場合の動作、効果、メリットの包括的分析
-
-### 📖 Amazon Q Developer CLI ドキュメント
-
-以下は従来のAmazon Q Developer CLIに関するドキュメントです：
 
 ---
 
