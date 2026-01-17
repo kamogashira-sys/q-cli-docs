@@ -22,6 +22,69 @@ Amazon Q Developer CLIは、**[Kiro CLI](https://kiro.dev/cli/)** として生�
 
 kiro-cliについてのより正確な情報発信を心がけて今後も更新予定です。猫でもわかるkiro-cliを今後もよろしくお願いします。
 
+### 🔗 関連AWS公式ブログ記事
+
+#### Kiro CLI公式発表
+- **[Introducing Kiro CLI](https://aws.amazon.com/jp/blogs/news/introducing-kiro-cli/)**
+  - Kiro CLIの公式発表記事
+  - 基本概念と主要機能の紹介
+  - Amazon Q Developer CLIからの進化について
+
+#### 移行ガイド
+- **[Kiroweeeeeeek in Japan Day 6: Amazon Q Developer CLI to Kiro CLI](https://aws.amazon.com/jp/blogs/news/kiroweeeeeeek-in-japan-day-6-amazon-q-developer-cli-to-kiro-cli/)**
+  - Amazon Q Developer CLIからKiro CLIへの移行ガイド
+  - 日本での導入事例とベストプラクティス
+  - 移行時の注意点と推奨事項
+
+### 📚 Kiro CLI v1.24.0 主要アップデート（2026-01-16）
+
+Kiro CLI v1.24.0では、**7つの主要機能**が追加されました：
+
+1. **[Skills機能（Progressive Context Loading）](kiro-docs/01_features/07_Skills.md)**
+   - 大規模ドキュメント向けの段階的コンテキストロード
+   - メタデータのみ起動時、本文はオンデマンド
+
+2. **[Custom Diff Tools機能](kiro-docs/01_features/08_CustomDiffTools.md)**
+   - 外部Diffツール統合（15種類対応）
+   - delta、difftastic、VS Code等
+
+3. **[AST Pattern Tools機能（Precise Refactoring）](kiro-docs/01_features/09_ASTPatternTools.md)**
+   - 構文木ベースの精密なコード検索・変換
+   - 誤検出排除、安全なリファクタリング
+
+4. **[Improved Code Intelligence](kiro-docs/01_features/01_LSP.md)**
+   - 18言語組み込み対応（v1.22.0は7言語）
+   - /code overviewコマンド追加
+
+5. **[Conversation Compaction機能](kiro-docs/01_features/10_ConversationCompaction.md)**
+   - 会話履歴の圧縮でコンテキストスペースを解放
+   - 手動・自動実行、元セッション復帰可能
+
+6. **[Granular URL Permissions機能](kiro-docs/01_features/11_URLPermissions.md)**
+   - web_fetchツールのURL権限細粒度制御
+   - 正規表現パターン、信頼・ブロックパターン
+
+7. **[Remote Authentication機能](kiro-docs/01_features/12_RemoteAuth.md)**
+   - リモートマシンでのGoogle/GitHub認証対応
+   - SSH/SSM/コンテナ環境対応
+
+詳細は **[kiro-docs/01_features/](kiro-docs/01_features/README.md)** をご覧ください。
+
+### 📂 Kiro CLIドキュメント構成
+
+```
+kiro-docs/
+├── 00_information/   # 基本情報・公式サイト情報
+├── 01_features/      # 機能詳細ガイド（v1.24.0対応）
+├── 02_update/        # アップデート情報
+└── 03_deployment/    # デプロイメント・環境構築
+```
+
+**主要ドキュメント**:
+- **[機能詳細ガイド](kiro-docs/01_features/README.md)** - 12機能の詳細解説
+- **[アップデート情報](kiro-docs/02_update/README.md)** - バージョン履歴
+- **[環境構築ガイド](kiro-docs/03_deployment/README.md)** - デプロイメント手順
+
 ### 📖 このサイトの価値
 
 このサイトは、Amazon Q CLIの**最後の包括的なドキュメント**として、以下の価値を提供し続けます：またkiro-cliのアップデート情報を追い続けます。
@@ -317,10 +380,20 @@ Q CLIのセキュリティとプライバシーについて理解することは
 
 ## 🔗 関連リンク
 
+### Kiro CLI（現行）
+- [Kiro CLI 公式サイト](https://kiro.dev/cli/)
+- [Kiro CLI GitHub](https://github.com/kirodotdev/Kiro)
+- [Introducing Kiro CLI - AWS公式ブログ](https://aws.amazon.com/jp/blogs/news/introducing-kiro-cli/)
+- [移行ガイド - AWS公式ブログ](https://aws.amazon.com/jp/blogs/news/kiroweeeeeeek-in-japan-day-6-amazon-q-developer-cli-to-kiro-cli/)
+
+### Amazon Q Developer CLI（旧）
 - [Amazon Q Developer CLI 公式リポジトリ](https://github.com/aws/amazon-q-developer-cli)
 - [Amazon Q Developer 公式サイト](https://aws.amazon.com/q/developer/)
-- [AWS CLI Documentation](https://docs.aws.amazon.com/)
 - [Amazon Q Developer CLI 調査プロジェクト - Qiita](https://qiita.com/kamogashira/items/672fbc6cbc48c28364ff)
+
+### その他
+- [AWS CLI Documentation](https://docs.aws.amazon.com/)
+- [AWSジャパンContributor(小西さん) - Zenn](https://zenn.dev/konippi)
 
 ---
 
