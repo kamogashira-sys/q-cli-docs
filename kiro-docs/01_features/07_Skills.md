@@ -820,13 +820,12 @@ du -h .kiro/skills/**/*.md
 
 ```bash
 # 1つの大きなファイル（100KB）
-aws-all-services.md
+# aws-all-services.md
 
 # 複数の小さなファイル（各20KB）
-```
-aws/dynamodb-best-practices.md
-aws/lambda-best-practices.md
-aws/s3-best-practices.md
+# aws/dynamodb-best-practices.md
+# aws/lambda-best-practices.md
+# aws/s3-best-practices.md
 ```
 
 ### 問題4: Skillファイルの文法エラー

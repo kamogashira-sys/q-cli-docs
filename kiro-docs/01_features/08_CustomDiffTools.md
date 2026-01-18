@@ -145,7 +145,6 @@ scoop install difftastic
 **設定**:
 
 ```bash
-```
 kiro-cli settings chat.diffTool difft
 ```
 
