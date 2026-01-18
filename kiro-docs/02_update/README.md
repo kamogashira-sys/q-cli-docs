@@ -26,11 +26,61 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v1.24.0** | 2026-01-16 | コンテキスト最適化 | Skills、Custom Diff Tools、AST Pattern Tools、Improved Code Intelligence、Conversation Compaction、URL Permissions、Remote Auth |
 | **v1.23.1** | 2025-12-23 | セキュリティ強化 | Plan Agentセキュリティ強化、Grep/Glob実行詳細追加、MCPサーバー表示修正 |
 | **v1.23.0** | 2025-12-18 | 大型アップデート | Subagents、Plan Agent、Multi-Session、Grep/Globツール |
 | **v1.22.0** | 2025-12-11 | Code Intelligence | LSP統合による高精度コード理解、Knowledge Index |
 | **v1.21.0** | 2025-11-25 | Web機能 | Web Search & Fetch、リアルタイムWeb情報アクセス |
 | **v1.20.0** | 2025-11-17 | 初回リリース | Auto Agent導入、Social Login対応、Claude Haiku 4.5 |
+
+## 🎯 v1.24.0 詳細（2026-01-16）
+
+### 主要機能
+
+Kiro CLI v1.24.0では、**7つの主要機能**が追加されました：
+
+#### 1. Skills機能（Progressive Context Loading）
+- **概要**: 大規模ドキュメント向けの段階的コンテキストロード
+- **特徴**: メタデータのみ起動時、本文はオンデマンド
+- **詳細**: [kiro-docs/01_features/07_Skills.md](../01_features/07_Skills.md)
+
+#### 2. Custom Diff Tools機能
+- **概要**: 外部Diffツール統合（15種類対応）
+- **特徴**: delta、difftastic、VS Code等
+- **詳細**: [kiro-docs/01_features/08_CustomDiffTools.md](../01_features/08_CustomDiffTools.md)
+
+#### 3. AST Pattern Tools機能（Precise Refactoring）
+- **概要**: 構文木ベースの精密なコード検索・変換
+- **特徴**: 誤検出排除、安全なリファクタリング
+- **詳細**: [kiro-docs/01_features/09_ASTPatternTools.md](../01_features/09_ASTPatternTools.md)
+
+#### 4. Improved Code Intelligence
+- **概要**: 18言語組み込み対応（v1.22.0は7言語）
+- **特徴**: /code overviewコマンド追加
+- **詳細**: [kiro-docs/01_features/01_LSP.md](../01_features/01_LSP.md)
+
+#### 5. Conversation Compaction機能
+- **概要**: 会話履歴の圧縮でコンテキストスペースを解放
+- **特徴**: 手動・自動実行、元セッション復帰可能
+- **詳細**: [kiro-docs/01_features/10_ConversationCompaction.md](../01_features/10_ConversationCompaction.md)
+
+#### 6. Granular URL Permissions機能
+- **概要**: web_fetchツールのURL権限細粒度制御
+- **特徴**: 正規表現パターン、信頼・ブロックパターン
+- **詳細**: [kiro-docs/01_features/11_URLPermissions.md](../01_features/11_URLPermissions.md)
+
+#### 7. Remote Authentication機能
+- **概要**: リモートマシンでのGoogle/GitHub認証対応
+- **特徴**: SSH/SSM/コンテナ環境対応
+- **詳細**: [kiro-docs/01_features/12_RemoteAuth.md](../01_features/12_RemoteAuth.md)
+
+### 影響範囲
+
+- **コンテキスト管理**: Skills、Conversation Compactionで大幅改善
+- **開発体験**: Custom Diff Tools、AST Pattern Toolsで効率化
+- **セキュリティ**: Granular URL Permissionsで強化
+- **リモート対応**: Remote Authenticationで柔軟性向上
+- **コード理解**: 18言語対応で適用範囲拡大
 
 ## 📈 バージョン進化の流れ
 
@@ -68,6 +118,14 @@ timeline
         2025-12-23 : v1.23.1
                    : セキュリティ強化
                    : バグ修正
+    
+    section コンテキスト最適化
+        2026-01-16 : v1.24.0
+                   : Skills機能
+                   : Custom Diff Tools
+                   : AST Pattern Tools
+                   : Improved Code Intelligence
+                   : Conversation Compaction
 ```
 
 ## 🔗 移行情報
@@ -124,5 +182,5 @@ timeline
 
 ---
 
-**最終更新**: 2025年12月28日  
-**対象バージョン**: Kiro CLI v1.23.1
+**最終更新**: 2026年1月18日  
+**対象バージョン**: Kiro CLI v1.24.0
