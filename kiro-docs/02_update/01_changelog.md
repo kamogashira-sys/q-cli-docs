@@ -13,6 +13,43 @@
 
 ## 最新バージョン
 
+### v1.24.0 CLI（2026-01-16）
+
+**主要な変更**:
+- 📚 **Skills**: 大規模ドキュメント向けの段階的コンテキストロード機能
+  - メタデータのみ起動時ロード、本文はオンデマンド
+  - YAMLフロントマター（name、description）必須
+  - `skill://` URIスキームでリソース指定
+- 🎨 **Custom Diff Tools**: 外部Diffツール統合機能
+  - delta、difftastic、VS Code等15種類のツール対応
+  - `chat.diffTool`設定で選択可能
+  - ターミナルツール8種類、GUIツール7種類をサポート
+- 🔍 **AST Pattern Tools**: 構文木ベースのコード検索・変換ツール
+  - **pattern-search**: 構文構造を理解した精密な検索
+  - **pattern-rewrite**: ASTパターンによる安全なコード変換
+  - 文字列リテラル・コメント内の誤検出を排除
+- 🧠 **Improved Code Intelligence**: 18言語で組み込みコード理解機能
+  - LSPセットアップ不要で即座に利用開始
+  - `/code overview`コマンドで完全なワークスペース概要取得
+  - `--silent`オプションでクリーンな出力
+  - Bash, C, C++, C#, Elixir, Go, Java, JavaScript, Kotlin, Lua, PHP, Python, Ruby, Rust, Scala, Swift, TSX, TypeScript対応
+- 📦 **Conversation Compaction**: 会話履歴の圧縮機能
+  - `/compact`コマンドで手動実行
+  - コンテキストウィンドウオーバーフロー時に自動実行
+  - `compaction.excludeMessages`、`compaction.excludeContextWindowPercent`で設定可能
+  - 新セッション作成、`/chat resume`で元のセッションに復帰可能
+- 🔒 **Granular URL Permissions**: web_fetchツールのURL権限細粒度制御
+  - 正規表現パターンで信頼ドメイン自動許可
+  - ブロックパターンで特定サイト遮断
+  - 信頼パターン外のURLは承認プロンプト表示
+- 🌐 **Remote Authentication**: リモートマシンでのGoogle/GitHub認証対応
+  - SSH、SSM、コンテナ環境でポートフォワーディング対応
+  - Builder ID、IAM Identity Centerはデバイスコード認証標準対応
+
+**詳細**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)
+
+---
+
 ### v1.23.1 CLI（2025-12-23）
 
 **主要な変更**:
