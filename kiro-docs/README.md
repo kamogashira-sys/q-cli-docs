@@ -49,18 +49,20 @@ Kiro CLI の基本情報と公式サイトの構造について説明したド�
 ### [01_features/ - 機能詳細ガイド](01_features/README.md)
 Kiro CLIの主要機能について詳細に解説したドキュメント集です。
 
-- **[LSP統合機能](01_features/01_LSP.md)** - Code Intelligence機能の詳細
-- **[サブエージェント機能](01_features/02_Subagents.md)** - 並列タスク実行機能
-- **[Planエージェント機能](01_features/03_PlanAgent.md)** - 構造化実装計画機能
-- **[マルチセッション機能](01_features/04_MultiSession.md)** - セッション管理機能
-- **[Grep/Globツール](01_features/05_GrepGlob.md)** - 高速ファイル検索機能
-- **[/usage コマンド](01_features/06_UsageCommand.md)** - 使用量・契約プラン確認機能
-- **[Skills機能](01_features/07_Skills.md)** - 段階的コンテキストロード機能（v1.24.0）
-- **[Custom Diff Tools機能](01_features/08_CustomDiffTools.md)** - 外部Diffツール統合（v1.24.0）
-- **[AST Pattern Tools機能](01_features/09_ASTPatternTools.md)** - 構文木ベースのコード検索・変換（v1.24.0）
-- **[Conversation Compaction機能](01_features/10_ConversationCompaction.md)** - 会話履歴圧縮機能（v1.24.0）
-- **[Granular URL Permissions機能](01_features/11_URLPermissions.md)** - URL権限細粒度制御（v1.24.0）
-- **[Remote Authentication機能](01_features/12_RemoteAuth.md)** - リモート認証対応（v1.24.0）
+| 機能 | 説明 | バージョン |
+|------|------|-----------|
+| **[LSP統合機能](01_features/01_LSP.md)** | Code Intelligence機能の詳細 | v1.22.0 |
+| **[サブエージェント機能](01_features/02_Subagents.md)** | 並列タスク実行機能 | v1.23.0 |
+| **[Planエージェント機能](01_features/03_PlanAgent.md)** | 構造化実装計画機能 | v1.23.0 |
+| **[マルチセッション機能](01_features/04_MultiSession.md)** | セッション管理機能 | v1.23.0 |
+| **[Grep/Globツール](01_features/05_GrepGlob.md)** | 高速ファイル検索機能 | v1.23.0 |
+| **[/usage コマンド](01_features/06_UsageCommand.md)** | 使用量・契約プラン確認機能 | - |
+| **[Skills機能](01_features/07_Skills.md)** | 段階的コンテキストロード機能 | v1.24.0 |
+| **[Custom Diff Tools機能](01_features/08_CustomDiffTools.md)** | 外部Diffツール統合 | v1.24.0 |
+| **[AST Pattern Tools機能](01_features/09_ASTPatternTools.md)** | 構文木ベースのコード検索・変換 | v1.24.0 |
+| **[Conversation Compaction機能](01_features/10_ConversationCompaction.md)** | 会話履歴圧縮機能 | v1.24.0 |
+| **[Granular URL Permissions機能](01_features/11_URLPermissions.md)** | URL権限細粒度制御 | v1.24.0 |
+| **[Remote Authentication機能](01_features/12_RemoteAuth.md)** | リモート認証対応 | v1.24.0 |
 
 ### [02_update/ - アップデート情報](02_update/README.md)
 Kiro CLIのバージョン履歴とアップデート情報を管理しています。
