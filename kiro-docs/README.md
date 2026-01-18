@@ -55,6 +55,12 @@ Kiro CLIの主要機能について詳細に解説したドキュメント集で
 - **[マルチセッション機能](01_features/04_MultiSession.md)** - セッション管理機能
 - **[Grep/Globツール](01_features/05_GrepGlob.md)** - 高速ファイル検索機能
 - **[/usage コマンド](01_features/06_UsageCommand.md)** - 使用量・契約プラン確認機能
+- **[Skills機能](01_features/07_Skills.md)** - 段階的コンテキストロード機能（v1.24.0）
+- **[Custom Diff Tools機能](01_features/08_CustomDiffTools.md)** - 外部Diffツール統合（v1.24.0）
+- **[AST Pattern Tools機能](01_features/09_ASTPatternTools.md)** - 構文木ベースのコード検索・変換（v1.24.0）
+- **[Conversation Compaction機能](01_features/10_ConversationCompaction.md)** - 会話履歴圧縮機能（v1.24.0）
+- **[Granular URL Permissions機能](01_features/11_URLPermissions.md)** - URL権限細粒度制御（v1.24.0）
+- **[Remote Authentication機能](01_features/12_RemoteAuth.md)** - リモート認証対応（v1.24.0）
 
 ### [02_update/ - アップデート情報](02_update/README.md)
 Kiro CLIのバージョン履歴とアップデート情報を管理しています。
