@@ -26,6 +26,7 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v1.25.0** | 2026-02-04 | IDE統合・ガバナンス | ACP、Help Agent、Exit Codes、Subagent Access Control、Enterprise Web Tools |
 | **v1.24.0** | 2026-01-16 | コンテキスト最適化 | Skills、Custom Diff Tools、AST Pattern Tools、Improved Code Intelligence、Conversation Compaction、URL Permissions、Remote Auth |
 | **v1.23.1** | 2025-12-23 | セキュリティ強化 | Plan Agentセキュリティ強化、Grep/Glob実行詳細追加、MCPサーバー表示修正 |
 | **v1.23.0** | 2025-12-18 | 大型アップデート | Subagents、Plan Agent、Multi-Session、Grep/Globツール |
@@ -77,6 +78,12 @@ timeline
                    : AST Pattern Tools
                    : Improved Code Intelligence
                    : Conversation Compaction
+    
+    section IDE統合・ガバナンス
+        2026-02-04 : v1.25.0
+                   : ACP統合
+                   : Help Agent
+                   : CI/CD対応
 ```
 
 ## 🔗 移行情報

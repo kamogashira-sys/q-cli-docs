@@ -36,6 +36,34 @@ kiro-cliについてのより正確な情報発信を心がけて今後も更新
   - 日本での導入事例とベストプラクティス
   - 移行時の注意点と推奨事項
 
+### 📚 Kiro CLI v1.25.0 主要アップデート（2026-02-04）
+
+Kiro CLI v1.25.0では、**5つの主要機能**が追加されました：
+
+1. **[Agent Client Protocol (ACP) サポート](kiro-docs/01_features/13_ACP.md)**
+   - JetBrains IDEs、Zed等のACP対応エディタでKiroを使用
+   - JSON-RPC通信、セッション管理
+
+2. **[Help Agent](kiro-docs/01_features/14_HelpAgent.md)**
+   - Kiro CLIドキュメントベースの組み込みヘルプ
+   - `/help`コマンドで即座に回答
+
+3. **[Exit Codes for CI/CD](kiro-docs/01_features/15_ExitCodes.md)**
+   - 構造化された終了コード（0/1/3）
+   - `--require-mcp-startup`でMCPサーバー必須化
+
+4. **[Subagent Access Control](kiro-docs/01_features/02_Subagents.md#subagent-access-controlv1250)**
+   - `availableAgents`、`trustedAgents`設定
+   - Globパターンサポート
+
+5. **[Enterprise Web Tools Governance](kiro-docs/01_features/11_URLPermissions.md#enterprise-web-tools-governancev1250)**
+   - 組織全体でweb_search/web_fetch制御
+   - 管理者による一括設定
+
+詳細は **[kiro-docs/01_features/](kiro-docs/01_features/README.md)** をご覧ください。
+
+---
+
 ### 📚 Kiro CLI v1.24.0 主要アップデート（2026-01-16）
 
 Kiro CLI v1.24.0では、**7つの主要機能**が追加されました：
@@ -75,13 +103,13 @@ Kiro CLI v1.24.0では、**7つの主要機能**が追加されました：
 ```
 kiro-docs/
 ├── 00_information/   # 基本情報・公式サイト情報
-├── 01_features/      # 機能詳細ガイド（v1.24.0対応）
+├── 01_features/      # 機能詳細ガイド（v1.25.0対応）
 ├── 02_update/        # アップデート情報
 └── 03_deployment/    # デプロイメント・環境構築
 ```
 
 **主要ドキュメント**:
-- **[機能詳細ガイド](kiro-docs/01_features/README.md)** - 12機能の詳細解説
+- **[機能詳細ガイド](kiro-docs/01_features/README.md)** - 15機能の詳細解説
 - **[アップデート情報](kiro-docs/02_update/README.md)** - バージョン履歴
 - **[環境構築ガイド](kiro-docs/03_deployment/README.md)** - デプロイメント手順
 

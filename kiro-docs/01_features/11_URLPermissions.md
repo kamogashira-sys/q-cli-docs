@@ -924,6 +924,160 @@ ls -la .kiro/agents/my-agent.json
 }
 ```
 
+---
+
+## Enterprise Web Tools Governance（v1.25.0）
+
+Kiro CLI v1.25.0（2026年2月4日リリース）で追加された組織全体でのWeb Tools制御機能について解説します。
+
+**出典**: [Enterprise Settings - Web Tools](https://kiro.dev/docs/cli/enterprise/settings/#web-tools)
+
+### 概要
+
+Enterprise Web Tools Governanceは、**組織全体で`web_search`と`web_fetch`ツールを無効化**できる機能です。管理者がKiroコンソールから設定し、ユーザーは`/tools`コマンドで無効化通知を確認できます。
+
+### 主な機能
+
+- **組織レベル制御**: 管理者が組織全体の設定を管理
+- **Web Tools無効化**: `web_search`と`web_fetch`ツールを一括無効化
+- **ユーザー通知**: `/tools`コマンドで無効化通知を表示
+
+### 機能詳細
+
+#### 管理者による制御
+
+管理者は、Kiroコンソールから組織全体の設定を管理できます。
+
+**設定手順**:
+1. Kiroコンソールを開く
+2. **Settings**を選択
+3. **Shared settings**配下の**Web search and web fetch tools**を**Off**に切り替え
+
+**効果**:
+- 組織内の全ユーザーで`web_search`、`web_fetch`ツールが無効化
+- ユーザーは外部Webアクセスができなくなる
+
+#### ユーザー側の動作
+
+**無効化時の動作**:
+- `/tools`コマンドで通知表示: "Web access has been disabled by your administrator"
+- `web_search`、`web_fetch`ツールは利用不可
+- エージェントはWeb検索・取得を実行できない
+
+**確認方法**:
+```bash
+> /tools
+```
+
+**出力例**:
+```
+Available tools:
+  - fs_read
+  - fs_write
+  - code
+  - grep
+  - glob
+
+Note: Web access has been disabled by your administrator
+```
+
+### ユースケース
+
+#### セキュリティポリシー遵守
+
+外部Webアクセスを制限する組織のポリシー対応。
+
+**シナリオ**: 金融機関での利用
+
+- **要件**: 外部Webアクセスを禁止
+- **対応**: Enterprise Web Tools Governanceで無効化
+- **効果**: 組織全体で外部Webアクセスを制限
+
+#### コンプライアンス要件
+
+特定の業界規制でWeb接続を制限する必要がある場合。
+
+**シナリオ**: 医療機関での利用
+
+- **要件**: HIPAA準拠のため外部Webアクセスを制限
+- **対応**: Enterprise Web Tools Governanceで無効化
+- **効果**: コンプライアンス要件を満たす
+
+#### 開発環境の制御
+
+本番環境でのWeb接続を禁止し、ローカルリソースのみ使用。
+
+**シナリオ**: 本番環境での利用
+
+- **要件**: 本番環境では外部Webアクセスを禁止
+- **対応**: Enterprise Web Tools Governanceで無効化
+- **効果**: 本番環境でのセキュリティを強化
+
+### 個別URL制御との関係
+
+Enterprise Web Tools GovernanceとGranular URL Permissionsは、異なるレベルで動作します。
+
+| 機能 | レベル | 制御範囲 |
+|------|--------|----------|
+| **Enterprise Web Tools Governance** | 組織全体 | Web Tools自体を無効化 |
+| **Granular URL Permissions** | 個別ユーザー | URL単位で制御 |
+
+**優先順位**: Enterprise設定 > Granular URL Permissions
+
+**動作例**:
+1. **Enterprise設定でWeb Tools無効化**: 全ユーザーでWeb Toolsが利用不可
+2. **Granular URL Permissionsで信頼ドメイン設定**: Enterprise設定が優先され、Web Toolsは利用不可
+
+### ベストプラクティス
+
+#### 1. 段階的な導入
+
+まず個別制御で運用し、必要に応じて組織全体制御に移行します。
+
+**ステップ1**: Granular URL Permissionsで個別制御
+```json
+{
+  "toolsSettings": {
+    "web_fetch": {
+      "trusted": ["^https://docs\\.aws\\.amazon\\.com/.*"]
+    }
+  }
+}
+```
+
+**ステップ2**: 運用状況を確認
+
+**ステップ3**: 必要に応じてEnterprise Web Tools Governanceで組織全体制御
+
+#### 2. ユーザーへの周知
+
+無効化前にユーザーに通知します。
+
+**通知内容**:
+- 無効化の理由（セキュリティポリシー、コンプライアンス要件）
+- 無効化の日時
+- 代替手段（社内ドキュメント、ローカルリソース）
+
+#### 3. 代替手段の提供
+
+必要な情報へのアクセス方法を別途提供します。
+
+**代替手段例**:
+- 社内ドキュメントサーバー
+- ローカルにキャッシュされたドキュメント
+- MCPサーバー経由でのアクセス
+
+#### 4. 定期的な見直し
+
+組織のセキュリティポリシーに応じて定期的に見直します。
+
+**見直し項目**:
+- Web Tools無効化の必要性
+- ユーザーからのフィードバック
+- 代替手段の有効性
+
+---
+
 ## まとめ
 
 ### Granular URL Permissions機能の重要ポイント

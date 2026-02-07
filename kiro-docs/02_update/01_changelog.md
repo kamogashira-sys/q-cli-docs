@@ -13,6 +13,36 @@
 
 ## 最新バージョン
 
+### v1.25.0 CLI（2026-02-04）
+
+**主要な変更**:
+- 🔌 **Agent Client Protocol (ACP)**: JetBrains IDEs、Zed等のACP対応エディタでKiroをカスタムエージェントとして使用可能
+  - `kiro-cli acp`コマンドでJSON-RPC over stdin/stdout通信
+  - 標準ACPメソッド + Kiro拡張（スラッシュコマンド、MCPツール、セッション管理）
+  - セッション保存: `~/.kiro/sessions/cli/`
+  
+- 💡 **Help Agent**: Kiro CLIドキュメントを使用した組み込みヘルプエージェント
+  - `/help`コマンドで切り替え、`/help <質問>`で直接質問
+  - コマンド、ツール、設定、機能について即座に回答
+  - `.kiro/`ディレクトリに設定ファイルを作成可能
+  
+- 🔒 **Enterprise Web Tools Governance**: 組織全体でweb_search/web_fetchツールを無効化可能
+  - 管理者がKiroコンソールから設定
+  - 無効化時、ユーザーは`/tools`で通知を確認
+  
+- 🎯 **Subagent Access Control**: サブエージェントの細粒度アクセス制御
+  - `availableAgents`: 起動可能なエージェントを制限
+  - `trustedAgents`: 承認プロンプトなしで実行可能なエージェントを指定
+  - Globパターン（`test-*`等）をサポート
+  
+- 🚀 **Exit Codes for CI/CD**: 構造化された終了コードで自動化をサポート
+  - コード0: 成功、コード1: 一般的な失敗、コード3: MCPサーバー起動失敗
+  - `--require-mcp-startup`オプションでMCPサーバー必須化
+
+**詳細**: [Kiro CLI v1.25.0 Changelog](https://kiro.dev/changelog/cli/1-25/)
+
+---
+
 ### v1.24.0 CLI（2026-01-16）
 
 **主要な変更**:
