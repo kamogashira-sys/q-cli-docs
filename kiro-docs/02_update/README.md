@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v1.23.1（最新版）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v1.26.0（最新版）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,8 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v1.26.0** | 2026-02-12 | UX・統合強化 | @file/@directory展開、統合エントリポイント、Skills自動読み込み、Agent CLI改善 |
+| **v1.25.1** | 2026-02-12 | Enterprise SSO | Okta/Microsoft Entra ID対応 |
 | **v1.25.0** | 2026-02-04 | IDE統合・ガバナンス | ACP、Help Agent、Exit Codes、Subagent Access Control、Enterprise Web Tools |
 | **v1.24.0** | 2026-01-16 | コンテキスト最適化 | Skills、Custom Diff Tools、AST Pattern Tools、Improved Code Intelligence、Conversation Compaction、URL Permissions、Remote Auth |
 | **v1.23.1** | 2025-12-23 | セキュリティ強化 | Plan Agentセキュリティ強化、Grep/Glob実行詳細追加、MCPサーバー表示修正 |
@@ -84,6 +86,17 @@ timeline
                    : ACP統合
                    : Help Agent
                    : CI/CD対応
+    
+    section Enterprise SSO
+        2026-02-12 : v1.25.1
+                   : Okta/Entra ID対応
+    
+    section UX・統合強化
+        2026-02-12 : v1.26.0
+                   : @file/@directory展開
+                   : 統合エントリポイント
+                   : Skills自動読み込み
+                   : Agent CLI改善
 ```
 
 ## 🔗 移行情報
@@ -140,5 +153,5 @@ timeline
 
 ---
 
-**最終更新**: 2026年1月18日  
-**対象バージョン**: Kiro CLI v1.24.0
+**最終更新**: 2026年2月15日  
+**対象バージョン**: Kiro CLI v1.26.0

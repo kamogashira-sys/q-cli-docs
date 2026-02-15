@@ -1,10 +1,10 @@
 # Kiro CLI Agent Client Protocol (ACP) 統合
 
-**出典**: [Agent Client Protocol (ACP) - Kiro CLI Documentation](https://kiro.dev/docs/cli/acp/)
+**出典**: [Agent Client Protocol (ACP) - Kiro CLI Documentation](https://kiro.dev/docs/cli/acp/)、`kiro-cli version --changelog=all`（v1.26.0情報）
 
 ## 概要
 
-Kiro CLI v1.25.0（2026年2月4日リリース）で追加されたAgent Client Protocol (ACP) 統合機能について詳細に解説します。この機能により、JetBrains IDEs、Zed等のACP対応エディタでKiro CLIをカスタムエージェントとして使用できるようになりました。
+Kiro CLI v1.25.0（2026年2月4日リリース）で追加されたAgent Client Protocol (ACP) 統合機能について詳細に解説します。v1.26.0（2026年2月12日リリース）では、**`--agent`フラグ**と**ACP/subagent用`code`ツール**が追加されました。
 
 ### Agent Client Protocol (ACP) とは
 
@@ -16,6 +16,8 @@ Agent Client Protocol (ACP) は、**エディタとAIエージェント間の標
 - **エディタ統合**: JetBrains IDEs、Zed等のACP対応エディタで使用可能
 - **Kiro拡張**: スラッシュコマンド、MCPツール、セッション管理をサポート
 - **セッション保存**: `~/.kiro/sessions/cli/`に自動保存
+- **`--agent`フラグ（v1.26.0）**: `kiro-cli acp --agent <agent-name>`でエージェント指定
+- **`code`ツール対応（v1.26.0）**: ACP・subagentで`code`ツール（Code Intelligence）が利用可能
 
 ### なぜACPが必要なのか
 
@@ -120,6 +122,12 @@ kiro-cli --version
 
 ```bash
 /usr/local/bin/kiro-cli acp
+```
+
+**特定のエージェントを指定する場合（v1.26.0以降）**:
+
+```bash
+/usr/local/bin/kiro-cli acp --agent my-agent
 ```
 
 **重要**: 完全なパスを指定してください。`which kiro-cli`で確認できます。
@@ -380,6 +388,30 @@ mkdir -p $XDG_RUNTIME_DIR/kiro-log/
 
 ---
 
+## v1.26.0での変更点
+
+### `--agent`フラグの追加
+
+v1.26.0で`kiro-cli acp`サブコマンドに`--agent`フラグが追加されました。これにより、ACP起動時に使用するエージェントを指定できます。
+
+```bash
+# デフォルトエージェントで起動
+kiro-cli acp
+
+# 特定のエージェントを指定して起動（v1.26.0以降）
+kiro-cli acp --agent my-custom-agent
+```
+
+### ACP/subagent用`code`ツール
+
+v1.26.0で、ACPおよびsubagentから`code`ツール（Code Intelligence）が利用可能になりました。これにより、エディタ統合時にもLSPベースのコード理解機能（シンボル検索、定義ジャンプ、参照検索等）を活用できます。
+
+### デフォルトエージェント読み込みの修正
+
+v1.26.0で、ACPのデフォルトエージェント読み込みに関するバグが修正されました。
+
+---
+
 ## 関連リンク
 
 ### 公式ドキュメント
@@ -397,4 +429,4 @@ mkdir -p $XDG_RUNTIME_DIR/kiro-log/
 
 ---
 
-**最終更新**: 2026年2月7日
+**最終更新**: 2026年2月15日

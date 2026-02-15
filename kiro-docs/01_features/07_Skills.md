@@ -1,10 +1,10 @@
 # Kiro CLI Skills機能（Progressive Context Loading）
 
-**出典**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)
+**出典**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)、`kiro-cli version --changelog=all`（v1.26.0情報）
 
 ## 概要
 
-Kiro CLI v1.24.0（2026年1月16日リリース）で追加されたSkills機能について詳細に解説します。この機能により、大規模なドキュメントセットを効率的に管理し、コンテキストウィンドウを圧迫せずに必要な情報をオンデマンドでロードできるようになりました。
+Kiro CLI v1.24.0（2026年1月16日リリース）で追加されたSkills機能について詳細に解説します。v1.26.0（2026年2月12日リリース）では、**Skills自動読み込み**が追加され、Agent設定での明示的な指定なしにSkillsが利用可能になりました。
 
 ### Skills機能とは
 
@@ -16,6 +16,7 @@ Skills機能は、**段階的コンテキストロード（Progressive Context L
 - **コンテキスト効率化**: 常時コンテキストウィンドウを消費しない
 - **大規模ドキュメント対応**: 数百MBのドキュメントセットも管理可能
 - **YAMLフロントマター必須**: 名前と説明を含むメタデータが必要
+- **自動読み込み（v1.26.0）**: `.kiro/skills/`と`~/.kiro/skills/`のSkillsがデフォルトエージェントに自動提供
 
 ### 従来のfile://リソースとの違い
 
@@ -93,7 +94,35 @@ description: Brief description of what this skill provides. Use when...
 
 ### 設定方法
 
-#### Agent設定ファイルでの指定
+#### Skills自動読み込み（v1.26.0以降）
+
+v1.26.0以降、以下のディレクトリに配置されたSkillファイルは、**Agent設定での明示的な`skill://`指定なしに**デフォルトエージェントで自動的に利用可能になります。
+
+| ディレクトリ | スコープ | 説明 |
+|-------------|---------|------|
+| `.kiro/skills/` | プロジェクト | プロジェクト固有のSkills |
+| `~/.kiro/skills/` | グローバル | 全プロジェクト共通のSkills |
+
+```bash
+# プロジェクト固有のSkillを配置するだけで自動的に利用可能
+mkdir -p .kiro/skills/
+cat > .kiro/skills/my-skill.md << 'EOF'
+---
+name: my-skill
+description: My custom skill. Use when...
+---
+
+# My Skill Content
+...
+EOF
+
+# Agent設定でのskill://指定は不要（v1.26.0以降）
+kiro-cli chat
+```
+
+**注意**: v1.24.0〜v1.25.xでは、Agent設定ファイルでの`skill://`指定が必要です（下記参照）。
+
+#### Agent設定ファイルでの指定（v1.24.0〜）
 
 ```json
 {
@@ -879,6 +908,7 @@ description: Guide for DynamoDB data modeling best practices.
 2. **コンテキスト効率化**: 大規模ドキュメントセットを効率的に管理
 3. **YAMLフロントマター必須**: 名前と説明を含むメタデータが必要
 4. **file://との使い分け**: 小規模な必須ファイルは`file://`、大規模なガイドは`skill://`
+5. **自動読み込み（v1.26.0）**: `.kiro/skills/`と`~/.kiro/skills/`に配置するだけでデフォルトエージェントに自動提供
 
 ### Skills機能の活用シーン
 
@@ -921,3 +951,7 @@ description: Guide for DynamoDB data modeling best practices.
 ---
 
 **Skills機能を活用して、大規模なドキュメントセットを効率的に管理し、コンテキストウィンドウを最適化しましょう！**
+
+---
+
+**最終更新**: 2026年2月15日

@@ -36,33 +36,34 @@ kiro-cliについてのより正確な情報発信を心がけて今後も更新
   - 日本での導入事例とベストプラクティス
   - 移行時の注意点と推奨事項
 
-### 📚 Kiro CLI v1.25.0 主要アップデート（2026-02-04）
+### 📚 Kiro CLI v1.26.0 主要アップデート（2026-02-12）
 
-Kiro CLI v1.25.0では、**5つの主要機能**が追加されました：
+Kiro CLI v1.26.0では、**UX改善とSkills自動読み込み**を中心に多数の機能追加が行われました：
 
-1. **[Agent Client Protocol (ACP) サポート](kiro-docs/01_features/13_ACP.md)**
-   - JetBrains IDEs、Zed等のACP対応エディタでKiroを使用
-   - JSON-RPC通信、セッション管理
+1. **[@file/@directory展開](kiro-docs/01_features/README.md)**
+   - インラインコンテンツ参照の展開機能
+   - チャット入力でファイル/ディレクトリ内容を直接参照
 
-2. **[Help Agent](kiro-docs/01_features/14_HelpAgent.md)**
-   - Kiro CLIドキュメントベースの組み込みヘルプ
-   - `/help`コマンドで即座に回答
+2. **[統合エントリポイント](kiro-docs/01_features/README.md)**
+   - `kiro-cli integrations install kiro-command-router`
+   - Kiro統合コマンドルーター
 
-3. **[Exit Codes for CI/CD](kiro-docs/01_features/15_ExitCodes.md)**
-   - 構造化された終了コード（0/1/3）
-   - `--require-mcp-startup`でMCPサーバー必須化
+3. **[Skills自動読み込み](kiro-docs/01_features/07_Skills.md)**
+   - `.kiro/skills/`と`~/.kiro/skills/`からデフォルトエージェントに自動提供
+   - Agent設定での明示的指定が不要に
 
-4. **[Subagent Access Control](kiro-docs/01_features/02_Subagents.md#subagent-access-controlv1250)**
-   - `availableAgents`、`trustedAgents`設定
-   - Globパターンサポート
+4. **[ACP強化](kiro-docs/01_features/13_ACP.md)**
+   - `--agent`フラグでエージェント指定
+   - ACP/subagent用`code`ツール追加
 
-5. **[Enterprise Web Tools Governance](kiro-docs/01_features/11_URLPermissions.md#enterprise-web-tools-governancev1250)**
-   - 組織全体でweb_search/web_fetch制御
-   - 管理者による一括設定
+5. **UX改善**
+   - Agent名・モデル名のタブ補完とゴーストテキスト
+   - `/tools`でトークン数表示
+   - Shell tool `working_dir`パラメータ
 
-詳細は **[kiro-docs/01_features/](kiro-docs/01_features/README.md)** をご覧ください。
+⚠️ **動作変更**: Agent名が位置引数に変更（`kiro-cli agent create my-agent`）
 
----
+詳細は **[kiro-docs/02_update/01_changelog.md](kiro-docs/02_update/01_changelog.md)** をご覧ください。
 
 ### 📚 Kiro CLI v1.24.0 主要アップデート（2026-01-16）
 

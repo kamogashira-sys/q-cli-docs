@@ -10,14 +10,14 @@
 | **[マルチセッション機能（Multi-Session Support）](04_MultiSession.md)** | v1.23.0<br/>（2025-12-18） | 複数のチャットセッションを効率的に管理 | セッションピッカー、自動保存、ディレクトリベース管理 |
 | **[Grep/Globツール機能（Grep/Glob Tools）](05_GrepGlob.md)** | v1.23.0<br/>（2025-12-18） | 高速なファイル検索を実現する2つのビルトインツール | 正規表現検索、Globパターン検索、.gitignore自動尊重 |
 | **[/usage コマンド（使用量・契約プラン確認）](06_UsageCommand.md)** | 仕様変更<br/>（2026-01-01確認時点） | 契約プラン情報と月間使用量を確認するコマンド | プラン表示、使用量可視化、課金情報、オーバーエイジ管理 |
-| **[Skills機能（Progressive Context Loading）](07_Skills.md)** | v1.24.0<br/>（2026-01-16） | 大規模ドキュメント向けの段階的コンテキストロード | メタデータのみ起動時、本文はオンデマンド、YAMLフロントマター |
+| **[Skills機能（Progressive Context Loading）](07_Skills.md)** | v1.24.0<br/>（2026-01-16）<br/>v1.26.0更新 | 大規模ドキュメント向けの段階的コンテキストロード | v1.24.0: メタデータのみ起動時、本文はオンデマンド、YAMLフロントマター<br/>v1.26.0: .kiro/skills/自動読み込み |
 | **[Custom Diff Tools機能](08_CustomDiffTools.md)** | v1.24.0<br/>（2026-01-16） | 外部Diffツール統合（15種類対応） | delta、difftastic、VS Code等、カスタム引数対応 |
 | **[AST Pattern Tools機能（Precise Refactoring）](09_ASTPatternTools.md)** | v1.24.0<br/>（2026-01-16） | 構文木ベースの精密なコード検索・変換 | pattern-search、pattern-rewrite、誤検出排除 |
 | **[Conversation Compaction機能](10_ConversationCompaction.md)** | v1.24.0<br/>（2026-01-16） | 会話履歴の圧縮でコンテキストスペースを解放 | 手動・自動実行、重要情報保持、元セッション復帰可能 |
 | **[Granular URL Permissions機能](11_URLPermissions.md)** | v1.24.0<br/>（2026-01-16）<br/>v1.25.0更新 | web_fetchツールのURL権限細粒度制御 | v1.24.0: 正規表現パターン、信頼・ブロックパターン<br/>v1.25.0: Enterprise Web Tools Governance |
-| **[Remote Authentication機能](12_RemoteAuth.md)** | v1.24.0<br/>（2026-01-16） | リモートマシンでのGoogle/GitHub認証対応 | SSH/SSM/コンテナ環境、ポートフォワーディング対応 |
-| **[Agent Client Protocol (ACP)](13_ACP.md)** | v1.25.0<br/>（2026-02-04） | ACP対応エディタでKiroをカスタムエージェントとして使用 | JetBrains IDEs/Zed統合、JSON-RPC通信、セッション管理 |
-| **[Help Agent](14_HelpAgent.md)** | v1.25.0<br/>（2026-02-04） | Kiro CLIドキュメントベースの組み込みヘルプ | 即座に回答、設定ファイル作成、/helpコマンド |
+| **[Remote Authentication機能](12_RemoteAuth.md)** | v1.24.0<br/>（2026-01-16）<br/>v1.25.1更新 | リモートマシンでのGoogle/GitHub認証対応 | v1.24.0: SSH/SSM/コンテナ環境、ポートフォワーディング対応<br/>v1.25.1: Okta/Microsoft Entra ID SSO対応 |
+| **[Agent Client Protocol (ACP)](13_ACP.md)** | v1.25.0<br/>（2026-02-04）<br/>v1.26.0更新 | ACP対応エディタでKiroをカスタムエージェントとして使用 | v1.25.0: JetBrains IDEs/Zed統合、JSON-RPC通信、セッション管理<br/>v1.26.0: --agentフラグ、codeツール対応 |
+| **[Help Agent](14_HelpAgent.md)** | v1.25.0<br/>（2026-02-04）<br/>v1.26.0更新 | Kiro CLIドキュメントベースの組み込みヘルプ | v1.25.0: 即座に回答、設定ファイル作成、/helpコマンド<br/>v1.26.0: /help --legacy &lt;command&gt; |
 | **[Exit Codes for CI/CD](15_ExitCodes.md)** | v1.25.0<br/>（2026-02-04） | CI/CD向け構造化終了コード | コード0/1/3、--require-mcp-startup |
 
 
@@ -73,6 +73,20 @@
 - ユーザビリティ向上（Help Agent）
 - CI/CD対応強化（Exit Codes）
 - エンタープライズガバナンス（Web Tools制御、Subagent制御）
+
+### v1.25.1（2026-02-12）
+- **Enterprise SSO**: Okta/Microsoft Entra IDによる外部Identity Provider対応
+- IAM Identity Centerと併用可能
+- SCIM自動プロビジョニング
+
+### v1.26.0（2026-02-12）
+- **UX大幅改善**: @file/@directory展開、タブ補完強化（Agent名・モデル名）
+- **Skills自動読み込み**: `.kiro/skills/`と`~/.kiro/skills/`からデフォルトエージェントに自動提供
+- **統合エントリポイント**: `kiro-cli integrations install kiro-command-router`
+- **ACP強化**: `--agent`フラグ、ACP/subagent用`code`ツール
+- **Agent CLI改善**: Agent名が位置引数に変更、editデフォルト変更
+- **新規設定**: `KIRO_LOG_NO_COLOR`環境変数、`chat.enablePromptHints`設定
+- **11件のバグ修正**: MCP正常終了、Compaction修正、ANSI出力修正等
 
 ## 🎯 使用シナリオ例
 
@@ -247,5 +261,5 @@ Kiro CLIは継続的に進化を続けており、以下の分野での更なる
 
 ---
 
-**最終更新**: 2026年01月18日  
-**対象バージョン**: Kiro CLI v1.24.0+
+**最終更新**: 2026年02月15日  
+**対象バージョン**: Kiro CLI v1.26.0+

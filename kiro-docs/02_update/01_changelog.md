@@ -13,6 +13,70 @@
 
 ## 最新バージョン
 
+### v1.26.0 CLI（2026-02-12）
+
+**主要な変更**:
+- 📎 **@file/@directory展開**: インラインコンテンツ参照の展開機能
+  - チャット入力で`@file`、`@directory`を使用してファイル/ディレクトリ内容を直接参照
+  
+- 🔗 **統合エントリポイント**: `kiro-cli integrations install kiro-command-router`
+  - Kiro統合コマンドルーターのインストール
+  
+- 📚 **Skills自動読み込み**: `.kiro/skills/`と`~/.kiro/skills/`のSkillsがデフォルトエージェントに自動提供
+  - Agent設定での明示的な`skill://`指定が不要に
+  
+- 🔧 **Shell tool working_dirパラメータ**: cdプレフィックス不要でワーキングディレクトリ指定
+  
+- 📊 **トークン数表示**: `/tools`出力でツールごとの推定トークン数とオリジン別合計を表示
+  
+- 💡 **UX改善**:
+  - Agent名タブ補完（`/agent swap`、`/agent delete`）にゴーストテキストヒント
+  - 動的モデルタブ補完（`/model`コマンド、ファジーマッチング・ゴーストテキスト）
+  - `/help --legacy <command>`でコマンド固有のレガシーヘルプ
+  - `chat.enablePromptHints`設定で起動時ヒント表示制御（デフォルト: true）
+  
+- 🔌 **ACP強化**: `--agent`フラグ対応、ACP/subagent用`code`ツール追加
+
+**動作変更**:
+- ⚠️ **Agent名が位置引数に変更**: `kiro-cli agent create my-agent`（旧: `--name my-agent`）
+- ⚠️ **Agent editデフォルト変更**: 引数なしで現在のエージェントを編集
+- ツール説明の切り詰め廃止（大きな説明は警告表示に変更）
+- introspect検索アルゴリズム改善
+
+**新規設定・環境変数**:
+- `KIRO_LOG_NO_COLOR`: カラーログ出力の無効化
+- `chat.enablePromptHints`: 起動時ヒント表示制御（デフォルト: true）
+
+**バグ修正（11件）**:
+- インタラクティブシェルプロンプトの即時表示（改行待ち不要に）
+- Opus 4.6のコンテキストウィンドウオーバーフロー対応
+- subagentインジケーターの`--no-interactive`フラグ対応
+- `/context show`でglobパターン表示
+- subagentツール・ACPでのCompaction失敗修正
+- ファイル名とname fieldが異なるエージェントの検索対応
+- LSPクライアントのclientInfo報告
+- ACPのデフォルトエージェント読み込み修正
+- `/clear`コマンドのANSI出力文字化け修正
+- ホームディレクトリでのsteering重複排除（`/context show`）
+- CLI終了時のMCPサーバープロセス正常終了
+
+**出典**: `kiro-cli version --changelog=all`（CLI起動メッセージ、2026-02-15取得）
+
+---
+
+### v1.25.1 CLI（2026-02-12）
+
+**主要な変更**:
+- 🔐 **External Identity Provider対応**: Okta/Microsoft Entra IDによるEnterprise SSO
+  - IAM Identity Centerと併用可能
+  - SCIM自動プロビジョニング
+  - IDE/CLI共通設定
+  - ブラウザベースOAuthフロー
+
+**詳細**: [Kiro CLI v1.25.1 Changelog](https://kiro.dev/changelog/cli/external-identity-provider-support-for-kiro-cli/)
+
+---
+
 ### v1.25.0 CLI（2026-02-04）
 
 **主要な変更**:
@@ -295,4 +359,4 @@ kiro chat "Hello, world!"
 - セキュリティアップデートのリリース時
 - コミュニティからの重要なフィードバック時
 
-**最終更新**: 2025-12-28（v1.23.1対応、全バージョン履歴更新）
+**最終更新**: 2026-02-15（v1.26.0対応、全バージョン履歴更新）
