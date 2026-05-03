@@ -36,6 +36,25 @@ kiro-cliについてのより正確な情報発信を心がけて今後も更新
   - 日本での導入事例とベストプラクティス
   - 移行時の注意点と推奨事項
 
+### 📚 Kiro CLI v2.x 主要アップデート
+
+Kiro CLI v2.x系では、**Windows対応、Headless Mode、新TUI**を中心に大幅な機能拡張が行われました：
+
+1. **[v2.2.0 Adaptive Thinking](kiro-docs/02_update/01_changelog.md)**（2026-04-27）
+   - マルチターン会話でモデルの推論を保持し応答品質を向上
+
+2. **[v2.1.0 Shell Streaming・Tool Search](kiro-docs/02_update/01_changelog.md)**（2026-04-24）
+   - シェルコマンド出力のリアルタイムストリーミング
+   - Skills as Slash Commands（`/skill-name`で直接呼び出し）
+   - Device Flow認証（ポートフォワーディング不要）
+
+3. **[v2.0.0 Windows・Headless Mode](kiro-docs/02_update/01_changelog.md)**（2026-04-13）
+   - Windows 11ネイティブ対応
+   - CI/CD向けHeadless Mode（`KIRO_API_KEY`認証）
+   - 新Terminal UIがデフォルト化（Crew Monitor、/theme、/spawn等）
+
+詳細は **[kiro-docs/02_update/01_changelog.md](kiro-docs/02_update/01_changelog.md)** をご覧ください。
+
 ### 📚 Kiro CLI v1.26.0 主要アップデート（2026-02-12）
 
 Kiro CLI v1.26.0では、**UX改善とSkills自動読み込み**を中心に多数の機能追加が行われました：
@@ -104,7 +123,7 @@ Kiro CLI v1.24.0では、**7つの主要機能**が追加されました：
 ```
 kiro-docs/
 ├── 00_information/   # 基本情報・公式サイト情報
-├── 01_features/      # 機能詳細ガイド（v1.25.0対応）
+├── 01_features/      # 機能詳細ガイド（v2.2.0対応）
 ├── 02_update/        # アップデート情報
 └── 03_deployment/    # デプロイメント・環境構築
 ```
@@ -363,6 +382,7 @@ Q CLIのセキュリティとプライバシーについて理解することは
 
 | 日付 | 内容 |
 |------|------|
+| 2026-05-03 | v2.2.0対応 |
 | 2025-12-14 | v1.19.7対応 |
 | 2025-11-15 | v1.19.6対応 |
 | 2025-11-13 | v1.19.5対応 |

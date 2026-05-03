@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v1.26.0（最新版）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.2.0（最新版）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,12 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.2.0** | 2026-04-27 | Adaptive Thinking | マルチターン会話でモデル推論保持、応答品質向上 |
+| **v2.1.0** | 2026-04-24 | Shell Streaming・Tool Search | リアルタイム出力ストリーミング、Skills as Slash Commands、Device Flow認証 |
+| **v2.0.0** | 2026-04-13 | Windows・Headless | Windows 11ネイティブ対応、CI/CD Headless Mode、新TUIデフォルト化 |
+| **v1.29.x** | 2026-04-01〜04-11 | TUI機能充実 | TUI全コア機能対応、/theme、/guide、/transcript、@prompt構文 |
+| **v1.28.0** | 2026-03-20 | 新ターミナルUI | TUI実験的導入、/chat new、--list-models |
+| **v1.27.0** | 2026-03-02 | Agent・Trust改善 | Simplified Agent Creation、Granular Tool Trust、Session Settings |
 | **v1.26.0** | 2026-02-12 | UX・統合強化 | @file/@directory展開、統合エントリポイント、Skills自動読み込み、Agent CLI改善 |
 | **v1.25.1** | 2026-02-12 | Enterprise SSO | Okta/Microsoft Entra ID対応 |
 | **v1.25.0** | 2026-02-04 | IDE統合・ガバナンス | ACP、Help Agent、Exit Codes、Subagent Access Control、Enterprise Web Tools |
@@ -97,6 +103,41 @@ timeline
                    : 統合エントリポイント
                    : Skills自動読み込み
                    : Agent CLI改善
+    
+    section Agent・Trust改善
+        2026-03-02 : v1.27.0
+                   : Simplified Agent Creation
+                   : Granular Tool Trust
+                   : Session Settings Tool
+    
+    section 新ターミナルUI
+        2026-03-20 : v1.28.0
+                   : TUI実験的導入
+                   : /chat newコマンド
+                   : --list-modelsフラグ
+    
+    section TUI機能充実
+        2026-04-01〜04-11 : v1.29.x（9バージョン）
+                          : TUI全コア機能対応
+                          : /theme・/guide・/transcript
+                          : @prompt構文
+    
+    section Windows・Headless
+        2026-04-13 : v2.0.0
+                   : Windows 11対応
+                   : Headless Mode
+                   : TUIデフォルト化
+    
+    section Shell Streaming
+        2026-04-24 : v2.1.0
+                   : リアルタイム出力
+                   : Tool Search
+                   : Skills as Slash Commands
+                   : Device Flow認証
+    
+    section Adaptive Thinking
+        2026-04-27 : v2.2.0
+                   : マルチターン推論保持
 ```
 
 ## 🔗 移行情報
@@ -153,5 +194,5 @@ timeline
 
 ---
 
-**最終更新**: 2026年2月15日  
-**対象バージョン**: Kiro CLI v1.26.0
+**最終更新**: 2026年5月3日  
+**対象バージョン**: Kiro CLI v2.2.0

@@ -5,17 +5,17 @@
 | 機能 | リリース | 概要 | 主要機能 |
 |------|----------|------|----------|
 | **[LSP統合機能（Code Intelligence）](01_LSP.md)** | v1.22.0<br/>（2025-12-11）<br/>v1.24.0更新 | Language Server Protocol統合による高精度コード理解 | v1.22.0: 7言語対応、LSP統合<br/>v1.24.0: 18言語組み込み対応、/code overview |
-| **[サブエージェント機能（Subagents）](02_Subagents.md)** | v1.23.0<br/>（2025-12-18）<br/>v1.25.0更新 | 複雑なタスクを専門エージェントに委譲し並列実行 | v1.23.0: 自律実行、リアルタイム進捗追跡<br/>v1.25.0: Access Control（availableAgents、trustedAgents） |
+| **[サブエージェント機能（Subagents）](02_Subagents.md)** | v1.23.0<br/>（2025-12-18）<br/>v1.25.0更新<br/>v2.0.0更新 | 複雑なタスクを専門エージェントに委譲し並列実行 | v1.23.0: 自律実行、リアルタイム進捗追跡<br/>v1.25.0: Access Control（availableAgents、trustedAgents）<br/>v2.0.0: タスク依存関係サポート、Crew Monitor |
 | **[Planエージェント機能（Plan Agent）](03_PlanAgent.md)** | v1.23.0<br/>（2025-12-18） | アイデアを構造化された実装計画に変換 | 要件収集、リサーチ分析、実装計画作成、計画引き継ぎ |
 | **[マルチセッション機能（Multi-Session Support）](04_MultiSession.md)** | v1.23.0<br/>（2025-12-18） | 複数のチャットセッションを効率的に管理 | セッションピッカー、自動保存、ディレクトリベース管理 |
 | **[Grep/Globツール機能（Grep/Glob Tools）](05_GrepGlob.md)** | v1.23.0<br/>（2025-12-18） | 高速なファイル検索を実現する2つのビルトインツール | 正規表現検索、Globパターン検索、.gitignore自動尊重 |
 | **[/usage コマンド（使用量・契約プラン確認）](06_UsageCommand.md)** | 仕様変更<br/>（2026-01-01確認時点） | 契約プラン情報と月間使用量を確認するコマンド | プラン表示、使用量可視化、課金情報、オーバーエイジ管理 |
-| **[Skills機能（Progressive Context Loading）](07_Skills.md)** | v1.24.0<br/>（2026-01-16）<br/>v1.26.0更新 | 大規模ドキュメント向けの段階的コンテキストロード | v1.24.0: メタデータのみ起動時、本文はオンデマンド、YAMLフロントマター<br/>v1.26.0: .kiro/skills/自動読み込み |
+| **[Skills機能（Progressive Context Loading）](07_Skills.md)** | v1.24.0<br/>（2026-01-16）<br/>v1.26.0更新<br/>v2.1.0更新 | 大規模ドキュメント向けの段階的コンテキストロード | v1.24.0: メタデータのみ起動時、本文はオンデマンド、YAMLフロントマター<br/>v1.26.0: .kiro/skills/自動読み込み<br/>v2.1.0: /skill-nameスラッシュコマンドで直接呼び出し |
 | **[Custom Diff Tools機能](08_CustomDiffTools.md)** | v1.24.0<br/>（2026-01-16） | 外部Diffツール統合（15種類対応） | delta、difftastic、VS Code等、カスタム引数対応 |
 | **[AST Pattern Tools機能（Precise Refactoring）](09_ASTPatternTools.md)** | v1.24.0<br/>（2026-01-16） | 構文木ベースの精密なコード検索・変換 | pattern-search、pattern-rewrite、誤検出排除 |
 | **[Conversation Compaction機能](10_ConversationCompaction.md)** | v1.24.0<br/>（2026-01-16） | 会話履歴の圧縮でコンテキストスペースを解放 | 手動・自動実行、重要情報保持、元セッション復帰可能 |
 | **[Granular URL Permissions機能](11_URLPermissions.md)** | v1.24.0<br/>（2026-01-16）<br/>v1.25.0更新 | web_fetchツールのURL権限細粒度制御 | v1.24.0: 正規表現パターン、信頼・ブロックパターン<br/>v1.25.0: Enterprise Web Tools Governance |
-| **[Remote Authentication機能](12_RemoteAuth.md)** | v1.24.0<br/>（2026-01-16）<br/>v1.25.1更新 | リモートマシンでのGoogle/GitHub認証対応 | v1.24.0: SSH/SSM/コンテナ環境、ポートフォワーディング対応<br/>v1.25.1: Okta/Microsoft Entra ID SSO対応 |
+| **[Remote Authentication機能](12_RemoteAuth.md)** | v1.24.0<br/>（2026-01-16）<br/>v1.25.1更新<br/>v2.1.0更新 | リモートマシンでのGoogle/GitHub認証対応 | v1.24.0: SSH/SSM/コンテナ環境、ポートフォワーディング対応<br/>v1.25.1: Okta/Microsoft Entra ID SSO対応<br/>v2.1.0: Device Flow認証（ポートフォワーディング不要） |
 | **[Agent Client Protocol (ACP)](13_ACP.md)** | v1.25.0<br/>（2026-02-04）<br/>v1.26.0更新 | ACP対応エディタでKiroをカスタムエージェントとして使用 | v1.25.0: JetBrains IDEs/Zed統合、JSON-RPC通信、セッション管理<br/>v1.26.0: --agentフラグ、codeツール対応 |
 | **[Help Agent](14_HelpAgent.md)** | v1.25.0<br/>（2026-02-04）<br/>v1.26.0更新 | Kiro CLIドキュメントベースの組み込みヘルプ | v1.25.0: 即座に回答、設定ファイル作成、/helpコマンド<br/>v1.26.0: /help --legacy &lt;command&gt; |
 | **[Exit Codes for CI/CD](15_ExitCodes.md)** | v1.25.0<br/>（2026-02-04） | CI/CD向け構造化終了コード | コード0/1/3、--require-mcp-startup |
@@ -261,5 +261,5 @@ Kiro CLIは継続的に進化を続けており、以下の分野での更なる
 
 ---
 
-**最終更新**: 2026年02月15日  
-**対象バージョン**: Kiro CLI v1.26.0+
+**最終更新**: 2026年05月03日  
+**対象バージョン**: Kiro CLI v2.2.0+
