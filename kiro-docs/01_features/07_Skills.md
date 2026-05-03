@@ -1,6 +1,6 @@
 # Kiro CLI Skills機能（Progressive Context Loading）
 
-**出典**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)、`kiro-cli version --changelog=all`（v1.26.0情報）
+**出典**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)、`kiro-cli version --changelog=all`（v1.26.0情報）、[公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)、[Agent Skills](https://kiro.dev/docs/cli/skills/)
 
 ## 概要
 
@@ -900,6 +900,46 @@ description: Guide for DynamoDB data modeling best practices.
 ---
 ```
 
+## v2.1.0での進化（2026年4月24日リリース）
+
+**出典**: [公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)、[Agent Skills](https://kiro.dev/docs/cli/skills/)
+
+v2.1.0では、Skillsをスラッシュコマンドとして直接呼び出せるようになりました。
+
+### Skills as Slash Commands
+
+`.kiro/skills/`に配置されたSkillが、`/skill-name`スラッシュコマンドとして利用可能になりました。`/`に続けてSkill名を入力するだけで直接呼び出せます。
+
+**公式Changelog原文**:
+> Skills defined in `.kiro/skills/` are now available as `/skill-name` slash commands. Type `/` and the skill name to invoke it directly, giving you quick access to reusable agent instructions without switching agents or copying instructions into your prompt.
+
+### 2つの起動方法（公式doc記載）
+
+Skillは以下の2つの方法で起動できます:
+
+| 起動方法 | 説明 | 例 |
+|---------|------|-----|
+| 自動アクティベーション | リクエスト内容とSkillのdescriptionをマッチングして自動起動 | `Review this PR for security issues` |
+| スラッシュコマンド | `/skill-name`で直接呼び出し | `/pr-review` |
+
+### 確認方法
+
+現在のセッションで利用可能なSkillは`/context show`コマンドで確認できます。
+
+### Skillが見つからない場合（公式doc記載）
+
+| 問題 | 解決方法 |
+|------|---------|
+| Skillが自動起動しない | descriptionをより具体的なキーワードに変更 |
+| スラッシュコマンドが見つからない | Skillフォルダ名が入力と一致しているか確認。SKILL.mdに有効なフロントマターがあるか確認。`/context show`でSkillがロードされているか確認 |
+| カスタムエージェントでSkillが見つからない | エージェントの`resources`フィールドに`skill://` URIを追加 |
+| 間違ったSkillが起動する | descriptionをより具体的なキーワードで差別化 |
+
+### 参考リンク
+
+- [Agent Skills 公式ドキュメント](https://kiro.dev/docs/cli/skills/)
+- [公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)
+
 ## まとめ
 
 ### Skills機能の重要ポイント
@@ -954,4 +994,4 @@ description: Guide for DynamoDB data modeling best practices.
 
 ---
 
-**最終更新**: 2026年2月15日
+**最終更新**: 2026年05月03日

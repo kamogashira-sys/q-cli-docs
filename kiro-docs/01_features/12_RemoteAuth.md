@@ -1,6 +1,6 @@
 # Kiro CLI Remote Authentication機能
 
-**出典**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)、[Kiro CLI v1.25.1 Changelog](https://kiro.dev/changelog/cli/external-identity-provider-support-for-kiro-cli/)
+**出典**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)、[Kiro CLI v1.25.1 Changelog](https://kiro.dev/changelog/cli/external-identity-provider-support-for-kiro-cli/)、[公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)、[Authentication](https://kiro.dev/docs/cli/authentication/)
 
 ## 概要
 
@@ -713,6 +713,64 @@ docker run -it -p 8080:8080 my-dev-container
 ```
 
 
+## v2.1.0での進化（2026年4月24日リリース）
+
+**出典**: [公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)、[Authentication](https://kiro.dev/docs/cli/authentication/)
+
+v2.1.0では、リモート環境での認証がDevice Flow方式の追加により大幅に簡素化されました。
+
+### Device Flow認証
+
+ポートフォワーディングなしで、SSH、コンテナ、クラウドワークスペースからGoogle/GitHub認証が可能になりました。
+
+**公式Changelog原文**:
+> Sign in with Google or GitHub from SSH sessions, containers, and cloud workspaces without port forwarding. The CLI displays a URL and one-time code you enter in any browser — same flow as Builder ID and IAM Identity Center.
+
+### 認証手順（公式doc記載の5ステップ）
+
+1. `kiro-cli login`を実行し、サインイン方法を選択（Builder ID、Google、GitHub、Your Organization）
+2. CLIがURLとワンタイムコードを表示
+3. 任意のブラウザ（ローカルマシン、スマートフォン、別のデバイス）でURLを開く
+4. コードを入力して認証を完了
+5. CLIが自動的にログイン成功を検出
+
+**ポートフォワーディングやトンネル設定は不要です。**
+
+### 認証方式の比較（v2.1.0更新）
+
+```
+認証方式の進化:
+
+v1.24.0  ポートフォワーディング方式（Google/GitHub）
+  ↓      デバイスコード認証（Builder ID/IAM Identity Center）
+v1.25.1  External IdP対応（Okta/Microsoft Entra ID）
+  ↓
+v2.1.0   Device Flow追加（Google/GitHub/Builder ID/IAM Identity Center）
+         → ポートフォワーディング不要に
+```
+
+| 認証方法 | 方式 | ポートフォワーディング | 対応バージョン |
+|---------|------|---------------------|--------------|
+| Google | Device Flow | 不要 | v2.1.0 |
+| GitHub | Device Flow | 不要 | v2.1.0 |
+| Builder ID | Device Flow | 不要 | v1.24.0（従来から対応） |
+| IAM Identity Center | Device Flow | 不要 | v1.24.0（従来から対応） |
+| Google | ポートフォワーディング | 必要 | v1.24.0 |
+| GitHub | ポートフォワーディング | 必要 | v1.24.0 |
+| Okta SSO | ブラウザベースOAuth | 環境依存 | v1.25.1 |
+| Microsoft Entra ID SSO | ブラウザベースOAuth | 環境依存 | v1.25.1 |
+
+### 制限事項（公式doc記載）
+
+> External identity provider (IdP) login is not currently supported with device flow authentication.
+
+External IdP（Okta、Microsoft Entra ID等の外部IDプロバイダー）経由のログインは、Device Flow認証では未対応です。
+
+### 参考リンク
+
+- [Authentication 公式ドキュメント](https://kiro.dev/docs/cli/authentication/)
+- [公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)
+
 ## まとめ
 
 ### Remote Authentication機能の重要ポイント
@@ -770,4 +828,4 @@ docker run -it -p 8080:8080 my-dev-container
 
 ---
 
-**最終更新**: 2026年2月15日
+**最終更新**: 2026年05月03日

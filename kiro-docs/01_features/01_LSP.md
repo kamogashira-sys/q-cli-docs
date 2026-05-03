@@ -1,6 +1,6 @@
 # Kiro CLI LSP統合機能（Code Intelligence）
 
-**出典**: [Kiro CLI のコード理解が進化？ LSP 統合がもたらす新しい開発体験](https://zenn.dev/aws_japan/articles/bca7fdc3a15f46) - Zenn記事 by konippi
+**出典**: [Kiro CLI のコード理解が進化？ LSP 統合がもたらす新しい開発体験](https://zenn.dev/aws_japan/articles/bca7fdc3a15f46) - Zenn記事 by konippi、CLI changelog v1.27.0
 
 ## 概要
 
@@ -554,7 +554,34 @@ v1.24.0では、Code Intelligence機能がさらに進化しました：
 2. `/code overview` でプロジェクト全体を把握
 3. 高度な機能が必要になったらLSP統合を設定
 
+### v1.27.0での進化（2026年3月2日リリース）
+
+**出典**: CLI changelog v1.27.0
+
+v1.27.0では、LSPサーバーの機能に依存しないフォールバック機構が追加されました。
+
+#### Tree-sitter Fallback
+
+LSPサーバーが`textDocument/documentSymbol`をサポートしていない場合、Tree-sitterパーサーによるフォールバックが有効になりました。これにより、LSPサーバーの対応状況に関わらず、ドキュメントシンボル（関数、クラス、変数等の定義一覧）を取得できます。
+
+**動作の仕組み**:
+
+```
+ドキュメントシンボル要求
+  ↓
+LSPサーバーが textDocument/documentSymbol をサポート？
+  ├─ Yes → LSPサーバーから取得
+  └─ No  → Tree-sitterパーサーでフォールバック
+```
+
+また、LSPクライアントがサーバーのcapabilities（機能宣言）と動的登録を確認してからリクエストを送信するよう改善され、未サポートのリクエストによるエラーが防止されるようになりました。
+
 **参考リンク**:
 
 - [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)
+- [Kiro CLI v1.27.0 Changelog](https://kiro.dev/changelog/cli/1-27/)
 - [Code Intelligence Documentation](https://kiro.dev/docs/cli/code-intelligence/)
+
+---
+
+**最終更新**: 2026年05月03日

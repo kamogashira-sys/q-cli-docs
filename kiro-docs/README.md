@@ -65,6 +65,13 @@ Kiro CLIの主要機能について詳細に解説したドキュメント集で
 | **[Conversation Compaction機能](01_features/10_ConversationCompaction.md)** | 会話履歴圧縮機能 | v1.24.0 |
 | **[Granular URL Permissions機能](01_features/11_URLPermissions.md)** | URL権限細粒度制御 | v1.24.0 |
 | **[Remote Authentication機能](01_features/12_RemoteAuth.md)** | リモート認証対応 | v1.24.0 |
+| **[Agent Client Protocol (ACP)](01_features/13_ACP.md)** | ACP対応エディタ統合 | v1.25.0 |
+| **[Help Agent](01_features/14_HelpAgent.md)** | 組み込みヘルプエージェント | v1.25.0 |
+| **[Exit Codes for CI/CD](01_features/15_ExitCodes.md)** | CI/CD向け構造化終了コード | v1.25.0 |
+| **[v2.0.0メジャーアップデート](01_features/16_v2MajorUpdate.md)** | Windows/Headless/TUIデフォルト化 | v2.0.0 |
+| **[Granular Tool Trust機能](01_features/17_GranularToolTrust.md)** | ツール信頼スコープ段階的制御 | v1.27.0 |
+| **[Terminal UI機能](01_features/18_TerminalUI.md)** | 新ターミナルUIインターフェース | v1.28.0 |
+| **[Tool Search機能](01_features/19_ToolSearch.md)** | MCPツールオンデマンドロード | v2.1.0 |
 
 ### [02_update/ - アップデート情報](02_update/README.md)
 Kiro CLIのバージョン履歴とアップデート情報を管理しています。

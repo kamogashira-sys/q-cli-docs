@@ -19,6 +19,10 @@
 | **[Agent Client Protocol (ACP)](13_ACP.md)** | v1.25.0<br/>（2026-02-04）<br/>v1.26.0更新 | ACP対応エディタでKiroをカスタムエージェントとして使用 | v1.25.0: JetBrains IDEs/Zed統合、JSON-RPC通信、セッション管理<br/>v1.26.0: --agentフラグ、codeツール対応 |
 | **[Help Agent](14_HelpAgent.md)** | v1.25.0<br/>（2026-02-04）<br/>v1.26.0更新 | Kiro CLIドキュメントベースの組み込みヘルプ | v1.25.0: 即座に回答、設定ファイル作成、/helpコマンド<br/>v1.26.0: /help --legacy &lt;command&gt; |
 | **[Exit Codes for CI/CD](15_ExitCodes.md)** | v1.25.0<br/>（2026-02-04） | CI/CD向け構造化終了コード | コード0/1/3、--require-mcp-startup |
+| **[v2.0.0メジャーアップデート](16_v2MajorUpdate.md)** | v2.0.0<br/>（2026-04-13） | v2.0.0がメジャーバージョンアップである理由と3つの柱 | Windows 11対応、Headless Mode、Terminal UIデフォルト化 |
+| **[Granular Tool Trust機能](17_GranularToolTrust.md)** | v1.27.0<br/>（2026-03-02） | ツール使用時の信頼スコープ段階的制御 | Shell 4段階、Read/Write 3段階、インタラクティブピッカー |
+| **[Terminal UI機能](18_TerminalUI.md)** | v1.28.0<br/>（2026-03-20）<br/>v2.0.0デフォルト化 | 新ターミナルUIインターフェース | スラッシュコマンド、キーボードショートカット、Crew Monitor、テーマ |
+| **[Tool Search機能](19_ToolSearch.md)** | v2.1.0<br/>（2026-04-24） | MCPツールのオンデマンドロード | BM25キーワードマッチング、設定3項目、tool_searchツール |
 
 
 
@@ -87,6 +91,38 @@
 - **Agent CLI改善**: Agent名が位置引数に変更、editデフォルト変更
 - **新規設定**: `KIRO_LOG_NO_COLOR`環境変数、`chat.enablePromptHints`設定
 - **11件のバグ修正**: MCP正常終了、Compaction修正、ANSI出力修正等
+
+### v1.27.0（2026-03-02）
+- **[Granular Tool Trust](17_GranularToolTrust.md)**: Shell 4段階/Read-Write 3段階の信頼スコープ制御
+- **Simplified Agent Creation**: `/agent create`がAIアシストモードにデフォルト変更
+- **Session Settings Tool**: セッション内で一時的に設定を変更
+- **LSP強化**: Tree-sitterフォールバック（textDocument/documentSymbol未対応時）
+
+### v1.28.0（2026-03-20）
+- **[Terminal UI](18_TerminalUI.md)**: 実験的導入（`--tui`フラグで有効化）
+- リッチMarkdownレンダリング、オーバーレイパネル、ツール進捗表示
+- `/chat new`コマンド、`--list-models`フラグ
+
+### v1.29.x（2026-04）
+- **Terminal UI機能充実**: `/theme`、`/guide`、`/transcript`、`/copy`、`/spawn`
+- `@prompt`構文、`Ctrl+R`逆方向検索、`/hooks`コマンド
+- サブエージェント・Code Intelligence・タスク管理のTUI対応
+
+### v2.0.0（2026-04-13）
+- **[メジャーバージョンアップ](16_v2MajorUpdate.md)**: 3つの柱による大幅な機能拡張
+- **Windows 11ネイティブ対応**: macOS/Linuxに加えWindows 11で動作
+- **Headless Mode**: CI/CDパイプラインでの非対話実行（`KIRO_API_KEY`認証）
+- **Terminal UIデフォルト化**: Crew Monitor、サブエージェント依存関係
+
+### v2.1.0（2026-04-24）
+- **[Tool Search](19_ToolSearch.md)**: MCPツールのオンデマンドロード（BM25マッチング）
+- **[Skills as Slash Commands](07_Skills.md)**: `/skill-name`で直接呼び出し
+- **[Device Flow認証](12_RemoteAuth.md)**: ポートフォワーディング不要のリモート認証
+- **リアルタイムシェル出力ストリーミング**
+- **RHEL対応**: Red Hat Enterprise LinuxでのTUIサポート
+
+### v2.2.0（2026-04-27）
+- **Adaptive Thinking**: マルチターン会話でモデルの推論を保持し応答品質を向上
 
 ## 🎯 使用シナリオ例
 
@@ -243,6 +279,35 @@ sequenceDiagram
     - ポートフォワーディング認証
     - デバイスコード認証
     - SSH/SSM/コンテナ環境での使用方法
+
+13. **[Agent Client Protocol (ACP)](13_ACP.md)**
+    - ACP対応エディタでKiroをカスタムエージェントとして使用
+    - JetBrains IDEs/Zed統合、JSON-RPC通信
+
+14. **[Help Agent](14_HelpAgent.md)**
+    - Kiro CLIドキュメントベースの組み込みヘルプ
+    - /helpコマンド、設定ファイル作成
+
+15. **[Exit Codes for CI/CD](15_ExitCodes.md)**
+    - CI/CD向け構造化終了コード
+    - コード0/1/3、--require-mcp-startup
+
+16. **[v2.0.0メジャーアップデート](16_v2MajorUpdate.md)**
+    - Windows 11ネイティブ対応
+    - Headless Mode（CI/CD向け非対話実行）
+    - Terminal UIデフォルト化
+
+17. **[Granular Tool Trust機能](17_GranularToolTrust.md)**
+    - Shell 4段階/Read-Write 3段階の信頼スコープ制御
+    - インタラクティブピッカーUI
+
+18. **[Terminal UI機能](18_TerminalUI.md)**
+    - スラッシュコマンド全一覧、キーボードショートカット
+    - Crew Monitor、テーマ、リアルタイムシェル出力
+
+19. **[Tool Search機能](19_ToolSearch.md)**
+    - MCPツールのオンデマンドロード
+    - BM25キーワードマッチング、設定3項目
 
 ## 🔮 今後の展望
 
