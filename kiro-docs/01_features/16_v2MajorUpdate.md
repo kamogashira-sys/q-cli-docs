@@ -236,7 +236,9 @@ Terminal UIの機能詳細については、[Terminal UI機能](18_TerminalUI.md
 - [Authentication 公式ドキュメント](https://kiro.dev/docs/cli/authentication/)
 - [Exit Codes](https://kiro.dev/docs/cli/reference/exit-codes/)
 - [Terminal UI機能（詳細）](18_TerminalUI.md)
+- [Kiro CLI の headless モードでコードレビューしてみた](https://zenn.dev/aws_japan/articles/46278a8413f8fd) - Zenn記事 by konippi（Headless Mode実践例）
+- [Kiro CLI によるコードレビューを ACP で実現する](https://zenn.dev/aws_japan/articles/91dcdf769e9b10) - Zenn記事 by konippi（ACP活用によるCI/CDコードレビュー）
 
 ---
 
-**最終更新**: 2026年05月03日
+**最終更新**: 2026年05月04日

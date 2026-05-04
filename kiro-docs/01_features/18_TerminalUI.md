@@ -356,7 +356,8 @@ kiro-cli settings list | grep chat.ui
 - [v2.0.0メジャーアップデート解説](16_v2MajorUpdate.md)
 - [Granular Tool Trust機能](17_GranularToolTrust.md)
 - [サブエージェント機能](02_Subagents.md)
+- [Kiro CLI の新しいチャット体験！TUI v2 を試してみよう](https://zenn.dev/aws_japan/articles/ad5eee399b08a5) - Zenn記事 by konippi（TUI v2のスクリーンショット付き解説）
 
 ---
 
-**最終更新**: 2026年05月03日
+**最終更新**: 2026年05月04日
