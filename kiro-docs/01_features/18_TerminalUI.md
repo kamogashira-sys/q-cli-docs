@@ -46,6 +46,7 @@ v2.0.0（2026-04-13）   デフォルト化（GA）
 - [キーボードショートカット一覧](#キーボードショートカット一覧)
 - [ターミナル機能](#ターミナル機能)
 - [設定](#設定)
+- [Terminal UI vs Classic比較](#terminal-ui-vs-classic比較)
 - [プラットフォームサポート](#プラットフォームサポート)
 - [制限事項](#制限事項)
 - [トラブルシューティング](#トラブルシューティング)
@@ -299,6 +300,55 @@ kiro-cli settings chat.ui "classic"
 # 単一セッションのみ
 kiro-cli --classic
 ```
+
+---
+
+## Terminal UI vs Classic比較
+
+**出典**: [Terminal UI vs classic](https://kiro.dev/docs/cli/terminal-ui/comparison/)（2026-04-13更新、v2.0.0時点）
+
+Terminal UIとClassicインターフェースでは、利用可能なスラッシュコマンドと機能に差異があります。TUI専用の機能（Overlay panels、Crew Monitor、キーボードショートカット等）については、本ドキュメントの各セクションを参照してください。
+
+### TUI専用コマンド
+
+以下のコマンドはTerminal UIでのみ利用可能です。Classicモード（`Ctrl+S`のコマンド一覧）には表示されません。
+
+| コマンド | 説明 |
+|---------|------|
+| `/theme` | テーマカラーのカスタマイズ（ライブプレビュー付き） |
+| `/guide` | Kiroガイドエージェントに切り替え（ヘルプとオンボーディング） |
+| `/transcript` | `$PAGER`で会話トランスクリプトを開く（`Ctrl+T`でも可） |
+| `/copy` | 最後のレスポンスをクリップボードにコピー（SSH越しでも動作） |
+| `/spawn` | タスクを指定して並列エージェントセッションを実行 |
+| `/feedback` | フィードバックを送信（Classicの`/issue`を置き換え） |
+
+### Classicのみ対応（TUIでは未対応）
+
+以下のコマンド/機能はTUIではまだ利用できません。
+
+| コマンド/機能 | TUIでのワークアラウンド |
+|-------------|----------------------|
+| `/changelog` | Kiro公式サイトでリリースノートを確認 |
+| `/logdump` | チャット外で`kiro-cli`コマンドを使用 |
+| `/experiment` | KnowledgeとTasksは常時有効。他の実験機能は再評価中 |
+| `/tangent` | TUIでは未対応 |
+| `/settings`（チャット内） | シェルから`kiro-cli settings`を使用 |
+| `/issue` | TUIでは`/feedback`に置き換え |
+| Vi edit mode | TUIではEmacs keybindingsのみ |
+| External diff tools | TUIでは組み込みDiffビューアーを使用（[制限事項](#制限事項)も参照） |
+| Inline hints and tips | TUIでは未対応 |
+
+### 動作が異なる機能
+
+| 項目 | Classic | Terminal UI |
+|------|---------|-------------|
+| Shell tool output | リアルタイムストリーミング | v2.1.0でリアルタイムストリーミングに対応（v2.0.0時点ではバッファ方式） |
+| Interactive commands | `rm -i`、`sudo`、`ssh`プロンプトが動作 | 非対応（非対話的代替手段を使用） |
+| `/help` | ヘルプエージェントを起動（対話型Q&A） | 検索可能なコマンドパネルを表示 |
+| Approval flow | y/n/tテキストメニュー | 通知バー + ドリルインフィードバック |
+| Multi-line input | `Alt+Enter`、`Ctrl+J`、バックスラッシュ継続 | `Shift+Enter`、`Alt+Enter`、`Ctrl+J`（バックスラッシュなし） |
+| Prompt indicators | プロファイル、コンテキスト% | エージェントチップ、モデルチップ、コンテキスト%、gitブランチ、cwd |
+| Notifications | システム通知 | システム通知 + アプリ内通知バー |
 
 ---
 

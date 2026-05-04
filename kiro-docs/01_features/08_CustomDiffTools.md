@@ -19,6 +19,8 @@ Custom Diff Tools機能は、Kiroがファイル変更を提案する際に、**
 
 ### なぜCustom Diff Toolsが必要なのか
 
+> **注意**: Terminal UIモードでは外部Diffツール（`chat.diffTool`設定）は未対応です。全Diffは組み込みビューアーを使用します。Classicモード（`kiro-cli --classic`）では外部Diffツールが利用可能です。詳細は[Terminal UI vs Classic比較](18_TerminalUI.md#terminal-ui-vs-classic比較)を参照してください。
+
 従来の組み込みDiffツールは基本的な機能を提供していましたが、以下の制約がありました：
 
 1. **視認性の限界**: シンプルな表示のみ

@@ -397,6 +397,7 @@ Help Agentに切り替えずに、直接質問できます。
 - [Agent Client Protocol (ACP)](13_ACP.md) - エディタ統合
 - [サブエージェント機能](02_Subagents.md) - エージェント委譲
 - [Planエージェント機能](03_PlanAgent.md) - 実装計画作成
+- [Terminal UI機能](18_TerminalUI.md) - TUIモードでは`/help`がコマンドパネル表示に変更。ヘルプとオンボーディングには`/guide`コマンド（TUI専用）を使用
 
 ### スラッシュコマンド
 - `/chat` - チャットセッション管理
