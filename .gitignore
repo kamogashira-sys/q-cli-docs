@@ -5,6 +5,9 @@ docs.backup.*
 *.bak
 *-results.txt
 
+# Work plans (kept locally only)
+kiro-docs/20260510_v2.2.x_update_plan.md
+
 # Python
 __pycache__/
 *.py[cod]
