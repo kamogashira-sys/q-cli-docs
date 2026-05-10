@@ -190,6 +190,7 @@ timeline
 - [v2.0.0メジャーアップデート](../01_features/16_v2MajorUpdate.md)
 - [Granular Tool Trust機能](../01_features/17_GranularToolTrust.md)
 - [Terminal UI機能](../01_features/18_TerminalUI.md)
+- [Kiro guide agent](../01_features/20_GuideAgent.md) 🆕 - TUI 専用のオンボーディング・ヘルプ用組み込みエージェント（v1.29.7）
 - [Tool Search機能](../01_features/19_ToolSearch.md)
 
 ### コミュニティ

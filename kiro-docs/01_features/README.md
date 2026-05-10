@@ -107,6 +107,7 @@
 - **Terminal UI機能充実**: `/theme`、`/guide`、`/transcript`、`/copy`、`/spawn`
 - `@prompt`構文、`Ctrl+R`逆方向検索、`/hooks`コマンド
 - サブエージェント・Code Intelligence・タスク管理のTUI対応
+- 🆕 **[Kiro guide agent (`/guide`)](20_GuideAgent.md)**（v1.29.7、2026-04-10）: TUI 専用のオンボーディング・ヘルプ用組み込みエージェント
 
 ### v2.0.0（2026-04-13）
 - **[メジャーバージョンアップ](16_v2MajorUpdate.md)**: 3つの柱による大幅な機能拡張
