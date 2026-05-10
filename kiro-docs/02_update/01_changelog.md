@@ -13,16 +13,60 @@
 
 ## 最新バージョン
 
-### v2.2.0 CLI（2026-04-27）
+### v2.2.2 CLI（2026-05-05）
 
 **主要な変更**:
-- 🧠 **Adaptive Thinking**: マルチターン会話でモデルの推論を保持し、応答品質を向上
 
-**バグ修正（1件）**:
-- サブエージェントのツールディスパッチが、MCPサーバーイベントによるキャッシュ済みツールスペック無効化時にサイレントに失敗する問題を修正
+**セキュリティ（1件）**:
+- 🔐 **MCPガバナンス強制適用**: V2 TUIモードで、エンタープライズおよびAPI keyユーザー向けに「Kiro console MCP toggle」によるMCPガバナンスを強制適用
+  - 関連: [公式MCPガバナンスドキュメント](https://kiro.dev/docs/enterprise/governance/mcp/)
 
-**出典**: `kiro-cli version --changelog=all`（2026-05-03取得）
-※公式Changelogサイト未掲載（2026-05-03時点）
+**出典**: `kiro-cli version --changelog=all`
+※公式Changelogサイト未掲載。CLI内蔵changelogのみで確認。
+
+---
+
+### v2.2.1 CLI（2026-05-04）
+
+**主要な変更**:
+
+**機能追加（3件）**:
+- 🔧 **`chat.disableWrap`設定**: チャット出力のハード改行無効化設定を追加
+  - 長い行は端末ソフトラップで視覚的に折り返されるが、論理的には単一行として保持
+  - クリーンなコピー&ペースト用途
+  - 型: boolean、使用例: `kiro-cli settings chat.disableWrap true`
+  - 詳細: [公式設定リファレンス](https://kiro.dev/docs/cli/reference/settings/)
+
+- ⚙️ **`/model set-current-as-default` 保存先の変更**: モデル選択の永続化先パスを変更
+  - 変更前（v1.23.0時点）: `~/.kiro/settings.json`
+  - 変更後（v2.2.1以降）: `~/.kiro/settings/cli.json`
+  - ※本コマンド自体は v1.23.0 で初回導入。v2.2.1で保存先が変更された。
+  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#model)
+
+- 💡 **TUI: `/agent swap <name>` オートコンプリート拡張**: シャドウテキスト（ゴーストテキスト）補完に対応
+  - 既存の `/agent <name>` と同じ挙動
+  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#agent)
+
+**セキュリティ（1件）**:
+- 🔒 **code tool のワークスペース外読み込み承認必須化**: codeツールがワークスペース外のファイル読み込み時に承認を要求するように
+
+**バグ修正（9件）**:
+- 非us-east-1リージョンユーザーでのAPI key認証失敗を修正
+- tmux detached セッションアタッチ時の画面フリーズと無制限メモリ増加を修正
+- 端末リサイズ信号（tmuxペインフォーカス、attach/detach）での不要な再レンダリング防止（dimension guard追加）
+- 非常に小さい端末幅へのリサイズ時のOOMクラッシュを修正
+- CRLF（Windows）改行コードを含むファイルでの `fs_write str_replace` 失敗を修正
+- TUI: `/Makefile` のような貼り付けファイルパスを「Unknown command」ではなくメッセージとして扱うよう修正
+- プロセスがバックグラウンドデーモンをフォーク時のシェルコマンドハングを修正（Linux/macOS）
+- `truncate_safe` による UTF-8 安全な文字列切り捨てでマルチバイト文字パニックを防止
+- 組み込みbunを 1.3.12 → 1.3.13 へアップデート（端末リサイズ時の黒画面、レイアウト時間改善）
+
+**出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.2](https://kiro.dev/changelog/cli/2-2/)
+
+**注記**:
+- CLI内蔵changelogの日付（2026-04-29）と公式サイト表示日付（2026-05-04、Atomフィード published: 2026-05-04T00:00:00Z = JST 2026-05-04 09:00）に差異あり
+- 既存ドキュメントの方針に従い、**公式サイト表示日付を採用**
+- `/model set-current-as-default` は CLI内蔵changelog では「Added」と記載されているが、実態は保存先パスの変更（v1.23.0で初回導入済み）
 
 ---
 
@@ -60,7 +104,7 @@
 **パッチ**:
 - v2.1.1（2026-04-24）: パッチ（公式サイトにパッチ表示あり、CLI出力に詳細なし）
 
-**出典**: `kiro-cli version --changelog=all`（2026-05-03取得）、[公式Changelog](https://kiro.dev/changelog/cli/2-1/)
+**出典**: `kiro-cli version --changelog=all`、[公式Changelog](https://kiro.dev/changelog/cli/2-1/)
 
 ---
 
@@ -94,11 +138,23 @@
 **パッチ**:
 - v2.0.1（2026-04-16）: `--trust-all-tools`が非インタラクティブモードで無視される問題を修正
 
-**出典**: `kiro-cli version --changelog=all`（2026-05-03取得）、[公式Changelog](https://kiro.dev/changelog/cli/2-0/)
+**出典**: `kiro-cli version --changelog=all`、[公式Changelog](https://kiro.dev/changelog/cli/2-0/)
 
 ---
 
 ## バージョン履歴
+
+### v2.2.0 CLI（2026-04-27）
+
+**主要な変更**:
+- 🧠 **Adaptive Thinking**: マルチターン会話でモデルの推論を保持し、応答品質を向上
+
+**バグ修正（1件）**:
+- サブエージェントのツールディスパッチが、MCPサーバーイベントによるキャッシュ済みツールスペック無効化時にサイレントに失敗する問題を修正
+
+**出典**: `kiro-cli version --changelog=all`、[公式Changelog v2.2](https://kiro.dev/changelog/cli/2-2/)
+
+---
 
 ### v1.29.x CLI（2026-04-01〜04-11）
 
@@ -132,8 +188,8 @@
 - TUIモードでの入力遅延修正（v1.29.8）
 - セッション再開時のツール実行中表示修正（v1.29.8）
 
-**出典**: `kiro-cli version --changelog=all`（2026-05-03取得）
-※公式Changelogサイトに独立ページなし（2026-05-03時点）
+**出典**: `kiro-cli version --changelog=all`
+※公式Changelogサイトに独立ページなし
 
 ---
 
@@ -160,7 +216,7 @@
 - v1.28.2（2026-03-26）: TUI v2拡張（`/code`コマンド、`/agent create & edit`、ファイルシステムパスタブ補完、ターミナル通知、プロンプト毎クレジット/時間表示、OSC 9対応、挨拶設定）、ナレッジベースinclude/excludeパターン修正、`/clear`セッション履歴永続化修正、ACP/TUIでのdisabledTools設定対応、セッション・モデル信頼性修正、TUI非ラテン文字入力・レンダリング修正
 - v1.28.3（2026-03-28）: "profileArn is required but no profiles are available"エラー修正
 
-**出典**: `kiro-cli version --changelog=all`（2026-05-03取得）、[公式Changelog](https://kiro.dev/changelog/cli/1-28/)
+**出典**: `kiro-cli version --changelog=all`、[公式Changelog](https://kiro.dev/changelog/cli/1-28/)
 
 ---
 
@@ -217,7 +273,7 @@
 **新規設定**:
 - `cleanup.periodDays`: 古い会話/セッション/ナレッジベースの自動削除期間（v1.27.3）
 
-**出典**: `kiro-cli version --changelog=all`（2026-05-03取得）、[公式Changelog](https://kiro.dev/changelog/cli/1-27/)
+**出典**: `kiro-cli version --changelog=all`、[公式Changelog](https://kiro.dev/changelog/cli/1-27/)
 
 ---
 
@@ -268,7 +324,7 @@
 - ホームディレクトリでのsteering重複排除（`/context show`）
 - CLI終了時のMCPサーバープロセス正常終了
 
-**出典**: `kiro-cli version --changelog=all`（CLI起動メッセージ、2026-02-15取得）
+**出典**: `kiro-cli version --changelog=all`（CLI起動メッセージ）
 
 **パッチ**:
 - v1.26.2（2026-02-17）: コンテキストウィンドウオーバーフローエラー時のAuto compaction修正
@@ -381,7 +437,7 @@
 - 💬 **Multi-Session Support**: 複数チャットセッション管理機能
 - 🔌 **MCP Registry Support**: MCPツールのガバナンス機能
 - 🤖 **Default Agent Prompt**: Kiro CLI機能をハイライトするデフォルトエージェントプロンプト
-- ⚙️ **Model Persistence**: /model set-current-as-defaultコマンドでモデル選択を永続化
+- ⚙️ **Model Persistence**: /model set-current-as-defaultコマンドでモデル選択を永続化（保存先: `~/.kiro/settings.json`。※v2.2.1で `~/.kiro/settings/cli.json` に変更）
 - 🚀 **LSP Performance**: Code Intelligenceツールの読み込み時間改善
 
 **詳細**: [Kiro CLI v1.23.0 Changelog](https://kiro.dev/changelog/subagents-plan-agent-grep-glob-tools-and-mcp-registry/)
@@ -571,4 +627,4 @@ kiro chat "Hello, world!"
 - セキュリティアップデートのリリース時
 - コミュニティからの重要なフィードバック時
 
-**最終更新**: 2026-05-03（v2.2.0対応、全バージョン履歴更新）
+**最終更新**: 2026-05-10（v2.2.1/v2.2.2対応追加、v2.2.0を履歴へ移動、全バージョンの取得日記載を削除）

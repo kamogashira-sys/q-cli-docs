@@ -40,15 +40,21 @@ kiro-cliについてのより正確な情報発信を心がけて今後も更新
 
 Kiro CLI v2.x系では、**Windows対応、Headless Mode、新TUI**を中心に大幅な機能拡張が行われました：
 
-1. **[v2.2.0 Adaptive Thinking](kiro-docs/02_update/01_changelog.md)**（2026-04-27）
+1. **[v2.2.2 MCPガバナンス強化](kiro-docs/02_update/01_changelog.md)**（2026-05-05）
+   - V2 TUIモードでのMCP governance強制適用（エンタープライズ・API keyユーザー）
+
+2. **[v2.2.1 UX改善・安定性修正](kiro-docs/02_update/01_changelog.md)**（2026-05-04）
+   - `chat.disableWrap`設定追加、`/model set-current-as-default`の保存先変更、9件のバグ修正
+
+3. **[v2.2.0 Adaptive Thinking](kiro-docs/02_update/01_changelog.md)**（2026-04-27）
    - マルチターン会話でモデルの推論を保持し応答品質を向上
 
-2. **[v2.1.0 Shell Streaming・Tool Search](kiro-docs/02_update/01_changelog.md)**（2026-04-24）
+4. **[v2.1.0 Shell Streaming・Tool Search](kiro-docs/02_update/01_changelog.md)**（2026-04-24）
    - シェルコマンド出力のリアルタイムストリーミング
    - Skills as Slash Commands（`/skill-name`で直接呼び出し）
    - Device Flow認証（ポートフォワーディング不要）
 
-3. **[v2.0.0 Windows・Headless Mode](kiro-docs/02_update/01_changelog.md)**（2026-04-13）
+5. **[v2.0.0 Windows・Headless Mode](kiro-docs/02_update/01_changelog.md)**（2026-04-13）
    - Windows 11ネイティブ対応
    - CI/CD向けHeadless Mode（`KIRO_API_KEY`認証）
    - 新Terminal UIがデフォルト化（Crew Monitor、/theme、/spawn等）
@@ -123,7 +129,7 @@ Kiro CLI v1.24.0では、**7つの主要機能**が追加されました：
 ```
 kiro-docs/
 ├── 00_information/   # 基本情報・公式サイト情報
-├── 01_features/      # 機能詳細ガイド（v2.2.0対応）
+├── 01_features/      # 機能詳細ガイド（v2.2.2対応）
 ├── 02_update/        # アップデート情報
 └── 03_deployment/    # デプロイメント・環境構築
 ```
@@ -382,6 +388,7 @@ Q CLIのセキュリティとプライバシーについて理解することは
 
 | 日付 | 内容 |
 |------|------|
+| 2026-05-10 | v2.2.1、v2.2.2対応 |
 | 2026-05-03 | v2.2.0対応 |
 | 2025-12-14 | v1.19.7対応 |
 | 2025-11-15 | v1.19.6対応 |

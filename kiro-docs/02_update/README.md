@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.2.0（最新版）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.2.2（最新版）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,8 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.2.2** | 2026-05-05 | MCPガバナンス強化 | V2 TUIモードでのMCP governance強制適用（エンタープライズ・API keyユーザー） |
+| **v2.2.1** | 2026-05-04 | UX改善・安定性修正 | chat.disableWrap設定追加、/model set-current-as-defaultの保存先変更、/agent swapオートコンプリート、9件のバグ修正 |
 | **v2.2.0** | 2026-04-27 | Adaptive Thinking | マルチターン会話でモデル推論保持、応答品質向上 |
 | **v2.1.0** | 2026-04-24 | Shell Streaming・Tool Search | リアルタイム出力ストリーミング、Skills as Slash Commands、Device Flow認証 |
 | **v2.0.0** | 2026-04-13 | Windows・Headless | Windows 11ネイティブ対応、CI/CD Headless Mode、新TUIデフォルト化 |
@@ -138,6 +140,14 @@ timeline
     section Adaptive Thinking
         2026-04-27 : v2.2.0
                    : マルチターン推論保持
+    
+    section v2.2.x パッチ
+        2026-05-04 : v2.2.1
+                   : chat.disableWrap
+                   : /model set-current-as-default
+                   : 9件のバグ修正
+        2026-05-05 : v2.2.2
+                   : MCPガバナンス強化
 ```
 
 ## 🔗 移行情報
@@ -208,5 +218,5 @@ timeline
 
 ---
 
-**最終更新**: 2026年5月3日  
-**対象バージョン**: Kiro CLI v2.2.0
+**最終更新**: 2026年5月10日  
+**対象バージョン**: Kiro CLI v2.2.2
