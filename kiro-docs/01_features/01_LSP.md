@@ -235,6 +235,7 @@ npm install -g intelephense
       "command": "intelephense",
       "args": ["--stdio"],
       "file_extensions": ["php"],
+      "file_patterns": ["*.phtml"],
       "project_patterns": ["composer.json"],
       "exclude_patterns": ["**/vendor/**"],
       "multi_workspace": false,
@@ -251,6 +252,8 @@ npm install -g intelephense
 - **command**: 実行するバイナリ/コマンド
 - **args**: コマンドライン引数（通常は ["--stdio"]）
 - **file_extensions**: 対応するファイル拡張子
+- **file_patterns**: ファイル名全体にマッチするグロブパターン（v2.3.0〜）。標準拡張子を持たないファイル（`Dockerfile`, `Dockerfile.*`, `docker-compose*.yml`等）をターゲットする場合に使用。完全一致がglobより優先、より具体的なglobが広いglobより優先（宣言順序に依存しない）
+  - 詳細: [公式Code Intelligence](https://kiro.dev/docs/cli/code-intelligence/#custom-language-servers)
 - **project_patterns**: プロジェクトルートを示すファイル（例: package.json）
 - **exclude_patterns**: 解析から除外するGlobパターン
 - **multi_workspace**: 複数ワークスペースフォルダのサポート（デフォルト: false）

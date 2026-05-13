@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.2.2（最新版）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.3.0（最新版）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,7 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.3.0** | 2026-05-12 | MCP OAuth・KIRO_HOME・Keybindings | OAuth clientId設定、KIRO_HOME環境変数、V2 TUIキーバインド設定、Agent Output Side Channels |
 | **v2.2.2** | 2026-05-05 | MCPガバナンス強化 | V2 TUIモードでのMCP governance強制適用（エンタープライズ・API keyユーザー） |
 | **v2.2.1** | 2026-05-04 | UX改善・安定性修正 | chat.disableWrap設定追加、/model set-current-as-defaultの保存先変更、/agent swapオートコンプリート、9件のバグ修正 |
 | **v2.2.0** | 2026-04-27 | Adaptive Thinking | マルチターン会話でモデル推論保持、応答品質向上 |
@@ -148,6 +149,13 @@ timeline
                    : 9件のバグ修正
         2026-05-05 : v2.2.2
                    : MCPガバナンス強化
+    
+    section MCP OAuth・環境分離
+        2026-05-12 : v2.3.0
+                   : OAuth clientId設定
+                   : KIRO_HOME環境変数
+                   : V2 TUIキーバインド設定
+                   : Agent Output Side Channels
 ```
 
 ## 🔗 移行情報
@@ -219,5 +227,5 @@ timeline
 
 ---
 
-**最終更新**: 2026年5月10日  
-**対象バージョン**: Kiro CLI v2.2.2
+**最終更新**: 2026年5月13日  
+**対象バージョン**: Kiro CLI v2.3.0

@@ -13,60 +13,43 @@
 
 ## 最新バージョン
 
-### v2.2.2 CLI（2026-05-05）
+### v2.3.0 CLI（2026-05-12）
 
 **主要な変更**:
 
-**セキュリティ（1件）**:
-- 🔐 **MCPガバナンス強制適用**: V2 TUIモードで、エンタープライズおよびAPI keyユーザー向けに「Kiro console MCP toggle」によるMCPガバナンスを強制適用
-  - 関連: [公式MCPガバナンスドキュメント](https://kiro.dev/docs/enterprise/governance/mcp/)
+**機能追加（8件）**:
+- 🔧 **OAuth clientId設定**: DCR（Dynamic Client Registration）非対応のHTTP MCPサーバー（Slack, GitHub, Figma等）に接続するための`oauth.clientId`設定を追加
+  - 詳細: [公式Agent設定リファレンス](https://kiro.dev/docs/cli/custom-agents/configuration-reference/#oauth-configuration)
+- 🔧 **KIRO_HOME環境変数**: `~/.kiro`ディレクトリの場所をオーバーライドする環境変数を追加。global agents, prompts, skills, steering, settings, sessionsに適用
+  - 用途: 複数マシン間のdotfiles管理、仕事/個人プロファイル分離、コンテナ環境でのKiro状態隔離
+  - 詳細: [公式設定リファレンス](https://kiro.dev/docs/cli/reference/settings/#environment-variables)
+- 🔧 **V2 TUIキーバインド設定**: cancel（`chat.keybindings.cancelStream`）、close menu（`chat.keybindings.closeMenu`）、quit（`chat.keybindings.quit`）アクションのキーリマップが可能に
+  - 修飾キー: `ctrl+`, `shift+`, `alt+`/`meta+` + 単一キー
+  - 詳細: [公式設定リファレンス](https://kiro.dev/docs/cli/reference/settings/#key-bindings-terminal-ui)
+- 📡 **Agent Output Side Channels**: シェルコマンド実行時に`$AGENT_DISPLAY_OUT`（TUI表示のみ）と`$AGENT_CONTEXT_OUT`（ツール結果の`agent_notes`に含まれる）の2つのサイドチャネルを追加
+  - 詳細: [公式ビルトインツールリファレンス](https://kiro.dev/docs/cli/reference/built-in-tools/#side-channels-for-wrapper-scripts)
+- ⚙️ **/session-idコマンド**: 現在のチャットセッションIDを表示。`kiro-cli chat --resume-id <ID>`でのセッション再開に使用。終了時にもresume hintを表示
+  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#session-id)
+- 🔧 **LSP file_patterns**: `lsp.json`の言語設定で`file_patterns`グロブマッチングをサポート。標準拡張子を持たないファイル（Dockerfile等）をターゲット可能に
+  - 詳細: [公式Code Intelligence](https://kiro.dev/docs/cli/code-intelligence/#custom-language-servers)
+- 💡 **ペーストチップ展開**: 折りたたまれたペーストチップ上でTabキーを押すと、インライン編集可能なテキストに展開
+- 📋 **サブエージェントセッションID記録**: 永続化されたサブエージェントセッションに親セッションIDを記録
 
-**出典**: `kiro-cli version --changelog=all`
-※公式Changelogサイト未掲載。CLI内蔵changelogのみで確認。
+**バグ修正（8件）**:
+- HTTP retry警告がサイレントログではなくTUIに表示されるように修正
+- Skillスラッシュコマンドで`$ARGUMENTS`や`${N}`プレースホルダーがない場合、末尾テキストをコンテキストとして渡すよう修正
+- 複数の折りたたみテキストをペースト後のカーソル位置を修正
+- リモートSSHでの描画問題を修正
+- MCP registry npm/pypiサーバーでパッケージ識別子にバージョンタグが含まれる場合の動作を修正
+- TUI: ツール呼び出し失敗時にツール名、試行した引数、実際の失敗理由を表示するよう修正
+- ctrl-Cでターンをキャンセルした後もユーザープロンプトを会話履歴に保持するよう修正
+- Registry型MCPサーバーのagent.json環境変数がTUIモードで正しく適用され、/mcp add変更がセッション間で永続化されるよう修正
 
----
-
-### v2.2.1 CLI（2026-05-04）
-
-**主要な変更**:
-
-**機能追加（3件）**:
-- 🔧 **`chat.disableWrap`設定**: チャット出力のハード改行無効化設定を追加
-  - 長い行は端末ソフトラップで視覚的に折り返されるが、論理的には単一行として保持
-  - クリーンなコピー&ペースト用途
-  - 型: boolean、使用例: `kiro-cli settings chat.disableWrap true`
-  - 詳細: [公式設定リファレンス](https://kiro.dev/docs/cli/reference/settings/)
-
-- ⚙️ **`/model set-current-as-default` 保存先の変更**: モデル選択の永続化先パスを変更
-  - 変更前（v1.23.0時点）: `~/.kiro/settings.json`
-  - 変更後（v2.2.1以降）: `~/.kiro/settings/cli.json`
-  - ※本コマンド自体は v1.23.0 で初回導入。v2.2.1で保存先が変更された。
-  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#model)
-
-- 💡 **TUI: `/agent swap <name>` オートコンプリート拡張**: シャドウテキスト（ゴーストテキスト）補完に対応
-  - 既存の `/agent <name>` と同じ挙動
-  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#agent)
-
-**セキュリティ（1件）**:
-- 🔒 **code tool のワークスペース外読み込み承認必須化**: codeツールがワークスペース外のファイル読み込み時に承認を要求するように
-
-**バグ修正（9件）**:
-- 非us-east-1リージョンユーザーでのAPI key認証失敗を修正
-- tmux detached セッションアタッチ時の画面フリーズと無制限メモリ増加を修正
-- 端末リサイズ信号（tmuxペインフォーカス、attach/detach）での不要な再レンダリング防止（dimension guard追加）
-- 非常に小さい端末幅へのリサイズ時のOOMクラッシュを修正
-- CRLF（Windows）改行コードを含むファイルでの `fs_write str_replace` 失敗を修正
-- TUI: `/Makefile` のような貼り付けファイルパスを「Unknown command」ではなくメッセージとして扱うよう修正
-- プロセスがバックグラウンドデーモンをフォーク時のシェルコマンドハングを修正（Linux/macOS）
-- `truncate_safe` による UTF-8 安全な文字列切り捨てでマルチバイト文字パニックを防止
-- 組み込みbunを 1.3.12 → 1.3.13 へアップデート（端末リサイズ時の黒画面、レイアウト時間改善）
-
-**出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.2](https://kiro.dev/changelog/cli/2-2/)
+**出典**: `kiro-cli version --changelog=all`、[公式Changelog v2.3](https://kiro.dev/changelog/cli/2-3/)、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)
 
 **注記**:
-- CLI内蔵changelogの日付（2026-04-29）と公式サイト表示日付（2026-05-04、Atomフィード published: 2026-05-04T00:00:00Z = JST 2026-05-04 09:00）に差異あり
+- CLI内蔵changelogの日付（2026-05-06）と公式サイト表示日付（2026-05-12、Atomフィード published: 2026-05-12T16:00:00Z = JST 2026-05-13 01:00）に差異あり
 - 既存ドキュメントの方針に従い、**公式サイト表示日付を採用**
-- `/model set-current-as-default` は CLI内蔵changelog では「Added」と記載されているが、実態は保存先パスの変更（v1.23.0で初回導入済み）
 
 ---
 
@@ -143,6 +126,63 @@
 ---
 
 ## バージョン履歴
+
+### v2.2.2 CLI（2026-05-05）
+
+**主要な変更**:
+
+**セキュリティ（1件）**:
+- 🔐 **MCPガバナンス強制適用**: V2 TUIモードで、エンタープライズおよびAPI keyユーザー向けに「Kiro console MCP toggle」によるMCPガバナンスを強制適用
+  - 関連: [公式MCPガバナンスドキュメント](https://kiro.dev/docs/enterprise/governance/mcp/)
+
+**出典**: `kiro-cli version --changelog=all`
+※公式Changelogサイト未掲載。CLI内蔵changelogのみで確認。
+
+---
+
+### v2.2.1 CLI（2026-05-04）
+
+**主要な変更**:
+
+**機能追加（3件）**:
+- 🔧 **`chat.disableWrap`設定**: チャット出力のハード改行無効化設定を追加
+  - 長い行は端末ソフトラップで視覚的に折り返されるが、論理的には単一行として保持
+  - クリーンなコピー&ペースト用途
+  - 型: boolean、使用例: `kiro-cli settings chat.disableWrap true`
+  - 詳細: [公式設定リファレンス](https://kiro.dev/docs/cli/reference/settings/)
+
+- ⚙️ **`/model set-current-as-default` 保存先の変更**: モデル選択の永続化先パスを変更
+  - 変更前（v1.23.0時点）: `~/.kiro/settings.json`
+  - 変更後（v2.2.1以降）: `~/.kiro/settings/cli.json`
+  - ※本コマンド自体は v1.23.0 で初回導入。v2.2.1で保存先が変更された。
+  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#model)
+
+- 💡 **TUI: `/agent swap <name>` オートコンプリート拡張**: シャドウテキスト（ゴーストテキスト）補完に対応
+  - 既存の `/agent <name>` と同じ挙動
+  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#agent)
+
+**セキュリティ（1件）**:
+- 🔒 **code tool のワークスペース外読み込み承認必須化**: codeツールがワークスペース外のファイル読み込み時に承認を要求するように
+
+**バグ修正（9件）**:
+- 非us-east-1リージョンユーザーでのAPI key認証失敗を修正
+- tmux detached セッションアタッチ時の画面フリーズと無制限メモリ増加を修正
+- 端末リサイズ信号（tmuxペインフォーカス、attach/detach）での不要な再レンダリング防止（dimension guard追加）
+- 非常に小さい端末幅へのリサイズ時のOOMクラッシュを修正
+- CRLF（Windows）改行コードを含むファイルでの `fs_write str_replace` 失敗を修正
+- TUI: `/Makefile` のような貼り付けファイルパスを「Unknown command」ではなくメッセージとして扱うよう修正
+- プロセスがバックグラウンドデーモンをフォーク時のシェルコマンドハングを修正（Linux/macOS）
+- `truncate_safe` による UTF-8 安全な文字列切り捨てでマルチバイト文字パニックを防止
+- 組み込みbunを 1.3.12 → 1.3.13 へアップデート（端末リサイズ時の黒画面、レイアウト時間改善）
+
+**出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.2](https://kiro.dev/changelog/cli/2-2/)
+
+**注記**:
+- CLI内蔵changelogの日付（2026-04-29）と公式サイト表示日付（2026-05-04、Atomフィード published: 2026-05-04T00:00:00Z = JST 2026-05-04 09:00）に差異あり
+- 既存ドキュメントの方針に従い、**公式サイト表示日付を採用**
+- `/model set-current-as-default` は CLI内蔵changelog では「Added」と記載されているが、実態は保存先パスの変更（v1.23.0で初回導入済み）
+
+---
 
 ### v2.2.0 CLI（2026-04-27）
 
@@ -627,4 +667,4 @@ kiro chat "Hello, world!"
 - セキュリティアップデートのリリース時
 - コミュニティからの重要なフィードバック時
 
-**最終更新**: 2026-05-10（v2.2.1/v2.2.2対応追加、v2.2.0を履歴へ移動、全バージョンの取得日記載を削除）
+**最終更新**: 2026-05-13（v2.3.0対応追加、v2.2.2/v2.2.1を履歴へ移動）

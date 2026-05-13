@@ -135,6 +135,14 @@
 ### v2.2.2（2026-05-05）
 - **MCPガバナンス強制適用**: V2 TUIモードでのエンタープライズ・API keyユーザー向けMCP governance強制（Kiro console MCP toggle）
 
+### v2.3.0（2026-05-12）
+- **OAuth clientId設定**: DCR非対応のHTTP MCPサーバー（Slack, GitHub, Figma等）への接続サポート
+- **KIRO_HOME環境変数**: `~/.kiro`ディレクトリの場所をオーバーライド（dotfiles管理、プロファイル分離）
+- **V2 TUIキーバインド設定**: cancel/close menu/quitアクションのキーリマップ
+- **Agent Output Side Channels**: `$AGENT_DISPLAY_OUT`/`$AGENT_CONTEXT_OUT`による出力分離
+- **/session-idコマンド**: セッションID表示・resume hint
+- **LSP file_patterns**: ファイル名グロブマッチングによるLSP言語設定拡張
+
 ## 🎯 使用シナリオ例
 
 ### シナリオ1: 新機能開発
@@ -337,5 +345,5 @@ Kiro CLIは継続的に進化を続けており、以下の分野での更なる
 
 ---
 
-**最終更新**: 2026年05月10日  
-**対象バージョン**: Kiro CLI v2.2.2+
+**最終更新**: 2026年05月13日  
+**対象バージョン**: Kiro CLI v2.3.0+
