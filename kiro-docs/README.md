@@ -4,26 +4,6 @@
 
 このドキュメントでは、Kiro CLI（旧Amazon Q Developer CLI）の主要機能アップデートについて詳しく解説します。Amazon Q Developer CLIからKiro CLIへの移行に伴い、多くの革新的な機能が追加されました。
 
-## 🔗 関連ブログ記事
-
-### Kiro CLI公式発表
-- **[Introducing Kiro CLI](https://aws.amazon.com/jp/blogs/news/introducing-kiro-cli/)**
-  - Kiro CLIの公式発表記事
-  - 基本概念と主要機能の紹介
-  - Amazon Q Developer CLIからの進化について
-
-### 移行ガイド
-- **[Kiroweeeeeeek in Japan Day 6: Amazon Q Developer CLI to Kiro CLI](https://aws.amazon.com/jp/blogs/news/kiroweeeeeeek-in-japan-day-6-amazon-q-developer-cli-to-kiro-cli/)**
-  - Amazon Q Developer CLIからKiro CLIへの移行ガイド
-  - 日本での導入事例とベストプラクティス
-  - 移行時の注意点と推奨事項
-
-### AWS 請求統合の Kiro に IAM Identity Center ユーザーでサインインする手順
-- **[AWS 請求統合の Kiro に IAM Identity Center ユーザーでサインインする手順（2026年5月版）](https://dev.classmethod.jp/articles/kiro-iam-identity-center-user-signin-setup-202605/)**
-  - IAM Identity Center ビルトインユーザーでのサインイン手順
-  - Kiro IDE / CLI / Web それぞれのサインイン方法
-  - エンタープライズ環境での初回セットアップ
-
 ## 概要
 
 Kiro CLI（旧Amazon Q Developer CLI）の最新情報とアップデートを追跡・整理するプロジェクトです。
@@ -91,6 +71,30 @@ Kiro CLIのバージョン履歴とアップデート情報を管理していま
 Kiro CLI の環境構築とデプロイメントに関するガイド集です。
 
 - **[AWS Samples Code Server](03_deployment/01_aws-samples-code-server.md)** - EC2上でのKiro CLI開発環境構築
+
+## 🔗 関連ブログ記事
+
+### Kiro CLI公式発表
+- **[Introducing Kiro CLI](https://aws.amazon.com/jp/blogs/news/introducing-kiro-cli/)**
+  - Kiro CLIの公式発表記事
+  - 基本概念と主要機能の紹介
+  - Amazon Q Developer CLIからの進化について
+
+### 移行ガイド
+- **[Kiroweeeeeeek in Japan Day 6: Amazon Q Developer CLI to Kiro CLI](https://aws.amazon.com/jp/blogs/news/kiroweeeeeeek-in-japan-day-6-amazon-q-developer-cli-to-kiro-cli/)**
+  - Amazon Q Developer CLIからKiro CLIへの移行ガイド
+  - 日本での導入事例とベストプラクティス
+  - 移行時の注意点と推奨事項
+
+### エンタープライズ運用
+- **[AWS 請求統合の Kiro に IAM Identity Center ユーザーでサインインする手順（2026年5月版）](https://dev.classmethod.jp/articles/kiro-iam-identity-center-user-signin-setup-202605/)**
+  - IAM Identity Center ビルトインユーザーでのサインイン手順
+  - Kiro IDE / CLI / Web それぞれのサインイン方法
+  - エンタープライズ環境での初回セットアップ
+- **[Kiro のプロンプトログを解析して業務日報のたたき台を作ってみた](https://dev.classmethod.jp/articles/kiro-prompt-log-analysis/)**
+  - プロンプトログ機能（S3保存）の有効化とログ構造解析
+  - jqでの前処理・集計、Amazon Bedrockでの業務日報生成
+  - エンタープライズ向け監査・分析活用例
 
 ## 更新方針
 
