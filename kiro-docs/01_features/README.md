@@ -23,6 +23,8 @@
 | **[Granular Tool Trust機能](17_GranularToolTrust.md)** | v1.27.0<br/>（2026-03-02） | ツール使用時の信頼スコープ段階的制御 | Shell 4段階、Read/Write 3段階、インタラクティブピッカー |
 | **[Terminal UI機能](18_TerminalUI.md)** | v1.28.0<br/>（2026-03-20）<br/>v2.0.0デフォルト化 | 新ターミナルUIインターフェース | スラッシュコマンド、キーボードショートカット、Crew Monitor、テーマ |
 | **[Tool Search機能](19_ToolSearch.md)** | v2.1.0<br/>（2026-04-24） | MCPツールのオンデマンドロード | BM25キーワードマッチング、設定3項目、tool_searchツール |
+| **[Kiro guide agent](20_GuideAgent.md)** | v1.29.7<br/>（2026-04-10） | TUI専用オンボーディング・ヘルプ用組み込みエージェント | /guideコマンド、機能紹介、設定支援 |
+| **[v2.4新コマンド（/rewind, /effort, /settings）](21_v24NewCommands.md)** | v2.4.0<br/>（2026-05-20） | 会話巻き戻し、推論レベル制御、統合設定メニュー | /rewind、/effort（5段階）、/settings（theme/keybindings/terminal）、per-model defaults |
 
 
 
@@ -328,6 +330,14 @@ sequenceDiagram
     - MCPツールのオンデマンドロード
     - BM25キーワードマッチング、設定3項目
 
+20. **[Kiro guide agent](20_GuideAgent.md)**
+    - TUI専用オンボーディング・ヘルプ用組み込みエージェント
+    - /guideコマンド、機能紹介、設定支援
+
+21. **[v2.4新コマンド（/rewind, /effort, /settings）](21_v24NewCommands.md)**
+    - 会話巻き戻し（/rewind）、推論レベル制御（/effort）
+    - 統合設定メニュー（/settings）、per-model defaults
+
 ## 🔮 今後の展望
 
 Kiro CLIは継続的に進化を続けており、以下の分野での更なる改善が期待されます：
@@ -345,5 +355,5 @@ Kiro CLIは継続的に進化を続けており、以下の分野での更なる
 
 ---
 
-**最終更新**: 2026年05月13日  
-**対象バージョン**: Kiro CLI v2.3.0+
+**最終更新**: 2026年05月23日  
+**対象バージョン**: Kiro CLI v2.4.1+

@@ -40,27 +40,33 @@ kiro-cliについてのより正確な情報発信を心がけて今後も更新
 
 Kiro CLI v2.x系では、**Windows対応、Headless Mode、新TUI**を中心に大幅な機能拡張が行われました：
 
-1. **[v2.3.0 MCP OAuth・KIRO_HOME・Keybindings](kiro-docs/02_update/01_changelog.md)**（2026-05-12）
+1. **[v2.4.0 /rewind・/effort・/settings](kiro-docs/02_update/01_changelog.md)**（2026-05-20）
+   - `/rewind`（会話の任意ターンに戻り新セッションで分岐）
+   - `/effort`（モデル推論レベル5段階制御: low〜max）
+   - `/settings`（theme/keybindings/terminal統合メニュー）
+   - Workspace初期化88%高速化（652ms → 76ms）
+
+2. **[v2.3.0 MCP OAuth・KIRO_HOME・Keybindings](kiro-docs/02_update/01_changelog.md)**（2026-05-12）
    - OAuth clientId設定（DCR非対応MCPサーバー接続）
    - KIRO_HOME環境変数（`~/.kiro`ディレクトリのオーバーライド）
    - V2 TUIキーバインド設定（cancel/close menu/quit）
    - Agent Output Side Channels（`$AGENT_DISPLAY_OUT`/`$AGENT_CONTEXT_OUT`）
 
-2. **[v2.2.2 MCPガバナンス強化](kiro-docs/02_update/01_changelog.md)**（2026-05-05）
+3. **[v2.2.2 MCPガバナンス強化](kiro-docs/02_update/01_changelog.md)**（2026-05-05）
    - V2 TUIモードでのMCP governance強制適用（エンタープライズ・API keyユーザー）
 
-3. **[v2.2.1 UX改善・安定性修正](kiro-docs/02_update/01_changelog.md)**（2026-05-04）
+4. **[v2.2.1 UX改善・安定性修正](kiro-docs/02_update/01_changelog.md)**（2026-05-04）
    - `chat.disableWrap`設定追加、`/model set-current-as-default`の保存先変更、9件のバグ修正
 
-4. **[v2.2.0 Adaptive Thinking](kiro-docs/02_update/01_changelog.md)**（2026-04-27）
+5. **[v2.2.0 Adaptive Thinking](kiro-docs/02_update/01_changelog.md)**（2026-04-27）
    - マルチターン会話でモデルの推論を保持し応答品質を向上
 
-5. **[v2.1.0 Shell Streaming・Tool Search](kiro-docs/02_update/01_changelog.md)**（2026-04-24）
+6. **[v2.1.0 Shell Streaming・Tool Search](kiro-docs/02_update/01_changelog.md)**（2026-04-24）
    - シェルコマンド出力のリアルタイムストリーミング
    - Skills as Slash Commands（`/skill-name`で直接呼び出し）
    - Device Flow認証（ポートフォワーディング不要）
 
-6. **[v2.0.0 Windows・Headless Mode](kiro-docs/02_update/01_changelog.md)**（2026-04-13）
+7. **[v2.0.0 Windows・Headless Mode](kiro-docs/02_update/01_changelog.md)**（2026-04-13）
    - Windows 11ネイティブ対応
    - CI/CD向けHeadless Mode（`KIRO_API_KEY`認証）
    - 新Terminal UIがデフォルト化（Crew Monitor、/theme、/spawn等）
@@ -135,13 +141,13 @@ Kiro CLI v1.24.0では、**7つの主要機能**が追加されました：
 ```
 kiro-docs/
 ├── 00_information/   # 基本情報・公式サイト情報
-├── 01_features/      # 機能詳細ガイド（v2.3.0対応）
+├── 01_features/      # 機能詳細ガイド（v2.4.1対応）
 ├── 02_update/        # アップデート情報
 └── 03_deployment/    # デプロイメント・環境構築
 ```
 
 **主要ドキュメント**:
-- **[機能詳細ガイド](kiro-docs/01_features/README.md)** - 19機能の詳細解説
+- **[機能詳細ガイド](kiro-docs/01_features/README.md)** - 21機能の詳細解説
 - **[アップデート情報](kiro-docs/02_update/README.md)** - バージョン履歴
 - **[環境構築ガイド](kiro-docs/03_deployment/README.md)** - デプロイメント手順
 
@@ -394,6 +400,7 @@ Q CLIのセキュリティとプライバシーについて理解することは
 
 | 日付 | 内容 |
 |------|------|
+| 2026-05-23 | v2.4.0、v2.4.1対応 |
 | 2026-05-13 | v2.3.0対応 |
 | 2026-05-10 | v2.2.1、v2.2.2対応 |
 | 2026-05-03 | v2.2.0対応 |

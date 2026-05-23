@@ -73,6 +73,7 @@ Kiro CLIの主要機能について詳細に解説したドキュメント集で
 | **[Kiro guide agent](01_features/20_GuideAgent.md)** 🆕 | TUI 専用のオンボーディング・ヘルプ用組み込みエージェント | v1.29.7 |
 | **[v2.0.0メジャーアップデート](01_features/16_v2MajorUpdate.md)** | Windows/Headless/TUIデフォルト化 | v2.0.0 |
 | **[Tool Search機能](01_features/19_ToolSearch.md)** | MCPツールオンデマンドロード | v2.1.0 |
+| **[v2.4新コマンド](01_features/21_v24NewCommands.md)** | /rewind・/effort・/settings統合 | v2.4.0 |
 
 ### [02_update/ - アップデート情報](02_update/README.md)
 Kiro CLIのバージョン履歴とアップデート情報を管理しています。

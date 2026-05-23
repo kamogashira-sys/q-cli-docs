@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.3.0（最新版）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.4.1（最新版）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,8 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.4.1** | 2026-05-21 | MCP環境変数修正 | ${VAR_NAME}環境変数展開の修正 |
+| **v2.4.0** | 2026-05-20 | /rewind・/effort・/settings | 会話巻き戻し、推論レベル制御、統合設定メニュー、88%高速化 |
 | **v2.3.0** | 2026-05-12 | MCP OAuth・KIRO_HOME・Keybindings | OAuth clientId設定、KIRO_HOME環境変数、V2 TUIキーバインド設定、Agent Output Side Channels |
 | **v2.2.2** | 2026-05-05 | MCPガバナンス強化 | V2 TUIモードでのMCP governance強制適用（エンタープライズ・API keyユーザー） |
 | **v2.2.1** | 2026-05-04 | UX改善・安定性修正 | chat.disableWrap設定追加、/model set-current-as-defaultの保存先変更、/agent swapオートコンプリート、9件のバグ修正 |
@@ -156,6 +158,15 @@ timeline
                    : KIRO_HOME環境変数
                    : V2 TUIキーバインド設定
                    : Agent Output Side Channels
+    
+    section v2.4.x 会話制御・設定統合
+        2026-05-20 : v2.4.0
+                   : /rewind（会話巻き戻し）
+                   : /effort（推論レベル制御）
+                   : /settings（統合設定メニュー）
+                   : Workspace初期化88%高速化
+        2026-05-21 : v2.4.1
+                   : ${VAR_NAME}展開修正
 ```
 
 ## 🔗 移行情報
@@ -200,6 +211,7 @@ timeline
 - [Terminal UI機能](../01_features/18_TerminalUI.md)
 - [Kiro guide agent](../01_features/20_GuideAgent.md) 🆕 - TUI 専用のオンボーディング・ヘルプ用組み込みエージェント（v1.29.7）
 - [Tool Search機能](../01_features/19_ToolSearch.md)
+- [v2.4新コマンド（/rewind, /effort, /settings）](../01_features/21_v24NewCommands.md) 🆕 - 会話巻き戻し、推論レベル制御、統合設定メニュー（v2.4.0）
 
 ### コミュニティ
 - [Discord Community](https://discord.gg/kirodotdev)
@@ -227,5 +239,5 @@ timeline
 
 ---
 
-**最終更新**: 2026年5月13日  
-**対象バージョン**: Kiro CLI v2.3.0
+**最終更新**: 2026年5月23日  
+**対象バージョン**: Kiro CLI v2.4.1
