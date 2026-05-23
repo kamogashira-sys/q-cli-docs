@@ -239,6 +239,7 @@ kiro-cli chat
 - [スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/)
 - [設定リファレンス](https://kiro.dev/docs/cli/reference/settings/)
 - [公式Changelog v2.4](https://kiro.dev/changelog/cli/2-4/)
+- [Kiro CLI v2.4.0 の新機能まとめ — Rewind・Effort 制御・統合された設定メニュー](https://zenn.dev/aws_japan/articles/b77bf7748f515f) - Zenn記事 by konippi（v2.4.0新機能の詳細解説・スクリーンショット付き）
 
 ---
 
