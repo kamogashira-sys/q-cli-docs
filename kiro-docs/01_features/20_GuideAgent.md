@@ -68,11 +68,11 @@ flowchart TD
     UI -- Classic UI --> CA{目的}
     UI -- TUI --> TA{目的}
 
-    CA -- 詳細な対話型 QA<br/>設定ファイル作成 --> HELP_C[/help → Help Agent]
-    CA -- 実装計画の分解 --> PLAN[/plan → Plan Agent]
+    CA -- "詳細な対話型 QA / 設定ファイル作成" --> HELP_C["/help → Help Agent"]
+    CA -- 実装計画の分解 --> PLAN["/plan → Plan Agent"]
 
-    TA -- コマンド一覧の検索 --> HELP_T[/help → コマンドパネル]
-    TA -- 対話型 QA<br/>オンボーディング --> GUIDE[/guide → Kiro guide agent]
+    TA -- コマンド一覧の検索 --> HELP_T["/help → コマンドパネル"]
+    TA -- "対話型 QA / オンボーディング" --> GUIDE["/guide → Kiro guide agent"]
     TA -- 実装計画の分解 --> PLAN
 
     HELP_C --> END[目的達成]
