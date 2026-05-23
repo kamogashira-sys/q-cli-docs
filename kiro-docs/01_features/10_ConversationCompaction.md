@@ -40,7 +40,7 @@ graph TD
     E --> F[要約を新セッションに引き継ぎ]
     F --> G[セッション継続]
     G --> H{元のセッションに戻る?}
-    H -->|Yes| I[/chat resume]
+    H -->|Yes| I["/chat resume"]
     H -->|No| G
 ```
 
