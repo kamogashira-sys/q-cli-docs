@@ -201,3 +201,4 @@ kiro auth login
 - Kiro CLI 公式サイト: https://kiro.dev/cli/
 - プラン詳細: 公式サイトの料金ページを参照
 - サポート: 組織管理者または公式サポートに問い合わせ
+- [「Kiro」の料金プラン損益分岐点を試算、月末アップグレードによるコスト最適化を検証してみた](https://dev.classmethod.jp/articles/kiro-cost-optimization-month-end/) - DevelopersIO記事 by suzuki.ryo（/usageによる消費確認と月末プラン最適化の実践例）
