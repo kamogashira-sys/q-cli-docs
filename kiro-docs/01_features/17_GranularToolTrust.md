@@ -190,6 +190,7 @@ Read/Write Trust Levels（制限的 → 緩い）:
 - [公式Changelog v1.27.0](https://kiro.dev/changelog/cli/1-27/)
 - [Shell tool settings](https://kiro.dev/docs/cli/reference/built-in-tools/#execute-shell-commands)
 - [Chat security](https://kiro.dev/docs/cli/chat/security/)
+- [AIによるAWS操作を安全に。Kiro CLIで作るsudo的なIAM権限昇格](https://dev.classmethod.jp/articles/kiro-cli-custom-agent-sudo/) - DevelopersIO記事 by suzuki.ryo（カスタムエージェント + IAMロールによる権限分離の実装例）
 
 ---
 
