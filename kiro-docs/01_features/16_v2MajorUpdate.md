@@ -238,6 +238,7 @@ Terminal UIの機能詳細については、[Terminal UI機能](18_TerminalUI.md
 - [Terminal UI機能（詳細）](18_TerminalUI.md)
 - [Kiro CLI の headless モードでコードレビューしてみた](https://zenn.dev/aws_japan/articles/46278a8413f8fd) - Zenn記事 by konippi（Headless Mode実践例）
 - [Kiro CLI によるコードレビューを ACP で実現する](https://zenn.dev/aws_japan/articles/91dcdf769e9b10) - Zenn記事 by konippi（ACP活用によるCI/CDコードレビュー）
+- [Lambda + IAMロールで Kiro CLI の use_aws ツールを安全に動かしてみた](https://dev.classmethod.jp/articles/kiro-cli-headless-lambda-iam-use-aws/) - DevelopersIO記事 by suzuki.ryo（Headless Mode + Lambda + IAMロールで最小権限実行）
 
 ---
 
