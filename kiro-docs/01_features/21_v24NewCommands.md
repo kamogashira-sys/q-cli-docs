@@ -47,7 +47,7 @@ flowchart LR
 
 - `/rewind` 実行時、選択したターンから新しいセッションが作成される
 - 元のセッションはそのまま保持される（`/chat resume` で戻れる）
-- ファイルの変更は巻き戻されない（ディスク上のファイルはそのまま）
+- ファイルの変更は巻き戻されない（ディスク上のファイルはそのまま。ファイルも巻き戻したい場合はバージョン管理システムを使用）
 
 ### ユースケース
 
@@ -57,11 +57,6 @@ flowchart LR
 | **代替アプローチの探索** | 最初の試みを失わずに同じ問題に別のアプローチを試す |
 | **コンテキスト汚染からの回復** | 無関係なコンテキストが蓄積し、クリーンな出発点が必要な場合 |
 | **プロンプトのA/Bテスト** | 同じターンから異なる指示で分岐し結果を比較 |
-
-### 注意点
-
-- ファイル変更の巻き戻しは行われない（バージョン管理システムを使用）
-- 新しいセッションが作成されるため、コンテキストウィンドウは選択ターン時点の状態から開始
 
 ---
 
@@ -109,22 +104,27 @@ flowchart LR
 
 ### Per-model default settings
 
-v2.4.0では `~/.kiro/settings/cli.json` でモデルごとのデフォルトeffortレベルを設定可能:
+v2.4.0では `~/.kiro/settings/cli.json` の `chat.modelDefaults` でモデルごとのデフォルトeffortレベルを設定可能:
 
 ```json
 {
-  "models": {
-    "claude-opus-4.7": {
-      "effort": "high"
-    },
-    "claude-sonnet-4.6": {
-      "effort": "medium"
+  "chat": {
+    "modelDefaults": {
+      "claude-opus-4": {
+        "effort": "max"
+      },
+      "claude-sonnet-4": {
+        "effort": "high"
+      }
     }
   }
 }
 ```
 
 この設定は全新規セッションに適用されます。
+
+- 設定キー: `chat.modelDefaults`（[公式設定リファレンス](https://kiro.dev/docs/cli/reference/settings/)で確認）
+- ワークスペース単位でオーバーライドする場合はプロジェクトルートの `.kiro/settings/cli.json` に同様の構造で記述
 
 ---
 
