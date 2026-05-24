@@ -1205,4 +1205,15 @@ delta --version
 
 ---
 
+## 関連リンク
+
+### リファレンス（辞書）
+- [04_reference/01_settings.md](../04_reference/01_settings.md) — `chat.diffTool`、`chat.diffToolArgs` 設定の正規仕様
+- [04_reference/04_built-in-tools.md](../04_reference/04_built-in-tools.md) — `write` ツールの Custom diff 連携
+
+### 関連機能
+- [09. AST Pattern Tools](09_ASTPatternTools.md) — 構文木ベースの精密リファクタリングと Diff の併用
+
+---
+
 **Custom Diff Tools機能を活用して、コードレビューをより快適で効率的にしましょう！**

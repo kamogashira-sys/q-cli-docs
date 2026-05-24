@@ -241,6 +241,10 @@ kiro-cli chat
 - [公式Changelog v2.4](https://kiro.dev/changelog/cli/2-4/)
 - [Kiro CLI v2.4.0 の新機能まとめ — Rewind・Effort 制御・統合された設定メニュー](https://zenn.dev/aws_japan/articles/b77bf7748f515f) - Zenn記事 by konippi（v2.4.0新機能の詳細解説・スクリーンショット付き）
 
+### 本サイトの関連文書
+- [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) — `/rewind`、`/effort`、`/settings` の正規仕様
+- [04_reference/01_settings.md](../04_reference/01_settings.md) — `chat.modelDefaults`、`keybindings.*` 等の設定キー
+
 ---
 
 **最終更新**: 2026年5月23日

@@ -192,6 +192,11 @@ Read/Write Trust Levels（制限的 → 緩い）:
 - [Chat security](https://kiro.dev/docs/cli/chat/security/)
 - [AIによるAWS操作を安全に。Kiro CLIで作るsudo的なIAM権限昇格](https://dev.classmethod.jp/articles/kiro-cli-custom-agent-sudo/) - DevelopersIO記事 by suzuki.ryo（カスタムエージェント + IAMロールによる権限分離の実装例）
 
+### 本サイトの関連文書
+- [22. Smart Hooks](22_Hooks.md) 🆕 — `preToolUse` Hook と Granular Tool Trust の併用パターン
+- [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) — `/tools` 信頼スコープ確認・変更コマンド
+- [04_reference/04_built-in-tools.md](../04_reference/04_built-in-tools.md) — `shell`/`read`/`write`/`aws` 各ツールの `allowedXxx`/`deniedXxx` 設定
+
 ---
 
 **最終更新**: 2026年05月03日

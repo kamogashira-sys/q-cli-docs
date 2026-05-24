@@ -241,6 +241,11 @@ Terminal UIの機能詳細については、[Terminal UI機能](18_TerminalUI.md
 - [Kiro CLI によるコードレビューを ACP で実現する](https://zenn.dev/aws_japan/articles/91dcdf769e9b10) - Zenn記事 by konippi（ACP活用によるCI/CDコードレビュー）
 - [Lambda + IAMロールで Kiro CLI の use_aws ツールを安全に動かしてみた](https://dev.classmethod.jp/articles/kiro-cli-headless-lambda-iam-use-aws/) - DevelopersIO記事 by suzuki.ryo（Headless Mode + Lambda + IAMロールで最小権限実行）
 
+### 本サイトの関連文書
+- [03_deployment/03_official-installation.md](../03_deployment/03_official-installation.md) 🆕 — Windows 11 / Linux / macOS 公式インストール手順
+- [04_reference/01_settings.md](../04_reference/01_settings.md) — `chat.ui`、Auto-update 等の設定
+- [04_reference/03_cli-commands.md](../04_reference/03_cli-commands.md) — `KIRO_API_KEY` 環境変数、`--no-interactive` フラグ等
+
 ---
 
 **最終更新**: 2026年05月04日

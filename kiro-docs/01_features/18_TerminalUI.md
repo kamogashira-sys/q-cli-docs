@@ -427,6 +427,12 @@ kiro-cli settings list | grep chat.ui
 - [サブエージェント機能](02_Subagents.md)
 - [Kiro CLI の新しいチャット体験！TUI v2 を試してみよう](https://zenn.dev/aws_japan/articles/ad5eee399b08a5) - Zenn記事 by konippi（TUI v2のスクリーンショット付き解説）
 
+### 本サイトの関連文書
+- [25. Auto Complete](25_AutoComplete.md) 🆕 — Terminal UI と統合された AI 補完機能
+- [21. v2.4 New Commands](21_v24NewCommands.md) — `/theme`、`/settings` の TUI 統合メニュー
+- [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) — TUI で使える全スラッシュコマンド36種の正規仕様
+- [04_reference/01_settings.md](../04_reference/01_settings.md) — TUI 用 keybindings、`chat.ui` 設定
+
 ---
 
 **最終更新**: 2026年05月04日

@@ -808,4 +808,16 @@ git diff
 
 ---
 
+## 関連リンク
+
+### 関連機能
+- [24. @file references](24_FileReferences.md) 🆕 — AST 操作対象を `@file` で指定するパターン
+- [05. Grep / Glob Tools](05_GrepGlob.md) — 正規表現検索と AST の使い分け
+- [01. LSP](01_LSP.md) — シンボル単位の検索（`code` ツール）
+
+### リファレンス（辞書）
+- [04_reference/04_built-in-tools.md](../04_reference/04_built-in-tools.md) — `code` ツールの AST パターン仕様（`pattern_search` / `pattern_rewrite`）
+
+---
+
 **AST Pattern Tools機能を活用して、より安全で正確なコードリファクタリングを実現しましょう！**

@@ -469,6 +469,10 @@ chmod +x .kiro/hooks/pre-tool
 - [Agent Client Protocol (ACP)](13_ACP.md) - エディタ統合
 - [Help Agent](14_HelpAgent.md) - ヘルプエージェント
 - [Subagent Access Control](02_Subagents.md#subagent-access-controlv1250) - サブエージェント制御
+- [v2 Major Update](16_v2MajorUpdate.md) — Headless Mode と Exit Codes の併用
+
+### リファレンス（辞書）
+- [04_reference/03_cli-commands.md](../04_reference/03_cli-commands.md) — `kiro-cli chat --no-interactive` `--require-mcp-startup` 等の CI/CD 用フラグ
 
 ### CI/CD統合
 - [GitHub Actions](https://docs.github.com/en/actions)

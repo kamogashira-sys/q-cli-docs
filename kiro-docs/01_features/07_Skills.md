@@ -994,4 +994,25 @@ Skillは以下の2つの方法で起動できます:
 
 ---
 
+## 関連リンク
+
+### コンテキスト管理 4 アプローチの使い分け（重要）
+
+| アプローチ | 適性 | 詳細 |
+|--------|------|------|
+| **Skills**（本ページ） | 大規模ドキュメントの **オンデマンド** ロード | YAML フロントマター、メタデータ起動 |
+| **[Steering](23_Steering.md)** 🆕 | プロジェクト規約・コーディング標準の **永続的** 注入 | `.kiro/steering/`、AGENTS.md 標準 |
+| **[@file references](24_FileReferences.md)** 🆕 | チャット入力での **即時** ファイル参照 | `@file` `@directory` 構文、Tab補完 |
+| **Knowledge**（experimental） | セマンティック検索可能な独立 KB | `kiro-cli settings chat.enableKnowledge true` |
+
+### 関連機能
+- [22. Smart Hooks](22_Hooks.md) 🆕 — Skills のロード/アンロードを Hook で観測可能
+- [10. Conversation Compaction](10_ConversationCompaction.md) — Skills と組み合わせた長時間セッション
+
+### リファレンス（辞書）
+- [04_reference/01_settings.md](../04_reference/01_settings.md) — `chat.skillsPath`、`knowledge.*` 設定
+- [04_reference/04_built-in-tools.md](../04_reference/04_built-in-tools.md) — `knowledge` ツールの詳細
+
+---
+
 **最終更新**: 2026年05月03日

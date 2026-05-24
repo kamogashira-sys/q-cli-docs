@@ -277,3 +277,19 @@ Kiro CLI v1.23.0のPlanエージェント機能は、実装前の計画立案を
 特にサブエージェント機能と組み合わせることで、計画立案から並列実装まで一貫したワークフローを実現できます。
 
 この機能は、AI駆動開発における「計画→実装」のプロセスを体系化し、より確実で効率的な開発を可能にする重要なアップデートです。
+
+---
+
+## 関連リンク
+
+### 関連機能
+- [22. Smart Hooks](22_Hooks.md) 🆕 — Plan Agent でも Hook が動作（agent.json `hooks` 設定）
+- [23. Agent Steering](23_Steering.md) 🆕 — Plan Agent に永続的な計画フォーマット規約を提供
+- [02. Subagents](02_Subagents.md) — 計画後の並列実装
+
+### リファレンス（辞書）
+- [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) — `/plan` の正規仕様
+
+---
+
+**最終更新**: 2026年05月03日

@@ -410,6 +410,10 @@ Help Agentに切り替えずに、直接質問できます。
 - [サブエージェント機能](02_Subagents.md) - エージェント委譲
 - [Planエージェント機能](03_PlanAgent.md) - 実装計画作成
 - [Terminal UI機能](18_TerminalUI.md) - TUIモードでは`/help`がコマンドパネル表示に変更。ヘルプとオンボーディングには`/guide`コマンド（TUI専用）を使用
+- [Smart Hooks](22_Hooks.md) 🆕 - Help Agent でも Hook が動作（agent.json `hooks` 設定）
+
+### リファレンス（辞書）
+- [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) — `/help` の正規仕様（`--legacy` フラグ含む）
 
 ### スラッシュコマンド
 - `/chat` - チャットセッション管理

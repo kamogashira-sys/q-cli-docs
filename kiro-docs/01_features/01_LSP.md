@@ -587,4 +587,16 @@ LSPサーバーが textDocument/documentSymbol をサポート？
 
 ---
 
+## 関連リンク
+
+### リファレンス（辞書）
+- [04_reference/01_settings.md](../04_reference/01_settings.md) — `lsp.json` `file_patterns` 等の正規仕様
+- [04_reference/04_built-in-tools.md](../04_reference/04_built-in-tools.md) — `code` ツール（Code Intelligence）の詳細
+
+### 関連機能
+- [09. AST Pattern Tools](09_ASTPatternTools.md) — `code` ツールの AST パターン機能
+- [22. Smart Hooks](22_Hooks.md) 🆕 — Hook の matcher で `code` ツールを対象指定可能
+
+---
+
 **最終更新**: 2026年05月03日
