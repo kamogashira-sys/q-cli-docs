@@ -27,15 +27,17 @@
 
 > 本サイトは **Kiro CLI** に特化しているため、以降では Kiro CLI からの利用を前提とした記述を行います。設定ファイルパス（`~/.kiro/settings/mcp.json`）は Kiro（IDE）と Kiro CLI で共通です。
 
-### 主な特徴
+### 主な特徴と提供価値
 
-- ✅ **公式 MCP Server**: 単一エンドポイント（`https://aws-mcp.us-east-1.api.aws/mcp`）から **300+ AWS サービス / 15,000+ API アクション** にアクセス
-- ✅ **エージェント vs 人間の権限分離**: IAM コンテキストキー `aws:ViaAWSMCPService` / `aws:CalledViaAWSMCP` で区別可能
-- ✅ **エンタープライズ可観測性**: CloudWatch メトリクス（`AWS-MCP` namespace）+ CloudTrail 監査ログ
-- ✅ **サンドボックス Python 実行**: ネットワーク・ファイルシステムなしで `run_script` ツール
-- ✅ **リアルタイム公式ドキュメント**: モデルの学習カットオフ後の AWS 新機能（S3 Vectors / Aurora DSQL / Bedrock AgentCore 等）にも対応
-- ✅ **追加料金なし**: AWS リソース利用料のみ
-- ✅ **AWS Labs MCP の後継**: IAM 条件キー、CloudWatch メトリクス、評価済み Skills を提供
+| 観点 | 内容 |
+|------|------|
+| ✅ **公式 MCP Server** | 単一エンドポイント（`https://aws-mcp.us-east-1.api.aws/mcp`）から **300+ AWS サービス / 15,000+ API アクション** にアクセス |
+| 🔐 **エンタープライズグレードのセキュリティ** | IAM コンテキストキー（`aws:ViaAWSMCPService` / `aws:CalledViaAWSMCP`）でエージェント／人間アクションを区別、SCP / IAM ポリシーで権限分離 |
+| 📊 **エンタープライズ可観測性** | CloudWatch メトリクス（`AWS-MCP` namespace）+ CloudTrail 監査ログで完全可視化 |
+| 🛡️ **サンドボックス Python 実行** | `run_script` でファイルシステム・ネットワークなしの安全な分析・操作 |
+| 📚 **リアルタイム公式ドキュメント** | モデルの学習カットオフ後の AWS 新サービス（S3 Vectors / Aurora DSQL / Bedrock AgentCore 等）にも即対応 |
+| 🆓 **追加料金なし** | AWS リソース利用料のみ |
+| 🔄 **AWS Labs MCP の後継** | IAM 条件キー、CloudWatch メトリクス、評価済み Skills を提供 |
 
 ### なぜ Agent Toolkit for AWS が必要なのか
 
