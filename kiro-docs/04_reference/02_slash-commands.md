@@ -130,7 +130,7 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 
 ### `/spawn`
 
-> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+> **V2 TUI で追加**: このコマンドは V2 TUI モード（v2.0.0+ デフォルト）で追加されました。macOS・Windows（PowerShell）・Linux で動作します。Legacy UI（`--legacy-ui`）では利用できません。
 
 メインの会話と並行してタスクを実行する新しいエージェントセッションを起動。
 
@@ -168,7 +168,7 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 
 ### `/session-id`
 
-> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+> **V2 TUI で追加**: このコマンドは V2 TUI モード（v2.0.0+ デフォルト）で追加されました。macOS・Windows（PowerShell）・Linux で動作します。Legacy UI（`--legacy-ui`）では利用できません。
 
 現在のチャットセッション ID を表示。
 
@@ -239,7 +239,7 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 
 ### `/guide`
 
-> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+> **V2 TUI で追加**: このコマンドは V2 TUI モード（v2.0.0+ デフォルト）で追加されました。macOS・Windows（PowerShell）・Linux で動作します。Legacy UI（`--legacy-ui`）では利用できません。
 
 ドキュメントベースのヘルプとオンボーディング向け Guide Agent に切替。
 
@@ -371,7 +371,7 @@ MCP サーバーとレジストリ状態を表示・管理。
 
 ### `/theme`
 
-> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+> **V2 TUI で追加**: このコマンドは V2 TUI モード（v2.0.0+ デフォルト）で追加されました。macOS・Windows（PowerShell）・Linux で動作します。Legacy UI（`--legacy-ui`）では利用できません。
 
 プロンプトと応答テキストのテーマカラーを上書き。
 
@@ -381,7 +381,7 @@ MCP サーバーとレジストリ状態を表示・管理。
 
 ### `/copy`
 
-> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+> **V2 TUI で追加**: このコマンドは V2 TUI モード（v2.0.0+ デフォルト）で追加されました。macOS・Windows（PowerShell）・Linux で動作します。Legacy UI（`--legacy-ui`）では利用できません。
 
 直前のアシスタント応答をクリップボードにコピー。
 
@@ -393,7 +393,7 @@ OSC 52 エスケープシーケンス経由で SSH/tmux/Zellij でも動作。10
 
 ### `/transcript`
 
-> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+> **V2 TUI で追加**: このコマンドは V2 TUI モード（v2.0.0+ デフォルト）で追加されました。macOS・Windows（PowerShell）・Linux で動作します。Legacy UI（`--legacy-ui`）では利用できません。
 
 会話のトランスクリプトをページャで開く。
 
@@ -491,7 +491,7 @@ To-do リストの表示・管理・再開。
 
 ### `/settings`
 
-> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+> **V2 TUI で追加**: このコマンドは V2 TUI モード（v2.0.0+ デフォルト）で追加されました。macOS・Windows（PowerShell）・Linux で動作します。Legacy UI（`--legacy-ui`）では利用できません。
 
 テーマ、キーバインド、ターミナル入力、表示設定をインタラクティブに変更（v2.4.0+）。
 
@@ -515,7 +515,7 @@ To-do リストの表示・管理・再開。
 
 ### `/effort`
 
-> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+> **V2 TUI で追加**: このコマンドは V2 TUI モード（v2.0.0+ デフォルト）で追加されました。macOS・Windows（PowerShell）・Linux で動作します。Legacy UI（`--legacy-ui`）では利用できません。
 
 セッションのモデル推論エフォートレベルを設定（v2.4.0+）。
 
@@ -547,7 +547,7 @@ To-do リストの表示・管理・再開。
 
 ### `/rewind`
 
-> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+> **V2 TUI で追加**: このコマンドは V2 TUI モード（v2.0.0+ デフォルト）で追加されました。macOS・Windows（PowerShell）・Linux で動作します。Legacy UI（`--legacy-ui`）では利用できません。
 
 会話を過去のターンで分岐し別のパスを探求（v2.4.0+）。
 
@@ -573,7 +573,7 @@ To-do リストの表示・管理・再開。
 
 ### `/feedback`
 
-> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+> **V2 TUI で追加**: このコマンドは V2 TUI モード（v2.0.0+ デフォルト）で追加されました。macOS・Windows（PowerShell）・Linux で動作します。Legacy UI（`--legacy-ui`）では利用できません。
 
 > **出典**: introspect 組み込みドキュメント（2026-04-08 検証）。公式ページ（kiro.dev/docs/cli/、2026-05-19）には記載なし。
 
@@ -585,7 +585,7 @@ To-do リストの表示・管理・再開。
 
 ### `/stats`
 
-> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+> **V2 TUI で追加**: このコマンドは V2 TUI モード（v2.0.0+ デフォルト）で追加されました。macOS・Windows（PowerShell）・Linux で動作します。Legacy UI（`--legacy-ui`）では利用できません。
 
 > **出典**: introspect 組み込みドキュメント（2026-05-05 検証）。公式ページ（kiro.dev/docs/cli/、2026-05-19）には記載なし。
 
