@@ -570,6 +570,10 @@ TOOL_NAME=$(echo "$INPUT" | jq -r '.tool_name // empty')
 - [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) — `/hooks` コマンド（v1.29.6+ TUI 専用）
 - [04_reference/04_built-in-tools.md](../04_reference/04_built-in-tools.md) — Hook の `matcher` で対象指定可能な全 18 ビルトインツール一覧
 
+### 関連 MCP サーバー
+
+- [26. Agent Toolkit for AWS](26_AgentToolkitForAWS.md) 🌟 — `preToolUse`/`postToolUse` Hook で AWS MCP Server の `call_aws`/`run_script` を監査可能
+
 ### Q CLI 時代との比較
 
 - [Q CLI Agent Hooks 比較ガイド](../../docs/01_for-users/04_best-practices/05_agent-hooks-comparison.md) — Amazon Q Developer CLI 時代の Hooks 機能との差分

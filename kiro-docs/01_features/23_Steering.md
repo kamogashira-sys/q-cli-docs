@@ -579,6 +579,10 @@ mv .kiro/steering/personal-secrets.md ~/.kiro/steering/
 - [04_reference/01_settings.md](../04_reference/01_settings.md) — Steering ディレクトリ関連設定（`KIRO_HOME` 等）
 - [04_reference/04_built-in-tools.md](../04_reference/04_built-in-tools.md) — `read` ツール（Steering ファイル読込）と `introspect.progressiveMode` の関係
 
+### 関連 AWS 公式統合
+
+- [26. Agent Toolkit for AWS](26_AgentToolkitForAWS.md) 🌟 — Agent Toolkit の **Rules files** は Steering / AGENTS.md と同様のガードレール・優先設定機構（Kiro CLI では Steering 経由で利用可能）
+
 ### バージョン関連
 
 - [Changelog v1.20.0](../02_update/01_changelog.md) — 「✅ Steering Files（プロジェクト固有設定）」記載のバージョン

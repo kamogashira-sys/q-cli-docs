@@ -2,7 +2,7 @@
 
 # Kiro CLI 機能詳細ガイド
 
-> 25 機能（既存 21 + v3.1 追加 4: Hooks / Steering / @file references / Auto Complete）の詳細解説。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+> 26 機能（既存 21 + v3.1 追加 4: Hooks / Steering / @file references / Auto Complete + Phase 6: Agent Toolkit for AWS）の詳細解説。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
 
 ## 主要アップデート情報
 
@@ -35,6 +35,7 @@
 | **[Agent Steering](23_Steering.md)** 🆕 | Q CLI由来<br/>v1.20.0継承<br/>（2026-01-08公式公開） | プロジェクト規約・コーディング標準・アーキテクチャパターンを永続化 | 3スコープ（global/project/scoped）、Foundational 3 files、AGENTS.md標準対応、Custom Agents併用 |
 | **[@file references（File References）](24_FileReferences.md)** 🆕 | v1.26.0<br/>（2026-02-12） | チャット入力で `@file` `@directory` を介してファイル/ディレクトリ内容を即時参照 | 解決順序（Prompts→Files→Directories）、Tab補完、Manage Prompts、4アプローチ比較 |
 | **[Auto Complete](25_AutoComplete.md)** 🆕 | Q CLI由来<br/>v2.0.0で再統合<br/>（公式公開 2025-11-16） | ターミナル AI 補完（ドロップダウン + インライン候補） | Autocomplete Dropdown Menu、Inline Suggestions（ghost text）、数百ツール対応、テーマ、ARN カスタマイズ |
+| **[Agent Toolkit for AWS](26_AgentToolkitForAWS.md)** 🌟 | 2026-05-06 GA<br/>（AWS 公式製品） | AI エージェントが AWS で安全・効果的に動作するための公式ツールキット | 4 コンポーネント（MCP Server/Skills/Plugins/Rules files）、主要4ツール（call_aws/search_documentation/read_documentation/run_script）、IAM コンテキストキー、CloudWatch メトリクス、AWS Labs MCP 後継 |
 
 
 
@@ -86,6 +87,7 @@
 - [15. Exit Codes for CI/CD](15_ExitCodes.md) — CI/CD 用構造化終了コード
 - [16. v2 Major Update](16_v2MajorUpdate.md) — Windows 11 / Headless Mode
 - [19. Tool Search](19_ToolSearch.md) — MCP ツールのオンデマンドロード
+- [26. Agent Toolkit for AWS](26_AgentToolkitForAWS.md) 🌟 — AWS 公式 MCP Server + Skills + Plugins
 
 ### 💰 使用量・課金
 - [06. /usage コマンド](06_UsageCommand.md) — 契約プラン・月間使用量
@@ -481,6 +483,14 @@ sequenceDiagram
     - Inline Suggestions（gray ghost text）
     - 数百ツール対応、エンタープライズ ARN カスタマイズ
 
+26. **[Agent Toolkit for AWS](26_AgentToolkitForAWS.md)** 🌟
+    - AWS 公式の AI エージェント統合ツールキット（2026-05-06 GA）
+    - 4 コンポーネント（MCP Server / Skills / Plugins / Rules files）
+    - 主要 4 ツール（call_aws / search_documentation / read_documentation / run_script）
+    - IAM コンテキストキー（aws:CalledViaAWSMCP）でエージェント／人間の権限分離
+    - CloudWatch メトリクス（AWS-MCP namespace）+ CloudTrail 監査
+    - **Kiro CLI は公式対応エージェント**として明示
+
 ## 🔮 今後の展望
 
 Kiro CLIは継続的に進化を続けており、以下の分野での更なる改善が期待されます：
@@ -500,4 +510,4 @@ Kiro CLIは継続的に進化を続けており、以下の分野での更なる
 
 **最終更新**: 2026年05月24日  
 **対象バージョン**: Kiro CLI v2.4.1+  
-**機能数**: 25（既存21 + Hooks / Steering / @file / Auto Complete）+ Reference集約 ([04_reference/](../04_reference/README.md))
+**機能数**: 26（既存21 + Hooks / Steering / @file / Auto Complete + Agent Toolkit for AWS）+ Reference集約 ([04_reference/](../04_reference/README.md))

@@ -194,6 +194,7 @@ Read/Write Trust Levels（制限的 → 緩い）:
 
 ### 本サイトの関連文書
 - [22. Smart Hooks](22_Hooks.md) 🆕 — `preToolUse` Hook と Granular Tool Trust の併用パターン
+- [26. Agent Toolkit for AWS](26_AgentToolkitForAWS.md) 🌟 — IAM コンテキストキー（`aws:CalledViaAWSMCP`）と Granular Tool Trust の併用でエージェント／人間権限分離
 - [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) — `/tools` 信頼スコープ確認・変更コマンド
 - [04_reference/04_built-in-tools.md](../04_reference/04_built-in-tools.md) — `shell`/`read`/`write`/`aws` 各ツールの `allowedXxx`/`deniedXxx` 設定
 

@@ -334,6 +334,7 @@ kiro-cli settings list --all
 - [23. Agent Steering](../01_features/23_Steering.md) 🆕 — `KIRO_HOME` による Steering ディレクトリ変更
 - [24. @file references](../01_features/24_FileReferences.md) 🆕 — Manage Prompts 関連設定
 - [25. Auto Complete](../01_features/25_AutoComplete.md) 🆕 — `autocomplete.disable` 設定
+- [26. Agent Toolkit for AWS](../01_features/26_AgentToolkitForAWS.md) 🌟 — `~/.kiro/settings/mcp.json` での AWS MCP Server 統合設定
 
 ### リファレンス（本ディレクトリ）
 

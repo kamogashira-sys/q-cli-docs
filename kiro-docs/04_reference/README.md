@@ -51,6 +51,7 @@
 | `@file/@directory` 構文 | [24. File References](../01_features/24_FileReferences.md) |
 | Steering と Custom Agents | [23. Steering](../01_features/23_Steering.md) |
 | `kiro-cli inline`、`/theme` | [25. AutoComplete](../01_features/25_AutoComplete.md) |
+| AWS MCP Server / Skills / `mcp.json` | [26. Agent Toolkit for AWS](../01_features/26_AgentToolkitForAWS.md) 🌟 |
 
 ---
 
