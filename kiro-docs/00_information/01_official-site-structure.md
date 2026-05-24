@@ -1,6 +1,9 @@
 # Kiro CLI公式サイト構造とナビゲーション
 
-**出典**: [Kiro CLI公式サイト](https://kiro.dev/cli/) - 公式ウェブサイト
+[ホーム](../README.md) > [基本情報](README.md) > 公式サイト構造
+
+**出典**: [Kiro CLI公式サイト](https://kiro.dev/cli/) - 公式ウェブサイト  
+**反映時点**: 2026-05-24（公式更新の継続的な追跡対象）
 
 ## 概要
 
@@ -56,7 +59,13 @@ Kiro CLI公式サイト（https://kiro.dev/cli/）の画面遷移とページ構
 | │　│　├── | Agent Steering [(/docs/cli/steering/)](https://kiro.dev/docs/cli/steering/) | エージェントのガイダンス設定。Steering file scope（Workspace、Global、Team）、Foundational steering files、Creating custom steering files、Best practices |
 | │　│　├── | MCP Integration [(/docs/cli/mcp/)](https://kiro.dev/docs/cli/mcp/) | 外部ツール・データソース接続。Setting up MCP（Command line、mcp.json file、Agent configuration）、Troubleshooting、Examples、Security Best Practices |
 | │　│　├── | Auto Complete [(/docs/cli/autocomplete/)](https://kiro.dev/docs/cli/autocomplete/) | コンテキスト認識型補完。Autocomplete dropdown menu、Inline suggestions、Configuration、Supported tools、Troubleshooting |
+| │　│　├── | File References [(/docs/cli/chat/file-references/)](https://kiro.dev/docs/cli/chat/file-references/) 🆕 | チャット入力での `@file` `@directory` ファイル参照。解決順序（Prompts→Files→Directories）、Tab補完、Manage Prompts |
 | │　│　└── | Privacy First [(/docs/privacy-and-security/)](https://kiro.dev/docs/privacy-and-security/) | プライバシー・セキュリティ |
+| │　├── | **Reference**（リファレンス） 🆕 | |
+| │　│　├── | Settings [(/docs/cli/reference/settings/)](https://kiro.dev/docs/cli/reference/settings/) | 全設定項目（Telemetry/Chat/Knowledge/Keybindings/Tool Search/Feature toggles/API+MCP）と環境変数 |
+| │　│　├── | Slash Commands [(/docs/cli/reference/slash-commands/)](https://kiro.dev/docs/cli/reference/slash-commands/) | 全スラッシュコマンド36種＋キーボードショートカット |
+| │　│　├── | CLI Commands [(/docs/cli/reference/cli-commands/)](https://kiro.dev/docs/cli/reference/cli-commands/) | `kiro-cli` 全16コマンド、グローバル引数、セッション管理 |
+| │　│　└── | Built-in Tools [(/docs/cli/reference/built-in-tools/)](https://kiro.dev/docs/cli/reference/built-in-tools/) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_*/code/tool_search/subagent 他） |
 | ├── | **Resources** | |
 | │　├── | Blog [(/blog/)](https://kiro.dev/blog/) | 技術ブログ |
 | │　├── | Changelog [(/changelog/)](https://kiro.dev/changelog/) | バージョン履歴 |
@@ -86,12 +95,22 @@ Kiro CLI公式サイト（https://kiro.dev/cli/）の画面遷移とページ構
 
 ## 🔗 関連リンク
 
+### 公式サイト
 - **[Kiro CLI公式サイト](https://kiro.dev/cli/)**
 - **[Kiro CLI専用ドキュメント](https://kiro.dev/docs/cli/)**
 - **[Kiro GitHub リポジトリ](https://github.com/kirodotdev/Kiro)**
 - **[Kiro Discord コミュニティ](https://discord.gg/kirodotdev)**
 - **[Kiro公式ブログ](https://kiro.dev/blog/)**
 
+### 本サイトでの対応文書
+- [機能詳細ガイド](../01_features/README.md) — 25機能 + カテゴリ別ナビゲーション
+- [Smart Hooks](../01_features/22_Hooks.md) 🆕
+- [Agent Steering](../01_features/23_Steering.md) 🆕
+- [@file references](../01_features/24_FileReferences.md) 🆕
+- [Auto Complete](../01_features/25_AutoComplete.md) 🆕
+- [04_reference/](../04_reference/README.md) 🆕 — Settings/Slash/CLI/Tools の辞書
+- [公式インストール手順](../03_deployment/03_official-installation.md) 🆕
+
 ---
 
-**最終更新**: 2025-12-31
+**最終更新**: 2026-05-24

@@ -1,4 +1,10 @@
-# 主要アップデート情報
+[ホーム](../README.md) > 機能詳細ガイド
+
+# Kiro CLI 機能詳細ガイド
+
+> 25 機能（既存 21 + v3.1 追加 4: Hooks / Steering / @file references / Auto Complete）の詳細解説。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+
+## 主要アップデート情報
 
 ## 📋 機能概要
 
@@ -25,6 +31,66 @@
 | **[Tool Search機能](19_ToolSearch.md)** | v2.1.0<br/>（2026-04-24） | MCPツールのオンデマンドロード | BM25キーワードマッチング、設定3項目、tool_searchツール |
 | **[Kiro guide agent](20_GuideAgent.md)** | v1.29.7<br/>（2026-04-10） | TUI専用オンボーディング・ヘルプ用組み込みエージェント | /guideコマンド、機能紹介、設定支援 |
 | **[v2.4新コマンド（/rewind, /effort, /settings）](21_v24NewCommands.md)** | v2.4.0<br/>（2026-05-20） | 会話巻き戻し、推論レベル制御、統合設定メニュー | /rewind、/effort（5段階）、/settings（theme/keybindings/terminal）、per-model defaults |
+| **[Smart Hooks](22_Hooks.md)** 🆕 | Q CLI由来<br/>v1.29.6<br/>（2026-04-13公式公開） | エージェントライフサイクルにシェルコマンドを差し込む拡張機構 | 5種類の Hook Types（AgentSpawn/UserPromptSubmit/PreToolUse/PostToolUse/Stop）、Tool Matching、Caching、Timeout |
+| **[Agent Steering](23_Steering.md)** 🆕 | Q CLI由来<br/>v1.20.0継承<br/>（2026-01-08公式公開） | プロジェクト規約・コーディング標準・アーキテクチャパターンを永続化 | 3スコープ（global/project/scoped）、Foundational 3 files、AGENTS.md標準対応、Custom Agents併用 |
+| **[@file references（File References）](24_FileReferences.md)** 🆕 | v1.26.0<br/>（2026-02-12） | チャット入力で `@file` `@directory` を介してファイル/ディレクトリ内容を即時参照 | 解決順序（Prompts→Files→Directories）、Tab補完、Manage Prompts、4アプローチ比較 |
+| **[Auto Complete](25_AutoComplete.md)** 🆕 | Q CLI由来<br/>v2.0.0で再統合<br/>（公式公開 2025-11-16） | ターミナル AI 補完（ドロップダウン + インライン候補） | Autocomplete Dropdown Menu、Inline Suggestions（ghost text）、数百ツール対応、テーマ、ARN カスタマイズ |
+
+
+
+## 🗂️ カテゴリ別ナビゲーション
+
+> ファイル番号は公式の追加順、カテゴリは閲覧用です。同一文書が複数カテゴリに登場する場合があります。
+> 
+> [04_reference/](../04_reference/README.md) は機能文書ではなく **辞書的リファレンス** のため本カテゴリ表には含めません。
+
+### 🚪 入門・オンボーディング
+- [14. Help Agent](14_HelpAgent.md) — Kiro CLI ドキュメントベースの組み込みヘルプ
+- [20. Guide Agent](20_GuideAgent.md) — TUI 専用オンボーディング・ヘルプエージェント
+
+### 🤖 エージェント・自動化
+- [02. Subagents](02_Subagents.md) — 並列 Subagent 実行
+- [03. Plan Agent](03_PlanAgent.md) — 計画立案エージェント
+- [22. Smart Hooks](22_Hooks.md) 🆕 — エージェントライフサイクル拡張
+- [23. Agent Steering](23_Steering.md) 🆕 — 永続的プロジェクト規約注入
+
+### 📁 コンテキスト・知識管理
+- [07. Skills](07_Skills.md) — Progressive Context Loading
+- [10. Conversation Compaction](10_ConversationCompaction.md) — 会話履歴の圧縮
+- [24. @file references](24_FileReferences.md) 🆕 — チャット入力でのファイル/ディレクトリ即時参照
+
+### 📂 ファイル操作・編集
+- [05. Grep / Glob Tools](05_GrepGlob.md) — 高速検索ツール
+- [08. Custom Diff Tools](08_CustomDiffTools.md) — 外部 Diff ツール統合
+- [09. AST Pattern Tools](09_ASTPatternTools.md) — 構文木ベースのリファクタリング
+
+### 🧠 コード理解・LSP
+- [01. LSP（Code Intelligence）](01_LSP.md) — Language Server Protocol 統合
+
+### 💾 セッション・履歴管理
+- [04. Multi-Session](04_MultiSession.md) — 複数セッション管理
+- [21. v2.4 New Commands](21_v24NewCommands.md) — `/rewind`（会話巻き戻し）
+
+### 🎨 UI/UX・補完
+- [18. Terminal UI](18_TerminalUI.md) — V2 TUI、テーマ、Crew Monitor
+- [21. v2.4 New Commands](21_v24NewCommands.md) — `/effort`、`/settings`
+- [25. Auto Complete](25_AutoComplete.md) 🆕 — ドロップダウン + インライン補完
+
+### 🔒 セキュリティ・権限
+- [11. URL Permissions](11_URLPermissions.md) — `web_fetch` の URL 権限細粒度制御
+- [17. Granular Tool Trust](17_GranularToolTrust.md) — Shell 4段階・Read/Write 3段階の信頼スコープ
+
+### 🔌 統合（IDE/MCP/CI/CD/認証）
+- [12. Remote Authentication](12_RemoteAuth.md) — SSH/SSM/コンテナ認証
+- [13. Agent Client Protocol (ACP)](13_ACP.md) — JetBrains/Zed 統合
+- [15. Exit Codes for CI/CD](15_ExitCodes.md) — CI/CD 用構造化終了コード
+- [16. v2 Major Update](16_v2MajorUpdate.md) — Windows 11 / Headless Mode
+- [19. Tool Search](19_ToolSearch.md) — MCP ツールのオンデマンドロード
+
+### 💰 使用量・課金
+- [06. /usage コマンド](06_UsageCommand.md) — 契約プラン・月間使用量
+
+> **🔎 リファレンス（辞書）が必要な時は**: [04_reference/](../04_reference/README.md) を参照（Settings / Slash Commands / CLI Commands / Built-in Tools）
 
 
 
@@ -52,7 +118,29 @@
 - **AST Pattern Tools**で精密なリファクタリング
 - **Remote Authentication**でリモート環境でもフル活用
 
+### セキュア自動化（Hooks × Steering × Tool Trust）🆕
+- **[Smart Hooks](22_Hooks.md)** の `preToolUse` で危険コマンドを実行前にブロック
+- **[Agent Steering](23_Steering.md)** でプロジェクトのセキュリティポリシーを永続化
+- **[Granular Tool Trust](17_GranularToolTrust.md)** で `shell` の信頼スコープを段階指定
+- 3つを組み合わせて **エンタープライズグレードの自動化** を実現
+
+### チーム標準化（Steering × Skills × @file）🆕
+- **[Agent Steering](23_Steering.md)** / **AGENTS.md** でチーム規約をリポジトリにコミット
+- **[Skills](07_Skills.md)** で専門ドキュメントを `.kiro/skills/` に配置（自動オンデマンドロード）
+- **[@file references](24_FileReferences.md)** でメンバーが特定ファイルを即時参照
+- 規約準拠のコード生成と **オンボーディングの劇的短縮**
+
 ## 📈 バージョン別進化
+
+### Q CLI 由来の基礎機能（全バージョン共通）🆕
+
+以下 3 機能は **Amazon Q Developer CLI 時代から継承された基礎機能** で、Kiro CLI でも継続提供されています。Kiro CLI 公式ドキュメントとして再整備されたため、本サイトでも独立した機能文書を提供しています。
+
+- **[Smart Hooks](22_Hooks.md)** — Q CLI v1.13.0 時代から概念存在。Kiro CLI で形式化、v1.29.6 で `/hooks` コマンド追加（公式公開 2026-04-13）
+- **[Agent Steering](23_Steering.md)** — Q CLI 時代から類似機能（context entries）あり。Kiro CLI で **Foundational 3 files / AGENTS.md 標準** に再整備（公式公開 2026-01-08）
+- **[Auto Complete](25_AutoComplete.md)** — Q CLI 時代から提供。Kiro CLI v2.0.0 で **Terminal UI と統合**（公式公開 2025-11-16）
+
+> **📂 Reference（全バージョン横断）**: 設定・スラッシュコマンド・CLI コマンド・ビルトインツールの辞書的リファレンスは [04_reference/](../04_reference/README.md) に集約しています。
 
 ### v1.22.0（2025-12-11）
 - **LSP統合機能**の追加
@@ -217,6 +305,41 @@ sequenceDiagram
     URL->>User: 自動許可
 ```
 
+### シナリオ5: セキュア自動化（Hooks × Steering × Trust）🆕
+```mermaid
+sequenceDiagram
+    participant User as 開発者
+    participant Steer as Steering Files
+    participant Trust as Granular Tool Trust
+    participant Hook as Smart Hooks (preToolUse)
+    participant Tool as ビルトインツール
+
+    User->>Steer: プロジェクト規約を .kiro/steering/ に定義
+    Steer->>User: エージェントが規約を自動読み込み
+    User->>Trust: shell コマンドの信頼スコープを段階指定
+    User->>Hook: preToolUse で危険コマンドを監査・ブロック
+    Tool->>Hook: ツール実行直前に hook 評価
+    Hook-->>Tool: Exit Code 0 で許可、2 でブロック
+    Tool->>User: セキュアな自動化結果
+```
+
+### シナリオ6: チーム標準化（Steering × Skills × @file）🆕
+```mermaid
+sequenceDiagram
+    participant Lead as テックリード
+    participant Steer as Steering / AGENTS.md
+    participant Skills as Skills (.kiro/skills/)
+    participant Member as チームメンバー
+    participant File as @file/@directory
+
+    Lead->>Steer: チーム規約を .kiro/steering/ に定義（コミット）
+    Lead->>Skills: 専門ドキュメントを .kiro/skills/ に配置
+    Member->>Steer: クローン後、エージェントが自動的に規約を理解
+    Member->>File: @src/api.ts をプロンプトに含めて質問
+    Member->>Skills: 必要時にエージェントが Skill をオンデマンドロード
+    Member-->>Lead: 規約準拠のコード生成・PR
+```
+
 ## 🚀 導入効果
 
 ### 開発効率の向上
@@ -338,6 +461,26 @@ sequenceDiagram
     - 会話巻き戻し（/rewind）、推論レベル制御（/effort）
     - 統合設定メニュー（/settings）、per-model defaults
 
+22. **[Smart Hooks](22_Hooks.md)** 🆕
+    - 5 種類の Hook Types（AgentSpawn / UserPromptSubmit / PreToolUse / PostToolUse / Stop）
+    - Tool Matching、Caching、Timeout、MCP 連携
+    - エンタープライズ規約強制とセキュリティ自動化
+
+23. **[Agent Steering](23_Steering.md)** 🆕
+    - 3 スコープ（global / project / scoped）
+    - Foundational 3 files、AGENTS.md 標準（Linux Foundation スチュワード）
+    - Custom Agents との併用ベストプラクティス
+
+24. **[@file references（File References）](24_FileReferences.md)** 🆕
+    - 解決順序（Prompts → Files → Directories）
+    - Tab 補完、Manage Prompts、Context Management
+    - 4 アプローチ比較（@file / Skills / Steering / Knowledge）
+
+25. **[Auto Complete](25_AutoComplete.md)** 🆕
+    - Autocomplete Dropdown Menu（テーマ対応）
+    - Inline Suggestions（gray ghost text）
+    - 数百ツール対応、エンタープライズ ARN カスタマイズ
+
 ## 🔮 今後の展望
 
 Kiro CLIは継続的に進化を続けており、以下の分野での更なる改善が期待されます：
@@ -355,5 +498,6 @@ Kiro CLIは継続的に進化を続けており、以下の分野での更なる
 
 ---
 
-**最終更新**: 2026年05月23日  
-**対象バージョン**: Kiro CLI v2.4.1+
+**最終更新**: 2026年05月24日  
+**対象バージョン**: Kiro CLI v2.4.1+  
+**機能数**: 25（既存21 + Hooks / Steering / @file / Auto Complete）+ Reference集約 ([04_reference/](../04_reference/README.md))
