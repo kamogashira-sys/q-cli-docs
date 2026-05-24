@@ -546,6 +546,21 @@ npx skills add aws/agent-toolkit-for-aws/skills
 - [22. Smart Hooks](22_Hooks.md) — Hook で `call_aws` / `run_script` 等の MCP ツール呼び出しを監査
 - [23. Agent Steering](23_Steering.md) — Kiro CLI Steering（AGENTS.md）と Agent Toolkit Rules files の併用
 
+### 関連 OSS 方法論
+
+- [07. AI-DLC（Kiro CLI で実践する選択肢）](../07_aidlc/README.md) 🚀 — **AWS Labs 公式 OSS（MIT-0）の AI 駆動開発方法論**。Agent Toolkit for AWS とは **補完関係** にあります：
+
+  | 観点 | Agent Toolkit for AWS | AI-DLC Adaptive Workflows |
+  |----|----|----|
+  | **ライセンス** | Apache-2.0 | **MIT-0** |
+  | **対象** | AWS 上での実行（API 呼び出し、ドキュメント取得） | 開発プロセスの方法論（ワークフロー定義） |
+  | **使い方** | MCP Server として接続 | Steering Files として配置 |
+  | **GA 時期** | 2026-05-06 | 未 GA（v0.1.x、活発に更新中） |
+  | **依存** | AWS API + Bedrock（一部） | なし（Markdown ファイルのみ） |
+  | **Kiro CLI 結合度** | 高（MCP 統合） | 低（Steering として独立配置） |
+
+  **併用パターン（推論）**: AI-DLC で開発プロセスを規律化（要件分析 → 設計 → 承認 → コード生成）し、Code Generation / Build and Test ステージで Agent Toolkit for AWS の `call_aws` / `search_documentation` / `read_documentation` / `run_script` を活用することで、プロセスの規律と AWS 操作の安全性を両立できます。詳細は [07. AI-DLC §15-5 ユースケース](../07_aidlc/README.md#15-5-agent-toolkit-for-aws-との併用推論) を参照。
+
 ### リファレンス（辞書）
 
 - [04_reference/01_settings.md](../04_reference/01_settings.md) — MCP 設定（`mcp.json`、`KIRO_HOME`）

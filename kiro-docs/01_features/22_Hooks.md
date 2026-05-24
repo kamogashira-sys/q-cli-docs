@@ -574,6 +574,13 @@ TOOL_NAME=$(echo "$INPUT" | jq -r '.tool_name // empty')
 
 - [26. Agent Toolkit for AWS](26_AgentToolkitForAWS.md) 🌟 — `preToolUse`/`postToolUse` Hook で AWS MCP Server の `call_aws`/`run_script` を監査可能
 
+### 関連ワークフロー方法論（OSS）
+
+- [07. AI-DLC（Kiro CLI で実践する選択肢）](../07_aidlc/README.md) 🚀 — **AWS Labs 公式 OSS（MIT-0）の AI 駆動開発方法論**。AI-DLC の **承認ゲート** と Hooks の連携が可能：
+  - **AIDLC Design Reviewer の Hook 形態**: AI-DLC 公式の `scripts/aidlc-designreview` は CLI と Hook の 2 形態を提供。`post-stage-approval` Hook で 3 つのエージェント（Critique / Alternatives / Gap Analysis）が自動レビュー
+  - **承認ゲート × PreToolUse**: `Wait for Explicit Approval` の前後に PreToolUse Hook を仕込み、追加検証や監査を実施可能
+  - **audit.md との併用**: AI-DLC の audit.md（ISO 8601 タイムスタンプ）と Hook の Exit Code/STDERR の両方で完全な追跡が可能
+
 ### Q CLI 時代との比較
 
 - [Q CLI Agent Hooks 比較ガイド](../../docs/01_for-users/04_best-practices/05_agent-hooks-comparison.md) — Amazon Q Developer CLI 時代の Hooks 機能との差分

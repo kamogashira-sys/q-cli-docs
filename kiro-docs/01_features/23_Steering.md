@@ -583,6 +583,10 @@ mv .kiro/steering/personal-secrets.md ~/.kiro/steering/
 
 - [26. Agent Toolkit for AWS](26_AgentToolkitForAWS.md) 🌟 — Agent Toolkit の **Rules files** は Steering / AGENTS.md と同様のガードレール・優先設定機構（Kiro CLI では Steering 経由で利用可能）
 
+### 関連ワークフロー方法論（OSS）
+
+- [07. AI-DLC（Kiro CLI で実践する選択肢）](../07_aidlc/README.md) 🚀 — **AWS Labs 公式 OSS（MIT-0）の AI 駆動開発方法論**。Steering Files の最も洗練された応用例の一つで、`.kiro/steering/aws-aidlc-rules/core-workflow.md` と `.kiro/aws-aidlc-rule-details/` の二層構造で配置することにより、3 フェーズ × 14 ステージの適応型ワークフローが Kiro CLI から利用可能になります（v0.1.0 から Kiro CLI 公式サポート）。Steering Files の機能を「単なるルール集」ではなく「**プロセス定義ファイル群**」として活用する事例として参考になります。
+
 ### バージョン関連
 
 - [Changelog v1.20.0](../02_update/01_changelog.md) — 「✅ Steering Files（プロジェクト固有設定）」記載のバージョン
