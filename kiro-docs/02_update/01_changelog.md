@@ -43,7 +43,7 @@
   - 詳細: [公式ドキュメント](https://kiro.dev/docs/cli/chat/settings/)
 - 📋 **/changelog**: リリースノートをCLI内で直接表示
 - 🔧 **KIRO_ACP_RECORD_PATH**: TUI ACP wire trafficをJSONLトレースファイルに記録（デバッグ用環境変数）
-- 🔧 **Per-model default settings**: `cli.json`でモデルごとのデフォルト設定を全新規セッションに適用（例: effortレベル）
+- 🔧 **Per-model default settings**: `cli.json`でモデルごとのデフォルト設定を全新規セッションに適用（例: effortレベル）（→ 詳細: [04_reference/01_settings.md](../04_reference/01_settings.md)）
 - 💡 **In-session surveys**: Kiro CLI体験、プラン品質、実装品質を評価するオプションアンケート
 - 🔧 **Current model in agent context**: 現在のモデル名をエージェントコンテキストに含め、スキルやプロンプトがモデルに応じた動作を可能に
 
@@ -80,14 +80,14 @@
 **機能追加（8件）**:
 - 🔧 **OAuth clientId設定**: DCR（Dynamic Client Registration）非対応のHTTP MCPサーバー（Slack, GitHub, Figma等）に接続するための`oauth.clientId`設定を追加
   - 詳細: [公式Agent設定リファレンス](https://kiro.dev/docs/cli/custom-agents/configuration-reference/#oauth-configuration)
-- 🔧 **KIRO_HOME環境変数**: `~/.kiro`ディレクトリの場所をオーバーライドする環境変数を追加。global agents, prompts, skills, steering, settings, sessionsに適用
+- 🔧 **KIRO_HOME環境変数**: `~/.kiro`ディレクトリの場所をオーバーライドする環境変数を追加。global agents, prompts, skills, steering, settings, sessionsに適用（→ 詳細: [04_reference/01_settings.md](../04_reference/01_settings.md)）
   - 用途: 複数マシン間のdotfiles管理、仕事/個人プロファイル分離、コンテナ環境でのKiro状態隔離
   - 詳細: [公式設定リファレンス](https://kiro.dev/docs/cli/reference/settings/#environment-variables)
 - 🔧 **V2 TUIキーバインド設定**: cancel（`chat.keybindings.cancelStream`）、close menu（`chat.keybindings.closeMenu`）、quit（`chat.keybindings.quit`）アクションのキーリマップが可能に
   - 修飾キー: `ctrl+`, `shift+`, `alt+`/`meta+` + 単一キー
   - 詳細: [公式設定リファレンス](https://kiro.dev/docs/cli/reference/settings/#key-bindings-terminal-ui)
   - ※v2.4.0で`/settings keybindings`コマンドから現在のショートカットを確認可能に
-- 📡 **Agent Output Side Channels**: シェルコマンド実行時に`$AGENT_DISPLAY_OUT`（TUI表示のみ）と`$AGENT_CONTEXT_OUT`（ツール結果の`agent_notes`に含まれる）の2つのサイドチャネルを追加
+- 📡 **Agent Output Side Channels**: シェルコマンド実行時に`$AGENT_DISPLAY_OUT`（TUI表示のみ）と`$AGENT_CONTEXT_OUT`（ツール結果の`agent_notes`に含まれる）の2つのサイドチャネルを追加（→ 詳細: [04_reference/04_built-in-tools.md#side-channelsv230](../04_reference/04_built-in-tools.md#side-channelsv230)）
   - 詳細: [公式ビルトインツールリファレンス](https://kiro.dev/docs/cli/reference/built-in-tools/#side-channels-for-wrapper-scripts)
 - ⚙️ **/session-idコマンド**: 現在のチャットセッションIDを表示。`kiro-cli chat --resume-id <ID>`でのセッション再開に使用。終了時にもresume hintを表示
   - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#session-id)
@@ -267,10 +267,10 @@
 - 🔌 **MCP Registry対応**（v1.29.4）: V2 ACPコードパスでのMCPレジストリサポート
 - 🛡️ **`--trust-all-tools`確認**（v1.29.8）: 確認プロンプトと警告を追加
 - 💬 **`/chat new` in TUI**（v1.29.0）: TUI内でCLI再起動なしに新会話開始
-- 🔧 **`/hooks`コマンド**（v1.29.6）: V2 TUIでのフック管理
+- 🔧 **`/hooks`コマンド**（v1.29.6）: V2 TUIでのフック管理（→ 詳細: [01_features/22_Hooks.md](../01_features/22_Hooks.md)）
 
 **新規設定**:
-- `hooks.showStatus`: フックステータスメッセージの抑制（v1.29.0）
+- `hooks.showStatus`: フックステータスメッセージの抑制（v1.29.0）（→ 詳細: [01_features/22_Hooks.md](../01_features/22_Hooks.md)）
 
 **バグ修正（主要なもの）**:
 - YAML frontmatterのCRLF改行対応（v1.29.0）
@@ -330,7 +330,7 @@
   - **read/writeツール**: ファイルパス/ディレクトリ/ツール全体でスコープ指定
   - チェーンされたシェルコマンドの自動処理
 
-- ⚙️ **Session Settings Tool**: セッション内で一時的に設定変更可能
+- ⚙️ **Session Settings Tool**: セッション内で一時的に設定変更可能（→ 詳細: [04_reference/04_built-in-tools.md#sessionsession-settings-tool](../04_reference/04_built-in-tools.md#sessionsession-settings-tool)）
   - モデル選択、機能トグル、動作調整
   - 全セッションオーバーライドはインメモリで、セッション終了時に自動リセット
 
@@ -377,13 +377,13 @@
 ### v1.26.0 CLI（2026-02-12）
 
 **主要な変更**:
-- 📎 **@file/@directory展開**: インラインコンテンツ参照の展開機能
+- 📎 **@file/@directory展開**: インラインコンテンツ参照の展開機能（→ 詳細: [01_features/24_FileReferences.md](../01_features/24_FileReferences.md)）
   - チャット入力で`@file`、`@directory`を使用してファイル/ディレクトリ内容を直接参照
   
 - 🔗 **統合エントリポイント**: `kiro-cli integrations install kiro-command-router`
   - Kiro統合コマンドルーターのインストール
   
-- 📚 **Skills自動読み込み**: `.kiro/skills/`と`~/.kiro/skills/`のSkillsがデフォルトエージェントに自動提供
+- 📚 **Skills自動読み込み**: `.kiro/skills/`と`~/.kiro/skills/`のSkillsがデフォルトエージェントに自動提供（Custom Agents との関係 → [01_features/23_Steering.md](../01_features/23_Steering.md)）
   - Agent設定での明示的な`skill://`指定が不要に
   
 - 🔧 **Shell tool working_dirパラメータ**: cdプレフィックス不要でワーキングディレクトリ指定
@@ -634,7 +634,7 @@
 - 🧠 **Claude Haiku 4.5**: 新モデル対応
 - 🔧 **Agent Mode**: カスタムエージェント機能
 - 🔌 **MCP Support**: Model Context Protocol統合
-- 📝 **Steering Files**: プロジェクト固有の設定管理
+- 📝 **Steering Files**: プロジェクト固有の設定管理（→ 詳細: [01_features/23_Steering.md](../01_features/23_Steering.md)）
 
 **インストール**:
 ```bash
