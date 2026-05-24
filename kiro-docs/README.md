@@ -93,11 +93,13 @@ Kiro CLI の設定・コマンド・ツールの **辞書的リファレンス**
 
 ## 🌟 注目の新機能：Agent Toolkit for AWS（2026-05 GA）
 
-> **AWS が公式に発表した、AI コーディングエージェントが AWS で安全・効果的に動作するためのツールキット。Kiro CLI も公式対応エージェントとして明示されています。**
+> **AWS が公式に発表した、AI コーディングエージェントが AWS で安全・効果的に動作するためのツールキット。**
+>
+> 公式が対応エージェントとして明示しているのは：**Claude Code / Cursor / Codex / Kiro / Windsurf / Cline**（[User Guide](https://docs.aws.amazon.com/agent-toolkit/latest/userguide/what-is-agent-toolkit.html#what-can-i-do-agent-toolkit) より）。さらに [AWS News Blog（2026-05-06）](https://aws.amazon.com/blogs/aws/the-aws-mcp-server-is-now-generally-available) では **「Kiro CLI、Kiro」** が両方明記されています。
 
 ### 📖 詳細ガイド: **[26. Agent Toolkit for AWS（AWS 公式エージェント統合ツールキット）](01_features/26_AgentToolkitForAWS.md)** ⭐
 
-**Agent Toolkit for AWS** は、Kiro CLI / Claude Code / Cursor / Codex などの AI コーディングエージェントが AWS サービス上で **本番グレード** の作業を行うための公式ツールキットです。
+**Agent Toolkit for AWS** は、AI コーディングエージェントが AWS サービス上で **本番グレード** の作業を行うための公式ツールキットです。本サイト（Kiro CLI 専門）では **Kiro CLI からの利用** を主眼に解説します。設定ディレクトリ `~/.kiro/` は Kiro（IDE）と Kiro CLI で共通のため、設定方法も共通です。
 
 ### 🎯 主な提供価値
 
