@@ -130,6 +130,8 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 
 ### `/spawn`
 
+> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+
 メインの会話と並行してタスクを実行する新しいエージェントセッションを起動。
 
 ```bash
@@ -166,6 +168,8 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 
 ### `/session-id`
 
+> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+
 現在のチャットセッション ID を表示。
 
 ```bash
@@ -176,7 +180,7 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 
 ### `/save` / `/load`
 
-`/chat save` / `/chat load` のエイリアス。
+> **⚠️ deprecated（v2.4.1）**: 実機では `⚠ The /save command is deprecated. Use /chat save instead.` / `⚠ The /load command is deprecated. Use /chat load instead.` と警告が表示されます。`/chat save` / `/chat load` を使用してください。
 
 ### `/editor`
 
@@ -235,6 +239,8 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 
 ### `/guide`
 
+> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+
 ドキュメントベースのヘルプとオンボーディング向け Guide Agent に切替。
 
 ```bash
@@ -261,9 +267,11 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 > /knowledge cancel
 ```
 
-**サブコマンド**: `show` / `add` / `search` / `remove`（`rm` 別名） / `update` / `clear` / `cancel`
+**サブコマンド**: `show` / `add` / `search` / `remove`（`rm` 別名） / `update` / `clear` / `cancel` / `fix`
 
 **add オプション**: `--name, -n`（必須）/ `--path, -p`（必須） / `--include` / `--exclude` / `--index-type`（Fast/Best）
+
+> **実機追加確認（v2.4.1）**: `fix` サブコマンド — エージェントファイルパス変更後のナレッジベースディレクトリ名を修正
 
 > **実験的機能**: `kiro-cli settings chat.enableKnowledge true` で有効化
 
@@ -345,15 +353,25 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 
 ### `/mcp`
 
-MCP サーバーとレジストリ状態を表示。
+MCP サーバーとレジストリ状態を表示・管理。
 
 ```bash
-> /mcp
+> /mcp                                # デフォルト: サーバー一覧表示
+> /mcp list                           # 全 MCP サーバー一覧
+> /mcp add                            # レジストリからサーバー追加（管理者設定時のみ）
+> /mcp remove                         # 有効なサーバーを削除（管理者設定時のみ）
 ```
+
+**サブコマンド**（実機検証済み）:
+- `list` — 全 MCP サーバー一覧（レジストリ設定時はレジストリサーバー、それ以外はローカル設定サーバー）
+- `add` — レジストリからサーバー追加（管理者がレジストリ設定済みの場合のみ利用可能）
+- `remove` — 有効なサーバーを削除（管理者がレジストリ設定済みの場合のみ利用可能）
 
 > **MCP ガバナンス**: 組織管理者が無効化している場合、メッセージが表示される（IAM Identity Center および API key ユーザーに適用）。
 
 ### `/theme`
+
+> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
 
 プロンプトと応答テキストのテーマカラーを上書き。
 
@@ -362,6 +380,8 @@ MCP サーバーとレジストリ状態を表示。
 ```
 
 ### `/copy`
+
+> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
 
 直前のアシスタント応答をクリップボードにコピー。
 
@@ -372,6 +392,8 @@ MCP サーバーとレジストリ状態を表示。
 OSC 52 エスケープシーケンス経由で SSH/tmux/Zellij でも動作。100KB 超は無視。
 
 ### `/transcript`
+
+> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
 
 会話のトランスクリプトをページャで開く。
 
@@ -397,7 +419,9 @@ OSC 52 エスケープシーケンス経由で SSH/tmux/Zellij でも動作。10
 > /code logs -p ./lsp-logs.json       # JSON ファイルに出力
 ```
 
-**サブコマンド**: `init` / `overview` / `status` / `logs`
+**サブコマンド**: `init` / `overview` / `status` / `logs` / `summary`
+
+> **実機追加確認（v2.4.1）**: `summary` — エージェント分析による包括的なコードベースドキュメント生成
 
 詳細: [01. LSP](../01_features/01_LSP.md)
 
@@ -414,20 +438,37 @@ OSC 52 エスケープシーケンス経由で SSH/tmux/Zellij でも動作。10
 会話チェックポイントを作成して脇道のトピックを探求。
 
 ```bash
-> /tangent
+> /tangent                            # tangent モード切替（入る/出る）
+> /tangent tail                       # tangent を抜けつつ最後の会話エントリを保持
+> /tangent forget                     # 直近 N 件の会話エントリを履歴から削除
 ```
 
 `Ctrl+T` でも切替可能（有効化時）。
 
+**サブコマンド**（実機検証済み）:
+- `tail` — tangent モードを終了し、最後の会話エントリ（質問 + 応答）を保持
+- `forget` — 直近 N 件の会話エントリを履歴から削除
+
 ### `/todos`
+
+> **出典**: 実機 kiro-cli 2.4.1（2026-05-24 検証）
 
 To-do リストの表示・管理・再開。
 
 ```bash
-> /todo                               # 表示
-> /todo add "Fix authentication bug"  # 追加
-> /todo complete 1                    # 完了
+> /todos clear-finished               # 完了済みリストを削除
+> /todos resume                       # 選択したリストを再開
+> /todos view                         # リストを表示
+> /todos delete                       # リストを削除
 ```
+
+**サブコマンド**（実機検証済み）:
+- `clear-finished` — 完了済み to-do リストを削除
+- `resume` — 選択した to-do リストを再開
+- `view` — to-do リストを表示
+- `delete` — to-do リストを削除
+
+> **注**: to-do リストへの項目追加（`add`）や完了マーク（`complete`）は、スラッシュコマンドではなく **AI ツール（`todo_list`）** 経由で行われます。エージェントがタスク管理時に自動的に使用します。
 
 ### `/issue`
 
@@ -450,6 +491,8 @@ To-do リストの表示・管理・再開。
 
 ### `/settings`
 
+> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+
 テーマ、キーバインド、ターミナル入力、表示設定をインタラクティブに変更（v2.4.0+）。
 
 ```bash
@@ -471,6 +514,8 @@ To-do リストの表示・管理・再開。
 → 詳細: [21. v24NewCommands](../01_features/21_v24NewCommands.md)
 
 ### `/effort`
+
+> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
 
 セッションのモデル推論エフォートレベルを設定（v2.4.0+）。
 
@@ -502,6 +547,8 @@ To-do リストの表示・管理・再開。
 
 ### `/rewind`
 
+> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+
 会話を過去のターンで分岐し別のパスを探求（v2.4.0+）。
 
 ```bash
@@ -522,6 +569,30 @@ To-do リストの表示・管理・再開。
 
 ```bash
 > /changelog
+```
+
+### `/feedback`
+
+> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+
+> **出典**: introspect 組み込みドキュメント（2026-04-08 検証）。公式ページ（kiro.dev/docs/cli/、2026-05-19）には記載なし。
+
+フィードバック送信、機能リクエスト、Issue 報告。
+
+```bash
+> /feedback
+```
+
+### `/stats`
+
+> **⚠️ TUI v2 専用**: このコマンドは TUI モード（デフォルト）でのみ利用可能です。Legacy UI（`--legacy-ui`）では `unrecognized subcommand` エラーになります。
+
+> **出典**: introspect 組み込みドキュメント（2026-05-05 検証）。公式ページ（kiro.dev/docs/cli/、2026-05-19）には記載なし。
+
+リクエスト ID とタイミング情報を表示（デバッグ用）。
+
+```bash
+> /stats
 ```
 
 ---
