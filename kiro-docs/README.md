@@ -24,10 +24,11 @@ kiro-docs/
 ├── 01_features/      # 機能詳細ガイド（26機能）
 ├── 02_update/        # アップデート情報
 ├── 03_deployment/    # デプロイメント・環境構築
-└── 04_reference/     # リファレンス（Settings/Slash/CLI/Tools）🆕
+├── 04_reference/     # リファレンス（Settings/Slash/CLI/Tools）
+└── 07_aidlc/         # AI-DLC（Kiro CLI で実践する選択肢）🆕
 ```
 
-**クイックリンク**: [00_information/](00_information/) | [01_features/](01_features/) | [02_update/](02_update/) | [03_deployment/](03_deployment/) | [04_reference/](04_reference/) 🆕
+**クイックリンク**: [00_information/](00_information/) | [01_features/](01_features/) | [02_update/](02_update/) | [03_deployment/](03_deployment/) | [04_reference/](04_reference/) | [07_aidlc/](07_aidlc/) 🆕
 
 ## 📚 主要ドキュメント
 
@@ -133,6 +134,70 @@ kiro-cli chat
 - [Agent Toolkit for AWS - User Guide](https://docs.aws.amazon.com/agent-toolkit/latest/userguide/what-is-agent-toolkit.html)
 - [GitHub: aws/agent-toolkit-for-aws](https://github.com/aws/agent-toolkit-for-aws)
 - [The AWS MCP Server is now generally available（2026-05-06 AWS News Blog）](https://aws.amazon.com/blogs/aws/the-aws-mcp-server-is-now-generally-available)
+
+---
+
+## 🚀 注目のオープンソース：AI-DLC Adaptive Workflows（2025-11 OSS 化）
+
+> **AWS Labs が公開する AI 駆動開発のための Adaptive Workflows 方法論。**
+>
+> Kiro CLI とは独立した OSS（**MIT-0** ライセンス）ですが、**v0.1.0（2026-01-22）から Kiro CLI を公式サポート** しており、Steering Files として配置することで Kiro CLI から利用できます。
+
+### 📖 詳細ガイド: **[07. AI-DLC（Kiro CLI で実践する選択肢）](07_aidlc/README.md)** ⭐
+
+**AI-DLC（AI-Driven Development Life Cycle）** は、AI モデルへの「指示書」として Markdown ファイル群（26 ファイル）で構成される **適応型ワークフロー方法論** です。50 年分の SDLC 知見を AI 駆動の文脈で再構成し、**3 フェーズ（Inception / Construction / Operations）× 14 ステージ** で開発プロセスを規律化します。
+
+### 🎯 主な特徴
+
+| 特徴 | 内容 |
+|------|------|
+| 🧭 **適応型ワークフロー** | "The workflow adapts to the work, not the other way around." — プロジェクトの複雑さに応じてステージと深度が動的調整 |
+| 👥 **Human in the Loop** | ほぼすべての 12+ ステージで明示的な人間承認が必須、**NO EMERGENT BEHAVIOR** で AI の自律的判断を制約 |
+| 📋 **完全な監査証跡** | `audit.md` に **ISO 8601 タイムスタンプ** で全インタラクションを追記専用で記録（要約禁止） |
+| 🔌 **IDE 非依存** | Kiro / **Kiro CLI** / Amazon Q Developer CLI / Claude Code / GitHub Copilot / Cursor / Cline / Codex |
+| 🆓 **MIT-0 ライセンス** | 著作権表示の保持義務もなく、最も寛容なライセンス（Agent Toolkit の Apache-2.0 とは異なる） |
+| 🔧 **二層構造で拡張可能** | ベースレイヤー（変更不可）+ 拡張レイヤー（自由）で組織独自カスタマイズが可能 |
+
+### ⚡ Kiro CLI でのクイックスタート（macOS/Linux）
+
+```bash
+# 1. 最新リリース zip を取得（v0.1.8 以降）
+curl -L -o aidlc-rules.zip \
+  https://github.com/awslabs/aidlc-workflows/releases/latest/download/aidlc-rules.zip
+unzip -d aidlc-rules aidlc-rules.zip
+
+# 2. ステアリングファイルとして配置
+mkdir -p .kiro/steering
+cp -R aidlc-rules/aws-aidlc-rules .kiro/steering/
+cp -R aidlc-rules/aws-aidlc-rule-details .kiro/
+
+# 3. Kiro CLI で確認
+kiro-cli
+> /context show     # .kiro/steering/aws-aidlc-rules が表示されることを確認
+
+# 4. 開発開始
+> Using AI-DLC, let's build a web application to ...
+```
+
+### 🔍 詳細を読む
+
+→ **[07_aidlc/README.md](07_aidlc/README.md)** で以下を網羅：
+- AI-DLC の中核思想（Adaptive Workflow Principle / 5 Tenets / 8 Key Principles / 4 MANDATORY ルール）
+- ワークフロー全体像（公式 Mermaid + 26 ファイル構造）
+- 3 フェーズ詳細（Inception 7 ステージ / Construction Per-Unit Loop / Operations プレースホルダー）
+- 6 つの仕組み（Adaptive Depth / 承認ゲート / 質問ファイル方式 / Overconfidence Prevention / Smart Context Loading / 監査証跡）
+- 既存手法との比較（IEEE 830 / DDD / Well-Architected / GitOps 等、5 領域）
+- Extensions（オプトイン式 + 二層構造でのカスタマイズ）
+- 補助ツール（AIDLC Evaluator / AIDLC Design Reviewer）
+- ユースケース 5 件（Greenfield / Brownfield / Bug Fix / Complex Feature / Agent Toolkit 併用）
+
+### 📌 公式情報源
+
+- [GitHub: awslabs/aidlc-workflows](https://github.com/awslabs/aidlc-workflows) — リポジトリ本体
+- [AI 駆動開発ライフサイクル: ソフトウェアエンジニアリングの再構築 - AWS Blog (2025-07-31)](https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/) — 方法論基盤
+- [Open sourcing adaptive workflows for AI-DLC - AWS Blog (2025-11-29)](https://aws.amazon.com/blogs/devops/open-sourcing-adaptive-workflows-for-ai-driven-development-life-cycle-ai-dlc/) — OSS 化発表
+- [Building with AI-DLC using Amazon Q Developer - AWS Blog (2025-11-29)](https://aws.amazon.com/blogs/devops/building-with-ai-dlc-using-amazon-q-developer/) — 実践ウォークスルー
+- [AI-DLC Method Definition Paper](https://prod.d13rzhkk8cj2z0.amplifyapp.com/) — 方法論の定義書
 
 ---
 
