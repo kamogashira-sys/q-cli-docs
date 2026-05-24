@@ -1009,6 +1009,13 @@ Skillは以下の2つの方法で起動できます:
 - [22. Smart Hooks](22_Hooks.md) 🆕 — Skills のロード/アンロードを Hook で観測可能
 - [10. Conversation Compaction](10_ConversationCompaction.md) — Skills と組み合わせた長時間セッション
 
+### 関連 OSS Skills
+
+- [08. cdk-skills（CDK 開発支援 Skills 集）](../08_cdk-skills/README.md) 🛠️ — **AWS DevTools Hero（go-to-k 後藤さん）が公開する CDK 開発支援 Skills 集（MIT）**。本機能（Skills 自動読み込み、v1.26.0+）の **応用例として最も具体的** で、AI コーディングエージェントが AWS CDK 単体テストの「**どの場面でどれを書くべきか / 書かなくて良いか**」を判断できるようにします。
+  - **収録 Skill**: `aws-cdk-unit-testing`（スナップショット / Fine-grained / バリデーションの 3 種類の使い分けを判断フロー化）
+  - **配置先**: `~/.kiro/skills/aws-cdk-unit-testing/SKILL.md`（本機能の Glob パターン `**/SKILL.md` に準拠）
+  - **インストール**: `gh skill install go-to-k/cdk-skills aws-cdk-unit-testing` または `npx skills add` または手動配置（公式仕様準拠）
+
 ### リファレンス（辞書）
 - [04_reference/01_settings.md](../04_reference/01_settings.md) — `chat.skillsPath`、`knowledge.*` 設定
 - [04_reference/04_built-in-tools.md](../04_reference/04_built-in-tools.md) — `knowledge` ツールの詳細

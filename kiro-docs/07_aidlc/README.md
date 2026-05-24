@@ -1474,6 +1474,7 @@ kiro-cli
 - [23. Agent Steering](../01_features/23_Steering.md) — Steering Files の基本機能（AI-DLC はその応用）
 - [13. Agent Client Protocol (ACP)](../01_features/13_ACP.md) — IDE 統合の文脈
 - [26. Agent Toolkit for AWS](../01_features/26_AgentToolkitForAWS.md) — 補完関係にある AWS 公式 OSS
+- [08. cdk-skills（CDK 開発支援 Skills 集）](../08_cdk-skills/README.md) 🛠️ — **AWS DevTools Hero（go-to-k 後藤さん）が公開する CDK 開発支援 Skills 集（MIT）**。AI-DLC の **Construction フェーズ**（特に Code Generation / Build and Test ステージ）で生成された CDK コードに対し、cdk-skills の判断フローで適切な単体テスト（スナップショット / Fine-grained / バリデーション）を生成する併用パターンが考えられます。両者は独立して動作し、Steering Files（AI-DLC）と Skills（cdk-skills）として併用可能です（**この併用は公式に明示されておらず、補完関係から導出される推論**）。
 
 ### リファレンス（辞書）
 
