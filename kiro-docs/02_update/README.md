@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.4.1（最新版）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.4.2（最新版）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,7 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.4.2** | 2026-05-26 | Windowsクラッシュ修正 | koffi/createRequire起因のWindows端末入力クラッシュ修正 |
 | **v2.4.1** | 2026-05-21 | MCP環境変数修正 | ${VAR_NAME}環境変数展開の修正 |
 | **v2.4.0** | 2026-05-20 | /rewind・/effort・/settings | 会話巻き戻し、推論レベル制御、統合設定メニュー、88%高速化 |
 | **v2.3.0** | 2026-05-12 | MCP OAuth・KIRO_HOME・Keybindings | OAuth clientId設定、KIRO_HOME環境変数、V2 TUIキーバインド設定、Agent Output Side Channels |
@@ -167,6 +168,8 @@ timeline
                    : Workspace初期化88%高速化
         2026-05-21 : v2.4.1
                    : ${VAR_NAME}展開修正
+        2026-05-26 : v2.4.2
+                   : Windowsクラッシュ修正
 ```
 
 ## 🔗 移行情報
@@ -247,5 +250,5 @@ timeline
 
 ---
 
-**最終更新**: 2026年5月24日  
-**対象バージョン**: Kiro CLI v2.4.1
+**最終更新**: 2026年5月28日  
+**対象バージョン**: Kiro CLI v2.4.2

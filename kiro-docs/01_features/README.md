@@ -508,6 +508,6 @@ Kiro CLIは継続的に進化を続けており、以下の分野での更なる
 
 ---
 
-**最終更新**: 2026年05月24日  
-**対象バージョン**: Kiro CLI v2.4.1+  
+**最終更新**: 2026年05月28日  
+**対象バージョン**: Kiro CLI v2.4.2+  
 **機能数**: 26（既存21 + Hooks / Steering / @file / Auto Complete + Agent Toolkit for AWS）+ Reference集約 ([04_reference/](../04_reference/README.md))
