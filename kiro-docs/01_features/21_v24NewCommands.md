@@ -231,6 +231,24 @@ kiro-cli chat
 
 ---
 
+## v2.5.0 / v2.6.0 での進化
+
+v2.4.0で追加されたこれらのコマンドは、後続バージョンで以下のように拡張されました。
+
+### /effort の拡張（v2.6.0）
+- **`--effort` 起動フラグ**: `kiro-cli chat --effort <level>` でセッション起動時に初期 effort レベル（low/medium/high/xhigh/max）を指定可能に
+- **自動永続化**: `/effort` の選択が自動保存され、将来のセッションに引き継がれるようになりました（`set-current-as-default` 相当の手動操作は不要）
+- 詳細: [28. v2.6 新コマンド](28_v26NewCommands.md)
+
+### /settings の拡張（v2.5.0）
+- **`/settings display` に Show thinking 追加**: エージェントの推論をリアルタイム表示する Thinking Display（既定有効）をトグル（設定キー `chat.showThinking`）
+- **`/settings history` サブコマンド追加**: プロンプト履歴のスコープを `session`（既定）/`global` で切替（設定キー `chat.historyMode`）
+- 詳細: [27. Thinking Display](27_ThinkingDisplay.md)
+
+> モデル選択の永続化（`/model`）も v2.6.0で自動化されました。詳細は [28. v2.6 新コマンド](28_v26NewCommands.md) を参照。
+
+---
+
 ## 関連リンク
 
 - [/rewind 公式ドキュメント](https://kiro.dev/docs/cli/chat/rewind/)

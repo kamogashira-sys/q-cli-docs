@@ -2,7 +2,7 @@
 
 # Kiro CLI Slash Commands リファレンス
 
-**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/slash-commands/)（公式ページ最終更新: 2026-05-19）
+**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/slash-commands/)（公式ページ最終更新: 2026-06-05）
 
 Kiro CLI のインタラクティブチャットセッション内で使用できるすべてのスラッシュコマンドを網羅する辞書的リファレンスです。
 
@@ -37,7 +37,7 @@ kiro chat
 
 ## スラッシュコマンド一覧
 
-公式ページに記載されている全コマンド（公式更新日: 2026-05-19 時点）。
+公式ページに記載されている全コマンド（公式更新日: 2026-06-05 時点）。
 
 ### `/help`
 
@@ -95,8 +95,10 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 > /model                               # 対話的ピッカー
 > /model claude-opus-4.6              # 直接指定
 > /model clau<Tab>                    # Tab 補完
-> /model set-current-as-default       # 現在のモデルをデフォルト保存
+> /model set-current-as-default       # 現在のモデルをデフォルト保存（v2.6.0で不要に）
 ```
+
+> **自動永続化（v2.6.0+）**: `/model` の選択は自動的に保存され、将来のセッションに引き継がれます。`/model set-current-as-default` を手動実行する必要はなくなりました（[永続化の詳細](https://kiro.dev/docs/cli/chat/settings/#persistence)）。
 
 **特徴**:
 - Tab 補完（API から取得した利用可能モデル）
@@ -262,7 +264,8 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 > /knowledge add --name api --path ./api --index-type Best
 > /knowledge search "authentication flow"
 > /knowledge remove ./docs
-> /knowledge update ./docs
+> /knowledge update ./docs            # 単一エントリを再インデックス
+> /knowledge update                   # 全ナレッジベースを一括再インデックス（v2.6.0+）
 > /knowledge clear
 > /knowledge cancel
 ```
@@ -270,6 +273,8 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 **サブコマンド**: `show` / `add` / `search` / `remove`（`rm` 別名） / `update` / `clear` / `cancel` / `fix`
 
 **add オプション**: `--name, -n`（必須）/ `--path, -p`（必須） / `--include` / `--exclude` / `--index-type`（Fast/Best）
+
+> **v2.6.0+**: `update` を引数なしで実行すると、全ナレッジベースを一括で再インデックスします。
 
 > **実機追加確認（v2.4.1）**: `fix` サブコマンド — エージェントファイルパス変更後のナレッジベースディレクトリ名を修正
 
@@ -391,17 +396,49 @@ MCP サーバーとレジストリ状態を表示・管理。
 
 OSC 52 エスケープシーケンス経由で SSH/tmux/Zellij でも動作。100KB 超は無視。
 
+### `/title`
+
+> **追加バージョン**: v2.6.0。ターミナルタイトル機能が有効な場合に利用可能。
+
+ターミナルウィンドウタイトルを設定・クリア・表示（v2.6.0+）。タイトルは `kiro: <text>` の形式で表示される。
+
+```bash
+> /title                              # 現在のタイトルを表示
+> /title weekly standup notes         # カスタムタイトルを設定（sticky）
+> /title --clear                      # カスタムタイトルをクリア
+```
+
+**特徴**:
+- タイトルはセッショントピックまたはワークスペースパスから自動導出
+- 手動設定したタイトルは sticky（`--clear` まで保持）
+- 60 文字で truncate。OSC 0 エスケープシーケンスを使用（無視する端末あり）。tmux は `set-titles on` が必要
+- **有効化**: `/settings display` → Terminal title（無効時は `/title` が有効化方法を案内）
+
+> **注**: ターミナルタイトルは `/settings display` でトグルする機能で、CLI 設定（`kiro-cli settings`）としては提供されない（公式設定リファレンス準拠）。
+
 ### `/transcript`
 
 > **V2 TUI で追加**: このコマンドは V2 TUI モード（v2.0.0+ デフォルト）で追加されました。macOS・Windows（PowerShell）・Linux で動作します。Legacy UI（`--legacy-ui`）では利用できません。
 
-会話のトランスクリプトをページャで開く。
+会話のトランスクリプトをページャで開く、またはファイルへエクスポート（`save` は v2.6.0+）。
 
 ```bash
-> /transcript
+> /transcript                         # ページャで開く
+> /transcript --plain                 # プレーンテキストでレンダリング
+> /transcript --json                  # JSON でレンダリング
+> /transcript save conversation.md    # ファイルへエクスポート（既定: Markdown）
+> /transcript save conversation.txt --plain   # プレーンテキストでエクスポート
+> /transcript save conversation.json --json   # JSON でエクスポート
 ```
 
-`$PAGER`（既定: `less`、Windows: `notepad`）で開く。`q` で終了。`Ctrl+T` でも起動可能。
+`$PAGER`（既定: `less`、Windows: `notepad`）で開く。`q` で終了。`Ctrl+T` でも起動可能。v2.6.0以降はページャを最下部で開き、最新メッセージを先頭表示。
+
+**サブコマンド**:
+- `save` — 会話を Markdown（既定）/ プレーンテキスト / JSON でファイルにエクスポート（v2.6.0+）
+
+**フォーマットフラグ**: `--plain`（プレーンテキスト）/ `--json`（JSON）。形式はファイル拡張子ではなくフラグで決定。
+
+→ 詳細: [28. v26NewCommands](../01_features/28_v26NewCommands.md)
 
 ### `/code`
 
@@ -501,17 +538,20 @@ To-do リストの表示・管理・再開。
 > /settings keybindings               # キーボードショートカット
 > /settings terminal                  # マルチライン入力
 > /settings display                   # 表示オプション
+> /settings history                   # プロンプト履歴のスコープ（v2.5.0+）
 ```
 
 **サブコマンド**:
 - `theme` — プロンプトと応答色を live preview でカスタマイズ
 - `keybindings` — 設定可能なキーボードショートカットを表示（読み取り専用）
 - `terminal` — `Shift+Enter`/`Option+Enter` のマルチライン入力（VS Code、Alacritty、Zed、Apple Terminal 等を自動設定）
-- `display` — アニメーション、ASCII アート、アイコン表示を切替
+- `display` — アニメーション、ASCII アート、アイコン表示、**Show thinking（推論のリアルタイム表示、v2.5.0+）**、Terminal title（端末タイトル、v2.6.0+）を切替
+- `history` — プロンプト履歴のスコープを `session`（既定）/ `global` で切替（v2.5.0+、設定キー `chat.historyMode`）
 
 > `terminal` サブコマンドはターミナル設定ファイル変更前に `.bak` を作成。
+> アニメーション/ASCII/アイコンは即時反映。Show thinking と history は次回セッションから反映。
 
-→ 詳細: [21. v24NewCommands](../01_features/21_v24NewCommands.md)
+→ 詳細: [21. v24NewCommands](../01_features/21_v24NewCommands.md)、[27. Thinking Display](../01_features/27_ThinkingDisplay.md)
 
 ### `/effort`
 
@@ -528,6 +568,10 @@ To-do リストの表示・管理・再開。
 **レベル**: `low` / `medium` / `high` / `xhigh` / `max`
 
 利用可能レベルはアクティブモデルに依存。高いレベルほどトークン消費は増えますが、複雑なタスクへの応答は徹底的になります。
+
+> **起動時指定（v2.6.0+）**: `kiro-cli chat --effort <level>` でセッション起動時に初期 effort レベルを指定できます。
+>
+> **自動永続化（v2.6.0+）**: `/effort` の選択は自動的に保存され、将来のセッションに引き継がれます（`set-current-as-default` 相当の手動操作は不要）。
 
 **永続的なデフォルト設定**:
 ```json
@@ -638,7 +682,7 @@ To-do リストの表示・管理・再開。
 | `Alt+Backspace` | 直前の単語削除 |
 | `Shift+Enter` | 改行挿入（iTerm2、Ghostty、Kitty、Warp、Zed） |
 | `Shift+Tab` | プランモードに入る |
-| `Up`/`Down` | コマンド履歴ナビゲーション |
+| `Up`/`Down` | コマンド履歴ナビゲーション（v2.5.0+ 既定でセッション単位。`/settings history` で global に切替可） |
 | `Tab` | 承認オプション展開 / ファイル参照自動補完 |
 | `Esc` | パネルを閉じる、エージェント実行キャンセル、プロンプトキューをクリア |
 
@@ -667,9 +711,9 @@ To-do リストの表示・管理・再開。
 
 ### 公式情報源
 
-- [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/slash-commands/)（公式ページ最終更新: 2026-05-19）
+- [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/slash-commands/)（公式ページ最終更新: 2026-06-05）
 
 ---
 
 **Page updated**: 2026-05-24（本サイト初版）  
-**公式ページ最終更新**: 2026-05-19
+**公式ページ最終更新**: 2026-06-05
