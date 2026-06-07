@@ -2,7 +2,7 @@
 
 # Kiro CLI 機能詳細ガイド
 
-> 26 機能（既存 21 + v3.1 追加 4: Hooks / Steering / @file references / Auto Complete + Phase 6: Agent Toolkit for AWS）の詳細解説。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+> 28 機能（既存 21 + v3.1 追加 4: Hooks / Steering / @file references / Auto Complete + Phase 6: Agent Toolkit for AWS + v2.5.0: Thinking Display + v2.6.0: v2.6 新コマンド）の詳細解説。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
 
 ## 主要アップデート情報
 
@@ -36,6 +36,8 @@
 | **[@file references（File References）](24_FileReferences.md)** 🆕 | v1.26.0<br/>（2026-02-12） | チャット入力で `@file` `@directory` を介してファイル/ディレクトリ内容を即時参照 | 解決順序（Prompts→Files→Directories）、Tab補完、Manage Prompts、4アプローチ比較 |
 | **[Auto Complete](25_AutoComplete.md)** 🆕 | Q CLI由来<br/>v2.0.0で再統合<br/>（公式公開 2025-11-16） | ターミナル AI 補完（ドロップダウン + インライン候補） | Autocomplete Dropdown Menu、Inline Suggestions（ghost text）、数百ツール対応、テーマ、ARN カスタマイズ |
 | **[Agent Toolkit for AWS](26_AgentToolkitForAWS.md)** 🌟 | 2026-05-06 GA<br/>（AWS 公式製品） | AI エージェントが AWS で安全・効果的に動作するための公式ツールキット | 4 コンポーネント（MCP Server/Skills/Plugins/Rules files）、主要4ツール（call_aws/search_documentation/read_documentation/run_script）、IAM コンテキストキー、CloudWatch メトリクス、AWS Labs MCP 後継 |
+| **[Thinking Display（推論のリアルタイム表示）](27_ThinkingDisplay.md)** 🆕 | v2.5.0<br/>（2026-05-29） | エージェントの推論プロセスをリアルタイム表示（既定有効） | chat.showThinking（既定 true）、/settings display > Show thinking、Adaptive Thinking との違い |
+| **[v2.6新コマンド（/transcript save, /title, --effort）](28_v26NewCommands.md)** 🆕 | v2.6.0<br/>（2026-06-05） | 会話エクスポート・端末タイトル・起動時effort・設定の自動永続化 | /transcript save（md/plain/json）、/title、--effort 起動フラグ、/model・/effort 自動永続化、/knowledge update（全KB一括） |
 
 
 
@@ -76,6 +78,8 @@
 - [18. Terminal UI](18_TerminalUI.md) — V2 TUI、テーマ、Crew Monitor
 - [21. v2.4 New Commands](21_v24NewCommands.md) — `/effort`、`/settings`
 - [25. Auto Complete](25_AutoComplete.md) 🆕 — ドロップダウン + インライン補完
+- [27. Thinking Display](27_ThinkingDisplay.md) 🆕 — 推論のリアルタイム表示（v2.5.0）
+- [28. v2.6 New Commands](28_v26NewCommands.md) 🆕 — `/transcript save`・`/title`・`--effort`・自動永続化（v2.6.0）
 
 ### 🔒 セキュリティ・権限
 - [11. URL Permissions](11_URLPermissions.md) — `web_fetch` の URL 権限細粒度制御
@@ -234,6 +238,24 @@
 - **Agent Output Side Channels**: `$AGENT_DISPLAY_OUT`/`$AGENT_CONTEXT_OUT`による出力分離
 - **/session-idコマンド**: セッションID表示・resume hint
 - **LSP file_patterns**: ファイル名グロブマッチングによるLSP言語設定拡張
+
+### v2.4.0 / v2.4.1 / v2.4.2（2026-05-20 〜 05-26）
+- **/rewind・/effort・/settings**（v2.4.0）: 会話巻き戻し、推論レベル5段階制御、統合設定メニュー、Workspace初期化88%高速化
+- **MCP環境変数展開修正**（v2.4.1）: `${VAR_NAME}` 構文の認識不具合を修正
+- **Windowsクラッシュ修正**（v2.4.2）: koffi/createRequire 起因の端末入力クラッシュを修正
+
+### v2.5.0 / v2.5.1（2026-05-29 / 06-01）
+- **Thinking Display**（v2.5.0）: エージェントの推論をリアルタイム表示（既定有効、`chat.showThinking`）
+- **Subagent Review Loops**（v2.5.0）: reviewer→implementer の自動差し戻しによる自己修正パイプライン
+- **/settings display・history**（v2.5.0）: 表示トグル（animations/ASCII/icons/Show thinking）と履歴スコープ設定（`chat.historyMode`）
+- **APIエンドポイント移行**（v2.5.1）: `*.kiro.dev` へ移行（firewall 許可リスト要確認）
+
+### v2.6.0（2026-06-05）
+- **/transcript save**: 会話を Markdown/プレーンテキスト/JSON でエクスポート
+- **/title**: ターミナルウィンドウタイトルの設定・クリア・表示
+- **--effort 起動フラグ**: `kiro-cli chat --effort <level>` で初期推論レベルを指定
+- **/model・/effort 自動永続化**: 選択が自動保存され `set-current-as-default` が不要に
+- **/knowledge update（引数なし）**: 全ナレッジベースを一括再インデックス
 
 ## 🎯 使用シナリオ例
 
@@ -508,6 +530,6 @@ Kiro CLIは継続的に進化を続けており、以下の分野での更なる
 
 ---
 
-**最終更新**: 2026年05月28日  
-**対象バージョン**: Kiro CLI v2.4.2+  
-**機能数**: 26（既存21 + Hooks / Steering / @file / Auto Complete + Agent Toolkit for AWS）+ Reference集約 ([04_reference/](../04_reference/README.md))
+**最終更新**: 2026年06月07日  
+**対象バージョン**: Kiro CLI v2.6.0+  
+**機能数**: 28（既存21 + Hooks / Steering / @file / Auto Complete + Agent Toolkit for AWS + Thinking Display + v2.6 新コマンド）+ Reference集約 ([04_reference/](../04_reference/README.md))

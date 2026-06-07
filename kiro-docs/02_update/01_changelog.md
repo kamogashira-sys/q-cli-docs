@@ -13,6 +13,101 @@
 
 ## 最新バージョン
 
+### v2.6.0 CLI（2026-06-05）
+
+**主要な変更**:
+
+**機能追加（4件）**:
+- 📋 **/transcript save**: 会話を Markdown / プレーンテキスト / JSON でエクスポート
+  - `/transcript save conversation.md`（既定 Markdown）、`--plain`（テキスト）、`--json`（JSON）
+  - `--plain`/`--json` はページャ内の表示形式もインライン切替。形式はファイル拡張子ではなくフラグで決定
+  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#transcript)
+- 🪟 **/title**: ターミナルウィンドウタイトルの設定・クリア・表示（表示形式 `kiro: <text>`）
+  - セッショントピックまたはワークスペースパスから自動導出。手動設定は sticky（`--clear` まで保持）。60文字で truncate
+  - 有効化: `/settings display` → Terminal title（OSC 0 使用。tmux は `set-titles on` が必要）
+  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#title)
+- 🧠 **--effort フラグ**: `kiro-cli chat` 起動時に初期 effort レベル（low/medium/high/xhigh/max）を指定
+- 🔧 **/knowledge update（引数なし）**: 全ナレッジベースを一括再インデックス（従来の `/knowledge update <path>` は単一エントリ）
+
+**改善（4件）**:
+- ⚙️ **/model・/effort の自動永続化**: 選択が自動保存され、`/model set-current-as-default` が不要に（[永続化の詳細](https://kiro.dev/docs/cli/chat/settings/#persistence)）
+- 💡 URL をハイパーリンク化し、行折返しをまたいでもクリック可能に
+- 🎨 `/settings display` パネルが Enter で完全に閉じる、フッターヒント更新
+- 💡 `/transcript` がページャを最下部で開き、最新メッセージを先頭表示
+
+**バグ修正（10件、主なもの）**:
+- 🔧 `/code init` が必須言語サーバーの PATH 不在を警告
+- 🔧 V2 agent のディレクトリ一覧が `.git`/`node_modules`/build ディレクトリを既定除外
+- 🔒 `toolsSettings.web_fetch.trusted`/`.blocked` の URL パターンが V2 モードで適用
+- 🧠 `/effort`・`--effort` が `reasoning.effort` 配下のモデルに適用
+- 💡 Markdown のコードブロック・blockquote が設定 wrap モードを尊重
+- 🔧 `mcp.json` の env/header/timeout オーバーライドが registry 型 MCP に反映
+- 🔧 `mcp.json` 定義の MCP サーバーが registry 有効時に registry 管理サーバーと併存ロード
+- 💡 プロンプト起動後の Tab パス補完が機能
+- 🎨 tmux/zellij でオートコンプリートメニュー表示時の二重カーソルを修正
+- 🔧 リトライ後の空レスポンスをエラーとして表示
+
+**注記**:
+- CLI内蔵changelogの日付（2026-06-04）と公式サイト表示日（2026-06-05）に差異あり。公式サイト表示日を採用。
+- CLI内蔵changelogは `/title` 有効化に `chat.terminalTitle` 設定を挙げているが、公式設定リファレンス（更新 2026-06-05）は「terminal title は `/settings display` → Terminal title でトグルし、CLI 設定としては提供されない」と明記。本サイトは公式リファレンスに従う。
+
+**出典**: `kiro-cli version --changelog=all`、[公式Changelog v2.6](https://kiro.dev/changelog/cli/2-6/)、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)
+
+---
+
+### v2.5.1 CLI（2026-06-01）
+
+**主要な変更**:
+
+**改善（1件）**:
+- 📡 **APIエンドポイントを `*.kiro.dev` へ移行**: アウトバウンド通信を制限している環境では、許可リストに必要なドメインを追加する必要があります（[ファイアウォール設定ガイド](https://kiro.dev/docs/privacy-and-security/firewalls/)）
+
+**出典**: `kiro-cli version --changelog=all`、[公式Changelog v2.5](https://kiro.dev/changelog/cli/2-5/)（`#patch-2-5-1`）
+
+---
+
+### v2.5.0 CLI（2026-05-29）
+
+**主要な変更**:
+
+**機能追加（4件）**:
+- 🧠 **Thinking display（推論のリアルタイム表示）**: エージェントの推論プロセスをリアルタイムで表示。**既定で有効**
+  - `/settings` > Display > Show thinking でトグル（変更は次回チャットセッションから反映）
+  - 設定キー `chat.showThinking`（boolean、既定 `true`、起動時のみ反映）
+  - ※v2.2.0 の Adaptive Thinking（マルチターンでの推論「保持」）とは別機能（こちらは推論の「表示」）
+  - 詳細: [27. Thinking Display](../01_features/27_ThinkingDisplay.md)
+- 🔄 **Subagent pipelines の review loops**: reviewer ステージが implementer に作業を差し戻し、基準を満たすまで自動でループ。自己修正型のマルチエージェントワークフローを実現
+  - 詳細: [02. Subagents](../01_features/02_Subagents.md)
+- 📋 **Prompt history がセッション単位に（既定）**: Up/Down 矢印の履歴がセッションごとに分離。`/settings` → history で session/global を切替
+  - 設定キー `chat.historyMode`（`session`(既定)/`global`、次セッションから反映）
+- 🎨 **/settings display**: animations / ASCII art / icons を即時トグル
+
+**改善（8件、主なもの）**:
+- ⚡ ストリーミング中のメッセージ・シェル出力レンダリング高速化（増分更新）
+- 🔧 MCP ツールコールサマリーが全パラメータ表示（4個切り詰めを廃止）
+- 🔧 メニューのスクリーンリーダー対応（`/model` が現行モデルを `[active]` 表示）
+- 💡 What's New ポップアップが既定で新機能のみ表示（ctrl+o で全変更）
+- 🔧 ツール信頼時、同一ツールの保留呼び出しを同バッチ内で自動承認
+- 🔧 ターミナルフォーカス時の通知抑制
+- 🔧 誤サスペンド防止のため Ctrl+Z を2回必須に（LLM ストリーミング中）
+
+**バグ修正（15件、主なもの）**:
+- 🔒 シェル出力リダイレクトのパス検証（許可ディレクトリ外への書込み防止）
+- 🔐 registry 型 MCP サーバーの OAuth 認証完了
+- 🔧 `/rewind` ピッカーの小ペイン適応、`/spawn` 背景セッションの権限ダイアログ表示・起動失敗回復
+- 🔧 設定ファイル I/O の NFS4 対応、COLORTERM 未設定時の Truecolor 自動検出、tmux の不可視制御文字混入防止
+- 🔧 作業ディレクトリ=ホーム時の steering/skill 二重注入排除、再開セッションは直近10ターンのみ再生
+- 🔧 クリップボード履歴・undo スタックの上限化、web_fetch の不正HTML回復、セッション間の設定リーク防止 ほか
+
+**注記**:
+- CLI内蔵changelogの日付（2026-05-28）と公式サイト表示日（2026-05-29）に差異あり。公式サイト表示日を採用。
+
+**出典**: `kiro-cli version --changelog=all`、[公式Changelog v2.5](https://kiro.dev/changelog/cli/2-5/)、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)
+
+---
+
+## バージョン履歴
+
 ### v2.4.2 CLI（2026-05-26）
 
 **主要な変更**:
@@ -84,8 +179,6 @@
 
 ---
 
-## バージョン履歴
-
 ### v2.3.0 CLI（2026-05-12）
 
 **主要な変更**:
@@ -153,6 +246,7 @@
   - 変更前（v1.23.0時点）: `~/.kiro/settings.json`
   - 変更後（v2.2.1以降）: `~/.kiro/settings/cli.json`
   - ※本コマンド自体は v1.23.0 で初回導入。v2.2.1で保存先が変更された。
+  - ※**v2.6.0で `/model`・`/effort` は選択が自動永続化され、`set-current-as-default` は不要**になりました（本ページ「最新バージョン」の v2.6.0 を参照）。
   - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#model)
 
 - 💡 **TUI: `/agent swap <name>` オートコンプリート拡張**: シャドウテキスト（ゴーストテキスト）補完に対応
@@ -547,7 +641,7 @@
 - 💬 **Multi-Session Support**: 複数チャットセッション管理機能
 - 🔌 **MCP Registry Support**: MCPツールのガバナンス機能
 - 🤖 **Default Agent Prompt**: Kiro CLI機能をハイライトするデフォルトエージェントプロンプト
-- ⚙️ **Model Persistence**: /model set-current-as-defaultコマンドでモデル選択を永続化（保存先: `~/.kiro/settings.json`。※v2.2.1で `~/.kiro/settings/cli.json` に変更）
+- ⚙️ **Model Persistence**: /model set-current-as-defaultコマンドでモデル選択を永続化（保存先: `~/.kiro/settings.json`。※v2.2.1で `~/.kiro/settings/cli.json` に変更。※v2.6.0で `/model`・`/effort` は自動永続化され `set-current-as-default` は不要）
 - 🚀 **LSP Performance**: Code Intelligenceツールの読み込み時間改善
 
 **詳細**: [Kiro CLI v1.23.0 Changelog](https://kiro.dev/changelog/subagents-plan-agent-grep-glob-tools-and-mcp-registry/)
@@ -737,4 +831,4 @@ kiro chat "Hello, world!"
 - セキュリティアップデートのリリース時
 - コミュニティからの重要なフィードバック時
 
-**最終更新**: 2026-05-28（v2.4.2対応追加）
+**最終更新**: 2026-06-07（v2.6.0/v2.5.1/v2.5.0対応追加、v2.4.2/v2.4.1/v2.4.0をバージョン履歴へ移動）

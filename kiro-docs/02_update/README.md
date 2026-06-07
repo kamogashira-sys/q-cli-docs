@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.4.2（最新版）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.6.0（最新版）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,9 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.6.0** | 2026-06-05 | Transcript Export・/title・永続化 | 会話エクスポート(md/plain/json)、端末ウィンドウタイトル、--effort起動フラグ、/model・/effort自動永続化、/knowledge全KB一括更新 |
+| **v2.5.1** | 2026-06-01 | APIエンドポイント移行 | `*.kiro.dev`へ移行（firewall許可リスト要確認） |
+| **v2.5.0** | 2026-05-29 | Thinking Display・Review Loops | 推論リアルタイム表示（既定有効）、subagentレビューループ、/settings display、プロンプト履歴のセッション単位化 |
 | **v2.4.2** | 2026-05-26 | Windowsクラッシュ修正 | koffi/createRequire起因のWindows端末入力クラッシュ修正 |
 | **v2.4.1** | 2026-05-21 | MCP環境変数修正 | ${VAR_NAME}環境変数展開の修正 |
 | **v2.4.0** | 2026-05-20 | /rewind・/effort・/settings | 会話巻き戻し、推論レベル制御、統合設定メニュー、88%高速化 |
@@ -170,6 +173,22 @@ timeline
                    : ${VAR_NAME}展開修正
         2026-05-26 : v2.4.2
                    : Windowsクラッシュ修正
+
+    section v2.5.x 透明性・自律性
+        2026-05-29 : v2.5.0
+                   : Thinking Display（推論表示）
+                   : Subagent Review Loops
+                   : /settings display
+                   : プロンプト履歴セッション化
+        2026-06-01 : v2.5.1
+                   : APIエンドポイント*.kiro.dev移行
+
+    section v2.6.x エクスポート・永続化
+        2026-06-05 : v2.6.0
+                   : /transcript save
+                   : /title（端末タイトル）
+                   : --effort 起動フラグ
+                   : /model・/effort 自動永続化
 ```
 
 ## 🔗 移行情報
@@ -220,6 +239,8 @@ timeline
 - [@file references（File References）](../01_features/24_FileReferences.md) 🆕 - チャット入力でファイル/ディレクトリ即時参照（v1.26.0）
 - [Auto Complete](../01_features/25_AutoComplete.md) 🆕 - ターミナルAI補完（ドロップダウン+インライン、Q CLI由来）
 - [Agent Toolkit for AWS](../01_features/26_AgentToolkitForAWS.md) 🌟 - AWS 公式エージェント統合ツールキット（2026-05-06 GA、Kiro CLI 公式対応）
+- [Thinking Display](../01_features/27_ThinkingDisplay.md) 🆕 - エージェントの推論をリアルタイム表示（既定有効、v2.5.0）
+- [v2.6新コマンド（/transcript save, /title, --effort）](../01_features/28_v26NewCommands.md) 🆕 - 会話エクスポート・端末タイトル・起動時effort・自動永続化（v2.6.0）
 
 ### リファレンス（辞書） 🆕
 - [04_reference/](../04_reference/README.md) — Settings / Slash Commands / CLI Commands / Built-in Tools の網羅的辞書
@@ -250,5 +271,5 @@ timeline
 
 ---
 
-**最終更新**: 2026年5月28日  
-**対象バージョン**: Kiro CLI v2.4.2
+**最終更新**: 2026年6月7日  
+**対象バージョン**: Kiro CLI v2.6.0
