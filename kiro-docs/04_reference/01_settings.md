@@ -112,11 +112,15 @@ kiro-cli settings list --format json-pretty
 | `chat.allowAsciiArt` | boolean | `true` | Unicode/罫線記号。`false` でプレーン ASCII にフォールバック | `kiro-cli settings chat.allowAsciiArt false` |
 | `chat.allowIcons` | boolean | `true` | ステータスアイコン（●○⚠）。`false` でテキストラベル | `kiro-cli settings chat.allowIcons false` |
 | `chat.showThinking` | boolean | `true` | エージェントの推論（thinking）ブロックを表示（v2.5.0+、起動時のみ反映） | `kiro-cli settings chat.showThinking false` |
+| `chat.terminalTitle` | boolean ※ | 実装時確認 | ターミナルタブのセッションタイトル表示/非表示（v2.7.0+） | `kiro-cli settings chat.terminalTitle true` |
+| `chat.defaultInterruptBehavior` | string | `steer` | Queue Steering の起動時既定モード（`steer`/`queue`、v2.7.0+） | `kiro-cli settings chat.defaultInterruptBehavior queue` |
+| `chat.keybindings.toggleInterruptBehavior` | string | `ctrl+s` | Queue Steering の steer/queue モード切替キーバインド（v2.7.0+） | `kiro-cli settings chat.keybindings.toggleInterruptBehavior ctrl+shift+s` |
 
 > **`KIRO_ASCII_MODE=1`** を設定すると `chat.allowAsciiArt` に関わらず ASCII モードが強制されます（環境変数節参照）。
-> **ターミナルタイトル**は `/settings display` → Terminal title でトグルする機能で、CLI 設定としては提供されません（公式設定リファレンス準拠）。
+> **ターミナルタイトル**は v2.6.0 までは `/settings display` → Terminal title でのトグルのみで CLI 設定としては提供されていませんでしたが、**v2.7.0 で `chat.terminalTitle` 設定が追加され CLI 設定としても制御可能**になりました。⚠️ 公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映（2026-06-21 取得時点）のため、本サイトは CLI 内蔵 changelog の v2.7.0 追加文言「`chat.terminalTitle setting to show or hide the session title in the terminal tab`」を一次情報として採用しています。
+> ※ `chat.terminalTitle` の型は CLI 内蔵 changelog の「show or hide」表現から **boolean** と判定。既定値は公式リファレンス未反映のため**実装時確認**が必要。
 > `chat.showThinking`（モデル自身の推論表示、本節）と `chat.enableThinking`（thinking ツールの有効化、Feature toggles 節）は**別物**です。
-> 詳細: [27. Thinking Display](../01_features/27_ThinkingDisplay.md)
+> 詳細: [27. Thinking Display](../01_features/27_ThinkingDisplay.md)、[29. v27NewCommands](../01_features/29_v27NewCommands.md)、[公式 Queue Steering](https://kiro.dev/docs/cli/chat/queue-steering/)
 
 ### 3. Knowledge base（ナレッジベース）
 

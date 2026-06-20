@@ -13,7 +13,7 @@
 | # | ファイル | 内容 | 公式情報源 | 公式更新日 |
 |---|--------|------|----------|----------|
 | 01 | [Settings](01_settings.md) | 全設定項目（公式8カテゴリ）と環境変数 | https://kiro.dev/docs/cli/reference/settings/ | 2026-06-05 |
-| 02 | [Slash Commands](02_slash-commands.md) | 全スラッシュコマンド（37種）とキーボードショートカット | https://kiro.dev/docs/cli/reference/slash-commands/ | 2026-06-05 |
+| 02 | [Slash Commands](02_slash-commands.md) | 全スラッシュコマンド（40種）とキーボードショートカット | https://kiro.dev/docs/cli/reference/slash-commands/ | 2026-06-12 |
 | 03 | [CLI Commands](03_cli-commands.md) | `kiro-cli` コマンド全16種、グローバル引数、セッション管理 | https://kiro.dev/docs/cli/reference/cli-commands/ | 2026-05-12 |
 | 04 | [Built-in Tools](04_built-in-tools.md) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_search/web_fetch/introspect/code/tool_search/delegate/subagent/report/knowledge/thinking/todo/session） | https://kiro.dev/docs/cli/reference/built-in-tools/ | 2026-05-12 |
 
@@ -66,7 +66,7 @@
 | 公式ページ | 更新日 |
 |----------|------|
 | Settings | 2026-06-05 |
-| Slash Commands | 2026-06-05 |
+| Slash Commands | 2026-06-12 |
 | CLI Commands | 2026-05-12 |
 | Built-in Tools | 2026-05-12 |
 
@@ -74,7 +74,7 @@
 
 ## ⚠️ 注意事項
 
-- 本ディレクトリの各文書は **2026-06-07 時点** の情報に基づいています（Settings / Slash Commands は公式 2026-06-05 版を反映）
+- 本ディレクトリの各文書は **2026-06-21 時点** の情報に基づいています（Slash Commands は公式 2026-06-12 版、Settings は公式 2026-06-05 版を反映。Settings の v2.7.0 追加項目 `chat.terminalTitle`/`chat.defaultInterruptBehavior` は CLI 内蔵 changelog から補完）
 - Kiro CLI は活発に開発されており、公式の更新が反映されていない可能性があります
 - 重要な設定変更前は **必ず公式ページを確認** してください
 
@@ -84,7 +84,7 @@
 
 ### 本サイト
 
-- [機能詳細ガイド (01_features/)](../01_features/README.md) — 28機能の詳細解説
+- [機能詳細ガイド (01_features/)](../01_features/README.md) — 29機能の詳細解説
 - [アップデート情報 (02_update/)](../02_update/README.md) — バージョン履歴と主要変更
 - [デプロイ・環境構築 (03_deployment/)](../03_deployment/README.md) — インストール手順
 - [メタドキュメント (05_meta/)](../05_meta/) — 品質保証関連
@@ -97,4 +97,4 @@
 
 ---
 
-**Page updated**: 2026-06-07（v2.5.0/v2.6.0対応: Settings/Slash Commands を公式 2026-06-05 版に更新、機能数 28 に同期）
+**Page updated**: 2026-06-21（v2.7.0/v2.6.1対応: Slash Commands を公式 2026-06-12 版に更新、`/goal`・Queue Steering キーバインド追加、Settings は公式 2026-06-05 版のまま（v2.7.0 未反映）、機能数 29 に同期）

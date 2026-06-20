@@ -63,7 +63,7 @@ Kiro CLI公式サイト（https://kiro.dev/cli/）の画面遷移とページ構
 | │　│　└── | Privacy First [(/docs/privacy-and-security/)](https://kiro.dev/docs/privacy-and-security/) | プライバシー・セキュリティ |
 | │　├── | **Reference**（リファレンス） 🆕 | |
 | │　│　├── | Settings [(/docs/cli/reference/settings/)](https://kiro.dev/docs/cli/reference/settings/) | 全設定項目（Telemetry/Chat/Knowledge/Keybindings/Tool Search/Feature toggles/API+MCP）と環境変数 |
-| │　│　├── | Slash Commands [(/docs/cli/reference/slash-commands/)](https://kiro.dev/docs/cli/reference/slash-commands/) | 全スラッシュコマンド37種＋キーボードショートカット |
+| │　│　├── | Slash Commands [(/docs/cli/reference/slash-commands/)](https://kiro.dev/docs/cli/reference/slash-commands/) | 全スラッシュコマンド40種＋キーボードショートカット |
 | │　│　├── | CLI Commands [(/docs/cli/reference/cli-commands/)](https://kiro.dev/docs/cli/reference/cli-commands/) | `kiro-cli` 全16コマンド、グローバル引数、セッション管理 |
 | │　│　└── | Built-in Tools [(/docs/cli/reference/built-in-tools/)](https://kiro.dev/docs/cli/reference/built-in-tools/) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_*/code/tool_search/subagent 他） |
 | ├── | **Resources** | |

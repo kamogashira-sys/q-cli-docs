@@ -74,6 +74,8 @@ Kiro CLI **v2.6.0**（2026-06-05）で追加・拡張されたコマンドと機
 - タイトルは終了時にリセットされます（正確な挙動はターミナル依存）。
 
 > **注記（一次情報の不一致）**: CLI 内蔵 changelog は `/title` の有効化方法として「`chat.terminalTitle` 設定」に言及していますが、公式設定リファレンス（更新 2026-06-05）は「terminal title は `/settings display` → Terminal title でトグルし、**CLI 設定としては提供されない**（not available as a CLI setting）」と明記しています。本サイトは公式設定リファレンスに従い、`/settings display` での有効化を正とします。
+>
+> **更新（v2.7.0）**: **v2.7.0 で `chat.terminalTitle` が CLI 設定として正式追加され、本不一致は解消されました**。`chat.terminalTitle` 設定でも有効化制御が可能になりました（→ [02_update/01_changelog.md](../02_update/01_changelog.md) の v2.7.0 セクションを参照）。なお、公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映（2026-06-21 取得時点）です。
 
 ---
 

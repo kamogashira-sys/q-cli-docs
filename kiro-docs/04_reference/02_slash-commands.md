@@ -2,7 +2,7 @@
 
 # Kiro CLI Slash Commands リファレンス
 
-**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/slash-commands/)（公式ページ最終更新: 2026-06-05）
+**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/slash-commands/)（公式ページ最終更新: 2026-06-12）
 
 Kiro CLI のインタラクティブチャットセッション内で使用できるすべてのスラッシュコマンドを網羅する辞書的リファレンスです。
 
@@ -37,7 +37,7 @@ kiro chat
 
 ## スラッシュコマンド一覧
 
-公式ページに記載されている全コマンド（公式更新日: 2026-06-05 時点）。
+公式ページに記載されている全コマンド（公式更新日: 2026-06-12 時点）。**本ページには全 40 コマンドを掲載**しています（`/help`〜`/stats` の見出し数。`/save` / `/load` は 1 見出しに集約）。
 
 ### `/help`
 
@@ -551,7 +551,12 @@ To-do リストの表示・管理・再開。
 > `terminal` サブコマンドはターミナル設定ファイル変更前に `.bak` を作成。
 > アニメーション/ASCII/アイコンは即時反映。Show thinking と history は次回セッションから反映。
 
-→ 詳細: [21. v24NewCommands](../01_features/21_v24NewCommands.md)、[27. Thinking Display](../01_features/27_ThinkingDisplay.md)
+> **v2.7.0 での進化**:
+> - 全サブコマンド（theme/keybindings/terminal/display/history）で**統一された overlay frame、footer hints、ESC で戻るナビゲーション**を採用
+> - `theme Custom` が**ステップ式ウィザード**化。ライブプレビューが実会話レンダリングに整合
+> - `terminal` → `interrupt behaviour` で Queue Steering の起動時既定モード（`steer`/`queue`）を変更可能
+
+→ 詳細: [21. v24NewCommands](../01_features/21_v24NewCommands.md)、[27. Thinking Display](../01_features/27_ThinkingDisplay.md)、[29. v27NewCommands](../01_features/29_v27NewCommands.md)
 
 ### `/effort`
 
@@ -604,8 +609,37 @@ To-do リストの表示・管理・再開。
 - 元のセッションは保持される（破壊的書換ではない）
 - `/chat load` または `/chat resume` で元に戻れる
 - 各ターンのプロンプトプレビューとコンテキスト使用率を表示
+- **v2.7.0**: ターンピッカーが各ターンの**ツール呼び出し詳細**、**ファイル変更**、**実行コマンド**、**コンテキスト使用量**を併記表示し、分岐ポイントを特定しやすく（Enriched preview）
 
-→ 詳細: [21. v24NewCommands](../01_features/21_v24NewCommands.md)
+→ 詳細: [21. v24NewCommands](../01_features/21_v24NewCommands.md)、[29. v27NewCommands](../01_features/29_v27NewCommands.md)
+
+### `/goal`
+
+> **V2 TUI で追加**: このコマンドは v2.7.0 で追加されました。TUI モード（デフォルト）で利用可能です。
+
+受入基準を満たすまで自己検証を繰り返す goal 駆動の自律ループを起動（v2.7.0+）。
+
+```bash
+> /goal refactor the auth module to use JWT tokens and ensure all tests pass
+> /goal --max 10 migrate the entire test suite from Jest to Vitest
+> /goal clear                         # アクティブな goal をキャンセル
+```
+
+**動作**:
+- Plans → Implements → Verifies → 失敗時 corrections → 完了 のサイクル
+- 既定で**最大5反復**（`--max <number>` で上限変更）
+- 受入基準は goal 文から推論されるため、「all tests pass」「no TypeScript errors」など**完了条件を明示**するのが効果的
+
+**サブコマンド**:
+- `clear` — アクティブな goal ループをキャンセル（ファイル変更は VCS で巻き戻し）
+
+**オプション**:
+- `--max <number>` — 最大反復数（既定: 5）
+
+**ループ中の方向修正**:
+- **Queue Steering（Ctrl+S）** で goal をキャンセルせずに mid-loop で指示を追加可能
+
+→ 詳細: [29. v27NewCommands](../01_features/29_v27NewCommands.md)、[公式 /goal](https://kiro.dev/docs/cli/chat/goal/)
 
 ### `/changelog`
 
@@ -676,7 +710,7 @@ To-do リストの表示・管理・再開。
 | `Ctrl+J` | 改行挿入（tmux 含む全ターミナル） |
 | `Ctrl+O` | 折り畳まれたシェル出力を展開 |
 | `Ctrl+R` | リバースインクリメンタル履歴検索 |
-| `Ctrl+S` | コマンドとコンテキストファイルのファジー検索（Tab で複数選択） |
+| `Ctrl+S` | コマンドとコンテキストファイルのファジー検索（Tab で複数選択） / **Queue Steering の steer/queue モード切替（v2.7.0+）** ※ |
 | `Ctrl+T` | tangent モード切替（有効時） |
 | `Alt+Enter` | 改行挿入（Terminal.app、Ghostty） |
 | `Alt+Backspace` | 直前の単語削除 |
@@ -685,6 +719,8 @@ To-do リストの表示・管理・再開。
 | `Up`/`Down` | コマンド履歴ナビゲーション（v2.5.0+ 既定でセッション単位。`/settings history` で global に切替可） |
 | `Tab` | 承認オプション展開 / ファイル参照自動補完 |
 | `Esc` | パネルを閉じる、エージェント実行キャンセル、プロンプトキューをクリア |
+
+> ※ **Ctrl+S の機能について公式に矛盾あり（2026-06-21 取得時点）**: 公式 [Slash commands リファレンス](https://kiro.dev/docs/cli/reference/slash-commands/)（Page updated 2026-06-12）の Keyboard shortcuts 表は「Fuzzy search commands and context files」と既存記述のまま。一方、公式 [Queue Steering ページ](https://kiro.dev/docs/cli/chat/queue-steering/)（同 2026-06-12）は「Press Ctrl+S to toggle between modes at any time」と明記し、設定キー `chat.keybindings.toggleInterruptBehavior`（既定 `ctrl+s`）でカスタマイズ可能と記載。同日更新だが両者の整合は未確認。**本サイトは v2.7.0 で Queue Steering モード切替が追加されたことを CLI 内蔵 changelog で確認済のため、両機能を併記**。実機の挙動は v2.7.0 起動後に確認推奨。
 
 ---
 
@@ -711,9 +747,9 @@ To-do リストの表示・管理・再開。
 
 ### 公式情報源
 
-- [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/slash-commands/)（公式ページ最終更新: 2026-06-05）
+- [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/slash-commands/)（公式ページ最終更新: 2026-06-12）
 
 ---
 
 **Page updated**: 2026-05-24（本サイト初版）  
-**公式ページ最終更新**: 2026-06-05
+**公式ページ最終更新**: 2026-06-12
