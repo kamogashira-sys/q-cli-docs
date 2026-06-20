@@ -13,6 +13,61 @@
 
 ## 最新バージョン
 
+> **注記**: 本ページは現在 **v2.7.0** までを反映しています。**v2.7.1**（2026-06-16）、**v2.8.0 / v2.8.1**（2026-06-17、CLI v3 Early Access）は別途対応予定です。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
+
+### v2.7.0 CLI（2026-06-12）
+
+**主要な変更**:
+
+**機能追加（4件）**:
+- ⚙️ **/goal**: 受入基準を満たすまで自己検証を繰り返す goal 駆動の自律ループ
+  - 既定で**最大5反復**（`--max <N>` で上限変更）。Plans → Implements → Verifies → 失敗時 corrections → 完了
+  - `/goal clear` でアクティブな goal をキャンセル（ファイル変更は VCS で巻き戻し）
+  - ループ中の方向修正は Queue Steering（Ctrl+S）で可能
+  - 詳細: [29. v27NewCommands](../01_features/29_v27NewCommands.md)、[公式 /goal](https://kiro.dev/docs/cli/chat/goal/)
+- 💡 **Queue Steering（メッセージのキューイング/ステアリング）**: ターン実行中のエージェントへ**ツール境界**でメッセージを差し込み、方向修正
+  - **Ctrl+S** で steer モード（既定: ツール境界で即時差し込み） ↔ queue モード（ターン終了までバッファ）切替
+  - キーバインド設定 `chat.keybindings.toggleInterruptBehavior`（既定 `ctrl+s`）でカスタマイズ可能（[公式 Queue steering](https://kiro.dev/docs/cli/chat/queue-steering/)）
+  - 起動時の既定モードは `/settings` → `terminal` → `interrupt behaviour` で変更（CLI 内蔵 changelog では `chat.defaultInterruptBehavior` を `steer`/`queue` 切替設定として言及）
+  - メッセージは実行中ツール途中ではなく**ツール境界**で配信される
+  - 詳細: [29. v27NewCommands](../01_features/29_v27NewCommands.md)、[公式 Queue steering](https://kiro.dev/docs/cli/chat/queue-steering/)
+- 🪟 **`chat.terminalTitle` 設定**: ターミナルタブのセッションタイトル表示/非表示を制御（boolean、CLI内蔵 changelog の「show or hide」表現から判定）
+  - ※v2.6.0時点では `/settings display` でのトグルのみ提供されていたが、v2.7.0で **CLI 設定として正式追加**され、`chat.terminalTitle` 設定でも制御可能に
+  - ⚠️ **公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映**（2026-06-21 取得時点）。CLI 内蔵 changelog（v2.7.0）の追加文言を一次情報として採用
+- 💡 **Enriched /rewind preview**: `/rewind` のターンピッカーが各ターンの**ツール呼び出し詳細**と**コンテキスト使用量**を表示し、分岐ポイントを特定しやすく
+  - 詳細: [公式 /rewind](https://kiro.dev/docs/cli/chat/rewind/)
+
+**改善（2件）**:
+- 🎨 `/settings` および全サブコマンドが**統一された overlay frame、footer hints、ESC で戻るナビゲーション**を採用
+- 🎨 `/settings theme Custom` が**ステップ式ウィザード**化、ライブプレビューが実会話レンダリングに整合
+
+**バグ修正（2件）**:
+- 🔧 カスタムエージェントが組み込みエージェントと同様にデフォルトリソース（steering、skills、AGENTS.md）を継承
+- 🔧 Windows: `bun` および `node` の実行パスに `.exe` 拡張子を付与
+
+**注記**:
+- CLI 内蔵 changelog の日付（2026-06-11）と公式サイト表示日（2026-06-12）に差異あり。**公式サイト表示日を採用**。
+- 公式 v2.7.0 changelog ページの見出しに「enriched **/review** preview」と表記揺れ（本文では `/rewind` を扱っており、CLI 内蔵 changelog でも `/rewind` 表記）。本サイトは CLI 内蔵 changelog の `/rewind` を採用。
+- Ctrl+S の機能について公式に矛盾あり: [Slash commands リファレンス](https://kiro.dev/docs/cli/reference/slash-commands/)（Page updated 2026-06-12）の Keyboard shortcuts 表は「Fuzzy search commands and context files」と既存記述のまま、[Queue Steering ページ](https://kiro.dev/docs/cli/chat/queue-steering/)（同 2026-06-12）は「toggle between modes」と記述。同日更新だが両者の整合は未確認。本サイトは両機能を併記。
+
+**出典**: ユーザー提供 CLI 内蔵 changelog（`/changelog` 出力）、[公式 Changelog v2.7](https://kiro.dev/changelog/cli/2-7/)、[公式 /goal](https://kiro.dev/docs/cli/chat/goal/)、[公式 Queue steering](https://kiro.dev/docs/cli/chat/queue-steering/)
+
+---
+
+### v2.6.1 CLI（2026-06-08）
+
+**主要な変更**:
+
+**バグ修正（1件）**:
+- 🔧 **Linux: `libasound.so.2` 起動時依存を除去** — Linux ビルドが起動時に `libasound.so.2` を要求しなくなり、オーディオ依存パッケージのインストールが不要に
+
+**注記**:
+- 公式 [Changelog v2.6 ページ](https://kiro.dev/changelog/cli/2-6/) の `#patch-2-6-1` セクションは本文未公開（2026-06-21 取得時点、タブ切替式表示）。本文は CLI 内蔵 changelog の v2.6.1 エントリを一次情報として採用。
+
+**出典**: CLI 内蔵 changelog（v2.6.1 エントリ）、[公式 Changelog v2.6](https://kiro.dev/changelog/cli/2-6/)（`#patch-2-6-1`、本文未公開）
+
+---
+
 ### v2.6.0 CLI（2026-06-05）
 
 **主要な変更**:
@@ -50,10 +105,13 @@
 **注記**:
 - CLI内蔵changelogの日付（2026-06-04）と公式サイト表示日（2026-06-05）に差異あり。公式サイト表示日を採用。
 - CLI内蔵changelogは `/title` 有効化に `chat.terminalTitle` 設定を挙げているが、公式設定リファレンス（更新 2026-06-05）は「terminal title は `/settings display` → Terminal title でトグルし、CLI 設定としては提供されない」と明記。本サイトは公式リファレンスに従う。
+- ※**v2.7.0 で `chat.terminalTitle` が CLI 設定として正式追加され、本不一致は解消されました**（本ページ「最新バージョン」の v2.7.0 を参照）。
 
 **出典**: `kiro-cli version --changelog=all`、[公式Changelog v2.6](https://kiro.dev/changelog/cli/2-6/)、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)
 
 ---
+
+## バージョン履歴
 
 ### v2.5.1 CLI（2026-06-01）
 
@@ -105,8 +163,6 @@
 **出典**: `kiro-cli version --changelog=all`、[公式Changelog v2.5](https://kiro.dev/changelog/cli/2-5/)、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)
 
 ---
-
-## バージョン履歴
 
 ### v2.4.2 CLI（2026-05-26）
 
@@ -831,4 +887,4 @@ kiro chat "Hello, world!"
 - セキュリティアップデートのリリース時
 - コミュニティからの重要なフィードバック時
 
-**最終更新**: 2026-06-07（v2.6.0/v2.5.1/v2.5.0対応追加、v2.4.2/v2.4.1/v2.4.0をバージョン履歴へ移動）
+**最終更新**: 2026年6月21日（v2.7.0/v2.6.1対応追加、v2.5.1/v2.5.0をバージョン履歴へ移動、v2.6.0注記更新）

@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.6.0（最新版）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.7.0（本サイト反映済。v2.7.1/v2.8.x は別途対応予定）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,8 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.7.0** | 2026-06-12 | /goal・Queue Steering・enriched /rewind | 自律ループ実行(/goal、5反復既定/--max)、ターン中介入(Ctrl+S で steer/queue 切替、chat.defaultInterruptBehavior)、/rewind preview拡張(ツール呼出・ファイル変更・コンテキスト使用量)、chat.terminalTitle設定追加、/settings overlay統一・theme Customウィザード化 |
+| **v2.6.1** | 2026-06-08 | Linux: libasound.so.2 依存除去 | Linuxビルドが起動時に libasound.so.2 を要求しなくなる（オーディオ依存パッケージ不要） |
 | **v2.6.0** | 2026-06-05 | Transcript Export・/title・永続化 | 会話エクスポート(md/plain/json)、端末ウィンドウタイトル、--effort起動フラグ、/model・/effort自動永続化、/knowledge全KB一括更新 |
 | **v2.5.1** | 2026-06-01 | APIエンドポイント移行 | `*.kiro.dev`へ移行（firewall許可リスト要確認） |
 | **v2.5.0** | 2026-05-29 | Thinking Display・Review Loops | 推論リアルタイム表示（既定有効）、subagentレビューループ、/settings display、プロンプト履歴のセッション単位化 |
@@ -189,6 +191,16 @@ timeline
                    : /title（端末タイトル）
                    : --effort 起動フラグ
                    : /model・/effort 自動永続化
+        2026-06-08 : v2.6.1
+                   : Linux libasound.so.2依存除去
+
+    section v2.7.x 自律・ステアリング
+        2026-06-12 : v2.7.0
+                   : /goal（自律ループ）
+                   : Queue Steering（Ctrl+S）
+                   : enriched /rewind preview
+                   : chat.terminalTitle設定
+                   : /settings UI統一
 ```
 
 ## 🔗 移行情報
@@ -241,6 +253,7 @@ timeline
 - [Agent Toolkit for AWS](../01_features/26_AgentToolkitForAWS.md) 🌟 - AWS 公式エージェント統合ツールキット（2026-05-06 GA、Kiro CLI 公式対応）
 - [Thinking Display](../01_features/27_ThinkingDisplay.md) 🆕 - エージェントの推論をリアルタイム表示（既定有効、v2.5.0）
 - [v2.6新コマンド（/transcript save, /title, --effort）](../01_features/28_v26NewCommands.md) 🆕 - 会話エクスポート・端末タイトル・起動時effort・自動永続化（v2.6.0）
+- [v2.7新コマンド（/goal, Queue Steering, enriched /rewind）](../01_features/29_v27NewCommands.md) 🆕 - 自律ループ・ターン中介入・/rewind preview拡張・chat.terminalTitle（v2.7.0）
 
 ### リファレンス（辞書） 🆕
 - [04_reference/](../04_reference/README.md) — Settings / Slash Commands / CLI Commands / Built-in Tools の網羅的辞書
@@ -271,5 +284,5 @@ timeline
 
 ---
 
-**最終更新**: 2026年6月7日  
-**対象バージョン**: Kiro CLI v2.6.0
+**最終更新**: 2026年6月21日  
+**対象バージョン**: Kiro CLI v2.7.0

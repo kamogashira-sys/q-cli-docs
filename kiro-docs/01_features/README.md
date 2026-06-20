@@ -2,7 +2,7 @@
 
 # Kiro CLI 機能詳細ガイド
 
-> 28 機能（既存 21 + v3.1 追加 4: Hooks / Steering / @file references / Auto Complete + Phase 6: Agent Toolkit for AWS + v2.5.0: Thinking Display + v2.6.0: v2.6 新コマンド）の詳細解説。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+> 29 機能（既存 21 + v3.1 追加 4: Hooks / Steering / @file references / Auto Complete + Phase 6: Agent Toolkit for AWS + v2.5.0: Thinking Display + v2.6.0: v2.6 新コマンド + v2.7.0: v2.7 新コマンド）の詳細解説。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
 
 ## 主要アップデート情報
 
@@ -38,6 +38,7 @@
 | **[Agent Toolkit for AWS](26_AgentToolkitForAWS.md)** 🌟 | 2026-05-06 GA<br/>（AWS 公式製品） | AI エージェントが AWS で安全・効果的に動作するための公式ツールキット | 4 コンポーネント（MCP Server/Skills/Plugins/Rules files）、主要4ツール（call_aws/search_documentation/read_documentation/run_script）、IAM コンテキストキー、CloudWatch メトリクス、AWS Labs MCP 後継 |
 | **[Thinking Display（推論のリアルタイム表示）](27_ThinkingDisplay.md)** 🆕 | v2.5.0<br/>（2026-05-29） | エージェントの推論プロセスをリアルタイム表示（既定有効） | chat.showThinking（既定 true）、/settings display > Show thinking、Adaptive Thinking との違い |
 | **[v2.6新コマンド（/transcript save, /title, --effort）](28_v26NewCommands.md)** 🆕 | v2.6.0<br/>（2026-06-05） | 会話エクスポート・端末タイトル・起動時effort・設定の自動永続化 | /transcript save（md/plain/json）、/title、--effort 起動フラグ、/model・/effort 自動永続化、/knowledge update（全KB一括） |
+| **[v2.7新コマンド（/goal, Queue Steering, enriched /rewind）](29_v27NewCommands.md)** 🆕 | v2.7.0<br/>（2026-06-12） | 自律ループ実行・ターン中介入・/rewind preview拡張・設定追加 | /goal（5反復既定/--max、自己検証ループ）、Queue Steering（Ctrl+S で steer/queue 切替）、enriched /rewind preview、chat.terminalTitle 設定、/settings UI統一・theme Custom ウィザード化 |
 
 
 
@@ -56,6 +57,7 @@
 - [03. Plan Agent](03_PlanAgent.md) — 計画立案エージェント
 - [22. Smart Hooks](22_Hooks.md) 🆕 — エージェントライフサイクル拡張
 - [23. Agent Steering](23_Steering.md) 🆕 — 永続的プロジェクト規約注入
+- [29. v2.7 New Commands](29_v27NewCommands.md) 🆕 — `/goal` 自律ループ実行・Queue Steering（v2.7.0）
 
 ### 📁 コンテキスト・知識管理
 - [07. Skills](07_Skills.md) — Progressive Context Loading
@@ -73,6 +75,7 @@
 ### 💾 セッション・履歴管理
 - [04. Multi-Session](04_MultiSession.md) — 複数セッション管理
 - [21. v2.4 New Commands](21_v24NewCommands.md) — `/rewind`（会話巻き戻し）
+- [29. v2.7 New Commands](29_v27NewCommands.md) 🆕 — enriched `/rewind` preview（v2.7.0）
 
 ### 🎨 UI/UX・補完
 - [18. Terminal UI](18_TerminalUI.md) — V2 TUI、テーマ、Crew Monitor
@@ -80,6 +83,7 @@
 - [25. Auto Complete](25_AutoComplete.md) 🆕 — ドロップダウン + インライン補完
 - [27. Thinking Display](27_ThinkingDisplay.md) 🆕 — 推論のリアルタイム表示（v2.5.0）
 - [28. v2.6 New Commands](28_v26NewCommands.md) 🆕 — `/transcript save`・`/title`・`--effort`・自動永続化（v2.6.0）
+- [29. v2.7 New Commands](29_v27NewCommands.md) 🆕 — Queue Steering（Ctrl+S）・`/settings` UI統一（v2.7.0）
 
 ### 🔒 セキュリティ・権限
 - [11. URL Permissions](11_URLPermissions.md) — `web_fetch` の URL 権限細粒度制御
@@ -256,6 +260,16 @@
 - **--effort 起動フラグ**: `kiro-cli chat --effort <level>` で初期推論レベルを指定
 - **/model・/effort 自動永続化**: 選択が自動保存され `set-current-as-default` が不要に
 - **/knowledge update（引数なし）**: 全ナレッジベースを一括再インデックス
+
+### v2.6.1（2026-06-08）
+- **Linux: libasound.so.2 依存除去**: Linux ビルドが起動時に libasound.so.2 を要求しなくなる（オーディオ依存パッケージ不要）
+
+### v2.7.0（2026-06-12）
+- **[/goal](29_v27NewCommands.md)**: 受入基準を満たすまで自己検証を繰り返す goal 駆動の自律ループ（最大5反復既定、`--max <N>`）
+- **[Queue Steering](29_v27NewCommands.md)**: ターン実行中の方向修正（Ctrl+S で steer/queue 切替、ツール境界配信、`chat.defaultInterruptBehavior` / `chat.keybindings.toggleInterruptBehavior`）
+- **[chat.terminalTitle](29_v27NewCommands.md)**: 設定キーとして正式追加（v2.6.0 時点の不一致が解消）
+- **[Enriched /rewind preview](29_v27NewCommands.md)**: ターンピッカーがツール呼び出し詳細・ファイル変更・実行コマンド・コンテキスト使用量を併記
+- **[/settings 改善](29_v27NewCommands.md)**: 全サブコマンド共通の overlay frame / footer hints / ESC back-navigation、theme Custom ウィザード化
 
 ## 🎯 使用シナリオ例
 
@@ -513,6 +527,20 @@ sequenceDiagram
     - CloudWatch メトリクス（AWS-MCP namespace）+ CloudTrail 監査
     - **Kiro CLI は公式対応エージェント**として明示
 
+27. **[Thinking Display（推論のリアルタイム表示）](27_ThinkingDisplay.md)** 🆕
+    - エージェントの推論プロセスをリアルタイム表示（既定有効）
+    - `chat.showThinking`、/settings display > Show thinking
+    - Adaptive Thinking との違い
+
+28. **[v2.6新コマンド（/transcript save, /title, --effort）](28_v26NewCommands.md)** 🆕
+    - 会話エクスポート（md/plain/json）、ターミナルタイトル、起動時 effort
+    - /model・/effort 自動永続化、/knowledge update（全KB一括）
+
+29. **[v2.7新コマンド（/goal, Queue Steering, enriched /rewind）](29_v27NewCommands.md)** 🆕
+    - /goal（受入基準を満たすまで自己検証する自律ループ、5反復既定 / --max）
+    - Queue Steering（Ctrl+S で steer/queue 切替、ツール境界配信）
+    - enriched /rewind preview、chat.terminalTitle 設定、/settings UI統一
+
 ## 🔮 今後の展望
 
 Kiro CLIは継続的に進化を続けており、以下の分野での更なる改善が期待されます：
@@ -530,6 +558,6 @@ Kiro CLIは継続的に進化を続けており、以下の分野での更なる
 
 ---
 
-**最終更新**: 2026年06月07日  
-**対象バージョン**: Kiro CLI v2.6.0+  
-**機能数**: 28（既存21 + Hooks / Steering / @file / Auto Complete + Agent Toolkit for AWS + Thinking Display + v2.6 新コマンド）+ Reference集約 ([04_reference/](../04_reference/README.md))
+**最終更新**: 2026年6月21日  
+**対象バージョン**: Kiro CLI v2.7.0+  
+**機能数**: 29（既存21 + Hooks / Steering / @file / Auto Complete + Agent Toolkit for AWS + Thinking Display + v2.6 新コマンド + v2.7 新コマンド）+ Reference集約 ([04_reference/](../04_reference/README.md))
