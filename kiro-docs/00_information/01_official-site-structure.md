@@ -103,7 +103,7 @@ Kiro CLI公式サイト（https://kiro.dev/cli/）の画面遷移とページ構
 - **[Kiro公式ブログ](https://kiro.dev/blog/)**
 
 ### 本サイトでの対応文書
-- [機能詳細ガイド](../01_features/README.md) — 25機能 + カテゴリ別ナビゲーション
+- [機能詳細ガイド](../01_features/README.md) — 29機能 + カテゴリ別ナビゲーション
 - [Smart Hooks](../01_features/22_Hooks.md) 🆕
 - [Agent Steering](../01_features/23_Steering.md) 🆕
 - [@file references](../01_features/24_FileReferences.md) 🆕
