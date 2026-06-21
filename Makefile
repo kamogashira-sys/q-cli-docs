@@ -65,3 +65,36 @@ check-impact:
 check-completeness:
 	@echo "🔍 完全性チェック中..."
 	@./scripts/check-completeness.py || echo "⚠️  完全性チェックで問題が見つかりました（警告のみ）"
+
+# ============================================================
+# kiro-docs/ 専用チェック（scripts/kiro-docs/）
+# ============================================================
+.PHONY: check-kiro-all check-kiro-quick check-kiro-counts check-kiro-links check-kiro-consistency check-kiro-changelog check-kiro-structure check-kiro-urls
+
+# kiro-docs 全チェック（URL含む）
+check-kiro-all: check-kiro-counts check-kiro-links check-kiro-consistency check-kiro-changelog check-kiro-structure check-kiro-urls
+	@echo ""
+	@echo "✅ kiro-docs 全チェックが完了しました"
+
+# kiro-docs 高速チェック（URL除く）
+check-kiro-quick: check-kiro-counts check-kiro-links check-kiro-consistency check-kiro-changelog check-kiro-structure
+	@echo ""
+	@echo "✅ kiro-docs 高速チェックが完了しました"
+
+check-kiro-counts:
+	@./scripts/kiro-docs/check-counts.sh
+
+check-kiro-links:
+	@./scripts/kiro-docs/check-links.py
+
+check-kiro-consistency:
+	@./scripts/kiro-docs/check-consistency.sh
+
+check-kiro-changelog:
+	@./scripts/kiro-docs/check-changelog.sh
+
+check-kiro-structure:
+	@./scripts/kiro-docs/check-structure.py
+
+check-kiro-urls:
+	@./scripts/kiro-docs/check-urls.sh --important

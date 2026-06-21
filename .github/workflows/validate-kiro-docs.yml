@@ -1,0 +1,43 @@
+name: Validate kiro-docs
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'kiro-docs/**'
+      - 'README.md'
+      - 'scripts/kiro-docs/**'
+      - 'Makefile'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'kiro-docs/**'
+      - 'README.md'
+      - 'scripts/kiro-docs/**'
+      - 'Makefile'
+  schedule:
+    # 毎日 nightly（URL チェック含む全体検証）
+    - cron: '17 18 * * *'
+  workflow_dispatch:
+
+jobs:
+  validate-kiro-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: kiro-docs quick checks (counts/links/consistency/changelog/structure)
+      run: make check-kiro-quick
+
+    # 外部URLチェックは PR では実行しない（外部依存・レート制限回避）。
+    # main/develop への push、nightly、手動実行で実施。
+    - name: kiro-docs important URL checks
+      if: github.event_name != 'pull_request'
+      run: make check-kiro-urls
