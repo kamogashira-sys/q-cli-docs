@@ -8,6 +8,9 @@ docs.backup.*
 # Work plans (kept locally only)
 kiro-docs/*_update_plan.md
 
+# Maintainer guide (kept locally only; GitHub publishes only Kiro CLI spec pages)
+kiro-docs/05_meta/10_version-update-guide.md
+
 # Python
 __pycache__/
 *.py[cod]
