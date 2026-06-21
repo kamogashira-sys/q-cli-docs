@@ -84,7 +84,7 @@
 
 ### 本サイト
 
-- [機能詳細ガイド (01_features/)](../01_features/README.md) — 29機能の詳細解説
+- [機能詳細ガイド (01_features/)](../01_features/README.md) — 30機能の詳細解説
 - [アップデート情報 (02_update/)](../02_update/README.md) — バージョン履歴と主要変更
 - [デプロイ・環境構築 (03_deployment/)](../03_deployment/README.md) — インストール手順
 - [メタドキュメント (05_meta/)](../05_meta/) — 品質保証関連
@@ -97,4 +97,4 @@
 
 ---
 
-**Page updated**: 2026-06-21（v2.7.0/v2.6.1対応: Slash Commands を公式 2026-06-12 版に更新、`/goal`・Queue Steering キーバインド追加、Settings は公式 2026-06-05 版のまま（v2.7.0 未反映）、機能数 29 に同期）
+**Page updated**: 2026-06-21（v2.7.0/v2.6.1対応: Slash Commands を公式 2026-06-12 版に更新、`/goal`・Queue Steering キーバインド追加、Settings は公式 2026-06-05 版のまま（v2.7.0 未反映）／ v2.8.0・V3 Early Access 対応: v3（`--v3`）コマンドは [09_v3/](../09_v3/README.md) 参照の注記を追加、機能数 30 に同期）

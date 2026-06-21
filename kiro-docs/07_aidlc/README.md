@@ -4,6 +4,8 @@
 
 **位置付け**: AI-DLC は **Kiro CLI のコア機能ではありません**。AWS Labs が提供する **独立した OSS（MIT-0）** ですが、**v0.1.0（2026-01-22）から Kiro CLI を公式サポート** しており、本サイトでは「Kiro CLI で AI 駆動開発を実践する際の選択肢として有力なもの」として独立フォルダにまとめます。
 
+> 🆕 **Kiro 純正の Spec（v3）との違い**: Kiro CLI v3（Early Access）で導入された組み込みの **Spec agent**（`/spec`、`.kiro/specs/`）は **Kiro 純正のコア機能**で、本 AI-DLC（AWS Labs OSS の方法論。Steering Files として `.kiro/steering/` に配置）とは**別物**です。両者の違いは [09_v3/01. 仕様駆動開発](../09_v3/01_spec-driven-development.md) を参照してください。
+
 **出典（一次情報）**:
 - [GitHub: awslabs/aidlc-workflows](https://github.com/awslabs/aidlc-workflows) — リポジトリ本体
 - [AI 駆動開発ライフサイクル: ソフトウェアエンジニアリングの再構築 - AWS Blog (2025-07-31)](https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/) — by Raja SP

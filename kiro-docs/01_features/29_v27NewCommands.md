@@ -10,7 +10,7 @@ Kiro CLI **v2.7.0**（2026-06-12）で追加・拡張された機能を解説し
 
 **対応バージョン**: Kiro CLI v2.7.0+
 
-> **注記**: 本ページは v2.7.0 を対象としています。v2.7.1（2026-06-16）、v2.8.0 / v2.8.1（2026-06-17、CLI v3 Early Access）は別途対応予定です。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
+> **注記**: 本ページは v2.7.0 を対象としています。後続の v2.7.1（2026-06-16）、v2.8.0 / v2.8.1（2026-06-17、CLI v3 Early Access）は**対応済み**です（→ [02_update/01_changelog.md](../02_update/01_changelog.md)、[30. v2.8 / V3プレビュー](30_v28V3Preview.md)、[09_v3/ Kiro CLI v3（Early Access）](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
 
 ---
 

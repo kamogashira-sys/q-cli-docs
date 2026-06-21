@@ -2,7 +2,7 @@
 
 # Kiro CLI 機能詳細ガイド
 
-> 29 機能（既存 21 + v3.1 追加 4: Hooks / Steering / @file references / Auto Complete + Phase 6: Agent Toolkit for AWS + v2.5.0: Thinking Display + v2.6.0: v2.6 新コマンド + v2.7.0: v2.7 新コマンド）の詳細解説。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+> 30 機能（既存 21 + v3.1 追加 4: Hooks / Steering / @file references / Auto Complete + Phase 6: Agent Toolkit for AWS + v2.5.0: Thinking Display + v2.6.0: v2.6 新コマンド + v2.7.0: v2.7 新コマンド + v2.8.0: V3 プレビュー）の詳細解説。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
 
 ## 主要アップデート情報
 
@@ -39,6 +39,7 @@
 | **[Thinking Display（推論のリアルタイム表示）](27_ThinkingDisplay.md)** 🆕 | v2.5.0<br/>（2026-05-29） | エージェントの推論プロセスをリアルタイム表示（既定有効） | chat.showThinking（既定 true）、/settings display > Show thinking、Adaptive Thinking との違い |
 | **[v2.6新コマンド（/transcript save, /title, --effort）](28_v26NewCommands.md)** 🆕 | v2.6.0<br/>（2026-06-05） | 会話エクスポート・端末タイトル・起動時effort・設定の自動永続化 | /transcript save（md/plain/json）、/title、--effort 起動フラグ、/model・/effort 自動永続化、/knowledge update（全KB一括） |
 | **[v2.7新コマンド（/goal, Queue Steering, enriched /rewind）](29_v27NewCommands.md)** 🆕 | v2.7.0<br/>（2026-06-12） | 自律ループ実行・ターン中介入・/rewind preview拡張・設定追加 | /goal（5反復既定/--max、自己検証ループ）、Queue Steering（Ctrl+S で steer/queue 切替）、enriched /rewind preview、chat.terminalTitle 設定、/settings UI統一・theme Custom ウィザード化 |
+| **[v2.8 / V3プレビュー（CLI v3 Early Access）](30_v28V3Preview.md)** 🆕 | v2.8.0<br/>（2026-06-17）<br/>v2.8.1更新 | CLI v3 Early Access（`--v3`）と統一エンジン・仕様駆動開発のプレビュー | `--v3` オプトイン、統一エンジン、4本柱（Spec / permissions.yaml / Hooks / タグ Agent設定）、Breaking changes・Known gaps、v2.8.1 で MCP OAuth / spec 表示の改善 |
 
 
 
@@ -58,6 +59,7 @@
 - [22. Smart Hooks](22_Hooks.md) 🆕 — エージェントライフサイクル拡張
 - [23. Agent Steering](23_Steering.md) 🆕 — 永続的プロジェクト規約注入
 - [29. v2.7 New Commands](29_v27NewCommands.md) 🆕 — `/goal` 自律ループ実行・Queue Steering（v2.7.0）
+- [30. v2.8 / V3プレビュー](30_v28V3Preview.md) 🆕 — CLI v3 Early Access（`--v3`）・仕様駆動開発（v2.8.0）
 
 ### 📁 コンテキスト・知識管理
 - [07. Skills](07_Skills.md) — Progressive Context Loading
@@ -270,6 +272,10 @@
 - **[chat.terminalTitle](29_v27NewCommands.md)**: 設定キーとして正式追加（v2.6.0 時点の不一致が解消）
 - **[Enriched /rewind preview](29_v27NewCommands.md)**: ターンピッカーがツール呼び出し詳細・ファイル変更・実行コマンド・コンテキスト使用量を併記
 - **[/settings 改善](29_v27NewCommands.md)**: 全サブコマンド共通の overlay frame / footer hints / ESC back-navigation、theme Custom ウィザード化
+
+### v2.8.0 / v2.8.1（2026-06-17）
+- **[CLI v3 Early Access](30_v28V3Preview.md)**（v2.8.0）: `kiro-cli --v3` で V3 エンジンを先行公開（2.x と併存）。統一エンジン＋仕様駆動開発・capability ベース権限・強化版 Hooks・タグベース Agent 設定のプレビュー。Breaking changes / Known gaps あり（→ [09_v3/](../09_v3/README.md)）
+- **MCP OAuth / spec 表示の改善**（v2.8.1）: V2 モードの MCP OAuth が認可 URL をクリップボードへコピー、パネルにコピー確認表示、Welcome リンクを V3 ドキュメントへ、spec ワークフロー中の subagent 表示を修正
 
 ## 🎯 使用シナリオ例
 
@@ -541,6 +547,12 @@ sequenceDiagram
     - Queue Steering（Ctrl+S で steer/queue 切替、ツール境界配信）
     - enriched /rewind preview、chat.terminalTitle 設定、/settings UI統一
 
+30. **[v2.8 / V3プレビュー（CLI v3 Early Access）](30_v28V3Preview.md)** 🆕
+    - v2.8.0: `kiro-cli --v3` で V3 エンジンを先行公開（統一エンジン・仕様駆動開発）
+    - 4本柱（Spec / permissions.yaml / Hooks / タグ Agent設定）、Breaking changes・Known gaps
+    - v2.8.1: MCP OAuth のクリップボードコピー・spec 表示の改善
+    - 詳細は専用セクション [09_v3/](../09_v3/README.md)
+
 ## 🔮 今後の展望
 
 Kiro CLIは継続的に進化を続けており、以下の分野での更なる改善が期待されます：
@@ -559,5 +571,5 @@ Kiro CLIは継続的に進化を続けており、以下の分野での更なる
 ---
 
 **最終更新**: 2026年6月21日  
-**対象バージョン**: Kiro CLI v2.7.0+  
-**機能数**: 29（既存21 + Hooks / Steering / @file / Auto Complete + Agent Toolkit for AWS + Thinking Display + v2.6 新コマンド + v2.7 新コマンド）+ Reference集約 ([04_reference/](../04_reference/README.md))
+**対象バージョン**: Kiro CLI v2.8.x+（v3 は Early Access）  
+**機能数**: 30（既存21 + Hooks / Steering / @file / Auto Complete + Agent Toolkit for AWS + Thinking Display + v2.6 新コマンド + v2.7 新コマンド + v2.8 / V3プレビュー）+ Reference集約 ([04_reference/](../04_reference/README.md))
