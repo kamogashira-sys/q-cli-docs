@@ -41,6 +41,7 @@ check_one() {
 if [ "$MODE" = "important" ]; then
     IMPORTANT_URLS=(
         "https://kiro.dev/changelog/cli/"
+        "https://kiro.dev/changelog/cli/2-8/"
         "https://kiro.dev/changelog/cli/2-7/"
         "https://kiro.dev/changelog/cli/2-6/"
         "https://kiro.dev/docs/cli/chat/goal/"
@@ -49,6 +50,13 @@ if [ "$MODE" = "important" ]; then
         "https://kiro.dev/docs/cli/chat/settings/"
         "https://kiro.dev/docs/cli/reference/settings/"
         "https://kiro.dev/docs/cli/reference/slash-commands/"
+        "https://kiro.dev/docs/cli/v3/"
+        "https://kiro.dev/docs/cli/v3/specs/"
+        "https://kiro.dev/docs/cli/v3/feature-overview/"
+        "https://kiro.dev/docs/cli/v3/permissions/"
+        "https://kiro.dev/docs/cli/v3/hooks/"
+        "https://kiro.dev/docs/cli/v3/agent-config/"
+        "https://kiro.dev/docs/specs/"
     )
     errors=0
     for url in "${IMPORTANT_URLS[@]}"; do

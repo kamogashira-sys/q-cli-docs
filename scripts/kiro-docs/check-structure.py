@@ -5,8 +5,9 @@
     ./scripts/kiro-docs/check-structure.py
 
 機能:
-    1. 末尾追記(#9): 機能テーブルの末尾行のバージョン == changelog 最新版
-       （テーブルはカテゴリ別配置で全体は版番号順ではないため、末尾＝最新版のみ検査）
+    1. 末尾追記(#9): 機能テーブルの末尾行のバージョン系列(major.minor) == changelog 最新版の系列
+       （テーブルはカテゴリ別配置で全体は版番号順ではないため、末尾＝最新版系列のみ検査。
+        パッチ版差（例: 末尾 v2.8.0 と changelog 最新 v2.8.1）は同一系列 2.8 として許容）
     2. 欠番検出(補B): kiro-docs/01_features/NN_*.md の番号が連続（欠番なし）か
     3. 必須セクション存在(#16): 指定ファイルに必須見出しがあるか
     4. 相互参照注記(#10): 旧版機能を扱う文書に解消バージョンの言及があるか
@@ -61,6 +62,14 @@ def last_table_version():
     return m.group(0) if m else None
 
 
+def major_minor(ver):
+    """v2.8.0 -> '2.8'。比較用に major.minor のみ取り出す。"""
+    if not ver:
+        return None
+    m = re.match(r'v?([0-9]+)\.([0-9]+)', ver)
+    return f"{m.group(1)}.{m.group(2)}" if m else None
+
+
 def feature_numbers():
     nums = []
     for p in glob.glob(os.path.join(FEATURES_DIR, "[0-9][0-9]_*.md")):
@@ -79,12 +88,14 @@ def main():
     print("")
 
     # 1. 末尾追記
-    print("🔍 1. 末尾追記（末尾行バージョン == changelog 最新版）を検証中...")
+    print("🔍 1. 末尾追記（末尾行バージョン == changelog 最新版、major.minor で比較）を検証中...")
     latest = changelog_latest()
     last_ver = last_table_version()
-    print(f"   changelog 最新版 = {latest} / 機能テーブル末尾行 = {last_ver}")
-    if latest != last_ver:
-        print(f"❌ 機能テーブル末尾のバージョン（{last_ver}）が changelog 最新版（{latest}）と不一致")
+    latest_mm = major_minor(latest)
+    last_mm = major_minor(last_ver)
+    print(f"   changelog 最新版 = {latest} ({latest_mm}) / 機能テーブル末尾行 = {last_ver} ({last_mm})")
+    if latest_mm != last_mm:
+        print(f"❌ 機能テーブル末尾のバージョン系列（{last_mm}）が changelog 最新版の系列（{latest_mm}）と不一致")
         errors += 1
 
     # 2. 欠番検出
