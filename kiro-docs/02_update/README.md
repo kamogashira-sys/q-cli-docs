@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.7.0（本サイト反映済。v2.7.1/v2.8.x は別途対応予定）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.8.1（本サイト反映済。v2.8.0 で CLI v3 Early Access）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,9 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.8.1** | 2026-06-17 | MCP OAuth / spec 表示の改善 | MCP OAuth のクリップボードコピー・パネル確認表示、Welcome リンクを V3 docs へ、spec ワークフロー中の subagent 表示修正 |
+| **v2.8.0** | 2026-06-17 | CLI v3 Early Access | `kiro-cli --v3` で V3 エンジン先行公開（2.x 併存）。統一エンジン＋仕様駆動開発・permissions.yaml・強化版 Hooks・タグ Agent設定（→ [09_v3/](../09_v3/README.md)） |
+| **v2.7.1** | 2026-06-16 | web ツール無効化警告・各種修正 | web ツール無効化時の警告通知、Windows マップドライブ glob 修正、`--classic` 再開モデル復元、drill-in フィードバック同一ターン到達 |
 | **v2.7.0** | 2026-06-12 | /goal・Queue Steering・enriched /rewind | 自律ループ実行(/goal、5反復既定/--max)、ターン中介入(Ctrl+S で steer/queue 切替、chat.defaultInterruptBehavior)、/rewind preview拡張(ツール呼出・ファイル変更・コンテキスト使用量)、chat.terminalTitle設定追加、/settings overlay統一・theme Customウィザード化 |
 | **v2.6.1** | 2026-06-08 | Linux: libasound.so.2 依存除去 | Linuxビルドが起動時に libasound.so.2 を要求しなくなる（オーディオ依存パッケージ不要） |
 | **v2.6.0** | 2026-06-05 | Transcript Export・/title・永続化 | 会話エクスポート(md/plain/json)、端末ウィンドウタイトル、--effort起動フラグ、/model・/effort自動永続化、/knowledge全KB一括更新 |
@@ -201,6 +204,15 @@ timeline
                    : enriched /rewind preview
                    : chat.terminalTitle設定
                    : /settings UI統一
+
+    section v2.8.x / V3 Early Access
+        2026-06-17 : v2.8.0
+                   : CLI v3 Early Access（--v3）
+                   : 統一エンジン＋仕様駆動開発
+                   : permissions.yaml / 強化版Hooks / タグAgent設定
+        2026-06-17 : v2.8.1
+                   : MCP OAuth クリップボードコピー
+                   : spec ワークフロー表示改善
 ```
 
 ## 🔗 移行情報
@@ -254,6 +266,7 @@ timeline
 - [Thinking Display](../01_features/27_ThinkingDisplay.md) 🆕 - エージェントの推論をリアルタイム表示（既定有効、v2.5.0）
 - [v2.6新コマンド（/transcript save, /title, --effort）](../01_features/28_v26NewCommands.md) 🆕 - 会話エクスポート・端末タイトル・起動時effort・自動永続化（v2.6.0）
 - [v2.7新コマンド（/goal, Queue Steering, enriched /rewind）](../01_features/29_v27NewCommands.md) 🆕 - 自律ループ・ターン中介入・/rewind preview拡張・chat.terminalTitle（v2.7.0）
+- [v2.8 / V3プレビュー（CLI v3 Early Access）](../01_features/30_v28V3Preview.md) 🆕 - CLI v3 Early Access（--v3）・統一エンジン・仕様駆動開発のプレビュー（v2.8.0/v2.8.1、→ [09_v3/](../09_v3/README.md)）
 
 ### リファレンス（辞書） 🆕
 - [04_reference/](../04_reference/README.md) — Settings / Slash Commands / CLI Commands / Built-in Tools の網羅的辞書
@@ -285,4 +298,4 @@ timeline
 ---
 
 **最終更新**: 2026年6月21日  
-**対象バージョン**: Kiro CLI v2.7.0
+**対象バージョン**: Kiro CLI v2.8.1

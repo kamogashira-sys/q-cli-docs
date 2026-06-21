@@ -13,7 +13,62 @@
 
 ## 最新バージョン
 
-> **注記**: 本ページは現在 **v2.7.0** までを反映しています。**v2.7.1**（2026-06-16）、**v2.8.0 / v2.8.1**（2026-06-17、CLI v3 Early Access）は別途対応予定です。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
+> **注記**: 本ページは **v2.8.1**（2026-06-17）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
+
+### v2.8.1 CLI（2026-06-17）
+
+**主要な変更**:
+
+**改善（2件）**:
+- 🔐 MCP OAuth パネルが、認可 URL を**クリップボードにコピーした際に確認表示**するように。
+- 💡 Welcome 画面のリンクを **V3 ドキュメント**へ更新。
+
+**バグ修正（2件）**:
+- 🔧 V2 モードの MCP OAuth が認可 URL を**クリップボードにコピー**するよう修正（従来は無言で失敗）。
+- 🔧 spec ワークフロー中の subagent ツール呼び出し・承認プロンプトが**メインビューに表示**されるよう修正。
+
+**注記**:
+- v2.8.0 と同日（公式表示日 2026-06-17）のパッチ。CLI 内蔵 changelog と公式表示日は一致。
+- 「spec ワークフロー中の表示」修正は、V3 の spec 機能が Early Access で実利用され始めていることを裏付けます。
+
+**出典**: `kiro-cli version --changelog=all`、[公式 Changelog v2.8](https://kiro.dev/changelog/cli/2-8/)
+
+---
+
+### v2.8.0 CLI（2026-06-17）
+
+**主要な変更**:
+
+**機能追加（1件）**:
+- 🆕 **Kiro CLI V3 Early Access**: `kiro-cli --v3` で V3 エンジンを試用可能（既存 2.x と併存、設定は変更不要）。V3 は **統一エンジン**上に構築され、**仕様駆動開発**・**capability ベース権限（`permissions.yaml`）**・**強化版 hooks（`.kiro/hooks/*.json`）**・**タグベース agent 設定**を導入。
+  - 詳細: [09. Kiro CLI v3（Early Access）](../09_v3/README.md)、[30. v2.8 / V3プレビュー](../01_features/30_v28V3Preview.md)、[公式 CLI v3](https://kiro.dev/docs/cli/v3/)
+
+**注記**:
+- CLI 内蔵 changelog の日付（2026-06-16）と公式サイト表示日（2026-06-17）に差異あり。**公式サイト表示日を採用**。
+- V3 は **Early Access**。Breaking changes（権限・hooks・agent 設定の非互換、`aws_tool` 削除、セッション形式非互換、Supervised mode 削除）と Known gaps（AL2 非対応・非 TUI/Classic モード非対応・V3 セッションは V2 で再開不可）あり。詳細は [09_v3/](../09_v3/README.md) 参照。
+
+**出典**: `kiro-cli version --changelog=all`、[公式 Changelog v2.8](https://kiro.dev/changelog/cli/2-8/)、[公式 CLI v3](https://kiro.dev/docs/cli/v3/)
+
+---
+
+### v2.7.1 CLI（2026-06-16）
+
+**主要な変更**:
+
+**機能追加（1件）**:
+- 🔐 管理者が Kiro console で **web ツールを無効化**している場合に**警告通知**を表示。
+
+**バグ修正（3件）**:
+- 🔧 エージェントのリソースパスの **glob パターンが Windows マップドライブで一致しない**問題を修正。
+- 🔧 `--classic` モードで会話再開時、**前回セッションのモデル**を復元（既定へフォールバックしない）。
+- 🔧 ツール拒否時の **drill-in フィードバックが同一ターンでモデルに到達**（消失・別プロンプト不要に）。
+
+**注記**:
+- CLI 内蔵 changelog の日付（2026-06-15）と公式サイト表示日（2026-06-16）に差異あり。**公式サイト表示日を採用**。
+
+**出典**: `kiro-cli version --changelog=all`、[公式 Changelog v2.7](https://kiro.dev/changelog/cli/2-7/)
+
+---
 
 ### v2.7.0 CLI（2026-06-12）
 
@@ -53,6 +108,8 @@
 **出典**: ユーザー提供 CLI 内蔵 changelog（`/changelog` 出力）、[公式 Changelog v2.7](https://kiro.dev/changelog/cli/2-7/)、[公式 /goal](https://kiro.dev/docs/cli/chat/goal/)、[公式 Queue steering](https://kiro.dev/docs/cli/chat/queue-steering/)
 
 ---
+
+## バージョン履歴
 
 ### v2.6.1 CLI（2026-06-08）
 
@@ -110,8 +167,6 @@
 **出典**: `kiro-cli version --changelog=all`、[公式Changelog v2.6](https://kiro.dev/changelog/cli/2-6/)、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)
 
 ---
-
-## バージョン履歴
 
 ### v2.5.1 CLI（2026-06-01）
 
