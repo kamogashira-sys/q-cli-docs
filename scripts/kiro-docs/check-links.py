@@ -10,9 +10,10 @@
     - リンク先ファイルの実在を検証（アンカー #... は分離して判定）
     - http(s)/mailto/tel/# 始まりはスキップ
 
-除外（スコープ外・原典準拠のため）:
-    - kiro-docs/06_embedded-docs/**     … 公式 OSS リポジトリの逐語コピー
-    - kiro-docs/05_meta/10_version-update-guide.md … 手順書（テンプレート例を含む）
+除外（スコープ外・原典準拠のため。ソースのスキャン／リンク先の検証の両方に適用）:
+    - kiro-docs/06_embedded-docs/**     … 公式 OSS リポジトリの逐語コピー（GitHub 非公開・ローカル管理）
+    - kiro-docs/05_meta/**              … 手順書等（GitHub 非公開・ローカル管理）
+    - *_update_plan.md                  … gitignore 対象の計画書
 """
 import os
 import re
@@ -23,8 +24,8 @@ LINK_RE = re.compile(r'\[([^\]]*)\]\(([^)]+)\)')
 HEADING_RE = re.compile(r'^#{1,6}\s+(.*?)\s*$')
 
 EXCLUDE_SUBSTR = (
-    "kiro-docs/06_embedded-docs/",          # 公式 OSS リポジトリの逐語コピー
-    "kiro-docs/05_meta/10_version-update-guide.md",  # 手順書（テンプレート例）
+    "kiro-docs/06_embedded-docs/",          # 公式 OSS リポジトリの逐語コピー（GitHub 非公開・ローカル管理）
+    "kiro-docs/05_meta",                     # 手順書等は GitHub 非公開・ローカル管理（git rm --cached 済）
     "_update_plan",                          # *_update_plan.md は gitignore 対象の計画書
 )
 SKIP_PREFIX = ("http://", "https://", "mailto:", "tel:", "#")
@@ -91,6 +92,10 @@ def main():
             if not path:
                 continue
             resolved = os.path.normpath(os.path.join(base, path))
+            # 除外パス（GitHub 非公開・原典準拠のローカル管理領域: 06_embedded-docs / 05_meta 等）
+            # へのリンクは検証対象外。これらは意図的にリポジトリ非公開のため CI には存在しない。
+            if is_excluded(resolved):
+                continue
             checked += 1
             if not os.path.exists(resolved):
                 broken.append((f, target, resolved))
