@@ -90,6 +90,7 @@ kiro-cli settings list --format json-pretty
 | `chat.disableMarkdownRendering` | boolean | Markdown フォーマット無効化（classic） | `kiro-cli settings chat.disableMarkdownRendering false` |
 | `chat.disableWrap` | boolean | コピペ向けにハード改行を無効化（v2.2.1+） | `kiro-cli settings chat.disableWrap true` |
 | `chat.disableAutoCompaction` | boolean | 自動会話圧縮を無効化 | `kiro-cli settings chat.disableAutoCompaction true` |
+| `chat.disableInheritingDefaultResources` | boolean | カスタムエージェントが既定リソース（steering / skills / AGENTS.md）を継承しないようにする（v2.10.0+、既定 `false`、global/workspace 上書き可）。※組み込みエージェントは本設定に関わらず常に継承 | `kiro-cli settings chat.disableInheritingDefaultResources true` |
 | `compaction.excludeMessages` | number | 圧縮時に保持する最低メッセージペア数（既定: 2） | `kiro-cli settings compaction.excludeMessages 2` |
 | `compaction.excludeContextWindowPercent` | number | 圧縮時に保持する最低コンテキストウィンドウ% | `kiro-cli settings compaction.excludeContextWindowPercent 2` |
 | `chat.enablePromptHints` | boolean | 起動時ヒント表示（v1.26.0+、既定 true） | `kiro-cli settings chat.enablePromptHints false` |
@@ -101,6 +102,8 @@ kiro-cli settings list --format json-pretty
 | `chat.modelDefaults` | object | モデルごとのデフォルト設定（effort 等、新セッション全体に適用） | [Effort](https://kiro.dev/docs/cli/chat/effort/#persistent-defaults) 参照 |
 | `chat.enableContextUsageIndicator` | boolean | プロンプトにコンテキスト使用率を表示（classic のみ） | `kiro-cli settings chat.enableContextUsageIndicator true` |
 | `chat.historyMode` | string | プロンプト履歴のスコープ: `session`（既定）/ `global`（v2.5.0+、`/settings history` で設定、次セッション反映） | `kiro-cli settings chat.historyMode global` |
+
+> **`chat.disableInheritingDefaultResources`** は **v2.10.0 で追加**された設定です。既定は `false`（カスタムエージェントは既定リソース steering / skills / AGENTS.md を継承）、`true` で継承を無効化できます（**組み込みエージェントは本設定に関わらず常に継承**）。v2.7.0 で導入された既定リソース自動継承のオプトアウト手段です。⚠️ 公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（公式ページ最終更新 2026-06-05）は本設定が未反映のため、本サイトは [カスタムエージェント設定リファレンス](https://kiro.dev/docs/cli/custom-agents/configuration-reference/)（公式ページ最終更新 2026-06-26）を一次情報として採用しています。詳細: [31. v2.10 設定ホットリロード & リソース継承制御](../01_features/31_v210ConfigHotReload.md)
 
 #### 表示・アクセシビリティ（Display and accessibility、terminal UI）
 

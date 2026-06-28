@@ -38,69 +38,74 @@ kiro-cliについてのより正確な情報発信を心がけて今後も更新
 
 ### 📚 Kiro CLI v2.x 主要アップデート
 
-Kiro CLI v2.x 系では **Windows対応・Headless Mode・新TUI** を中心に大幅な機能拡張が行われ、**v2.8.0 では CLI v3（Early Access）** が登場しました：
+Kiro CLI v2.x 系では **Windows対応・Headless Mode・新TUI** を中心に大幅な機能拡張が行われ、**v2.8.0 では CLI v3（Early Access）** が登場、**v2.10.0 では MCP・エージェント設定のホットリロード**が追加されました：
 
-1. **[v2.8.0 / v2.8.1 CLI v3 Early Access](kiro-docs/02_update/01_changelog.md)**（2026-06-17）
+1. **[v2.10.0 / v2.9.0 設定ホットリロード・リソース継承制御・V3安定化](kiro-docs/02_update/01_changelog.md)**（2026-06-26 / 06-24）
+   - v2.10.0: MCP・エージェント設定のホットリロード（file watcher で `.kiro/agents`・`mcp.json` を監視、変更サーバーのみ再起動、会話コンテキスト保持）
+   - v2.10.0: `chat.disableInheritingDefaultResources`（カスタムエージェントの既定リソース継承をオプトアウト、組み込みは常に継承） → [kiro-docs/01_features/31](kiro-docs/01_features/31_v210ConfigHotReload.md)
+   - v2.9.0: V3（Early Access）安定化（[V3] ツールカード1行プレビュー）、Entra ID セッション更新修正、カスタムエージェント二重読込修正
+
+2. **[v2.8.0 / v2.8.1 CLI v3 Early Access](kiro-docs/02_update/01_changelog.md)**（2026-06-17）
    - `kiro-cli --v3` で V3 エンジンを先行公開（2.x と併存、Early Access）。統一エンジン＋仕様駆動開発
    - 4本柱（Spec / `permissions.yaml` / Hooks / タグベース Agent設定）、Breaking changes・Known gaps（→ [kiro-docs/09_v3/](kiro-docs/09_v3/README.md)）
    - v2.8.1: MCP OAuth のクリップボードコピー・spec ワークフロー表示の改善
 
-2. **[v2.7.0 /goal・Queue Steering・enriched /rewind](kiro-docs/02_update/01_changelog.md)**（2026-06-12）
+3. **[v2.7.0 /goal・Queue Steering・enriched /rewind](kiro-docs/02_update/01_changelog.md)**（2026-06-12）
    - `/goal`（受入基準を満たすまで自己検証する自律ループ、最大5反復既定 / `--max`）
    - Queue Steering（`Ctrl+S` で steer/queue 切替、ターン実行中に方向修正）
    - enriched `/rewind` preview（各ターンのツール呼び出し・ファイル変更・コンテキスト使用量を表示）
    - `chat.terminalTitle` 設定追加、`/settings` UI統一・`theme Custom` ウィザード化
 
-3. **[v2.6.1 Linux: libasound.so.2 依存除去](kiro-docs/02_update/01_changelog.md)**（2026-06-08）
+4. **[v2.6.1 Linux: libasound.so.2 依存除去](kiro-docs/02_update/01_changelog.md)**（2026-06-08）
    - Linux ビルドが起動時に `libasound.so.2` を要求しなくなる（オーディオ依存パッケージ不要）
 
-4. **[v2.6.0 Transcript Export・/title・永続化](kiro-docs/02_update/01_changelog.md)**（2026-06-05）
+5. **[v2.6.0 Transcript Export・/title・永続化](kiro-docs/02_update/01_changelog.md)**（2026-06-05）
    - `/transcript save`（会話を Markdown/プレーンテキスト/JSON でエクスポート）
    - `/title`（ターミナルウィンドウタイトルの設定）
    - `--effort` 起動フラグ（`kiro-cli chat` 起動時に推論レベル指定）
    - `/model`・`/effort` の自動永続化（`set-current-as-default` 不要に）
 
-5. **[v2.5.1 APIエンドポイント移行](kiro-docs/02_update/01_changelog.md)**（2026-06-01）
+6. **[v2.5.1 APIエンドポイント移行](kiro-docs/02_update/01_changelog.md)**（2026-06-01）
    - API エンドポイントを `*.kiro.dev` へ移行（firewall 許可リスト要確認）
 
-6. **[v2.5.0 Thinking Display・Review Loops](kiro-docs/02_update/01_changelog.md)**（2026-05-29）
+7. **[v2.5.0 Thinking Display・Review Loops](kiro-docs/02_update/01_changelog.md)**（2026-05-29）
    - Thinking Display（エージェントの推論をリアルタイム表示、既定有効）
    - Subagent Review Loops（reviewer→implementer の自動差し戻し）
    - `/settings display`（表示トグル）、プロンプト履歴のセッション単位化
 
-7. **[v2.4.2 Windowsクラッシュ修正](kiro-docs/02_update/01_changelog.md)**（2026-05-26）
+8. **[v2.4.2 Windowsクラッシュ修正](kiro-docs/02_update/01_changelog.md)**（2026-05-26）
    - Windows 環境で発生していた koffi/createRequire 起因クラッシュ修正（terminal input handling）
 
-8. **[v2.4.1 MCP環境変数展開修正](kiro-docs/02_update/01_changelog.md)**（2026-05-21）
+9. **[v2.4.1 MCP環境変数展開修正](kiro-docs/02_update/01_changelog.md)**（2026-05-21）
    - MCPサーバー設定での `${VAR_NAME}` 環境変数展開構文の修正
 
-9. **[v2.4.0 /rewind・/effort・/settings](kiro-docs/02_update/01_changelog.md)**（2026-05-20）
+10. **[v2.4.0 /rewind・/effort・/settings](kiro-docs/02_update/01_changelog.md)**（2026-05-20）
    - `/rewind`（会話の任意ターンに戻り新セッションで分岐）
    - `/effort`（モデル推論レベル5段階制御: low〜max）
    - `/settings`（theme/keybindings/terminal統合メニュー）
    - Workspace初期化88%高速化（652ms → 76ms）
 
-10. **[v2.3.0 MCP OAuth・KIRO_HOME・Keybindings](kiro-docs/02_update/01_changelog.md)**（2026-05-12）
+11. **[v2.3.0 MCP OAuth・KIRO_HOME・Keybindings](kiro-docs/02_update/01_changelog.md)**（2026-05-12）
    - OAuth clientId設定（DCR非対応MCPサーバー接続）
    - KIRO_HOME環境変数（`~/.kiro`ディレクトリのオーバーライド）
    - V2 TUIキーバインド設定（cancel/close menu/quit）
    - Agent Output Side Channels（`$AGENT_DISPLAY_OUT`/`$AGENT_CONTEXT_OUT`）
 
-11. **[v2.2.2 MCPガバナンス強化](kiro-docs/02_update/01_changelog.md)**（2026-05-05）
+12. **[v2.2.2 MCPガバナンス強化](kiro-docs/02_update/01_changelog.md)**（2026-05-05）
    - V2 TUIモードでのMCP governance強制適用（エンタープライズ・API keyユーザー）
 
-12. **[v2.2.1 UX改善・安定性修正](kiro-docs/02_update/01_changelog.md)**（2026-05-04）
+13. **[v2.2.1 UX改善・安定性修正](kiro-docs/02_update/01_changelog.md)**（2026-05-04）
    - `chat.disableWrap`設定追加、`/model set-current-as-default`の保存先変更、9件のバグ修正
 
-13. **[v2.2.0 Adaptive Thinking](kiro-docs/02_update/01_changelog.md)**（2026-04-27）
+14. **[v2.2.0 Adaptive Thinking](kiro-docs/02_update/01_changelog.md)**（2026-04-27）
    - マルチターン会話でモデルの推論を保持し応答品質を向上
 
-14. **[v2.1.0 Shell Streaming・Tool Search](kiro-docs/02_update/01_changelog.md)**（2026-04-24）
+15. **[v2.1.0 Shell Streaming・Tool Search](kiro-docs/02_update/01_changelog.md)**（2026-04-24）
    - シェルコマンド出力のリアルタイムストリーミング
    - Skills as Slash Commands（`/skill-name`で直接呼び出し）
    - Device Flow認証（ポートフォワーディング不要）
 
-15. **[v2.0.0 Windows・Headless Mode](kiro-docs/02_update/01_changelog.md)**（2026-04-13）
+16. **[v2.0.0 Windows・Headless Mode](kiro-docs/02_update/01_changelog.md)**（2026-04-13）
    - Windows 11ネイティブ対応
    - CI/CD向けHeadless Mode（`KIRO_API_KEY`認証）
    - 新Terminal UIがデフォルト化（Crew Monitor、/theme、/spawn等）
@@ -175,7 +180,7 @@ Kiro CLI v1.24.0では、**7つの主要機能**が追加されました：
 ```
 kiro-docs/
 ├── 00_information/   # 基本情報・公式サイト情報
-├── 01_features/      # 機能詳細ガイド（v2.8.1対応）
+├── 01_features/      # 機能詳細ガイド（v2.10.0対応）
 ├── 02_update/        # アップデート情報
 ├── 03_deployment/    # デプロイメント・環境構築
 ├── 04_reference/     # リファレンス（Settings/Slash/CLI/Tools）
@@ -185,7 +190,7 @@ kiro-docs/
 ```
 
 **主要ドキュメント**:
-- **[機能詳細ガイド](kiro-docs/01_features/README.md)** - 30機能の詳細解説
+- **[機能詳細ガイド](kiro-docs/01_features/README.md)** - 31機能の詳細解説
 - **[アップデート情報](kiro-docs/02_update/README.md)** - バージョン履歴
 - **[環境構築ガイド](kiro-docs/03_deployment/README.md)** - デプロイメント手順
 
@@ -438,6 +443,7 @@ Q CLIのセキュリティとプライバシーについて理解することは
 
 | 日付 | 内容 |
 |------|------|
+| 2026-06-28 | v2.10.0、v2.9.0対応 |
 | 2026-06-21 | v2.7.1、v2.8.0、v2.8.1・v3（Early Access）対応 |
 | 2026-06-21 | v2.7.0、v2.6.1対応 |
 | 2026-06-07 | v2.6.0、v2.5.1、v2.5.0対応 |

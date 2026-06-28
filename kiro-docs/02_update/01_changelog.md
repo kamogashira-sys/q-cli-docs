@@ -13,7 +13,56 @@
 
 ## 最新バージョン
 
-> **注記**: 本ページは **v2.8.1**（2026-06-17）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
+> **注記**: 本ページは **v2.10.0**（2026-06-26）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
+
+### v2.10.0 CLI（2026-06-26）
+
+**主要な変更**:
+
+**機能追加（2件）**:
+- 🔧 **MCP・エージェント設定のホットリロード**: `.kiro/agents`・`mcp.json` の保存変更を file watcher が検知し、追加/削除/編集されたサーバーのみ再起動して差分調整。会話コンテキストは保持され、設定差分は順序非依存（環境変数/キーの並べ替えでは再起動しない）。反映は次のアイドル境界（ターン間）。
+  - 詳細: [MCP 設定（Hot-Reload）](https://kiro.dev/docs/cli/mcp/configuration/)
+- 🔧 **`chat.disableInheritingDefaultResources` 設定追加**: カスタムエージェントが既定リソース（steering / skills / AGENTS.md）を継承しないようにする（Boolean、既定 false）。v2.7.0 以降の自動継承のオプトアウト手段。組み込みエージェントは常に継承。
+  - 詳細: [カスタムエージェント設定リファレンス](https://kiro.dev/docs/cli/custom-agents/configuration-reference/)
+
+**改善（1件）**:
+- 💡 スラッシュコマンド・承認メニューに navigate / select / cancel の操作ヒントを表示。
+
+**バグ修正（3件）**:
+- 🔧 `/chat` メニューピッカーの各種描画バグを修正。
+- 📋 Subagent crew ツールがステージ失敗時に無期限ブロックせず、エラーで即時失敗（fail-fast）。
+- 📋 Subagent の耐障害性向上（高負荷時もサマリー結果を確実配信、空応答も graceful に劣化）。
+
+**セキュリティ（1件）**:
+- 🔐 Windows のシステムツール解決を untrusted-search-path RCE（CWE-426）に対して堅牢化。
+
+**出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.10](https://kiro.dev/changelog/cli/2-10/)
+
+**注記**: CLI内蔵 changelog 日付（2026-06-25）と公式表示日（2026-06-26）に差異あり。公式表示日を採用。
+
+---
+
+### v2.9.0 CLI（2026-06-24）
+
+**主要な変更**: V3（Early Access）の安定化と Entra ID セッション更新修正が中心。機能追加なし。
+
+**改善（1件）**:
+- 📋 [V3] サブエージェントのツールカードが引数全体でなく1行プロンプトプレビューを表示（`ctrl+o` 展開）。
+
+**バグ修正（7件）**:
+- 🔐 Entra ID (Azure AD) のセッション期限切れ修正（外部 IdP トークン更新がスコープ再送）。
+- 🔧 カスタムエージェントが resources 明示と継承 glob 一致の両方に該当するファイルを二重読込しない。
+- 🔧 [V3] ツール承認の編集中、矢印キーが編集をキャンセルせずカーソル移動。
+- 🔧 [V3] 左矢印キーで drill-in モードから戻れる。
+- 🔧 [V3] エージェントクルーのサブエージェント活動がメイン会話に重複表示されない。
+- 🔧 [V3] `/model` ピッカーに credits 列を表示（v2 と一致）。
+- 🔧 [V3] 複合シェルコマンド（例 `git status && echo done`）が承認プロンプトでループしない。
+
+**出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.9](https://kiro.dev/changelog/cli/2-9/)
+
+**注記**: CLI内蔵 changelog 日付（2026-06-22）と公式表示日（2026-06-24）に差異あり。公式表示日を採用。
+
+---
 
 ### v2.8.1 CLI（2026-06-17）
 
@@ -50,6 +99,8 @@
 **出典**: `kiro-cli version --changelog=all`、[公式 Changelog v2.8](https://kiro.dev/changelog/cli/2-8/)、[公式 CLI v3](https://kiro.dev/docs/cli/v3/)
 
 ---
+
+## バージョン履歴
 
 ### v2.7.1 CLI（2026-06-16）
 
@@ -97,7 +148,7 @@
 - 🎨 `/settings theme Custom` が**ステップ式ウィザード**化、ライブプレビューが実会話レンダリングに整合
 
 **バグ修正（2件）**:
-- 🔧 カスタムエージェントが組み込みエージェントと同様にデフォルトリソース（steering、skills、AGENTS.md）を継承
+- 🔧 カスタムエージェントが組み込みエージェントと同様にデフォルトリソース（steering、skills、AGENTS.md）を継承（※v2.10.0 で `chat.disableInheritingDefaultResources` 設定によるオプトアウトが追加）
 - 🔧 Windows: `bun` および `node` の実行パスに `.exe` 拡張子を付与
 
 **注記**:
@@ -108,8 +159,6 @@
 **出典**: ユーザー提供 CLI 内蔵 changelog（`/changelog` 出力）、[公式 Changelog v2.7](https://kiro.dev/changelog/cli/2-7/)、[公式 /goal](https://kiro.dev/docs/cli/chat/goal/)、[公式 Queue steering](https://kiro.dev/docs/cli/chat/queue-steering/)
 
 ---
-
-## バージョン履歴
 
 ### v2.6.1 CLI（2026-06-08）
 
@@ -942,4 +991,4 @@ kiro chat "Hello, world!"
 - セキュリティアップデートのリリース時
 - コミュニティからの重要なフィードバック時
 
-**最終更新**: 2026年6月21日（v2.7.0/v2.6.1対応追加、v2.5.1/v2.5.0をバージョン履歴へ移動、v2.6.0注記更新）
+**最終更新**: 2026年6月28日（v2.10.0/v2.9.0対応追加、v2.7.0の継承記述に相互参照追加、v2.7.0/v2.7.1をバージョン履歴へ移動、メタ反映漏れ是正）

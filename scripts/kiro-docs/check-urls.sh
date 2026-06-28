@@ -41,6 +41,8 @@ check_one() {
 if [ "$MODE" = "important" ]; then
     IMPORTANT_URLS=(
         "https://kiro.dev/changelog/cli/"
+        "https://kiro.dev/changelog/cli/2-10/"
+        "https://kiro.dev/changelog/cli/2-9/"
         "https://kiro.dev/changelog/cli/2-8/"
         "https://kiro.dev/changelog/cli/2-7/"
         "https://kiro.dev/changelog/cli/2-6/"
@@ -50,6 +52,8 @@ if [ "$MODE" = "important" ]; then
         "https://kiro.dev/docs/cli/chat/settings/"
         "https://kiro.dev/docs/cli/reference/settings/"
         "https://kiro.dev/docs/cli/reference/slash-commands/"
+        "https://kiro.dev/docs/cli/mcp/configuration/"
+        "https://kiro.dev/docs/cli/custom-agents/configuration-reference/"
         "https://kiro.dev/docs/cli/v3/"
         "https://kiro.dev/docs/cli/v3/specs/"
         "https://kiro.dev/docs/cli/v3/feature-overview/"

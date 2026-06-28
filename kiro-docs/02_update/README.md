@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.8.1（本サイト反映済。v2.8.0 で CLI v3 Early Access）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.10.0（本サイト反映済。v2.8.0 で CLI v3 Early Access）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,8 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.10.0** | 2026-06-26 | 設定ホットリロード・リソース継承制御 | MCP・エージェント設定のホットリロード（file watcher、変更サーバーのみ再起動、会話コンテキスト保持）、`chat.disableInheritingDefaultResources`（既定リソース継承のオプトアウト）、メニュー操作ヒント、Windows RCE（CWE-426）堅牢化 |
+| **v2.9.0** | 2026-06-24 | V3安定化・Entra ID修正 | [V3] ツールカード1行プレビュー（ctrl+o）、Entra ID セッション更新修正、カスタムエージェント二重読込修正、[V3] 各種UX修正（機能追加なし） |
 | **v2.8.1** | 2026-06-17 | MCP OAuth / spec 表示の改善 | MCP OAuth のクリップボードコピー・パネル確認表示、Welcome リンクを V3 docs へ、spec ワークフロー中の subagent 表示修正 |
 | **v2.8.0** | 2026-06-17 | CLI v3 Early Access | `kiro-cli --v3` で V3 エンジン先行公開（2.x 併存）。統一エンジン＋仕様駆動開発・permissions.yaml・強化版 Hooks・タグ Agent設定（→ [09_v3/](../09_v3/README.md)） |
 | **v2.7.1** | 2026-06-16 | web ツール無効化警告・各種修正 | web ツール無効化時の警告通知、Windows マップドライブ glob 修正、`--classic` 再開モデル復元、drill-in フィードバック同一ターン到達 |
@@ -213,6 +215,16 @@ timeline
         2026-06-17 : v2.8.1
                    : MCP OAuth クリップボードコピー
                    : spec ワークフロー表示改善
+
+    section v2.9.x / v2.10.x 設定運用の強化
+        2026-06-24 : v2.9.0
+                   : V3（Early Access）安定化
+                   : Entra ID セッション更新修正
+                   : カスタムエージェント二重読込修正
+        2026-06-26 : v2.10.0
+                   : MCP・エージェント設定ホットリロード
+                   : chat.disableInheritingDefaultResources
+                   : メニュー操作ヒント / Windows RCE 堅牢化
 ```
 
 ## 🔗 移行情報
@@ -267,6 +279,7 @@ timeline
 - [v2.6新コマンド（/transcript save, /title, --effort）](../01_features/28_v26NewCommands.md) 🆕 - 会話エクスポート・端末タイトル・起動時effort・自動永続化（v2.6.0）
 - [v2.7新コマンド（/goal, Queue Steering, enriched /rewind）](../01_features/29_v27NewCommands.md) 🆕 - 自律ループ・ターン中介入・/rewind preview拡張・chat.terminalTitle（v2.7.0）
 - [v2.8 / V3プレビュー（CLI v3 Early Access）](../01_features/30_v28V3Preview.md) 🆕 - CLI v3 Early Access（--v3）・統一エンジン・仕様駆動開発のプレビュー（v2.8.0/v2.8.1、→ [09_v3/](../09_v3/README.md)）
+- [v2.10 設定ホットリロード & リソース継承制御](../01_features/31_v210ConfigHotReload.md) 🆕 - MCP・エージェント設定のホットリロードと既定リソース継承制御（`chat.disableInheritingDefaultResources`、v2.10.0）
 
 ### リファレンス（辞書） 🆕
 - [04_reference/](../04_reference/README.md) — Settings / Slash Commands / CLI Commands / Built-in Tools の網羅的辞書
@@ -297,5 +310,5 @@ timeline
 
 ---
 
-**最終更新**: 2026年6月21日  
-**対象バージョン**: Kiro CLI v2.8.1
+**最終更新**: 2026年6月28日  
+**対象バージョン**: Kiro CLI v2.10.0
