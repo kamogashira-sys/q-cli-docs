@@ -1,3 +1,7 @@
+[ホーム](../README.md) > [機能詳細ガイド](README.md) > Terminal UI
+
+---
+
 # Kiro CLI Terminal UI機能
 
 **出典**: [Terminal UI](https://kiro.dev/docs/cli/terminal-ui/)、[公式Changelog v1.28.0](https://kiro.dev/changelog/cli/1-28/)、[公式Changelog v2.0.0](https://kiro.dev/changelog/cli/2-0/)、CLI changelog v1.28.0〜v2.0.0
@@ -435,4 +439,5 @@ kiro-cli settings list | grep chat.ui
 
 ---
 
-**最終更新**: 2026年05月04日
+**最終更新**: 2026-07-04
+**対象バージョン**: Kiro CLI v1.28.0+（v2.0.0 でデフォルト UI 化）

@@ -3,7 +3,7 @@
 [ホーム](../README.md) > [基本情報](README.md) > 公式サイト構造
 
 **出典**: [Kiro CLI公式サイト](https://kiro.dev/cli/) - 公式ウェブサイト  
-**反映時点**: 2026-05-24（公式更新の継続的な追跡対象）
+**反映時点**: 2026-07-04（公式更新の継続的な追跡対象）
 
 ## 概要
 
@@ -66,6 +66,12 @@ Kiro CLI公式サイト（https://kiro.dev/cli/）の画面遷移とページ構
 | │　│　├── | Slash Commands [(/docs/cli/reference/slash-commands/)](https://kiro.dev/docs/cli/reference/slash-commands/) | 全スラッシュコマンド40種＋キーボードショートカット |
 | │　│　├── | CLI Commands [(/docs/cli/reference/cli-commands/)](https://kiro.dev/docs/cli/reference/cli-commands/) | `kiro-cli` 全16コマンド、グローバル引数、セッション管理 |
 | │　│　└── | Built-in Tools [(/docs/cli/reference/built-in-tools/)](https://kiro.dev/docs/cli/reference/built-in-tools/) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_*/code/tool_search/subagent 他） |
+| │　├── | **CLI 3.0（V3 / Early Access）** [(/docs/cli/v3/)](https://kiro.dev/docs/cli/v3/) 🆕 | v3 の全体像（統一エンジン・4本柱・Breaking changes）。v2.8.0 以降 `kiro-cli --v3` でオプトイン（→ 本サイト [09_v3/](../09_v3/README.md)） |
+| │　│　├── | Spec-driven development [(/docs/cli/v3/specs/)](https://kiro.dev/docs/cli/v3/specs/) | 組み込み Spec agent による仕様駆動開発（要件→設計→タスク→実行） |
+| │　│　├── | Feature overview [(/docs/cli/v3/feature-overview/)](https://kiro.dev/docs/cli/v3/feature-overview/) | v2 → v3 の機能比較 |
+| │　│　├── | Permissions [(/docs/cli/v3/permissions/)](https://kiro.dev/docs/cli/v3/permissions/) | `permissions.yaml` による capability ベースの権限管理 |
+| │　│　├── | Hooks [(/docs/cli/v3/hooks/)](https://kiro.dev/docs/cli/v3/hooks/) | 独立ファイル `.kiro/hooks/*.json` の強化版 Hooks |
+| │　│　└── | Agent config [(/docs/cli/v3/agent-config/)](https://kiro.dev/docs/cli/v3/agent-config/) | タグベースのツール選択・Markdown 形式の Agent 設定 |
 | ├── | **Resources** | |
 | │　├── | Blog [(/blog/)](https://kiro.dev/blog/) | 技術ブログ |
 | │　├── | Changelog [(/changelog/)](https://kiro.dev/changelog/) | バージョン履歴 |
@@ -110,7 +116,8 @@ Kiro CLI公式サイト（https://kiro.dev/cli/）の画面遷移とページ構
 - [Auto Complete](../01_features/25_AutoComplete.md) 🆕
 - [04_reference/](../04_reference/README.md) 🆕 — Settings/Slash/CLI/Tools の辞書
 - [公式インストール手順](../03_deployment/03_official-installation.md) 🆕
+- [09_v3/](../09_v3/README.md) 🆕 — Kiro CLI v3（Early Access）専用セクション
 
 ---
 
-**最終更新**: 2026-05-24
+**最終更新**: 2026-07-04（公式 v3 ドキュメント /docs/cli/v3/ 系5ページをサイト構造表に反映）

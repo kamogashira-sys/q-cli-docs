@@ -1,3 +1,7 @@
+[ホーム](../README.md) > [機能詳細ガイド](README.md) > Granular Tool Trust
+
+---
+
 # Kiro CLI Granular Tool Trust機能
 
 **出典**: [Managing tool permissions](https://kiro.dev/docs/cli/chat/permissions/)、[公式Changelog v1.27.0](https://kiro.dev/changelog/cli/1-27/)、CLI changelog v1.27.0
@@ -200,4 +204,5 @@ Read/Write Trust Levels（制限的 → 緩い）:
 
 ---
 
-**最終更新**: 2026年05月03日
+**最終更新**: 2026-07-04
+**対象バージョン**: Kiro CLI v1.27.0+

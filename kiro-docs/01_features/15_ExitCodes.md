@@ -1,3 +1,7 @@
+[ホーム](../README.md) > [機能詳細ガイド](README.md) > Exit Codes
+
+---
+
 # Kiro CLI Exit Codes（終了コード）
 
 **出典**: [Exit Codes - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/exit-codes/)
@@ -481,4 +485,5 @@ chmod +x .kiro/hooks/pre-tool
 
 ---
 
-**最終更新**: 2026年2月7日
+**最終更新**: 2026-07-04
+**対象バージョン**: Kiro CLI v1.25.0+

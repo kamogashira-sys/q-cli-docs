@@ -86,5 +86,5 @@ kiro-cli settings chat.disableInheritingDefaultResources false
 
 ---
 
-**最終更新**: 2026年6月28日
+**最終更新**: 2026-06-28
 **対象バージョン**: Kiro CLI v2.10.0+

@@ -1,6 +1,10 @@
+[ホーム](../README.md) > [機能詳細ガイド](README.md) > AST Pattern Tools
+
+---
+
 # Kiro CLI AST Pattern Tools機能（Precise Refactoring）
 
-**出典**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)
+**出典**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)、[Code Intelligence - Kiro CLI Documentation](https://kiro.dev/docs/cli/code-intelligence/)（公式ページ最終更新: 2026-05-29）
 
 ## 概要
 
@@ -15,7 +19,7 @@ AST Pattern Tools機能は、**構文木（Abstract Syntax Tree）ベース**の
 - **誤検出の排除**: 文字列リテラルやコメント内の誤マッチを防止
 - **構造的理解**: コードの構文構造を理解した検索・変換
 - **精密なリファクタリング**: より正確で安全なコード変換
-- **2つのツール**: pattern-search（検索）、pattern-rewrite（変換）
+- **2つのツール**: pattern_search（検索）、pattern_rewrite（変換）
 
 ### なぜAST Pattern Toolsが必要なのか
 
@@ -39,41 +43,32 @@ AST Pattern Tools機能は、これらの問題を解決し、より安全で正
 
 ### 2つのツール
 
-#### 1. pattern-search
+> **ツールの位置づけ**: `pattern_search` / `pattern_rewrite` は、ユーザーがシェルから直接実行するコマンドではなく、**エージェントが `code` ツール経由で呼び出す組み込みツール**です。ユーザーは自然言語で依頼し（例:「すべての var を const に変換して」）、エージェントがパターンを組み立てて実行します（[公式 Code Intelligence](https://kiro.dev/docs/cli/code-intelligence/)）。
+
+#### 1. pattern_search
 
 **用途**: 構文木パターンを使用したコード検索
 
-**例**（推定）:
+**例**（公式ドキュメントより）:
 
-```bash
+```text
 # すべての非同期関数を検索
-pattern-search "async function $NAME($PARAMS) { $$$ }"
+pattern: async function $NAME($$$PARAMS) { $$$ }
+language: typescript
 ```
 
-#### 2. pattern-rewrite
+#### 2. pattern_rewrite
 
 **用途**: 構文木パターンを使用したコード変換
 
-**例**（推定）:
-```
-```bash
+**例**（公式ドキュメントより）:
+
+```text
 # varをconstに変換
-pattern-rewrite --pattern "var $N = $V" --replacement "const $N = $V"
+pattern: var $N = $V
+replacement: const $N = $V
+language: javascript
 ```
-
-## 📋 Zenn記事の詳細内容確認
-
-**注意**: v1.24.0のAST Pattern Tools機能に関するZenn記事は現時点で公開されていません。本ドキュメントは公式Changelogの情報に基づいて作成されています。
-
-### 参考情報源
-
-- [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)
-
-### 情報の制約
-
-AST Pattern Toolsの詳細なドキュメント（具体的な使用例、APIリファレンス、サポートされる言語など）は、公式サイトで確認できませんでした。本ドキュメントは、Changelogの情報と一般的なASTパターンマッチングの知識に基づいて作成されています。
-
-**推測に基づく記述は含まれていません。確認できない情報は記載していません。**
 
 ## AST Pattern Tools機能詳細
 
@@ -105,80 +100,84 @@ VariableDeclaration
 2. **誤検出の排除**: 文字列リテラルやコメントを除外
 3. **精密な変換**: 構文構造を保ちながら変換
 
-### pattern-searchツール
+### pattern_searchツール
+
+**出典**: [公式 Code Intelligence](https://kiro.dev/docs/cli/code-intelligence/)
 
 #### 概要
 
-pattern-searchは、構文木パターンを使用してコードを検索するツールです。
+pattern_searchは、構文木パターンを使用してコードを検索するツールです。エージェントが `code` ツール経由で呼び出します。
 
-#### 基本的な使い方（推定）
-
-```bash
-# パターンを指定して検索
-pattern-search "<pattern>"
-```
-
-#### パターン構文（推定）
+#### パターン構文（メタ変数）
 
 | 構文 | 説明 | 例 |
 |------|------|-----|
-| `$VAR` | 変数名のプレースホルダー | `$NAME` |
-| `$$$` | 任意の数のステートメント | `{ $$$ }` |
+| `$VAR` | 単一ノード（識別子・式）にマッチ | `$NAME`、`$ARG` |
+| `$$$` | 0個以上のノード（ステートメント・パラメータ）にマッチ | `{ $$$ }`、`$$$PARAMS` |
 | リテラル | そのままマッチ | `async function` |
 
-#### 検索例（推定）
+#### 検索例（公式ドキュメントより）
 
-**例1: すべての非同期関数を検索**
+**例1: すべてのconsole.log呼び出しを検索**
 
-```bash
-pattern-search "async function $NAME($PARAMS) { $$$ }"
+```text
+pattern: console.log($ARG)
+language: javascript
 ```
 
-**例2: すべてのconsole.logを検索**
+**例2: すべての非同期関数を検索**
 
-```bash
-pattern-search "console.log($ARGS)"
+```text
+pattern: async function $NAME($$$PARAMS) { $$$ }
+language: typescript
 ```
 
-**例3: すべてのif文を検索**
+**例3: すべての .unwrap() 呼び出しを検索（Rust）**
 
-```bash
-pattern-search "if ($CONDITION) { $$$ }"
+```text
+pattern: $E.unwrap()
+language: rust
 ```
 
-### pattern-rewriteツール
+### pattern_rewriteツール
+
+**出典**: [公式 Code Intelligence](https://kiro.dev/docs/cli/code-intelligence/)
 
 #### 概要
 
-pattern-rewriteは、構文木パターンを使用してコードを変換するツールです。
+pattern_rewriteは、構文木パターンを使用してコードを変換するツールです。`dry_run` パラメータでプレビューできます。
 
-#### 基本的な使い方（推定）
+#### 推奨ワークフロー（公式）
 
-```bash
-# パターンと置換を指定して変換
-pattern-rewrite --pattern "<pattern>" --replacement "<replacement>"
-```
+1. まず `pattern_search` でマッチ箇所を確認
+2. マッチ結果が意図どおりかレビュー
+3. `pattern_rewrite` を **`dry_run: true`** で実行してプレビュー
+4. 問題なければ `dry_run: false` で適用
 
-#### 変換例（推定）
+#### 変換例（公式ドキュメントより）
 
 **例1: varをconstに変換**
 
-```bash
-pattern-rewrite --pattern "var $N = $V" --replacement "const $N = $V"
+```text
+pattern: var $N = $V
+replacement: const $N = $V
+language: javascript
 ```
 
-**例2: console.logをloggerに変換**
+**例2: hasOwnPropertyをObject.hasOwnにモダン化**
 
-```bash
-pattern-rewrite --pattern "console.log($ARGS)" --replacement "logger.info($ARGS)"
+```text
+pattern: $O.hasOwnProperty($P)
+replacement: Object.hasOwn($O, $P)
+language: javascript
 ```
 
-**例3: 古いPromise構文を新しいasync/awaitに変換**
+**例3: unwrapをexpectに変換（Rust）**
 
-```bash
-pattern-rewrite \
-  --pattern "function $NAME($PARAMS) { return new Promise($$$ ) }" \
-  --replacement "async function $NAME($PARAMS) { $$$ }"
+```text
+pattern: $E.unwrap()
+replacement: $E.expect("unexpected None")
+language: rust
 ```
 
 ### 正規表現との違い
@@ -211,9 +210,11 @@ const message = "const is old"; // 文字列内も変換
 
 #### ASTパターンの利点
 
-```bash
-# ASTパターンによる変換
-pattern-rewrite --pattern "var $N = $V" --replacement "const $N = $V"
+```text
+# ASTパターンによる変換（エージェントが pattern_rewrite で実行）
+pattern: var $N = $V
+replacement: const $N = $V
+language: javascript
 ```
 
 **結果**（正しい変換）:
@@ -229,127 +230,70 @@ const message = "var is old"; // 文字列内は変換されない
 
 ## セットアップ/使用方法
 
+**出典**: [公式 Code Intelligence](https://kiro.dev/docs/cli/code-intelligence/)
+
 ### 前提条件
 
 AST Pattern Tools機能を使用するには、以下が必要です：
 
 - **Kiro CLI**: v1.24.0以降
-- **対応言語**: 公式ドキュメントで確認が必要（情報不足）
+- **対応言語**（Tree-sitter ベース、18言語・LSP セットアップ不要）: Bash, C, C++, C#, Elixir, Go, Java, JavaScript, Kotlin, Lua, PHP, Python, Ruby, Rust, Scala, Swift, TSX, TypeScript
+- **エージェント設定**: カスタムエージェントで使う場合は tools 配列に `"code"`（または `@builtin` / `@builtin/code`）が必要
 
 ### インストール確認
 
 Kiro CLI v1.24.0以降がインストールされていることを確認します：
 
 ```bash
-kiro --version
-```
-
-**期待される出力**:
-```
-kiro 1.24.0
+kiro-cli --version
 ```
 
 ### 基本的な使い方
 
-#### pattern-searchの使用
-
-**構文**（推定）:
+ユーザーがシェルからコマンドを打つのではなく、**チャットで自然言語で依頼**します。エージェントが `code` ツールの `pattern_search` / `pattern_rewrite` を呼び出します。
 
 ```bash
-pattern-search [OPTIONS] "<pattern>"
+kiro-cli chat
+
+# 検索の依頼例
+> すべての console.log 呼び出しを検索して
+
+# 変換の依頼例（エージェントは dry_run でプレビューしてから適用できる）
+> すべての var 宣言を const に変換して
 ```
 
-**オプション**（推定）:
+エージェントが内部で使うパターンの形式は以下のとおりです（公式ドキュメントの例）：
 
-| オプション | 説明 |
-|-----------|------|
-| `--language <LANG>` | 対象言語を指定 |
-| `--file <FILE>` | 検索対象ファイルを指定 |
-| `--directory <DIR>` | 検索対象ディレクトリを指定 |
+```text
+# pattern_search
+pattern: console.log($ARG)
+language: javascript
 
-**例**（推定）:
-
-```bash
-# JavaScriptファイルからすべてのasync関数を検索
-pattern-search --language javascript "async function $NAME($PARAMS) { $$$ }"
-
-# 特定のファイルから検索
-pattern-search --file src/app.js "console.log($ARGS)"
-
-# ディレクトリ全体から検索
-pattern-search --directory src/ "if ($CONDITION) { $$$ }"
-```
-
-#### pattern-rewriteの使用
-
-**構文**（推定）:
-
-```bash
-pattern-rewrite [OPTIONS] --pattern "<pattern>" --replacement "<replacement>"
-```
-
-**オプション**（推定）:
-
-| オプション | 説明 |
-|-----------|------|
-| `--language <LANG>` | 対象言語を指定 |
-| `--file <FILE>` | 変換対象ファイルを指定 |
-| `--directory <DIR>` | 変換対象ディレクトリを指定 |
-| `--dry-run` | 実際に変更せずにプレビュー |
-
-**例**（推定）:
-
-```bash
-# varをconstに変換（プレビュー）
-pattern-rewrite --dry-run \
-  --pattern "var $N = $V" \
-  --replacement "const $N = $V"
-
-# 実際に変換
-pattern-rewrite \
-  --file src/app.js \
-  --pattern "var $N = $V" \
-  --replacement "const $N = $V"
-
-# ディレクトリ全体を変換
-pattern-rewrite \
-  --directory src/ \
-  --pattern "console.log($ARGS)" \
-  --replacement "logger.info($ARGS)"
+# pattern_rewrite（dry_run: true でプレビュー）
+pattern: $O.hasOwnProperty($P)
+replacement: Object.hasOwn($O, $P)
+language: javascript
 ```
 
 ### パターン構文の詳細
 
 #### メタ変数
 
-メタ変数は、パターン内でプレースホルダーとして機能します。
+メタ変数は、パターン内でプレースホルダーとして機能します（公式仕様）。
 
 | 構文 | 説明 | 例 |
 |------|------|-----|
-| `$VAR` | 単一の識別子や式にマッチ | `$NAME`, `$VALUE` |
-| `$$$` | 任意の数のステートメントにマッチ | `{ $$$ }` |
-
-**例**（推定）:
-
-```bash
-# $NAMEは関数名にマッチ
-# $PARAMSはパラメータリストにマッチ
-# $$$は関数本体にマッチ
-pattern-search "function $NAME($PARAMS) { $$$ }"
-```
+| `$VAR` | 単一ノード（識別子・式）にマッチ | `$NAME`, `$VALUE` |
+| `$$$` | 0個以上のノード（ステートメント・パラメータ）にマッチ | `{ $$$ }`, `$$$PARAMS` |
 
 #### リテラルマッチ
 
 パターン内のリテラル（キーワード、演算子など）は、そのままマッチします。
 
-**例**（推定）:
-
-```bash
-# "async function"はリテラルとしてマッチ
-pattern-search "async function $NAME($PARAMS) { $$$ }"
-
-# "console.log"はリテラルとしてマッチ
-pattern-search "console.log($ARGS)"
+```text
+# "async function" はリテラルとしてマッチ、$NAME・$$$PARAMS・$$$ はメタ変数
+pattern: async function $NAME($$$PARAMS) { $$$ }
+language: typescript
 ```
 
 ### 実行フロー
@@ -358,7 +302,7 @@ pattern-search "console.log($ARGS)"
 
 ```mermaid
 graph TD
-    A[pattern-search実行] --> B[パターン解析]
+    A[pattern_search実行] --> B[パターン解析]
     B --> C[ASTパース]
     C --> D[パターンマッチング]
     D --> E[マッチ結果表示]
@@ -368,12 +312,12 @@ graph TD
 
 ```mermaid
 graph TD
-    A[pattern-rewrite実行] --> B[パターン解析]
+    A[pattern_rewrite実行] --> B[パターン解析]
     B --> C[ASTパース]
     C --> D[パターンマッチング]
-    D --> E{--dry-run?}
-    E -->|Yes| F[プレビュー表示]
-    E -->|No| G[コード変換]
+    D --> E{dry_run?}
+    E -->|true| F[プレビュー表示]
+    E -->|false| G[コード変換]
     G --> H[ファイル書き込み]
 ```
 
@@ -760,7 +704,7 @@ git diff
 1. **構文木ベースの検索・変換**: 文字列リテラルやコメントを除外
 2. **誤検出の排除**: 構文構造を理解した精密な操作
 3. **安全なリファクタリング**: 意図しない箇所の変換を防止
-4. **2つのツール**: pattern-search（検索）、pattern-rewrite（変換）
+4. **2つのツール**: pattern_search（検索）、pattern_rewrite（変換）
 
 ### 従来の正規表現との違い
 
@@ -799,12 +743,11 @@ git diff
 ### 参考リンク
 
 - [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)
+- [Code Intelligence - Kiro CLI Documentation](https://kiro.dev/docs/cli/code-intelligence/)（公式ページ最終更新: 2026-05-29）
 
 ### 注意事項
 
-本ドキュメントは、公式Changelogの情報に基づいて作成されています。AST Pattern Toolsの詳細なドキュメント（具体的な使用例、APIリファレンス、サポートされる言語など）は、公式サイトで確認できませんでした。
-
-推定に基づく記述は「（推定）」と明記しています。実際の使用方法は、公式ドキュメントを参照してください。
+本ドキュメントは、公式Changelogおよび公式 Code Intelligence ドキュメントの情報に基づいて作成されています（初版時点で「（推定）」としていた構文・例は、公式 Code Intelligence ページの公開により正式仕様へ置き換え済み・2026-07-04）。正式なツール名は `pattern_search` / `pattern_rewrite`（アンダースコア区切り）で、エージェントが `code` ツール経由で呼び出します。
 
 ---
 
@@ -820,4 +763,5 @@ git diff
 
 ---
 
-**AST Pattern Tools機能を活用して、より安全で正確なコードリファクタリングを実現しましょう！**
+**最終更新**: 2026-07-04
+**対象バージョン**: Kiro CLI v1.24.0+

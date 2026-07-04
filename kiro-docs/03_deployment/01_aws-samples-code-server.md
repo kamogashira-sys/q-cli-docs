@@ -2,6 +2,8 @@
 
 **出典**: [AI Agent Development Code Server](https://aws-samples.github.io/sample-one-click-generative-ai-solutions/solutions/aiagentdev/) - AWS Samples公式サイト
 
+> **調査時点の注記**: 本ページは **2025-12-30 時点（Kiro CLI v1.2x 世代）** の調査に基づきます。AWS Samples 側のテンプレートや CloudFront/EC2 の挙動は変更されている可能性があるため、実際の構築時は上記出典（AWS Samples 公式サイト）の最新内容を併せて確認してください。
+
 ## 概要
 
 AI Agent Development Code Server は、Amazon Bedrock Agent Core を活用した AI エージェントの開発に必要なソフトウェア等が事前セットアップされた開発環境です。ブラウザベースの VS Code (Code-Server) を使用し、AWS 上に開発環境を構築します。

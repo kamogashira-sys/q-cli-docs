@@ -2,6 +2,8 @@
 
 **出典**: [code-server公式ドキュメント](https://coder.com/docs/code-server) - マルチユーザー対応ガイド
 
+> **調査時点の注記**: 本ページは **2025-12-30 時点（Kiro CLI v1.2x 世代）** の調査に基づきます。code-server / AWS Samples テンプレートの仕様は変更されている可能性があるため、検討時は上記出典の最新内容を併せて確認してください。
+
 ## 概要
 
 AWS Samples AI Agent Development Code Server のマルチユーザー対応について、ポート競合問題と解決策を調査した結果をまとめます。code-serverは本来シングルユーザー設計であり、複数ユーザーでの同時利用には重大な制限があることが判明しました。

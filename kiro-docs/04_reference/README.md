@@ -74,7 +74,7 @@
 
 ## ⚠️ 注意事項
 
-- 本ディレクトリの各文書は **2026-06-21 時点** の情報に基づいています（Slash Commands は公式 2026-06-12 版、Settings は公式 2026-06-05 版を反映。Settings の v2.7.0 追加項目 `chat.terminalTitle`/`chat.defaultInterruptBehavior` は CLI 内蔵 changelog から補完）
+- 本ディレクトリの各文書は **2026-06-21 時点** の情報に基づいています（Slash Commands は公式 2026-06-12 版、Settings は公式 2026-06-05 版を反映。Settings の v2.7.0 追加項目 `chat.terminalTitle`/`chat.defaultInterruptBehavior` は CLI 内蔵 changelog から補完し、`chat.terminalTitle` の型・既定値と公式未掲載設定の補遺は実機 kiro-cli 2.10.0 の `settings list --all` で確認・2026-07-04）
 - Kiro CLI は活発に開発されており、公式の更新が反映されていない可能性があります
 - 重要な設定変更前は **必ず公式ページを確認** してください
 

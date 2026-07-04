@@ -1,3 +1,7 @@
+[ホーム](../README.md) > [機能詳細ガイド](README.md) > v2.0.0 メジャーアップデート
+
+---
+
 # Kiro CLI v2.0.0 メジャーバージョンアップ解説
 
 **出典**: [公式Changelog v2.0.0](https://kiro.dev/changelog/cli/2-0/)、[Headless Mode](https://kiro.dev/docs/cli/headless/)、[Terminal UI](https://kiro.dev/docs/cli/terminal-ui/)、CLI changelog v2.0.0/v2.0.1
@@ -248,4 +252,5 @@ Terminal UIの機能詳細については、[Terminal UI機能](18_TerminalUI.md
 
 ---
 
-**最終更新**: 2026年05月04日
+**最終更新**: 2026-07-04
+**対象バージョン**: Kiro CLI v2.0.0+

@@ -1,3 +1,7 @@
+[ホーム](../README.md) > [機能詳細ガイド](README.md) > Help Agent
+
+---
+
 # Kiro CLI Help Agent
 
 **出典**: [Help Agent - Kiro CLI Documentation](https://kiro.dev/docs/cli/chat/help-agent/)
@@ -14,7 +18,7 @@ Help Agentは、**Kiro CLIドキュメントを使用した組み込みヘルプ
 
 ### 🔀 /help / /plan / /guide の使い分け
 
-Kiro CLI の Built-in Agent 3 種類の使い分け:
+ヘルプ・計画系の 3 コマンド（`/help`・`/plan`・`/guide`）の使い分け（Built-in Agent 全 4 種類の一覧は [20. Kiro guide agent](20_GuideAgent.md) を参照）:
 
 | Agent | コマンド | 対応 UI | 主な用途 | 導入バージョン |
 |-------|--------|--------|---------|------------|
@@ -423,4 +427,5 @@ Help Agentに切り替えずに、直接質問できます。
 
 ---
 
-**最終更新**: 2026年2月15日
+**最終更新**: 2026-07-04
+**対象バージョン**: Kiro CLI v1.25.0+（v1.26.0 `/help --legacy <command>` を含む）

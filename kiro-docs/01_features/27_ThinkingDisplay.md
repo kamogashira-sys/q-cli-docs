@@ -93,5 +93,5 @@ kiro-cli settings chat.showThinking false
 
 ---
 
-**最終更新**: 2026年6月7日
+**最終更新**: 2026-06-07
 **対象バージョン**: Kiro CLI v2.5.0+

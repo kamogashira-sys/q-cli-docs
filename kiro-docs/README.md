@@ -27,10 +27,14 @@ kiro-docs/
 ├── 02_update/        # アップデート情報
 ├── 03_deployment/    # デプロイメント・環境構築
 ├── 04_reference/     # リファレンス（Settings/Slash/CLI/Tools）
+├── 05_meta/          # 保守手順書（※ローカル管理・GitHub 非公開）
+├── 06_embedded-docs/ # 公式 OSS リポジトリ文書の複製（※ローカル管理・GitHub 非公開）
 ├── 07_aidlc/         # AI-DLC（Kiro CLI で実践する選択肢）
 ├── 08_cdk-skills/    # cdk-skills（CDK 開発支援 Skills 集）
 └── 09_v3/            # Kiro CLI v3（Early Access）— 仕様駆動開発・IDE比較 🆕
 ```
+
+> **注**: `05_meta/`（本サイトの保守手順書）と `06_embedded-docs/`（公式リポジトリ文書の逐語複製）は `.gitignore` によるローカル管理で、GitHub 上には表示されません。
 
 **クイックリンク**: [00_information/](00_information/) | [01_features/](01_features/) | [02_update/](02_update/) | [03_deployment/](03_deployment/) | [04_reference/](04_reference/) | [07_aidlc/](07_aidlc/) | [08_cdk-skills/](08_cdk-skills/) | [09_v3/](09_v3/) 🆕
 

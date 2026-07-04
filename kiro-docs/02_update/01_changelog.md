@@ -14,6 +14,8 @@
 ## 最新バージョン
 
 > **注記**: 本ページは **v2.10.0**（2026-06-26）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
+>
+> **本節の掲載範囲**: 目安として直近 3〜4 バージョンを掲載し、それより古いものは新しいバージョンの追加時に[バージョン履歴](#バージョン履歴)へ移動します。
 
 ### v2.10.0 CLI（2026-06-26）
 
@@ -35,6 +37,8 @@
 
 **セキュリティ（1件）**:
 - 🔐 Windows のシステムツール解決を untrusted-search-path RCE（CWE-426）に対して堅牢化。
+
+**📖 詳細解説**: [31. v2.10 設定ホットリロード & リソース継承制御](../01_features/31_v210ConfigHotReload.md)
 
 **出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.10](https://kiro.dev/changelog/cli/2-10/)
 
@@ -75,6 +79,8 @@
 **バグ修正（2件）**:
 - 🔧 V2 モードの MCP OAuth が認可 URL を**クリップボードにコピー**するよう修正（従来は無言で失敗）。
 - 🔧 spec ワークフロー中の subagent ツール呼び出し・承認プロンプトが**メインビューに表示**されるよう修正。
+
+**📖 詳細解説**: [30. v2.8 / V3プレビュー](../01_features/30_v28V3Preview.md)（v2.8.1 の MCP OAuth / spec 表示改善も反映済み）
 
 **注記**:
 - v2.8.0 と同日（公式表示日 2026-06-17）のパッチ。CLI 内蔵 changelog と公式表示日は一致。
@@ -137,9 +143,9 @@
   - 起動時の既定モードは `/settings` → `terminal` → `interrupt behaviour` で変更（CLI 内蔵 changelog では `chat.defaultInterruptBehavior` を `steer`/`queue` 切替設定として言及）
   - メッセージは実行中ツール途中ではなく**ツール境界**で配信される
   - 詳細: [29. v27NewCommands](../01_features/29_v27NewCommands.md)、[公式 Queue steering](https://kiro.dev/docs/cli/chat/queue-steering/)
-- 🪟 **`chat.terminalTitle` 設定**: ターミナルタブのセッションタイトル表示/非表示を制御（boolean、CLI内蔵 changelog の「show or hide」表現から判定）
+- 🪟 **`chat.terminalTitle` 設定**: ターミナルタブのセッションタイトル表示/非表示を制御（boolean、既定 `false`）
   - ※v2.6.0時点では `/settings display` でのトグルのみ提供されていたが、v2.7.0で **CLI 設定として正式追加**され、`chat.terminalTitle` 設定でも制御可能に
-  - ⚠️ **公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映**（2026-06-21 取得時点）。CLI 内蔵 changelog（v2.7.0）の追加文言を一次情報として採用
+  - ⚠️ **公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映**。型・既定値は実機 kiro-cli 2.10.0 の `settings list --all` 説明文「Show dynamic title in terminal tab (boolean, default: false)」（2026-07-04 確認）で確定
 - 💡 **Enriched /rewind preview**: `/rewind` のターンピッカーが各ターンの**ツール呼び出し詳細**と**コンテキスト使用量**を表示し、分岐ポイントを特定しやすく
   - 詳細: [公式 /rewind](https://kiro.dev/docs/cli/chat/rewind/)
 
@@ -166,6 +172,8 @@
 
 **バグ修正（1件）**:
 - 🔧 **Linux: `libasound.so.2` 起動時依存を除去** — Linux ビルドが起動時に `libasound.so.2` を要求しなくなり、オーディオ依存パッケージのインストールが不要に
+
+**影響対象**: Linux 環境
 
 **注記**:
 - 公式 [Changelog v2.6 ページ](https://kiro.dev/changelog/cli/2-6/) の `#patch-2-6-1` セクションは本文未公開（2026-06-21 取得時点、タブ切替式表示）。本文は CLI 内蔵 changelog の v2.6.1 エントリを一次情報として採用。
@@ -208,6 +216,8 @@
 - 🎨 tmux/zellij でオートコンプリートメニュー表示時の二重カーソルを修正
 - 🔧 リトライ後の空レスポンスをエラーとして表示
 
+**📖 詳細解説**: [28. v2.6新コマンド（/transcript save, /title, --effort）](../01_features/28_v26NewCommands.md)
+
 **注記**:
 - CLI内蔵changelogの日付（2026-06-04）と公式サイト表示日（2026-06-05）に差異あり。公式サイト表示日を採用。
 - CLI内蔵changelogは `/title` 有効化に `chat.terminalTitle` 設定を挙げているが、公式設定リファレンス（更新 2026-06-05）は「terminal title は `/settings display` → Terminal title でトグルし、CLI 設定としては提供されない」と明記。本サイトは公式リファレンスに従う。
@@ -223,6 +233,8 @@
 
 **改善（1件）**:
 - 📡 **APIエンドポイントを `*.kiro.dev` へ移行**: アウトバウンド通信を制限している環境では、許可リストに必要なドメインを追加する必要があります（[ファイアウォール設定ガイド](https://kiro.dev/docs/privacy-and-security/firewalls/)）
+
+**影響対象**: アウトバウンド通信（ファイアウォール／プロキシ）を制限している環境
 
 **出典**: `kiro-cli version --changelog=all`、[公式Changelog v2.5](https://kiro.dev/changelog/cli/2-5/)（`#patch-2-5-1`）
 
@@ -334,6 +346,8 @@
 - knowledgeBaseリソースが通常コンテキストファイルとしてロードされ重複する問題を修正
 - エージェント切替時にknowledge storeが更新されず前エージェントのデータが残る問題を修正
 - 引数なしMCPツール呼び出し時の無限リトライループを修正
+
+**📖 詳細解説**: [21. v2.4新コマンド（/rewind, /effort, /settings）](../01_features/21_v24NewCommands.md)
 
 **出典**: `kiro-cli version --changelog=all`、[公式Changelog v2.4](https://kiro.dev/changelog/cli/2-4/)、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)
 
@@ -482,6 +496,8 @@
 **パッチ**:
 - v2.1.1（2026-04-24）: パッチ（公式サイトにパッチ表示あり、CLI出力に詳細なし）
 
+**📖 詳細解説**: [19. Tool Search](../01_features/19_ToolSearch.md)、[07. Skills](../01_features/07_Skills.md)（/skill-name 直接呼び出し）、[12. Remote Auth](../01_features/12_RemoteAuth.md)（Device Flow 認証）
+
 **出典**: `kiro-cli version --changelog=all`、[公式Changelog](https://kiro.dev/changelog/cli/2-1/)
 
 ---
@@ -515,6 +531,8 @@
 
 **パッチ**:
 - v2.0.1（2026-04-16）: `--trust-all-tools`が非インタラクティブモードで無視される問題を修正
+
+**📖 詳細解説**: [16. v2.0.0メジャーアップデート](../01_features/16_v2MajorUpdate.md)、[18. Terminal UI](../01_features/18_TerminalUI.md)（デフォルト化）、[20. Kiro guide agent](../01_features/20_GuideAgent.md)（/guide）
 
 **出典**: `kiro-cli version --changelog=all`、[公式Changelog](https://kiro.dev/changelog/cli/2-0/)
 
@@ -552,6 +570,8 @@
 - TUIモードでの入力遅延修正（v1.29.8）
 - セッション再開時のツール実行中表示修正（v1.29.8）
 
+**📖 詳細解説**: [20. Kiro guide agent](../01_features/20_GuideAgent.md)（/guide、v1.29.7）、[22. Smart Hooks](../01_features/22_Hooks.md)（/hooks、v1.29.6）
+
 **出典**: `kiro-cli version --changelog=all`
 ※公式Changelogサイトに独立ページなし
 
@@ -579,6 +599,8 @@
 - v1.28.1（2026-03-20）: シェルコマンド信頼パターンの元コマンドパス保持修正、サブエージェントへのプロンプト参照解決修正
 - v1.28.2（2026-03-26）: TUI v2拡張（`/code`コマンド、`/agent create & edit`、ファイルシステムパスタブ補完、ターミナル通知、プロンプト毎クレジット/時間表示、OSC 9対応、挨拶設定）、ナレッジベースinclude/excludeパターン修正、`/clear`セッション履歴永続化修正、ACP/TUIでのdisabledTools設定対応、セッション・モデル信頼性修正、TUI非ラテン文字入力・レンダリング修正
 - v1.28.3（2026-03-28）: "profileArn is required but no profiles are available"エラー修正
+
+**📖 詳細解説**: [18. Terminal UI](../01_features/18_TerminalUI.md)
 
 **出典**: `kiro-cli version --changelog=all`、[公式Changelog](https://kiro.dev/changelog/cli/1-28/)
 
@@ -637,6 +659,8 @@
 **新規設定**:
 - `cleanup.periodDays`: 古い会話/セッション/ナレッジベースの自動削除期間（v1.27.3）
 
+**📖 詳細解説**: [17. Granular Tool Trust](../01_features/17_GranularToolTrust.md)
+
 **出典**: `kiro-cli version --changelog=all`、[公式Changelog](https://kiro.dev/changelog/cli/1-27/)
 
 ---
@@ -688,6 +712,8 @@
 - ホームディレクトリでのsteering重複排除（`/context show`）
 - CLI終了時のMCPサーバープロセス正常終了
 
+**📖 詳細解説**: [24. @file references](../01_features/24_FileReferences.md)、[07. Skills](../01_features/07_Skills.md)（自動読み込み）、[13. ACP](../01_features/13_ACP.md)（--agent フラグ・code ツール）
+
 **出典**: `kiro-cli version --changelog=all`（CLI起動メッセージ）
 
 **パッチ**:
@@ -703,6 +729,8 @@
   - SCIM自動プロビジョニング
   - IDE/CLI共通設定
   - ブラウザベースOAuthフロー
+
+**📖 詳細解説**: [12. Remote Auth](../01_features/12_RemoteAuth.md)（Okta/Entra ID SSO 対応）
 
 **詳細**: [Kiro CLI v1.25.1 Changelog](https://kiro.dev/changelog/cli/external-identity-provider-support-for-kiro-cli/)
 
@@ -733,6 +761,8 @@
 - 🚀 **Exit Codes for CI/CD**: 構造化された終了コードで自動化をサポート
   - コード0: 成功、コード1: 一般的な失敗、コード3: MCPサーバー起動失敗
   - `--require-mcp-startup`オプションでMCPサーバー必須化
+
+**📖 詳細解説**: [13. ACP](../01_features/13_ACP.md)、[14. Help Agent](../01_features/14_HelpAgent.md)、[15. Exit Codes](../01_features/15_ExitCodes.md)、[11. URL Permissions](../01_features/11_URLPermissions.md)（Enterprise Web Tools Governance）、[02. Subagents](../01_features/02_Subagents.md)（Access Control）
 
 **詳細**: [Kiro CLI v1.25.0 Changelog](https://kiro.dev/changelog/cli/1-25/)
 
@@ -771,6 +801,8 @@
   - SSH、SSM、コンテナ環境でポートフォワーディング対応
   - Builder ID、IAM Identity Centerはデバイスコード認証標準対応
 
+**📖 詳細解説**: [07. Skills](../01_features/07_Skills.md)、[08. Custom Diff Tools](../01_features/08_CustomDiffTools.md)、[09. AST Pattern Tools](../01_features/09_ASTPatternTools.md)、[01. LSP / Code Intelligence](../01_features/01_LSP.md)（18言語対応・/code overview）、[10. Conversation Compaction](../01_features/10_ConversationCompaction.md)、[11. URL Permissions](../01_features/11_URLPermissions.md)、[12. Remote Auth](../01_features/12_RemoteAuth.md)
+
 **詳細**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)
 
 **パッチ**:
@@ -788,6 +820,8 @@
 - 🐛 **MCP表示修正**: 無効化されたMCPサーバーが初期化中として表示される問題を修正
 - 🐛 **MCP Tool名解析**: メインチャットとsubagent間でのMCPツール名解析の不整合を修正
 
+**📖 詳細解説**: [05. Grep/Glob Tools](../01_features/05_GrepGlob.md)、[02. Subagents](../01_features/02_Subagents.md)、[03. Plan Agent](../01_features/03_PlanAgent.md)
+
 **詳細**: [Kiro CLI v1.23.1 Changelog](https://kiro.dev/changelog/)
 
 ---
@@ -803,6 +837,8 @@
 - 🤖 **Default Agent Prompt**: Kiro CLI機能をハイライトするデフォルトエージェントプロンプト
 - ⚙️ **Model Persistence**: /model set-current-as-defaultコマンドでモデル選択を永続化（保存先: `~/.kiro/settings.json`。※v2.2.1で `~/.kiro/settings/cli.json` に変更。※v2.6.0で `/model`・`/effort` は自動永続化され `set-current-as-default` は不要）
 - 🚀 **LSP Performance**: Code Intelligenceツールの読み込み時間改善
+
+**📖 詳細解説**: [02. Subagents](../01_features/02_Subagents.md)、[03. Plan Agent](../01_features/03_PlanAgent.md)、[04. Multi-Session](../01_features/04_MultiSession.md)、[05. Grep/Glob Tools](../01_features/05_GrepGlob.md)
 
 **詳細**: [Kiro CLI v1.23.0 Changelog](https://kiro.dev/changelog/subagents-plan-agent-grep-glob-tools-and-mcp-registry/)
 
@@ -832,6 +868,8 @@
 - 🛡️ **Improved Guardrails**: ファイル読み取りの安全性向上
   - **アクセス制御**: ファイル操作の権限管理強化
   - **セキュリティ**: 不正なファイルアクセスの防止
+
+**📖 詳細解説**: [01. LSP / Code Intelligence](../01_features/01_LSP.md)
 
 **詳細**: [Code Intelligence and Knowledge Index](https://kiro.dev/changelog/code-intelligence-and-knowledge-index/)
 
@@ -914,15 +952,18 @@ curl -fsSL https://cli.kiro.dev/install | bash
 
 ## 変更カテゴリについて
 
-| カテゴリ | 記号 | 説明 |
-|----------|------|------|
-| **新機能** | 🎉 | 新しい機能の追加や既存機能の大幅な拡張 |
-| **改善** | 🔧 | 既存機能のパフォーマンス向上や使いやすさの改善 |
-| **セキュリティ** | 🛡️ | セキュリティ関連の修正や強化 |
-| **バグ修正** | 🐛 | 不具合の修正 |
-| **AI機能** | 🧠 | AI・機械学習関連の新機能や改善 |
-| **統合機能** | 🔌 | 外部ツール・サービスとの統合機能 |
-| **Web機能** | 🌐 | Web関連の新機能（検索、フェッチ等） |
+各バージョンの変更は、次の 4 カテゴリの見出し（例:「機能追加（2件）」）に分類して記載しています。
+
+| カテゴリ | 説明 |
+|----------|------|
+| **機能追加** | 新しい機能の追加や既存機能の大幅な拡張 |
+| **改善** | 既存機能のパフォーマンス向上や使いやすさの改善 |
+| **バグ修正** | 不具合の修正 |
+| **セキュリティ** | セキュリティ関連の修正や強化 |
+
+**書式の補足**:
+- 各項目の先頭絵文字（🔧・💡・🔐 など）はカテゴリを示すものではなく、内容の目印（ハイライト）です。
+- 変更が特定の環境・ユーザーに限られる場合は、そのバージョンのエントリに「**影響対象**」欄（例: `Windows 環境`）を付記します。
 
 ---
 
@@ -967,8 +1008,9 @@ curl -fsSL https://cli.kiro.dev/install | bash
 # Kiro CLI インストール
 curl -fsSL https://cli.kiro.dev/install | bash
 
-# 基本的な使用方法は同じ
-kiro chat "Hello, world!"
+# 基本的な使用方法は同じ（コマンド名は kiro-cli。
+# `kiro` 単体は kiro-cli integrations install kiro-command-router 導入後のみ）
+kiro-cli chat "Hello, world!"
 ```
 
 ---
@@ -991,4 +1033,4 @@ kiro chat "Hello, world!"
 - セキュリティアップデートのリリース時
 - コミュニティからの重要なフィードバック時
 
-**最終更新**: 2026年6月28日（v2.10.0/v2.9.0対応追加、v2.7.0の継承記述に相互参照追加、v2.7.0/v2.7.1をバージョン履歴へ移動、メタ反映漏れ是正）
+**最終更新**: 2026-07-04（凡例を実カテゴリ4種に更新、「影響対象」欄を標準書式化、最新バージョン節の掲載範囲基準を明記。前回 2026-06-28: v2.10.0/v2.9.0対応追加）

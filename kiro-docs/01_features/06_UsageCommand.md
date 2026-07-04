@@ -1,3 +1,7 @@
+[ホーム](../README.md) > [機能詳細ガイド](README.md) > /usage コマンド
+
+---
+
 # Kiro CLI /usage コマンド（使用量・契約プラン確認）
 
 ## 概要
@@ -170,7 +174,7 @@ Tip: to see context window usage, run /context
 **解決方法**:
 ```bash
 # 再認証を試行
-kiro auth login
+kiro-cli login
 
 # 接続確認
 /usage
@@ -209,3 +213,8 @@ kiro auth login
 
 ### リファレンス（辞書）
 - [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) — `/usage` の正規仕様（出力フィールド一覧）
+
+---
+
+**最終更新**: 2026-07-04
+**対象バージョン**: Kiro CLI（契約プラン管理仕様は 2026-01-01 確認時点）

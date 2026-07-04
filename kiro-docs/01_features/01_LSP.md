@@ -1,3 +1,7 @@
+[ホーム](../README.md) > [機能詳細ガイド](README.md) > LSP統合（Code Intelligence）
+
+---
+
 # Kiro CLI LSP統合機能（Code Intelligence）
 
 **出典**: [Kiro CLI のコード理解が進化？ LSP 統合がもたらす新しい開発体験](https://zenn.dev/aws_japan/articles/bca7fdc3a15f46) - Zenn記事 by konippi、CLI changelog v1.27.0
@@ -17,59 +21,11 @@ v1.24.0では、Code Intelligence機能がさらに進化しました：
 
 **公式情報**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)
 
-## 📋 Zenn記事の詳細内容確認
+## 対応言語と機能（現行仕様）
 
-### v1.22.0のLSP統合（Code Intelligence機能）の詳細
+v1.24.0以降、18言語で**LSPセットアップ不要**の組み込みCode Intelligence機能が提供されます。
 
-#### 主要な機能・特徴
-
-1. **Code Intelligence機能の本質**
-   - LSPを通じてコードのセマンティック（意味的）理解を実現
-   - 単なるテキスト検索ではなく、クラス・関数・変数などのシンボルを正確に識別
-   - コードの構造・型・関係性を理解した上での操作が可能
-
-2. **LSP統合によるメリット**
-   - **コードの「意味」理解**: 確率的生成から構造的理解への進化
-   - **リアルタイムフィードバック**: IDEのようなリアルタイム診断情報
-   - **コンテキスト最適化**: 必要な情報への直接アクセスでトークン消費削減
-
-3. **セットアップ手順**
-   - Language Serverの事前インストールが必要
-   - `/code init`コマンドでプロジェクト単位の初期化
-   - `.kiro/settings/lsp.json`設定ファイルの自動生成
-
-4. **対応言語（7言語）**
-   - TypeScript/JavaScript (typescript-language-server)
-   - Rust (rust-analyzer)
-   - Python (pyright)
-   - Go (gopls)
-   - Java (jdtls)
-   - Ruby (solargraph)
-   - C/C++ (clangd)
-
-5. **カスタム言語サポート**
-   - `.kiro/settings/lsp.json`の設定で他言語追加可能
-   - PHP (intelephense)の追加例も記載
-   - 独自Language Serverの設定方法も詳細に説明
-
-6. **具体的なユースケース**
-   - **シンボル検索**: `useToast 関数はどこで定義されていますか？`
-   - **参照検索**: `Person クラスの参照を探して`
-   - **定義ジャンプ**: `UserService の定義を教えて`
-   - **シンボル一覧**: `auth.service.ts にはどんなシンボルがある？`
-   - **診断情報**: `main.ts の診断情報を教えて`
-
-7. **効果的な使い方のポイント**
-   - プロジェクトルートでの初期化必須
-   - 具体的な検索語の使用で精度向上
-   - リネーム前の影響範囲確認
-   - 診断情報の優先確認
-
-### v1.24.0: 組み込みCode Intelligence（LSPセットアップ不要）
-
-v1.24.0では、18言語で**LSPセットアップ不要**の組み込みCode Intelligence機能が提供されます。
-
-#### サポート言語（18言語）
+### サポート言語（18言語）
 
 | 言語 | 組み込み対応 | LSP統合（オプション） |
 |------|-------------|---------------------|
@@ -92,7 +48,7 @@ v1.24.0では、18言語で**LSPセットアップ不要**の組み込みCode In
 | TSX | ✅ | typescript-language-server |
 | TypeScript | ✅ | typescript-language-server |
 
-#### 組み込み機能（LSP不要）
+### 組み込み機能（LSP不要）
 
 以下の機能は、LSPセットアップなしで即座に利用できます：
 
@@ -105,7 +61,7 @@ v1.24.0では、18言語で**LSPセットアップ不要**の組み込みCode In
 | **Pattern rewrite** | ASTパターンを使用した自動コード変換 | `var を const に変換` |
 | **Codebase map** | ディレクトリ構造の探索とコード構成の理解 | `プロジェクト構造を表示` |
 
-#### オプション: LSP統合（高度な機能）
+### オプション: LSP統合（高度な機能）
 
 より高度な機能が必要な場合は、オプションでLSP統合を有効化できます：
 
@@ -126,7 +82,7 @@ v1.24.0では、18言語で**LSPセットアップ不要**の組み込みCode In
 /code init -f
 ```
 
-#### v1.22.0との比較
+### v1.22.0との比較
 
 | 項目 | v1.22.0 | v1.24.0 |
 |------|---------|---------|
@@ -275,7 +231,7 @@ npm install -g intelephense
 /code overview
 ```
 
-**出力例**（推定）:
+**出力イメージ**（例示。実際の出力は対象プロジェクトの構成により異なります）:
 
 ```
 プロジェクト構造:
@@ -599,4 +555,5 @@ LSPサーバーが textDocument/documentSymbol をサポート？
 
 ---
 
-**最終更新**: 2026年05月03日
+**最終更新**: 2026-07-04
+**対象バージョン**: Kiro CLI v1.22.0+（v1.24.0 組み込み18言語対応・v1.27.0 Tree-sitter Fallback を含む）
