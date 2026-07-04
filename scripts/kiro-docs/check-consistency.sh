@@ -9,6 +9,7 @@
 #   (b) バージョンタグ鮮度: `（vX.Y.Z対応）` が changelog 最新版と一致するか
 #   (c) 出典日書式: リファレンス文書に「公式ページ最終更新/ Page updated: YYYY-MM-DD」が存在するか
 #   (d) 更新日書式: フッターの「最終更新/Page updated」は ISO（YYYY-MM-DD）に統一（YYYY年M月D日 は禁止）
+#   (e) 裸URL直後の全角文字: GitHub autolink が全角文字まで URL に含めてリンク切れになるため禁止
 #
 # 設計メモ:
 #   - 用語の表記揺れ検出は誤検知を避けるため初版では最小限（明確な違反のみ）。
@@ -81,6 +82,21 @@ noniso=$(grep -rnE '\*\*(最終更新|Page updated)\*\*[:： ]+[0-9]{4}年' kiro
 if [ -n "$noniso" ]; then
     echo "❌ 更新日が ISO 書式（YYYY-MM-DD）でないフッター:"
     echo "$noniso" | sed 's/^/     /'
+    errors=$((errors + 1))
+fi
+
+# ---- (e) 裸URL直後の全角文字（GitHub autolink 境界事故） ----
+# 裸 URL（[text](URL) や <URL> や `URL` で囲まれていないもの）の直後に全角文字があると、
+# GitHub の autolink は空白まで URL とみなすため全角文字込みのリンクになり 404 になる。
+# URL 文字クラスは ASCII 印字文字から ) > ] ` を除外（明示リンク・<URL>・コードは末尾が
+# これらの ASCII 文字で終わるため誤検知しない）。
+echo "🔍 (e) 裸 URL 直後の全角文字（autolink 境界）を検証中..."
+autolink=$(grep -rnP 'https?://[\x21-\x28\x2A-\x3D\x3F-\x5C\x5E\x5F\x61-\x7E]*[^\x00-\x7F]' kiro-docs/ README.md --include="*.md" \
+    | exclude_paths || true)
+if [ -n "$autolink" ]; then
+    echo "❌ 裸 URL の直後に全角文字（GitHub 上で全角文字まで URL 扱いになりリンク切れ）:"
+    echo "$autolink" | sed 's/^/     /'
+    echo "   → [URL](URL) の明示リンク、<URL>、または \`URL\` に修正してください"
     errors=$((errors + 1))
 fi
 
