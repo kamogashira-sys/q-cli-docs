@@ -8,6 +8,7 @@
 #   (a) 取得日混入: 公開テキストに `YYYY-MM-DD取得` を書かない（編集注記の「取得時点」は許可）
 #   (b) バージョンタグ鮮度: `（vX.Y.Z対応）` が changelog 最新版と一致するか
 #   (c) 出典日書式: リファレンス文書に「公式ページ最終更新/ Page updated: YYYY-MM-DD」が存在するか
+#   (d) 更新日書式: フッターの「最終更新/Page updated」は ISO（YYYY-MM-DD）に統一（YYYY年M月D日 は禁止）
 #
 # 設計メモ:
 #   - 用語の表記揺れ検出は誤検知を避けるため初版では最小限（明確な違反のみ）。
@@ -72,6 +73,16 @@ for ref in kiro-docs/04_reference/02_slash-commands.md kiro-docs/04_reference/01
         errors=$((errors + 1))
     fi
 done
+
+# ---- (d) 更新日書式（ISO 統一） ----
+echo "🔍 (d) フッター更新日の ISO 書式（YYYY-MM-DD）を検証中..."
+noniso=$(grep -rnE '\*\*(最終更新|Page updated)\*\*[:： ]+[0-9]{4}年' kiro-docs/ README.md --include="*.md" \
+    | exclude_paths || true)
+if [ -n "$noniso" ]; then
+    echo "❌ 更新日が ISO 書式（YYYY-MM-DD）でないフッター:"
+    echo "$noniso" | sed 's/^/     /'
+    errors=$((errors + 1))
+fi
 
 echo ""
 echo "=== チェック結果 ==="

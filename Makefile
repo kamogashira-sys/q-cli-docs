@@ -69,15 +69,15 @@ check-completeness:
 # ============================================================
 # kiro-docs/ 専用チェック（scripts/kiro-docs/）
 # ============================================================
-.PHONY: check-kiro-all check-kiro-quick check-kiro-counts check-kiro-links check-kiro-consistency check-kiro-changelog check-kiro-structure check-kiro-urls
+.PHONY: check-kiro-all check-kiro-quick check-kiro-counts check-kiro-links check-kiro-consistency check-kiro-changelog check-kiro-structure check-kiro-notation check-kiro-urls
 
 # kiro-docs 全チェック（URL含む）
-check-kiro-all: check-kiro-counts check-kiro-links check-kiro-consistency check-kiro-changelog check-kiro-structure check-kiro-urls
+check-kiro-all: check-kiro-counts check-kiro-links check-kiro-consistency check-kiro-changelog check-kiro-structure check-kiro-notation check-kiro-urls
 	@echo ""
 	@echo "✅ kiro-docs 全チェックが完了しました"
 
 # kiro-docs 高速チェック（URL除く）
-check-kiro-quick: check-kiro-counts check-kiro-links check-kiro-consistency check-kiro-changelog check-kiro-structure
+check-kiro-quick: check-kiro-counts check-kiro-links check-kiro-consistency check-kiro-changelog check-kiro-structure check-kiro-notation
 	@echo ""
 	@echo "✅ kiro-docs 高速チェックが完了しました"
 
@@ -85,7 +85,7 @@ check-kiro-counts:
 	@./scripts/kiro-docs/check-counts.sh
 
 check-kiro-links:
-	@./scripts/kiro-docs/check-links.py
+	@./scripts/kiro-docs/check-links.py --check-anchors
 
 check-kiro-consistency:
 	@./scripts/kiro-docs/check-consistency.sh
@@ -95,6 +95,9 @@ check-kiro-changelog:
 
 check-kiro-structure:
 	@./scripts/kiro-docs/check-structure.py
+
+check-kiro-notation:
+	@./scripts/kiro-docs/check-notation.sh
 
 check-kiro-urls:
 	@./scripts/kiro-docs/check-urls.sh --important
