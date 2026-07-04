@@ -4,6 +4,8 @@
 
 # For Community - コミュニティ向け情報
 
+> **🗄️ アーカイブ**: 本セクションは旧 Amazon Q Developer CLI（2025-11-17 開発終了）時代の内容です。現行の Kiro CLI の情報は [kiro-docs/](../../kiro-docs/README.md) をご覧ください。
+
 Amazon Q CLIコミュニティ全体に関連する情報です。
 
 ## 📋 このセクションについて

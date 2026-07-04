@@ -1,5 +1,5 @@
-title: "Amazon Q Developer CLI Documentation"
-description: "Comprehensive documentation and analysis for Amazon Q Developer CLI"
+title: "猫でもわかる kiro-cli アップデート情報"
+description: "Kiro CLI（旧 Amazon Q Developer CLI）のアップデート解説ドキュメント。本体は GitHub リポジトリで公開しています。"
 baseurl: "/q-cli-docs"
 url: "https://kamogashira-sys.github.io"
 
@@ -21,12 +21,10 @@ lang: ja
 author: Q CLI Documentation Project
 
 # Navigation
+# （front matter を持つページのみ Jekyll の処理対象。docs/ 配下の .md は
+#   front matter なしのため HTML 化されず、ナビには index.md のみ載せる）
 header_pages:
-  - README.md
-  - 01_for-users/README.md
-  - 02_for-developers/README.md
-  - 03_for-community/README.md
-  - 05_meta/README.md
+  - index.md
 
 # Exclude from processing
 exclude:
