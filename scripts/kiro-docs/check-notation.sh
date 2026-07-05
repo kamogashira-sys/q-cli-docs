@@ -19,7 +19,7 @@
 #       （`kiro` 単体は kiro-command-router 導入後のみ有効）
 #
 # 設計メモ:
-#   - 除外: .bak / *_update_plan.md / 06_embedded-docs / 05_meta 手順書
+#   - 除外: .bak / *_update_plan.md / 06_embedded-docs / 05_meta（手順書・テンプレ・事例集）
 #     （check-consistency.sh と同一の除外ルール）
 #   - `kiro chat` の検索は `kiro-cli chat` に誤マッチしない（`kiro` 直後が `-` のため）
 
@@ -36,7 +36,7 @@ exclude_paths() {
     grep -v '\.bak' \
         | grep -v '_update_plan' \
         | grep -v '06_embedded-docs' \
-        | grep -v '05_meta/10_version-update-guide.md'
+        | grep -v 'kiro-docs/05_meta'
 }
 
 check_pattern() {

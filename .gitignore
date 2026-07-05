@@ -9,8 +9,8 @@ backups/
 # Work plans (kept locally only)
 kiro-docs/*_update_plan.md
 
-# Maintainer guide (kept locally only; GitHub publishes only Kiro CLI spec pages)
-kiro-docs/05_meta/10_version-update-guide.md
+# Maintainer docs: guide, case studies, templates (kept locally only; GitHub publishes only Kiro CLI spec pages)
+kiro-docs/05_meta/
 
 # Verbatim copy of official OSS repository docs (kept locally only; see scripts/kiro-docs/check-links.py)
 kiro-docs/06_embedded-docs/

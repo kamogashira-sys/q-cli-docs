@@ -13,6 +13,8 @@
     4. 相互参照注記(#10): 旧版機能を扱う文書に解消バージョンの言及があるか
     5. changelog⇔機能文書リンク: 機能文書が存在するバージョンエントリが
        当該文書へのリンク（../01_features/NN_*.md）を含むか、リンク先が実在するか
+    6. 更新履歴先頭行: 02_update/README.md「主要なアップデート」表の先頭データ行の
+       **vX.Y.Z** == changelog 最新版（完全一致。表は新しい順のため先頭＝最新）
 """
 import os
 import re
@@ -22,6 +24,7 @@ import glob
 FEATURE_TABLE = "kiro-docs/01_features/README.md"
 CHANGELOG = "kiro-docs/02_update/01_changelog.md"
 FEATURES_DIR = "kiro-docs/01_features"
+UPDATE_README = "kiro-docs/02_update/README.md"
 
 TABLE_ROW_RE = re.compile(r'^\|.*\]\([0-9]{2}_[^)]+\.md\)')
 VER_RE = re.compile(r'v[0-9]+\.[0-9]+\.[0-9]+')
@@ -124,6 +127,17 @@ def major_minor(ver):
     return f"{m.group(1)}.{m.group(2)}" if m else None
 
 
+def update_readme_first_version():
+    """02_update/README.md「主要なアップデート」表の先頭データ行から **vX.Y.Z** を返す。"""
+    row_re = re.compile(r'^\| \*\*(v[0-9]+\.[0-9]+\.[0-9]+)\*\* \|')
+    with open(UPDATE_README, encoding="utf-8") as f:
+        for line in f:
+            m = row_re.match(line)
+            if m:
+                return m.group(1)
+    return None
+
+
 def feature_numbers():
     nums = []
     for p in glob.glob(os.path.join(FEATURES_DIR, "[0-9][0-9]_*.md")):
@@ -213,6 +227,17 @@ def main():
                 print(f"❌ changelog {ver} セクションに ../01_features/{fname} へのリンクが無い")
                 errors += 1
     print(f"   対応表エントリ = {len(CHANGELOG_FEATURE_LINKS)} 版 / リンク検査数 = {checked}")
+
+    # 6. 更新履歴先頭行
+    print("🔍 6. 更新履歴先頭行（02_update/README 表の先頭行 == changelog 最新版）を検証中...")
+    first_ver = update_readme_first_version()
+    print(f"   changelog 最新版 = {latest} / 更新履歴表の先頭行 = {first_ver}")
+    if first_ver is None:
+        print(f"❌ {UPDATE_README} に '| **vX.Y.Z** |' 形式のデータ行が見つかりません")
+        errors += 1
+    elif first_ver != latest:
+        print(f"❌ 更新履歴表の先頭行（{first_ver}）が changelog 最新版（{latest}）と不一致")
+        errors += 1
 
     print("")
     print("=== チェック結果 ===")

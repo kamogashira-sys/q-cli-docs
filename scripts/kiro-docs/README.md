@@ -22,7 +22,11 @@ make check-kiro-changelog     # changelog セクション順序・件数
 make check-kiro-structure     # 末尾追記・欠番・必須セクション
 make check-kiro-notation      # コマンド・フラグ表記の禁止パターン
 make check-kiro-urls          # 重要公式URLの 200 確認
+make check-kiro-freshness     # 新バージョン検知（フィード vs ドキュメント。手動専用）
 ```
+
+`check-kiro-freshness` は外部フィード依存（flaky になり得る）ため `check-kiro-all` / CI には
+含めていません。バージョンアップ作業の起点（Phase 0 冒頭）として手動で実行します。
 
 ---
 
@@ -31,12 +35,13 @@ make check-kiro-urls          # 重要公式URLの 200 確認
 | スクリプト | 目的 | 終了コード |
 |-----------|------|-----------|
 | `check-counts.sh` | 機能数（=機能テーブル行数）/ コマンド数（=スラッシュコマンド見出し数）と各所記述の一致 | 不一致で 1 |
-| `check-links.py` | `kiro-docs/**/*.md` ＋ ルート README の相対リンク実在（`--check-anchors` で見出しも） | 切れで 1 |
+| `check-links.py` | `kiro-docs/**/*.md` ＋ ルート README の相対リンク実在（`--check-anchors` で見出しも。`--paths <file...>` で 05_meta 等の除外対象ファイルを個別検査、同一ファイル内・日本語アンカーも対象） | 切れで 1 |
 | `check-consistency.sh` | 取得日混入(`YYYY-MM-DD取得`)・`（vX.Y.Z対応）`の鮮度・出典日書式の存在・フッター更新日の ISO 書式・裸 URL 直後の全角文字（GitHub autolink 境界事故） | 不一致で 1 |
 | `check-changelog.sh` | `### vX.Y.Z` の降順・日付書式・`（N件）`と箇条書き数の一致 | 不一致で 1 |
-| `check-structure.py` | 機能テーブル末尾＝changelog最新版・NN欠番・必須セクション・相互参照注記・changelog⇔機能文書リンク | 問題で 1 |
+| `check-structure.py` | 機能テーブル末尾＝changelog最新版・NN欠番・必須セクション・相互参照注記・changelog⇔機能文書リンク・更新履歴表先頭行＝changelog最新版 | 問題で 1 |
 | `check-notation.sh` | 実機に存在しない/標準表記に反するコマンド・フラグ表記（`--legacy-ui`・`kiro auth`・`settings set`・`kiro` 単体コマンド）の混入 | 検出で 1 |
-| `check-urls.sh` | 外部URLの HTTP 2xx/3xx（`--important`/`--dry-run`/`--sample N`） | エラーで 1 |
+| `check-urls.sh` | `kiro-docs/**/*.md` ＋ ルート README の外部URLの HTTP 2xx/3xx（`--important`/`--dry-run`/`--sample N`） | エラーで 1 |
+| `check-freshness.sh` | 公式フィード最新 CLI エントリ vs changelog 先頭版の major.minor 比較（新バージョン検知） | 差分で 1・取得失敗は 0（fail-safe） |
 
 ### 正準値（単一情報源 / SSoT）
 
@@ -47,7 +52,7 @@ make check-kiro-urls          # 重要公式URLの 200 確認
 ### スコープ除外
 
 - `kiro-docs/06_embedded-docs/**`（公式OSSの逐語コピー）
-- `kiro-docs/05_meta/10_version-update-guide.md`（手順書・テンプレート例）
+- `kiro-docs/05_meta/**`（手順書・テンプレート・事例集。GitHub 非公開のローカル管理領域）
 - `*_update_plan.md`（gitignore対象の計画書）／`*.bak`
 - 取得日チェックの「取得時点」（公式不一致を記録する編集注記）は許可
 
@@ -66,7 +71,7 @@ make check-kiro-urls          # 重要公式URLの 200 確認
 - [ ] **#7 バックアップ**: 大きな更新の前に対象ファイルの `.bak` を作成した（pre-commit フックは `.bak` を検査しません）。
 - [ ] **#8 コミットスコープ**: `git status` が意図したファイルのみを示す（`.bak` / `*_update_plan.md` / `work_records/` が混入していない）。
 - [ ] **#15 公式矛盾の扱い**: Ctrl+S 等、公式ページ間で記述が矛盾する箇所は、両論併記＋出典付き注記になっている。
-- [ ] **#17 公式ページ本文の再取得**: 公式ページは JS 描画のため `curl` の 200 だけでは本文公開状態を判定できない。重要な変更は実ブラウザ/ヘッドレスで本文を確認した（例: 未公開 patch 本文の有無）。
+- [ ] **#17 公式ページ本文の再取得**: 公式ページ本文は `curl` で取得し grep でキーワード確認した。未公開 patch のような動的差し替えの可能性がある重要判断では実ブラウザでも確認した。
 
 ---
 

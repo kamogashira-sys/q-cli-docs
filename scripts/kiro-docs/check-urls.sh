@@ -8,8 +8,8 @@
 #   ./scripts/kiro-docs/check-urls.sh --important  # v2.7.x 重要公式URLのみ確実にチェック
 #
 # 機能:
-#   - kiro-docs/**/*.md の外部URLを抽出し HTTP ステータス（2xx/3xx）を確認
-#   - 除外: .bak / *_update_plan.md / 06_embedded-docs / localhost / プレースホルダ / GitHub API
+#   - kiro-docs/**/*.md とルート README.md の外部URLを抽出し HTTP ステータス（2xx/3xx）を確認
+#   - 除外: .bak / *_update_plan.md / 06_embedded-docs / 05_meta / localhost / プレースホルダ / GitHub API
 
 set -euo pipefail
 
@@ -78,11 +78,12 @@ if [ "$MODE" = "important" ]; then
     echo "✅ すべての重要URLが有効です"; exit 0
 fi
 
-# ---- URL抽出（kiro-docs/、除外適用） ----
+# ---- URL抽出（kiro-docs/ とルート README.md、除外適用） ----
 echo "🔍 URLを抽出中..."
-find kiro-docs -name "*.md" -type f \
+find kiro-docs README.md -name "*.md" -type f \
     ! -name "*.bak" ! -name "*_update_plan.md" \
     -not -path "*/06_embedded-docs/*" \
+    -not -path "*/05_meta/*" \
     -exec grep -hoP 'https?://[^\s\)\]]+' {} \; \
     | sed 's/[,;:."'\''`]*$//' \
     | grep -v -E '(localhost|127\.0\.0\.1|0\.0\.0\.0|example\.(com|org)|[「」（）`]|\$|XXXX|vX\.Y\.Z|api\.github\.com)' \

@@ -14,7 +14,7 @@
 # 設計メモ:
 #   - 用語の表記揺れ検出は誤検知を避けるため初版では最小限（明確な違反のみ）。
 #     "時点"（as-of 日付）は正当なので取得日チェックの対象外。
-#   - 除外: .bak / *_update_plan.md / 06_embedded-docs / 05_meta 手順書
+#   - 除外: .bak / *_update_plan.md / 06_embedded-docs / 05_meta（手順書・テンプレ・事例集）
 
 set -euo pipefail
 
@@ -31,7 +31,7 @@ exclude_paths() {
     grep -v '\.bak' \
         | grep -v '_update_plan' \
         | grep -v '06_embedded-docs' \
-        | grep -v '05_meta/10_version-update-guide.md'
+        | grep -v 'kiro-docs/05_meta'
 }
 
 # ---- (a) 取得日混入 ----

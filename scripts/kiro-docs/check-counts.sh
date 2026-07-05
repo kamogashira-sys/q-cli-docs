@@ -32,7 +32,7 @@ exclude_paths() {
     grep -v '\.bak' \
         | grep -v '_update_plan' \
         | grep -v '06_embedded-docs' \
-        | grep -v '05_meta/10_version-update-guide.md'
+        | grep -v 'kiro-docs/05_meta'
 }
 
 # 総数ではない「N機能」（カテゴリ/サブセット/別概念）の許可パターン
