@@ -7,7 +7,7 @@ backups/
 *-results.txt
 
 # Work plans (kept locally only)
-kiro-docs/*_update_plan.md
+kiro-docs/work_plans/
 
 # Maintainer docs: guide, case studies, templates (kept locally only; GitHub publishes only Kiro CLI spec pages)
 kiro-docs/05_meta/
