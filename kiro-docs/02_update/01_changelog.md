@@ -13,9 +13,77 @@
 
 ## 最新バージョン
 
-> **注記**: 本ページは **v2.10.0**（2026-06-26）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
+> **注記**: 本ページは **v2.12.1**（2026-07-09）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
 >
 > **本節の掲載範囲**: 目安として直近 3〜4 バージョンを掲載し、それより古いものは新しいバージョンの追加時に[バージョン履歴](#バージョン履歴)へ移動します。
+
+### v2.12.1 CLI（2026-07-09）
+
+**主要な変更**: モデル拒否通知の追加。
+
+**機能追加（1件）**:
+- 💡 **モデル拒否通知**: モデルがリクエストを拒否した場合に、その理由を説明するエラーアラートを表示。
+
+**出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.12](https://kiro.dev/changelog/cli/2-12/)
+
+**注記**: 公式 Changelog では v2.12.0 と同一ページ（`#patch-2-12-1`）に掲載。公式表示日 2026-07-09。
+
+---
+
+### v2.12.0 CLI（2026-07-09）
+
+**主要な変更**: MCP OAuth の拡張（事前登録アプリ対応）が中心。
+
+**機能追加（1件）**:
+- 🔐 **MCP OAuth で `clientSecret` 対応**: トークンエンドポイント認証を要する confidential client 向けに、MCP サーバーの OAuth 設定へ `clientSecret` を追加可能に（Figma 等の事前登録アプリに対応）。
+  - 詳細: [MCP OAuth 設定（公式）](https://kiro.dev/docs/cli/mcp/configuration/#oauth-configuration)
+
+**改善（3件）**:
+- 🔐 **`redirectUri` のフルURL対応**: カスタムコールバックパス付きの完全な URL（例 `http://localhost:7778/oauth/callback`）を受け付け、loopback（localhost）ホストのみを許可して検証。
+- 🔐 **カスタム `clientId` 設定時に DCR をスキップ**: 独自の `clientId` が設定されている場合、Dynamic Client Registration を行わず自身のアプリとして認証。
+- 🎨 **ASCIIモードの適用範囲拡大**: すべての TUI グリフ・記号が既存の ASCII モード表示設定（`chat.allowAsciiArt` / `KIRO_ASCII_MODE`）を尊重し、Unicode 非対応端末での互換性が向上。
+
+**バグ修正（1件）**:
+- 🔧 MCP OAuth の Dynamic Client Registration が、必要とするサーバー（例 Figma）へ正しい `client_name` を送信するよう修正。
+
+**セキュリティ（1件）**:
+- 🔒 シェル権限検出器が、結合ショートオプション（例 `grep -iP`）内の危険なフラグを検出（従来は readonly 分類をすり抜けていた）。承認プロンプトの精度が向上。
+
+**📖 詳細解説**: [32. MCP OAuth 認証管理](../01_features/32_MCPOAuthManagement.md)
+
+**出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.12](https://kiro.dev/changelog/cli/2-12/)
+
+**注記**: CLI内蔵 changelog 日付（2026-07-08）と公式表示日（2026-07-09）に差異あり。公式表示日を採用（v2.12.1 と同一ページに掲載）。MCP OAuth 設定は `~/.kiro/settings/mcp.json` のサーバー OAuth 設定（camelCase）で、v2.3.0 の `oauth.clientId` を拡張するもの（→ [v2.3.0](#v230-cli2026-05-12) を参照）。
+
+---
+
+### v2.11.0 CLI（2026-07-02）
+
+**主要な変更**: リモート MCP サーバーの OAuth 認証管理コマンドの追加が中心。
+
+**機能追加（2件）**:
+- 🔐 **MCP 認証管理コマンド（`/mcp auth`・`/mcp cancel-auth`・`/mcp logout`）**: リモート MCP サーバーの OAuth を制御。`/mcp auth`＝トークン失効・無効時に再認証を強制、`/mcp cancel-auth`＝ブラウザ確認待ちで停止した認証フローを中止、`/mcp logout`＝保存済み資格情報を削除。セッション再起動や手動での資格情報削除が不要に。
+  - 詳細: [スラッシュコマンド `/mcp auth`（公式）](https://kiro.dev/docs/cli/reference/slash-commands/#mcp-auth)
+- 💡 **MCP パネルのキーボードショートカット**: ステータスビューで `^A`＝認証強制、`^X`＝認証中止、`^R`＝資格情報削除。
+
+**改善（1件）**:
+- ⚙️ **`/usage` のプリペイド表示**: 従来の post-paid 超過分（overages）セクションに代わり、プリペイドの「Additional credits」パックを表示。使用上限（cap）が無いユーザーではプログレスバーを非表示に。
+
+**バグ修正（6件）**:
+- 🔧 `kiro_planner` の再入時、plan-to-execute 引き継ぎ後に存在しない `dummy` ツールで停止する問題を修正。
+- 📋 サブエージェントのサマリーツール準拠性を、位置引数の優先度とプロンプト指示の強化で改善。
+- 🔧 [V3] エージェントが問い合わせ時に稼働中のモデルを正しく報告。
+- 🔧 `--classic`（Classic UI）モードで、未知フィールド（例 `permissions`）を含むエージェント設定がロードに失敗しないよう修正。
+- 🔧 エラー終了時のクリーンアップ中にサマリーツールがキャンセルされると、サブエージェント結果が無言で失われる問題を修正。
+- 🔧 Windows で MCP stdio サーバーが可視のコンソールウィンドウを表示しないよう修正。
+
+**📖 詳細解説**: [32. MCP OAuth 認証管理](../01_features/32_MCPOAuthManagement.md)
+
+**出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.11](https://kiro.dev/changelog/cli/2-11/)
+
+**注記**: CLI内蔵 changelog 日付（2026-07-01）と公式表示日（2026-07-02）に差異あり。公式表示日を採用。
+
+---
 
 ### v2.10.0 CLI（2026-06-26）
 
@@ -45,6 +113,8 @@
 **注記**: CLI内蔵 changelog 日付（2026-06-25）と公式表示日（2026-06-26）に差異あり。公式表示日を採用。
 
 ---
+
+## バージョン履歴
 
 ### v2.9.0 CLI（2026-06-24）
 
@@ -105,8 +175,6 @@
 **出典**: `kiro-cli version --changelog=all`、[公式 Changelog v2.8](https://kiro.dev/changelog/cli/2-8/)、[公式 CLI v3](https://kiro.dev/docs/cli/v3/)
 
 ---
-
-## バージョン履歴
 
 ### v2.7.1 CLI（2026-06-16）
 
@@ -360,6 +428,7 @@
 **機能追加（8件）**:
 - 🔧 **OAuth clientId設定**: DCR（Dynamic Client Registration）非対応のHTTP MCPサーバー（Slack, GitHub, Figma等）に接続するための`oauth.clientId`設定を追加
   - 詳細: [公式Agent設定リファレンス](https://kiro.dev/docs/cli/custom-agents/configuration-reference/#oauth-configuration)
+  - ※ v2.12.0 で `clientSecret`（confidential client 対応）・`redirectUri`（カスタムパス付きフルURL）と、`clientId` 設定時の DCR スキップを追加（→ [v2.12.0](#v2120-cli2026-07-09)）
 - 🔧 **KIRO_HOME環境変数**: `~/.kiro`ディレクトリの場所をオーバーライドする環境変数を追加。global agents, prompts, skills, steering, settings, sessionsに適用（→ 詳細: [04_reference/01_settings.md](../04_reference/01_settings.md)）
   - 用途: 複数マシン間のdotfiles管理、仕事/個人プロファイル分離、コンテナ環境でのKiro状態隔離
   - 詳細: [公式設定リファレンス](https://kiro.dev/docs/cli/reference/settings/#environment-variables)
@@ -1033,4 +1102,4 @@ kiro-cli chat "Hello, world!"
 - セキュリティアップデートのリリース時
 - コミュニティからの重要なフィードバック時
 
-**最終更新**: 2026-07-04（凡例を実カテゴリ4種に更新、「影響対象」欄を標準書式化、最新バージョン節の掲載範囲基準を明記。前回 2026-06-28: v2.10.0/v2.9.0対応追加）
+**最終更新**: 2026-07-12（v2.11.0/v2.12.0/v2.12.1対応追加、v2.9.0/v2.8.1/v2.8.0 をバージョン履歴へ移動、v2.3.0 に MCP OAuth 拡張の相互参照。前回 2026-07-04: 凡例を実カテゴリ4種に更新、「影響対象」欄を標準書式化）

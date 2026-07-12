@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.10.0（本サイト反映済。v2.8.0 で CLI v3 Early Access）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.12.1（本サイト反映済。v2.8.0 で CLI v3 Early Access）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,9 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.12.1** | 2026-07-09 | モデル拒否通知 | モデルがリクエストを拒否した理由をエラーアラートで表示 |
+| **v2.12.0** | 2026-07-09 | MCP OAuth 拡張（事前登録アプリ） | `clientSecret`（confidential client）、`redirectUri` フルURL＋loopback検証、カスタム `clientId` 時 DCR スキップ、全TUIグリフの ASCIIモード尊重、shell 権限検出器の結合ショートオプション検出（セキュリティ） |
+| **v2.11.0** | 2026-07-02 | MCP 認証管理コマンド・/usage 刷新 | `/mcp auth`・`/mcp cancel-auth`・`/mcp logout`（リモートMCPのOAuth再認証/中止/資格情報削除）、MCPパネルショートカット `^A`/`^X`/`^R`、`/usage` プリペイド「Additional credits」表示（cap無しはバー非表示）、Fixed 6件 |
 | **v2.10.0** | 2026-06-26 | 設定ホットリロード・リソース継承制御 | MCP・エージェント設定のホットリロード（file watcher、変更サーバーのみ再起動、会話コンテキスト保持）、`chat.disableInheritingDefaultResources`（既定リソース継承のオプトアウト）、メニュー操作ヒント、Windows RCE（CWE-426）堅牢化 |
 | **v2.9.0** | 2026-06-24 | V3安定化・Entra ID修正 | [V3] ツールカード1行プレビュー（ctrl+o）、Entra ID セッション更新修正、カスタムエージェント二重読込修正、[V3] 各種UX修正（機能追加なし） |
 | **v2.8.1** | 2026-06-17 | MCP OAuth / spec 表示の改善 | MCP OAuth のクリップボードコピー・パネル確認表示、Welcome リンクを V3 docs へ、spec ワークフロー中の subagent 表示修正 |
@@ -225,6 +228,18 @@ timeline
                    : MCP・エージェント設定ホットリロード
                    : chat.disableInheritingDefaultResources
                    : メニュー操作ヒント / Windows RCE 堅牢化
+
+    section v2.11.x / v2.12.x MCP OAuth 強化
+        2026-07-02 : v2.11.0
+                   : /mcp auth・cancel-auth・logout
+                   : MCPパネルショートカット（^A/^X/^R）
+                   : /usage プリペイド表示刷新
+        2026-07-09 : v2.12.0
+                   : MCP OAuth 事前登録アプリ対応
+                   : clientSecret / redirectUri / DCRスキップ
+                   : ASCIIモード全グリフ適用・shell権限検出強化
+        2026-07-09 : v2.12.1
+                   : モデル拒否通知
 ```
 
 ## 🔗 移行情報
@@ -280,6 +295,7 @@ timeline
 - [v2.7新コマンド（/goal, Queue Steering, enriched /rewind）](../01_features/29_v27NewCommands.md) 🆕 - 自律ループ・ターン中介入・/rewind preview拡張・chat.terminalTitle（v2.7.0）
 - [v2.8 / V3プレビュー（CLI v3 Early Access）](../01_features/30_v28V3Preview.md) 🆕 - CLI v3 Early Access（--v3）・統一エンジン・仕様駆動開発のプレビュー（v2.8.0/v2.8.1、→ [09_v3/](../09_v3/README.md)）
 - [v2.10 設定ホットリロード & リソース継承制御](../01_features/31_v210ConfigHotReload.md) 🆕 - MCP・エージェント設定のホットリロードと既定リソース継承制御（`chat.disableInheritingDefaultResources`、v2.10.0）
+- [MCP OAuth 認証管理・事前登録アプリ対応](../01_features/32_MCPOAuthManagement.md) 🆕 - リモート MCP の OAuth 再認証コマンド（`/mcp auth` 等）・事前登録アプリ対応（`clientSecret`/`redirectUri`/DCRスキップ、v2.11.0/v2.12.0）
 
 ### リファレンス（辞書） 🆕
 - [04_reference/](../04_reference/README.md) — Settings / Slash Commands / CLI Commands / Built-in Tools の網羅的辞書
@@ -310,5 +326,5 @@ timeline
 
 ---
 
-**最終更新**: 2026-06-28  
-**対象バージョン**: Kiro CLI v2.10.0
+**最終更新**: 2026-07-12  
+**対象バージョン**: Kiro CLI v2.12.1

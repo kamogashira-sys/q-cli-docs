@@ -121,6 +121,7 @@ kiro-cli settings list --format json-pretty
 | `chat.keybindings.toggleInterruptBehavior` | string | `ctrl+s` | Queue Steering の steer/queue モード切替キーバインド（v2.7.0+） | `kiro-cli settings chat.keybindings.toggleInterruptBehavior ctrl+shift+s` |
 
 > **`KIRO_ASCII_MODE=1`** を設定すると `chat.allowAsciiArt` に関わらず ASCII モードが強制されます（環境変数節参照）。
+> **v2.12.0+**: すべての TUI グリフ・記号が ASCII モード設定（`chat.allowAsciiArt` / `KIRO_ASCII_MODE`）を尊重するよう**適用範囲が拡大**しました（Unicode 非対応端末での互換性向上。新規設定の追加ではなく既存設定の挙動拡張）。
 > **ターミナルタイトル**は v2.6.0 までは `/settings display` → Terminal title でのトグルのみで CLI 設定としては提供されていませんでしたが、**v2.7.0 で `chat.terminalTitle` 設定が追加され CLI 設定としても制御可能**になりました。⚠️ 公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映のため、型・既定値は**実機 kiro-cli 2.10.0 の `kiro-cli settings list --all` の説明文**「Show dynamic title in terminal tab (boolean, default: false)」（2026-07-04 確認）を一次情報として採用しています（boolean・既定 `false`。CLI 内蔵 changelog v2.7.0 の追加文言とも整合）。
 > `chat.showThinking`（モデル自身の推論表示、本節）と `chat.enableThinking`（thinking ツールの有効化、Feature toggles 節）は**別物**です。
 > 詳細: [27. Thinking Display](../01_features/27_ThinkingDisplay.md)、[29. v27NewCommands](../01_features/29_v27NewCommands.md)、[公式 Queue Steering](https://kiro.dev/docs/cli/chat/queue-steering/)

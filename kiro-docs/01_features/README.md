@@ -2,7 +2,7 @@
 
 # Kiro CLI 機能詳細ガイド
 
-> Kiro CLI の 31 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+> Kiro CLI の 32 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
 
 ## 🗂️ カテゴリ別ナビゲーション
 
@@ -60,6 +60,7 @@
 - [16. v2 Major Update](16_v2MajorUpdate.md) — Windows 11 / Headless Mode
 - [19. Tool Search](19_ToolSearch.md) — MCP ツールのオンデマンドロード
 - [26. Agent Toolkit for AWS](26_AgentToolkitForAWS.md) 🌟 — AWS 公式 MCP Server + Skills + Plugins
+- [32. MCP OAuth 認証管理](32_MCPOAuthManagement.md) 🆕 — リモート MCP の OAuth 再認証コマンド・事前登録アプリ対応（v2.11.0/v2.12.0）
 
 ### 💰 使用量・課金
 - [06. /usage コマンド](06_UsageCommand.md) — 契約プラン・月間使用量
@@ -101,6 +102,7 @@
 | **[v2.7新コマンド（/goal, Queue Steering, enriched /rewind）](29_v27NewCommands.md)** 🆕 | v2.7.0<br/>（2026-06-12） | 自律ループ実行・ターン中介入・/rewind preview拡張・設定追加 | /goal（5反復既定/--max、自己検証ループ）、Queue Steering（Ctrl+S で steer/queue 切替）、enriched /rewind preview、chat.terminalTitle 設定、/settings UI統一・theme Custom ウィザード化 |
 | **[v2.8 / V3プレビュー（CLI v3 Early Access）](30_v28V3Preview.md)** 🆕 | v2.8.0<br/>（2026-06-17）<br/>v2.8.1更新 | CLI v3 Early Access（`--v3`）と統一エンジン・仕様駆動開発のプレビュー | `--v3` オプトイン、統一エンジン、4本柱（Spec / permissions.yaml / Hooks / タグ Agent設定）、Breaking changes・Known gaps、v2.8.1 で MCP OAuth / spec 表示の改善 |
 | **[v2.10 設定ホットリロード & リソース継承制御](31_v210ConfigHotReload.md)** 🆕 | v2.10.0<br/>（2026-06-26） | MCP・エージェント設定のホットリロードと既定リソース継承制御（オプトアウト設定） | 設定ホットリロード（file watcher、変更サーバーのみ再起動、会話コンテキスト保持）、`chat.disableInheritingDefaultResources`（Boolean / 既定 false、組み込みは常に継承） |
+| **[MCP OAuth 認証管理・事前登録アプリ対応](32_MCPOAuthManagement.md)** 🆕 | v2.12.0<br/>（2026-07-09）<br/>v2.11.0 認証管理コマンド | リモート MCP サーバーの OAuth 認証を制御し、事前登録アプリに対応 | v2.11.0: `/mcp auth`・`/mcp cancel-auth`・`/mcp logout`＋パネルショートカット（^A/^X/^R）<br/>v2.12.0: `clientSecret`・`redirectUri` フルURL・カスタム `clientId` 時 DCR スキップ |
 
 ## 🔗 機能間の連携
 
@@ -287,6 +289,6 @@ sequenceDiagram
 
 ---
 
-**最終更新**: 2026-07-04  
-**対象バージョン**: Kiro CLI v2.10.0+（v3 は Early Access）  
-**機能数**: 31 + Reference集約 ([04_reference/](../04_reference/README.md))
+**最終更新**: 2026-07-12  
+**対象バージョン**: Kiro CLI v2.12.1+（v3 は Early Access）  
+**機能数**: 32 + Reference集約 ([04_reference/](../04_reference/README.md))
