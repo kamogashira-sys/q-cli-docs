@@ -289,6 +289,6 @@ sequenceDiagram
 
 ---
 
-**最終更新**: 2026-07-12  
-**対象バージョン**: Kiro CLI v2.12.1+（v3 は Early Access）  
+**最終更新**: 2026-07-15  
+**対象バージョン**: Kiro CLI v2.12.2+（v3 は Early Access）  
 **機能数**: 32 + Reference集約 ([04_reference/](../04_reference/README.md))

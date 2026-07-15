@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.12.1（本サイト反映済。v2.8.0 で CLI v3 Early Access）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.12.2（本サイト反映済。v2.8.0 で CLI v3 Early Access）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,7 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.12.2** | 2026-07-14 | バグ修正（ACP・セッション・非対話） | ACP `--agent` を新規セッションごとに適用（デフォルトエージェント/MCPへのフォールバック防止）、アクティブセッション再読込で旧インスタンス終了（MCPサーバープロセスのリーク防止）、stdin パイプ/非対話時に `chat` が TUI 非描画 |
 | **v2.12.1** | 2026-07-09 | モデル拒否通知 | モデルがリクエストを拒否した理由をエラーアラートで表示 |
 | **v2.12.0** | 2026-07-09 | MCP OAuth 拡張（事前登録アプリ） | `clientSecret`（confidential client）、`redirectUri` フルURL＋loopback検証、カスタム `clientId` 時 DCR スキップ、全TUIグリフの ASCIIモード尊重、shell 権限検出器の結合ショートオプション検出（セキュリティ） |
 | **v2.11.0** | 2026-07-02 | MCP 認証管理コマンド・/usage 刷新 | `/mcp auth`・`/mcp cancel-auth`・`/mcp logout`（リモートMCPのOAuth再認証/中止/資格情報削除）、MCPパネルショートカット `^A`/`^X`/`^R`、`/usage` プリペイド「Additional credits」表示（cap無しはバー非表示）、Fixed 6件 |
@@ -240,6 +241,10 @@ timeline
                    : ASCIIモード全グリフ適用・shell権限検出強化
         2026-07-09 : v2.12.1
                    : モデル拒否通知
+        2026-07-14 : v2.12.2
+                   : ACP --agent を新規セッション毎に適用
+                   : セッション再読込で MCP プロセスリーク防止
+                   : 非対話 stdin で TUI 非描画
 ```
 
 ## 🔗 移行情報
@@ -326,5 +331,5 @@ timeline
 
 ---
 
-**最終更新**: 2026-07-12  
-**対象バージョン**: Kiro CLI v2.12.1
+**最終更新**: 2026-07-15  
+**対象バージョン**: Kiro CLI v2.12.2
