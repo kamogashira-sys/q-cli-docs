@@ -54,8 +54,17 @@ kiro-cli --v3
 ### 4 本柱のポイント（一次情報の要約）
 
 - **Permissions**: 1 つのルールは `capability`（操作種別）/ `match`（グロブ）/ `exclude` / `effect`（`deny`・`ask`・`allow`）の 4 フィールド。効果は **deny > ask > allow** の順で厳しい方が勝ちます。ルールは **User**（`~/.kiro/settings/permissions.yaml`）と **Workspace**（`~/.kiro/workspace-roots/<hash>/permissions.yaml`、**リポジトリ外・ユーザー単位**で保持されるためクローンしたリポジトリが権限を注入できない）の2スコープ。CI 向けには `capability: all / effect: allow` の例が示されています。
-- **Hooks**: `.kiro/hooks/<name>.json`（`"version": "v1"`）に定義。**command**（シェル実行、stdin に JSON、終了コード 0=成功 / 2=ブロック）と **agent**（プロンプトを文脈へ追記）の 2 型。トリガは `SessionStart` / `Stop` / `PreToolUse` / `PostToolUse` / `UserPromptSubmit` / `PostFileCreate` / `PostFileSave` のほか、**3.0 新規**の `PreTaskExec` / `PostTaskExec` / `PostFileDelete` / `Manual`。旧 hooks は `kiro-cli agent migrate` で新形式へ変換できます。
+- **Hooks**: `.kiro/hooks/<name>.json`（`"version": "v1"`）に定義。**command**（シェル実行、stdin に JSON、終了コード 0=成功 / 2=ブロック）と **agent**（プロンプトを文脈へ追記）の 2 型。トリガは `SessionStart` / `Stop` / `PreToolUse` / `PostToolUse` / `UserPromptSubmit` / `PostFileCreate` / `PostFileSave` のほか、**3.0 新規**の `PreTaskExec` / `PostTaskExec` / `PostFileDelete` / `Manual`。旧 hooks は `kiro-cli agent migrate` で新形式へ変換できます。**v2.13.0（2026-07-17）** では、`~/.kiro/hooks/` に置いた**グローバル hooks** が追加され、**全ワークスペースへ自動適用**されるようになりました（従来のワークスペース単位 `.kiro/hooks/` に加えた、ユーザーグローバルの適用先）。
 - **Agent 設定**: Markdown の本文がシステムプロンプト、フロントマターに `description` / `model` / `tools`（タグ）/ `mcpServers` / `resources` / `permissions` / `welcomeMessage` を記述（JSON でも等価）。タグは `read` / `write` / `shell` / `web` / `subagent` / `knowledge` / `todo_list` / `@mcp` / `@builtin` / `*`。新しいツールがカテゴリに追加されると**自動で取り込まれます**。配置は `.kiro/agents/`（ワークスペース）・`~/.kiro/agents/`（ユーザー）。
+
+### v2.13.0 での追加（Introspect サブエージェント・グローバル hooks）
+
+**v2.13.0（2026-07-17）** で、V3（Early Access）に2つの機能が追加されました。
+
+- **Introspect サブエージェント**: Kiro の機能に関する質問に答え、**カスタムエージェント・hooks・steering の作成を支援**する組み込みサブエージェント。Spec agent（仕様駆動）に加わる新しい組み込みエージェントで、v3 の設定（上記 4 本柱）を書く際の対話的なガイドとして使えます。
+- **グローバル hooks**: `~/.kiro/hooks/` に置いた hooks が**全ワークスペースへ自動適用**されます（詳細は上記「Hooks」ポイント）。プロジェクト横断で共通のフック（例: セッション開始時の共通セットアップ）をユーザー単位で一元管理できます。
+
+出典: [公式 Hooks](https://kiro.dev/docs/cli/v3/hooks/)、[公式 Changelog v2.13](https://kiro.dev/changelog/cli/2-13/)。
 
 ---
 
@@ -117,5 +126,5 @@ kiro-cli diagnostic --format json-pretty
 
 ---
 
-**最終更新**: 2026-06-21
+**最終更新**: 2026-07-20
 **対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x ＋ `--v3` で提供。3.0.0 GA は未リリース。
