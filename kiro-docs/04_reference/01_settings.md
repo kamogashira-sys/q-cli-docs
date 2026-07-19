@@ -101,10 +101,14 @@ kiro-cli settings list --format json-pretty
 | `chat.disableGranularTrust` | boolean | 段階的信頼オプション無効化（TUI のみ） | `kiro-cli settings chat.disableGranularTrust true` |
 | `chat.autoExpandToolOutput` | boolean | ツール出力を自動展開（TUI のみ） | `kiro-cli settings chat.autoExpandToolOutput true` |
 | `chat.modelDefaults` | object | モデルごとのデフォルト設定（effort 等、新セッション全体に適用） | [Effort](https://kiro.dev/docs/cli/chat/effort/#persistent-defaults) 参照 |
+| `chat.disableAutoDefaultModel` | boolean | `/model` 選択の sticky default 化（新セッションへ自動適用）を無効化（v2.12.3+、既定 `false`） | `kiro-cli settings chat.disableAutoDefaultModel true` |
+| `chat.disableAutoDefaultEffort` | boolean | `/effort` 選択の sticky default 化（新セッションへ自動適用）を無効化（v2.12.3+、既定 `false`） | `kiro-cli settings chat.disableAutoDefaultEffort true` |
 | `chat.enableContextUsageIndicator` | boolean | プロンプトにコンテキスト使用率を表示（classic のみ） | `kiro-cli settings chat.enableContextUsageIndicator true` |
 | `chat.historyMode` | string | プロンプト履歴のスコープ: `session`（既定）/ `global`（v2.5.0+、次セッション反映）。⚠️ 実機 2.10.0 では `kiro-cli settings` から本キーを直接読み書きできない（`not a valid setting`、`settings list --all` にも非掲載。2026-07-04 実機確認）ため、チャット内の `/settings history` で設定する | `/settings history`（チャット内） |
 
 > **`chat.disableInheritingDefaultResources`** は **v2.10.0 で追加**された設定です。既定は `false`（カスタムエージェントは既定リソース steering / skills / AGENTS.md を継承）、`true` で継承を無効化できます（**組み込みエージェントは本設定に関わらず常に継承**）。v2.7.0 で導入された既定リソース自動継承のオプトアウト手段です。⚠️ 公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（公式ページ最終更新 2026-06-05）は本設定が未反映のため、本サイトは [カスタムエージェント設定リファレンス](https://kiro.dev/docs/cli/custom-agents/configuration-reference/)（公式ページ最終更新 2026-06-26）を一次情報として採用しています。詳細: [31. v2.10 設定ホットリロード & リソース継承制御](../01_features/31_v210ConfigHotReload.md)
+
+> **`chat.disableAutoDefaultModel` / `chat.disableAutoDefaultEffort`** は **v2.12.3 で追加**された設定です。v2.6.0 以降、`/model`・`/effort` の選択は自動的に恒久デフォルト化（sticky default）され新セッションへ適用されますが、この自動適用を無効化したい場合に各 Boolean（既定 `false`）を `true` にします。⚠️ 公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（公式ページ最終更新 2026-06-05）は本設定が未反映のため、本サイトは CLI 内蔵 changelog（`kiro-cli version --changelog=2.12.3`）を一次情報として採用しています。詳細: [28. v2.6 新コマンド](../01_features/28_v26NewCommands.md)
 
 #### 表示・アクセシビリティ（Display and accessibility、terminal UI）
 
@@ -392,5 +396,5 @@ kiro-cli settings list --all
 
 ---
 
-**Page updated**: 2026-07-04（`chat.terminalTitle` の型・既定値を実機確定、`chat.historyMode` の実機注記、補遺「公式リファレンス未掲載の設定」を新設。本サイト初版 2026-05-24）  
+**Page updated**: 2026-07-20（v2.12.3 の新設定 `chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` を追加。前回 2026-07-04: `chat.terminalTitle` の型・既定値を実機確定、`chat.historyMode` の実機注記、補遺「公式リファレンス未掲載の設定」を新設。本サイト初版 2026-05-24）  
 **公式ページ最終更新**: 2026-06-05

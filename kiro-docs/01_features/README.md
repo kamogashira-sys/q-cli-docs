@@ -2,7 +2,7 @@
 
 # Kiro CLI 機能詳細ガイド
 
-> Kiro CLI の 32 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+> Kiro CLI の 33 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
 
 ## 🗂️ カテゴリ別ナビゲーション
 
@@ -22,6 +22,7 @@
 - [29. v2.7 New Commands](29_v27NewCommands.md) 🆕 — `/goal` 自律ループ実行・Queue Steering（v2.7.0）
 - [30. v2.8 / V3プレビュー](30_v28V3Preview.md) 🆕 — CLI v3 Early Access（`--v3`）・仕様駆動開発（v2.8.0）
 - [31. v2.10 設定ホットリロード & リソース継承制御](31_v210ConfigHotReload.md) 🆕 — 設定ホットリロード・既定リソース継承制御（v2.10.0）
+- [33. v2.13 Introspect サブエージェント・グローバル hooks](33_v213IntrospectGlobalHooks.md) 🆕 — [V3] Kiro 機能説明サブエージェント・全ワークスペース hooks（v2.13.0）
 
 ### 📁 コンテキスト・知識管理
 - [07. Skills](07_Skills.md) — Progressive Context Loading
@@ -103,6 +104,7 @@
 | **[v2.8 / V3プレビュー（CLI v3 Early Access）](30_v28V3Preview.md)** 🆕 | v2.8.0<br/>（2026-06-17）<br/>v2.8.1更新 | CLI v3 Early Access（`--v3`）と統一エンジン・仕様駆動開発のプレビュー | `--v3` オプトイン、統一エンジン、4本柱（Spec / permissions.yaml / Hooks / タグ Agent設定）、Breaking changes・Known gaps、v2.8.1 で MCP OAuth / spec 表示の改善 |
 | **[v2.10 設定ホットリロード & リソース継承制御](31_v210ConfigHotReload.md)** 🆕 | v2.10.0<br/>（2026-06-26） | MCP・エージェント設定のホットリロードと既定リソース継承制御（オプトアウト設定） | 設定ホットリロード（file watcher、変更サーバーのみ再起動、会話コンテキスト保持）、`chat.disableInheritingDefaultResources`（Boolean / 既定 false、組み込みは常に継承） |
 | **[MCP OAuth 認証管理・事前登録アプリ対応](32_MCPOAuthManagement.md)** 🆕 | v2.12.0<br/>（2026-07-09）<br/>v2.11.0 認証管理コマンド | リモート MCP サーバーの OAuth 認証を制御し、事前登録アプリに対応 | v2.11.0: `/mcp auth`・`/mcp cancel-auth`・`/mcp logout`＋パネルショートカット（^A/^X/^R）<br/>v2.12.0: `clientSecret`・`redirectUri` フルURL・カスタム `clientId` 時 DCR スキップ |
+| **[v2.13 Introspect サブエージェント・グローバル hooks](33_v213IntrospectGlobalHooks.md)** 🆕 | v2.13.0<br/>（2026-07-17） | [V3] Kiro 機能説明の組み込みサブエージェントと、全ワークスペースへ自動適用される hooks | [V3] Introspect サブエージェント（カスタム agent/hooks/steering 作成支援）、[V3] グローバル hooks（`~/.kiro/hooks/`）、モデル拒否エラーのスクロールバック表示化・レート制限エラー永続化 |
 
 ## 🔗 機能間の連携
 
@@ -289,6 +291,6 @@ sequenceDiagram
 
 ---
 
-**最終更新**: 2026-07-15  
-**対象バージョン**: Kiro CLI v2.12.2+（v3 は Early Access）  
-**機能数**: 32 + Reference集約 ([04_reference/](../04_reference/README.md))
+**最終更新**: 2026-07-20  
+**対象バージョン**: Kiro CLI v2.13.0+（v3 は Early Access）  
+**機能数**: 33 + Reference集約 ([04_reference/](../04_reference/README.md))

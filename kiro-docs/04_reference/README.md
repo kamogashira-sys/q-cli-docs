@@ -84,7 +84,7 @@
 
 ### 本サイト
 
-- [機能詳細ガイド (01_features/)](../01_features/README.md) — 32機能の詳細解説
+- [機能詳細ガイド (01_features/)](../01_features/README.md) — 33機能の詳細解説
 - [アップデート情報 (02_update/)](../02_update/README.md) — バージョン履歴と主要変更
 - [デプロイ・環境構築 (03_deployment/)](../03_deployment/README.md) — インストール手順
 - [メタドキュメント (05_meta/)](../05_meta/) — 品質保証関連

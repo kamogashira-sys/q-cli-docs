@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.12.2（本サイト反映済。v2.8.0 で CLI v3 Early Access）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.13.0（本サイト反映済。v2.8.0 で CLI v3 Early Access）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,8 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.13.0** | 2026-07-17 | [V3] Introspect サブエージェント・グローバル hooks | [V3] Kiro 機能説明の組み込みサブエージェント（カスタム agent/hooks/steering 作成支援）、`~/.kiro/hooks/` の全ワークスペース自動適用、モデル拒否エラーのスクロールバック表示化、レート制限エラー永続化、[V3] Always-accept バックスラッシュループ修正・`HTTP_PROXY`/`HTTPS_PROXY` 尊重 |
+| **v2.12.3** | 2026-07-15 | /model・/effort sticky default・MCP OAuth User-Agent | `/model`・`/effort` の恒久デフォルト化（`chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` でオプトアウト）、Welcome 起動 tip、MCP OAuth discovery の User-Agent 送信（CloudFront WAF 背後の 403 解消）、V3 `/chat` パス復元・diff 配色・shell `!` 固着修正 |
 | **v2.12.2** | 2026-07-14 | バグ修正（ACP・セッション・非対話） | ACP `--agent` を新規セッションごとに適用（デフォルトエージェント/MCPへのフォールバック防止）、アクティブセッション再読込で旧インスタンス終了（MCPサーバープロセスのリーク防止）、stdin パイプ/非対話時に `chat` が TUI 非描画 |
 | **v2.12.1** | 2026-07-09 | モデル拒否通知 | モデルがリクエストを拒否した理由をエラーアラートで表示 |
 | **v2.12.0** | 2026-07-09 | MCP OAuth 拡張（事前登録アプリ） | `clientSecret`（confidential client）、`redirectUri` フルURL＋loopback検証、カスタム `clientId` 時 DCR スキップ、全TUIグリフの ASCIIモード尊重、shell 権限検出器の結合ショートオプション検出（セキュリティ） |
@@ -245,6 +247,17 @@ timeline
                    : ACP --agent を新規セッション毎に適用
                    : セッション再読込で MCP プロセスリーク防止
                    : 非対話 stdin で TUI 非描画
+        2026-07-15 : v2.12.3
+                   : /model・/effort sticky default
+                   : chat.disableAutoDefaultModel/Effort でオプトアウト
+                   : MCP OAuth User-Agent（CloudFront 403 解消）
+
+    section v2.13.x Introspect & Global Hooks
+        2026-07-17 : v2.13.0
+                   : [V3] Introspect サブエージェント
+                   : [V3] グローバル hooks（~/.kiro/hooks/）
+                   : モデル拒否エラー表示改善・レート制限永続化
+                   : [V3] HTTP(S)_PROXY 尊重
 ```
 
 ## 🔗 移行情報
@@ -331,5 +344,5 @@ timeline
 
 ---
 
-**最終更新**: 2026-07-15  
-**対象バージョン**: Kiro CLI v2.12.2
+**最終更新**: 2026-07-20  
+**対象バージョン**: Kiro CLI v2.13.0

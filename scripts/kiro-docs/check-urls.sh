@@ -41,6 +41,7 @@ check_one() {
 if [ "$MODE" = "important" ]; then
     IMPORTANT_URLS=(
         "https://kiro.dev/changelog/cli/"
+        "https://kiro.dev/changelog/cli/2-13/"
         "https://kiro.dev/changelog/cli/2-12/"
         "https://kiro.dev/changelog/cli/2-11/"
         "https://kiro.dev/changelog/cli/2-10/"

@@ -13,9 +13,55 @@
 
 ## 最新バージョン
 
-> **注記**: 本ページは **v2.12.2**（2026-07-14）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
+> **注記**: 本ページは **v2.13.0**（2026-07-17）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
 >
 > **本節の掲載範囲**: 目安として直近 3〜4 バージョンを掲載し、それより古いものは新しいバージョンの追加時に[バージョン履歴](#バージョン履歴)へ移動します。
+
+### v2.13.0 CLI（2026-07-17）
+
+**主要な変更**: [V3] Introspect サブエージェントとグローバル hooks の追加が中心（全ユーザー向けのエラー表示改善を併せて実施）。
+
+**機能追加（2件）**:
+- 🔧 **[V3] Introspect サブエージェント**: Kiro の機能に関する質問に答え、カスタムエージェント・hooks・steering の作成を支援する組み込みサブエージェント（→ [09_v3/](../09_v3/README.md)）。
+- 🔧 **[V3] グローバル hooks**: `~/.kiro/hooks/` に置いたフックが**全ワークスペースに自動適用**される。従来のワークスペース単位（`.kiro/hooks/`）に加え、ユーザーグローバルの適用先が追加された（→ [09_v3/](../09_v3/README.md)）。
+
+**改善（1件）**:
+- 💡 **モデル拒否エラーの表示変更**: モデルがリクエストを拒否した際のエラーが、プロンプトバー上部に**トーストを固定表示しなくなり**、スクロールバック行のみで表示されるように変更（v2.12.1 で追加された「モデル拒否通知」の表示挙動を洗練 → [v2.12.1](#v2121-cli2026-07-09)）。
+
+**バグ修正（3件）**:
+- 💡 レート制限エラーが**スクロールバックに残る**よう修正。トーストが消えた後もメッセージが見えるように。
+- 🔧 [V3] Always-accept（常に承認）が、**バックスラッシュエスケープを含むシェルコマンド**でループしないよう修正。
+- 📡 [V3] バックエンド API 接続で `HTTP_PROXY`・`HTTPS_PROXY` 環境変数が**尊重される**よう修正。
+
+**📖 詳細解説**: [33. v2.13 Introspect サブエージェント・グローバル hooks](../01_features/33_v213IntrospectGlobalHooks.md)
+
+**出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.13](https://kiro.dev/changelog/cli/2-13/)
+
+**注記**: CLI内蔵 changelog 日付（2026-07-16）と公式表示日（2026-07-17）に差異あり。公式表示日を採用。
+
+---
+
+### v2.12.3 CLI（2026-07-15）
+
+**主要な変更**: `/model`・`/effort` の sticky default 化（オプトアウト設定追加）と MCP OAuth discovery の User-Agent 対応が中心。
+
+**機能追加（1件）**:
+- ⚙️ **`/model`・`/effort` の sticky default 化**: 選択したモデル・推論レベルが恒久デフォルトとして保存され、新規セッションへ自動適用される。`chat.disableAutoDefaultModel` / `chat.disableAutoDefaultEffort`（各 Boolean）でオプトアウト可能（v2.6.0 の自動永続化を拡張 → [v2.6.0](#v260-cli2026-06-05)。詳細解説: [28. v2.6新コマンド](../01_features/28_v26NewCommands.md)）。
+
+**改善（1件）**:
+- 💡 Welcome 画面が静的な挨拶に代わり、ローテーション式の起動 tip を表示。
+
+**バグ修正（4件）**:
+- 🔧 [V3] `/chat save`・`/chat load` で、スペースを含む引用符付きファイルパスを正しく復元。
+- 🎨 Diff 表示が light/unknown 端末で判読不能な暗い背景を使わず、前景色のみの配色にフォールバック。
+- 🔐 MCP OAuth discovery が User-Agent ヘッダを送信し、CloudFront WAF 背後のサーバーでの 403 エラーを解消。
+- 🔧 シェルエスケープ（`!`）が全出力をファイルへリダイレクトする際に「Running...」表示が固着する問題を解消。
+
+**出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.12](https://kiro.dev/changelog/cli/2-12/)（`#patch-2-12-3`）
+
+**注記**: CLI内蔵日付と公式表示日は 2026-07-15 で一致（差異なし）。新設定 `chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` は [04_reference/01_settings.md](../04_reference/01_settings.md) に記載。MCP OAuth の User-Agent 修正は [32. MCP OAuth 認証管理](../01_features/32_MCPOAuthManagement.md) に関連。
+
+---
 
 ### v2.12.2 CLI（2026-07-14）
 
@@ -41,9 +87,11 @@
 
 **出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.12](https://kiro.dev/changelog/cli/2-12/)
 
-**注記**: 公式 Changelog では v2.12.0 と同一ページ（`#patch-2-12-1`）に掲載。公式表示日 2026-07-09。
+**注記**: 公式 Changelog では v2.12.0 と同一ページ（`#patch-2-12-1`）に掲載。公式表示日 2026-07-09。※v2.13.0 で表示方法を変更（プロンプトバー上部のトースト固定を廃止し、スクロールバック行のみ表示）→ [v2.13.0](#v2130-cli2026-07-17)。
 
 ---
+
+## バージョン履歴
 
 ### v2.12.0 CLI（2026-07-09）
 
@@ -99,8 +147,6 @@
 **注記**: CLI内蔵 changelog 日付（2026-07-01）と公式表示日（2026-07-02）に差異あり。公式表示日を採用。
 
 ---
-
-## バージョン履歴
 
 ### v2.10.0 CLI（2026-06-26）
 
@@ -282,7 +328,7 @@
 - 🔧 **/knowledge update（引数なし）**: 全ナレッジベースを一括再インデックス（従来の `/knowledge update <path>` は単一エントリ）
 
 **改善（4件）**:
-- ⚙️ **/model・/effort の自動永続化**: 選択が自動保存され、`/model set-current-as-default` が不要に（[永続化の詳細](https://kiro.dev/docs/cli/chat/settings/#persistence)）
+- ⚙️ **/model・/effort の自動永続化**: 選択が自動保存され、`/model set-current-as-default` が不要に（[永続化の詳細](https://kiro.dev/docs/cli/chat/settings/#persistence)）。※v2.12.3 で sticky default 化・オプトアウト設定 `chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` を追加 → [v2.12.3](#v2123-cli2026-07-15)
 - 💡 URL をハイパーリンク化し、行折返しをまたいでもクリック可能に
 - 🎨 `/settings display` パネルが Enter で完全に閉じる、フッターヒント更新
 - 💡 `/transcript` がページャを最下部で開き、最新メッセージを先頭表示
@@ -1117,4 +1163,4 @@ kiro-cli chat "Hello, world!"
 - セキュリティアップデートのリリース時
 - コミュニティからの重要なフィードバック時
 
-**最終更新**: 2026-07-15（v2.12.2対応追加、v2.10.0 をバージョン履歴へ移動、冒頭注記を v2.12.2 に更新。前回 2026-07-12: v2.11.0/v2.12.0/v2.12.1対応追加、v2.9.0/v2.8.1/v2.8.0 をバージョン履歴へ移動、v2.3.0 に MCP OAuth 拡張の相互参照）
+**最終更新**: 2026-07-20（v2.13.0・v2.12.3対応追加、v2.11.0・v2.12.0 をバージョン履歴へ移動、冒頭注記を v2.13.0 に更新、v2.12.1 に v2.13.0・v2.6.0 に v2.12.3 の相互参照追加。前回 2026-07-15: v2.12.2対応追加、v2.10.0 をバージョン履歴へ移動、冒頭注記を v2.12.2 に更新）
