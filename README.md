@@ -9,7 +9,7 @@
 
 1. **[📖 猫でもわかるkiro-cli アップデート情報](kiro-docs/README.md)** ← ⭐まずここから！
 2. **[💻 公式インストール手順](kiro-docs/03_deployment/03_official-installation.md)** - macOS / Windows 11 / Linux 別のインストール方法
-3. **[📚 機能詳細ガイド](kiro-docs/01_features/README.md)** - 33機能をカテゴリ別に解説
+3. **[📚 機能詳細ガイド](kiro-docs/01_features/README.md)** - 34機能をカテゴリ別に解説
 4. **[🔍 リファレンス](kiro-docs/04_reference/README.md)** - Settings / Slashコマンド / CLIコマンド / Built-in Tools の辞書
 5. **[📋 変更履歴](kiro-docs/02_update/01_changelog.md)** - 全バージョンの詳細な変更内容
 
@@ -42,86 +42,93 @@ Amazon Q Developer CLIは、**[Kiro CLI](https://kiro.dev/cli/)** として生�
 
 ### 📚 Kiro CLI v2.x 主要アップデート
 
-Kiro CLI v2.x 系では **Windows対応・Headless Mode・新TUI** を中心に大幅な機能拡張が行われ、**v2.8.0 では CLI v3（Early Access）** が登場、**v2.11.0〜v2.12.0 では MCP OAuth 認証管理・事前登録アプリ対応**が強化され、**v2.12.3 で `/model`・`/effort` の sticky default 化**、**v2.13.0 で [V3] Introspect サブエージェント・グローバル hooks** が追加されました：
+Kiro CLI v2.x 系では **Windows対応・Headless Mode・新TUI** を中心に大幅な機能拡張が行われ、**v2.8.0 では CLI v3（Early Access）** が登場、**v2.11.0〜v2.12.0 では MCP OAuth 認証管理・事前登録アプリ対応**が強化され、**v2.13.0 で [V3] Introspect サブエージェント・グローバル hooks**、**v2.14.0 で [V3] `/upgrade-agent`（V2 → V3 エージェント設定移行）** が追加されました。**v2.14.1 では `/model`・`/effort` がセッション限定に戻り**（v2.12.3 の sticky default 化からの方針転換）、既定化には `set-current-as-default` が必要です：
 
-1. **[v2.13.0 / v2.12.3 [V3] Introspect サブエージェント・グローバル hooks／/model・/effort sticky default](kiro-docs/02_update/01_changelog.md)**（2026-07-17 / 07-15）
+1. **[v2.14.2 / v2.14.1 / v2.14.0 V3 エージェント設定移行（/upgrade-agent）と /model・/effort のセッション限定化](kiro-docs/02_update/01_changelog.md)**（2026-07-24 / 07-23 / 07-22）
+   - v2.14.0: [V3] `/upgrade-agent`（V2 のカスタムエージェント設定を V2/V3 両対応の universal 形式へ変換。`run`／`diagnostics`、`.json.bak` バックアップ） → [kiro-docs/01_features/34](kiro-docs/01_features/34_v214UpgradeAgent.md)
+   - v2.14.0: [V3] 自動ストリームリトライ（空応答・途中切断を自動再試行）、待機中の機能ヒント表示、`Ctrl+Z` 後の制御キー修復、[V3] `/plan` デッドロック解消・supervised モードの承認永続化ほか
+   - v2.14.1: `/effort set-current-as-default` 追加、起動スピナー、**`/model`・`/effort` の選択がセッション限定へ**（`chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` は v2.14.2 実機では存在しません）、MCP `structuredContent` 応答の修正、終了時のターミナルモード復元
+   - v2.14.2: EU ユーザーのテレメトリをリージョンローカルエンドポイントへ、モデル拒否メッセージが `/model`・`/rewind`・`/chat new` を提示、カラーコード漏れ・kitty 互換端末の修正（※公式Changelogサイト未掲載）
+
+2. **[v2.13.1 / v2.13.0 [V3] Introspect サブエージェント・グローバル hooks](kiro-docs/02_update/01_changelog.md)**（2026-07-22 / 07-17）
    - v2.13.0: [V3] Introspect サブエージェント（Kiro 機能の説明・カスタム agent/hooks/steering 作成支援）、[V3] グローバル hooks（`~/.kiro/hooks/` が全ワークスペースへ自動適用） → [kiro-docs/09_v3/](kiro-docs/09_v3/README.md)
    - v2.13.0: モデル拒否エラーをスクロールバック行のみ表示に変更（v2.12.1 の続き）、レート制限エラーの永続表示、[V3] Always-accept のバックスラッシュループ修正・`HTTP_PROXY`/`HTTPS_PROXY` 尊重
-   - v2.12.3: `/model`・`/effort` の sticky default 化（`chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` でオプトアウト）、Welcome 起動 tip、MCP OAuth discovery の User-Agent 送信（CloudFront WAF 背後の 403 解消）、V3 `/chat` パス復元・diff 配色・shell `!` 固着修正
+   - v2.13.1: モデル過負荷と月次クォータのエラーを区別表示、`/context` の同一ファイル重複列挙の修正、`/agent generate` のコードフェンス対応、Windows での MCP コンソールウィンドウ非表示化・レジストリアクセスエラー抑制
 
-2. **[v2.12.2 / v2.12.1 / v2.12.0 / v2.11.0 MCP OAuth 認証管理・事前登録アプリ対応＋安定性修正](kiro-docs/02_update/01_changelog.md)**（2026-07-14 / 07-09 / 07-09 / 07-02）
+3. **[v2.12.3 / v2.12.2 / v2.12.1 / v2.12.0 / v2.11.0 MCP OAuth 認証管理・事前登録アプリ対応＋安定性修正](kiro-docs/02_update/01_changelog.md)**（2026-07-15 / 07-14 / 07-09 / 07-09 / 07-02）
    - v2.11.0: `/mcp auth`・`/mcp cancel-auth`・`/mcp logout`（リモートMCPのOAuth再認証/中止/資格情報削除）、MCPパネルショートカット（`^A`/`^X`/`^R`）
    - v2.11.0: `/usage` がプリペイド「Additional credits」表示に刷新（使用上限なしはプログレスバー非表示）
    - v2.12.0: MCP OAuth 事前登録アプリ対応（`clientSecret`・`redirectUri` フルURL・カスタム `clientId` 時 DCR スキップ）、全TUIグリフの ASCIIモード尊重、shell 権限検出器の強化（セキュリティ）
    - v2.12.1: モデル拒否通知（拒否理由をエラーアラート表示）
    - v2.12.2: ACP `--agent` を新規セッションごとに適用（デフォルトエージェント/MCPへのフォールバック防止）、アクティブセッション再読込で旧インスタンス終了（MCPサーバープロセスのリーク防止）、パイプ/非対話 stdin 時に `chat` が TUI 非描画
+   - v2.12.3: `/model`・`/effort` の sticky default 化（※v2.14.1 でセッション限定へ回帰）、Welcome 起動 tip、MCP OAuth discovery の User-Agent 送信（CloudFront WAF 背後の 403 解消）、V3 `/chat` パス復元・diff 配色・shell `!` 固着修正
 
-3. **[v2.10.0 / v2.9.0 設定ホットリロード・リソース継承制御・V3安定化](kiro-docs/02_update/01_changelog.md)**（2026-06-26 / 06-24）
+4. **[v2.10.0 / v2.9.0 設定ホットリロード・リソース継承制御・V3安定化](kiro-docs/02_update/01_changelog.md)**（2026-06-26 / 06-24）
    - v2.10.0: MCP・エージェント設定のホットリロード（file watcher で `.kiro/agents`・`mcp.json` を監視、変更サーバーのみ再起動、会話コンテキスト保持）
    - v2.10.0: `chat.disableInheritingDefaultResources`（カスタムエージェントの既定リソース継承をオプトアウト、組み込みは常に継承） → [kiro-docs/01_features/31](kiro-docs/01_features/31_v210ConfigHotReload.md)
    - v2.9.0: V3（Early Access）安定化（[V3] ツールカード1行プレビュー）、Entra ID セッション更新修正、カスタムエージェント二重読込修正
 
-4. **[v2.8.0 / v2.8.1 CLI v3 Early Access](kiro-docs/02_update/01_changelog.md)**（2026-06-17）
+5. **[v2.8.0 / v2.8.1 CLI v3 Early Access](kiro-docs/02_update/01_changelog.md)**（2026-06-17）
    - `kiro-cli --v3` で V3 エンジンを先行公開（2.x と併存、Early Access）。統一エンジン＋仕様駆動開発
    - 4本柱（Spec / `permissions.yaml` / Hooks / タグベース Agent設定）、Breaking changes・Known gaps（→ [kiro-docs/09_v3/](kiro-docs/09_v3/README.md)）
    - v2.8.1: MCP OAuth のクリップボードコピー・spec ワークフロー表示の改善
 
-5. **[v2.7.0 /goal・Queue Steering・enriched /rewind](kiro-docs/02_update/01_changelog.md)**（2026-06-12）
+6. **[v2.7.0 /goal・Queue Steering・enriched /rewind](kiro-docs/02_update/01_changelog.md)**（2026-06-12）
    - `/goal`（受入基準を満たすまで自己検証する自律ループ、最大5反復既定 / `--max`）
    - Queue Steering（`Ctrl+S` で steer/queue 切替、ターン実行中に方向修正）
    - enriched `/rewind` preview（各ターンのツール呼び出し・ファイル変更・コンテキスト使用量を表示）
    - `chat.terminalTitle` 設定追加、`/settings` UI統一・`theme Custom` ウィザード化
 
-6. **[v2.6.1 Linux: libasound.so.2 依存除去](kiro-docs/02_update/01_changelog.md)**（2026-06-08）
+7. **[v2.6.1 Linux: libasound.so.2 依存除去](kiro-docs/02_update/01_changelog.md)**（2026-06-08）
    - Linux ビルドが起動時に `libasound.so.2` を要求しなくなる（オーディオ依存パッケージ不要）
 
-7. **[v2.6.0 Transcript Export・/title・永続化](kiro-docs/02_update/01_changelog.md)**（2026-06-05）
+8. **[v2.6.0 Transcript Export・/title・永続化](kiro-docs/02_update/01_changelog.md)**（2026-06-05）
    - `/transcript save`（会話を Markdown/プレーンテキスト/JSON でエクスポート）
    - `/title`（ターミナルウィンドウタイトルの設定）
    - `--effort` 起動フラグ（`kiro-cli chat` 起動時に推論レベル指定）
    - `/model`・`/effort` の自動永続化（`set-current-as-default` 不要に）
 
-8. **[v2.5.1 APIエンドポイント移行](kiro-docs/02_update/01_changelog.md)**（2026-06-01）
+9. **[v2.5.1 APIエンドポイント移行](kiro-docs/02_update/01_changelog.md)**（2026-06-01）
    - API エンドポイントを `*.kiro.dev` へ移行（firewall 許可リスト要確認）
 
-9. **[v2.5.0 Thinking Display・Review Loops](kiro-docs/02_update/01_changelog.md)**（2026-05-29）
+10. **[v2.5.0 Thinking Display・Review Loops](kiro-docs/02_update/01_changelog.md)**（2026-05-29）
    - Thinking Display（エージェントの推論をリアルタイム表示、既定有効）
    - Subagent Review Loops（reviewer→implementer の自動差し戻し）
    - `/settings display`（表示トグル）、プロンプト履歴のセッション単位化
 
-10. **[v2.4.2 Windowsクラッシュ修正](kiro-docs/02_update/01_changelog.md)**（2026-05-26）
+11. **[v2.4.2 Windowsクラッシュ修正](kiro-docs/02_update/01_changelog.md)**（2026-05-26）
    - Windows 環境で発生していた koffi/createRequire 起因クラッシュ修正（terminal input handling）
 
-11. **[v2.4.1 MCP環境変数展開修正](kiro-docs/02_update/01_changelog.md)**（2026-05-21）
+12. **[v2.4.1 MCP環境変数展開修正](kiro-docs/02_update/01_changelog.md)**（2026-05-21）
    - MCPサーバー設定での `${VAR_NAME}` 環境変数展開構文の修正
 
-12. **[v2.4.0 /rewind・/effort・/settings](kiro-docs/02_update/01_changelog.md)**（2026-05-20）
+13. **[v2.4.0 /rewind・/effort・/settings](kiro-docs/02_update/01_changelog.md)**（2026-05-20）
    - `/rewind`（会話の任意ターンに戻り新セッションで分岐）
    - `/effort`（モデル推論レベル5段階制御: low〜max）
    - `/settings`（theme/keybindings/terminal統合メニュー）
    - Workspace初期化88%高速化（652ms → 76ms）
 
-13. **[v2.3.0 MCP OAuth・KIRO_HOME・Keybindings](kiro-docs/02_update/01_changelog.md)**（2026-05-12）
+14. **[v2.3.0 MCP OAuth・KIRO_HOME・Keybindings](kiro-docs/02_update/01_changelog.md)**（2026-05-12）
    - OAuth clientId設定（DCR非対応MCPサーバー接続）
    - KIRO_HOME環境変数（`~/.kiro`ディレクトリのオーバーライド）
    - V2 TUIキーバインド設定（cancel/close menu/quit）
    - Agent Output Side Channels（`$AGENT_DISPLAY_OUT`/`$AGENT_CONTEXT_OUT`）
 
-14. **[v2.2.2 MCPガバナンス強化](kiro-docs/02_update/01_changelog.md)**（2026-05-05）
+15. **[v2.2.2 MCPガバナンス強化](kiro-docs/02_update/01_changelog.md)**（2026-05-05）
    - V2 TUIモードでのMCP governance強制適用（エンタープライズ・API keyユーザー）
 
-15. **[v2.2.1 UX改善・安定性修正](kiro-docs/02_update/01_changelog.md)**（2026-05-04）
+16. **[v2.2.1 UX改善・安定性修正](kiro-docs/02_update/01_changelog.md)**（2026-05-04）
    - `chat.disableWrap`設定追加、`/model set-current-as-default`の保存先変更、9件のバグ修正
 
-16. **[v2.2.0 Adaptive Thinking](kiro-docs/02_update/01_changelog.md)**（2026-04-27）
+17. **[v2.2.0 Adaptive Thinking](kiro-docs/02_update/01_changelog.md)**（2026-04-27）
    - マルチターン会話でモデルの推論を保持し応答品質を向上
 
-17. **[v2.1.0 Shell Streaming・Tool Search](kiro-docs/02_update/01_changelog.md)**（2026-04-24）
+18. **[v2.1.0 Shell Streaming・Tool Search](kiro-docs/02_update/01_changelog.md)**（2026-04-24）
    - シェルコマンド出力のリアルタイムストリーミング
    - Skills as Slash Commands（`/skill-name`で直接呼び出し）
    - Device Flow認証（ポートフォワーディング不要）
 
-18. **[v2.0.0 Windows・Headless Mode](kiro-docs/02_update/01_changelog.md)**（2026-04-13）
+19. **[v2.0.0 Windows・Headless Mode](kiro-docs/02_update/01_changelog.md)**（2026-04-13）
    - Windows 11ネイティブ対応
    - CI/CD向けHeadless Mode（`KIRO_API_KEY`認証）
    - 新Terminal UIがデフォルト化（Crew Monitor、/theme、/spawn等）
@@ -196,7 +203,7 @@ Kiro CLI v1.24.0では、**7つの主要機能**が追加されました：
 ```
 kiro-docs/
 ├── 00_information/   # 基本情報・公式サイト情報
-├── 01_features/      # 機能詳細ガイド（v2.13.0対応）
+├── 01_features/      # 機能詳細ガイド（v2.14.2対応）
 ├── 02_update/        # アップデート情報
 ├── 03_deployment/    # デプロイメント・環境構築
 ├── 04_reference/     # リファレンス（Settings/Slash/CLI/Tools）
@@ -206,7 +213,7 @@ kiro-docs/
 ```
 
 **主要ドキュメント**:
-- **[機能詳細ガイド](kiro-docs/01_features/README.md)** - 33機能の詳細解説
+- **[機能詳細ガイド](kiro-docs/01_features/README.md)** - 34機能の詳細解説
 - **[アップデート情報](kiro-docs/02_update/README.md)** - バージョン履歴
 - **[環境構築ガイド](kiro-docs/03_deployment/README.md)** - デプロイメント手順
 
@@ -465,6 +472,7 @@ Q CLIのセキュリティとプライバシーについて理解することは
 
 | 日付 | 内容 |
 |------|------|
+| 2026-07-25 | v2.13.1、v2.14.0、v2.14.1、v2.14.2対応 |
 | 2026-07-20 | v2.13.0、v2.12.3対応 |
 | 2026-07-15 | v2.12.2対応 |
 | 2026-07-12 | v2.11.0、v2.12.0、v2.12.1対応 |

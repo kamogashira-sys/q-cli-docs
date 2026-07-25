@@ -13,9 +13,99 @@
 
 ## 最新バージョン
 
-> **注記**: 本ページは **v2.13.0**（2026-07-17）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
+> **注記**: 本ページは **v2.14.2**（2026-07-24）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
 >
 > **本節の掲載範囲**: 目安として直近 3〜4 バージョンを掲載し、それより古いものは新しいバージョンの追加時に[バージョン履歴](#バージョン履歴)へ移動します。
+
+### v2.14.2 CLI（2026-07-24）
+
+**主要な変更**: EU ユーザーのテレメトリ送信先のリージョンローカル化と、モデル拒否メッセージの具体化。
+
+**改善（2件）**:
+- 🔐 **EU ユーザーのテレメトリをリージョンローカルへ**: テレメトリデータが **EU ユーザー向けにリージョンローカルのエンドポイント**へ送信されるよう変更。
+- 💡 **モデル拒否メッセージの具体化**: モデルがリクエストを拒否した際のメッセージが、一般的な案内ではなく**具体的なコマンド（`/model`・`/rewind`・`/chat new`）を提示**するよう変更（v2.12.1 で追加・v2.13.0 で表示方法を変更した通知の文面改善 → [v2.12.1](#v2121-cli2026-07-09) / [v2.13.0](#v2130-cli2026-07-17)）。
+
+**バグ修正（2件）**:
+- 🎨 TUI が色検出を強制する場合に、**カラーコードがツールのサブプロセス出力へ漏れない**よう修正。
+- 🔧 一部の kitty プロトコル互換ターミナルで**終了後に発生する問題**を修正。
+
+**出典**: `kiro-cli version --changelog=all`（`kiro-cli version --changelog=2.14.2`）
+
+**注記**: ※公式Changelogサイト未掲載。CLI内蔵changelogのみで確認（公式 [v2.14 ページ](https://kiro.dev/changelog/cli/2-14/) の Patches は 2.14.1 まで）。公式掲載後にリンクを追加します。
+
+---
+
+### v2.14.1 CLI（2026-07-23）
+
+**主要な変更**: `/model`・`/effort` の選択が**セッション限定**に戻り、既定として保存するには `set-current-as-default` を使う方式へ変更（v2.12.3 の sticky default 化の方針転換）。
+
+**機能追加（2件）**:
+- ⚙️ **`/effort set-current-as-default`**: 現在の effort レベルを、**現行モデルの既定**として保存するサブコマンドを追加（保存先はモデル単位の `chat.modelDefaults` → [04_reference/01_settings.md](../04_reference/01_settings.md)）。
+- 💡 **起動スピナー**: CLI 起動中にターミナルが空白のままにならないよう、起動スピナーを表示。
+
+**改善（1件）**:
+- ⚙️ **`/model`・`/effort` の選択がセッション限定に**: 選択は**現在のセッションにのみ適用**され、既定として保存するには `set-current-as-default` を実行する方式へ変更。v2.6.0 の自動永続化・v2.12.3 の sticky default 化からの**方針転換**です（→ [v2.6.0](#v260-cli2026-06-05) / [v2.12.3](#v2123-cli2026-07-15)）。
+  - v2.12.3 のオプトアウト設定 `chat.disableAutoDefaultModel` / `chat.disableAutoDefaultEffort` は、**v2.14.2 実機では設定キーとして存在しません**（`kiro-cli settings <key>` が `is not a valid setting` を返す。有効だが未設定のキーは `No value associated with` となるため区別可能）。削除された正確なバージョンは公式に記載がありません。
+
+**バグ修正（2件）**:
+- 🔧 MCP サーバーが `structuredContent` を返す場合に、ツール呼び出しが `Improperly formed request` で失敗する問題を修正。
+- 🔧 ターミナルモード（focus reporting・bracketed paste）が `/quit`・`/exit`・Ctrl-C 2 回を含む**すべての終了経路で正しく復元**されるよう修正。
+
+**出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）
+
+**注記**: CLI内蔵日付と公式表示日は 2026-07-23 で一致（差異なし）。⚠️ 公式リファレンス [Effort](https://kiro.dev/docs/cli/chat/effort/)（公式ページ最終更新 2026-07-21）と [In-session settings](https://kiro.dev/docs/cli/chat/settings/)（同 2026-06-12）は「選択は自動的に永続化され `set-current-as-default` は不要」と記述したままで、本変更が未反映です。本サイトは新しい一次情報である公式 Changelog を採用しています。
+
+---
+
+### v2.14.0 CLI（2026-07-22）
+
+**主要な変更**: V2 のカスタムエージェント設定を V2/V3 双方で動作する universal 形式へ移行する **`/upgrade-agent`（V3）** の追加が中心。
+
+**機能追加（1件）**:
+- 🔧 **[V3] `/upgrade-agent`（V2 → V3 エージェント設定移行）**: V2 のエージェント設定ファイルを、**V2 と V3 の両方で動作する universal 形式**へその場で変換する。V3 セッション（`kiro-cli --v3`）内で実行し、既存の設定を読み取って両モード互換のファイルを生成する。
+  - サブコマンド: `/upgrade-agent`（既定 = `run`。`.kiro/agents/` と `~/.kiro/agents/` をスキャンし、スコープ別の選択メニューを表示）／`/upgrade-agent diagnostics`（変換警告の確認）
+  - 詳細: [Upgrading agent configs（公式）](https://kiro.dev/docs/cli/v3/upgrade-agent/)
+
+**改善（3件）**:
+- 📡 **[V3] 自動ストリームリトライ**: 空で届いた応答・ストリーム途中で切り詰められた応答を**自動的に再試行**。
+- 💡 **待機中の機能ヒント**: 応答待ちの間、thinking インジケータの下に**機能ヒント**を表示し、知らない機能に気づけるようにする。
+- ⚙️ **`/model`・`/effort` の確認メッセージ**: 自動保存の挙動を無効化する方法を確認メッセージに表示し、グローバルへ永続化せずセッション単位の設定を保てるようにする（※本挙動は翌日の v2.14.1 でセッション限定へ変更 → [v2.14.1](#v2141-cli2026-07-23)）。
+
+**バグ修正（7件）**:
+- 🔧 `Ctrl+Z` でサスペンドしても、親シェルの制御キーが壊れないよう修正。
+- 🔧 [V3] カスタムエージェントへ切り替えた後に、model・effort の選択肢が更新されるよう修正。
+- 🔧 [V3] `/plan` が、モデルが 2 つ以上の確認質問をした場合にデッドロックしないよう修正。
+- 🔧 [V3] アクティブなエージェントが、自身のサブエージェント委譲リストに表示されないよう修正。
+- 🔧 [V3] supervised モードでのターン承認が、セッション再開後も維持されるよう修正。
+- 📡 [V3] `web_fetch` が一時的な失敗で 2 回リトライしていたのを 1 回に統合。
+- 💡 [V3] 不正なツール入力に対し、生のバリデーションエラーではなく明確なエラーメッセージを表示。
+
+**📖 詳細解説**: [34. v2.14 /upgrade-agent（V2 → V3 エージェント設定移行）](../01_features/34_v214UpgradeAgent.md)
+
+**出典**: [公式Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)（published 2026-07-22）、[Upgrading agent configs（公式）](https://kiro.dev/docs/cli/v3/upgrade-agent/)
+
+**注記**: 本バージョンはローカル CLI の内蔵 changelog（`kiro-cli version --changelog=2.14.0`）では取得できず（内蔵は直近 2 バージョンのみ保持）、公式 Changelog ページと Atom フィードを一次情報としています。⚠️ **supervised モードの扱いに公式内で差異**があります: 公式 v3 ドキュメント（[v3 概要](https://kiro.dev/docs/cli/v3/)・[機能比較](https://kiro.dev/docs/cli/v3/feature-overview/)）は Supervised mode を「Removed（`permissions.yaml` で代替）」と記載する一方、本バージョンの修正項目は「[V3] supervised モードのターン承認」に言及しています。本サイトは双方を出典付きで併記し、どちらかを断定しません（→ [09_v3/](../09_v3/README.md)）。
+
+---
+
+### v2.13.1 CLI（2026-07-22）
+
+**主要な変更**: バグ修正のみ（エラーメッセージの区別・`/context` 重複・`/agent generate`・Windows 2 件）。
+
+**バグ修正（5件）**:
+- 💡 **モデル過負荷と月次クォータのエラーを区別**: 汎用のスロットル通知ではなく**別個のメッセージ**を表示し、一時的なサービス混雑か月間クォータ超過かを判別できるように（v2.13.0 のレート制限エラー表示改善の続き → [v2.13.0](#v2130-cli2026-07-17)）。
+- 🔧 `/context` が、重複するリソース glob やシンボリックリンク経路にマッチした場合に**同一ファイルを複数回列挙しない**よう修正。
+- 🔧 `/agent generate` が、モデルが生成した設定を markdown のコードフェンスで囲んだ場合に失敗しないよう修正。
+- 🔧 Windows で MCP サーバーが**可視のコンソールウィンドウを生成しない**よう修正。
+- 🔧 Group Policy が制限された Windows 環境で、**レジストリアクセスエラーがターミナルを埋め尽くさない**よう修正。
+
+**出典**: [公式Changelog v2.13](https://kiro.dev/changelog/cli/2-13/)（`#patch-2-13-1`）、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)
+
+**注記**: 公式 Changelog では v2.13.0 と同一ページ（`#patch-2-13-1`）に掲載。公式表示日 2026-07-22。ローカル CLI の内蔵 changelog には本バージョンが含まれないため、公式ページを一次情報としています。
+
+---
+
+## バージョン履歴
 
 ### v2.13.0 CLI（2026-07-17）
 
@@ -37,7 +127,7 @@
 
 **出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.13](https://kiro.dev/changelog/cli/2-13/)
 
-**注記**: CLI内蔵 changelog 日付（2026-07-16）と公式表示日（2026-07-17）に差異あり。公式表示日を採用。
+**注記**: CLI内蔵 changelog 日付（2026-07-16）と公式表示日（2026-07-17）に差異あり。公式表示日を採用。公式 Changelog では後続パッチ v2.13.1 が同一ページ（`#patch-2-13-1`）に掲載されています → [v2.13.1](#v2131-cli2026-07-22)。
 
 ---
 
@@ -47,6 +137,7 @@
 
 **機能追加（1件）**:
 - ⚙️ **`/model`・`/effort` の sticky default 化**: 選択したモデル・推論レベルが恒久デフォルトとして保存され、新規セッションへ自動適用される。`chat.disableAutoDefaultModel` / `chat.disableAutoDefaultEffort`（各 Boolean）でオプトアウト可能（v2.6.0 の自動永続化を拡張 → [v2.6.0](#v260-cli2026-06-05)。詳細解説: [28. v2.6新コマンド](../01_features/28_v26NewCommands.md)）。
+  - ※**v2.14.1（2026-07-23）で方針転換**: `/model`・`/effort` の選択は**セッション限定**に戻り、既定化には `set-current-as-default` が必要になりました。上記オプトアウト設定 2 件は v2.14.2 実機では設定キーとして存在しません → [v2.14.1](#v2141-cli2026-07-23)
 
 **改善（1件）**:
 - 💡 Welcome 画面が静的な挨拶に代わり、ローテーション式の起動 tip を表示。
@@ -59,7 +150,7 @@
 
 **出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.12](https://kiro.dev/changelog/cli/2-12/)（`#patch-2-12-3`）
 
-**注記**: CLI内蔵日付と公式表示日は 2026-07-15 で一致（差異なし）。新設定 `chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` は [04_reference/01_settings.md](../04_reference/01_settings.md) に記載。MCP OAuth の User-Agent 修正は [32. MCP OAuth 認証管理](../01_features/32_MCPOAuthManagement.md) に関連。
+**注記**: CLI内蔵日付と公式表示日は 2026-07-15 で一致（差異なし）。新設定 `chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` は [04_reference/01_settings.md](../04_reference/01_settings.md) に記載（※v2.14.2 実機では両キーが存在しません → [v2.14.1](#v2141-cli2026-07-23)）。MCP OAuth の User-Agent 修正は [32. MCP OAuth 認証管理](../01_features/32_MCPOAuthManagement.md) に関連。
 
 ---
 
@@ -90,8 +181,6 @@
 **注記**: 公式 Changelog では v2.12.0 と同一ページ（`#patch-2-12-1`）に掲載。公式表示日 2026-07-09。※v2.13.0 で表示方法を変更（プロンプトバー上部のトースト固定を廃止し、スクロールバック行のみ表示）→ [v2.13.0](#v2130-cli2026-07-17)。
 
 ---
-
-## バージョン履歴
 
 ### v2.12.0 CLI（2026-07-09）
 
@@ -328,7 +417,7 @@
 - 🔧 **/knowledge update（引数なし）**: 全ナレッジベースを一括再インデックス（従来の `/knowledge update <path>` は単一エントリ）
 
 **改善（4件）**:
-- ⚙️ **/model・/effort の自動永続化**: 選択が自動保存され、`/model set-current-as-default` が不要に（[永続化の詳細](https://kiro.dev/docs/cli/chat/settings/#persistence)）。※v2.12.3 で sticky default 化・オプトアウト設定 `chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` を追加 → [v2.12.3](#v2123-cli2026-07-15)
+- ⚙️ **/model・/effort の自動永続化**: 選択が自動保存され、`/model set-current-as-default` が不要に（[永続化の詳細](https://kiro.dev/docs/cli/chat/settings/#persistence)）。※v2.12.3 で sticky default 化・オプトアウト設定 `chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` を追加 → [v2.12.3](#v2123-cli2026-07-15)。※**v2.14.1 でセッション限定に変更**され、`set-current-as-default`（`/model`・`/effort` 各々）が再び必要になりました → [v2.14.1](#v2141-cli2026-07-23)
 - 💡 URL をハイパーリンク化し、行折返しをまたいでもクリック可能に
 - 🎨 `/settings display` パネルが Enter で完全に閉じる、フッターヒント更新
 - 💡 `/transcript` がページャを最下部で開き、最新メッセージを先頭表示
@@ -550,7 +639,7 @@
   - 変更前（v1.23.0時点）: `~/.kiro/settings.json`
   - 変更後（v2.2.1以降）: `~/.kiro/settings/cli.json`
   - ※本コマンド自体は v1.23.0 で初回導入。v2.2.1で保存先が変更された。
-  - ※**v2.6.0で `/model`・`/effort` は選択が自動永続化され、`set-current-as-default` は不要**になりました（本ページ「最新バージョン」の v2.6.0 を参照）。
+  - ※**v2.6.0で `/model`・`/effort` は選択が自動永続化され、`set-current-as-default` は不要**になりました（→ [v2.6.0](#v260-cli2026-06-05)）。さらに **v2.14.1 でセッション限定へ回帰**し、`set-current-as-default` が再び必要になりました（→ [v2.14.1](#v2141-cli2026-07-23)）。
   - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#model)
 
 - 💡 **TUI: `/agent swap <name>` オートコンプリート拡張**: シャドウテキスト（ゴーストテキスト）補完に対応
@@ -1163,4 +1252,4 @@ kiro-cli chat "Hello, world!"
 - セキュリティアップデートのリリース時
 - コミュニティからの重要なフィードバック時
 
-**最終更新**: 2026-07-20（v2.13.0・v2.12.3対応追加、v2.11.0・v2.12.0 をバージョン履歴へ移動、冒頭注記を v2.13.0 に更新、v2.12.1 に v2.13.0・v2.6.0 に v2.12.3 の相互参照追加。前回 2026-07-15: v2.12.2対応追加、v2.10.0 をバージョン履歴へ移動、冒頭注記を v2.12.2 に更新）
+**最終更新**: 2026-07-25（v2.14.2・v2.14.1・v2.14.0・v2.13.1対応追加、v2.13.0・v2.12.3・v2.12.2・v2.12.1 をバージョン履歴へ移動、冒頭注記を v2.14.2 に更新、v2.12.3・v2.6.0 に v2.14.1 の方針転換（セッション限定化）の相互参照追加、v2.13.0 に v2.13.1 の相互参照追加。前回 2026-07-20: v2.13.0・v2.12.3対応追加、v2.11.0・v2.12.0 をバージョン履歴へ移動、冒頭注記を v2.13.0 に更新、v2.12.1 に v2.13.0・v2.6.0 に v2.12.3 の相互参照追加）

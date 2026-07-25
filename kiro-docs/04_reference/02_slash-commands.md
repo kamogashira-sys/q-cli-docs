@@ -6,7 +6,7 @@
 
 Kiro CLI のインタラクティブチャットセッション内で使用できるすべてのスラッシュコマンドを網羅する辞書的リファレンスです。
 
-> 📌 **v3（Early Access）コマンドについて**: 本リファレンスは **v2 安定版**のスラッシュコマンドを対象としています。v3（`kiro-cli --v3`）の `/spec` 系コマンドは [09_v3/01. 仕様駆動開発](../09_v3/01_spec-driven-development.md) を参照してください（Early Access のため、安定版のコマンド数には含めていません）。
+> 📌 **v3（Early Access）コマンドについて**: 本リファレンスは **v2 安定版**のスラッシュコマンドを対象としています。v3（`kiro-cli --v3`）専用のコマンド — `/spec` 系は [09_v3/01. 仕様駆動開発](../09_v3/01_spec-driven-development.md)、`/upgrade-agent`（V2 → V2/V3 両対応のエージェント設定移行、v2.14.0 追加）は [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md) を参照してください（Early Access のため、安定版のコマンド数には含めていません）。
 
 ---
 
@@ -97,10 +97,12 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 > /model                               # 対話的ピッカー
 > /model claude-opus-4.6              # 直接指定
 > /model clau<Tab>                    # Tab 補完
-> /model set-current-as-default       # 現在のモデルをデフォルト保存（v2.6.0で不要に）
+> /model set-current-as-default       # 現在のモデルを既定として保存（v2.14.1 以降は必須）
 ```
 
-> **自動永続化（v2.6.0+）**: `/model` の選択は自動的に保存され、将来のセッションに引き継がれます。`/model set-current-as-default` を手動実行する必要はなくなりました（[永続化の詳細](https://kiro.dev/docs/cli/chat/settings/#persistence)）。
+> **セッション限定（v2.14.1+）**: `/model` の選択は**現在のセッションにのみ適用**されます。既定として保存するには `/model set-current-as-default` を実行します（保存先は `chat.defaultModel`）。
+>
+> 変遷: v2.6.0 で自動永続化（`set-current-as-default` 不要）→ v2.12.3 で sticky default 化 → **v2.14.1 でセッション限定へ回帰**。出典: [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）。⚠️ 公式 [In-session settings](https://kiro.dev/docs/cli/chat/settings/)（公式ページ最終更新 2026-06-12）は自動永続化のままで本変更が未反映です。
 
 **特徴**:
 - Tab 補完（API から取得した利用可能モデル）
@@ -580,6 +582,7 @@ To-do リストの表示・管理・再開。
 > /effort                             # 対話的ピッカー
 > /effort high                        # 高
 > /effort max                         # 最大
+> /effort set-current-as-default      # 現在の effort を「現行モデルの既定」として保存（v2.14.1+）
 ```
 
 **レベル**: `low` / `medium` / `high` / `xhigh` / `max`
@@ -588,19 +591,22 @@ To-do リストの表示・管理・再開。
 
 > **起動時指定（v2.6.0+）**: `kiro-cli chat --effort <level>` でセッション起動時に初期 effort レベルを指定できます。
 >
-> **自動永続化（v2.6.0+）**: `/effort` の選択は自動的に保存され、将来のセッションに引き継がれます（`set-current-as-default` 相当の手動操作は不要）。
+> **セッション限定（v2.14.1+）**: `/effort` の選択は**現在のセッションにのみ適用**されます。既定として保存するには **`/effort set-current-as-default`**（v2.14.1 で追加）を実行します。保存先はモデル単位の `chat.modelDefaults` です。
+>
+> 変遷: v2.6.0 で自動永続化 → v2.12.3 で sticky default 化 → **v2.14.1 でセッション限定へ回帰**。出典: [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）。⚠️ 公式 [Effort](https://kiro.dev/docs/cli/chat/effort/)（公式ページ最終更新 2026-07-21）は自動永続化のままで本変更が未反映です。
 
-**永続的なデフォルト設定**:
+**永続的なデフォルト設定**（モデル系列で構造が異なります）:
 ```json
 {
-  "chat": {
-    "modelDefaults": {
-      "claude-sonnet-4": { "effort": "high" },
-      "claude-opus-4": { "effort": "max" }
-    }
+  "chat.modelDefaults": {
+    "claude-sonnet-4.6": { "output_config": { "effort": "high" } },
+    "claude-opus-4.7": { "output_config": { "effort": "max" } },
+    "gpt-5.6-sol": { "reasoning": { "effort": "max", "mode": "pro" } }
   }
 }
 ```
+
+出典: [公式 Effort ドキュメント（Persistent defaults）](https://kiro.dev/docs/cli/chat/effort/#persistent-defaults)
 
 **優先順位**: ロード済みセッション effort > cli.json のユーザーデフォルト > ビルトインデフォルト
 
@@ -763,5 +769,5 @@ To-do リストの表示・管理・再開。
 
 ---
 
-**Page updated**: 2026-07-04（`/title` の注記を v2.7.0 `chat.terminalTitle` 追加に整合、classic UI フラグの表記を `--classic` に統一。本サイト初版 2026-05-24）  
+**Page updated**: 2026-07-25（v2.14.1 対応: `/model`・`/effort` の選択がセッション限定へ回帰したことを反映し `/effort set-current-as-default` を追記、`chat.modelDefaults` の JSON 例を公式 Effort ドキュメント準拠に是正、v3 コマンド注記に `/upgrade-agent` を追加。前回 2026-07-04: `/title` の注記を v2.7.0 `chat.terminalTitle` 追加に整合、classic UI フラグの表記を `--classic` に統一。本サイト初版 2026-05-24）  
 **公式ページ最終更新**: 2026-06-12

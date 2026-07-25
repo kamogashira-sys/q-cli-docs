@@ -71,7 +71,8 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 | │　│　├── | Feature overview [(/docs/cli/v3/feature-overview/)](https://kiro.dev/docs/cli/v3/feature-overview/) | v2 → v3 の機能比較 |
 | │　│　├── | Permissions [(/docs/cli/v3/permissions/)](https://kiro.dev/docs/cli/v3/permissions/) | `permissions.yaml` による capability ベースの権限管理 |
 | │　│　├── | Hooks [(/docs/cli/v3/hooks/)](https://kiro.dev/docs/cli/v3/hooks/) | 独立ファイル `.kiro/hooks/*.json` の強化版 Hooks |
-| │　│　└── | Agent config [(/docs/cli/v3/agent-config/)](https://kiro.dev/docs/cli/v3/agent-config/) | タグベースのツール選択・Markdown 形式の Agent 設定 |
+| │　│　├── | Agent config [(/docs/cli/v3/agent-config/)](https://kiro.dev/docs/cli/v3/agent-config/) | タグベースのツール選択・Markdown 形式の Agent 設定 |
+| │　│　└── | Upgrade Agent [(/docs/cli/v3/upgrade-agent/)](https://kiro.dev/docs/cli/v3/upgrade-agent/) 🆕 | `/upgrade-agent` による V2 → V2/V3 両対応（universal）エージェント設定への移行（v2.14.0 追加。→ 本サイト [01_features/34](../01_features/34_v214UpgradeAgent.md)） |
 | ├── | **Resources** | |
 | │　├── | Blog [(/blog/)](https://kiro.dev/blog/) | 技術ブログ |
 | │　├── | Changelog [(/changelog/)](https://kiro.dev/changelog/) | バージョン履歴 |
@@ -109,7 +110,7 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 - **[Kiro公式ブログ](https://kiro.dev/blog/)**
 
 ### 本サイトでの対応文書
-- [機能詳細ガイド](../01_features/README.md) — 33機能 + カテゴリ別ナビゲーション
+- [機能詳細ガイド](../01_features/README.md) — 34機能 + カテゴリ別ナビゲーション
 - [Smart Hooks](../01_features/22_Hooks.md) 🆕
 - [Agent Steering](../01_features/23_Steering.md) 🆕
 - [@file references](../01_features/24_FileReferences.md) 🆕
@@ -120,4 +121,4 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 
 ---
 
-**最終更新**: 2026-07-04（公式 v3 ドキュメント /docs/cli/v3/ 系5ページをサイト構造表に反映）
+**最終更新**: 2026-07-25（公式 v3 ドキュメントに新設された Upgrade Agent（/docs/cli/v3/upgrade-agent/）をサイト構造表に追加、機能数 34 に同期）／ 前回 2026-07-04（公式 v3 ドキュメント /docs/cli/v3/ 系5ページをサイト構造表に反映）

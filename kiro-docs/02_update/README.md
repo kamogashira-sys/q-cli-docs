@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.13.0（本サイト反映済。v2.8.0 で CLI v3 Early Access）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.14.2（本サイト反映済。v2.8.0 で CLI v3 Early Access）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,8 +26,12 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.14.2** | 2026-07-24 | EUテレメトリのリージョンローカル化・モデル拒否メッセージ具体化 | テレメトリを EU ユーザー向けリージョンローカルエンドポイントへ送信、モデル拒否メッセージが `/model`・`/rewind`・`/chat new` を提示、TUI 強制色検出時のカラーコード漏れ修正、kitty 互換端末の終了後問題修正（※公式Changelogサイト未掲載・CLI内蔵changelogで確認） |
+| **v2.14.1** | 2026-07-23 | /model・/effort のセッション限定化（方針転換） | `/effort set-current-as-default` 追加、起動スピナー追加、`/model`・`/effort` の選択がセッション限定へ回帰（既定化には `set-current-as-default`）、MCP の `structuredContent` 応答でのツール呼び出し失敗修正、終了時のターミナルモード復元修正 |
+| **v2.14.0** | 2026-07-22 | [V3] /upgrade-agent（V2 → V3 エージェント設定移行） | V2 エージェント設定を V2/V3 両対応の universal 形式へ変換する `/upgrade-agent`（`run`・`diagnostics`）、[V3] 自動ストリームリトライ、待機中の機能ヒント表示、`Ctrl+Z` 後の制御キー修復、[V3] `/plan` デッドロック・supervised 承認永続化ほか修正 |
+| **v2.13.1** | 2026-07-22 | エラー区別・Windows 安定性のバグ修正 | モデル過負荷と月次クォータのエラーを区別、`/context` の重複ファイル列挙修正、`/agent generate` のコードフェンス対応、Windows で MCP のコンソールウィンドウ非表示化・レジストリアクセスエラーの抑制 |
 | **v2.13.0** | 2026-07-17 | [V3] Introspect サブエージェント・グローバル hooks | [V3] Kiro 機能説明の組み込みサブエージェント（カスタム agent/hooks/steering 作成支援）、`~/.kiro/hooks/` の全ワークスペース自動適用、モデル拒否エラーのスクロールバック表示化、レート制限エラー永続化、[V3] Always-accept バックスラッシュループ修正・`HTTP_PROXY`/`HTTPS_PROXY` 尊重 |
-| **v2.12.3** | 2026-07-15 | /model・/effort sticky default・MCP OAuth User-Agent | `/model`・`/effort` の恒久デフォルト化（`chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` でオプトアウト）、Welcome 起動 tip、MCP OAuth discovery の User-Agent 送信（CloudFront WAF 背後の 403 解消）、V3 `/chat` パス復元・diff 配色・shell `!` 固着修正 |
+| **v2.12.3** | 2026-07-15 | /model・/effort sticky default・MCP OAuth User-Agent | `/model`・`/effort` の恒久デフォルト化（`chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` でオプトアウト。※**v2.14.1 でセッション限定へ回帰**し、両設定は v2.14.2 実機では存在しません）、Welcome 起動 tip、MCP OAuth discovery の User-Agent 送信（CloudFront WAF 背後の 403 解消）、V3 `/chat` パス復元・diff 配色・shell `!` 固着修正 |
 | **v2.12.2** | 2026-07-14 | バグ修正（ACP・セッション・非対話） | ACP `--agent` を新規セッションごとに適用（デフォルトエージェント/MCPへのフォールバック防止）、アクティブセッション再読込で旧インスタンス終了（MCPサーバープロセスのリーク防止）、stdin パイプ/非対話時に `chat` が TUI 非描画 |
 | **v2.12.1** | 2026-07-09 | モデル拒否通知 | モデルがリクエストを拒否した理由をエラーアラートで表示 |
 | **v2.12.0** | 2026-07-09 | MCP OAuth 拡張（事前登録アプリ） | `clientSecret`（confidential client）、`redirectUri` フルURL＋loopback検証、カスタム `clientId` 時 DCR スキップ、全TUIグリフの ASCIIモード尊重、shell 権限検出器の結合ショートオプション検出（セキュリティ） |
@@ -258,6 +262,24 @@ timeline
                    : [V3] グローバル hooks（~/.kiro/hooks/）
                    : モデル拒否エラー表示改善・レート制限永続化
                    : [V3] HTTP(S)_PROXY 尊重
+        2026-07-22 : v2.13.1
+                   : 過負荷/月次クォータのエラー区別
+                   : /context 重複列挙・/agent generate 修正
+                   : Windows: MCPコンソール非表示・レジストリ抑制
+
+    section v2.14.x V2→V3 エージェント移行
+        2026-07-22 : v2.14.0
+                   : [V3] /upgrade-agent（universal 形式へ変換）
+                   : [V3] 自動ストリームリトライ
+                   : 待機中の機能ヒント表示
+        2026-07-23 : v2.14.1
+                   : /effort set-current-as-default
+                   : /model・/effort をセッション限定へ回帰
+                   : MCP structuredContent 修正・端末モード復元
+        2026-07-24 : v2.14.2
+                   : EUテレメトリのリージョンローカル化
+                   : モデル拒否メッセージの具体化
+                   : カラーコード漏れ・kitty端末の修正
 ```
 
 ## 🔗 移行情報
@@ -314,6 +336,8 @@ timeline
 - [v2.8 / V3プレビュー（CLI v3 Early Access）](../01_features/30_v28V3Preview.md) 🆕 - CLI v3 Early Access（--v3）・統一エンジン・仕様駆動開発のプレビュー（v2.8.0/v2.8.1、→ [09_v3/](../09_v3/README.md)）
 - [v2.10 設定ホットリロード & リソース継承制御](../01_features/31_v210ConfigHotReload.md) 🆕 - MCP・エージェント設定のホットリロードと既定リソース継承制御（`chat.disableInheritingDefaultResources`、v2.10.0）
 - [MCP OAuth 認証管理・事前登録アプリ対応](../01_features/32_MCPOAuthManagement.md) 🆕 - リモート MCP の OAuth 再認証コマンド（`/mcp auth` 等）・事前登録アプリ対応（`clientSecret`/`redirectUri`/DCRスキップ、v2.11.0/v2.12.0）
+- [v2.13 Introspect サブエージェント・グローバル hooks](../01_features/33_v213IntrospectGlobalHooks.md) 🆕 - [V3] Kiro 機能説明の組み込みサブエージェントと `~/.kiro/hooks/` の全ワークスペース自動適用（v2.13.0、→ [09_v3/](../09_v3/README.md)）
+- [v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md) 🆕 - [V3] V2 のカスタムエージェント設定を V2/V3 両対応の universal 形式へ変換（v2.14.0、→ [09_v3/](../09_v3/README.md)）
 
 ### リファレンス（辞書） 🆕
 - [04_reference/](../04_reference/README.md) — Settings / Slash Commands / CLI Commands / Built-in Tools の網羅的辞書
@@ -344,5 +368,5 @@ timeline
 
 ---
 
-**最終更新**: 2026-07-20  
-**対象バージョン**: Kiro CLI v2.13.0
+**最終更新**: 2026-07-25  
+**対象バージョン**: Kiro CLI v2.14.2
