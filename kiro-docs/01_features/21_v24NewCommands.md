@@ -104,17 +104,42 @@ flowchart LR
 
 ### Per-model default settings
 
-v2.4.0では `~/.kiro/settings/cli.json` の `chat.modelDefaults` でモデルごとのデフォルトeffortレベルを設定可能:
+`~/.kiro/settings/cli.json` の `chat.modelDefaults` で、モデルごとのデフォルト設定（effort レベル等）を指定できます（v2.4.0 で導入）。**キーの構造はモデル系列によって異なります**。
+
+Claude 系モデル（`output_config.effort` を使用）:
 
 ```json
 {
-  "chat": {
-    "modelDefaults": {
-      "claude-opus-4": {
-        "effort": "max"
-      },
-      "claude-sonnet-4": {
+  "chat.modelDefaults": {
+    "claude-sonnet-4.6": {
+      "output_config": {
         "effort": "high"
+      }
+    },
+    "claude-opus-4.7": {
+      "output_config": {
+        "effort": "max"
+      }
+    }
+  }
+}
+```
+
+GPT-5.6 系モデル（`reasoning.effort` と `reasoning.mode` を使用）:
+
+```json
+{
+  "chat.modelDefaults": {
+    "gpt-5.6-sol": {
+      "reasoning": {
+        "effort": "max",
+        "mode": "pro"
+      }
+    },
+    "gpt-5.6-terra": {
+      "reasoning": {
+        "effort": "low",
+        "mode": "standard"
       }
     }
   }
@@ -123,8 +148,10 @@ v2.4.0では `~/.kiro/settings/cli.json` の `chat.modelDefaults` でモデル�
 
 この設定は全新規セッションに適用されます。
 
-- 設定キー: `chat.modelDefaults`（[公式設定リファレンス](https://kiro.dev/docs/cli/reference/settings/)で確認）
+- 設定キー: `chat.modelDefaults`（[公式設定リファレンス](https://kiro.dev/docs/cli/reference/settings/)・[公式 Effort ドキュメント](https://kiro.dev/docs/cli/chat/effort/)）
+- 指定できる effort レベルはモデルごとに異なります（公式 Effort ドキュメントのモデル別表を参照）。Claude 系は `thinking.type` / `thinking.display`、GPT-5.6 系は `reasoning.mode` も同じ構造で指定できます。
 - ワークスペース単位でオーバーライドする場合はプロジェクトルートの `.kiro/settings/cli.json` に同様の構造で記述
+- **v2.14.1（2026-07-23）以降**: `/effort` の選択はセッション限定となり、`/effort set-current-as-default` で**現行モデルの既定**として保存します（保存先は本キー）。詳細は [28. v2.6 新コマンド](28_v26NewCommands.md) の「v2.14.1での変更」を参照。
 
 ---
 
@@ -238,6 +265,7 @@ v2.4.0で追加されたこれらのコマンドは、後続バージョンで�
 ### /effort の拡張（v2.6.0）
 - **`--effort` 起動フラグ**: `kiro-cli chat --effort <level>` でセッション起動時に初期 effort レベル（low/medium/high/xhigh/max）を指定可能に
 - **自動永続化**: `/effort` の選択が自動保存され、将来のセッションに引き継がれるようになりました（`set-current-as-default` 相当の手動操作は不要）
+  - ※**v2.14.1 でセッション限定へ回帰**し、`/effort set-current-as-default` が必要になりました（→ [28. v2.6 新コマンド](28_v26NewCommands.md) の「v2.14.1での変更」）
 - 詳細: [28. v2.6 新コマンド](28_v26NewCommands.md)
 
 ### /settings の拡張（v2.5.0）
@@ -284,5 +312,5 @@ v2.4.0で追加されたこれらのコマンドは、後続バージョンで�
 
 ---
 
-**最終更新**: 2026-05-23
-**対象バージョン**: Kiro CLI v2.4.0+
+**最終更新**: 2026-07-25
+**対象バージョン**: Kiro CLI v2.4.0+（`chat.modelDefaults` の構造を公式 Effort ドキュメント準拠に是正、v2.14.1 の `/effort set-current-as-default` を追記）

@@ -46,6 +46,7 @@ CROSS_REF = {
 # リンクが必要な 01_features 配下のファイル名。新バージョンで機能文書を追加したら
 # ここにも対応を追加すること。
 CHANGELOG_FEATURE_LINKS = {
+    "v2.14.0": ["34_v214UpgradeAgent.md"],
     "v2.13.0": ["33_v213IntrospectGlobalHooks.md"],
     "v2.12.0": ["32_MCPOAuthManagement.md"],
     "v2.11.0": ["32_MCPOAuthManagement.md"],

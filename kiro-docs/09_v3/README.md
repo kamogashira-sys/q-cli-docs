@@ -2,7 +2,7 @@
 
 # 09. Kiro CLI v3（Early Access）概要
 
-> ⚠️ **Early Access の注意**: Kiro CLI v3（公式表記「**CLI 3.0**」「**V3**」）は **Early Access（先行公開）** です。現状は **v2.8.x に `--v3` フラグで同梱**され、オプトインで試せます。GA（正式版）としての「3.0.0」はまだリリースされていません。**仕様は変更される可能性があり**、本セクションの内容は公式ドキュメント更新に追従して見直します。
+> ⚠️ **Early Access の注意**: Kiro CLI v3（公式表記「**CLI 3.0**」「**V3**」）は **Early Access（先行公開）** です。**v2.8.0 以降の 2.x に `--v3` フラグで同梱**され、オプトインで試せます。GA（正式版）としての「3.0.0」はまだリリースされていません。**仕様は変更される可能性があり**、本セクションの内容は公式ドキュメント更新に追従して見直します。
 
 > 💡 **どちらを読めばいい？**: 普段の利用では、まず **v2 系のドキュメント**（[機能詳細ガイド](../01_features/README.md)・[リファレンス](../04_reference/README.md)）を参照してください。本セクション（09_v3/）は「v3 を先行して試したい人」向けです。
 
@@ -66,6 +66,17 @@ kiro-cli --v3
 
 出典: [公式 Hooks](https://kiro.dev/docs/cli/v3/hooks/)、[公式 Changelog v2.13](https://kiro.dev/changelog/cli/2-13/)。
 
+### v2.14.0 での追加（`/upgrade-agent`・自動ストリームリトライ）
+
+**v2.14.0（2026-07-22）** で、V2 のカスタムエージェント設定を **V2/V3 両対応の universal 形式へ変換する `/upgrade-agent`** が追加されました。
+
+- **`/upgrade-agent`**: V3 セッション内で実行し、`.kiro/agents/`（ワークスペース）と `~/.kiro/agents/`（ユーザー）をスキャンして変換対象を選択。元ファイルは `<filename>.json.bak` にバックアップされ、既存設定に併存する形で新形式の権限フィールドが追加されます。`/upgrade-agent diagnostics` で変換警告（`regex-shell-pattern` 等 8 種）を確認できます。
+  → 詳細: [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md)、[公式ドキュメント](https://kiro.dev/docs/cli/v3/upgrade-agent/)
+- **自動ストリームリトライ**: 空で届いた応答・ストリーム途中で切り詰められた応答を自動的に再試行。
+- **バグ修正**: カスタムエージェント切替後に model・effort の選択肢が更新される、`/plan` が複数の確認質問でデッドロックしない、アクティブなエージェントが自身のサブエージェント委譲リストに出ない、supervised モードのターン承認がセッション再開後も維持される、`web_fetch` の二重リトライを 1 回へ統合、不正なツール入力時のエラーメッセージ改善。
+
+出典: [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)、[Upgrading agent configs（公式）](https://kiro.dev/docs/cli/v3/upgrade-agent/)。
+
 ---
 
 ## Breaking changes（v2 → v3）
@@ -79,9 +90,11 @@ v3 は **後方互換ではない変更**を含みます。切り替え前に確
 | **Agent 設定** | `toolsSettings` を **`permissions`** フィールドへ、個別ツール ID を**タグ**へ |
 | **aws_tool** | **削除**（MCP サーバーで代替） |
 | **セッション形式** | v3 形式は**後方互換なし**。切り替え前に `~/.kiro/sessions/` をバックアップ推奨 |
-| **Supervised mode** | **削除**（`permissions.yaml` で代替） |
+| **Supervised mode** | 公式 v3 ドキュメントは **削除**（`permissions.yaml` で代替）と記載（下記注記も参照） |
 
-> **移行ガイド**: 公式は「v2 設定を変換する移行ガイドは **coming soon（準備中）**」としています。本サイトでは移行手順を断定せず、上記の breaking changes の一覧提示にとどめます。
+> **移行手段（v2.14.0 で追加）**: V2 のカスタムエージェント設定は **`/upgrade-agent`**（V3 セッション内で実行）で V2/V3 両対応の universal 形式へ変換できます。公式 [v3 概要](https://kiro.dev/docs/cli/v3/) も同コマンドと [migration guide](https://kiro.dev/docs/cli/v3/upgrade-agent/) を案内しています。→ [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md)
+>
+> ⚠️ **Supervised mode の扱いに公式内で差異があります**: 公式 [v3 概要](https://kiro.dev/docs/cli/v3/) と [機能比較](https://kiro.dev/docs/cli/v3/feature-overview/) は「Supervised mode = Removed（`permissions.yaml` で代替）」と記載していますが、[公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（v2.14.0）のバグ修正には「[V3] supervised モードのターン承認がセッション再開後も維持される」という項目があります。本サイトは双方を出典付きで併記し、どちらかを断定しません。
 
 ---
 
@@ -115,6 +128,8 @@ kiro-cli diagnostic --format json-pretty
 
 ### 本サイトの関連文書
 - [01_features/30. v2.8 / V3 プレビュー](../01_features/30_v28V3Preview.md) — v2.8.0 / v2.8.1 の事実と `--v3` の入口
+- [01_features/33. v2.13 Introspect サブエージェント・グローバル hooks](../01_features/33_v213IntrospectGlobalHooks.md) — v2.13.0 の V3 追加機能
+- [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md) — V2 → V3 エージェント設定移行（v2.14.0）
 - [07_aidlc/](../07_aidlc/README.md) — AI-DLC（AWS Labs OSS 方法論）。v3 の純正 Spec agent とは別物（→ [01. 仕様駆動開発](01_spec-driven-development.md) の比較表）
 - [02_update/01_changelog.md](../02_update/01_changelog.md) — v2.8.0 / v2.8.1 の変更履歴
 
@@ -123,8 +138,9 @@ kiro-cli diagnostic --format json-pretty
 - [Spec-driven development](https://kiro.dev/docs/cli/v3/specs/)
 - [機能比較 v2 → v3](https://kiro.dev/docs/cli/v3/feature-overview/)
 - [Permissions](https://kiro.dev/docs/cli/v3/permissions/) ／ [Hooks](https://kiro.dev/docs/cli/v3/hooks/) ／ [Agent config](https://kiro.dev/docs/cli/v3/agent-config/)
+- [Upgrading agent configs（`/upgrade-agent`）](https://kiro.dev/docs/cli/v3/upgrade-agent/)
 
 ---
 
-**最終更新**: 2026-07-20
-**対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x ＋ `--v3` で提供。3.0.0 GA は未リリース。
+**最終更新**: 2026-07-25
+**対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x 以降 ＋ `--v3` で提供。3.0.0 GA は未リリース。
