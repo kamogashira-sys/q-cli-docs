@@ -110,7 +110,7 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 - **[Kiro公式ブログ](https://kiro.dev/blog/)**
 
 ### 本サイトでの対応文書
-- [機能詳細ガイド](../01_features/README.md) — 34機能 + カテゴリ別ナビゲーション
+- [機能詳細ガイド](../01_features/README.md) — 35機能 + カテゴリ別ナビゲーション
 - [Smart Hooks](../01_features/22_Hooks.md) 🆕
 - [Agent Steering](../01_features/23_Steering.md) 🆕
 - [@file references](../01_features/24_FileReferences.md) 🆕

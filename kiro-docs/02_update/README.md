@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.14.2（本サイト反映済。v2.8.0 で CLI v3 Early Access）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.16.0（本サイト反映済。v2.8.0 で CLI v3 Early Access）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,10 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.16.0** | 2026-07-31 | [V3] `/tangent`（名前付き側枝会話）・`/context`ツール別内訳 | [V3] 名前付き・ネスト可能な側枝会話`/tangent`（既存classic版とは別仕様、ビジュアルピッカー`/tangent ls`対応）、`/context`のツール別トークン内訳表示、`/model`切替時のコンテキスト使用率再計算修正 |
+| **v2.15.2** | 2026-07-29 | `update.baseUrl`ポリシー・KIRO_API_KEY案内 | IT管理者向け`update.baseUrl`管理ポリシー（macOS MDM/Windows Group Policy）、`login`・`logout`が`KIRO_API_KEY`のunset要否を案内 |
+| **v2.15.1** | 2026-07-28 | [V3]限定バグ修正5件 | Hooks `confirmCommand`、GPT `invalid_union`修正、workspace-scope policy永続化、`/tools`リフレッシュ、`.kiroignore`書き込みブロック |
+| **v2.15.0** | 2026-07-27 | [V3] `/spec new`ガイド化・Plan mode自動実行 | `/spec new`にガイド付き説明ステップ追加、Plan mode承認後の自動実行、`chat.showThinkingTips`設定追加、`@prompt`参照・classicモードtrust prompt警告の修正 |
 | **v2.14.2** | 2026-07-24 | EUテレメトリのリージョンローカル化・モデル拒否メッセージ具体化 | テレメトリを EU ユーザー向けリージョンローカルエンドポイントへ送信、モデル拒否メッセージが `/model`・`/rewind`・`/chat new` を提示、TUI 強制色検出時のカラーコード漏れ修正、kitty 互換端末の終了後問題修正（※公式Changelogサイト未掲載・CLI内蔵changelogで確認） |
 | **v2.14.1** | 2026-07-23 | /model・/effort のセッション限定化（方針転換） | `/effort set-current-as-default` 追加、起動スピナー追加、`/model`・`/effort` の選択がセッション限定へ回帰（既定化には `set-current-as-default`）、MCP の `structuredContent` 応答でのツール呼び出し失敗修正、終了時のターミナルモード復元修正 |
 | **v2.14.0** | 2026-07-22 | [V3] /upgrade-agent（V2 → V3 エージェント設定移行） | V2 エージェント設定を V2/V3 両対応の universal 形式へ変換する `/upgrade-agent`（`run`・`diagnostics`）、[V3] 自動ストリームリトライ、待機中の機能ヒント表示、`Ctrl+Z` 後の制御キー修復、[V3] `/plan` デッドロック・supervised 承認永続化ほか修正 |
@@ -280,6 +284,21 @@ timeline
                    : EUテレメトリのリージョンローカル化
                    : モデル拒否メッセージの具体化
                    : カラーコード漏れ・kitty端末の修正
+
+    section v2.15.x / v2.16.0 Spec/Plan強化・Tangent(V3)
+        2026-07-27 : v2.15.0
+                   : [V3] /spec new ガイド付き説明ステップ
+                   : [V3] Plan mode自動実行
+                   : chat.showThinkingTips設定追加
+        2026-07-28 : v2.15.1
+                   : [V3] Hooks confirmCommand
+                   : [V3] GPT invalid_union修正
+        2026-07-29 : v2.15.2
+                   : update.baseUrl管理ポリシー
+                   : login/logoutのKIRO_API_KEY案内
+        2026-07-31 : v2.16.0
+                   : [V3] /tangent（名前付き側枝会話）
+                   : /context ツール別トークン内訳
 ```
 
 ## 🔗 移行情報
@@ -338,6 +357,7 @@ timeline
 - [MCP OAuth 認証管理・事前登録アプリ対応](../01_features/32_MCPOAuthManagement.md) 🆕 - リモート MCP の OAuth 再認証コマンド（`/mcp auth` 等）・事前登録アプリ対応（`clientSecret`/`redirectUri`/DCRスキップ、v2.11.0/v2.12.0）
 - [v2.13 Introspect サブエージェント・グローバル hooks](../01_features/33_v213IntrospectGlobalHooks.md) 🆕 - [V3] Kiro 機能説明の組み込みサブエージェントと `~/.kiro/hooks/` の全ワークスペース自動適用（v2.13.0、→ [09_v3/](../09_v3/README.md)）
 - [v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md) 🆕 - [V3] V2 のカスタムエージェント設定を V2/V3 両対応の universal 形式へ変換（v2.14.0、→ [09_v3/](../09_v3/README.md)）
+- [v2.16 Tangent（V3側枝会話）](../01_features/35_v216Tangent.md) 🆕 - [V3] 名前付き・ネスト可能な側枝会話。既存classic版`/tangent`とは別仕様（v2.16.0、→ [09_v3/](../09_v3/README.md)）
 
 ### リファレンス（辞書） 🆕
 - [04_reference/](../04_reference/README.md) — Settings / Slash Commands / CLI Commands / Built-in Tools の網羅的辞書
@@ -368,5 +388,5 @@ timeline
 
 ---
 
-**最終更新**: 2026-07-25  
-**対象バージョン**: Kiro CLI v2.14.2
+**最終更新**: 2026-08-01  
+**対象バージョン**: Kiro CLI v2.16.0

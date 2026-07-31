@@ -13,9 +13,82 @@
 
 ## 最新バージョン
 
-> **注記**: 本ページは **v2.14.2**（2026-07-24）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
+> **注記**: 本ページは **v2.16.0**（2026-07-31）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
 >
 > **本節の掲載範囲**: 目安として直近 3〜4 バージョンを掲載し、それより古いものは新しいバージョンの追加時に[バージョン履歴](#バージョン履歴)へ移動します。
+
+### v2.16.0 CLI（2026-07-31）
+
+**主要な変更**: [V3] 名前付き・ネスト可能な側枝会話 **`/tangent`** の追加（既存 classic/experimental 版の`/tangent`とは別仕様）と、`/context` のツール別トークン内訳表示が中心。
+
+**機能追加（1件）**:
+- 🔧 **[V3] `/tangent`（名前付き側枝会話）**: 会話履歴を継承したまま脇道の会話へ分岐し、後で元の位置へ戻れる機能。`/tangent`（ルートでは自動命名`tangent-N`へ分岐）、`/tangent <name>`（名前付き分岐・切替）、`/tangent ls`（会話木のビジュアルピッカー）、`/tangent root`（メイン会話へ直接復帰）。ネスト可能。**V3モード（`kiro-cli --v3`）限定**。
+  - ⚠️ **既存（V2 / classic、実験的機能）の`/tangent`とは仕様が異なる別機能**（トグル切替・単一チェックポイント・ネスト不可）。公式も「earlier experimental tangent mode behaves differently」と明記。詳細比較・使用例は → [35. v2.16 Tangent（V3側枝会話）](../01_features/35_v216Tangent.md)、既存版は → [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md#tangent)
+  - 詳細: [Tangent（公式 v3）](https://kiro.dev/docs/cli/v3/tangent)
+
+**改善（1件）**:
+- 📋 **`/context` のツール別トークン内訳**: `/context` が、ソース（built-in / MCPサーバー / agent）別にグループ化した**ツール単位のトークン内訳**を表示するように変更。
+
+**バグ修正（1件）**:
+- 🔧 `/model` でモデルを切り替えた際に、**コンテキスト使用率（%）が再計算される**よう修正。
+
+**出典**: [公式Changelog v2.16](https://kiro.dev/changelog/cli/2-16/)、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)（published 2026-07-31T01:00:00.000Z）、[Tangent（公式v3）](https://kiro.dev/docs/cli/v3/tangent)
+
+**注記**: CLI内蔵の日付（2026-07-30）と公式サイト表示（2026-07-31、Atom publishedより）に差異あり。公式サイト表示日付を採用。
+
+---
+
+### v2.15.2 CLI（2026-07-29）
+
+**主要な変更**: バグ修正・運用向け改善のみ（パッチ）。IT管理者向けのアップデート先リダイレクトと、サインアウト時の`KIRO_API_KEY`案内。
+
+**改善（2件）**:
+- 🔐 **`update.baseUrl`管理ポリシー**: IT管理者が、macOS MDMプロファイルまたはWindows Group Policy経由のマネージドポリシーで、アップデート取得先を自社サーバーへリダイレクトできるようになった。
+- 💡 **`login`・`logout`のKIRO_API_KEY案内**: `login`・`logout`が、サインアウトには`KIRO_API_KEY`環境変数のunsetが必要であることを説明するようになった。
+
+**出典**: [公式Changelog v2.15](https://kiro.dev/changelog/cli/2-15/)（`#patch-2-15-2`）、`kiro-cli version --changelog=all`（日付一致）
+
+**注記**: CLI内蔵日付と公式表示日は2026-07-29で一致（差異なし）。
+
+---
+
+### v2.15.1 CLI（2026-07-28）
+
+**主要な変更**: [V3]限定のバグ修正のみ（パッチ）。
+
+**バグ修正（5件、すべて[V3]）**:
+- 🔧 Hooksが`confirmCommand`をサポート（動的な確認オプション）。
+- 🔧 GPTモデルが`todo_list`配列パラメータ使用時に`invalid_union`エラーを出す問題を修正。
+- 🔧 Workspace-scopeのpolicyルールが、異なるパス形式間で正しく永続化されない問題を修正。
+- 🔧 `/tools`一覧が、tool discovery完了後にリフレッシュされ、発見済みツールが隠れたままにならないよう修正。
+- 🔒 policy engineが`.kiroignore`へのagent書き込みを、深さに関わらずブロックするよう修正。
+
+**出典**: [公式Changelog v2.15](https://kiro.dev/changelog/cli/2-15/)（`#patch-2-15-1`）
+
+**注記**: ローカルCLIの内蔵changelogには本バージョンが含まれないため、公式ページを一次情報としています。
+
+---
+
+### v2.15.0 CLI（2026-07-27）
+
+**主要な変更**: [V3] `/spec new`のガイド付き説明ステップ追加と、Plan mode承認後の自動実行が中心。
+
+**機能追加（2件、いずれも[V3]）**:
+- 🔧 **[V3] `/spec new`ガイド付き説明ステップ**: `/spec new`が、spec名だけでなく事前に「何をカバーするspecか」を尋ねるステップを追加。ユーザーの説明を要件生成のground truthとして使用。詳細: [Specs（公式v3）](https://kiro.dev/docs/cli/v3/specs)
+- 🔧 **[V3] Plan mode自動実行**: Plan modeで計画を承認すると、手動でモード切り替えせずに自動的に実行が開始されるよう変更。詳細: [Planning agent（公式）](https://kiro.dev/docs/cli/chat/planning-agent)
+
+**改善（1件）**:
+- 💡 **`chat.showThinkingTips`設定**: 新設定で、thinking indicator下に表示される機能ヒントを非表示にできるようになった（→ [04_reference/01_settings.md](../04_reference/01_settings.md)）。
+
+**バグ修正（2件）**:
+- 🔧 `@prompt`参照が、参照先のprompt fileをロードせず平テキストとして送信されることがある問題を修正。
+- 🔒 classicモード（`--classic`）でのtrust promptにおけるpermission-override警告が、新たに信頼したツールのみでなく、以前から信頼済みの全ツールに適用されてしまう問題を修正。
+
+**出典**: [公式Changelog v2.15](https://kiro.dev/changelog/cli/2-15/)、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)（published 2026-07-27T23:00:00.000Z）
+
+---
+
+## バージョン履歴
 
 ### v2.14.2 CLI（2026-07-24）
 
@@ -104,8 +177,6 @@
 **注記**: 公式 Changelog では v2.13.0 と同一ページ（`#patch-2-13-1`）に掲載。公式表示日 2026-07-22。ローカル CLI の内蔵 changelog には本バージョンが含まれないため、公式ページを一次情報としています。
 
 ---
-
-## バージョン履歴
 
 ### v2.13.0 CLI（2026-07-17）
 
@@ -1252,4 +1323,4 @@ kiro-cli chat "Hello, world!"
 - セキュリティアップデートのリリース時
 - コミュニティからの重要なフィードバック時
 
-**最終更新**: 2026-07-25（v2.14.2・v2.14.1・v2.14.0・v2.13.1対応追加、v2.13.0・v2.12.3・v2.12.2・v2.12.1 をバージョン履歴へ移動、冒頭注記を v2.14.2 に更新、v2.12.3・v2.6.0 に v2.14.1 の方針転換（セッション限定化）の相互参照追加、v2.13.0 に v2.13.1 の相互参照追加。前回 2026-07-20: v2.13.0・v2.12.3対応追加、v2.11.0・v2.12.0 をバージョン履歴へ移動、冒頭注記を v2.13.0 に更新、v2.12.1 に v2.13.0・v2.6.0 に v2.12.3 の相互参照追加）
+**最終更新**: 2026-08-01（v2.16.0・v2.15.2・v2.15.1・v2.15.0対応追加、v2.14.2・v2.14.1・v2.14.0・v2.13.1をバージョン履歴へ移動、冒頭注記を v2.16.0 に更新。v2.16.0の`/tangent`（V3）は既存classic版`/tangent`（`04_reference/02_slash-commands.md`）と同名別仕様のため、両者へ相互参照リンクと詳細解説ページ（[35_v216Tangent.md](../01_features/35_v216Tangent.md)）を追加。前回 2026-07-25: v2.14.2・v2.14.1・v2.14.0・v2.13.1対応追加、v2.13.0・v2.12.3・v2.12.2・v2.12.1 をバージョン履歴へ移動、冒頭注記を v2.14.2 に更新、v2.12.3・v2.6.0 に v2.14.1 の方針転換（セッション限定化）の相互参照追加、v2.13.0 に v2.13.1 の相互参照追加）

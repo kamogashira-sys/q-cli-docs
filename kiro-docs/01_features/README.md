@@ -2,7 +2,7 @@
 
 # Kiro CLI 機能詳細ガイド
 
-> Kiro CLI の 34 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+> Kiro CLI の 35 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
 
 ## 🗂️ カテゴリ別ナビゲーション
 
@@ -24,6 +24,7 @@
 - [31. v2.10 設定ホットリロード & リソース継承制御](31_v210ConfigHotReload.md) 🆕 — 設定ホットリロード・既定リソース継承制御（v2.10.0）
 - [33. v2.13 Introspect サブエージェント・グローバル hooks](33_v213IntrospectGlobalHooks.md) 🆕 — [V3] Kiro 機能説明サブエージェント・全ワークスペース hooks（v2.13.0）
 - [34. v2.14 /upgrade-agent](34_v214UpgradeAgent.md) 🆕 — [V3] V2 エージェント設定を V2/V3 両対応形式へ移行（v2.14.0）
+- [35. v2.16 Tangent（V3側枝会話）](35_v216Tangent.md) 🆕 — [V3] 名前付き・ネスト可能な側枝会話。既存classic版`/tangent`とは別仕様（v2.16.0）
 
 ### 📁 コンテキスト・知識管理
 - [07. Skills](07_Skills.md) — Progressive Context Loading
@@ -107,6 +108,7 @@
 | **[MCP OAuth 認証管理・事前登録アプリ対応](32_MCPOAuthManagement.md)** 🆕 | v2.12.0<br/>（2026-07-09）<br/>v2.11.0 認証管理コマンド | リモート MCP サーバーの OAuth 認証を制御し、事前登録アプリに対応 | v2.11.0: `/mcp auth`・`/mcp cancel-auth`・`/mcp logout`＋パネルショートカット（^A/^X/^R）<br/>v2.12.0: `clientSecret`・`redirectUri` フルURL・カスタム `clientId` 時 DCR スキップ |
 | **[v2.13 Introspect サブエージェント・グローバル hooks](33_v213IntrospectGlobalHooks.md)** 🆕 | v2.13.0<br/>（2026-07-17） | [V3] Kiro 機能説明の組み込みサブエージェントと、全ワークスペースへ自動適用される hooks | [V3] Introspect サブエージェント（カスタム agent/hooks/steering 作成支援）、[V3] グローバル hooks（`~/.kiro/hooks/`）、モデル拒否エラーのスクロールバック表示化・レート制限エラー永続化 |
 | **[v2.14 /upgrade-agent（V2 → V3 エージェント設定移行）](34_v214UpgradeAgent.md)** 🆕 | v2.14.0<br/>（2026-07-22） | [V3] V2 のカスタムエージェント設定を V2/V3 両対応の universal 形式へ変換 | `/upgrade-agent run`（`.kiro/agents/`・`~/.kiro/agents/` をスキャンし選択変換、`.json.bak` バックアップ）、`/upgrade-agent diagnostics`（変換警告 8 種）、[V3] 自動ストリームリトライ、待機中の機能ヒント |
+| **[v2.16 Tangent（V3側枝会話）](35_v216Tangent.md)** 🆕 | v2.16.0<br/>（2026-07-31） | [V3] 名前付き・ネスト可能な側枝会話。既存classic版`/tangent`とはコマンド名は同じだが仕様が異なる別機能 | `/tangent`（ルートで自動命名分岐）、`/tangent <name>`（名前付き分岐・切替）、`/tangent ls`（ビジュアルピッカー）、`/tangent root`（メイン会話へ復帰）、ネスト可能 |
 
 ## 🔗 機能間の連携
 
@@ -293,6 +295,6 @@ sequenceDiagram
 
 ---
 
-**最終更新**: 2026-07-25  
-**対象バージョン**: Kiro CLI v2.14.2+（v3 は Early Access）  
-**機能数**: 34 + Reference集約 ([04_reference/](../04_reference/README.md))
+**最終更新**: 2026-08-01  
+**対象バージョン**: Kiro CLI v2.16.0+（v3 は Early Access）  
+**機能数**: 35 + Reference集約 ([04_reference/](../04_reference/README.md))
