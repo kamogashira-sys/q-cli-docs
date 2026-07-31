@@ -354,7 +354,7 @@ Terminal UIとClassicインターフェースでは、利用可能なスラッ�
 | `/changelog` | Kiro公式サイトでリリースノートを確認 |
 | `/logdump` | チャット外で`kiro-cli`コマンドを使用 |
 | `/experiment` | KnowledgeとTasksは常時有効。他の実験機能は再評価中 |
-| `/tangent` | TUIでは未対応 |
+| `/tangent`（V2 classic版） | TUIでは未対応（V3版`/tangent`はV3セッション専用のためこの表の対象外。→ [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md#tangent)） |
 | `/settings`（チャット内） | シェルから`kiro-cli settings`を使用 |
 | `/issue` | TUIでは`/feedback`に置き換え |
 | Vi edit mode | TUIではEmacs keybindingsのみ |

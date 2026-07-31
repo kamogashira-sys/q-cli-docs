@@ -486,6 +486,8 @@ OSC 52 エスケープシーケンス経由で SSH/tmux/Zellij でも動作。10
 
 ### `/tangent`
 
+> ⚠️ **V2 / classic、実験的機能の解説です。** v2.16.0でV3に別仕様の`/tangent`（名前付き・ネスト可能な側枝会話）が追加されました。V3版は次節（本節直後）を参照してください。公式ドキュメントも「the earlier experimental tangent mode behaves differently」と両者を明確に区別しています（出典: [Tangent（公式v3）](https://kiro.dev/docs/cli/v3/tangent)）。
+
 会話チェックポイントを作成して脇道のトピックを探求。
 
 ```bash
@@ -498,7 +500,31 @@ OSC 52 エスケープシーケンス経由で SSH/tmux/Zellij でも動作。10
 
 **サブコマンド**（実機検証済み）:
 - `tail` — tangent モードを終了し、最後の会話エントリ（質問 + 応答）を保持
-- `forget` — 直近 N 件の会話エントリを履歴から削除
+- `forget` — 直近 N 件の会話エントリを履歴から削除（公式 [experimental Tangent mode](https://kiro.dev/docs/cli/experimental/tangent-mode/) には `tail` のみ記載があり、`forget` の記載はありません。実機検証済みの本サイト独自記述です）
+
+**制限**（公式 [experimental Tangent mode](https://kiro.dev/docs/cli/experimental/tangent-mode/) より）: ネストされたtangentは非対応（1階層のみ）。実験的機能のため将来変更・削除の可能性あり。
+
+#### `/tangent`（V3限定。安定版コマンド数には含めない）
+
+> **V3限定機能**（`kiro-cli --v3`）。名前付き・ネスト可能な側枝会話。v2.16.0で追加。既存のV2 classic版`/tangent`（前節）とはコマンド名は同じですが、動作が異なる別機能です。詳細は [35. v2.16 Tangent（V3側枝会話）](../01_features/35_v216Tangent.md) を参照。
+
+```bash
+> /tangent                            # ルートでは新規side-conversationへ分岐（自動命名 tangent-N）
+> /tangent <name>                     # 名前付きside-conversationへ分岐・切替
+> /tangent ls                         # 会話木全体を表示するビジュアルピッカーを開く
+> /tangent root                       # どの深さからでも直接メイン会話へ戻る
+```
+
+**V2 classic版との違い**:
+
+| 項目 | V2 / classic（前節） | V3 |
+|------|---------------------|-----|
+| 命名 | 不可（単一チェックポイント） | 可能（名前付き） |
+| ネスト | 不可（1階層のみ） | 可能 |
+| 切替方法 | トグル（`/tangent`・`Ctrl+T`） | ビジュアルピッカー（`/tangent ls`） |
+| 状態表示 | なし | フッターに `↯ name` チップ |
+
+**出典**: [Tangent（公式v3）](https://kiro.dev/docs/cli/v3/tangent)、[公式Changelog v2.16](https://kiro.dev/changelog/cli/2-16/)
 
 ### `/todos`
 

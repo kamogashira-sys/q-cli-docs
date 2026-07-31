@@ -138,6 +138,7 @@ kiro-cli settings list --format json-pretty
 | `chat.allowAsciiArt` | boolean | `true` | Unicode/罫線記号。`false` でプレーン ASCII にフォールバック | `kiro-cli settings chat.allowAsciiArt false` |
 | `chat.allowIcons` | boolean | `true` | ステータスアイコン（●○⚠）。`false` でテキストラベル | `kiro-cli settings chat.allowIcons false` |
 | `chat.showThinking` | boolean | `true` | エージェントの推論（thinking）ブロックを表示（v2.5.0+、起動時のみ反映） | `kiro-cli settings chat.showThinking false` |
+| `chat.showThinkingTips` | boolean | `true` | 応答待ち中、thinking indicator下に表示される**機能ヒント**の表示/非表示（v2.15.0+） | `kiro-cli settings chat.showThinkingTips false` |
 | `chat.terminalTitle` | boolean | `false` | ターミナルタブのセッションタイトル表示/非表示（v2.7.0+） | `kiro-cli settings chat.terminalTitle true` |
 | `chat.defaultInterruptBehavior` | string | `steer` | Queue Steering の起動時既定モード（`steer`/`queue`、v2.7.0+） | `kiro-cli settings chat.defaultInterruptBehavior queue` |
 | `chat.keybindings.toggleInterruptBehavior` | string | `ctrl+s` | Queue Steering の steer/queue モード切替キーバインド（v2.7.0+） | `kiro-cli settings chat.keybindings.toggleInterruptBehavior ctrl+shift+s` |
@@ -145,7 +146,7 @@ kiro-cli settings list --format json-pretty
 > **`KIRO_ASCII_MODE=1`** を設定すると `chat.allowAsciiArt` に関わらず ASCII モードが強制されます（環境変数節参照）。
 > **v2.12.0+**: すべての TUI グリフ・記号が ASCII モード設定（`chat.allowAsciiArt` / `KIRO_ASCII_MODE`）を尊重するよう**適用範囲が拡大**しました（Unicode 非対応端末での互換性向上。新規設定の追加ではなく既存設定の挙動拡張）。
 > **ターミナルタイトル**は v2.6.0 までは `/settings display` → Terminal title でのトグルのみで CLI 設定としては提供されていませんでしたが、**v2.7.0 で `chat.terminalTitle` 設定が追加され CLI 設定としても制御可能**になりました。⚠️ 公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映のため、型・既定値は**実機 kiro-cli 2.10.0 の `kiro-cli settings list --all` の説明文**「Show dynamic title in terminal tab (boolean, default: false)」（2026-07-04 確認）を一次情報として採用しています（boolean・既定 `false`。CLI 内蔵 changelog v2.7.0 の追加文言とも整合）。
-> `chat.showThinking`（モデル自身の推論表示、本節）と `chat.enableThinking`（thinking ツールの有効化、Feature toggles 節）は**別物**です。
+> `chat.showThinking`（モデル自身の推論表示、本節）と `chat.enableThinking`（thinking ツールの有効化、Feature toggles 節）は**別物**です。`chat.showThinkingTips`（機能ヒントの表示、本節）はさらに別物で、いずれも独立してON/OFF可能です。
 > 詳細: [27. Thinking Display](../01_features/27_ThinkingDisplay.md)、[29. v27NewCommands](../01_features/29_v27NewCommands.md)、[公式 Queue Steering](https://kiro.dev/docs/cli/chat/queue-steering/)
 
 ### 3. Knowledge base（ナレッジベース）
@@ -168,7 +169,7 @@ kiro-cli settings list --format json-pretty
 |------|-----|------|-----|
 | `chat.skimCommandKey` | char | あいまい検索コマンドのキー | `kiro-cli settings chat.skimCommandKey "f"` |
 | `chat.autocompletionKey` | char | 自動補完受け入れキー | `kiro-cli settings chat.autocompletionKey "Tab"` |
-| `chat.tangentModeKey` | char | tangent モード切替キー | `kiro-cli settings chat.tangentModeKey "t"` |
+| `chat.tangentModeKey` | char | tangent モード切替キー（V2 classic版`/tangent`のみ。V3版`/tangent`には非適用） | `kiro-cli settings chat.tangentModeKey "t"` |
 | `chat.delegateModeKey` | char | delegate コマンド用キー | `kiro-cli settings chat.delegateModeKey "d"` |
 
 ### 5. Key bindings - terminal UI（キーバインディング・TUI）
@@ -196,8 +197,8 @@ TUI のショートカットを上書き。`ctrl+`、`shift+`、`alt+`/`meta+` �
 | 設定 | 型 | 説明 | 例 |
 |------|-----|------|-----|
 | `chat.enableThinking` | boolean | thinking ツール有効化（複雑な推論用。`chat.showThinking`＝モデル自身の推論表示とは別物） | `kiro-cli settings chat.enableThinking true` |
-| `chat.enableTangentMode` | boolean | tangent mode 有効化（classic のみ） | `kiro-cli settings chat.enableTangentMode true` |
-| `introspect.tangentMode` | boolean | introspect で自動的に tangent mode（classic のみ） | `kiro-cli settings introspect.tangentMode true` |
+| `chat.enableTangentMode` | boolean | tangent mode 有効化（classic のみ。v2.16.0で追加されたV3版`/tangent`（名前付き・ネスト可能）にはこの設定は**適用されません**。公式ページに当該設定の言及なし → [04_reference/02_slash-commands.md](02_slash-commands.md#tangent)） | `kiro-cli settings chat.enableTangentMode true` |
+| `introspect.tangentMode` | boolean | introspect で自動的に tangent mode（classic のみ。同上、V3版には非適用） | `kiro-cli settings introspect.tangentMode true` |
 | `chat.enableTodoList` | boolean | todo リスト有効化（classic のみ） | `kiro-cli settings chat.enableTodoList true` |
 | `chat.enableCheckpoint` | boolean | checkpoint 有効化（classic のみ） | `kiro-cli settings chat.enableCheckpoint true` |
 | `chat.enableDelegate` | boolean | delegate ツール有効化（classic のみ） | `kiro-cli settings chat.enableDelegate true` |

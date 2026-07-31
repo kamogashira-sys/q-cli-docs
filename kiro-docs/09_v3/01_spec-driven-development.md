@@ -51,7 +51,7 @@ kiro-cli --v3
 ```
 
 - **`/spec`**: 既存 spec の一覧・選択。
-- **`/spec new <name>`**: 新規作成。要件定義フェーズから始まります。
+- **`/spec new <name>`**: 新規作成。要件定義フェーズから始まります。**v2.15.0 以降**、spec 名を指定した直後に「このspecが何をカバーするか」を尋ねるガイド付き説明ステップが追加されました。ここで入力した説明はエージェントが要件を生成する際のground truth（正解データ）として使用され、spec名のみから推測するよりも精度の高い要件定義が可能になります（出典: [公式Changelog v2.15](https://kiro.dev/changelog/cli/2-15/)、詳細: [Specs（公式v3）](https://kiro.dev/docs/cli/v3/specs)）。
 - **`/spec <name>`**: 既存 spec を再開。
 - **`/spec run <name>`**: タスクを**逐次（sequentially）**実行し、**各タスクの間で検証**します。
 
@@ -125,5 +125,5 @@ Spec agent は**標準のエージェント**なので、v3 の権限（`permiss
 
 ---
 
-**最終更新**: 2026-06-21
+**最終更新**: 2026-08-01
 **対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x ＋ `--v3` で提供。3.0.0 GA は未リリース。

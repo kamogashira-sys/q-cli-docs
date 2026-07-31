@@ -96,6 +96,14 @@ v3 は **後方互換ではない変更**を含みます。切り替え前に確
 >
 > ⚠️ **Supervised mode の扱いに公式内で差異があります**: 公式 [v3 概要](https://kiro.dev/docs/cli/v3/) と [機能比較](https://kiro.dev/docs/cli/v3/feature-overview/) は「Supervised mode = Removed（`permissions.yaml` で代替）」と記載していますが、[公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（v2.14.0）のバグ修正には「[V3] supervised モードのターン承認がセッション再開後も維持される」という項目があります。本サイトは双方を出典付きで併記し、どちらかを断定しません。
 
+### 機能強化（v2 → v3、置換ではなく拡張）
+
+上記の Breaking changes（置換・削除）とは異なり、v2 の機能名をそのまま引き継ぎつつ**仕様が拡張**された例もあります。
+
+| 領域 | 変更内容 |
+|------|----------|
+| **Tangent**（`/tangent`） | v2.16.0 でV3版が追加。名前付き・ネスト可能な側枝会話とビジュアルピッカーが、単一チェックポイントのV2 classic版を置き換える形で強化。公式 [Feature comparison](https://kiro.dev/docs/cli/v3/feature-overview/) は「⬆️ Enhanced — Named, nestable side-conversations with a visual picker replace the single-checkpoint experiment」と明記。V2 classic版のコマンド名は同じだが動作は別物（→ [01_features/35. v2.16 Tangent（V3側枝会話）](../01_features/35_v216Tangent.md)、[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md#tangent)） |
+
 ---
 
 ## Known gaps（既知の制限）
@@ -142,5 +150,5 @@ kiro-cli diagnostic --format json-pretty
 
 ---
 
-**最終更新**: 2026-07-25
+**最終更新**: 2026-08-01
 **対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x 以降 ＋ `--v3` で提供。3.0.0 GA は未リリース。
