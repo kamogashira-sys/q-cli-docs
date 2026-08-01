@@ -13,6 +13,20 @@
 4. **[🔍 リファレンス](kiro-docs/04_reference/README.md)** - Settings / Slashコマンド / CLIコマンド / Built-in Tools の辞書
 5. **[📋 変更履歴](kiro-docs/02_update/01_changelog.md)** - 全バージョンの詳細な変更内容
 
+## 🖥️ Kiro IDE 版の姉妹サイト
+
+**本サイトは Kiro CLI を扱います。Kiro IDE（デスクトップアプリ）の情報は姉妹サイトにあります。**
+
+**[猫でもわかるKiro IDE アップデート情報](https://github.com/kamogashira-sys/kiro-ide-docs)**
+
+| 知りたいこと | 参照先 |
+|------------|-------|
+| **IDE の機能**（Specs・Permissions・Hooks・Steering・MCP・Agent Focus Mode ほか） | [機能詳細ガイド](https://github.com/kamogashira-sys/kiro-ide-docs/blob/main/kiro-ide-docs/01_features/README.md) |
+| **IDE のバージョン情報**（0.1 〜 1.0 系） | [変更履歴](https://github.com/kamogashira-sys/kiro-ide-docs/blob/main/kiro-ide-docs/02_update/01_changelog.md) |
+| **IDE と CLI の違い** | 本サイトの [Kiro IDE 版との比較](kiro-docs/09_v3/02_kiro-ide-vs-cli.md) |
+
+> **IDE と CLI は別製品**です。同名の機能（Specs・Hooks・Steering・Permissions）でも仕様が異なる場合があります。
+
 ## 📢 Amazon Q Developer CLI から Kiro CLI へ
 
 2025年11月17日のv1.19.7リリースを最後に、Amazon Q CLIはオープンソースプロジェクトとしての積極的な開発を終了しました。今後は**重要なセキュリティ修正のみ**が提供される予定です。

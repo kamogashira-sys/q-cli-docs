@@ -80,6 +80,10 @@ Kiro CLI v3（`kiro-cli --v3`）の概要・仕様駆動開発・Kiro IDE 版と
 - **[仕様駆動開発](09_v3/01_spec-driven-development.md)** - `/spec` を使った CLI での実践（AI-DLC との違いも整理）
 - **[Kiro IDE 版との比較](09_v3/02_kiro-ide-vs-cli.md)** - 同様にできること／IDE が優位なこと／CLI ならではのこと
 
+> **Kiro IDE そのものの解説は姉妹サイト
+> [猫でもわかるKiro IDE アップデート情報](https://github.com/kamogashira-sys/kiro-ide-docs)
+> にあります**（IDE の機能詳細・バージョン情報・リファレンス）。
+
 ---
 
 ## 🌟 注目の新機能：Agent Toolkit for AWS（2026-05 GA）
