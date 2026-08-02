@@ -192,9 +192,11 @@ brew install --cask amazon-q
 **Linux**:
 ```bash
 # ダウンロードとインストール
-curl -o q-installer.sh https://desktop-release.codewhisperer.us-east-1.amazonaws.com/latest/Q-macos-x64.sh
-chmod +x q-installer.sh
-./q-installer.sh
+curl --proto '=https' --tlsv1.2 -sSf \
+  "https://desktop-release.q.us-east-1.amazonaws.com/latest/q-x86_64-linux.zip" \
+  -o q.zip
+unzip q.zip
+./q/install.sh
 ```
 
 #### 3.2 IAM Identity Center 認証の設定

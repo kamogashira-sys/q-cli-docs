@@ -170,7 +170,7 @@
   - CloudTrailでAmazon Q由来のAPI呼び出しを識別
   - IAMポリシーで制御
 
-**参考**: [Controlling AWS API Calls from Amazon Q Developer](https://aws.amazon.com/blogs/devops/controlling-aws-api-calls-from-amazon-q-developer-enterprise-governance-with-built-in-user-agent-markers/)
+**参考**: CloudTrail のイベントレコードに含まれる `userAgent` フィールドで、API 呼び出し元を識別できます。詳細は [CloudTrail レコードの内容](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html) を参照してください。
 
 ---
 

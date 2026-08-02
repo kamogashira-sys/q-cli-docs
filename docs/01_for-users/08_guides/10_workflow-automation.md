@@ -935,8 +935,13 @@ jobs:
       
       - name: Install Q CLI
         run: |
-          # Q CLIのインストール
-          curl -fsSL https://q.aws.dev/install.sh | bash
+          # Q CLIのインストール（詳細: docs/01_for-users/01_getting-started/01_installation.md）
+          curl --proto '=https' --tlsv1.2 -sSf \
+            "https://desktop-release.q.us-east-1.amazonaws.com/latest/q-x86_64-linux.zip" \
+            -o q.zip
+          unzip -q q.zip
+          ./q/install.sh --no-confirm
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       
       - name: AI Code Review
         run: |

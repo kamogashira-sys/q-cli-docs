@@ -1,3 +1,7 @@
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [File Specifications](README.md) > 07 Message Structures
+
+---
+
 # メッセージ構造仕様書
 
 **対象バージョン**: v1.18.1以降  

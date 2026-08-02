@@ -950,7 +950,7 @@ find docs -name "*.md" -not -name "*.bak" | grep -E "^docs/[0-9]+_" | cut -d'/' 
 
 ### 更新テンプレート
 
-```markdown
+````markdown
 ### 機能名（vX.Y.Z以降）
 
 説明文
@@ -971,7 +971,7 @@ find docs -name "*.md" -not -name "*.bak" | grep -E "^docs/[0-9]+_" | cut -d'/' 
 - 注意点2
 
 **出典**: PR #XXXX
-```
+````
 
 ### 更新例
 
@@ -995,7 +995,7 @@ find docs -name "*.md" -not -name "*.bak" | grep -E "^docs/[0-9]+_" | cut -d'/' 
 **ファイル**: `docs/01_for-users/03_configuration/03_agent-configuration.md`
 
 **追加内容**:
-```markdown
+````markdown
 ### file:// URI対応（v1.19.0以降）
 
 Agent promptsで外部ファイルを参照できます：
@@ -1017,7 +1017,7 @@ Agent promptsで外部ファイルを参照できます：
 - 相対パスはAgent設定ファイルからの相対
 
 **出典**: PR #3024
-```
+````
 
 ### チェックリスト
 

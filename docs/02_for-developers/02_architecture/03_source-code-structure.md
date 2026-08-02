@@ -23,7 +23,7 @@
 > - **Settings構造体**: [crates/chat-cli/src/database/settings.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/database/settings.rs) - L186-290（メソッド定義）
 > - **環境変数展開**: [crates/chat-cli/src/mcp_client/client.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/mcp_client/client.rs) - L113-127（substitute_env_vars関数）
 > - **環境変数定義**: [crates/chat-cli/src/util/consts.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/util/consts.rs) - L20-60（env_varモジュール）
-> - **パス定義**: [crates/chat-cli/src/util/directories.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/chat-cli/src/util/directories.rs) - settings_path等の関数
+> - **パス定義**: [crates/agent/src/agent/util/directories.rs](https://github.com/aws/amazon-q-developer-cli/blob/main/crates/agent/src/agent/util/directories.rs) - settings_path等の関数
 > 
 > **検証方法**:
 > - `find`コマンドで実際のファイル構造を確認
