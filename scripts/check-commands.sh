@@ -198,10 +198,16 @@ while IFS= read -r blockfile; do
     fi
 
     # 真の構文エラー。ファイル名と行番号を付けて報告する。
+    #
+    # 注意: ここで head や sed の早期終了（Nq）を使うと pipefail + SIGPIPE に
+    # より set -e がループごと中断し、2件目以降のブロックが検査されなくなる。
+    # いったんファイルへ書き出してから読む。
     echo "❌ $src:$fence_line のコードブロックに構文エラー"
-    shellcheck -s bash --severity=error -e SC1073,SC1048,SC1072 -f gcc "$blockfile" 2>&1 \
-        | sed -E "s#^[^:]*:([0-9]+):[0-9]*:?#   $src (ブロック内 L\1): #" \
-        | head -10
+    shellcheck -s bash --severity=error -e SC1073,SC1048,SC1072 -f gcc \
+        "$blockfile" > "$WORKDIR/sc.out" 2>&1 || true
+    sed -E "s#^[^:]*:([0-9]+):[0-9]*:?#   $src (ブロック内 L\1): #" \
+        "$WORKDIR/sc.out" > "$WORKDIR/sc.fmt"
+    awk 'NR<=10' "$WORKDIR/sc.fmt"
     shellcheck_errors=$((shellcheck_errors + 1))
 done < <(find "$BLOCKS_DIR" -name "*.sh" -type f | sort -V)
 

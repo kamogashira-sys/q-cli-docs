@@ -357,8 +357,10 @@ python3 validators/v2_validator.py ../../docs
   ```markdown
   ---
   
-  **最終更新**: YYYY-MM-DD
+  最終更新: YYYY-MM-DD
   ```
+  - 太字（`**最終更新**: YYYY-MM-DD`）も可
+  - `./scripts/check-completeness.py` が自動チェックします
 
 - [ ] **パンくずリストが統一されているか**
   ```markdown
@@ -366,11 +368,13 @@ python3 validators/v2_validator.py ../../docs
   
   ---
   ```
+  - `./scripts/check-completeness.py` が自動チェックします
 
 - [ ] **見出しレベルが適切か**
   - H1（#）: 1つのみ（ファイルタイトル）
   - H2（##）: セクション
   - H3（###）: サブセクション
+  - H1 と H2 の個数は `./scripts/check-completeness.py` が自動チェックします
 
 - [ ] **区切り線（---）の使い方が統一されているか**
   - パンくずリストの後（必須）
@@ -378,6 +382,7 @@ python3 validators/v2_validator.py ../../docs
   - セクション間（オプション）
   - 前後に空行を入れる
   - **連続した区切り線（---\n\n---）がないか確認**
+    （`./tools/check-consecutive-separators.sh` が自動チェックします）
 
 - [ ] **リンクフォーマットが統一されているか**
   ```markdown
@@ -388,6 +393,22 @@ python3 validators/v2_validator.py ../../docs
   - 言語指定がある（```bash, ```json等）
   - インデントが正しい
   - 閉じタグがある
+  - **ネストする場合は外側を4バッククォート（````）にする**
+
+    3バッククォートのままネストすると、内側の閉じフェンスが外側も
+    閉じてしまい、以降の見出しや段落がコードブロックに飲み込まれます。
+
+    `````markdown
+    ````markdown        ← 外側は4バッククォート
+    ## 使用方法
+    ```bash             ← 内側は3バッククォート
+    q chat
+    ```
+    ````
+    `````
+
+  - 閉じフェンスと早期クローズは `./scripts/check-completeness.py` が
+    自動チェックします
 
 - [ ] **リストのインデントが統一されているか**
   - インデント: 2スペース
