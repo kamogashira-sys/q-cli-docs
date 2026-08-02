@@ -1,8 +1,8 @@
-# グローバル設定ファイル (settings.json) 仕様書
-
-[ホーム](../../../README.md) > [ユーザー向けドキュメント](../../README.md) > [ファイル仕様](README.md) > グローバル設定
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [File Specifications](README.md) > 04 Global Settings
 
 ---
+
+# グローバル設定ファイル (settings.json) 仕様書
 
 ## 1. 基本情報
 

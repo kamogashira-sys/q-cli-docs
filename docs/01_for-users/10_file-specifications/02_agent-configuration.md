@@ -1,8 +1,8 @@
-# Agent設定ファイル (agent.json) 仕様書
-
-[ホーム](../../../README.md) > [ユーザー向けドキュメント](../../README.md) > [ファイル仕様](README.md) > Agent設定
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [File Specifications](README.md) > 02 Agent Configuration
 
 ---
+
+# Agent設定ファイル (agent.json) 仕様書
 
 ## 1. 基本情報
 
@@ -704,7 +704,7 @@ Failed to start MCP server 'filesystem'
 ### 公式ドキュメント
 
 - [Amazon Q Developer CLI 公式リポジトリ](https://github.com/aws/amazon-q-developer-cli)
-- [Agent設定ガイド](https://github.com/aws/amazon-q-developer-cli/blob/main/docs/AGENTS.md)
+- [Agent設定ガイド](https://github.com/aws/amazon-q-developer-cli/blob/main/docs/agent-format.md)
 
 ---
 

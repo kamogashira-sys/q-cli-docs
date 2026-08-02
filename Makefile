@@ -41,10 +41,11 @@ check-quick: check-consistency check-commands check-completeness
 	@echo ""
 	@echo "✅ 高速チェックが完了しました"
 
-# URLチェック
+# URLチェック（全数。所要 約2分）
+# --sample 10 はソート順の先頭10件しか見ないため、231件中221件を見逃していた。
 check-urls:
 	@echo "🔍 URLチェック中..."
-	@./scripts/check-urls.sh --sample 10
+	@./scripts/check-urls.sh
 
 # 一貫性チェック
 check-consistency:
@@ -61,10 +62,11 @@ check-impact:
 	@echo "🔍 影響範囲分析中..."
 	@./scripts/check-impact.sh
 
-# 完全性チェック
+# 構造チェック（06_manual-checks.md の規約を機械化）
+# 以前は || echo で警告化されており、41件の違反があっても make が成功していた。
 check-completeness:
-	@echo "🔍 完全性チェック中..."
-	@./scripts/check-completeness.py || echo "⚠️  完全性チェックで問題が見つかりました（警告のみ）"
+	@echo "🔍 構造チェック中..."
+	@./scripts/check-completeness.py
 
 # ============================================================
 # kiro-docs/ 専用チェック（scripts/kiro-docs/）

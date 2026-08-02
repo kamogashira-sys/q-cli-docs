@@ -749,10 +749,10 @@ sudo apt-get install -f
 
 ```bash
 # 最新版をダウンロード
-wget https://desktop-release.q.us-east-1.amazonaws.com/latest/Amazon%20Q.AppImage -O ~/amazon-q.AppImage
+wget https://desktop-release.q.us-east-1.amazonaws.com/latest/amazon-q.appimage -O ~/amazon-q.appimage
 
 # 実行権限を付与
-chmod +x ~/amazon-q.AppImage
+chmod +x ~/amazon-q.appimage
 ```
 
 **進捗状況**: [GitHub ISSUE #841](https://github.com/aws/amazon-q-developer-cli/issues/841)で確認できます

@@ -38,6 +38,7 @@
 ```bash
 q chat
 ```
+
 ```
 > Hello, Q! What can you do?
 > Pythonでファイルを読み込む方法を教えて

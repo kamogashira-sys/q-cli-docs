@@ -1,8 +1,8 @@
-# MCP設定ファイル (mcp.json) 仕様書
-
-[ホーム](../../../README.md) > [ユーザー向けドキュメント](../../README.md) > [ファイル仕様](README.md) > MCP設定
+[ホーム](../../README.md) > [ユーザーガイド](../README.md) > [File Specifications](README.md) > 03 MCP Configuration
 
 ---
+
+# MCP設定ファイル (mcp.json) 仕様書
 
 ## 1. 基本情報
 

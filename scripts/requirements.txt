@@ -1,0 +1,12 @@
+# scripts/ 配下の Python チェックツールの依存
+#
+# インストール:
+#   pip install -r scripts/requirements.txt
+#
+# markdown-it-py:
+#   check-completeness.py が Markdown の構造解析に使用する。
+#   自作の正規表現ロジックでは CommonMark の規則（閉じフェンスは情報文字列を
+#   持てない、等）を取りこぼし、コードブロックの内外判定が反転して誤った
+#   結論を導くため、準拠パーサに委ねている。
+#   （docs/05_meta/07_lessons-learned.md の教訓）
+markdown-it-py>=3.0

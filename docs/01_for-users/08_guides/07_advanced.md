@@ -2,7 +2,9 @@
 
 ---
 
-## 7. 高度なトピック
+# 7. 高度なトピック
+
+---
 
 この章では、上級者向けの高度な活用方法を提供します。
 
@@ -254,7 +256,7 @@ API設計規約にはエンドポイント命名、HTTPメソッド、レスポ�
 ```
 
 各ルールファイル:
-```markdown
+````markdown
 # コーディング規約
 
 ## 目的
@@ -271,7 +273,7 @@ API設計規約にはエンドポイント命名、HTTPメソッド、レスポ�
  */
 function getUser() {}
 ```
-```
+````
 
 💡 **初心者向けポイント**: 構造化すると、AIの理解も向上します。
 
@@ -590,7 +592,7 @@ git commit -m "Add architecture.md to context"
 #### ドキュメント化
 
 **`.amazonq/README.md`**:
-```markdown
+````markdown
 # Amazon Q Developer CLI設定
 
 ## Agent設定
@@ -620,7 +622,7 @@ q chat --agent project-standard-agent
 ### トラブルシューティング
 - ファイルが読み込まれない → [トラブルシューティングガイド](../06_troubleshooting/02_common-issues.md)
 - トークン制限を超える → ファイルを削減
-```
+````
 
 #### 周知方法
 

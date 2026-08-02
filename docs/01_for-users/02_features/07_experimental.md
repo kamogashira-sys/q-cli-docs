@@ -637,7 +637,6 @@ Delegate Toolは以下の3つの操作をサポートします：
 4. 状態保存（.amazonq/.subagents/）
    ↓
 5. 完了通知
-```
    ↓
 6. ...
    ↓
