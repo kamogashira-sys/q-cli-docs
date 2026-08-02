@@ -9,3 +9,9 @@ contact_links:
   - name: 🆘 AWS Support
     url: https://aws.amazon.com/support/
     about: For official AWS support and technical assistance
+  - name: 🐱 Kiro IDE 版ドキュメント（姉妹サイト）
+    url: https://github.com/kamogashira-sys/kiro-ide-docs
+    about: 猫でもわかるKiro IDE アップデート情報
+  - name: 🐱 Kiro Web 版ドキュメント（姉妹サイト）
+    url: https://github.com/kamogashira-sys/kiro-web-docs
+    about: 猫でもわかるKiro Web アップデート情報

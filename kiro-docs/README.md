@@ -83,6 +83,10 @@ Kiro CLI v3（`kiro-cli --v3`）の概要・仕様駆動開発・Kiro IDE 版と
 > **Kiro IDE そのものの解説は姉妹サイト
 > [猫でもわかるKiro IDE アップデート情報](https://github.com/kamogashira-sys/kiro-ide-docs)
 > にあります**（IDE の機能詳細・バージョン情報・リファレンス）。
+>
+> **Kiro Web（ブラウザ版）の解説は姉妹サイト
+> [猫でもわかるKiro Web アップデート情報](https://github.com/kamogashira-sys/kiro-web-docs)
+> にあります**（Web の機能詳細・更新履歴・リファレンス）。
 
 ---
 
