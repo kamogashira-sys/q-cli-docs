@@ -90,7 +90,7 @@ find kiro-docs README.md -name "*.md" -type f \
     ! -name "*.bak" ! -name "*_update_plan.md" \
     -not -path "*/06_embedded-docs/*" \
     -not -path "*/05_meta/*" \
-    -exec grep -hoP 'https?://[^\s\)\]]+' {} \; \
+    -exec grep -hoP "https?://[^\s\)\]'\"\`><]+" {} \; \
     | sed 's/[,;:."'\''`]*$//' \
     | grep -v -E '(localhost|127\.0\.0\.1|0\.0\.0\.0|example\.(com|org)|[「」（）`]|\$|XXXX|vX\.Y\.Z|api\.github\.com)' \
     | sort -u > "$TEMP_URLS"

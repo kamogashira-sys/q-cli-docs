@@ -41,10 +41,11 @@ check-quick: check-consistency check-commands check-completeness
 	@echo ""
 	@echo "✅ 高速チェックが完了しました"
 
-# URLチェック
+# URLチェック（全数。所要 約2分）
+# --sample 10 はソート順の先頭10件しか見ないため、231件中221件を見逃していた。
 check-urls:
 	@echo "🔍 URLチェック中..."
-	@./scripts/check-urls.sh --sample 10
+	@./scripts/check-urls.sh
 
 # 一貫性チェック
 check-consistency:
