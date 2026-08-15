@@ -4,7 +4,7 @@
 
 # Kiro CLI Help Agent
 
-**出典**: [Help Agent - Kiro CLI Documentation](https://kiro.dev/docs/cli/chat/help-agent/)
+**出典**: [Help Agent - Kiro CLI Documentation](https://kiro.dev/docs/custom-agents/built-in/)
 
 ## 概要
 
@@ -406,7 +406,7 @@ Help Agentに切り替えずに、直接質問できます。
 ## 関連リンク
 
 ### 公式ドキュメント
-- [Help Agent - Kiro CLI Documentation](https://kiro.dev/docs/cli/chat/help-agent/)
+- [Help Agent - Kiro CLI Documentation](https://kiro.dev/docs/custom-agents/built-in/)
 - [Kiro CLI v1.25.0 Changelog](https://kiro.dev/changelog/cli/1-25/)
 
 ### 関連機能

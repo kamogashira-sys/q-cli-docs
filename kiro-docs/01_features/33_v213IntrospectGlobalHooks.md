@@ -67,7 +67,7 @@ Kiro の機能について質問に答え、**カスタム agent / hooks / steer
 - [09_v3/ Kiro CLI v3（Early Access）概要](../09_v3/README.md) — 4 本柱・Breaking changes・Known gaps
 - [30. v2.8 / V3 プレビュー](30_v28V3Preview.md) — V3 Early Access の入口（v2.8.0）
 - [変更履歴 v2.13.0](../02_update/01_changelog.md)
-- [公式 Hooks（CLI v3）](https://kiro.dev/docs/cli/v3/hooks/)
+- [公式 Hooks（CLI v3）](https://kiro.dev/docs/cli/v3/hooks-migration/)
 - [公式 Changelog v2.13](https://kiro.dev/changelog/cli/2-13/)
 
 ---

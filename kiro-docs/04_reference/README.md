@@ -12,10 +12,10 @@
 
 | # | ファイル | 内容 | 公式情報源 | 公式更新日 |
 |---|--------|------|----------|----------|
-| 01 | [Settings](01_settings.md) | 全設定項目（公式8カテゴリ）と環境変数 | https://kiro.dev/docs/cli/reference/settings/ | 2026-06-05 |
-| 02 | [Slash Commands](02_slash-commands.md) | 全スラッシュコマンド（41種）とキーボードショートカット | https://kiro.dev/docs/cli/reference/slash-commands/ | 2026-06-12 |
-| 03 | [CLI Commands](03_cli-commands.md) | `kiro-cli` コマンド全16種、グローバル引数、セッション管理 | https://kiro.dev/docs/cli/reference/cli-commands/ | 2026-05-12 |
-| 04 | [Built-in Tools](04_built-in-tools.md) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_search/web_fetch/introspect/code/tool_search/delegate/subagent/report/knowledge/thinking/todo/session） | https://kiro.dev/docs/cli/reference/built-in-tools/ | 2026-05-12 |
+| 01 | [Settings](01_settings.md) | 全設定項目（公式8カテゴリ）と環境変数 | https://kiro.dev/docs/reference/settings/ | 2026-06-05 |
+| 02 | [Slash Commands](02_slash-commands.md) | 全スラッシュコマンド（41種）とキーボードショートカット | https://kiro.dev/docs/reference/slash-commands/ | 2026-06-12 |
+| 03 | [CLI Commands](03_cli-commands.md) | `kiro-cli` コマンド全16種、グローバル引数、セッション管理 | https://kiro.dev/docs/reference/cli-commands/ | 2026-05-12 |
+| 04 | [Built-in Tools](04_built-in-tools.md) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_search/web_fetch/introspect/code/tool_search/delegate/subagent/report/knowledge/thinking/todo/session） | https://kiro.dev/docs/reference/built-in-tools/ | 2026-05-12 |
 
 ---
 
@@ -57,7 +57,7 @@
 
 ## 📌 公式情報源
 
-**Kiro CLI 公式リファレンスインデックス**: https://kiro.dev/docs/cli/reference/
+**Kiro CLI 公式リファレンスインデックス**: https://kiro.dev/docs/reference/cli-commands/
 
 各リファレンスファイルの末尾に詳細な公式情報源リンクを記載しています。本サイトのリファレンスは公式ページの **日本語訳・補足版** であり、最新の正確な情報は常に公式を参照してください。
 
@@ -92,7 +92,7 @@
 ### 公式情報源
 
 - [Kiro CLI Documentation](https://kiro.dev/docs/cli/) — 公式トップ
-- [Kiro CLI Reference](https://kiro.dev/docs/cli/reference/) — 公式リファレンスインデックス
+- [Kiro CLI Reference](https://kiro.dev/docs/reference/cli-commands/) — 公式リファレンスインデックス
 - [Kiro CLI Changelog](https://kiro.dev/changelog/cli/) — 公式 changelog
 
 ---

@@ -72,7 +72,7 @@ Kiro CLI **v2.16.0**（公式表示日 2026-07-31）で、**名前付き・ネ�
 | 提供範囲 | V2安定版・classic全般 | V3（`kiro-cli --v3`）限定 |
 | 公式ステータス | Experimental feature that may change or be removed | ⬆️ Enhanced（Feature comparisonより） |
 
-出典: [Tangent（公式v3）](https://kiro.dev/docs/cli/v3/tangent)、[experimental Tangent mode（公式）](https://kiro.dev/docs/cli/experimental/tangent-mode/)、[Feature comparison（公式v3）](https://kiro.dev/docs/cli/v3/feature-overview/)
+出典: [Tangent（公式v3）](https://kiro.dev/docs/cli/v3/tangent)、[experimental Tangent mode（公式）](https://kiro.dev/docs/cli/experimental/tangent-mode/)、[Feature comparison（公式v3）](https://kiro.dev/docs/cli/v3/new-features/)
 
 ---
 
@@ -88,7 +88,7 @@ Kiro CLI **v2.16.0**（公式表示日 2026-07-31）で、**名前付き・ネ�
 
 - [Tangent（公式v3）](https://kiro.dev/docs/cli/v3/tangent) — V3版`/tangent`の公式ドキュメント
 - [experimental Tangent mode（公式）](https://kiro.dev/docs/cli/experimental/tangent-mode/) — 既存classic版の公式ドキュメント
-- [Feature comparison（公式v3）](https://kiro.dev/docs/cli/v3/feature-overview/) — V2からV3への機能ステータス比較表
+- [Feature comparison（公式v3）](https://kiro.dev/docs/cli/v3/new-features/) — V2からV3への機能ステータス比較表
 - [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md#tangent) — 既存classic版`/tangent`の解説（本サイト）
 - [09_v3/ Kiro CLI v3（Early Access）概要](../09_v3/README.md) — 機能強化（v2→v3）の一覧
 - [変更履歴 v2.16.0](../02_update/01_changelog.md)

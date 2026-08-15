@@ -2,7 +2,7 @@
 
 # Kiro CLI Built-in Tools リファレンス
 
-**出典**: [Built-in tools - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/built-in-tools/)（公式ページ最終更新: 2026-05-12）
+**出典**: [Built-in tools - Kiro CLI Documentation](https://kiro.dev/docs/reference/built-in-tools/)（公式ページ最終更新: 2026-05-12）
 
 Kiro CLI の組み込みツール（公式記載 18 種類）を網羅する辞書的リファレンスです。
 
@@ -302,7 +302,7 @@ kiro-cli settings introspect.tangentMode true
 
 **説明**: 非同期に動作するバックグラウンドエージェントにタスクを委任。即時結果が不要な長時間タスクに有用。設定オプションなし。
 
-> **⚠️ 公式 Deprecation Notice**: 将来のリリースで [subagents](https://kiro.dev/docs/cli/chat/subagents/) ツールに置換予定。新規ワークフローでは subagents の使用を推奨。
+> **⚠️ 公式 Deprecation Notice**: 将来のリリースで [subagents](https://kiro.dev/docs/custom-agents/subagents/) ツールに置換予定。新規ワークフローでは subagents の使用を推奨。
 >
 > → 移行先: [02. Subagents](../01_features/02_Subagents.md)（本サイト）
 
@@ -413,7 +413,7 @@ kiro-cli settings chat.enableKnowledge true
 
 ## Side channels（v2.3.0+）
 
-**出典**: [Side channels for wrapper scripts](https://kiro.dev/docs/cli/reference/built-in-tools/#side-channels-for-wrapper-scripts)
+**出典**: [Side channels for wrapper scripts](https://kiro.dev/docs/reference/built-in-tools/#side-channels-for-wrapper-scripts)
 
 shell ツール経由でコマンド実行時、Kiro CLI は **2つの環境変数** をエクスポートします（v2.3.0 で追加）：
 
@@ -457,7 +457,7 @@ MCP サーバーツールは `@server_name/tool_name` 形式：
 }
 ```
 
-→ 完全な書式: [Agent Configuration Reference](https://kiro.dev/docs/cli/custom-agents/configuration-reference/)
+→ 完全な書式: [Agent Configuration Reference](https://kiro.dev/docs/custom-agents/configuration-reference/)
 
 ---
 
@@ -553,12 +553,12 @@ Amazon Q Developer CLI 時代は **9個** のビルトインツールでした�
 
 ### 公式情報源
 
-- [Built-in tools - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/built-in-tools/)（公式ページ最終更新: 2026-05-12）
-- [Custom Agents Configuration Reference](https://kiro.dev/docs/cli/custom-agents/configuration-reference/)
+- [Built-in tools - Kiro CLI Documentation](https://kiro.dev/docs/reference/built-in-tools/)（公式ページ最終更新: 2026-05-12）
+- [Custom Agents Configuration Reference](https://kiro.dev/docs/custom-agents/configuration-reference/)
 - [Tangent Mode](https://kiro.dev/docs/cli/experimental/tangent-mode/) — `introspect.tangentMode`
 - [Knowledge Management](https://kiro.dev/docs/cli/experimental/knowledge-management/) — `knowledge` ツール
 - [Delegate (Deprecated)](https://kiro.dev/docs/cli/experimental/delegate/) — `delegate` ツール
-- [Subagents](https://kiro.dev/docs/cli/chat/subagents/) — `subagent` ツールへの移行先
+- [Subagents](https://kiro.dev/docs/custom-agents/subagents/) — `subagent` ツールへの移行先
 
 ---
 

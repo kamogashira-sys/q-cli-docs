@@ -304,8 +304,8 @@ kiro-cli inline show-customizations
 ### 公式情報源
 
 - [Completions & autocomplete - Kiro CLI Documentation](https://kiro.dev/docs/cli/autocomplete/)（公式ページ最終更新: 2025-11-16）
-- [Hooks - Kiro CLI Documentation](https://kiro.dev/docs/cli/hooks/) — 関連機能
-- [Code Intelligence - Kiro CLI Documentation](https://kiro.dev/docs/cli/code-intelligence/) — 関連機能
+- [Hooks - Kiro CLI Documentation](https://kiro.dev/docs/hooks/) — 関連機能
+- [Code Intelligence - Kiro CLI Documentation](https://kiro.dev/docs/tools/code-intelligence/) — 関連機能
 
 ---
 

@@ -4,7 +4,7 @@
 
 # Kiro CLI Tool Search機能
 
-**出典**: [Tool Search](https://kiro.dev/docs/cli/mcp/tool-search/)、[公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)、CLI changelog v2.1.0
+**出典**: [Tool Search](https://kiro.dev/docs/mcp/tool-search/)、[公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)、CLI changelog v2.1.0
 
 ## 概要
 
@@ -20,7 +20,7 @@ Kiro CLI v2.1.0（2026年4月24日リリース）で追加された、MCPツー�
 
 ### なぜTool Searchが必要なのか
 
-**出典**: [Tool Search - When to enable Tool Search](https://kiro.dev/docs/cli/mcp/tool-search/#when-to-enable-tool-search)
+**出典**: [Tool Search - When to enable Tool Search](https://kiro.dev/docs/mcp/tool-search/#when-to-enable-tool-search)
 
 以下の場合にTool Searchの有効化が推奨されます:
 
@@ -48,7 +48,7 @@ Kiro CLI v2.1.0（2026年4月24日リリース）で追加された、MCPツー�
 
 ## 有効化方法
 
-**出典**: [Tool Search - Enabling Tool Search](https://kiro.dev/docs/cli/mcp/tool-search/#enabling-tool-search)
+**出典**: [Tool Search - Enabling Tool Search](https://kiro.dev/docs/mcp/tool-search/#enabling-tool-search)
 
 Tool Searchはデフォルトで無効です。設定で有効化します:
 
@@ -75,7 +75,7 @@ Tool Searchがアクティブな場合:
 
 ## 設定
 
-**出典**: [Tool Search - Settings](https://kiro.dev/docs/cli/mcp/tool-search/#settings)
+**出典**: [Tool Search - Settings](https://kiro.dev/docs/mcp/tool-search/#settings)
 
 | 設定 | デフォルト | 説明 |
 |------|----------|------|
@@ -89,7 +89,7 @@ Tool Searchがアクティブな場合:
 
 ## 動作の仕組み
 
-**出典**: [Tool Search - How it works](https://kiro.dev/docs/cli/mcp/tool-search/#how-it-works)
+**出典**: [Tool Search - How it works](https://kiro.dev/docs/mcp/tool-search/#how-it-works)
 
 Tool Searchは以下の4ステップで動作します:
 
@@ -121,7 +121,7 @@ Tool Search動作フロー:
 
 ## tool_searchツール
 
-**出典**: [Tool Search - The tool_search built-in tool](https://kiro.dev/docs/cli/mcp/tool-search/#the-tool_search-built-in-tool)
+**出典**: [Tool Search - The tool_search built-in tool](https://kiro.dev/docs/mcp/tool-search/#the-tool_search-built-in-tool)
 
 **ツール名**: `tool_search`
 
@@ -141,7 +141,7 @@ MCPツールをオンデマンドで発見・ロードする組み込みツー�
 
 ## キーワードマッチング
 
-**出典**: [Tool Search - Keyword matching](https://kiro.dev/docs/cli/mcp/tool-search/#keyword-matching)
+**出典**: [Tool Search - Keyword matching](https://kiro.dev/docs/mcp/tool-search/#keyword-matching)
 
 キーワード検索はBM25関連性スコアリングを使用します。ツール名はケーシング境界で分割されます（例: `ReadFile` → `read file`、`read_file` → `read file`）。マッチング閾値を超えた結果のみが返されます。
 
@@ -151,11 +151,11 @@ MCPツールをオンデマンドで発見・ロードする組み込みツー�
 
 ## 関連リンク
 
-- [Tool Search 公式ドキュメント](https://kiro.dev/docs/cli/mcp/tool-search/)
+- [Tool Search 公式ドキュメント](https://kiro.dev/docs/mcp/tool-search/)
 - [公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)
-- [Built-in tools リファレンス](https://kiro.dev/docs/cli/reference/built-in-tools/)
-- [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)
-- [MCP設定](https://kiro.dev/docs/cli/mcp/configuration/)
+- [Built-in tools リファレンス](https://kiro.dev/docs/reference/built-in-tools/)
+- [Settings リファレンス](https://kiro.dev/docs/reference/settings/)
+- [MCP設定](https://kiro.dev/docs/mcp/configuration/)
 - [Terminal UI機能](18_TerminalUI.md)
 
 ### 本サイトの関連文書

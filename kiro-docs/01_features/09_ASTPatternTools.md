@@ -4,7 +4,7 @@
 
 # Kiro CLI AST Pattern Tools機能（Precise Refactoring）
 
-**出典**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)、[Code Intelligence - Kiro CLI Documentation](https://kiro.dev/docs/cli/code-intelligence/)（公式ページ最終更新: 2026-05-29）
+**出典**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)、[Code Intelligence - Kiro CLI Documentation](https://kiro.dev/docs/tools/code-intelligence/)（公式ページ最終更新: 2026-05-29）
 
 ## 概要
 
@@ -43,7 +43,7 @@ AST Pattern Tools機能は、これらの問題を解決し、より安全で正
 
 ### 2つのツール
 
-> **ツールの位置づけ**: `pattern_search` / `pattern_rewrite` は、ユーザーがシェルから直接実行するコマンドではなく、**エージェントが `code` ツール経由で呼び出す組み込みツール**です。ユーザーは自然言語で依頼し（例:「すべての var を const に変換して」）、エージェントがパターンを組み立てて実行します（[公式 Code Intelligence](https://kiro.dev/docs/cli/code-intelligence/)）。
+> **ツールの位置づけ**: `pattern_search` / `pattern_rewrite` は、ユーザーがシェルから直接実行するコマンドではなく、**エージェントが `code` ツール経由で呼び出す組み込みツール**です。ユーザーは自然言語で依頼し（例:「すべての var を const に変換して」）、エージェントがパターンを組み立てて実行します（[公式 Code Intelligence](https://kiro.dev/docs/tools/code-intelligence/)）。
 
 #### 1. pattern_search
 
@@ -102,7 +102,7 @@ VariableDeclaration
 
 ### pattern_searchツール
 
-**出典**: [公式 Code Intelligence](https://kiro.dev/docs/cli/code-intelligence/)
+**出典**: [公式 Code Intelligence](https://kiro.dev/docs/tools/code-intelligence/)
 
 #### 概要
 
@@ -141,7 +141,7 @@ language: rust
 
 ### pattern_rewriteツール
 
-**出典**: [公式 Code Intelligence](https://kiro.dev/docs/cli/code-intelligence/)
+**出典**: [公式 Code Intelligence](https://kiro.dev/docs/tools/code-intelligence/)
 
 #### 概要
 
@@ -230,7 +230,7 @@ const message = "var is old"; // 文字列内は変換されない
 
 ## セットアップ/使用方法
 
-**出典**: [公式 Code Intelligence](https://kiro.dev/docs/cli/code-intelligence/)
+**出典**: [公式 Code Intelligence](https://kiro.dev/docs/tools/code-intelligence/)
 
 ### 前提条件
 
@@ -743,7 +743,7 @@ git diff
 ### 参考リンク
 
 - [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)
-- [Code Intelligence - Kiro CLI Documentation](https://kiro.dev/docs/cli/code-intelligence/)（公式ページ最終更新: 2026-05-29）
+- [Code Intelligence - Kiro CLI Documentation](https://kiro.dev/docs/tools/code-intelligence/)（公式ページ最終更新: 2026-05-29）
 
 ### 注意事項
 

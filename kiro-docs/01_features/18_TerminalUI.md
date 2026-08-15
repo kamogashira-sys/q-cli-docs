@@ -297,7 +297,7 @@ KIRO_NO_SYNCHRONIZED=1 kiro-cli chat  # 同期出力を無効化
 
 ### キーバインドのカスタマイズ（v2.3.0〜）
 
-**出典**: [Settings - Key bindings (terminal UI)](https://kiro.dev/docs/cli/reference/settings/#key-bindings-terminal-ui)
+**出典**: [Settings - Key bindings (terminal UI)](https://kiro.dev/docs/reference/settings/#key-bindings-terminal-ui)
 
 V2 TUIのcancel、close menu、quitアクションのキーを変更できます。tmuxプレフィックスやターミナルバインディングとの競合を回避する場合に有用です。
 
@@ -424,8 +424,8 @@ kiro-cli settings list | grep chat.ui
 - [Terminal UI vs Classic 比較](https://kiro.dev/docs/cli/terminal-ui/comparison/)
 - [公式Changelog v1.28.0](https://kiro.dev/changelog/cli/1-28/)
 - [公式Changelog v2.0.0](https://kiro.dev/changelog/cli/2-0/)
-- [スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/)
-- [設定リファレンス](https://kiro.dev/docs/cli/reference/settings/)
+- [スラッシュコマンドリファレンス](https://kiro.dev/docs/reference/slash-commands/)
+- [設定リファレンス](https://kiro.dev/docs/reference/settings/)
 - [v2.0.0メジャーアップデート解説](16_v2MajorUpdate.md)
 - [Granular Tool Trust機能](17_GranularToolTrust.md)
 - [サブエージェント機能](02_Subagents.md)

@@ -2,7 +2,7 @@
 
 # 公式インストール手順（Kiro CLI）
 
-**出典**: [Installation - Kiro CLI Documentation](https://kiro.dev/docs/cli/installation/)（公式ページ最終更新: 2026-04-24）
+**出典**: [Installation - Kiro CLI Documentation](https://kiro.dev/docs/getting-started/installation/)（公式ページ最終更新: 2026-04-24）
 
 ## 概要
 
@@ -21,7 +21,7 @@ Kiro CLI を OS 別に **公式手順でインストール** するためのガ�
 
 ### なぜ公式手順が必要なのか
 
-Kiro CLI は **AWS Builder ID / IAM Identity Center / Google / GitHub** 等での認証を伴うため、信頼性の高い配布チャネルからのインストールが重要です。本ドキュメントは公式 [Installation](https://kiro.dev/docs/cli/installation/) ページの**日本語訳・補足版** であり、最新版は常に公式ページを参照することを推奨します。
+Kiro CLI は **AWS Builder ID / IAM Identity Center / Google / GitHub** 等での認証を伴うため、信頼性の高い配布チャネルからのインストールが重要です。本ドキュメントは公式 [Installation](https://kiro.dev/docs/getting-started/installation/) ページの**日本語訳・補足版** であり、最新版は常に公式ページを参照することを推奨します。
 
 ---
 
@@ -42,7 +42,7 @@ Kiro CLI は **AWS Builder ID / IAM Identity Center / Google / GitHub** 等で�
 
 ## macOS インストール
 
-**出典**: [macOS](https://kiro.dev/docs/cli/installation/#macos)
+**出典**: [macOS](https://kiro.dev/docs/getting-started/installation/#macos)
 
 コマンドラインから macOS に **ネイティブインストール** できます。
 
@@ -52,7 +52,7 @@ Kiro CLI は **AWS Builder ID / IAM Identity Center / Google / GitHub** 等で�
 curl -fsSL https://cli.kiro.dev/install | bash
 ```
 
-インストール完了後、Kiro が **Web ブラウザを自動で開き**、認証手順に進みます（[Authentication](https://kiro.dev/docs/cli/authentication/) 参照）。
+インストール完了後、Kiro が **Web ブラウザを自動で開き**、認証手順に進みます（[Authentication](https://kiro.dev/docs/getting-started/authentication/) 参照）。
 
 ### 動作確認
 
@@ -67,7 +67,7 @@ kiro-cli doctor
 
 ## Windows 11 インストール
 
-**出典**: [Windows](https://kiro.dev/docs/cli/installation/#windows)
+**出典**: [Windows](https://kiro.dev/docs/getting-started/installation/#windows)
 
 PowerShell を使い Windows 11 にインストール可能です（v2.0.0 以降で公式対応）。
 
@@ -108,7 +108,7 @@ kiro-cli uninstall
 
 ## Linux AppImage インストール
 
-**出典**: [Linux AppImage](https://kiro.dev/docs/cli/installation/#linux-appimage)
+**出典**: [Linux AppImage](https://kiro.dev/docs/getting-started/installation/#linux-appimage)
 
 AppImage はインストール不要で **大半の Linux ディストリビューションで動作** するポータブル形式です。
 
@@ -134,7 +134,7 @@ chmod +x kiro-cli.appimage
 
 ## Linux zip ファイルインストール
 
-**出典**: [With a zip file](https://kiro.dev/docs/cli/installation/#with-a-zip-file)
+**出典**: [With a zip file](https://kiro.dev/docs/getting-started/installation/#with-a-zip-file)
 
 zip ファイルから手動でインストールする方式。AppImage が使えない環境向けです。
 
@@ -206,7 +206,7 @@ unzip kirocli.zip
 
 ## Ubuntu インストール
 
-**出典**: [Ubuntu](https://kiro.dev/docs/cli/installation/#ubuntu)
+**出典**: [Ubuntu](https://kiro.dev/docs/getting-started/installation/#ubuntu)
 
 Ubuntu 向けの **.deb パッケージ** を提供しています。
 
@@ -230,7 +230,7 @@ kiro-cli
 
 ## Proxy 設定
 
-**出典**: [Proxy configuration](https://kiro.dev/docs/cli/installation/#proxy-configuration)
+**出典**: [Proxy configuration](https://kiro.dev/docs/getting-started/installation/#proxy-configuration)
 
 Kiro CLI（**v1.8.0 以降**）は、エンタープライズ環境で一般的なプロキシサーバーをサポートします。**標準的なプロキシ環境変数を自動的に尊重** します。
 
@@ -271,7 +271,7 @@ export HTTPS_PROXY=http://username:password@proxy.company.com:8080
 
 ## アンインストール
 
-**出典**: [Uninstalling Kiro CLI](https://kiro.dev/docs/cli/installation/#uninstalling-kiro-cli)
+**出典**: [Uninstalling Kiro CLI](https://kiro.dev/docs/getting-started/installation/#uninstalling-kiro-cli)
 
 ### macOS
 
@@ -301,7 +301,7 @@ kiro-cli uninstall
 
 ## デバッグとトラブルシューティング
 
-**出典**: [Debugging Kiro CLI](https://kiro.dev/docs/cli/installation/#debugging-kiro-cli)
+**出典**: [Debugging Kiro CLI](https://kiro.dev/docs/getting-started/installation/#debugging-kiro-cli)
 
 ### 自動診断: `kiro-cli doctor`
 
@@ -356,7 +356,7 @@ kiro-cli chat
 
 1. **`kiro-cli doctor`** を実行して一般的な問題を自動検出・修正
 2. **インターネット接続** を確認
-3. **対応環境** を使用しているか確認（[Supported command line environments](https://kiro.dev/docs/cli/reference/cli-commands/) 参照）
+3. **対応環境** を使用しているか確認（[Supported command line environments](https://kiro.dev/docs/reference/cli-commands/) 参照）
 4. **再インストール** を試行
 5. それでも解決しない場合、**`kiro-cli issue`** でバグ報告
 
@@ -478,11 +478,11 @@ GitHub Actions の Windows runner で Kiro CLI を導入：
 
 ### 公式情報源
 
-- [Installation - Kiro CLI Documentation](https://kiro.dev/docs/cli/installation/)（公式ページ最終更新: 2026-04-24）
-- [Quick start](https://kiro.dev/docs/cli/quick-start/) — インストール後の最初のステップ
-- [Authentication](https://kiro.dev/docs/cli/authentication/) — 認証方法
+- [Installation - Kiro CLI Documentation](https://kiro.dev/docs/getting-started/installation/)（公式ページ最終更新: 2026-04-24）
+- [Quick start](https://kiro.dev/docs/cli/setup/) — インストール後の最初のステップ
+- [Authentication](https://kiro.dev/docs/getting-started/authentication/) — 認証方法
 - [Terminal UI](https://kiro.dev/docs/cli/terminal-ui/) — TUI 詳細
-- [Supported command line environments](https://kiro.dev/docs/cli/reference/cli-commands/) — 対応環境一覧
+- [Supported command line environments](https://kiro.dev/docs/reference/cli-commands/) — 対応環境一覧
 
 ---
 

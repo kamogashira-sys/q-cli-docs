@@ -159,7 +159,7 @@ flowchart TB
 
 Kiro CLI v1.25.0（2026年2月4日リリース）で追加されたサブエージェントの細粒度アクセス制御機能について解説します。
 
-**出典**: [Subagents - Configuring Subagent Access](https://kiro.dev/docs/cli/chat/subagents/#configuring-subagent-access)
+**出典**: [Subagents - Configuring Subagent Access](https://kiro.dev/docs/custom-agents/subagents/#configuring-subagent-access)
 
 ### 概要
 
@@ -387,7 +387,7 @@ toolsSettings:
 ## 設定とカスタマイズ
 
 ### カスタムエージェントの作成
-カスタムエージェントの作成方法については、[公式ドキュメント](https://kiro.dev/docs/cli/custom-agents/creating/)を参照してください。
+カスタムエージェントの作成方法については、[公式ドキュメント](https://kiro.dev/docs/custom-agents/creating/)を参照してください。
 
 ### ツール権限の設定
 既存のエージェント設定でツールを制限している場合：
@@ -458,7 +458,7 @@ Crew Monitorの詳細については、[Terminal UI機能](18_TerminalUI.md)を�
 
 ## v2.5.0での進化（2026年5月29日リリース）
 
-**出典**: [公式Changelog v2.5](https://kiro.dev/changelog/cli/2-5/)、[Subagents 公式ドキュメント](https://kiro.dev/docs/cli/chat/subagents/)
+**出典**: [公式Changelog v2.5](https://kiro.dev/changelog/cli/2-5/)、[Subagents 公式ドキュメント](https://kiro.dev/docs/custom-agents/subagents/)
 
 ### Review Loops（レビューループ）
 

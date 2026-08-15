@@ -4,7 +4,7 @@
 
 # Kiro CLI Granular Tool Trust機能
 
-**出典**: [Managing tool permissions](https://kiro.dev/docs/cli/chat/permissions/)、[公式Changelog v1.27.0](https://kiro.dev/changelog/cli/1-27/)、CLI changelog v1.27.0
+**出典**: [Managing tool permissions](https://kiro.dev/docs/permissions/)、[公式Changelog v1.27.0](https://kiro.dev/changelog/cli/1-27/)、CLI changelog v1.27.0
 
 ## 概要
 
@@ -38,7 +38,7 @@ Kiro CLI v1.27.0（2026年3月2日リリース）で追加された、ツール�
 
 ## /toolsコマンド
 
-**出典**: [Managing tool permissions - Tools commands](https://kiro.dev/docs/cli/chat/permissions/#tools-commands)
+**出典**: [Managing tool permissions - Tools commands](https://kiro.dev/docs/permissions/#tools-commands)
 
 `/tools`コマンドでツール権限を管理できます。
 
@@ -68,7 +68,7 @@ Kiro> /tools untrust shell
 
 ## 利用可能なツール
 
-**出典**: [Managing tool permissions - Available tools](https://kiro.dev/docs/cli/chat/permissions/#available-tools)
+**出典**: [Managing tool permissions - Available tools](https://kiro.dev/docs/permissions/#available-tools)
 
 Kiro CLIに組み込まれているツール:
 
@@ -86,7 +86,7 @@ Kiro CLIに組み込まれているツール:
 
 ## Shell Command Trust Levels
 
-**出典**: [Managing tool permissions - Shell command trust levels](https://kiro.dev/docs/cli/chat/permissions/#shell-command-trust-levels)
+**出典**: [Managing tool permissions - Shell command trust levels](https://kiro.dev/docs/permissions/#shell-command-trust-levels)
 
 Kiroがシェルコマンドを実行しようとすると、信頼範囲を選択するインタラクティブピッカーが表示されます。
 
@@ -133,7 +133,7 @@ Shell Trust Levels（制限的 → 緩い）:
 
 ## Read/Write Path Trust Levels
 
-**出典**: [Managing tool permissions - Read and write path trust levels](https://kiro.dev/docs/cli/chat/permissions/#read-and-write-path-trust-levels)
+**出典**: [Managing tool permissions - Read and write path trust levels](https://kiro.dev/docs/permissions/#read-and-write-path-trust-levels)
 
 `read`と`write`ツールも、カレントワーキングディレクトリ外のパスにアクセスする際に段階的信頼をサポートします。
 
@@ -171,7 +171,7 @@ Read/Write Trust Levels（制限的 → 緩い）:
 
 ## デフォルトの信頼設定と使用例
 
-**出典**: [Managing tool permissions - Default trust and permission examples](https://kiro.dev/docs/cli/chat/permissions/#default-trust-and-permission-examples)
+**出典**: [Managing tool permissions - Default trust and permission examples](https://kiro.dev/docs/permissions/#default-trust-and-permission-examples)
 
 各ツールにはデフォルトの信頼動作があります。`read`はカレントワーキングディレクトリに対してデフォルトで信頼されています。
 
@@ -190,10 +190,10 @@ Read/Write Trust Levels（制限的 → 緩い）:
 
 ## 関連リンク
 
-- [Managing tool permissions 公式ドキュメント](https://kiro.dev/docs/cli/chat/permissions/)
+- [Managing tool permissions 公式ドキュメント](https://kiro.dev/docs/permissions/)
 - [公式Changelog v1.27.0](https://kiro.dev/changelog/cli/1-27/)
-- [Shell tool settings](https://kiro.dev/docs/cli/reference/built-in-tools/#execute-shell-commands)
-- [Chat security](https://kiro.dev/docs/cli/chat/security/)
+- [Shell tool settings](https://kiro.dev/docs/reference/built-in-tools/#execute-shell-commands)
+- [Chat security](https://kiro.dev/docs/permissions/)
 - [AIによるAWS操作を安全に。Kiro CLIで作るsudo的なIAM権限昇格](https://dev.classmethod.jp/articles/kiro-cli-custom-agent-sudo/) - DevelopersIO記事 by suzuki.ryo（カスタムエージェント + IAMロールによる権限分離の実装例）
 
 ### 本サイトの関連文書

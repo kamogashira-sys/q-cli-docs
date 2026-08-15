@@ -39,38 +39,38 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 | **ルート** | [https://kiro.dev/](https://kiro.dev/) | |
 | ├── | **CLI** [(/cli/)](https://kiro.dev/cli/) | ターミナルでのプロンプトからコード、デプロイまでの流れを紹介。カスタムエージェント、高度なコンテキスト管理、MCP統合などの主要機能を説明 |
 | │　├── | Interactive Chat [(/docs/cli/chat/)](https://kiro.dev/docs/cli/chat/) | ターミナルでの自然言語対話機能 |
-| │　├── | Custom Agents [(/docs/cli/custom-agents/)](https://kiro.dev/docs/cli/custom-agents/) | ワークフロー特化エージェント作成。Creating custom agents、Agent configuration reference、Agent Examples、Troubleshooting custom agents |
-| │　├── | MCP Integration [(/docs/cli/mcp/)](https://kiro.dev/docs/cli/mcp/) | 外部ツール・データソース接続 |
-| │　├── | Smart Hooks [(/docs/cli/hooks/)](https://kiro.dev/docs/cli/hooks/) | インテリジェントな自動化フック |
-| │　├── | Agent Steering [(/docs/cli/steering/)](https://kiro.dev/docs/cli/steering/) | エージェントのガイダンス設定 |
+| │　├── | Custom Agents [(/docs/cli/custom-agents/)](https://kiro.dev/docs/custom-agents/) | ワークフロー特化エージェント作成。Creating custom agents、Agent configuration reference、Agent Examples、Troubleshooting custom agents |
+| │　├── | MCP Integration [(/docs/cli/mcp/)](https://kiro.dev/docs/mcp/) | 外部ツール・データソース接続 |
+| │　├── | Smart Hooks [(/docs/cli/hooks/)](https://kiro.dev/docs/hooks/) | インテリジェントな自動化フック |
+| │　├── | Agent Steering [(/docs/cli/steering/)](https://kiro.dev/docs/steering/) | エージェントのガイダンス設定 |
 | │　├── | Auto Complete [(/docs/cli/autocomplete/)](https://kiro.dev/docs/cli/autocomplete/) | コンテキスト認識型補完 |
-| │　└── | Installation [(/docs/cli/installation/)](https://kiro.dev/docs/cli/installation/) | CLIインストール手順 |
+| │　└── | Installation [(/docs/cli/installation/)](https://kiro.dev/docs/getting-started/installation/) | CLIインストール手順 |
 | ├── | **Powers** [(/powers/)](https://kiro.dev/powers/) | Kiroの特殊機能 |
 | ├── | **Autonomous agent** [(/autonomous-agent/)](https://kiro.dev/autonomous-agent/) | 自律エージェント機能 |
 | ├── | **Enterprise** [(/enterprise/)](https://kiro.dev/enterprise/) | 企業向け機能とソリューション。組織レベルの管理機能、AWS セキュリティ基準、IP補償、各種統合 |
 | ├── | **Pricing** [(/pricing/)](https://kiro.dev/pricing/) | 料金体系とプラン比較。Free($0)、Pro($20)、Pro+($40)、Power($200)、超過分$0.04/クレジット |
 | ├── | **Docs** [(/docs/cli/)](https://kiro.dev/docs/cli/) | CLI専用技術ドキュメント |
 | │　├── | **Getting Started** | |
-| │　│　└── | Installation [(/docs/cli/installation/)](https://kiro.dev/docs/cli/installation/) | CLIインストール手順 |
+| │　│　└── | Installation [(/docs/cli/installation/)](https://kiro.dev/docs/getting-started/installation/) | CLIインストール手順 |
 | │　├── | **Core Capabilities** | |
 | │　│　├── | Interactive Chat [(/docs/cli/chat/)](https://kiro.dev/docs/cli/chat/) | ターミナルでのAI対話機能。Starting a session、Multi-line statements、Conversation persistence、Model selection、Authentication |
-| │　│　├── | Custom Agents [(/docs/cli/custom-agents/)](https://kiro.dev/docs/cli/custom-agents/) | ワークフロー特化エージェント |
-| │　│　├── | Smart Hooks [(/docs/cli/hooks/)](https://kiro.dev/docs/cli/hooks/) | インテリジェントな自動化フック。Hook types（AgentSpawn、UserPromptSubmit、PreToolUse、PostToolUse、Stop）、Tool matching、Examples |
-| │　│　├── | Agent Steering [(/docs/cli/steering/)](https://kiro.dev/docs/cli/steering/) | エージェントのガイダンス設定。Steering file scope（Workspace、Global、Team）、Foundational steering files、Creating custom steering files、Best practices |
-| │　│　├── | MCP Integration [(/docs/cli/mcp/)](https://kiro.dev/docs/cli/mcp/) | 外部ツール・データソース接続。Setting up MCP（Command line、mcp.json file、Agent configuration）、Troubleshooting、Examples、Security Best Practices |
+| │　│　├── | Custom Agents [(/docs/cli/custom-agents/)](https://kiro.dev/docs/custom-agents/) | ワークフロー特化エージェント |
+| │　│　├── | Smart Hooks [(/docs/cli/hooks/)](https://kiro.dev/docs/hooks/) | インテリジェントな自動化フック。Hook types（AgentSpawn、UserPromptSubmit、PreToolUse、PostToolUse、Stop）、Tool matching、Examples |
+| │　│　├── | Agent Steering [(/docs/cli/steering/)](https://kiro.dev/docs/steering/) | エージェントのガイダンス設定。Steering file scope（Workspace、Global、Team）、Foundational steering files、Creating custom steering files、Best practices |
+| │　│　├── | MCP Integration [(/docs/cli/mcp/)](https://kiro.dev/docs/mcp/) | 外部ツール・データソース接続。Setting up MCP（Command line、mcp.json file、Agent configuration）、Troubleshooting、Examples、Security Best Practices |
 | │　│　├── | Auto Complete [(/docs/cli/autocomplete/)](https://kiro.dev/docs/cli/autocomplete/) | コンテキスト認識型補完。Autocomplete dropdown menu、Inline suggestions、Configuration、Supported tools、Troubleshooting |
 | │　│　├── | File References [(/docs/cli/chat/file-references/)](https://kiro.dev/docs/cli/chat/file-references/) 🆕 | チャット入力での `@file` `@directory` ファイル参照。解決順序（Prompts→Files→Directories）、Tab補完、Manage Prompts |
 | │　│　└── | Privacy First [(/docs/privacy-and-security/)](https://kiro.dev/docs/privacy-and-security/) | プライバシー・セキュリティ |
 | │　├── | **Reference**（リファレンス） 🆕 | |
-| │　│　├── | Settings [(/docs/cli/reference/settings/)](https://kiro.dev/docs/cli/reference/settings/) | 全設定項目（Telemetry/Chat/Knowledge/Keybindings/Tool Search/Feature toggles/API+MCP）と環境変数 |
-| │　│　├── | Slash Commands [(/docs/cli/reference/slash-commands/)](https://kiro.dev/docs/cli/reference/slash-commands/) | 全スラッシュコマンド41種＋キーボードショートカット |
-| │　│　├── | CLI Commands [(/docs/cli/reference/cli-commands/)](https://kiro.dev/docs/cli/reference/cli-commands/) | `kiro-cli` 全16コマンド、グローバル引数、セッション管理 |
-| │　│　└── | Built-in Tools [(/docs/cli/reference/built-in-tools/)](https://kiro.dev/docs/cli/reference/built-in-tools/) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_*/code/tool_search/subagent 他） |
+| │　│　├── | Settings [(/docs/cli/reference/settings/)](https://kiro.dev/docs/reference/settings/) | 全設定項目（Telemetry/Chat/Knowledge/Keybindings/Tool Search/Feature toggles/API+MCP）と環境変数 |
+| │　│　├── | Slash Commands [(/docs/cli/reference/slash-commands/)](https://kiro.dev/docs/reference/slash-commands/) | 全スラッシュコマンド41種＋キーボードショートカット |
+| │　│　├── | CLI Commands [(/docs/cli/reference/cli-commands/)](https://kiro.dev/docs/reference/cli-commands/) | `kiro-cli` 全16コマンド、グローバル引数、セッション管理 |
+| │　│　└── | Built-in Tools [(/docs/cli/reference/built-in-tools/)](https://kiro.dev/docs/reference/built-in-tools/) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_*/code/tool_search/subagent 他） |
 | │　├── | **CLI 3.0（V3 / Early Access）** [(/docs/cli/v3/)](https://kiro.dev/docs/cli/v3/) 🆕 | v3 の全体像（統一エンジン・4本柱・Breaking changes）。v2.8.0 以降 `kiro-cli --v3` でオプトイン（→ 本サイト [09_v3/](../09_v3/README.md)） |
-| │　│　├── | Spec-driven development [(/docs/cli/v3/specs/)](https://kiro.dev/docs/cli/v3/specs/) | 組み込み Spec agent による仕様駆動開発（要件→設計→タスク→実行） |
-| │　│　├── | Feature overview [(/docs/cli/v3/feature-overview/)](https://kiro.dev/docs/cli/v3/feature-overview/) | v2 → v3 の機能比較 |
+| │　│　├── | Spec-driven development [(/docs/cli/v3/specs/)](https://kiro.dev/docs/specs/) | 組み込み Spec agent による仕様駆動開発（要件→設計→タスク→実行） |
+| │　│　├── | Feature overview [(/docs/cli/v3/feature-overview/)](https://kiro.dev/docs/cli/v3/new-features/) | v2 → v3 の機能比較 |
 | │　│　├── | Permissions [(/docs/cli/v3/permissions/)](https://kiro.dev/docs/cli/v3/permissions/) | `permissions.yaml` による capability ベースの権限管理 |
-| │　│　├── | Hooks [(/docs/cli/v3/hooks/)](https://kiro.dev/docs/cli/v3/hooks/) | 独立ファイル `.kiro/hooks/*.json` の強化版 Hooks |
+| │　│　├── | Hooks [(/docs/cli/v3/hooks/)](https://kiro.dev/docs/cli/v3/hooks-migration/) | 独立ファイル `.kiro/hooks/*.json` の強化版 Hooks |
 | │　│　├── | Agent config [(/docs/cli/v3/agent-config/)](https://kiro.dev/docs/cli/v3/agent-config/) | タグベースのツール選択・Markdown 形式の Agent 設定 |
 | │　│　└── | Upgrade Agent [(/docs/cli/v3/upgrade-agent/)](https://kiro.dev/docs/cli/v3/upgrade-agent/) 🆕 | `/upgrade-agent` による V2 → V2/V3 両対応（universal）エージェント設定への移行（v2.14.0 追加。→ 本サイト [01_features/34](../01_features/34_v214UpgradeAgent.md)） |
 | ├── | **Resources** | |

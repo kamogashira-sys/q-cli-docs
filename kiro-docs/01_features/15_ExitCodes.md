@@ -4,7 +4,7 @@
 
 # Kiro CLI Exit Codes（終了コード）
 
-**出典**: [Exit Codes - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/exit-codes/)
+**出典**: [Exit Codes - Kiro CLI Documentation](https://kiro.dev/docs/reference/exit-codes/)
 
 ## 概要
 
@@ -466,7 +466,7 @@ chmod +x .kiro/hooks/pre-tool
 ## 関連リンク
 
 ### 公式ドキュメント
-- [Exit Codes - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/exit-codes/)
+- [Exit Codes - Kiro CLI Documentation](https://kiro.dev/docs/reference/exit-codes/)
 - [Kiro CLI v1.25.0 Changelog](https://kiro.dev/changelog/cli/1-25/)
 
 ### 関連機能

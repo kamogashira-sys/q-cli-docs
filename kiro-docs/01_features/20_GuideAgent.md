@@ -175,7 +175,7 @@ TUI モードで以下を入力すると、Kiro guide agent に切り替わり�
 | **導入バージョン** | v1.25.0（2026-02-03） | v1.29.7（2026-04-10） |
 | **対応 UI** | Classic UI / TUI 両対応（TUI では別挙動） | **TUI 専用** |
 | **エージェント名** | `kiro_help`（`agent list` で確認可能） | 未公開（`agent list` に非表示） |
-| **公式専用ページ** | ✅ [https://kiro.dev/docs/cli/chat/help-agent/](https://kiro.dev/docs/cli/chat/help-agent/) | ❌ なし |
+| **公式専用ページ** | ✅ [https://kiro.dev/docs/custom-agents/built-in/](https://kiro.dev/docs/custom-agents/built-in/) | ❌ なし |
 | **主な用途** | CLI 機能・設定・コマンドの詳細 QA、設定ファイル作成支援 | オンボーディング・TUI ヘルプ |
 | **使用ツール** | `introspect`、`fs_write`（`.kiro/**` `~/.kiro/**` 限定） | 未公開 |
 | **プロンプトインジケーター** | `[help]`（紫色） | 未公開 |
@@ -235,8 +235,8 @@ TUI モードがデフォルト化された v2.0.0 以降、TUI はデフォル�
 
 - [Kiro CLI 公式サイト](https://kiro.dev/cli/)
 - [Kiro CLI Terminal UI 比較](https://kiro.dev/docs/cli/terminal-ui/comparison/) - `/guide` の唯一の公式言及
-- [Kiro CLI Help Agent](https://kiro.dev/docs/cli/chat/help-agent/) - Help Agent の公式解説
-- [Kiro CLI スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/)
+- [Kiro CLI Help Agent](https://kiro.dev/docs/custom-agents/built-in/) - Help Agent の公式解説
+- [Kiro CLI スラッシュコマンドリファレンス](https://kiro.dev/docs/reference/slash-commands/)
 
 ### 関連機能（本サイト内）
 

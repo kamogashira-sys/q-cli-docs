@@ -4,7 +4,7 @@
 
 # Kiro CLI Remote Authentication機能
 
-**出典**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)、[Kiro CLI v1.25.1 Changelog](https://kiro.dev/changelog/cli/external-identity-provider-support-for-kiro-cli/)、[公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)、[Authentication](https://kiro.dev/docs/cli/authentication/)
+**出典**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)、[Kiro CLI v1.25.1 Changelog](https://kiro.dev/changelog/cli/external-identity-provider-support-for-kiro-cli/)、[公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)、[Authentication](https://kiro.dev/docs/getting-started/authentication/)
 
 ## 概要
 
@@ -714,7 +714,7 @@ docker run -it -p 8080:8080 my-dev-container
 
 ## v2.1.0での進化（2026年4月24日リリース）
 
-**出典**: [公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)、[Authentication](https://kiro.dev/docs/cli/authentication/)
+**出典**: [公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)、[Authentication](https://kiro.dev/docs/getting-started/authentication/)
 
 v2.1.0では、リモート環境での認証がDevice Flow方式の追加により大幅に簡素化されました。
 
@@ -767,7 +767,7 @@ External IdP（Okta、Microsoft Entra ID等の外部IDプロバイダー）経�
 
 ### 参考リンク
 
-- [Authentication 公式ドキュメント](https://kiro.dev/docs/cli/authentication/)
+- [Authentication 公式ドキュメント](https://kiro.dev/docs/getting-started/authentication/)
 - [公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)
 
 ## まとめ
@@ -819,7 +819,7 @@ External IdP（Okta、Microsoft Entra ID等の外部IDプロバイダー）経�
 
 - [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)
 - [Kiro CLI v1.25.1 Changelog - External Identity Provider Support](https://kiro.dev/changelog/cli/external-identity-provider-support-for-kiro-cli/)
-- [Authentication - Sign in from a Remote Machine](https://kiro.dev/docs/cli/authentication/#sign-in-from-a-remote-machine)
+- [Authentication - Sign in from a Remote Machine](https://kiro.dev/docs/getting-started/authentication/#sign-in-from-a-remote-machine)
 
 ---
 
