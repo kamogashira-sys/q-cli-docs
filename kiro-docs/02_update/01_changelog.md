@@ -13,9 +13,133 @@
 
 ## 最新バージョン
 
-> **注記**: 本ページは **v2.16.0**（2026-07-31）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
+> **注記**: 本ページは **v2.18.1**（2026-08-14）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
 >
 > **本節の掲載範囲**: 目安として直近 3〜4 バージョンを掲載し、それより古いものは新しいバージョンの追加時に[バージョン履歴](#バージョン履歴)へ移動します。
+
+### v2.18.1 CLI（2026-08-14）
+
+**主要な変更**: `/spec view` がインラインレビュー可能な完全なspec文書表示に変更されたことと、`tar` の危険フラグをブロックするセキュリティ修正が中心。
+
+**変更（1件）**:
+- ⚙️ **[V3] `/spec view` のインラインレビュー化**: 個別項目の詳細表示ではなく**完全なspec文書を開いてインラインレビュー**できるように変更。
+
+**セキュリティ（1件）**:
+- 🔒 **`tar` の危険フラグをブロック**: 任意コマンド実行を許す `tar --use-compress-program` と `--to-command` フラグをブロック。
+
+**バグ修正（7件）**:
+- 🔧 activity tray の完了タスクが `[done]` と表示され、スクリーンリーダーが完了を読み上げ可能に修正。
+- 🎨 ライブ thinking indicator が、推論テキストのストリーム開始前からブランドカラーで着色されるよう修正。
+- 🔧 Display Settings で `Enter` がフォーカス行を二重トグルしない よう修正。
+- 🔧 Subagent がステージ単位のモデルオーバーライドを尊重するよう修正。
+- 🔧 agent・MCP 設定ファイルがセッション中に変更されても `/context` エントリが消えないよう修正。
+- 🔧 `/goal` が説明文の前に `--max` を受け付けるよう修正（ドキュメント例と一致）。
+- 🔧 MCP OAuth がクリップボードコピー失敗時に認可 URL を表示するよう修正。
+
+**出典**: `kiro-cli version --changelog=all`（`kiro-cli version --changelog=2.18.1`）
+
+**注記**: ※公式Changelogサイト未掲載。CLI内蔵changelogのみで確認（`https://kiro.dev/changelog/cli/2-18/` に `#patch-2-18-1` アンカー・本文ともに不在、2026-08-16実測確認）。公式掲載後にリンクを追加します。
+
+---
+
+### v2.18.0 CLI（2026-08-12）
+
+**主要な変更**: オンデバイス音声入力 **`/voice`** の追加と、**Cloud Sessions の既定オプトイン化（破壊的変更）**、**Spec review screen**、**Nested AGENTS.md steering** が中心。
+
+**機能追加（4件）**:
+- 🎤 **`/voice`（オンデバイス音声入力）**: `/voice`・`Ctrl+O`・`Space` 長押しで録音開始、発話中は部分テキストがストリーム表示、`Enter` または無音自動停止で確定。既定で Whisper によるオンデバイス文字起こし（音声はマシン外に送信されずクラウド API キー不要）。モデルは初回利用時に明示確認の上1回だけダウンロード。`--continuous` でハンズフリー連続対話。詳細: [37. Voice Mode](../01_features/37_VoiceMode.md)
+  - 詳細: [Voice mode（公式）](https://kiro.dev/docs/cli/voice/)
+- 🔧 **[V3] Spec review screen**: spec フェーズのチェックポイントで `Ctrl+X` を押すとフェーズ文書をその場で読み、変更したい箇所に行コメントをステージング可能。チェックポイント質問への回答時に全ステージ済みコメントが1件の修正依頼としてまとめてエージェントへ送信される。
+- 🔧 **[V3] Nested `AGENTS.md` steering**: `AGENTS.md` がワークスペースツリー内の任意の場所（ワークスペースルート・`~/.kiro/steering/` に限らず）で steering コンテキストとして読み込まれるようになった。コードの隣に配置すれば他の steering ファイルと共にエージェントが認識。詳細: [23. Agent Steering](../01_features/23_Steering.md)
+- 📋 **[V3] セッション履歴の CLI・IDE 間共有**: 同一フォルダを含む CLI と IDE ワークスペース間でセッション履歴が共有されるようになった。
+
+**変更（2件）**:
+- ⚠️ **Cloud Sessions が既定オプトインへ変更（破壊的変更）**: 管理者が Kiro コンソールで Cloud Sessions を明示的に有効化しない限り無効。未設定のトグルは「無効」に解決されるため、これまで未設定の組織は管理者オプトインまで利用不可。詳細: [36. Cloud Sessions](../01_features/36_CloudSessions.md)
+- 🧠 **Extended thinking がモデル Auto 設定でも動作**: モデルが Auto 設定の場合でも extended thinking が機能するよう変更。
+
+**バグ修正（8件）**:
+- 📡 長時間実行ツール呼び出し後の最初のリクエストで発生する「dispatch failure」ネットワークエラーを修正。
+- 🔧 [V3] Sub-agent の行が、インライン表示と `Ctrl+G` モニターの両方で実行中ツール名を表示するよう修正。
+- 🔧 [V3] 無効化されたレジストリ MCP サーバーが `/mcp` レジストリモードで非表示にならず表示され続けるよう修正。
+- 🔧 [V3] spec 実行の design フェーズで、説明なく即座に失敗した sub-agent が表示される問題を修正。
+- 🔧 [V3] Windows シェルコマンドの既定が COMSPEC でなく PowerShell になるよう修正。
+- 🔧 [V3] リモートセッション・cloud config が `HTTP_PROXY` 環境設定を尊重するよう修正。
+- 🔧 [V3] MCP サーバーが起動時の失敗リトライループで固着しないよう修正。
+- 🔧 [V3] skill が自前の `node_modules` をベンダリングしている場合のファイル監視によるファイル記述子枯渇（`git` 等のコマンド失敗を招く）を修正。
+
+**出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)（published 2026-08-12T21:00:00.000Z）、[公式Changelog v2.18](https://kiro.dev/changelog/cli/2-18/)、[Voice mode（公式）](https://kiro.dev/docs/cli/voice/)
+
+**注記**: 公式Webの見出しは「Cloud sessions are now opt-in, so organizations that never set the toggle will find them disabled」（既定無効化という破壊的変更を明示）。CLI内蔵changelogは「Cloud sessions now support enterprise governance controls」という別表現で破壊性が明示されないため、**利用者影響の大きい公式Web側の表現を採用**しています。内蔵changelogは本体14項目（機能追加4／変更2／修正8）ですが、公式Webは主要機能4件として提示しており粒度が異なります。
+
+---
+
+### v2.17.0 CLI（2026-08-11）
+
+**主要な変更**: マネージドクラウドサンドボックスでセッションを実行する **Cloud Sessions（プレビュー）** の追加が中心。
+
+**機能追加（1件）**:
+- ☁️ **Cloud Sessions（プレビュー）**: `kiro-cli --cloud`（または `kiro-cli chat --cloud`）でマネージドクラウドサンドボックス上でセッションを実行。`--repo` または `/repo` ピッカーでリポジトリを紐付け。切断してもエージェントは作業を継続し、`--resume-id` で別マシンから再開可能。クラウド・ローカルセッションはセッションピッカーに共に表示される。IAM Identity Center 利用組織向けには、管理者が **Cloud Sessions (Preview)** 設定で管理（旧称 **Kiro Web (Preview)**）。既存有効化組織は継続有効、新規組織は要オプトイン。詳細: [36. Cloud Sessions](../01_features/36_CloudSessions.md)
+  - 詳細: [Cloud sessions（公式）](https://kiro.dev/docs/cloud-sessions/)
+
+**改善（3件）**:
+- 💡 スラッシュコマンドメニューが部分文字列一致に対応（`/pact` で `/compact` を検出）、前方一致を優先ランク付け。
+- ⚡ TUI での高速入力時のタイピング応答性向上。
+- 📋 Subagent モニターのリストナビゲーションが `Ctrl+D`（下）・`Ctrl+U`（上）でラップアラウンド。
+
+**バグ修正（3件）**:
+- 🔧 tmux・Zellij での spec・ワークフローのフリーテキスト入力でテキストカーソルが消える問題を修正。
+- 💡 使用不可なリクエスト済み agent について、「見つからない」ではなく理由を説明するよう修正。
+- 🎨 プロンプトバーのファイル・ペーストチップが全テーマで判読可能な高コントラスト表示になるよう修正。
+
+**出典**: [公式Changelog v2.17](https://kiro.dev/changelog/cli/2-17/)、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)（published 2026-08-11T21:00:00.000Z）
+
+**注記**: ローカルCLIの内蔵changelogには本バージョンが含まれないため、公式ページを一次情報としています（内蔵changelogの疎密問題）。
+
+---
+
+## バージョン履歴
+
+### v2.16.2 CLI（2026-08-06）
+
+**主要な変更**: バグ修正・運用向け改善のみ（パッチ）。Agent Plugin 形式 Powers 対応と「Open with Kiro CLI」対応（Cloud Sessions の前段機能 → [v2.17.0](#v2170-cli2026-08-11)）が中心。
+
+**改善（8件）**:
+- 🔧 オープンな Agent Plugin 形式に準拠した Powers が V3 セッションで読み込み可能（skill と MCP をバンドルするプラグイン対応）。
+- 🔧 V3 spec セッションが破損した spec ファイルを自動修復。
+- ⚙️ V3 `/effort` ピッカーが現在レベルに `[default]` を表示し、effort レベルを小文字表記に統一。
+- 🔧 MCP ツール出力が `/verbosity -mcp` フィルタを、bare 名で登録されたツールでも尊重するよう修正。
+- 🎨 幅広い単一行ツール結果（minified MCP JSON 等）がターミナルをオーバーフローしない。
+- 💡 サブコマンドメニューがコマンド名の繰り返しでなく実際の説明を表示。
+- 💡 検索可能メニュー（`/prompts`、`/model`、`/agent`）が名前一致を説明のみ一致より上位表示。
+- 💡 `Ctrl+O` が展開済みツール出力を、展開可能コンテンツが消えた後でも折りたたむ。
+
+**出典**: [公式Changelog v2.16](https://kiro.dev/changelog/cli/2-16/)（`#patch-2-16-2`）
+
+**注記**: ローカルCLIの内蔵changelogには本バージョンが含まれないため、公式ページを一次情報としています。「Open with Kiro CLI」は Cloud Sessions（v2.17.0）の前段機能です。
+
+---
+
+### v2.16.1 CLI（2026-08-04）
+
+**主要な変更**: `kiro-cli crew` によるKiro Crew統合と、ステータスラインのカスタマイズが中心。
+
+**改善（4件）**:
+- 🔧 **`kiro-cli crew` で Kiro Crew を起動**: macOS/Linux は未インストール時に自動導入、`--yes`/`-y` でプロンプトスキップ、`crew` 以降の引数は Crew へ転送。Windows は別途インストールが必要。詳細: [03. CLI Commands](../04_reference/03_cli-commands.md)
+- 🎨 `/settings` でステータスラインをカスタマイズ可能（日付・時刻・使用率・残クレジット表示、即時反映・セッション間永続化）。
+- ⚡ V2 で macOS の長い応答・大きいプロンプト時のタイピング速度向上。
+- 🔧 `kiro-cli --v3` のローカルセッションで `/agent create` が既定で AI 支援生成、`--manual` でエディタを開く、`/agent edit` も設定済みエディタで開く。
+
+**バグ修正（4件）**:
+- 🔧 V3 `/context show` が「Your prompts」カテゴリでの過剰カウント・内訳不整合を修正。
+- 🔧 V3セッションが中断されたツール呼び出しや不整合なツール呼び出し記録後に継続失敗する問題を修正。
+- 🔧 レガシー agent プロファイル（object 形式 hooks）が V3 `/agent` ピッカーに表示されない問題を修正。
+- 🔧 macOS の iTerm2 でターミナルリサイズ後に Kiro CLI 終了してもキーボード入力状態が異常なままになる問題を修正。
+
+**出典**: [公式Changelog v2.16](https://kiro.dev/changelog/cli/2-16/)（`#patch-2-16-1`）
+
+**注記**: ローカルCLIの内蔵changelogには本バージョンが含まれないため、公式ページを一次情報としています。`Kiro Crew` は本サイトの対象範囲外（Kiro CLI の姉妹製品）のため、`kiro-cli crew` サブコマンド自体の起動方法のみ扱います。
+
+---
 
 ### v2.16.0 CLI（2026-07-31）
 
@@ -1323,4 +1447,4 @@ kiro-cli chat "Hello, world!"
 - セキュリティアップデートのリリース時
 - コミュニティからの重要なフィードバック時
 
-**最終更新**: 2026-08-01（v2.16.0・v2.15.2・v2.15.1・v2.15.0対応追加、v2.14.2・v2.14.1・v2.14.0・v2.13.1をバージョン履歴へ移動、冒頭注記を v2.16.0 に更新。v2.16.0の`/tangent`（V3）は既存classic版`/tangent`（`04_reference/02_slash-commands.md`）と同名別仕様のため、両者へ相互参照リンクと詳細解説ページ（[35_v216Tangent.md](../01_features/35_v216Tangent.md)）を追加。前回 2026-07-25: v2.14.2・v2.14.1・v2.14.0・v2.13.1対応追加、v2.13.0・v2.12.3・v2.12.2・v2.12.1 をバージョン履歴へ移動、冒頭注記を v2.14.2 に更新、v2.12.3・v2.6.0 に v2.14.1 の方針転換（セッション限定化）の相互参照追加、v2.13.0 に v2.13.1 の相互参照追加）
+**最終更新**: 2026-08-16（v2.18.1・v2.18.0・v2.17.0対応追加、v2.16.2・v2.16.1・v2.16.0をバージョン履歴へ移動、冒頭注記を v2.18.1 に更新。v2.18.0の`/voice`（オンデバイス音声入力）は→[37_VoiceMode.md](../01_features/37_VoiceMode.md)、v2.17.0の Cloud Sessions（プレビュー）は→[36_CloudSessions.md](../01_features/36_CloudSessions.md)に詳細解説ページを追加。v2.18.0の Cloud Sessions 既定オプトイン化は破壊的変更として明記（公式Web表現を採用、内蔵changelogの governance controls 表現とは異なる）。v2.18.1は公式Changelogサイト未掲載のためCLI内蔵changelogのみを一次情報として採用。前回 2026-08-01: v2.16.0・v2.15.2・v2.15.1・v2.15.0対応追加、v2.14.2・v2.14.1・v2.14.0・v2.13.1をバージョン履歴へ移動、冒頭注記を v2.16.0 に更新。v2.16.0の`/tangent`（V3）は既存classic版`/tangent`（`04_reference/02_slash-commands.md`）と同名別仕様のため、両者へ相互参照リンクと詳細解説ページ（[35_v216Tangent.md](../01_features/35_v216Tangent.md)）を追加。前回 2026-07-25: v2.14.2・v2.14.1・v2.14.0・v2.13.1対応追加、v2.13.0・v2.12.3・v2.12.2・v2.12.1 をバージョン履歴へ移動、冒頭注記を v2.14.2 に更新、v2.12.3・v2.6.0 に v2.14.1 の方針転換（セッション限定化）の相互参照追加、v2.13.0 に v2.13.1 の相互参照追加）

@@ -20,6 +20,7 @@ Kiro CLI の設定項目を網羅的に記述する辞書的リファレンス�
   - [6. Tool Search（ツール検索）](#6-tool-searchツール検索)
   - [7. Feature toggles（機能トグル）](#7-feature-toggles機能トグル)
   - [8. API and service / MCP](#8-api-and-service--mcp)
+  - [9. Voice（音声入力）](#9-voice音声入力)
 - [補遺: 公式リファレンス未掲載の設定（実機確認）](#補遺-公式リファレンス未掲載の設定実機確認)
 - [環境変数](#環境変数)
 - [設定ファイルの場所](#設定ファイルの場所)
@@ -220,6 +221,23 @@ TUI のショートカットを上書き。`ctrl+`、`shift+`、`alt+`/`meta+` �
 | `mcp.noInteractiveTimeout` | number | 非対話的 MCP タイムアウト | `kiro-cli settings mcp.noInteractiveTimeout 5` |
 | `mcp.loadedBefore` | boolean | 過去にロードされた MCP サーバーを追跡 | `kiro-cli settings mcp.loadedBefore true` |
 
+### 9. Voice（音声入力）🆕
+
+**出典**: [Voice mode - Kiro CLI Documentation](https://kiro.dev/docs/cli/voice/)（Page updated: 2026-08-14）
+
+Whisper によるオンデバイス音声文字起こし（`/voice`、v2.18.0+）の設定。詳細は [37. Voice Mode](../01_features/37_VoiceMode.md)。
+
+| 設定 | 型 | 既定値 | 説明 | 例 |
+|------|-----|--------|------|-----|
+| `voice.modelSize` | string | `base` | Whisper モデルサイズ（`base` または `small`） | `kiro-cli settings voice.modelSize "small"` |
+| `voice.language` | string | `en` | 文字起こし言語（`auto` で自動検出） | `kiro-cli settings voice.language "auto"` |
+| `voice.silenceTimeout` | integer | `5` | 無音による録音自動停止までの秒数 | `kiro-cli settings voice.silenceTimeout 10` |
+| `voice.maxSessionTime` | integer | `300` | 最大録音時間（秒） | `kiro-cli settings voice.maxSessionTime 600` |
+| `voice.autoSubmit` | boolean | `true` | 文字起こし結果を自動送信するか（`false` で確認待ち） | `kiro-cli settings voice.autoSubmit false` |
+| `voice.serverUrl` | string | なし | クラウドデスクトップ向けリモート音声サーバー URL（`kiro-cli voice-cloud-setup` で設定） | `kiro-cli settings voice.serverUrl "http://localhost:8765"` |
+
+> 環境変数 `KIRO_VOICE_SERVER_URL` でも `voice.serverUrl` と同等の指定が可能です（環境変数節参照）。
+
 ---
 
 ## 補遺: 公式リファレンス未掲載の設定（実機確認）
@@ -234,7 +252,7 @@ TUI のショートカットを上書き。`ctrl+`、`shift+`、`alt+`/`meta+` �
 | `autocomplete.disable` | boolean | - | オートコンプリートの無効化（`true` で無効。キー名が **disable** である点に注意） | `kiro-cli settings autocomplete.disable true` |
 
 > - `autocomplete.disable` は実機 2.10.0 で `kiro-cli settings autocomplete.disable` による読み書きは可能ですが、`settings list --all` の一覧には表示されません（2026-07-04 実機確認）。
-> - このほか実機の `list --all` には `api.*`（サービスエンドポイント系）、`chat.agentEngine`、`chat.disableTrustAllConfirmation`、`chat.enableCodeIntelligence`、`chat.enableSubagent`、`chat.hasSeenLogo`、`voice.serverUrl` 等の**内部向け・未文書化キー**が存在しますが、公式ドキュメントに説明がなく通常利用で変更する必要がないため、本リファレンスでは一覧掲載を見送っています。
+> - このほか実機の `list --all` には `api.*`（サービスエンドポイント系）、`chat.agentEngine`、`chat.disableTrustAllConfirmation`、`chat.enableCodeIntelligence`、`chat.enableSubagent`、`chat.hasSeenLogo` 等の**内部向け・未文書化キー**が存在しますが、公式ドキュメントに説明がなく通常利用で変更する必要がないため、本リファレンスでは一覧掲載を見送っています。
 > - 詳細解説: [22. Smart Hooks](../01_features/22_Hooks.md)（`hooks.showStatus`）、[25. Auto Complete](../01_features/25_AutoComplete.md)（`autocomplete.disable`）、[04. Built-in Tools](04_built-in-tools.md)（`introspect.progressiveMode`）
 
 ---
@@ -251,6 +269,7 @@ TUI のショートカットを上書き。`ctrl+`、`shift+`、`alt+`/`meta+` �
 | `NO_COLOR` | 任意の値で TUI のすべてのカラー出力を無効化 |
 | `KIRO_ACP_RECORD_PATH` | TUI ACP ワイヤートラフィックを記録する JSONL ファイルパス。エージェント通信プロトコル問題のデバッグ用途 |
 | `KIRO_CLI_TOOL_SEARCH_MATCHING_THRESHOLD` | Tool Search キーワード結果の最低関連度スコア（既定: `1.5`） |
+| `KIRO_VOICE_SERVER_URL` | クラウドデスクトップ向けリモート音声サーバー URL（`voice.serverUrl` 設定と同等、v2.18.0+） |
 
 ---
 
@@ -401,6 +420,7 @@ kiro-cli settings list --all
 - [24. @file references](../01_features/24_FileReferences.md) 🆕 — Manage Prompts 関連設定
 - [25. Auto Complete](../01_features/25_AutoComplete.md) 🆕 — `autocomplete.disable` 設定
 - [26. Agent Toolkit for AWS](../01_features/26_AgentToolkitForAWS.md) 🌟 — `~/.kiro/settings/mcp.json` での AWS MCP Server 統合設定
+- [37. Voice Mode](../01_features/37_VoiceMode.md) 🆕 — `voice.*` 設定の解説
 
 ### リファレンス（本ディレクトリ）
 

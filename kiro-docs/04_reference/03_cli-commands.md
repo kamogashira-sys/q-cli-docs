@@ -13,7 +13,7 @@ Kiro CLI の `kiro-cli` コマンドおよびその引数を網羅する辞書�
 ## 📋 目次
 
 - [グローバル引数](#グローバル引数)
-- [コマンド一覧（公式16コマンド）](#コマンド一覧公式16コマンド)
+- [コマンド一覧（公式16コマンド + 3件）](#コマンド一覧公式16コマンド--3件)
 - [セッション管理](#セッション管理)
 - [ログファイル](#ログファイル)
 - [環境変数](#環境変数)
@@ -37,7 +37,9 @@ Kiro CLI の `kiro-cli` コマンドおよびその引数を網羅する辞書�
 
 ---
 
-## コマンド一覧（公式16コマンド）
+## コマンド一覧（公式16コマンド + 3件）
+
+> 1〜16 は公式 [CLI commands](https://kiro.dev/docs/cli/reference/cli-commands/) リファレンスに記載のコマンドです。17〜19（`crew`／`voice-serve`／`voice-cloud-setup`）は各バージョンの公式 Changelog で確認できるサブコマンドで、本ページ執筆時点で上記リファレンスには未掲載です。
 
 ### 1. `kiro-cli agent`
 
@@ -86,7 +88,7 @@ kiro-cli chat [OPTIONS] [INPUT]
 | `--no-interactive` | インタラクティブモードを使わず最初の応答を STDOUT に出力 |
 | `--resume` / `-r` | 当該ディレクトリの直前の会話を再開 |
 | `--resume-picker` | セッションピッカーで再開対象を選択 |
-| `--resume-id <ID>` | 特定 ID のセッションを再開 |
+| `--resume-id <ID>` | 特定 ID のセッションを再開（**v2.17.0+**: ローカルセッションだけでなく、Web/Mobile/IDE 等で開始した **Cloud Sessions** の ID を指定した場合はクラウドサンドボックスにアタッチする。同一フラグでローカル／クラウド両方のセッション ID を受理） |
 | `--list-sessions` | 当該ディレクトリの保存済みセッション一覧 |
 | `--list-models` | 利用可能なモデルを表示 |
 | `--delete-session <ID>` | 保存済みセッションを ID で削除 |
@@ -95,6 +97,8 @@ kiro-cli chat [OPTIONS] [INPUT]
 | `--trust-tools` | 特定ツールのみ信頼（カンマ区切り） |
 | `--require-mcp-startup` | MCP サーバー起動失敗時に exit code 3 で終了 |
 | `--wrap` | 行折返しモード: `always`/`never`/`auto`（既定） |
+| `--cloud` | **Cloud Sessions（プレビュー、v2.17.0+）**: マネージドクラウドサンドボックス上で新規セッションを作成（→ [36. Cloud Sessions](../01_features/36_CloudSessions.md)） |
+| `--repo <URL>` | `--cloud` と併用し、作成する Cloud Session にリポジトリを紐付け（v2.17.0+）。セッション内では `/repo` ピッカーでも指定可能 |
 | `INPUT` | 最初の質問（位置引数） |
 
 **例**:
@@ -112,11 +116,20 @@ kiro-cli chat --no-interactive --trust-all-tools "Show me the current directory"
 # 直前会話を再開
 kiro-cli chat --resume
 
-# 特定 ID のセッション再開
+# 特定 ID のセッション再開（ローカル）
 kiro-cli chat --resume-id abc123-def456
+
+# Cloud Sessions（Web/Mobile/IDE 等で開始）にアタッチ
+kiro-cli chat --resume-id <cloud-session-id>
 
 # セッションピッカー
 kiro-cli chat --resume-picker
+
+# Cloud Sessions（マネージドクラウドサンドボックスで実行）
+kiro-cli chat --cloud
+
+# Cloud Sessions にリポジトリを紐付け
+kiro-cli chat --cloud --repo https://github.com/example/my-repo
 
 # 特定エージェントで開始
 kiro-cli chat --agent my-agent "Help me with AWS CLI"
@@ -506,6 +519,65 @@ kiro-cli mcp import --file config.json workspace
 kiro-cli mcp status --name my-server
 ```
 
+### 17. `kiro-cli crew`（v2.16.1+）
+
+**Kiro Crew** を起動するサブコマンド。macOS/Linux は未インストール時に自動導入されます（Windows は別途インストールが必要）。
+
+```bash
+kiro-cli crew [OPTIONS] [ARGS...]
+```
+
+| 引数 | 短縮 | 説明 |
+|------|------|------|
+| `--yes` | `-y` | インストール確認プロンプトをスキップ |
+| `ARGS` | — | `crew` 以降の引数はすべて Kiro Crew へ転送される |
+
+```bash
+# Kiro Crew を起動（未インストール時は自動導入の確認を経て起動）
+kiro-cli crew
+
+# プロンプトをスキップして起動
+kiro-cli crew --yes
+```
+
+> **注**: `Kiro Crew` は Kiro CLI の姉妹製品であり、本サイトの対象範囲外です。ここでは `kiro-cli crew` サブコマンド自体の起動方法のみを扱います。
+
+### 18. `kiro-cli voice-serve`（v2.18.0+）
+
+ローカルマシンで音声サーバーを起動するサブコマンド。マイクを持たないクラウドデスクトップから、SSH リバーストンネル経由でこのマシンのマイクを利用する用途で使う。
+
+```bash
+kiro-cli voice-serve [OPTIONS]
+```
+
+```bash
+kiro-cli voice-serve
+```
+
+→ 詳細: [37. Voice Mode](../01_features/37_VoiceMode.md#リモート音声サーバークラウドデスクトップ向け)
+
+### 19. `kiro-cli voice-cloud-setup`（v2.18.0+）
+
+クラウドデスクトップ側から、ローカルマシンで起動した音声サーバーへの接続をワンステップで設定するサブコマンド。
+
+```bash
+kiro-cli voice-cloud-setup <hostname> [OPTIONS]
+```
+
+| 引数 | 短縮 | 説明 |
+|------|------|------|
+| `<hostname>` | — | 接続先ホスト名（位置引数、必須） |
+| `--port` | — | SSH リバーストンネルのポート番号 |
+| `--remote-bin` | — | リモート側の `kiro-cli` バイナリパス |
+| `-i <identity_file>` | — | SSH 認証に使う identity file（秘密鍵） |
+
+```bash
+kiro-cli voice-cloud-setup my-cloud-desktop.example.com
+kiro-cli voice-cloud-setup my-cloud-desktop.example.com --port 8765 -i ~/.ssh/id_ed25519
+```
+
+→ 詳細: [37. Voice Mode](../01_features/37_VoiceMode.md#リモート音声サーバークラウドデスクトップ向け)
+
 ---
 
 ## セッション管理
@@ -639,6 +711,8 @@ set -x KIRO_LOG_NO_COLOR 1
 - [15. ExitCodes](../01_features/15_ExitCodes.md) — `--require-mcp-startup` 関連
 - [16. v2 Major Update](../01_features/16_v2MajorUpdate.md) — `KIRO_API_KEY`、Headless Mode
 - [25. AutoComplete](../01_features/25_AutoComplete.md) — `kiro-cli inline` コマンド
+- [36. Cloud Sessions](../01_features/36_CloudSessions.md) 🆕 — `chat --cloud`・`--repo`・`--resume-id`（クラウド）
+- [37. Voice Mode](../01_features/37_VoiceMode.md) 🆕 — `kiro-cli voice-serve`・`kiro-cli voice-cloud-setup`
 
 ### デプロイ
 
@@ -651,5 +725,5 @@ set -x KIRO_LOG_NO_COLOR 1
 
 ---
 
-**Page updated**: 2026-05-24（本サイト初版）  
+**Page updated**: 2026-08-16（v2.16.1〜v2.18.1対応: 新規サブコマンド `kiro-cli crew`（v2.16.1）・`kiro-cli voice-serve`／`kiro-cli voice-cloud-setup`（いずれもv2.18.0）を追加、`chat --cloud`／`--repo`（v2.17.0、Cloud Sessions）を追加、`--resume-id` の説明をクラウドセッション対応に拡張。本サイト初版 2026-05-24）  
 **公式ページ最終更新**: 2026-05-12

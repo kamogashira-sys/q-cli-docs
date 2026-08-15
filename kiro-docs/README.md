@@ -23,7 +23,7 @@ Kiro CLI（旧Amazon Q Developer CLI）の最新情報とアップデートを�
 ```
 kiro-docs/
 ├── 00_information/   # 基本情報・公式サイト情報
-├── 01_features/      # 機能詳細ガイド（35機能）
+├── 01_features/      # 機能詳細ガイド（37機能）
 ├── 02_update/        # アップデート情報
 ├── 03_deployment/    # デプロイメント・環境構築
 ├── 04_reference/     # リファレンス（Settings/Slash/CLI/Tools）
@@ -46,7 +46,7 @@ Kiro CLI の基本情報と公式サイトの構造について説明したド�
 - **[公式サイト構造](00_information/01_official-site-structure.md)** - Kiro CLI公式サイトの画面遷移とページ構成
 
 ### [01_features/ - 機能詳細ガイド](01_features/README.md)
-Kiro CLIの主要機能（**35 機能**）について詳細に解説したドキュメント集です。
+Kiro CLIの主要機能（**37 機能**）について詳細に解説したドキュメント集です。
 
 📖 **[→ 機能一覧（カテゴリ別ナビゲーション・各機能の概要・バージョン情報）](01_features/README.md)**
 
@@ -69,7 +69,7 @@ Kiro CLI の設定・コマンド・ツールの **辞書的リファレンス**
 | ファイル | 内容 |
 |--------|------|
 | [01. Settings](04_reference/01_settings.md) | 全設定項目（公式8カテゴリ）と環境変数 |
-| [02. Slash Commands](04_reference/02_slash-commands.md) | 全スラッシュコマンド40種＋キーボードショートカット |
+| [02. Slash Commands](04_reference/02_slash-commands.md) | 全スラッシュコマンド41種＋キーボードショートカット |
 | [03. CLI Commands](04_reference/03_cli-commands.md) | `kiro-cli` コマンド全16種、グローバル引数、セッション管理 |
 | [04. Built-in Tools](04_reference/04_built-in-tools.md) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_*/code/tool_search/subagent 他） |
 

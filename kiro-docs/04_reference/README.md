@@ -13,7 +13,7 @@
 | # | ファイル | 内容 | 公式情報源 | 公式更新日 |
 |---|--------|------|----------|----------|
 | 01 | [Settings](01_settings.md) | 全設定項目（公式8カテゴリ）と環境変数 | https://kiro.dev/docs/cli/reference/settings/ | 2026-06-05 |
-| 02 | [Slash Commands](02_slash-commands.md) | 全スラッシュコマンド（40種）とキーボードショートカット | https://kiro.dev/docs/cli/reference/slash-commands/ | 2026-06-12 |
+| 02 | [Slash Commands](02_slash-commands.md) | 全スラッシュコマンド（41種）とキーボードショートカット | https://kiro.dev/docs/cli/reference/slash-commands/ | 2026-06-12 |
 | 03 | [CLI Commands](03_cli-commands.md) | `kiro-cli` コマンド全16種、グローバル引数、セッション管理 | https://kiro.dev/docs/cli/reference/cli-commands/ | 2026-05-12 |
 | 04 | [Built-in Tools](04_built-in-tools.md) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_search/web_fetch/introspect/code/tool_search/delegate/subagent/report/knowledge/thinking/todo/session） | https://kiro.dev/docs/cli/reference/built-in-tools/ | 2026-05-12 |
 
@@ -84,7 +84,7 @@
 
 ### 本サイト
 
-- [機能詳細ガイド (01_features/)](../01_features/README.md) — 35機能の詳細解説
+- [機能詳細ガイド (01_features/)](../01_features/README.md) — 37機能の詳細解説
 - [アップデート情報 (02_update/)](../02_update/README.md) — バージョン履歴と主要変更
 - [デプロイ・環境構築 (03_deployment/)](../03_deployment/README.md) — インストール手順
 - [メタドキュメント (05_meta/)](../05_meta/) — 品質保証関連

@@ -46,6 +46,7 @@ Agent Steering は、これらの課題を **コミット可能な Markdown フ�
 - [カスタムSteering Filesの作成](#カスタムsteering-filesの作成)
 - [Custom Agents との併用](#custom-agents-との併用)
 - [AGENTS.md 標準対応](#agentsmd-標準対応)
+- [v2.18.0での進化](#v2180での進化2026-08-12リリース)
 - [ベストプラクティス](#ベストプラクティス)
 - [Common Steering File Strategies](#common-steering-file-strategies)
 - [ユースケース](#ユースケース)
@@ -565,7 +566,33 @@ mv .kiro/steering/personal-secrets.md ~/.kiro/steering/
 
 ---
 
-## 関連リンク
+## v2.18.0での進化（2026-08-12リリース）
+
+**出典**: [公式Changelog v2.18](https://kiro.dev/changelog/cli/2-18/)、[Steering（公式）](https://kiro.dev/docs/steering/)
+
+### Nested AGENTS.md のさらなる拡張
+
+v2.18.0（V3）で、`AGENTS.md` を**ワークスペースツリー内の任意の場所**に配置できるようになりました。従来は「ワークスペースルート」または `~/.kiro/steering/` への配置が前提でしたが、この制約がなくなり、**コードの隣に直接 `AGENTS.md` を置くパターン**が可能になっています。
+
+```
+my-monorepo/
+├── AGENTS.md                          # ルート規約
+├── packages/
+│   ├── frontend/
+│   │   ├── AGENTS.md                  # frontend 専用規約
+│   │   └── src/
+│   │       └── components/
+│   │           ├── AGENTS.md          # コンポーネント固有の規約をさらに深い階層に配置可能
+│   │           └── Button.tsx
+│   └── backend/
+│       └── AGENTS.md                  # backend 専用規約
+```
+
+この配置により、他の steering ファイルと同様に、**作業中のファイルに最も近い `AGENTS.md` がエージェントのコンテキストへ自動的に読み込まれます**。大規模なモノレポや、パッケージ単位で規約が大きく異なるプロジェクトで、規約ファイルを対象コードの近くに置きやすくなりました。
+
+> 既存の「[ネスト対応](#ネスト対応)」節で説明した subproject 単位の配置（`packages/frontend/AGENTS.md` 等）は v2.18.0 以前から可能でしたが、v2.18.0 では**任意の深さのサブディレクトリ**への配置が明確にサポートされます。
+
+---
 
 ### 関連機能（本サイト）
 
@@ -605,5 +632,5 @@ mv .kiro/steering/personal-secrets.md ~/.kiro/steering/
 
 ---
 
-**Page updated**: 2026-05-24（本サイト初版）  
+**Page updated**: 2026-08-16（v2.18.0で Nested AGENTS.md がワークスペースツリー内の任意の場所へ配置可能になったことを追記）  
 **公式ページ最終更新**: 2026-01-08
