@@ -159,7 +159,7 @@ flowchart TB
 
 Kiro CLI v1.25.0（2026年2月4日リリース）で追加されたサブエージェントの細粒度アクセス制御機能について解説します。
 
-**出典**: [Subagents - Configuring Subagent Access](https://kiro.dev/docs/custom-agents/subagents/#configuring-subagent-access)
+**出典**: [Subagents - Configuring sub-agent access](https://kiro.dev/docs/custom-agents/subagents/#configuring-sub-agent-access)
 
 ### 概要
 

@@ -101,7 +101,7 @@ kiro-cli settings list --format json-pretty
 | `chat.ui` | string | UI エンジン: `tui`（既定）または `classic` | `kiro-cli settings chat.ui "classic"` |
 | `chat.disableGranularTrust` | boolean | 段階的信頼オプション無効化（TUI のみ） | `kiro-cli settings chat.disableGranularTrust true` |
 | `chat.autoExpandToolOutput` | boolean | ツール出力を自動展開（TUI のみ） | `kiro-cli settings chat.autoExpandToolOutput true` |
-| `chat.modelDefaults` | object | モデルごとのデフォルト設定（Claude 系は `output_config.effort`、GPT-5.6 系は `reasoning.effort`／`reasoning.mode`。新セッション全体に適用。`/effort set-current-as-default` の保存先） | [Effort](https://kiro.dev/docs/models/effort/#persistent-defaults) 参照 |
+| `chat.modelDefaults` | object | モデルごとのデフォルト設定（Claude 系は `output_config.effort`、GPT-5.6 系は `reasoning.effort`／`reasoning.mode`。新セッション全体に適用。`/effort set-current-as-default` の保存先） | [Effort](https://kiro.dev/docs/models/effort/#persistent-defaults-cli) 参照 |
 | ~~`chat.disableAutoDefaultModel`~~ | boolean | v2.12.3 で追加された `/model` の sticky default 化のオプトアウト。**v2.14.2 実機では存在しません**（下記注記参照） | — |
 | ~~`chat.disableAutoDefaultEffort`~~ | boolean | v2.12.3 で追加された `/effort` の sticky default 化のオプトアウト。**v2.14.2 実機では存在しません**（下記注記参照） | — |
 | `chat.enableContextUsageIndicator` | boolean | プロンプトにコンテキスト使用率を表示（classic のみ） | `kiro-cli settings chat.enableContextUsageIndicator true` |

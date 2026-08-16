@@ -146,7 +146,7 @@ Steering File は3つのスコープで運用できます。
 
 ## Foundational Steering Files
 
-**出典**: [Steering - Foundational steering files](https://kiro.dev/docs/steering/#foundational-steering-files)
+**出典**: [Steering - Project steering files](https://kiro.dev/docs/steering/#project-steering-files)（公式サイトの見出し名は"Foundational Steering Files"から"Project steering files"へ変更済み）
 
 公式が推奨する **基本3ファイル** は、プロジェクトの基本文脈を確立します。
 

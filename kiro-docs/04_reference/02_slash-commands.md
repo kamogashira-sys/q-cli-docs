@@ -632,7 +632,7 @@ To-do リストの表示・管理・再開。
 }
 ```
 
-出典: [公式 Effort ドキュメント（Persistent defaults）](https://kiro.dev/docs/models/effort/#persistent-defaults)
+出典: [公式 Effort ドキュメント（Persistent defaults）](https://kiro.dev/docs/models/effort/#persistent-defaults-cli)
 
 **優先順位**: ロード済みセッション effort > cli.json のユーザーデフォルト > ビルトインデフォルト
 

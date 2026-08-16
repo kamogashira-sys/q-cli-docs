@@ -4,7 +4,9 @@
 
 # Kiro CLI Granular Tool Trust機能
 
-**出典**: [Managing tool permissions](https://kiro.dev/docs/permissions/)、[公式Changelog v1.27.0](https://kiro.dev/changelog/cli/1-27/)、CLI changelog v1.27.0
+**出典**: [CLI 2.x reference - Permissions and tool trust](https://kiro.dev/docs/cli/2x-reference/#permissions-and-tool-trust)、[公式Changelog v1.27.0](https://kiro.dev/changelog/cli/1-27/)、CLI changelog v1.27.0
+
+> **⚠️ 本ページはCLI 2.x仕様を解説しています**。公式サイトはCLI 3.0（`permissions.yaml`による`capability`/`match`/`effect`ベースのルール記述）へ移行済みで、本ページの2.x仕様は[CLI 2.x reference](https://kiro.dev/docs/cli/2x-reference/#permissions-and-tool-trust)に要約が残るのみです。3.0の新仕様は本サイトでは未対応（今後の調査課題）。CLI 2.x系（v1.27.0〜v2.x、v3未移行環境）を使用中の方は本ページの内容がそのまま有効です。
 
 ## 概要
 
@@ -38,7 +40,7 @@ Kiro CLI v1.27.0（2026年3月2日リリース）で追加された、ツール�
 
 ## /toolsコマンド
 
-**出典**: [Managing tool permissions - Tools commands](https://kiro.dev/docs/permissions/#tools-commands)
+**出典**: [CLI 2.x reference - Slash commands](https://kiro.dev/docs/cli/2x-reference/#slash-commands)
 
 `/tools`コマンドでツール権限を管理できます。
 
@@ -68,7 +70,7 @@ Kiro> /tools untrust shell
 
 ## 利用可能なツール
 
-**出典**: [Managing tool permissions - Available tools](https://kiro.dev/docs/permissions/#available-tools)
+**出典**: [Built-in tools](https://kiro.dev/docs/reference/built-in-tools/)（各ツールの説明・`toolsSettings`は現行ページに現存。CLI 2.x/3.0共通）
 
 Kiro CLIに組み込まれているツール:
 
@@ -86,7 +88,7 @@ Kiro CLIに組み込まれているツール:
 
 ## Shell Command Trust Levels
 
-**出典**: [Managing tool permissions - Shell command trust levels](https://kiro.dev/docs/permissions/#shell-command-trust-levels)
+**出典**: [CLI 2.x reference - Shell command trust levels (interactive)](https://kiro.dev/docs/cli/2x-reference/#shell-command-trust-levels-interactive)
 
 Kiroがシェルコマンドを実行しようとすると、信頼範囲を選択するインタラクティブピッカーが表示されます。
 
@@ -133,7 +135,7 @@ Shell Trust Levels（制限的 → 緩い）:
 
 ## Read/Write Path Trust Levels
 
-**出典**: [Managing tool permissions - Read and write path trust levels](https://kiro.dev/docs/permissions/#read-and-write-path-trust-levels)
+**出典**: [CLI 2.x reference - Read and write path trust levels (interactive)](https://kiro.dev/docs/cli/2x-reference/#read-and-write-path-trust-levels-interactive)
 
 `read`と`write`ツールも、カレントワーキングディレクトリ外のパスにアクセスする際に段階的信頼をサポートします。
 
@@ -171,7 +173,7 @@ Read/Write Trust Levels（制限的 → 緩い）:
 
 ## デフォルトの信頼設定と使用例
 
-**出典**: [Managing tool permissions - Default trust and permission examples](https://kiro.dev/docs/permissions/#default-trust-and-permission-examples)
+**出典**: [Built-in tools - Tool permissions](https://kiro.dev/docs/reference/built-in-tools/#tool-permissions)（デフォルト信頼の基本方針は現行ページに現存: `report`は既定で信頼、`read`/`grep`/`glob`はカレントワーキングディレクトリ内で信頼）。ただし以下の「使用シーン別の推奨設定」表は本サイト独自の整理であり、公式の`Default trust and permission examples`相当の記述は現行ドキュメントおよび[CLI 2.x reference](https://kiro.dev/docs/cli/2x-reference/#permissions-and-tool-trust)から削除されています
 
 各ツールにはデフォルトの信頼動作があります。`read`はカレントワーキングディレクトリに対してデフォルトで信頼されています。
 
@@ -190,10 +192,10 @@ Read/Write Trust Levels（制限的 → 緩い）:
 
 ## 関連リンク
 
-- [Managing tool permissions 公式ドキュメント](https://kiro.dev/docs/permissions/)
+- [CLI 2.x reference - Permissions and tool trust](https://kiro.dev/docs/cli/2x-reference/#permissions-and-tool-trust)（公式ページ最終更新: 2026-08-04。本ページが解説するCLI 2.x仕様の要約が残る唯一の公式ページ）
 - [公式Changelog v1.27.0](https://kiro.dev/changelog/cli/1-27/)
-- [Shell tool settings](https://kiro.dev/docs/reference/built-in-tools/#execute-shell-commands)
-- [Chat security](https://kiro.dev/docs/permissions/)
+- [Built-in tools - Execute shell commands](https://kiro.dev/docs/reference/built-in-tools/#execute-shell-commands)（`shell`ツールの`toolsSettings`。CLI 2.x/3.0共通）
+- [Permissions migration guide（CLI 2.x → 3.0）](https://kiro.dev/docs/cli/v3/permissions/) — 3.0への移行を検討する場合の公式ガイド
 - [AIによるAWS操作を安全に。Kiro CLIで作るsudo的なIAM権限昇格](https://dev.classmethod.jp/articles/kiro-cli-custom-agent-sudo/) - DevelopersIO記事 by suzuki.ryo（カスタムエージェント + IAMロールによる権限分離の実装例）
 
 ### 本サイトの関連文書

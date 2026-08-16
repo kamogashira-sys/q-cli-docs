@@ -819,7 +819,7 @@ External IdP（Okta、Microsoft Entra ID等の外部IDプロバイダー）経�
 
 - [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)
 - [Kiro CLI v1.25.1 Changelog - External Identity Provider Support](https://kiro.dev/changelog/cli/external-identity-provider-support-for-kiro-cli/)
-- [Authentication - Sign in from a Remote Machine](https://kiro.dev/docs/getting-started/authentication/#sign-in-from-a-remote-machine)
+- [Authentication - Remote machine authentication (CLI)](https://kiro.dev/docs/getting-started/authentication/#remote-machine-authentication-cli)
 
 ---
 
