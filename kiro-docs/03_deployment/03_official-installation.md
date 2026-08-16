@@ -2,7 +2,9 @@
 
 # 公式インストール手順（Kiro CLI）
 
-**出典**: [Installation - Kiro CLI Documentation](https://kiro.dev/docs/getting-started/installation/)（公式ページ最終更新: 2026-04-24）
+**出典**: [Installation - Kiro CLI Documentation](https://kiro.dev/docs/getting-started/installation/)（公式ページ最終更新: 2026-08-04）
+
+> **⚠️ 公式ページの構造変更について**: 公式サイトは Kiro IDE / CLI / Web / Mobile / Crew の5サーフェス共通ページへ統合され、OS別の個別見出し（`macos`/`windows`等）は廃止されました。CLI向けの詳細手順（AppImage・zip・Ubuntu .deb・musl版等）はタブ切り替え形式の中に現存しますが、見出しID（アンカー）が再編されています（例: `linux-appimage`→`appimage`、`with-a-zip-file`→`zip-glibc-234`/`zip-musl-for-glibc-older-than-234`に分割、`ubuntu`→`ubuntu-deb`、`debugging-kiro-cli`→`log-file-locations`/`common-issues`に分割）。本ページの内容自体は現行の公式情報と一致しています（2026年8月16日確認）。
 
 ## 概要
 
@@ -42,7 +44,7 @@ Kiro CLI は **AWS Builder ID / IAM Identity Center / Google / GitHub** 等で�
 
 ## macOS インストール
 
-**出典**: [macOS](https://kiro.dev/docs/getting-started/installation/#macos)
+**出典**: [Installation - Install the CLI](https://kiro.dev/docs/getting-started/installation/#install-kiro)（公式サイトはOS別の個別見出しを廃止し、IDE/CLI/Web/Mobile/Crewのタブ切り替え形式で統合。CLIタブの macOS/Linux 手順は本ページの内容と一致）
 
 コマンドラインから macOS に **ネイティブインストール** できます。
 
@@ -67,7 +69,7 @@ kiro-cli doctor
 
 ## Windows 11 インストール
 
-**出典**: [Windows](https://kiro.dev/docs/getting-started/installation/#windows)
+**出典**: [Installation - Install the CLI](https://kiro.dev/docs/getting-started/installation/#install-kiro)（CLIタブのWindows手順。公式サイトはOS別見出しを廃止しタブ切り替え形式に統合）
 
 PowerShell を使い Windows 11 にインストール可能です（v2.0.0 以降で公式対応）。
 
@@ -108,7 +110,7 @@ kiro-cli uninstall
 
 ## Linux AppImage インストール
 
-**出典**: [Linux AppImage](https://kiro.dev/docs/getting-started/installation/#linux-appimage)
+**出典**: [Installation - AppImage](https://kiro.dev/docs/getting-started/installation/#appimage)
 
 AppImage はインストール不要で **大半の Linux ディストリビューションで動作** するポータブル形式です。
 
@@ -134,7 +136,7 @@ chmod +x kiro-cli.appimage
 
 ## Linux zip ファイルインストール
 
-**出典**: [With a zip file](https://kiro.dev/docs/getting-started/installation/#with-a-zip-file)
+**出典**: [Installation - glibc 2.34+](https://kiro.dev/docs/getting-started/installation/#zip-glibc-234)、[musl (for glibc older than 2.34)](https://kiro.dev/docs/getting-started/installation/#zip-musl-for-glibc-older-than-234)、[Check your glibc version](https://kiro.dev/docs/getting-started/installation/#check-your-glibc-version)（公式サイトは「With a zip file」を標準版/musl版の2見出しに分割）
 
 zip ファイルから手動でインストールする方式。AppImage が使えない環境向けです。
 
@@ -206,7 +208,7 @@ unzip kirocli.zip
 
 ## Ubuntu インストール
 
-**出典**: [Ubuntu](https://kiro.dev/docs/getting-started/installation/#ubuntu)
+**出典**: [Installation - Ubuntu .deb](https://kiro.dev/docs/getting-started/installation/#ubuntu-deb)
 
 Ubuntu 向けの **.deb パッケージ** を提供しています。
 
@@ -271,7 +273,7 @@ export HTTPS_PROXY=http://username:password@proxy.company.com:8080
 
 ## アンインストール
 
-**出典**: [Uninstalling Kiro CLI](https://kiro.dev/docs/getting-started/installation/#uninstalling-kiro-cli)
+**出典**: [Installation - Uninstalling](https://kiro.dev/docs/getting-started/installation/#uninstalling)（見出し名が"Uninstalling Kiro CLI"から"Uninstalling"に短縮。IDE/CLI共通セクション化）
 
 ### macOS
 
@@ -301,7 +303,7 @@ kiro-cli uninstall
 
 ## デバッグとトラブルシューティング
 
-**出典**: [Debugging Kiro CLI](https://kiro.dev/docs/getting-started/installation/#debugging-kiro-cli)
+**出典**: [Installation - Log file locations](https://kiro.dev/docs/getting-started/installation/#log-file-locations)、[Common issues](https://kiro.dev/docs/getting-started/installation/#common-issues)（見出し名"Debugging Kiro CLI"は廃止され、CLIタブ内で"Log file locations"と"Common issues"の2見出しに再編）
 
 ### 自動診断: `kiro-cli doctor`
 
@@ -478,7 +480,7 @@ GitHub Actions の Windows runner で Kiro CLI を導入：
 
 ### 公式情報源
 
-- [Installation - Kiro CLI Documentation](https://kiro.dev/docs/getting-started/installation/)（公式ページ最終更新: 2026-04-24）
+- [Installation - Kiro CLI Documentation](https://kiro.dev/docs/getting-started/installation/)（公式ページ最終更新: 2026-08-04）
 - [Quick start](https://kiro.dev/docs/cli/setup/) — インストール後の最初のステップ
 - [Authentication](https://kiro.dev/docs/getting-started/authentication/) — 認証方法
 - [Terminal UI](https://kiro.dev/docs/cli/terminal-ui/) — TUI 詳細
