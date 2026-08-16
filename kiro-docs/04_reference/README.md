@@ -12,10 +12,10 @@
 
 | # | ファイル | 内容 | 公式情報源 | 公式更新日 |
 |---|--------|------|----------|----------|
-| 01 | [Settings](01_settings.md) | 全設定項目（公式8カテゴリ）と環境変数 | https://kiro.dev/docs/reference/settings/ | 2026-06-05 |
-| 02 | [Slash Commands](02_slash-commands.md) | 全スラッシュコマンド（41種）とキーボードショートカット | https://kiro.dev/docs/reference/slash-commands/ | 2026-06-12 |
-| 03 | [CLI Commands](03_cli-commands.md) | `kiro-cli` コマンド全16種、グローバル引数、セッション管理 | https://kiro.dev/docs/reference/cli-commands/ | 2026-05-12 |
-| 04 | [Built-in Tools](04_built-in-tools.md) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_search/web_fetch/introspect/code/tool_search/delegate/subagent/report/knowledge/thinking/todo/session） | https://kiro.dev/docs/reference/built-in-tools/ | 2026-05-12 |
+| 01 | [Settings](01_settings.md) | 全設定項目（公式8カテゴリ）と環境変数 | https://kiro.dev/docs/reference/settings/ | 2026-08-12 |
+| 02 | [Slash Commands](02_slash-commands.md) | 全スラッシュコマンド（41種）とキーボードショートカット | https://kiro.dev/docs/reference/slash-commands/ | 2026-08-12 |
+| 03 | [CLI Commands](03_cli-commands.md) | `kiro-cli` コマンド全16種、グローバル引数、セッション管理 | https://kiro.dev/docs/reference/cli-commands/ | 2026-08-05 |
+| 04 | [Built-in Tools](04_built-in-tools.md) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_search/web_fetch/introspect/code/tool_search/delegate/subagent/report/knowledge/thinking/todo/session） | https://kiro.dev/docs/reference/built-in-tools/ | 2026-08-04 |
 
 ---
 

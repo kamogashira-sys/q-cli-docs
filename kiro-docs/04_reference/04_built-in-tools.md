@@ -2,7 +2,7 @@
 
 # Kiro CLI Built-in Tools リファレンス
 
-**出典**: [Built-in tools - Kiro CLI Documentation](https://kiro.dev/docs/reference/built-in-tools/)（公式ページ最終更新: 2026-05-12）
+**出典**: [Built-in tools - Kiro CLI Documentation](https://kiro.dev/docs/reference/built-in-tools/)（公式ページ最終更新: 2026-08-04）
 
 Kiro CLI の組み込みツール（公式記載 18 種類）を網羅する辞書的リファレンスです。
 
@@ -553,7 +553,7 @@ Amazon Q Developer CLI 時代は **9個** のビルトインツールでした�
 
 ### 公式情報源
 
-- [Built-in tools - Kiro CLI Documentation](https://kiro.dev/docs/reference/built-in-tools/)（公式ページ最終更新: 2026-05-12）
+- [Built-in tools - Kiro CLI Documentation](https://kiro.dev/docs/reference/built-in-tools/)（公式ページ最終更新: 2026-08-04）
 - [Custom Agents Configuration Reference](https://kiro.dev/docs/custom-agents/configuration-reference/)
 - [Tangent Mode](https://kiro.dev/docs/cli/experimental/tangent-mode/) — `introspect.tangentMode`
 - [Knowledge Management](https://kiro.dev/docs/cli/experimental/knowledge-management/) — `knowledge` ツール
@@ -563,4 +563,4 @@ Amazon Q Developer CLI 時代は **9個** のビルトインツールでした�
 ---
 
 **Page updated**: 2026-07-04（`settings` サブコマンドの表記を実機準拠（`settings KEY VALUE`）に修正、06_embedded-docs 参照をローカル管理注記付きテキスト参照へ変更。本サイト初版 2026-05-24）  
-**公式ページ最終更新**: 2026-05-12
+**公式ページ最終更新**: 2026-08-04

@@ -2,7 +2,7 @@
 
 # Kiro CLI Slash Commands リファレンス
 
-**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-06-12）
+**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-08-12）
 
 Kiro CLI のインタラクティブチャットセッション内で使用できるすべてのスラッシュコマンドを網羅する辞書的リファレンスです。
 
@@ -39,7 +39,7 @@ kiro-cli chat
 
 ## スラッシュコマンド一覧
 
-公式ページに記載されている全コマンド（公式更新日: 2026-06-12 時点）に加え、`/voice`（v2.18.0+、公式Voiceページを出典）を追加。**本ページには全 41 コマンドを掲載**しています（`/help`〜`/voice` の見出し数。`/save` / `/load` は 1 見出しに集約）。
+公式ページに記載されている全コマンド（公式更新日: 2026-08-12 時点）に加え、`/voice`（v2.18.0+、公式Voiceページを出典）を追加。**本ページには全 41 コマンドを掲載**しています（`/help`〜`/voice` の見出し数。`/save` / `/load` は 1 見出しに集約）。
 
 ### `/help`
 

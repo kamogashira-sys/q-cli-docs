@@ -2,7 +2,7 @@
 
 # Kiro CLI Settings リファレンス
 
-**出典**: [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-06-05）
+**出典**: [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-08-12）
 
 Kiro CLI の設定項目を網羅的に記述する辞書的リファレンスです。各設定の意味、型、設定例を一覧します。構成は公式リファレンスの8カテゴリに準拠し、公式未掲載ながら実機で確認できる設定は「[補遺](#補遺-公式リファレンス未掲載の設定実機確認)」に掲載しています。
 
