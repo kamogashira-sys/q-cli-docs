@@ -148,7 +148,7 @@ GPT-5.6 系モデル（`reasoning.effort` と `reasoning.mode` を使用）:
 
 この設定は全新規セッションに適用されます。
 
-- 設定キー: `chat.modelDefaults`（[公式設定リファレンス](https://kiro.dev/docs/cli/reference/settings/)・[公式 Effort ドキュメント](https://kiro.dev/docs/cli/chat/effort/)）
+- 設定キー: `chat.modelDefaults`（[公式設定リファレンス](https://kiro.dev/docs/reference/settings/)・[公式 Effort ドキュメント](https://kiro.dev/docs/models/effort/)）
 - 指定できる effort レベルはモデルごとに異なります（公式 Effort ドキュメントのモデル別表を参照）。Claude 系は `thinking.type` / `thinking.display`、GPT-5.6 系は `reasoning.mode` も同じ構造で指定できます。
 - ワークスペース単位でオーバーライドする場合はプロジェクトルートの `.kiro/settings/cli.json` に同様の構造で記述
 - **v2.14.1（2026-07-23）以降**: `/effort` の選択はセッション限定となり、`/effort set-current-as-default` で**現行モデルの既定**として保存します（保存先は本キー）。詳細は [28. v2.6 新コマンド](28_v26NewCommands.md) の「v2.14.1での変更」を参照。
@@ -280,7 +280,7 @@ v2.4.0で追加されたこれらのコマンドは、後続バージョンで�
 ### /rewind の拡張（v2.7.0）— Enriched preview
 - **ターンピッカーの情報拡充**: `/rewind` のターン選択画面で、各ターンの**ツール呼び出し詳細**、**ファイル変更**、**実行コマンド**、**コンテキスト使用量**などを表示
 - 分岐ポイントを特定しやすくなり、長いセッションでも目的のターンに素早くジャンプ可能
-- 詳細: [29. v2.7 新コマンド](29_v27NewCommands.md)、[公式 /rewind](https://kiro.dev/docs/cli/chat/rewind/)
+- 詳細: [29. v2.7 新コマンド](29_v27NewCommands.md)、[公式 /rewind](https://kiro.dev/docs/checkpoints/)
 
 ### /effort と新コマンド /goal との関係（v2.7.0）
 - v2.7.0 で追加された **`/goal`** は、`/effort` で設定された推論レベルのまま自律的な反復ループを実行します
@@ -298,11 +298,11 @@ v2.4.0で追加されたこれらのコマンドは、後続バージョンで�
 
 ## 関連リンク
 
-- [/rewind 公式ドキュメント](https://kiro.dev/docs/cli/chat/rewind/)
-- [/effort 公式ドキュメント](https://kiro.dev/docs/cli/chat/effort/)
+- [/rewind 公式ドキュメント](https://kiro.dev/docs/checkpoints/)
+- [/effort 公式ドキュメント](https://kiro.dev/docs/models/effort/)
 - [/settings 公式ドキュメント](https://kiro.dev/docs/cli/chat/settings/)
-- [スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/)
-- [設定リファレンス](https://kiro.dev/docs/cli/reference/settings/)
+- [スラッシュコマンドリファレンス](https://kiro.dev/docs/reference/slash-commands/)
+- [設定リファレンス](https://kiro.dev/docs/reference/settings/)
 - [公式Changelog v2.4](https://kiro.dev/changelog/cli/2-4/)
 - [Kiro CLI v2.4.0 の新機能まとめ — Rewind・Effort 制御・統合された設定メニュー](https://zenn.dev/aws_japan/articles/b77bf7748f515f) - Zenn記事 by konippi（v2.4.0新機能の詳細解説・スクリーンショット付き）
 

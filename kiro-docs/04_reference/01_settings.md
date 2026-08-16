@@ -2,7 +2,7 @@
 
 # Kiro CLI Settings リファレンス
 
-**出典**: [Settings - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/settings/)（公式ページ最終更新: 2026-06-05）
+**出典**: [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-08-12）
 
 Kiro CLI の設定項目を網羅的に記述する辞書的リファレンスです。各設定の意味、型、設定例を一覧します。構成は公式リファレンスの8カテゴリに準拠し、公式未掲載ながら実機で確認できる設定は「[補遺](#補遺-公式リファレンス未掲載の設定実機確認)」に掲載しています。
 
@@ -32,7 +32,7 @@ Kiro CLI の設定項目を網羅的に記述する辞書的リファレンス�
 
 ## 設定の操作
 
-**出典**: [Accessing settings](https://kiro.dev/docs/cli/reference/settings/#accessing-settings)
+**出典**: [Accessing settings](https://kiro.dev/docs/reference/settings/#accessing-settings)
 
 ```bash
 # 設定済みのすべての設定を一覧
@@ -101,13 +101,13 @@ kiro-cli settings list --format json-pretty
 | `chat.ui` | string | UI エンジン: `tui`（既定）または `classic` | `kiro-cli settings chat.ui "classic"` |
 | `chat.disableGranularTrust` | boolean | 段階的信頼オプション無効化（TUI のみ） | `kiro-cli settings chat.disableGranularTrust true` |
 | `chat.autoExpandToolOutput` | boolean | ツール出力を自動展開（TUI のみ） | `kiro-cli settings chat.autoExpandToolOutput true` |
-| `chat.modelDefaults` | object | モデルごとのデフォルト設定（Claude 系は `output_config.effort`、GPT-5.6 系は `reasoning.effort`／`reasoning.mode`。新セッション全体に適用。`/effort set-current-as-default` の保存先） | [Effort](https://kiro.dev/docs/cli/chat/effort/#persistent-defaults) 参照 |
+| `chat.modelDefaults` | object | モデルごとのデフォルト設定（Claude 系は `output_config.effort`、GPT-5.6 系は `reasoning.effort`／`reasoning.mode`。新セッション全体に適用。`/effort set-current-as-default` の保存先） | [Effort](https://kiro.dev/docs/models/effort/#persistent-defaults-cli) 参照 |
 | ~~`chat.disableAutoDefaultModel`~~ | boolean | v2.12.3 で追加された `/model` の sticky default 化のオプトアウト。**v2.14.2 実機では存在しません**（下記注記参照） | — |
 | ~~`chat.disableAutoDefaultEffort`~~ | boolean | v2.12.3 で追加された `/effort` の sticky default 化のオプトアウト。**v2.14.2 実機では存在しません**（下記注記参照） | — |
 | `chat.enableContextUsageIndicator` | boolean | プロンプトにコンテキスト使用率を表示（classic のみ） | `kiro-cli settings chat.enableContextUsageIndicator true` |
 | `chat.historyMode` | string | プロンプト履歴のスコープ: `session`（既定）/ `global`（v2.5.0+、次セッション反映）。⚠️ 実機 2.10.0 では `kiro-cli settings` から本キーを直接読み書きできない（`not a valid setting`、`settings list --all` にも非掲載。2026-07-04 実機確認）ため、チャット内の `/settings history` で設定する | `/settings history`（チャット内） |
 
-> **`chat.disableInheritingDefaultResources`** は **v2.10.0 で追加**された設定です。既定は `false`（カスタムエージェントは既定リソース steering / skills / AGENTS.md を継承）、`true` で継承を無効化できます（**組み込みエージェントは本設定に関わらず常に継承**）。v2.7.0 で導入された既定リソース自動継承のオプトアウト手段です。⚠️ 公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（公式ページ最終更新 2026-06-05）は本設定が未反映のため、本サイトは [カスタムエージェント設定リファレンス](https://kiro.dev/docs/cli/custom-agents/configuration-reference/)（公式ページ最終更新 2026-06-26）を一次情報として採用しています。詳細: [31. v2.10 設定ホットリロード & リソース継承制御](../01_features/31_v210ConfigHotReload.md)
+> **`chat.disableInheritingDefaultResources`** は **v2.10.0 で追加**された設定です。既定は `false`（カスタムエージェントは既定リソース steering / skills / AGENTS.md を継承）、`true` で継承を無効化できます（**組み込みエージェントは本設定に関わらず常に継承**）。v2.7.0 で導入された既定リソース自動継承のオプトアウト手段です。⚠️ 公式 [Settings リファレンス](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新 2026-06-05）は本設定が未反映のため、本サイトは [カスタムエージェント設定リファレンス](https://kiro.dev/docs/custom-agents/configuration-reference/)（公式ページ最終更新 2026-06-26）を一次情報として採用しています。詳細: [31. v2.10 設定ホットリロード & リソース継承制御](../01_features/31_v210ConfigHotReload.md)
 
 > **`chat.disableAutoDefaultModel` / `chat.disableAutoDefaultEffort`（v2.12.3 で追加 → 現行では廃止）**
 >
@@ -127,7 +127,7 @@ kiro-cli settings list --format json-pretty
 >
 > 恒久デフォルトは `chat.defaultModel`（モデル）と `chat.modelDefaults`（モデルごとの effort 等）に保持されます。出典: [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）、`kiro-cli version --changelog=2.14.1`。詳細: [28. v2.6 新コマンド](../01_features/28_v26NewCommands.md)
 >
-> ⚠️ **公式リファレンスは未反映**: [Effort](https://kiro.dev/docs/cli/chat/effort/)（公式ページ最終更新 2026-07-21）・[In-session settings](https://kiro.dev/docs/cli/chat/settings/)（同 2026-06-12）は「選択は自動的に永続化され `set-current-as-default` は不要」と記述したままです。本サイトは新しい一次情報である公式 Changelog を採用しています。
+> ⚠️ **公式リファレンスは未反映**: [Effort](https://kiro.dev/docs/models/effort/)（公式ページ最終更新 2026-07-21）・[In-session settings](https://kiro.dev/docs/cli/chat/settings/)（同 2026-06-12）は「選択は自動的に永続化され `set-current-as-default` は不要」と記述したままです。本サイトは新しい一次情報である公式 Changelog を採用しています。
 
 #### 表示・アクセシビリティ（Display and accessibility、terminal UI）
 
@@ -146,7 +146,7 @@ kiro-cli settings list --format json-pretty
 
 > **`KIRO_ASCII_MODE=1`** を設定すると `chat.allowAsciiArt` に関わらず ASCII モードが強制されます（環境変数節参照）。
 > **v2.12.0+**: すべての TUI グリフ・記号が ASCII モード設定（`chat.allowAsciiArt` / `KIRO_ASCII_MODE`）を尊重するよう**適用範囲が拡大**しました（Unicode 非対応端末での互換性向上。新規設定の追加ではなく既存設定の挙動拡張）。
-> **ターミナルタイトル**は v2.6.0 までは `/settings display` → Terminal title でのトグルのみで CLI 設定としては提供されていませんでしたが、**v2.7.0 で `chat.terminalTitle` 設定が追加され CLI 設定としても制御可能**になりました。⚠️ 公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映のため、型・既定値は**実機 kiro-cli 2.10.0 の `kiro-cli settings list --all` の説明文**「Show dynamic title in terminal tab (boolean, default: false)」（2026-07-04 確認）を一次情報として採用しています（boolean・既定 `false`。CLI 内蔵 changelog v2.7.0 の追加文言とも整合）。
+> **ターミナルタイトル**は v2.6.0 までは `/settings display` → Terminal title でのトグルのみで CLI 設定としては提供されていませんでしたが、**v2.7.0 で `chat.terminalTitle` 設定が追加され CLI 設定としても制御可能**になりました。⚠️ 公式 [Settings リファレンス](https://kiro.dev/docs/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映のため、型・既定値は**実機 kiro-cli 2.10.0 の `kiro-cli settings list --all` の説明文**「Show dynamic title in terminal tab (boolean, default: false)」（2026-07-04 確認）を一次情報として採用しています（boolean・既定 `false`。CLI 内蔵 changelog v2.7.0 の追加文言とも整合）。
 > `chat.showThinking`（モデル自身の推論表示、本節）と `chat.enableThinking`（thinking ツールの有効化、Feature toggles 節）は**別物**です。`chat.showThinkingTips`（機能ヒントの表示、本節）はさらに別物で、いずれも独立してON/OFF可能です。
 > 詳細: [27. Thinking Display](../01_features/27_ThinkingDisplay.md)、[29. v27NewCommands](../01_features/29_v27NewCommands.md)、[公式 Queue Steering](https://kiro.dev/docs/cli/chat/queue-steering/)
 
@@ -242,7 +242,7 @@ Whisper によるオンデバイス音声文字起こし（`/voice`、v2.18.0+�
 
 ## 補遺: 公式リファレンス未掲載の設定（実機確認）
 
-上記の8カテゴリは公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（Page updated 2026-06-05）の構成に準拠しています。一方、**実機の `kiro-cli settings list --all`**（kiro-cli 2.10.0、2026-07-04 確認）には公式リファレンス未掲載の設定が存在します。うち本サイトの機能文書・changelog で解説済みのものを補遺として掲載します。
+上記の8カテゴリは公式 [Settings リファレンス](https://kiro.dev/docs/reference/settings/)（Page updated 2026-06-05）の構成に準拠しています。一方、**実機の `kiro-cli settings list --all`**（kiro-cli 2.10.0、2026-07-04 確認）には公式リファレンス未掲載の設定が存在します。うち本サイトの機能文書・changelog で解説済みのものを補遺として掲載します。
 
 | 設定 | 型 | 既定 | 説明（実機 `list --all` の説明文に基づく） | 例 |
 |------|-----|------|------|-----|
@@ -259,7 +259,7 @@ Whisper によるオンデバイス音声文字起こし（`/voice`、v2.18.0+�
 
 ## 環境変数
 
-**出典**: [Environment variables](https://kiro.dev/docs/cli/reference/settings/#environment-variables)
+**出典**: [Environment variables](https://kiro.dev/docs/reference/settings/#environment-variables)
 
 | 変数 | 説明 |
 |------|------|
@@ -430,8 +430,8 @@ kiro-cli settings list --all
 
 ### 公式情報源
 
-- [Settings - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/settings/)（公式ページ最終更新: 2026-06-05）
-- [Custom Agents Configuration Reference](https://kiro.dev/docs/cli/custom-agents/configuration-reference/)
+- [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-06-05）
+- [Custom Agents Configuration Reference](https://kiro.dev/docs/custom-agents/configuration-reference/)
 
 ---
 

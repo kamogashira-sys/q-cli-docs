@@ -75,7 +75,7 @@ Kiro CLI **v2.6.0**（2026-06-05）で追加・拡張されたコマンドと機
 
 > **注記（一次情報の不一致）**: CLI 内蔵 changelog は `/title` の有効化方法として「`chat.terminalTitle` 設定」に言及していますが、公式設定リファレンス（更新 2026-06-05）は「terminal title は `/settings display` → Terminal title でトグルし、**CLI 設定としては提供されない**（not available as a CLI setting）」と明記しています。本サイトは公式設定リファレンスに従い、`/settings display` での有効化を正とします。
 >
-> **更新（v2.7.0）**: **v2.7.0 で `chat.terminalTitle` が CLI 設定として正式追加され、本不一致は解消されました**。`chat.terminalTitle` 設定でも有効化制御が可能になりました（→ [02_update/01_changelog.md](../02_update/01_changelog.md) の v2.7.0 セクションを参照）。なお、公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映（2026-06-21 取得時点）です。
+> **更新（v2.7.0）**: **v2.7.0 で `chat.terminalTitle` が CLI 設定として正式追加され、本不一致は解消されました**。`chat.terminalTitle` 設定でも有効化制御が可能になりました（→ [02_update/01_changelog.md](../02_update/01_changelog.md) の v2.7.0 セクションを参照）。なお、公式 [Settings リファレンス](https://kiro.dev/docs/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映（2026-06-21 取得時点）です。
 
 ---
 
@@ -124,7 +124,7 @@ v2.6.0では、`/model` と `/effort` の選択が**自動的に永続化**さ�
 - 自動適用を無効化する設定が新規追加:
   - `chat.disableAutoDefaultModel`（Boolean・既定 `false`）: モデルの自動デフォルト化を無効化。
   - `chat.disableAutoDefaultEffort`（Boolean・既定 `false`）: effort の自動デフォルト化を無効化。
-- 設定の詳細: [04_reference/01_settings.md](../04_reference/01_settings.md)、[公式 Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)。
+- 設定の詳細: [04_reference/01_settings.md](../04_reference/01_settings.md)、[公式 Settings リファレンス](https://kiro.dev/docs/reference/settings/)。
 
 > ⚠️ **v2.14.1 で方針転換されました**（下記「v2.14.1での変更」を参照）。本節は v2.12.3 時点の仕様です。
 
@@ -144,7 +144,7 @@ v2.6.0では、`/model` と `/effort` の選択が**自動的に永続化**さ�
 
 - **`/effort set-current-as-default` は v2.14.1 の新規追加**で、**現行モデルに対する**既定 effort を保存します（保存先はモデル単位の `chat.modelDefaults`）。
 - v2.12.3 で追加されたオプトアウト設定 `chat.disableAutoDefaultModel` / `chat.disableAutoDefaultEffort` は、**v2.14.2 実機では設定キーとして存在しません**（`kiro-cli settings <key>` が `is not a valid setting` を返す。有効だが未設定のキーは `No value associated with` となるため区別できます）。削除された正確なバージョンは公式に記載がありません。
-- ⚠️ **公式リファレンスは未反映**: [Effort](https://kiro.dev/docs/cli/chat/effort/)（公式ページ最終更新 2026-07-21）と [In-session settings](https://kiro.dev/docs/cli/chat/settings/)（同 2026-06-12）は「選択は自動的に永続化され `set-current-as-default` は不要」と記述したままです。本サイトは新しい一次情報である[公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）を採用しています。
+- ⚠️ **公式リファレンスは未反映**: [Effort](https://kiro.dev/docs/models/effort/)（公式ページ最終更新 2026-07-21）と [In-session settings](https://kiro.dev/docs/cli/chat/settings/)（同 2026-06-12）は「選択は自動的に永続化され `set-current-as-default` は不要」と記述したままです。本サイトは新しい一次情報である[公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）を採用しています。
 - 変更履歴: [v2.14.1](../02_update/01_changelog.md)
 
 ---
@@ -168,8 +168,8 @@ v2.6.0では、`/model` と `/effort` の選択が**自動的に永続化**さ�
 ## 関連リンク
 
 ### 公式情報源
-- [スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/)（更新 2026-06-05）
-- [Effort 公式ドキュメント](https://kiro.dev/docs/cli/chat/effort/)
+- [スラッシュコマンドリファレンス](https://kiro.dev/docs/reference/slash-commands/)（更新 2026-06-05）
+- [Effort 公式ドキュメント](https://kiro.dev/docs/models/effort/)
 - [Settings persistence 公式ドキュメント](https://kiro.dev/docs/cli/chat/settings/#persistence)
 - [公式Changelog v2.6](https://kiro.dev/changelog/cli/2-6/)
 

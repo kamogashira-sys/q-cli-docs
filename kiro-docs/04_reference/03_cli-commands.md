@@ -2,7 +2,7 @@
 
 # Kiro CLI Commands リファレンス
 
-**出典**: [CLI commands - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/cli-commands/)（公式ページ最終更新: 2026-05-12）
+**出典**: [CLI commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/cli-commands/)（公式ページ最終更新: 2026-08-05）
 
 Kiro CLI の `kiro-cli` コマンドおよびその引数を網羅する辞書的リファレンスです。
 
@@ -23,7 +23,7 @@ Kiro CLI の `kiro-cli` コマンドおよびその引数を網羅する辞書�
 
 ## グローバル引数
 
-**出典**: [Global arguments](https://kiro.dev/docs/cli/reference/cli-commands/#global-arguments)
+**出典**: [Global arguments](https://kiro.dev/docs/reference/cli-commands/#global-arguments)
 
 すべての Kiro CLI コマンドで使用可能：
 
@@ -582,7 +582,7 @@ kiro-cli voice-cloud-setup my-cloud-desktop.example.com --port 8765 -i ~/.ssh/id
 
 ## セッション管理
 
-**出典**: [Session management](https://kiro.dev/docs/cli/reference/cli-commands/#session-management)
+**出典**: [Session management](https://kiro.dev/docs/reference/cli-commands/#session-management)
 
 Kiro CLI は会話のすべてのターンを自動保存。任意のセッションを再開可能。
 
@@ -634,7 +634,7 @@ kiro-cli chat --delete-session <SESSION_ID>
 
 ## ログファイル
 
-**出典**: [Log files](https://kiro.dev/docs/cli/reference/cli-commands/#log-files)
+**出典**: [Log files](https://kiro.dev/docs/reference/cli-commands/#log-files)
 
 トラブルシューティング用にログを保持：
 
@@ -720,10 +720,10 @@ set -x KIRO_LOG_NO_COLOR 1
 
 ### 公式情報源
 
-- [CLI commands - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/cli-commands/)（公式ページ最終更新: 2026-05-12）
+- [CLI commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/cli-commands/)（公式ページ最終更新: 2026-08-05）
 - [ACP](https://kiro.dev/docs/cli/acp/) — `kiro-cli acp` の詳細
 
 ---
 
 **Page updated**: 2026-08-16（v2.16.1〜v2.18.1対応: 新規サブコマンド `kiro-cli crew`（v2.16.1）・`kiro-cli voice-serve`／`kiro-cli voice-cloud-setup`（いずれもv2.18.0）を追加、`chat --cloud`／`--repo`（v2.17.0、Cloud Sessions）を追加、`--resume-id` の説明をクラウドセッション対応に拡張。本サイト初版 2026-05-24）  
-**公式ページ最終更新**: 2026-05-12
+**公式ページ最終更新**: 2026-08-05

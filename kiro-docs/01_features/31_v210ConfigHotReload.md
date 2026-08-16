@@ -37,7 +37,7 @@ $EDITOR .kiro/agents/my-agent.json
 
 詳細は公式ドキュメントを参照してください。
 
-- 公式: [MCP 設定（Hot-Reload）](https://kiro.dev/docs/cli/mcp/configuration/)
+- 公式: [MCP 設定（Hot-Reload）](https://kiro.dev/docs/mcp/configuration/)
 
 ---
 
@@ -64,9 +64,9 @@ kiro-cli settings chat.disableInheritingDefaultResources false
 
 - 既定リソースを明示的に管理したい場合や、カスタムエージェントに不要なコンテキストを含めたくない場合に有用です。
 - 組み込みエージェントは常に既定リソースを継承するため、本設定の影響を受けません。
-- 公式: [カスタムエージェント設定リファレンス](https://kiro.dev/docs/cli/custom-agents/configuration-reference/)
+- 公式: [カスタムエージェント設定リファレンス](https://kiro.dev/docs/custom-agents/configuration-reference/)
 
-> **出典の注記**: 公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（公式ページ最終更新 2026-06-05）には本設定が未反映のため、本サイトは[カスタムエージェント設定リファレンス](https://kiro.dev/docs/cli/custom-agents/configuration-reference/)（公式ページ最終更新 2026-06-26）を一次情報として採用しています。
+> **出典の注記**: 公式 [Settings リファレンス](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新 2026-06-05）には本設定が未反映のため、本サイトは[カスタムエージェント設定リファレンス](https://kiro.dev/docs/custom-agents/configuration-reference/)（公式ページ最終更新 2026-06-26）を一次情報として採用しています。
 
 ---
 
@@ -81,8 +81,8 @@ kiro-cli settings chat.disableInheritingDefaultResources false
 
 ### 公式情報源
 - [公式 Changelog v2.10](https://kiro.dev/changelog/cli/2-10/)
-- [MCP 設定（Hot-Reload）](https://kiro.dev/docs/cli/mcp/configuration/)
-- [カスタムエージェント設定リファレンス](https://kiro.dev/docs/cli/custom-agents/configuration-reference/)
+- [MCP 設定（Hot-Reload）](https://kiro.dev/docs/mcp/configuration/)
+- [カスタムエージェント設定リファレンス](https://kiro.dev/docs/custom-agents/configuration-reference/)
 
 ---
 

@@ -2,7 +2,7 @@
 
 # Kiro CLI Agent Steering機能
 
-**出典**: [Steering - Kiro CLI Documentation](https://kiro.dev/docs/cli/steering/)、[AGENTS.md 標準](https://agents.md/)、[Agent Configuration Reference - resources field](https://kiro.dev/docs/cli/custom-agents/configuration-reference#resources-field)、[公式Changelog v1.20.0](https://kiro.dev/changelog/cli/1-20/)
+**出典**: [Steering - Kiro CLI Documentation](https://kiro.dev/docs/steering/)、[AGENTS.md 標準](https://agents.md/)、[Agent Configuration Reference - resources field](https://kiro.dev/docs/custom-agents/configuration-reference#resources-field)、[公式Changelog v1.20.0](https://kiro.dev/changelog/cli/1-20/)
 
 ## 概要
 
@@ -57,7 +57,7 @@ Agent Steering は、これらの課題を **コミット可能な Markdown フ�
 
 ## Steeringの基本コンセプト
 
-**出典**: [Steering - What is steering?](https://kiro.dev/docs/cli/steering/#what-is-steering)
+**出典**: [Steering - What is steering?](https://kiro.dev/docs/steering/#what-is-steering)
 
 Steering の中核は、`.kiro/steering/` 配下に配置した Markdown ファイルが、エージェント起動時に **自動的に文脈に取り込まれる** という仕組みです。
 
@@ -80,7 +80,7 @@ Steering の中核は、`.kiro/steering/` 配下に配置した Markdown ファ�
 
 ## 主なメリット
 
-**出典**: [Steering - Key benefits](https://kiro.dev/docs/cli/steering/#key-benefits)
+**出典**: [Steering - Key benefits](https://kiro.dev/docs/steering/#key-benefits)
 
 ### 1. 一貫したコード生成（Consistent Code Generation）
 
@@ -102,7 +102,7 @@ Steering の中核は、`.kiro/steering/` 配下に配置した Markdown ファ�
 
 ## Steering File スコープ（3種類）
 
-**出典**: [Steering - Steering file scope](https://kiro.dev/docs/cli/steering/#steering-file-scope)
+**出典**: [Steering - Steering file scope](https://kiro.dev/docs/steering/#steering-file-scope)
 
 Steering File は3つのスコープで運用できます。
 
@@ -146,7 +146,7 @@ Steering File は3つのスコープで運用できます。
 
 ## Foundational Steering Files
 
-**出典**: [Steering - Foundational steering files](https://kiro.dev/docs/cli/steering/#foundational-steering-files)
+**出典**: [Steering - Project steering files](https://kiro.dev/docs/steering/#project-steering-files)（公式サイトの見出し名は"Foundational Steering Files"から"Project steering files"へ変更済み）
 
 公式が推奨する **基本3ファイル** は、プロジェクトの基本文脈を確立します。
 
@@ -241,7 +241,7 @@ src/
 
 ## カスタムSteering Filesの作成
 
-**出典**: [Steering - Creating custom steering files](https://kiro.dev/docs/cli/steering/#creating-custom-steering-files)
+**出典**: [Steering - Creating custom steering files](https://kiro.dev/docs/steering/#creating-custom-steering-files)
 
 プロジェクト独自のニーズに合わせ、専門的なガイダンスを追加できます。
 
@@ -269,7 +269,7 @@ src/
 
 ## Custom Agents との併用
 
-**出典**: [Steering - Steering with custom agents](https://kiro.dev/docs/cli/steering/#steering-with-custom-agents)、[Agent Configuration Reference - resources field](https://kiro.dev/docs/cli/custom-agents/configuration-reference#resources-field)
+**出典**: [Steering - Steering with custom agents](https://kiro.dev/docs/steering/#steering-with-custom-agents)、[Agent Configuration Reference - resources field](https://kiro.dev/docs/custom-agents/configuration-reference#resources-field)
 
 > **⚠️ 重要な挙動の差**:
 > - **デフォルトエージェント**: Steering ファイルは **自動的に** 含まれる
@@ -319,13 +319,13 @@ src/
 }
 ```
 
-詳細は [Agent Configuration Reference](https://kiro.dev/docs/cli/custom-agents/configuration-reference) を参照してください。
+詳細は [Agent Configuration Reference](https://kiro.dev/docs/custom-agents/configuration-reference) を参照してください。
 
 ---
 
 ## AGENTS.md 標準対応
 
-**出典**: [Steering - AGENTS.md](https://kiro.dev/docs/cli/steering/#agentsmd)、[https://agents.md/](https://agents.md/)
+**出典**: [Steering - AGENTS.md](https://kiro.dev/docs/steering/#agentsmd)、[https://agents.md/](https://agents.md/)
 
 Kiro は **AGENTS.md** 標準による Steering 指示の提供をサポートしています。
 
@@ -378,7 +378,7 @@ my-monorepo/
 
 ## ベストプラクティス
 
-**出典**: [Steering - Best practices](https://kiro.dev/docs/cli/steering/#best-practices)
+**出典**: [Steering - Best practices](https://kiro.dev/docs/steering/#best-practices)
 
 ### 1. ファイルを焦点に絞る（Keep Files Focused）
 
@@ -414,7 +414,7 @@ my-monorepo/
 
 ## Common Steering File Strategies
 
-**出典**: [Steering - Common steering file strategies](https://kiro.dev/docs/cli/steering/#common-steering-file-strategies)
+**出典**: [Steering - Common steering file strategies](https://kiro.dev/docs/steering/#common-steering-file-strategies)
 
 公式が示す典型的な Steering ファイルパターン。
 
@@ -621,9 +621,9 @@ my-monorepo/
 
 ### 公式情報源
 
-- [Steering - Kiro CLI Documentation](https://kiro.dev/docs/cli/steering/)（公式ページ最終更新: 2026-01-08）
-- [Agent Configuration Reference - resources field](https://kiro.dev/docs/cli/custom-agents/configuration-reference#resources-field)
-- [Custom Agents - Creating](https://kiro.dev/docs/cli/custom-agents/creating)
+- [Steering - Kiro CLI Documentation](https://kiro.dev/docs/steering/)（公式ページ最終更新: 2026-01-08）
+- [Agent Configuration Reference - resources field](https://kiro.dev/docs/custom-agents/configuration-reference#resources-field)
+- [Custom Agents - Creating](https://kiro.dev/docs/custom-agents/creating)
 
 ### AGENTS.md 標準
 

@@ -4,7 +4,7 @@
 
 # Kiro CLI Help Agent
 
-**出典**: [Help Agent - Kiro CLI Documentation](https://kiro.dev/docs/cli/chat/help-agent/)
+**出典**: [Built-in agents - Help agent (CLI only)](https://kiro.dev/docs/custom-agents/built-in/#help-agent-cli-only)（公式サイトは個別ページ「Help Agent」を廃止し、「Built-in agents」統合ページ内のセクションへ変更。ページ内には「Terminal UI では Help Agent は Guide agent に置き換えられた」との注記あり → 本サイト [20. Guide Agent](20_GuideAgent.md) 参照）
 
 ## 概要
 
@@ -406,7 +406,7 @@ Help Agentに切り替えずに、直接質問できます。
 ## 関連リンク
 
 ### 公式ドキュメント
-- [Help Agent - Kiro CLI Documentation](https://kiro.dev/docs/cli/chat/help-agent/)
+- [Built-in agents - Help agent (CLI only)](https://kiro.dev/docs/custom-agents/built-in/#help-agent-cli-only)
 - [Kiro CLI v1.25.0 Changelog](https://kiro.dev/changelog/cli/1-25/)
 
 ### 関連機能

@@ -79,7 +79,7 @@ Kiro CLI **v2.7.0**（2026-06-12）で追加・拡張された機能を解説し
 
 `/rewind` の基本機能（フォークであり破壊的な書き換えではない、元セッションは保持され `/chat load`・`/chat resume` で戻れる、等）は [21. v2.4 新コマンド](21_v24NewCommands.md) を参照してください。
 
-詳細: [公式ドキュメント（/rewind）](https://kiro.dev/docs/cli/chat/rewind/)
+詳細: [公式ドキュメント（/rewind）](https://kiro.dev/docs/checkpoints/)
 
 ---
 
@@ -95,7 +95,7 @@ kiro-cli settings chat.terminalTitle true
 - **型**: boolean・**既定**: `false`（ターミナルタブのセッションタイトル表示/非表示）。
 - v2.6.0 時点で存在した「CLI 内蔵 changelog は `chat.terminalTitle` に言及するが、公式設定リファレンスは『CLI 設定としては提供されない』と明記」という**不一致は、v2.7.0 の正式追加で解消**されました（→ [28. v2.6 新コマンド](28_v26NewCommands.md) の `/title` 注記、[02_update/01_changelog.md](../02_update/01_changelog.md) v2.7.0 セクション）。
 
-> ⚠️ **一次情報の注記**: 公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（Page updated 2026-06-05）は、**2026-06-21 取得時点でも v2.7.0 の `chat.terminalTitle` 追加が未反映**で、Info 注記も「not available as a CLI setting」のままです。本サイトは実機 kiro-cli 2.10.0 の `kiro-cli settings list --all` の説明文「Show dynamic title in terminal tab (boolean, default: false)」（2026-07-04 確認）を一次情報として、型 **boolean**・既定 **`false`** と確定しています（CLI 内蔵 changelog v2.7.0 の追加文言「`chat.terminalTitle setting to show or hide the session title in the terminal tab`」とも整合）。
+> ⚠️ **一次情報の注記**: 公式 [Settings リファレンス](https://kiro.dev/docs/reference/settings/)（Page updated 2026-06-05）は、**2026-06-21 取得時点でも v2.7.0 の `chat.terminalTitle` 追加が未反映**で、Info 注記も「not available as a CLI setting」のままです。本サイトは実機 kiro-cli 2.10.0 の `kiro-cli settings list --all` の説明文「Show dynamic title in terminal tab (boolean, default: false)」（2026-07-04 確認）を一次情報として、型 **boolean**・既定 **`false`** と確定しています（CLI 内蔵 changelog v2.7.0 の追加文言「`chat.terminalTitle setting to show or hide the session title in the terminal tab`」とも整合）。
 
 ---
 
@@ -123,7 +123,7 @@ v2.7.0 では `/settings` とその全サブコマンドの UI が統一され�
 
 `Ctrl+S` は v2.7.0 で Queue Steering の steer/queue モード切替に使われます。一方で、従来 `Ctrl+S` は「コマンドとコンテキストファイルのファジー検索」に割り当てられていました。
 
-> **公式記述の不一致（2026-06-21 取得時点）**: 公式 [Slash commands リファレンス](https://kiro.dev/docs/cli/reference/slash-commands/)（Page updated 2026-06-12）の Keyboard shortcuts 表は `Ctrl+S` を「Fuzzy search commands and context files」と記載したままです。一方、公式 [Queue Steering ページ](https://kiro.dev/docs/cli/chat/queue-steering/)は「Press Ctrl+S to toggle between modes」と記載しています。同日（2026-06-12）更新ながら両者の整合は未確認です。本サイトは v2.7.0 で Queue Steering モード切替が追加されたことを CLI 内蔵 changelog で確認済みのため、両機能を併記しています。実機の挙動は v2.7.0 起動後の確認を推奨します（→ [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) キーボードショートカット節）。
+> **公式記述の不一致（2026-06-21 取得時点）**: 公式 [Slash commands リファレンス](https://kiro.dev/docs/reference/slash-commands/)（Page updated 2026-06-12）の Keyboard shortcuts 表は `Ctrl+S` を「Fuzzy search commands and context files」と記載したままです。一方、公式 [Queue Steering ページ](https://kiro.dev/docs/cli/chat/queue-steering/)は「Press Ctrl+S to toggle between modes」と記載しています。同日（2026-06-12）更新ながら両者の整合は未確認です。本サイトは v2.7.0 で Queue Steering モード切替が追加されたことを CLI 内蔵 changelog で確認済みのため、両機能を併記しています。実機の挙動は v2.7.0 起動後の確認を推奨します（→ [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) キーボードショートカット節）。
 
 ---
 
@@ -132,10 +132,10 @@ v2.7.0 では `/settings` とその全サブコマンドの UI が統一され�
 ### 公式情報源
 - [/goal 公式ドキュメント](https://kiro.dev/docs/cli/chat/goal/)
 - [Queue steering 公式ドキュメント](https://kiro.dev/docs/cli/chat/queue-steering/)
-- [/rewind 公式ドキュメント](https://kiro.dev/docs/cli/chat/rewind/)
+- [/rewind 公式ドキュメント](https://kiro.dev/docs/checkpoints/)
 - [In-session settings 公式ドキュメント](https://kiro.dev/docs/cli/chat/settings/)
-- [スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/)（Page updated 2026-06-12）
-- [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（Page updated 2026-06-05）
+- [スラッシュコマンドリファレンス](https://kiro.dev/docs/reference/slash-commands/)（Page updated 2026-06-12）
+- [Settings リファレンス](https://kiro.dev/docs/reference/settings/)（Page updated 2026-06-05）
 - [公式 Changelog v2.7](https://kiro.dev/changelog/cli/2-7/)
 
 ### 本サイトの関連文書

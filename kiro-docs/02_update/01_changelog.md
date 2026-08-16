@@ -198,8 +198,8 @@
 **主要な変更**: [V3] `/spec new`のガイド付き説明ステップ追加と、Plan mode承認後の自動実行が中心。
 
 **機能追加（2件、いずれも[V3]）**:
-- 🔧 **[V3] `/spec new`ガイド付き説明ステップ**: `/spec new`が、spec名だけでなく事前に「何をカバーするspecか」を尋ねるステップを追加。ユーザーの説明を要件生成のground truthとして使用。詳細: [Specs（公式v3）](https://kiro.dev/docs/cli/v3/specs)
-- 🔧 **[V3] Plan mode自動実行**: Plan modeで計画を承認すると、手動でモード切り替えせずに自動的に実行が開始されるよう変更。詳細: [Planning agent（公式）](https://kiro.dev/docs/cli/chat/planning-agent)
+- 🔧 **[V3] `/spec new`ガイド付き説明ステップ**: `/spec new`が、spec名だけでなく事前に「何をカバーするspecか」を尋ねるステップを追加。ユーザーの説明を要件生成のground truthとして使用。詳細: [Specs（公式v3）](https://kiro.dev/docs/specs)
+- 🔧 **[V3] Plan mode自動実行**: Plan modeで計画を承認すると、手動でモード切り替えせずに自動的に実行が開始されるよう変更。詳細: [Planning agent（公式）](https://kiro.dev/docs/custom-agents/built-in)
 
 **改善（1件）**:
 - 💡 **`chat.showThinkingTips`設定**: 新設定で、thinking indicator下に表示される機能ヒントを非表示にできるようになった（→ [04_reference/01_settings.md](../04_reference/01_settings.md)）。
@@ -250,7 +250,7 @@
 
 **出典**: `kiro-cli version --changelog=all`、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)、[公式Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）
 
-**注記**: CLI内蔵日付と公式表示日は 2026-07-23 で一致（差異なし）。⚠️ 公式リファレンス [Effort](https://kiro.dev/docs/cli/chat/effort/)（公式ページ最終更新 2026-07-21）と [In-session settings](https://kiro.dev/docs/cli/chat/settings/)（同 2026-06-12）は「選択は自動的に永続化され `set-current-as-default` は不要」と記述したままで、本変更が未反映です。本サイトは新しい一次情報である公式 Changelog を採用しています。
+**注記**: CLI内蔵日付と公式表示日は 2026-07-23 で一致（差異なし）。⚠️ 公式リファレンス [Effort](https://kiro.dev/docs/models/effort/)（公式ページ最終更新 2026-07-21）と [In-session settings](https://kiro.dev/docs/cli/chat/settings/)（同 2026-06-12）は「選択は自動的に永続化され `set-current-as-default` は不要」と記述したままで、本変更が未反映です。本サイトは新しい一次情報である公式 Changelog を採用しています。
 
 ---
 
@@ -281,7 +281,7 @@
 
 **出典**: [公式Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)、[公式Atomフィード](https://kiro.dev/changelog/feed.atom)（published 2026-07-22）、[Upgrading agent configs（公式）](https://kiro.dev/docs/cli/v3/upgrade-agent/)
 
-**注記**: 本バージョンはローカル CLI の内蔵 changelog（`kiro-cli version --changelog=2.14.0`）では取得できず（内蔵は直近 2 バージョンのみ保持）、公式 Changelog ページと Atom フィードを一次情報としています。⚠️ **supervised モードの扱いに公式内で差異**があります: 公式 v3 ドキュメント（[v3 概要](https://kiro.dev/docs/cli/v3/)・[機能比較](https://kiro.dev/docs/cli/v3/feature-overview/)）は Supervised mode を「Removed（`permissions.yaml` で代替）」と記載する一方、本バージョンの修正項目は「[V3] supervised モードのターン承認」に言及しています。本サイトは双方を出典付きで併記し、どちらかを断定しません（→ [09_v3/](../09_v3/README.md)）。
+**注記**: 本バージョンはローカル CLI の内蔵 changelog（`kiro-cli version --changelog=2.14.0`）では取得できず（内蔵は直近 2 バージョンのみ保持）、公式 Changelog ページと Atom フィードを一次情報としています。⚠️ **supervised モードの扱いに公式内で差異**があります: 公式 v3 ドキュメント（[v3 概要](https://kiro.dev/docs/cli/v3/)・[機能比較](https://kiro.dev/docs/cli/v3/new-features/)）は Supervised mode を「Removed（`permissions.yaml` で代替）」と記載する一方、本バージョンの修正項目は「[V3] supervised モードのターン承認」に言及しています。本サイトは双方を出典付きで併記し、どちらかを断定しません（→ [09_v3/](../09_v3/README.md)）。
 
 ---
 
@@ -383,7 +383,7 @@
 
 **機能追加（1件）**:
 - 🔐 **MCP OAuth で `clientSecret` 対応**: トークンエンドポイント認証を要する confidential client 向けに、MCP サーバーの OAuth 設定へ `clientSecret` を追加可能に（Figma 等の事前登録アプリに対応）。
-  - 詳細: [MCP OAuth 設定（公式）](https://kiro.dev/docs/cli/mcp/configuration/#oauth-configuration)
+  - 詳細: [MCP OAuth 設定（公式）](https://kiro.dev/docs/mcp/configuration/#oauth-configuration)
 
 **改善（3件）**:
 - 🔐 **`redirectUri` のフルURL対応**: カスタムコールバックパス付きの完全な URL（例 `http://localhost:7778/oauth/callback`）を受け付け、loopback（localhost）ホストのみを許可して検証。
@@ -410,7 +410,7 @@
 
 **機能追加（2件）**:
 - 🔐 **MCP 認証管理コマンド（`/mcp auth`・`/mcp cancel-auth`・`/mcp logout`）**: リモート MCP サーバーの OAuth を制御。`/mcp auth`＝トークン失効・無効時に再認証を強制、`/mcp cancel-auth`＝ブラウザ確認待ちで停止した認証フローを中止、`/mcp logout`＝保存済み資格情報を削除。セッション再起動や手動での資格情報削除が不要に。
-  - 詳細: [スラッシュコマンド `/mcp auth`（公式）](https://kiro.dev/docs/cli/reference/slash-commands/#mcp-auth)
+  - 詳細: [スラッシュコマンド `/mcp auth`（公式）](https://kiro.dev/docs/reference/slash-commands/#mcp-auth)
 - 💡 **MCP パネルのキーボードショートカット**: ステータスビューで `^A`＝認証強制、`^X`＝認証中止、`^R`＝資格情報削除。
 
 **改善（1件）**:
@@ -438,9 +438,9 @@
 
 **機能追加（2件）**:
 - 🔧 **MCP・エージェント設定のホットリロード**: `.kiro/agents`・`mcp.json` の保存変更を file watcher が検知し、追加/削除/編集されたサーバーのみ再起動して差分調整。会話コンテキストは保持され、設定差分は順序非依存（環境変数/キーの並べ替えでは再起動しない）。反映は次のアイドル境界（ターン間）。
-  - 詳細: [MCP 設定（Hot-Reload）](https://kiro.dev/docs/cli/mcp/configuration/)
+  - 詳細: [MCP 設定（Hot-Reload）](https://kiro.dev/docs/mcp/configuration/)
 - 🔧 **`chat.disableInheritingDefaultResources` 設定追加**: カスタムエージェントが既定リソース（steering / skills / AGENTS.md）を継承しないようにする（Boolean、既定 false）。v2.7.0 以降の自動継承のオプトアウト手段。組み込みエージェントは常に継承。
-  - 詳細: [カスタムエージェント設定リファレンス](https://kiro.dev/docs/cli/custom-agents/configuration-reference/)
+  - 詳細: [カスタムエージェント設定リファレンス](https://kiro.dev/docs/custom-agents/configuration-reference/)
 
 **改善（1件）**:
 - 💡 スラッシュコマンド・承認メニューに navigate / select / cancel の操作ヒントを表示。
@@ -558,9 +558,9 @@
   - 詳細: [29. v27NewCommands](../01_features/29_v27NewCommands.md)、[公式 Queue steering](https://kiro.dev/docs/cli/chat/queue-steering/)
 - 🪟 **`chat.terminalTitle` 設定**: ターミナルタブのセッションタイトル表示/非表示を制御（boolean、既定 `false`）
   - ※v2.6.0時点では `/settings display` でのトグルのみ提供されていたが、v2.7.0で **CLI 設定として正式追加**され、`chat.terminalTitle` 設定でも制御可能に
-  - ⚠️ **公式 [Settings リファレンス](https://kiro.dev/docs/cli/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映**。型・既定値は実機 kiro-cli 2.10.0 の `settings list --all` 説明文「Show dynamic title in terminal tab (boolean, default: false)」（2026-07-04 確認）で確定
+  - ⚠️ **公式 [Settings リファレンス](https://kiro.dev/docs/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映**。型・既定値は実機 kiro-cli 2.10.0 の `settings list --all` 説明文「Show dynamic title in terminal tab (boolean, default: false)」（2026-07-04 確認）で確定
 - 💡 **Enriched /rewind preview**: `/rewind` のターンピッカーが各ターンの**ツール呼び出し詳細**と**コンテキスト使用量**を表示し、分岐ポイントを特定しやすく
-  - 詳細: [公式 /rewind](https://kiro.dev/docs/cli/chat/rewind/)
+  - 詳細: [公式 /rewind](https://kiro.dev/docs/checkpoints/)
 
 **改善（2件）**:
 - 🎨 `/settings` および全サブコマンドが**統一された overlay frame、footer hints、ESC で戻るナビゲーション**を採用
@@ -573,7 +573,7 @@
 **注記**:
 - CLI 内蔵 changelog の日付（2026-06-11）と公式サイト表示日（2026-06-12）に差異あり。**公式サイト表示日を採用**。
 - 公式 v2.7.0 changelog ページの見出しに「enriched **/review** preview」と表記揺れ（本文では `/rewind` を扱っており、CLI 内蔵 changelog でも `/rewind` 表記）。本サイトは CLI 内蔵 changelog の `/rewind` を採用。
-- Ctrl+S の機能について公式に矛盾あり: [Slash commands リファレンス](https://kiro.dev/docs/cli/reference/slash-commands/)（Page updated 2026-06-12）の Keyboard shortcuts 表は「Fuzzy search commands and context files」と既存記述のまま、[Queue Steering ページ](https://kiro.dev/docs/cli/chat/queue-steering/)（同 2026-06-12）は「toggle between modes」と記述。同日更新だが両者の整合は未確認。本サイトは両機能を併記。
+- Ctrl+S の機能について公式に矛盾あり: [Slash commands リファレンス](https://kiro.dev/docs/reference/slash-commands/)（Page updated 2026-06-12）の Keyboard shortcuts 表は「Fuzzy search commands and context files」と既存記述のまま、[Queue Steering ページ](https://kiro.dev/docs/cli/chat/queue-steering/)（同 2026-06-12）は「toggle between modes」と記述。同日更新だが両者の整合は未確認。本サイトは両機能を併記。
 
 **出典**: ユーザー提供 CLI 内蔵 changelog（`/changelog` 出力）、[公式 Changelog v2.7](https://kiro.dev/changelog/cli/2-7/)、[公式 /goal](https://kiro.dev/docs/cli/chat/goal/)、[公式 Queue steering](https://kiro.dev/docs/cli/chat/queue-steering/)
 
@@ -603,11 +603,11 @@
 - 📋 **/transcript save**: 会話を Markdown / プレーンテキスト / JSON でエクスポート
   - `/transcript save conversation.md`（既定 Markdown）、`--plain`（テキスト）、`--json`（JSON）
   - `--plain`/`--json` はページャ内の表示形式もインライン切替。形式はファイル拡張子ではなくフラグで決定
-  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#transcript)
+  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/reference/slash-commands/#transcript)
 - 🪟 **/title**: ターミナルウィンドウタイトルの設定・クリア・表示（表示形式 `kiro: <text>`）
   - セッショントピックまたはワークスペースパスから自動導出。手動設定は sticky（`--clear` まで保持）。60文字で truncate
   - 有効化: `/settings display` → Terminal title（OSC 0 使用。tmux は `set-titles on` が必要）
-  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#title)
+  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/reference/slash-commands/#title)
 - 🧠 **--effort フラグ**: `kiro-cli chat` 起動時に初期 effort レベル（low/medium/high/xhigh/max）を指定
 - 🔧 **/knowledge update（引数なし）**: 全ナレッジベースを一括再インデックス（従来の `/knowledge update <path>` は単一エントリ）
 
@@ -724,10 +724,10 @@
 **機能追加（8件）**:
 - ⏪ **/rewind**: 会話の任意のプロンプトに戻り、新セッションで別方向に継続
   - 元のスレッドを失わずに代替アプローチを探索可能
-  - 詳細: [公式ドキュメント](https://kiro.dev/docs/cli/chat/rewind/)
+  - 詳細: [公式ドキュメント](https://kiro.dev/docs/checkpoints/)
 - 🧠 **/effort**: モデル推論レベル設定（low/medium/high/xhigh/max）
   - 低レベル: 高速・低コスト（単純なタスク向け）、高レベル: 複雑な問題に深い推論
-  - 詳細: [公式ドキュメント](https://kiro.dev/docs/cli/chat/effort/)
+  - 詳細: [公式ドキュメント](https://kiro.dev/docs/models/effort/)
 - 🔧 **/settings統合メニュー**: theme/keybindings/terminal設定を統合管理
   - `/settings theme`: カラーカスタマイズ
   - `/settings keybindings`: ショートカット確認
@@ -772,21 +772,21 @@
 
 **機能追加（8件）**:
 - 🔧 **OAuth clientId設定**: DCR（Dynamic Client Registration）非対応のHTTP MCPサーバー（Slack, GitHub, Figma等）に接続するための`oauth.clientId`設定を追加
-  - 詳細: [公式Agent設定リファレンス](https://kiro.dev/docs/cli/custom-agents/configuration-reference/#oauth-configuration)
+  - 詳細: [公式Agent設定リファレンス](https://kiro.dev/docs/custom-agents/configuration-reference/#oauth-configuration)
   - ※ v2.12.0 で `clientSecret`（confidential client 対応）・`redirectUri`（カスタムパス付きフルURL）と、`clientId` 設定時の DCR スキップを追加（→ [v2.12.0](#v2120-cli2026-07-09)）
 - 🔧 **KIRO_HOME環境変数**: `~/.kiro`ディレクトリの場所をオーバーライドする環境変数を追加。global agents, prompts, skills, steering, settings, sessionsに適用（→ 詳細: [04_reference/01_settings.md](../04_reference/01_settings.md)）
   - 用途: 複数マシン間のdotfiles管理、仕事/個人プロファイル分離、コンテナ環境でのKiro状態隔離
-  - 詳細: [公式設定リファレンス](https://kiro.dev/docs/cli/reference/settings/#environment-variables)
+  - 詳細: [公式設定リファレンス](https://kiro.dev/docs/reference/settings/#environment-variables)
 - 🔧 **V2 TUIキーバインド設定**: cancel（`chat.keybindings.cancelStream`）、close menu（`chat.keybindings.closeMenu`）、quit（`chat.keybindings.quit`）アクションのキーリマップが可能に
   - 修飾キー: `ctrl+`, `shift+`, `alt+`/`meta+` + 単一キー
-  - 詳細: [公式設定リファレンス](https://kiro.dev/docs/cli/reference/settings/#key-bindings-terminal-ui)
+  - 詳細: [公式設定リファレンス](https://kiro.dev/docs/reference/settings/#key-bindings-terminal-ui)
   - ※v2.4.0で`/settings keybindings`コマンドから現在のショートカットを確認可能に
 - 📡 **Agent Output Side Channels**: シェルコマンド実行時に`$AGENT_DISPLAY_OUT`（TUI表示のみ）と`$AGENT_CONTEXT_OUT`（ツール結果の`agent_notes`に含まれる）の2つのサイドチャネルを追加（→ 詳細: [04_reference/04_built-in-tools.md#side-channelsv230](../04_reference/04_built-in-tools.md#side-channelsv230)）
-  - 詳細: [公式ビルトインツールリファレンス](https://kiro.dev/docs/cli/reference/built-in-tools/#side-channels-for-wrapper-scripts)
+  - 詳細: [公式ビルトインツールリファレンス](https://kiro.dev/docs/reference/built-in-tools/#side-channels-for-wrapper-scripts)
 - ⚙️ **/session-idコマンド**: 現在のチャットセッションIDを表示。`kiro-cli chat --resume-id <ID>`でのセッション再開に使用。終了時にもresume hintを表示
-  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#session-id)
+  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/reference/slash-commands/#session-id)
 - 🔧 **LSP file_patterns**: `lsp.json`の言語設定で`file_patterns`グロブマッチングをサポート。標準拡張子を持たないファイル（Dockerfile等）をターゲット可能に
-  - 詳細: [公式Code Intelligence](https://kiro.dev/docs/cli/code-intelligence/#custom-language-servers)
+  - 詳細: [公式Code Intelligence](https://kiro.dev/docs/tools/code-intelligence/#custom-language-servers)
 - 💡 **ペーストチップ展開**: 折りたたまれたペーストチップ上でTabキーを押すと、インライン編集可能なテキストに展開
 - 📋 **サブエージェントセッションID記録**: 永続化されたサブエージェントセッションに親セッションIDを記録
 
@@ -828,18 +828,18 @@
   - 長い行は端末ソフトラップで視覚的に折り返されるが、論理的には単一行として保持
   - クリーンなコピー&ペースト用途
   - 型: boolean、使用例: `kiro-cli settings chat.disableWrap true`
-  - 詳細: [公式設定リファレンス](https://kiro.dev/docs/cli/reference/settings/)
+  - 詳細: [公式設定リファレンス](https://kiro.dev/docs/reference/settings/)
 
 - ⚙️ **`/model set-current-as-default` 保存先の変更**: モデル選択の永続化先パスを変更
   - 変更前（v1.23.0時点）: `~/.kiro/settings.json`
   - 変更後（v2.2.1以降）: `~/.kiro/settings/cli.json`
   - ※本コマンド自体は v1.23.0 で初回導入。v2.2.1で保存先が変更された。
   - ※**v2.6.0で `/model`・`/effort` は選択が自動永続化され、`set-current-as-default` は不要**になりました（→ [v2.6.0](#v260-cli2026-06-05)）。さらに **v2.14.1 でセッション限定へ回帰**し、`set-current-as-default` が再び必要になりました（→ [v2.14.1](#v2141-cli2026-07-23)）。
-  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#model)
+  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/reference/slash-commands/#model)
 
 - 💡 **TUI: `/agent swap <name>` オートコンプリート拡張**: シャドウテキスト（ゴーストテキスト）補完に対応
   - 既存の `/agent <name>` と同じ挙動
-  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/cli/reference/slash-commands/#agent)
+  - 詳細: [公式スラッシュコマンドリファレンス](https://kiro.dev/docs/reference/slash-commands/#agent)
 
 **セキュリティ（1件）**:
 - 🔒 **code tool のワークスペース外読み込み承認必須化**: codeツールがワークスペース外のファイル読み込み時に承認を要求するように

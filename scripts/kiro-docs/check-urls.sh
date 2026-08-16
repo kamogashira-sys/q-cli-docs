@@ -37,6 +37,18 @@ check_one() {
     echo "$status"
 }
 
+# 移転スタブ検出: 本文に "moved to <a href=" が含まれる場合、実体のない移転案内ページと判定する。
+# 200 を返すが実体を持たないページ（例: 旧URL体系のスタブ）を検出する目的。
+# 戻り値: 移転先URLがあれば標準出力に出力（1行）、なければ何も出力しない。
+check_moved_stub() {
+    local url="$1" body target
+    body=$(curl -s "$url" --max-time 15 --retry 2 --retry-delay 1 -L 2>/dev/null || echo "")
+    target=$(printf '%s' "$body" | grep -oE 'moved to <a href="[^"]+"' | head -1 | sed -E 's/.*href="([^"]+)".*/\1/')
+    if [ -n "$target" ]; then
+        echo "$target"
+    fi
+}
+
 # ---- important モード: 厳選した公式URL ----
 if [ "$MODE" = "important" ]; then
     IMPORTANT_URLS=(
@@ -52,27 +64,32 @@ if [ "$MODE" = "important" ]; then
         "https://kiro.dev/changelog/cli/2-6/"
         "https://kiro.dev/docs/cli/chat/goal/"
         "https://kiro.dev/docs/cli/chat/queue-steering/"
-        "https://kiro.dev/docs/cli/chat/rewind/"
+        "https://kiro.dev/docs/checkpoints/"
         "https://kiro.dev/docs/cli/chat/settings/"
-        "https://kiro.dev/docs/cli/reference/settings/"
-        "https://kiro.dev/docs/cli/reference/slash-commands/"
-        "https://kiro.dev/docs/cli/mcp/configuration/"
-        "https://kiro.dev/docs/cli/custom-agents/configuration-reference/"
+        "https://kiro.dev/docs/reference/settings/"
+        "https://kiro.dev/docs/reference/slash-commands/"
+        "https://kiro.dev/docs/mcp/configuration/"
+        "https://kiro.dev/docs/custom-agents/configuration-reference/"
         "https://kiro.dev/docs/cli/v3/"
-        "https://kiro.dev/docs/cli/v3/specs/"
-        "https://kiro.dev/docs/cli/v3/feature-overview/"
+        "https://kiro.dev/docs/specs/"
+        "https://kiro.dev/docs/cli/v3/new-features/"
         "https://kiro.dev/docs/cli/v3/permissions/"
-        "https://kiro.dev/docs/cli/v3/hooks/"
+        "https://kiro.dev/docs/cli/v3/hooks-migration/"
         "https://kiro.dev/docs/cli/v3/agent-config/"
         "https://kiro.dev/docs/cli/v3/upgrade-agent/"
-        "https://kiro.dev/docs/cli/chat/effort/"
-        "https://kiro.dev/docs/specs/"
+        "https://kiro.dev/docs/models/effort/"
     )
     errors=0
     for url in "${IMPORTANT_URLS[@]}"; do
         status=$(check_one "$url")
         if [[ "$status" =~ ^[23] ]]; then
-            echo "✅ $status  $url"
+            moved_to=$(check_moved_stub "$url")
+            if [ -n "$moved_to" ]; then
+                echo "❌ $status  $url  → 移転スタブを検出（実体は $moved_to）"
+                errors=$((errors + 1))
+            else
+                echo "✅ $status  $url"
+            fi
         else
             echo "❌ $status  $url"
             errors=$((errors + 1))
@@ -119,7 +136,14 @@ while IFS= read -r url; do
     [ $((checked % 10)) -eq 0 ] && echo "   進捗: $checked/$total"
     status=$(check_one "$url")
     if [[ "$status" =~ ^[23] ]]; then
-        :
+        # kiro.dev の /docs/ ページのみ移転スタブ検出を実施（他ドメインは対象外）
+        if [[ "$url" == https://kiro.dev/docs/* ]]; then
+            moved_to=$(check_moved_stub "$url")
+            if [ -n "$moved_to" ]; then
+                echo "❌ 移転スタブ検出: $url → 実体は $moved_to"
+                errors=$((errors + 1))
+            fi
+        fi
     elif [ "$status" = "000" ]; then
         echo "❌ タイムアウト: $url"; errors=$((errors + 1))
     else

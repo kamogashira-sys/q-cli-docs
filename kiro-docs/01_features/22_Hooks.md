@@ -2,7 +2,9 @@
 
 # Kiro CLI Smart Hooks機能
 
-**出典**: [Hooks - Kiro CLI Documentation](https://kiro.dev/docs/cli/hooks/)、[Agent Configuration Reference - hooks field](https://kiro.dev/docs/cli/custom-agents/configuration-reference#hooks-field)、[公式Changelog v1.29.0](https://kiro.dev/changelog/cli/1-29/)、CLI changelog v1.29.6
+**出典**: [CLI 2.x reference - Hooks](https://kiro.dev/docs/cli/2x-reference/#hooks)、[公式Changelog v1.29.0](https://kiro.dev/changelog/cli/1-29/)、CLI changelog v1.29.6
+
+> **⚠️ 本ページはCLI 2.x仕様を解説しています**。公式サイトはCLI 3.0（`.kiro/hooks/*.json`の独立ファイル形式、PascalCaseトリガー名）へ移行済みで、本ページの2.x仕様は[CLI 2.x reference](https://kiro.dev/docs/cli/2x-reference/#hooks)に要約が残るのみです。3.0の新仕様は本サイトでは未対応（今後の調査課題）。CLI 2.x系（v1.20.0〜v2.x、v3未移行環境）を使用中の方は本ページの内容がそのまま有効です。
 
 ## 概要
 
@@ -55,7 +57,7 @@ Smart Hooks は、これらの要求を **エージェント設定ファイル�
 
 ## Hookの定義方法
 
-**出典**: [Hooks - Defining hooks](https://kiro.dev/docs/cli/hooks/#defining-hooks)、[Agent Configuration Reference - hooks field](https://kiro.dev/docs/cli/custom-agents/configuration-reference#hooks-field)
+**出典**: [CLI 2.x reference - Hooks Format](https://kiro.dev/docs/cli/2x-reference/#format)（配列形式`[{command, matcher?}]`はCLI 3.0の`Agent Configuration Reference`と共通）
 
 Hook はエージェント設定ファイル（`agent.json`）の `hooks` フィールドに記述します。エージェント設定ファイルは以下のいずれかに配置します：
 
@@ -104,13 +106,13 @@ Hook はエージェント設定ファイル（`agent.json`）の `hooks` フィ
 | `timeout_ms` | — | 全種 | タイムアウト（ミリ秒、既定 30,000） |
 | `cache_ttl_seconds` | — | 全種（agentSpawn を除く） | キャッシュ有効期間（秒） |
 
-完全な書式は [Agent Configuration Reference - hooks field](https://kiro.dev/docs/cli/custom-agents/configuration-reference#hooks-field) を参照してください。
+完全な書式は [Agent Configuration Reference - hooks field](https://kiro.dev/docs/custom-agents/configuration-reference#hooks-field)（CLI 3.0 / IDE 1.0向けの現行仕様。`hooks`フィールド自体はCLI 2.x/3.0共通だが、埋め込み先の`toolsSettings`等は3.0で`permissions`に置き換わっている点に注意）を参照してください。
 
 ---
 
 ## Hook Event（STDIN）
 
-**出典**: [Hooks - Hook event](https://kiro.dev/docs/cli/hooks/#hook-event)
+**出典**: [CLI 2.x reference - Hook communication](https://kiro.dev/docs/cli/2x-reference/#hook-communication)
 
 Hook 実行時、Kiro CLI は **JSON 形式の Hook Event を STDIN 経由で渡します**。コマンドはこの JSON を読み取り、必要に応じて処理を分岐します。
 
@@ -157,7 +159,7 @@ Hook 実行時、Kiro CLI は **JSON 形式の Hook Event を STDIN 経由で渡
 
 ## Hook Output（Exit Code）
 
-**出典**: [Hooks - Hook output](https://kiro.dev/docs/cli/hooks/#hook-output)
+**出典**: [CLI 2.x reference - Hook communication](https://kiro.dev/docs/cli/2x-reference/#hook-communication)
 
 Kiro CLI は Hook の **Exit Code** で動作を分岐します。
 
@@ -183,7 +185,7 @@ Kiro CLI は Hook の **Exit Code** で動作を分岐します。
 
 ## Tool Matching
 
-**出典**: [Hooks - Tool matching](https://kiro.dev/docs/cli/hooks/#tool-matching)
+**出典**: [CLI 2.x reference - Available triggers](https://kiro.dev/docs/cli/2x-reference/#available-triggers)
 
 `matcher` フィールドで、フックを適用する対象ツールを指定します。**canonical 名**（`fs_read`、`fs_write`、`execute_bash`、`use_aws`）と **alias 名**（`read`、`write`、`shell`、`aws`）の両方が利用可能です。
 
@@ -203,13 +205,13 @@ Kiro CLI は Hook の **Exit Code** で動作を分岐します。
 
 > **💡ワンポイント**: matcher は **内部ツール名（canonical）** を使うのが推奨です。alias 名（`read`/`write`/`shell`/`aws`）は人間に読みやすい一方、内部実装変更時に挙動が変わる可能性があります。
 
-完全なツール名一覧は [Agent Configuration Reference - tools field](https://kiro.dev/docs/cli/custom-agents/configuration-reference#tools-field) を参照してください。
+完全なツール名一覧は [Agent Configuration Reference - tools field](https://kiro.dev/docs/custom-agents/configuration-reference#tools-field)（CLI 3.0 / IDE 1.0向けの現行仕様。ツール名自体はCLI 2.x/3.0共通）を参照してください。
 
 ---
 
 ## Hook Types（5種類）
 
-**出典**: [Hooks - Hook types](https://kiro.dev/docs/cli/hooks/#hook-types)
+**出典**: [CLI 2.x reference - Available triggers](https://kiro.dev/docs/cli/2x-reference/#available-triggers)
 
 ### ライフサイクル全体像（どのタイミングでどの hook が動くか）
 
@@ -360,7 +362,7 @@ sequenceDiagram
 
 ## MCP ツールでの例
 
-**出典**: [Hooks - MCP example](https://kiro.dev/docs/cli/hooks/#mcp-example)
+**出典**: 本サイト独自の記録（2026年8月16日時点、公式サイトからこの実例に相当する記述は削除されており、現行の公式ドキュメントには対応ページが存在しません。[CLI 2.x reference](https://kiro.dev/docs/cli/2x-reference/#hooks)にも記載なし）
 
 MCP ツールの場合、`tool_name` には MCP サーバー名を含む完全な名前空間付きの形式が使われます。
 
@@ -395,7 +397,7 @@ MCP ツールの場合、`tool_name` には MCP サーバー名を含む完全�
 
 ## タイムアウト
 
-**出典**: [Hooks - Timeout](https://kiro.dev/docs/cli/hooks/#timeout)
+**出典**: 本サイト独自の記録（2026年8月16日時点、`timeout_ms`の既定値・挙動に相当する記述は現行の公式ドキュメントおよび[CLI 2.x reference](https://kiro.dev/docs/cli/2x-reference/#hooks)から削除されています）
 
 既定のタイムアウトは **30秒（30,000ms）** です。`timeout_ms` フィールドで変更できます。
 
@@ -419,7 +421,7 @@ MCP ツールの場合、`tool_name` には MCP サーバー名を含む完全�
 
 ## キャッシュ
 
-**出典**: [Hooks - Caching](https://kiro.dev/docs/cli/hooks/#caching)
+**出典**: 本サイト独自の記録（2026年8月16日時点、`cache_ttl_seconds`の挙動に相当する記述は現行の公式ドキュメントおよび[CLI 2.x reference](https://kiro.dev/docs/cli/2x-reference/#hooks)から削除されています）
 
 成功したフック結果は `cache_ttl_seconds` の値に応じてキャッシュされます：
 
@@ -612,9 +614,10 @@ TOOL_NAME=$(echo "$INPUT" | jq -r '.tool_name // empty')
 
 ### 公式情報源
 
-- [Hooks - Kiro CLI Documentation](https://kiro.dev/docs/cli/hooks/)（公式ページ最終更新: 2026-04-13）
-- [Agent Configuration Reference - hooks field](https://kiro.dev/docs/cli/custom-agents/configuration-reference#hooks-field)
-- [Agent Configuration Reference - tools field](https://kiro.dev/docs/cli/custom-agents/configuration-reference#tools-field)
+- [CLI 2.x reference - Hooks](https://kiro.dev/docs/cli/2x-reference/#hooks)（公式ページ最終更新: 2026-08-04。本ページが解説するCLI 2.x仕様の要約が残る唯一の公式ページ）
+- [Agent Configuration Reference - hooks field](https://kiro.dev/docs/custom-agents/configuration-reference#hooks-field)（CLI 3.0 / IDE 1.0向けの現行仕様。参考として掲載）
+- [Agent Configuration Reference - tools field](https://kiro.dev/docs/custom-agents/configuration-reference#tools-field)（同上）
+- [Hooks migration guide（CLI 2.x → 3.0）](https://kiro.dev/docs/cli/v3/hooks-migration/) — 3.0への移行を検討する場合の公式ガイド
 
 ---
 

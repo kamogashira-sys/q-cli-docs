@@ -839,7 +839,7 @@ ls -la .kiro/agents/my-agent.json
 
 Kiro CLI v1.25.0（2026年2月4日リリース）で追加された組織全体でのWeb Tools制御機能について解説します。
 
-**出典**: [Enterprise Settings - Web Tools](https://kiro.dev/docs/cli/enterprise/settings/#web-tools)
+**出典**: [Enterprise Governance - Web tools](https://kiro.dev/docs/enterprise/governance/web-tools/)（公式サイトはEnterprise Settingsページの表内項目からGovernance配下の専用ページへ分離。`enterprise/settings/`にも同項目の要約が残るが見出しアンカーはなし）
 
 ### 概要
 
@@ -1032,7 +1032,7 @@ Enterprise Web Tools GovernanceとGranular URL Permissionsは、異なるレベ�
 ### 参考リンク
 
 - [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)
-- [Built-in Tools - Web Search and Fetch](https://kiro.dev/docs/cli/reference/built-in-tools/#web-search-and-fetch)
+- [Built-in Tools - Web Search and Fetch](https://kiro.dev/docs/reference/built-in-tools/#web-search-and-fetch)
 
 ---
 

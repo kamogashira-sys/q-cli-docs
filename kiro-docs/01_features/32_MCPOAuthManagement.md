@@ -28,7 +28,7 @@
 | `^X` | 認証を中止（cancel-auth） |
 | `^R` | 資格情報を削除（logout） |
 
-> 公式: [`/mcp auth`（スラッシュコマンドリファレンス）](https://kiro.dev/docs/cli/reference/slash-commands/#mcp-auth)
+> 公式: [`/mcp auth`（スラッシュコマンドリファレンス）](https://kiro.dev/docs/reference/slash-commands/#mcp-auth)
 
 ## 事前登録アプリ向け OAuth 設定（v2.12.0）
 
@@ -75,8 +75,8 @@ MCP サーバーごとの OAuth 設定（`~/.kiro/settings/mcp.json` のサー�
 
 ## 関連リンク
 
-- [MCP OAuth 設定（公式リファレンス）](https://kiro.dev/docs/cli/mcp/configuration/#oauth-configuration)
-- [`/mcp auth`（公式スラッシュコマンドリファレンス）](https://kiro.dev/docs/cli/reference/slash-commands/#mcp-auth)
+- [MCP OAuth 設定（公式リファレンス）](https://kiro.dev/docs/mcp/configuration/#oauth-configuration)
+- [`/mcp auth`（公式スラッシュコマンドリファレンス）](https://kiro.dev/docs/reference/slash-commands/#mcp-auth)
 - [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) — `/mcp` サブコマンドの一覧
 - [12. Remote Authentication](12_RemoteAuth.md) — ユーザー側のリモート認証（SSO 等。MCP サーバー OAuth とは別）
 - [02_update/01_changelog.md](../02_update/01_changelog.md) — v2.11.0 / v2.12.0 の変更履歴

@@ -2,7 +2,7 @@
 
 # Kiro CLI Slash Commands リファレンス
 
-**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/slash-commands/)（公式ページ最終更新: 2026-06-12）
+**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-08-12）
 
 Kiro CLI のインタラクティブチャットセッション内で使用できるすべてのスラッシュコマンドを網羅する辞書的リファレンスです。
 
@@ -22,7 +22,7 @@ Kiro CLI のインタラクティブチャットセッション内で使用で�
 
 ## 概要
 
-**出典**: [Slash commands - Overview](https://kiro.dev/docs/cli/reference/slash-commands/#overview)
+**出典**: [Slash commands - Overview](https://kiro.dev/docs/reference/slash-commands/#overview)
 
 スラッシュコマンドは、インタラクティブチャットセッション内で会話を中断せずにアクションを実行する特殊コマンドです。**フォワードスラッシュ（`/`）で始まり**、よくあるタスクのショートカットを提供します。
 
@@ -39,7 +39,7 @@ kiro-cli chat
 
 ## スラッシュコマンド一覧
 
-公式ページに記載されている全コマンド（公式更新日: 2026-06-12 時点）に加え、`/voice`（v2.18.0+、公式Voiceページを出典）を追加。**本ページには全 41 コマンドを掲載**しています（`/help`〜`/voice` の見出し数。`/save` / `/load` は 1 見出しに集約）。
+公式ページに記載されている全コマンド（公式更新日: 2026-08-12 時点）に加え、`/voice`（v2.18.0+、公式Voiceページを出典）を追加。**本ページには全 41 コマンドを掲載**しています（`/help`〜`/voice` の見出し数。`/save` / `/load` は 1 見出しに集約）。
 
 ### `/help`
 
@@ -386,7 +386,7 @@ MCP サーバーとレジストリ状態を表示・管理。
 
 > **MCP パネルのショートカット（v2.11.0+）**: ステータスビューで `^A`＝認証強制、`^X`＝認証中止、`^R`＝資格情報削除。
 > **MCP ガバナンス**: 組織管理者が無効化している場合、メッセージが表示される（IAM Identity Center および API key ユーザーに適用）。
-> **公式**: [`/mcp auth`（スラッシュコマンドリファレンス）](https://kiro.dev/docs/cli/reference/slash-commands/#mcp-auth)
+> **公式**: [`/mcp auth`（スラッシュコマンドリファレンス）](https://kiro.dev/docs/reference/slash-commands/#mcp-auth)
 
 ### `/theme`
 
@@ -619,7 +619,7 @@ To-do リストの表示・管理・再開。
 >
 > **セッション限定（v2.14.1+）**: `/effort` の選択は**現在のセッションにのみ適用**されます。既定として保存するには **`/effort set-current-as-default`**（v2.14.1 で追加）を実行します。保存先はモデル単位の `chat.modelDefaults` です。
 >
-> 変遷: v2.6.0 で自動永続化 → v2.12.3 で sticky default 化 → **v2.14.1 でセッション限定へ回帰**。出典: [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）。⚠️ 公式 [Effort](https://kiro.dev/docs/cli/chat/effort/)（公式ページ最終更新 2026-07-21）は自動永続化のままで本変更が未反映です。
+> 変遷: v2.6.0 で自動永続化 → v2.12.3 で sticky default 化 → **v2.14.1 でセッション限定へ回帰**。出典: [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）。⚠️ 公式 [Effort](https://kiro.dev/docs/models/effort/)（公式ページ最終更新 2026-07-21）は自動永続化のままで本変更が未反映です。
 
 **永続的なデフォルト設定**（モデル系列で構造が異なります）:
 ```json
@@ -632,7 +632,7 @@ To-do リストの表示・管理・再開。
 }
 ```
 
-出典: [公式 Effort ドキュメント（Persistent defaults）](https://kiro.dev/docs/cli/chat/effort/#persistent-defaults)
+出典: [公式 Effort ドキュメント（Persistent defaults）](https://kiro.dev/docs/models/effort/#persistent-defaults-cli)
 
 **優先順位**: ロード済みセッション effort > cli.json のユーザーデフォルト > ビルトインデフォルト
 
@@ -736,7 +736,7 @@ To-do リストの表示・管理・再開。
 
 ## Skill ベースのスラッシュコマンド
 
-**出典**: [Skill-based slash commands](https://kiro.dev/docs/cli/reference/slash-commands/#skill-based-slash-commands)
+**出典**: [Skill-based slash commands](https://kiro.dev/docs/reference/slash-commands/#skill-based-slash-commands)
 
 `.kiro/skills/` および `~/.kiro/skills/` に定義された Skill は **自動的にスラッシュコマンドとして利用可能** になります。
 
@@ -756,7 +756,7 @@ To-do リストの表示・管理・再開。
 
 ## キーボードショートカット
 
-**出典**: [Keyboard shortcuts](https://kiro.dev/docs/cli/reference/slash-commands/#keyboard-shortcuts)
+**出典**: [Keyboard shortcuts](https://kiro.dev/docs/reference/slash-commands/#keyboard-shortcuts)
 
 インタラクティブモードでは以下のキーが使用可能：
 
@@ -779,7 +779,7 @@ To-do リストの表示・管理・再開。
 | `Tab` | 承認オプション展開 / ファイル参照自動補完 |
 | `Esc` | パネルを閉じる、エージェント実行キャンセル、プロンプトキューをクリア |
 
-> ※ **Ctrl+S の機能について公式に矛盾あり（2026-06-21 取得時点）**: 公式 [Slash commands リファレンス](https://kiro.dev/docs/cli/reference/slash-commands/)（Page updated 2026-06-12）の Keyboard shortcuts 表は「Fuzzy search commands and context files」と既存記述のまま。一方、公式 [Queue Steering ページ](https://kiro.dev/docs/cli/chat/queue-steering/)（同 2026-06-12）は「Press Ctrl+S to toggle between modes at any time」と明記し、設定キー `chat.keybindings.toggleInterruptBehavior`（既定 `ctrl+s`）でカスタマイズ可能と記載。同日更新だが両者の整合は未確認。**本サイトは v2.7.0 で Queue Steering モード切替が追加されたことを CLI 内蔵 changelog で確認済のため、両機能を併記**。実機の挙動は v2.7.0 起動後に確認推奨。
+> ※ **Ctrl+S の機能について公式に矛盾あり（2026-06-21 取得時点）**: 公式 [Slash commands リファレンス](https://kiro.dev/docs/reference/slash-commands/)（Page updated 2026-06-12）の Keyboard shortcuts 表は「Fuzzy search commands and context files」と既存記述のまま。一方、公式 [Queue Steering ページ](https://kiro.dev/docs/cli/chat/queue-steering/)（同 2026-06-12）は「Press Ctrl+S to toggle between modes at any time」と明記し、設定キー `chat.keybindings.toggleInterruptBehavior`（既定 `ctrl+s`）でカスタマイズ可能と記載。同日更新だが両者の整合は未確認。**本サイトは v2.7.0 で Queue Steering モード切替が追加されたことを CLI 内蔵 changelog で確認済のため、両機能を併記**。実機の挙動は v2.7.0 起動後に確認推奨。
 
 ---
 
@@ -807,7 +807,7 @@ To-do リストの表示・管理・再開。
 
 ### 公式情報源
 
-- [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/cli/reference/slash-commands/)（公式ページ最終更新: 2026-06-12）
+- [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-06-12）
 
 ---
 
