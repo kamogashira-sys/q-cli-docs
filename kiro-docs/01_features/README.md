@@ -2,7 +2,7 @@
 
 # Kiro CLI 機能詳細ガイド
 
-> Kiro CLI の 35 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+> Kiro CLI の 37 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
 
 ## 🗂️ カテゴリ別ナビゲーション
 
@@ -25,6 +25,7 @@
 - [33. v2.13 Introspect サブエージェント・グローバル hooks](33_v213IntrospectGlobalHooks.md) 🆕 — [V3] Kiro 機能説明サブエージェント・全ワークスペース hooks（v2.13.0）
 - [34. v2.14 /upgrade-agent](34_v214UpgradeAgent.md) 🆕 — [V3] V2 エージェント設定を V2/V3 両対応形式へ移行（v2.14.0）
 - [35. v2.16 Tangent（V3側枝会話）](35_v216Tangent.md) 🆕 — [V3] 名前付き・ネスト可能な側枝会話。既存classic版`/tangent`とは別仕様（v2.16.0）
+- [36. Cloud Sessions](36_CloudSessions.md) 🆕 — マネージドクラウドサンドボックスでのセッション実行（プレビュー、v2.17.0）
 
 ### 📁 コンテキスト・知識管理
 - [07. Skills](07_Skills.md) — Progressive Context Loading
@@ -51,6 +52,7 @@
 - [27. Thinking Display](27_ThinkingDisplay.md) 🆕 — 推論のリアルタイム表示（v2.5.0）
 - [28. v2.6 New Commands](28_v26NewCommands.md) 🆕 — `/transcript save`・`/title`・`--effort`・自動永続化（v2.6.0）
 - [29. v2.7 New Commands](29_v27NewCommands.md) 🆕 — Queue Steering（Ctrl+S）・`/settings` UI統一（v2.7.0）
+- [37. Voice Mode](37_VoiceMode.md) 🆕 — オンデバイス音声認識によるプロンプト入力（v2.18.0）
 
 ### 🔒 セキュリティ・権限
 - [11. URL Permissions](11_URLPermissions.md) — `web_fetch` の URL 権限細粒度制御
@@ -109,6 +111,8 @@
 | **[v2.13 Introspect サブエージェント・グローバル hooks](33_v213IntrospectGlobalHooks.md)** 🆕 | v2.13.0<br/>（2026-07-17） | [V3] Kiro 機能説明の組み込みサブエージェントと、全ワークスペースへ自動適用される hooks | [V3] Introspect サブエージェント（カスタム agent/hooks/steering 作成支援）、[V3] グローバル hooks（`~/.kiro/hooks/`）、モデル拒否エラーのスクロールバック表示化・レート制限エラー永続化 |
 | **[v2.14 /upgrade-agent（V2 → V3 エージェント設定移行）](34_v214UpgradeAgent.md)** 🆕 | v2.14.0<br/>（2026-07-22） | [V3] V2 のカスタムエージェント設定を V2/V3 両対応の universal 形式へ変換 | `/upgrade-agent run`（`.kiro/agents/`・`~/.kiro/agents/` をスキャンし選択変換、`.json.bak` バックアップ）、`/upgrade-agent diagnostics`（変換警告 8 種）、[V3] 自動ストリームリトライ、待機中の機能ヒント |
 | **[v2.16 Tangent（V3側枝会話）](35_v216Tangent.md)** 🆕 | v2.16.0<br/>（2026-07-31） | [V3] 名前付き・ネスト可能な側枝会話。既存classic版`/tangent`とはコマンド名は同じだが仕様が異なる別機能 | `/tangent`（ルートで自動命名分岐）、`/tangent <name>`（名前付き分岐・切替）、`/tangent ls`（ビジュアルピッカー）、`/tangent root`（メイン会話へ復帰）、ネスト可能 |
+| **[Cloud Sessions（クラウドセッション・プレビュー）](36_CloudSessions.md)** 🆕 | v2.17.0<br/>（2026-08-11）<br/>v2.18.0更新 | マネージドクラウドサンドボックスで Kiro agent harness を実行。IDE/CLI/Web/Mobile 全サーフェスが同一セッションにアタッチ可能 | `--cloud`・`--repo`・`--resume-id` によるセッション作成・再開、切断後もエージェント継続動作<br/>v2.18.0: 既定オプトイン化（破壊的変更） |
+| **[Voice Mode（音声入力）](37_VoiceMode.md)** 🆕 | v2.18.0<br/>（2026-08-12） | オンデバイス音声認識（Whisper）によるプロンプト入力 | `/voice`・`Ctrl+O`・`Space`長押しで録音、クラウド送信なし、`--continuous`、リモート音声サーバー（`voice-serve`／`voice-cloud-setup`） |
 
 ## 🔗 機能間の連携
 
@@ -295,6 +299,6 @@ sequenceDiagram
 
 ---
 
-**最終更新**: 2026-08-01  
-**対象バージョン**: Kiro CLI v2.16.0+（v3 は Early Access）  
+**最終更新**: 2026-08-16  
+**対象バージョン**: Kiro CLI v2.18.1+（v3 は Early Access）  
 **機能数**: 35 + Reference集約 ([04_reference/](../04_reference/README.md))

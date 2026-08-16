@@ -39,7 +39,7 @@ kiro-cli chat
 
 ## スラッシュコマンド一覧
 
-公式ページに記載されている全コマンド（公式更新日: 2026-06-12 時点）。**本ページには全 40 コマンドを掲載**しています（`/help`〜`/stats` の見出し数。`/save` / `/load` は 1 見出しに集約）。
+公式ページに記載されている全コマンド（公式更新日: 2026-06-12 時点）に加え、`/voice`（v2.18.0+、公式Voiceページを出典）を追加。**本ページには全 41 コマンドを掲載**しています（`/help`〜`/voice` の見出し数。`/save` / `/load` は 1 見出しに集約）。
 
 ### `/help`
 
@@ -717,6 +717,21 @@ To-do リストの表示・管理・再開。
 > /stats
 ```
 
+### `/voice`
+
+> ⚠️ **出典に関する注記**: `/voice` は本ページ（公式 [Slash commands リファレンス](https://kiro.dev/docs/reference/slash-commands/)、Page updated: 2026-08-12）には**掲載されていません**（2026-08-16実測確認）。本サイトは一次情報として公式 [Voice mode ページ](https://kiro.dev/docs/cli/voice/)（Page updated: 2026-08-14）と CLI 内蔵 changelog v2.18.0 を採用しています。
+
+オンデバイス音声認識（Whisper）によるプロンプトの音声入力を開始（**v2.18.0+**）。
+
+```bash
+> /voice                # 録音開始（Enter または無音で確定）
+> /voice --continuous    # ハンズフリーの連続対話モード
+```
+
+キーボードショートカット `Ctrl+O` または `Space` の長押しでも起動可能。
+
+→ 詳細: [37. Voice Mode](../01_features/37_VoiceMode.md)
+
 ---
 
 ## Skill ベースのスラッシュコマンド
@@ -788,6 +803,7 @@ To-do リストの表示・管理・再開。
 - [21. v24NewCommands](../01_features/21_v24NewCommands.md) — `/rewind`、`/effort`、`/settings`
 - [22. Hooks](../01_features/22_Hooks.md) — `/hooks`
 - [25. Auto Complete](../01_features/25_AutoComplete.md) — `/theme` とテーマ切替（Auto Complete のテーマ設定との連携）
+- [37. Voice Mode](../01_features/37_VoiceMode.md) 🆕 — `/voice`
 
 ### 公式情報源
 
@@ -795,5 +811,5 @@ To-do リストの表示・管理・再開。
 
 ---
 
-**Page updated**: 2026-07-25（v2.14.1 対応: `/model`・`/effort` の選択がセッション限定へ回帰したことを反映し `/effort set-current-as-default` を追記、`chat.modelDefaults` の JSON 例を公式 Effort ドキュメント準拠に是正、v3 コマンド注記に `/upgrade-agent` を追加。前回 2026-07-04: `/title` の注記を v2.7.0 `chat.terminalTitle` 追加に整合、classic UI フラグの表記を `--classic` に統一。本サイト初版 2026-05-24）  
+**Page updated**: 2026-08-16（v2.18.0対応: `/voice`（オンデバイス音声入力）を追加、コマンド数を41に更新。出典は公式Voiceページ（公式slash-commandsページには未掲載）。前回 2026-07-25: v2.14.1 対応: `/model`・`/effort` の選択がセッション限定へ回帰したことを反映し `/effort set-current-as-default` を追記、`chat.modelDefaults` の JSON 例を公式 Effort ドキュメント準拠に是正、v3 コマンド注記に `/upgrade-agent` を追加。前回 2026-07-04: `/title` の注記を v2.7.0 `chat.terminalTitle` 追加に整合、classic UI フラグの表記を `--classic` に統一。本サイト初版 2026-05-24）  
 **公式ページ最終更新**: 2026-06-12
