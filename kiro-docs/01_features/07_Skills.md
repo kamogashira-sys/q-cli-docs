@@ -1153,7 +1153,7 @@ Kiroが対応する`SKILL.md`形式は、[Agent Skills標準（agentskills.io）
 - [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)
 - [Agent Skills（公式・現行仕様）](https://kiro.dev/docs/skills/)
 - [Agent Skills 仕様詳細（agentskills.io）](https://agentskills.io/specification)
-- [Custom agents（公式）](https://kiro.dev/docs/custom-agents/)
+- [Custom agents（公式）](https://kiro.dev/docs/custom-agents/) / [Skill Resources設定（アンカー）](https://kiro.dev/docs/custom-agents/configuration-reference/#skill-resources)
 
 ---
 
