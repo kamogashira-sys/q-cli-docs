@@ -9,11 +9,13 @@
 **位置付け**: v3 は単一機能の追加ではなく、**エージェント実行基盤（エンジン）の刷新＋仕様駆動開発（Spec-driven development）の導入**という「開発パラダイムの更新」です。そのため本サイトでは独立セクション（`09_v3/`）にまとめています。
 
 **出典（一次情報）**:
-- [Kiro CLI v3 概要（公式）](https://kiro.dev/docs/cli/v3/)
-- [Spec-driven development（公式 CLI specs）](https://kiro.dev/docs/cli/v3/specs/)
-- [機能比較 v2 → v3（公式 feature-overview）](https://kiro.dev/docs/cli/v3/feature-overview/)
-- [Permissions（公式）](https://kiro.dev/docs/cli/v3/permissions/) ／ [Hooks（公式）](https://kiro.dev/docs/cli/v3/hooks/) ／ [Agent config（公式）](https://kiro.dev/docs/cli/v3/agent-config/)
+- [Kiro CLI v3 概要（公式・What's new in CLI 3.0）](https://kiro.dev/docs/cli/v3/)
+- [Spec-driven development（公式・機能自体）](https://kiro.dev/docs/specs/)
+- [新機能一覧（公式 New features in 3.0）](https://kiro.dev/docs/cli/v3/new-features/)
+- [Permissions（公式・機能自体）](https://kiro.dev/docs/permissions/) ／ [Hooks（公式・機能自体）](https://kiro.dev/docs/hooks/) ／ [Agent config changes（公式・v3移行）](https://kiro.dev/docs/cli/v3/agent-config/)
 - [公式 Changelog v2.8](https://kiro.dev/changelog/cli/2-8/)
+
+> **出典URLについての注記**: kiro.dev は 2026-08-04〜08-12 に v3 関連ドキュメントを再構成しました。旧 `/docs/cli/v3/specs/` は `/docs/specs/` への移転スタブとなり、`/docs/cli/v3/feature-overview/` は存在しなくなりました（機能比較・Breaking changes は `/docs/cli/v3/` 本体のアンカーに統合）。`/docs/cli/v3/permissions/`・`/docs/cli/v3/hooks-migration/`・`/docs/cli/v3/agent-config/` は v3 移行ガイド専用ページとして現存します。本ページの出典は再構成後の現行 URL に更新済みです（2026-08-16 確認）。
 
 ---
 
@@ -46,9 +48,9 @@ kiro-cli --v3
 
 | 柱 | 概要 | 詳細 |
 |----|------|------|
-| **仕様駆動開発**（Spec-driven development） | 組み込みの **Spec agent**。要件 → 設計 → タスク → 実行を計画してから進める | [01. 仕様駆動開発](01_spec-driven-development.md)、[公式](https://kiro.dev/docs/cli/v3/specs/) |
+| **仕様駆動開発**（Spec-driven development） | 組み込みの **Spec agent**。要件 → 設計 → タスク → 実行を計画してから進める | [01. 仕様駆動開発](01_spec-driven-development.md)、[公式](https://kiro.dev/docs/specs/) |
 | **Capability ベースの権限**（Permissions） | `permissions.yaml` に許可/拒否ルールを宣言。`--trust-all-tools` / `/tools trust` を置換 | [公式 Permissions](https://kiro.dev/docs/cli/v3/permissions/) |
-| **強化版 Hooks** | 独立ファイル `.kiro/hooks/*.json`（バージョン付きスキーマ）、2 アクション型（shell / agent）、新トリガ | [公式 Hooks](https://kiro.dev/docs/cli/v3/hooks/) |
+| **強化版 Hooks** | 独立ファイル `.kiro/hooks/*.json`（バージョン付きスキーマ）、2 アクション型（shell / agent）、新トリガ | [公式 Hooks migration](https://kiro.dev/docs/cli/v3/hooks-migration/) |
 | **強化版 Agent 設定** | タグでツール種別を選択、`permissions` ブロック統合、Markdown 形式、inline MCP | [公式 Agent config](https://kiro.dev/docs/cli/v3/agent-config/) |
 
 ### 4 本柱のポイント（一次情報の要約）
@@ -64,7 +66,7 @@ kiro-cli --v3
 - **Introspect サブエージェント**: Kiro の機能に関する質問に答え、**カスタムエージェント・hooks・steering の作成を支援**する組み込みサブエージェント。Spec agent（仕様駆動）に加わる新しい組み込みエージェントで、v3 の設定（上記 4 本柱）を書く際の対話的なガイドとして使えます。
 - **グローバル hooks**: `~/.kiro/hooks/` に置いた hooks が**全ワークスペースへ自動適用**されます（詳細は上記「Hooks」ポイント）。プロジェクト横断で共通のフック（例: セッション開始時の共通セットアップ）をユーザー単位で一元管理できます。
 
-出典: [公式 Hooks](https://kiro.dev/docs/cli/v3/hooks/)、[公式 Changelog v2.13](https://kiro.dev/changelog/cli/2-13/)。
+出典: [公式 Hooks migration](https://kiro.dev/docs/cli/v3/hooks-migration/)、[公式 Changelog v2.13](https://kiro.dev/changelog/cli/2-13/)。
 
 ### v2.14.0 での追加（`/upgrade-agent`・自動ストリームリトライ）
 
@@ -90,19 +92,20 @@ v3 は **後方互換ではない変更**を含みます。切り替え前に確
 | **Agent 設定** | `toolsSettings` を **`permissions`** フィールドへ、個別ツール ID を**タグ**へ |
 | **aws_tool** | **削除**（MCP サーバーで代替） |
 | **セッション形式** | v3 形式は**後方互換なし**。切り替え前に `~/.kiro/sessions/` をバックアップ推奨 |
-| **Supervised mode** | 公式 v3 ドキュメントは **削除**（`permissions.yaml` で代替）と記載（下記注記も参照） |
 
 > **移行手段（v2.14.0 で追加）**: V2 のカスタムエージェント設定は **`/upgrade-agent`**（V3 セッション内で実行）で V2/V3 両対応の universal 形式へ変換できます。公式 [v3 概要](https://kiro.dev/docs/cli/v3/) も同コマンドと [migration guide](https://kiro.dev/docs/cli/v3/upgrade-agent/) を案内しています。→ [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md)
 >
-> ⚠️ **Supervised mode の扱いに公式内で差異があります**: 公式 [v3 概要](https://kiro.dev/docs/cli/v3/) と [機能比較](https://kiro.dev/docs/cli/v3/feature-overview/) は「Supervised mode = Removed（`permissions.yaml` で代替）」と記載していますが、[公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（v2.14.0）のバグ修正には「[V3] supervised モードのターン承認がセッション再開後も維持される」という項目があります。本サイトは双方を出典付きで併記し、どちらかを断定しません。
+> ⚠️ **Supervised mode についての注記**: 公式 [Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（v2.14.0）のバグ修正には「[V3] supervised モードのターン承認がセッション再開後も維持される」という項目があり、当時 V3 に supervised モードが存在したことが分かります。しかし、**2026-08-16 時点の公式 v3 概要ページ（[What's new in CLI 3.0](https://kiro.dev/docs/cli/v3/)）の Feature overview 表・Breaking changes 表のいずれにも「Supervised mode」の記載は存在しません**（旧版で本サイトが出典としていた「Removed（permissions.yaml で代替）」という記載も現行ページには見当たりません）。現状は公式ドキュメント上で言及が確認できないため、本サイトも断定を避け、Changelog の事実のみを記録します。
 
-### 機能強化（v2 → v3、置換ではなく拡張）
+### v2 の類似機能を置き換える新機能（Tangent）
 
-上記の Breaking changes（置換・削除）とは異なり、v2 の機能名をそのまま引き継ぎつつ**仕様が拡張**された例もあります。
+Breaking changes（置換・削除）とは別に、v2 に**名前や見た目が似た機能があった**ため注意が必要な新機能もあります。
 
-| 領域 | 変更内容 |
-|------|----------|
-| **Tangent**（`/tangent`） | v2.16.0 でV3版が追加。名前付き・ネスト可能な側枝会話とビジュアルピッカーが、単一チェックポイントのV2 classic版を置き換える形で強化。公式 [Feature comparison](https://kiro.dev/docs/cli/v3/feature-overview/) は「⬆️ Enhanced — Named, nestable side-conversations with a visual picker replace the single-checkpoint experiment」と明記。V2 classic版のコマンド名は同じだが動作は別物（→ [01_features/35. v2.16 Tangent（V3側枝会話）](../01_features/35_v216Tangent.md)、[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md#tangent)） |
+| 領域 | 状況 |
+|------|------|
+| **Tangent**（`/tangent`） | 公式 [Feature overview](https://kiro.dev/docs/cli/v3/)（2026-08-12 更新版）ではステータス **「✅ New」**、Change from 2.x は「Named, nestable side-conversations」。公式 [Tangent ページ](https://kiro.dev/docs/cli/v3/tangent/) は「This page covers tangent in CLI 3.0 ... The earlier experimental tangent mode behaves differently — a single checkpoint toggled with `/tangent` or `Ctrl+T`, with no naming or nesting」と明記し、V2 classic 版とは**別物**であることを明示。コマンド名 `/tangent` は同じですが、V3 版は名前付き・ネスト可能・ビジュアルピッカー（`/tangent ls`）対応という別仕様です（→ [01_features/35. v2.16 Tangent（V3側枝会話）](../01_features/35_v216Tangent.md)、[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md#tangent)） |
+
+> 📝 **旧記述の訂正（2026-08-16）**: 本サイトは以前、Tangent を「⬆️ Enhanced（強化）」と分類し、公式が「replace the single-checkpoint experiment」と記載していると引用していましたが、現行の公式 Feature overview 表のステータスは **「✅ New」** であり、該当の引用文は現行公式ページのいずれにも存在しません。上記表は現行記述に基づき修正しています。
 
 ---
 
@@ -142,13 +145,14 @@ kiro-cli diagnostic --format json-pretty
 - [02_update/01_changelog.md](../02_update/01_changelog.md) — v2.8.0 / v2.8.1 の変更履歴
 
 ### 公式情報源
-- [Kiro CLI v3 概要](https://kiro.dev/docs/cli/v3/)
-- [Spec-driven development](https://kiro.dev/docs/cli/v3/specs/)
-- [機能比較 v2 → v3](https://kiro.dev/docs/cli/v3/feature-overview/)
-- [Permissions](https://kiro.dev/docs/cli/v3/permissions/) ／ [Hooks](https://kiro.dev/docs/cli/v3/hooks/) ／ [Agent config](https://kiro.dev/docs/cli/v3/agent-config/)
+- [Kiro CLI v3 概要（What's new in CLI 3.0）](https://kiro.dev/docs/cli/v3/)
+- [Spec-driven development（機能自体）](https://kiro.dev/docs/specs/)
+- [新機能一覧（New features in 3.0）](https://kiro.dev/docs/cli/v3/new-features/)
+- [Tangent](https://kiro.dev/docs/cli/v3/tangent/)
+- [Permissions（機能自体）](https://kiro.dev/docs/permissions/) ／ [Hooks（機能自体）](https://kiro.dev/docs/hooks/) ／ [Agent config changes（v3移行）](https://kiro.dev/docs/cli/v3/agent-config/)
 - [Upgrading agent configs（`/upgrade-agent`）](https://kiro.dev/docs/cli/v3/upgrade-agent/)
 
 ---
 
-**最終更新**: 2026-08-01
+**最終更新**: 2026-08-16（Supervised mode 記述・Tangent ステータス・出典URLを一次情報で再確認・訂正）
 **対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x 以降 ＋ `--v3` で提供。3.0.0 GA は未リリース。

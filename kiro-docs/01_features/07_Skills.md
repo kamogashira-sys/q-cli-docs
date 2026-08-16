@@ -1,26 +1,34 @@
-[ホーム](../README.md) > [機能詳細ガイド](README.md) > Skills（Progressive Context Loading）
+[ホーム](../README.md) > [機能詳細ガイド](README.md) > Skills（Agent Skills）
 
 ---
 
-# Kiro CLI Skills機能（Progressive Context Loading）
+# Kiro CLI Skills機能（Agent Skills）
 
-**出典**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)、`kiro-cli version --changelog=all`（v1.26.0情報）、[公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)、[Agent Skills](https://kiro.dev/docs/cli/skills/)
+**出典**: [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)、`kiro-cli version --changelog=all`（v1.26.0情報）、[公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)、[Agent Skills（公式・現行仕様）](https://kiro.dev/docs/skills/)
+
+> 📝 **記述更新（2026-08-16）**: 公式サイトの現行ページでは、Skillは「オープンな**Agent Skills標準**（[agentskills.io](https://agentskills.io)）に準拠したポータブルな指示パッケージ」と再定義され、構造も**フォルダ + `SKILL.md`**（単一の`.md`ファイルではない）に整理されています。本ページはv1.24.0登場時の経緯とProgressive Context Loadingの技術的な仕組み（現在も有効）を保持しつつ、現行の構造・フロントマター仕様・概念枠組みに合わせて全面的に更新しています。
 
 ## 概要
 
-Kiro CLI v1.24.0（2026年1月16日リリース）で追加されたSkills機能について詳細に解説します。v1.26.0（2026年2月12日リリース）では、**Skills自動読み込み**が追加され、Agent設定での明示的な指定なしにSkillsが利用可能になりました。
+Kiro CLI v1.24.0（2026年1月16日リリース）で追加されたSkills機能について詳細に解説します。v1.26.0（2026年2月12日リリース）では、**Skills自動読み込み**が追加され、Agent設定での明示的な指定なしにSkillsが利用可能になりました。その後、公式サイトは Skills を**オープンな Agent Skills 標準**に準拠したポータブルな指示パッケージとして再定義しています（本ページはこの現行定義に基づき更新済み）。
 
-### Skills機能とは
+### Skills機能とは（現行定義）
 
-Skills機能は、**段階的コンテキストロード（Progressive Context Loading）**を実現する新しいリソースタイプです。従来の`file://`リソースとは異なり、起動時にはメタデータ（名前と説明）のみをロードし、本文はエージェントが必要と判断した時にオンデマンドでロードします。
+公式現行ページは次のように定義しています。
+
+> Skills are portable instruction packages that follow the open [Agent Skills](https://agentskills.io) standard. They bundle instructions, scripts, and templates into reusable packages that Kiro can activate when relevant to your task.
+>
+> （Skillsは、オープンな Agent Skills 標準に準拠した**ポータブルな指示パッケージ**です。指示・スクリプト・テンプレートを再利用可能なパッケージにまとめ、タスクに関連する時に Kiro が起動できます。）
+
+技術的な中核は、**段階的開示（Progressive Disclosure）**による**コンテキストの効率的な利用**です。従来の`file://`リソースとは異なり、起動時にはメタデータ（名前と説明）のみをロードし、本文はエージェントが必要と判断した時にオンデマンドでロードします。
 
 ### 主な特徴
 
-- **段階的ロード**: 起動時はメタデータのみ、本文はオンデマンド
+- **オープン標準**: [Agent Skills標準](https://agentskills.io)に準拠。コミュニティや他の互換AIツールからSkillをインポートしたり、自作のSkillをエコシステム全体で共有できる
+- **段階的開示（Progressive Disclosure）**: 起動時はメタデータのみ、本文はオンデマンドでロード
+- **スクリプト・テンプレート同梱**: `scripts/`（実行コード）・`references/`（参考文書）・`assets/`（テンプレート）を`SKILL.md`と同じフォルダに配置可能
 - **コンテキスト効率化**: 常時コンテキストウィンドウを消費しない
-- **大規模ドキュメント対応**: 数百MBのドキュメントセットも管理可能
-- **YAMLフロントマター必須**: 名前と説明を含むメタデータが必要
-- **自動読み込み（v1.26.0）**: `.kiro/skills/`と`~/.kiro/skills/`のSkillsがデフォルトエージェントに自動提供
+- **自動読み込み（v1.26.0以降）**: `.kiro/skills/`と`~/.kiro/skills/`のSkillsがデフォルトエージェントに自動提供
 
 ### 従来のfile://リソースとの違い
 
@@ -76,36 +84,71 @@ flowchart LR
 
 > `file://` リソースが**起動時に全文をロードする**のに対し、Skills は必要な本文だけを必要な間だけ保持します。
 
-### Skillファイルの構造
+### Skillの構造（フォルダ + SKILL.md）
 
-Skillファイルは、YAMLフロントマターとMarkdown本文で構成されます。
+> 📝 **構造の訂正（2026-08-16）**: 公式現行仕様では、Skillは**単一の`.md`ファイルではなく、`SKILL.md`を含むフォルダ**です。本節は現行仕様に基づき記述します（旧版は単一`.md`ファイル前提の記述でしたが誤りです）。
+
+公式現行ページは次のように定義しています。
+
+```
+my-skill/
+├── SKILL.md           # 必須
+├── scripts/           # 任意: 実行可能なコード
+├── references/        # 任意: 参考文書
+└── assets/            # 任意: テンプレート
+```
+
+`SKILL.md`はYAMLフロントマターとMarkdown本文で構成されます。
 
 #### 必須要素
 
-1. **YAMLフロントマター**: メタデータ（名前と説明）
-2. **Markdown本文**: 実際のコンテンツ
+1. **YAMLフロントマター**: メタデータ（`name`・`description`が必須）
+2. **Markdown本文**: 実際の指示内容
 
 #### ファイル形式
 
 ```markdown
 ---
-name: skill-name
-description: Brief description of what this skill provides. Use when...
+name: pr-review
+description: Review pull requests for code quality, security issues, and test coverage. Use when reviewing PRs or preparing code for review.
 ---
 
-# Skill Title
+## Review checklist
 
-... full content here ...
+... 指示内容 ...
 ```
 
-#### YAMLフロントマターの詳細
+#### YAMLフロントマターの詳細（現行仕様・全5フィールド）
 
-| フィールド | 必須 | 説明 | 例 |
-|-----------|------|------|-----|
-| `name` | ✅ | Skillの一意な識別子 | `dynamodb-data-modeling` |
-| `description` | ✅ | Skillの説明（エージェントが判断に使用） | `Guide for DynamoDB data modeling best practices. Use when designing or analyzing DynamoDB schema.` |
+| フィールド | 必須 | 説明 |
+|-----------|------|------|
+| `name` | ✅ | **フォルダ名と一致**する必要がある。小文字・数字・ハイフンのみ、**最大64文字** |
+| `description` | ✅ | このSkillをいつ使うか。Kiroがユーザーのリクエストと照合する。**最大1024文字** |
+| `license` | ➖ | ライセンス名、または同梱するライセンスファイルへの参照 |
+| `compatibility` | ➖ | 環境要件（必要なツール、ネットワークアクセス等） |
+| `metadata` | ➖ | 作者・バージョンなどの追加のキー・バリューデータ |
 
-**重要**: `description`フィールドは、エージェントが適切なタイミングで本文をロードするための判断材料となります。明確で具体的な説明を記述してください。
+**重要**: `description`フィールドは、エージェントが適切なタイミングで本文をロードするための判断材料となります。明確で具体的な説明を記述してください。詳細なフィールド制約は[公式仕様（agentskills.io）](https://agentskills.io/specification)を参照してください。
+
+#### 参考文書フォルダ（references/）
+
+詳細なドキュメントは`references/`フォルダに分離できます。
+
+```
+aws-deployment/
+├── SKILL.md
+└── references/
+    ├── ecs-guide.md
+    └── troubleshooting.md
+```
+
+`SKILL.md`内から参照します。
+
+```markdown
+For ECS deployments, follow the guide in `references/ecs-guide.md`.
+```
+
+Kiroは、指示内容がそう指示している時にのみ参考文書をロードします。
 
 ### 設定方法
 
@@ -120,8 +163,8 @@ v1.26.0以降、以下のディレクトリに配置されたSkillファイル�
 
 ```bash
 # プロジェクト固有のSkillを配置するだけで自動的に利用可能
-mkdir -p .kiro/skills/
-cat > .kiro/skills/my-skill.md << 'EOF'
+mkdir -p .kiro/skills/my-skill
+cat > .kiro/skills/my-skill/SKILL.md << 'EOF'
 ---
 name: my-skill
 description: My custom skill. Use when...
@@ -135,7 +178,7 @@ EOF
 kiro-cli chat
 ```
 
-**注意**: v1.24.0〜v1.25.xでは、Agent設定ファイルでの`skill://`指定が必要です（下記参照）。
+**注意**: v1.24.0〜v1.25.xでは、Agent設定ファイルでの`skill://`指定が必要です（下記参照）。**当時のバージョンでは単一の`.md`ファイル（フォルダ化なし）が使われていましたが、現行の公式仕様は「フォルダ + `SKILL.md`」で統一されています**。
 
 #### Agent設定ファイルでの指定（v1.24.0〜）
 
@@ -152,17 +195,31 @@ kiro-cli chat
 | 項目 | 説明 | 例 |
 |------|------|-----|
 | プロトコル | `skill://` を使用 | `skill://.kiro/skills/` |
-| パス | プロジェクトルートからの相対パス | `.kiro/skills/` |
-| Globパターン | ワイルドカードで複数ファイル指定可能 | `**/SKILL.md` |
+| パス | プロジェクトルートからの相対パス、または`~`によるホームディレクトリ展開 | `.kiro/skills/`、`~/.kiro/skills/` |
+| Globパターン | ワイルドカードで複数フォルダ指定可能（各フォルダの`SKILL.md`を対象） | `*/SKILL.md` |
 
 #### 複数のSkillディレクトリ
+
+公式現行仕様の例（ワークスペース・グローバル双方を指定）:
+
+```json
+{
+  "name": "my-agent",
+  "resources": [
+    "skill://.kiro/skills/*/SKILL.md",
+    "skill://~/.kiro/skills/*/SKILL.md"
+  ]
+}
+```
+
+カテゴリ別にサブフォルダを分けて個別指定することも可能です（各Skillは依然としてフォルダ+`SKILL.md`）。
 
 ```json
 {
   "resources": [
-    "skill://.kiro/skills/aws/**/*.md",
-    "skill://.kiro/skills/architecture/**/*.md",
-    "skill://.kiro/skills/best-practices/**/*.md"
+    "skill://.kiro/skills/aws/**/SKILL.md",
+    "skill://.kiro/skills/architecture/**/SKILL.md",
+    "skill://.kiro/skills/best-practices/**/SKILL.md"
   ]
 }
 ```
@@ -235,22 +292,24 @@ Skillリスト作成（name + description）
 
 ## セットアップ/使用方法
 
-### 1. Skillファイルの作成
+### 1. Skillの作成
 
 #### ステップ1: ディレクトリ構造の作成
 
+Skillは**フォルダ + `SKILL.md`**で構成されます。フォルダ名は`SKILL.md`内の`name`フィールドと一致させる必要があります。
+
 ```bash
 # プロジェクトルートで実行
-mkdir -p .kiro/skills/aws
+mkdir -p .kiro/skills/aws/dynamodb-data-modeling
 mkdir -p .kiro/skills/architecture
 mkdir -p .kiro/skills/best-practices
 ```
 
-#### ステップ2: Skillファイルの作成
+#### ステップ2: SKILL.mdの作成
 
 ```bash
 # DynamoDBデータモデリングのSkillを作成
-cat > .kiro/skills/aws/dynamodb-data-modeling.md << 'EOF'
+cat > .kiro/skills/aws/dynamodb-data-modeling/SKILL.md << 'EOF'
 ---
 name: dynamodb-data-modeling
 description: Guide for DynamoDB data modeling best practices. Use when designing or analyzing DynamoDB schema.
@@ -287,7 +346,8 @@ cat > .kiro/agents/my-agent.json << 'EOF'
   "name": "my-agent",
   "description": "My custom agent with Skills",
   "resources": [
-    "skill://.kiro/skills/**/*.md"
+    "skill://.kiro/skills/*/SKILL.md",
+    "skill://.kiro/skills/aws/*/SKILL.md"
   ]
 }
 EOF
@@ -312,6 +372,13 @@ kiro-cli chat --agent my-agent
 # 本文を使用して回答を生成
 ```
 
+Skillは**スラッシュコマンドとしても直接呼び出せます**（v2.1.0以降）。チャット入力で`/`に続けてSkill名を入力すると、候補として表示されます。
+
+```bash
+# フォルダ名（=name）で直接呼び出す
+> /dynamodb-data-modeling
+```
+
 ### 3. Skillの確認
 
 #### 利用可能なSkillの確認
@@ -330,9 +397,13 @@ kiro-cli chat --agent my-agent
 3. api-design-patterns - RESTful API design patterns and guidelines
 ```
 
+現在のセッションで利用可能なSkillは`/context show`コマンドでも確認できます（公式doc記載）。
+
 ### 4. Skillファイルのテンプレート
 
 #### 基本テンプレート
+
+`<skill-name>/SKILL.md`として保存します（`<skill-name>`はフォルダ名かつ`name`フィールドの値）。
 
 ```markdown
 ---
@@ -444,16 +515,21 @@ AWSの各サービスのベストプラクティスを大量に管理し、必�
 #### 実装
 
 ```bash
-# ディレクトリ構造
+# ディレクトリ構造（各Skillはフォルダ + SKILL.md）
 .kiro/skills/aws/
-├── dynamodb-best-practices.md
-├── lambda-best-practices.md
-├── s3-best-practices.md
-├── api-gateway-best-practices.md
-└── cloudformation-best-practices.md
+├── dynamodb-best-practices/
+│   └── SKILL.md
+├── lambda-best-practices/
+│   └── SKILL.md
+├── s3-best-practices/
+│   └── SKILL.md
+├── api-gateway-best-practices/
+│   └── SKILL.md
+└── cloudformation-best-practices/
+    └── SKILL.md
 ```
 
-**Skillファイル例**（lambda-best-practices.md）:
+**Skillファイル例**（`aws/lambda-best-practices/SKILL.md`）:
 
 ```markdown
 ---
@@ -481,7 +557,7 @@ description: Best practices for AWS Lambda development. Use when designing, impl
 ```json
 {
   "resources": [
-    "skill://.kiro/skills/aws/**/*.md"
+    "skill://.kiro/skills/aws/*/SKILL.md"
   ]
 }
 ```
@@ -503,13 +579,17 @@ description: Best practices for AWS Lambda development. Use when designing, impl
 ```bash
 # ディレクトリ構造
 .kiro/skills/architecture/
-├── microservices-patterns.md
-├── serverless-patterns.md
-├── event-driven-patterns.md
-└── cqrs-patterns.md
+├── microservices-patterns/
+│   └── SKILL.md
+├── serverless-patterns/
+│   └── SKILL.md
+├── event-driven-patterns/
+│   └── SKILL.md
+└── cqrs-patterns/
+    └── SKILL.md
 ```
 
-**Skillファイル例**（serverless-patterns.md）:
+**Skillファイル例**（`architecture/serverless-patterns/SKILL.md`）:
 
 ```markdown
 ---
@@ -549,13 +629,17 @@ description: Serverless architecture patterns and best practices. Use when desig
 ```bash
 # ディレクトリ構造
 .kiro/skills/team-standards/
-├── coding-standards.md
-├── review-guidelines.md
-├── deployment-procedures.md
-└── security-checklist.md
+├── coding-standards/
+│   └── SKILL.md
+├── review-guidelines/
+│   └── SKILL.md
+├── deployment-procedures/
+│   └── SKILL.md
+└── security-checklist/
+    └── SKILL.md
 ```
 
-**Skillファイル例**（coding-standards.md）:
+**Skillファイル例**（`team-standards/coding-standards/SKILL.md`）:
 
 ```markdown
 ---
@@ -618,22 +702,32 @@ description: Guide for DynamoDB data modeling best practices. Use when designing
 |------|--------------|------|------|
 | 細かすぎる | < 5KB | ❌ | 管理コストが高い、メタデータのオーバーヘッド |
 | 適切 | 5-50KB | ✅ | バランスが良い、必要な情報のみロード |
-| 粗すぎる | > 50KB | ❌ | ロード時のコンテキスト消費が大きい |
+| 粗すぎる | > 50KB | ❌ | ロード時のコンテキスト消費が大きい。公式ベストプラクティスも「Keep SKILL.md focused」として、詳細情報は`references/`フォルダへ分離することを推奨 |
 
 #### 分割の例
 
 **❌ 粗すぎる**:
 
 ```
-aws-all-services.md (200KB)
+aws-all-services/SKILL.md (200KB)
 ```
 
 **✅ 適切**:
 
 ```
-aws/dynamodb-best-practices.md (20KB)
-aws/lambda-best-practices.md (15KB)
-aws/s3-best-practices.md (18KB)
+aws/dynamodb-best-practices/SKILL.md (20KB)
+aws/lambda-best-practices/SKILL.md (15KB)
+aws/s3-best-practices/SKILL.md (18KB)
+```
+
+**✅ さらに適切（大規模な場合はreferences/へ分離）**:
+
+```
+aws/dynamodb-best-practices/
+├── SKILL.md（要点のみ、アクション可能な指示）
+└── references/
+    ├── single-table-design.md
+    └── access-patterns.md
 ```
 
 ### 3. 階層的なディレクトリ構造を使用する
@@ -644,20 +738,30 @@ aws/s3-best-practices.md (18KB)
 .kiro/skills/
 ├── aws/
 │   ├── compute/
-│   │   ├── lambda-best-practices.md
-│   │   └── ec2-best-practices.md
+│   │   ├── lambda-best-practices/
+│   │   │   └── SKILL.md
+│   │   └── ec2-best-practices/
+│   │       └── SKILL.md
 │   ├── storage/
-│   │   ├── s3-best-practices.md
-│   │   └── dynamodb-best-practices.md
+│   │   ├── s3-best-practices/
+│   │   │   └── SKILL.md
+│   │   └── dynamodb-best-practices/
+│   │       └── SKILL.md
 │   └── networking/
-│       ├── vpc-design.md
-│       └── api-gateway-patterns.md
+│       ├── vpc-design/
+│       │   └── SKILL.md
+│       └── api-gateway-patterns/
+│           └── SKILL.md
 ├── architecture/
-│   ├── microservices-patterns.md
-│   └── serverless-patterns.md
+│   ├── microservices-patterns/
+│   │   └── SKILL.md
+│   └── serverless-patterns/
+│       └── SKILL.md
 └── team-standards/
-    ├── coding-standards.md
-    └── review-guidelines.md
+    ├── coding-standards/
+    │   └── SKILL.md
+    └── review-guidelines/
+        └── SKILL.md
 ```
 
 **メリット**:
@@ -684,41 +788,46 @@ aws/s3-best-practices.md (18KB)
   "resources": [
     "file://.kiro/project-config.md",
     "file://.kiro/coding-standards-summary.md",
-    "skill://.kiro/skills/**/*.md"
+    "skill://.kiro/skills/*/SKILL.md"
   ]
 }
 ```
 
-### 5. Skillファイルの命名規則
+### 5. Skillフォルダの命名規則
 
 #### 推奨命名規則
 
-- **ケバブケース**: `dynamodb-data-modeling.md`
+`name`フィールドとフォルダ名は一致させる必要があります（小文字・数字・ハイフンのみ、最大64文字）。
+
+- **ケバブケース**: `dynamodb-data-modeling/`
 - **説明的な名前**: 内容が明確にわかる名前
 - **一貫性**: プロジェクト全体で統一
 
 #### 例
 
 ```
-✅ dynamodb-data-modeling.md
-✅ lambda-best-practices.md
-✅ api-design-patterns.md
+✅ dynamodb-data-modeling/SKILL.md
+✅ lambda-best-practices/SKILL.md
+✅ api-design-patterns/SKILL.md
 
-❌ db.md (不明確)
-❌ DynamoDB_DataModeling.md (スネークケース)
-❌ dynamoDBDataModeling.md (キャメルケース)
+❌ db/SKILL.md (不明確)
+❌ DynamoDB_DataModeling/SKILL.md (スネークケース)
+❌ dynamoDBDataModeling/SKILL.md (キャメルケース)
 ```
 
-### 6. Skillファイルの更新管理
+### 6. Skillの更新管理
 
 #### バージョン管理
+
+> 📝 **フィールド名の訂正（2026-08-16）**: 公式現行仕様のフロントマターには`version`・`last_updated`という専用フィールドはありません。バージョンや作者などの追加情報は任意フィールドの**`metadata`**（キー・バリュー形式）に格納します。
 
 ```markdown
 ---
 name: dynamodb-data-modeling
 description: Guide for DynamoDB data modeling best practices. Use when designing or analyzing DynamoDB schema.
-version: 1.2.0
-last_updated: 2026-01-15
+metadata:
+  version: 1.2.0
+  last_updated: 2026-01-15
 ---
 
 # DynamoDB Data Modeling
@@ -773,28 +882,28 @@ cat .kiro/agents/my-agent.json
 ```json
 {
   "resources": [
-    "skill://.kiro/skills/**/*.md"
+    "skill://.kiro/skills/*/SKILL.md"
   ]
 }
 ```
 
-**原因2: Skillファイルのパスが間違っている**
+**原因2: Skillフォルダのパスが間違っている**
 
 ```bash
-# Skillファイルの存在確認
+# Skillフォルダの存在確認
 ls -la .kiro/skills/
 
-# Globパターンの確認
-find .kiro/skills/ -name "*.md"
+# SKILL.mdの存在確認
+find .kiro/skills/ -name "SKILL.md"
 ```
 
-**対処法**: パスを修正
+**対処法**: パスを修正。フォルダ名と`SKILL.md`内の`name`フィールドが一致しているかも確認
 
 **原因3: YAMLフロントマターが不正**
 
 ```bash
-# Skillファイルの先頭を確認
-head -n 10 .kiro/skills/aws/dynamodb-data-modeling.md
+# SKILL.mdの先頭を確認
+head -n 10 .kiro/skills/aws/dynamodb-data-modeling/SKILL.md
 ```
 
 **対処法**: YAMLフロントマターを修正
@@ -886,8 +995,8 @@ Error: Invalid YAML front matter in skill file
 **原因: YAMLフロントマターの文法エラー**
 
 ```bash
-# Skillファイルを確認
-cat .kiro/skills/aws/dynamodb-data-modeling.md
+# SKILL.mdを確認
+cat .kiro/skills/aws/dynamodb-data-modeling/SKILL.md
 ```
 
 **よくあるエラー**:
@@ -917,7 +1026,7 @@ description: Guide for DynamoDB data modeling best practices.
 
 ## v2.1.0での進化（2026年4月24日リリース）
 
-**出典**: [公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)、[Agent Skills](https://kiro.dev/docs/cli/skills/)
+**出典**: [公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)、[Agent Skills（現行）](https://kiro.dev/docs/skills/)
 
 v2.1.0では、Skillsをスラッシュコマンドとして直接呼び出せるようになりました。
 
@@ -952,18 +1061,58 @@ Skillは以下の2つの方法で起動できます:
 
 ### 参考リンク
 
-- [Agent Skills 公式ドキュメント](https://kiro.dev/docs/cli/skills/)
+- [Agent Skills 公式ドキュメント](https://kiro.dev/docs/skills/)
 - [公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)
+
+## オープンなAgent Skills標準とインポート機能（現行仕様）
+
+> 📝 **概念枠組みの更新（2026-08-16）**: 公式現行ページは、Skillsを「Progressive Context Loadingの実装」という技術的な説明よりも「**オープンなポータブル標準に準拠した指示パッケージ**」として位置付けています。以下は現行仕様に基づく追加情報です。
+
+### Agent Skills標準（agentskills.io）
+
+Kiroが対応する`SKILL.md`形式は、[Agent Skills標準（agentskills.io）](https://agentskills.io)という**Kiro固有ではないオープン標準**に準拠しています。そのため以下が可能です。
+
+- **コミュニティ・他ツールからのインポート**: 標準に準拠したSkillであれば、他の互換AIツール向けに作られたものもKiroへインポートできる
+- **エコシステム全体での共有**: 自作のSkillを標準に準拠した形で公開すれば、Kiro以外のツールでも使われうる
+
+### Skillのインポート
+
+公式手順（IDE/CLI/Web共通の操作フロー）:
+
+1. Kiroパネルの **Agent Steering & Skills** セクションを開く
+2. **+** をクリックし **Import a skill** を選択
+3. インポート元を選択:
+   - **GitHub**: 公開リポジトリのURLからインポート。SkillフォルダまたはSKILL.mdファイルへの直接URLを指定可能（リポジトリのルートではなく、サブディレクトリを指すURLが必要）
+   - **Local folder**: ファイルシステムのローカルフォルダからインポート
+
+インポートされたSkillはSkillsディレクトリにコピーされ、即座に使用可能になります。
+
+### スクリプトの活用（ベストプラクティス）
+
+公式は、**決定論的なタスク（検証、ファイル生成、API呼び出し等）はLLM生成コードよりスクリプトの方が適している**と推奨しています。`scripts/`フォルダに実行可能コードを同梱し、SKILL.mdから参照できます。
+
+### Skillsとsteering・Powersの違い（公式比較）
+
+公式現行ページは3つの機能を次のように区別しています。
+
+| 機能 | 定義 | 用途 |
+|------|------|------|
+| **Skills** | オープン標準に準拠したポータブルなパッケージ。オンデマンドでロードされ、スクリプトを同梱可能 | 共有・インポートしたい再利用可能なワークフロー |
+| **[Steering](23_Steering.md)** | Kiro固有のコンテキスト。`always`／`auto`／`fileMatch`／`manual`のモードに対応 | プロジェクトの標準・規約 |
+| **Powers** | MCPツールとナレッジ・ワークフローをバンドル。コンテキストに応じて動的に起動 | ツールとガイダンスの両方が必要な統合 |
+
+> 💡 MCP統合には、通常**Powers**の方が適しています。ツールと組み込みガイダンスをバンドルし、作業内容に応じて自動起動するためです（公式Tip）。
 
 ## まとめ
 
 ### Skills機能の重要ポイント
 
-1. **段階的コンテキストロード**: 起動時はメタデータのみ、本文はオンデマンド
-2. **コンテキスト効率化**: 大規模ドキュメントセットを効率的に管理
-3. **YAMLフロントマター必須**: 名前と説明を含むメタデータが必要
-4. **file://との使い分け**: 小規模な必須ファイルは`file://`、大規模なガイドは`skill://`
-5. **自動読み込み（v1.26.0）**: `.kiro/skills/`と`~/.kiro/skills/`に配置するだけでデフォルトエージェントに自動提供
+1. **オープン標準準拠**: [Agent Skills標準（agentskills.io）](https://agentskills.io)に準拠したポータブルなパッケージ。他ツールからのインポート・エコシステム間の共有が可能
+2. **構造**: フォルダ + `SKILL.md`（必須）＋ `scripts/`／`references/`／`assets/`（任意）
+3. **段階的開示（Progressive Disclosure）**: 起動時はメタデータのみ、本文はオンデマンド
+4. **フロントマター**: `name`・`description`が必須、`license`・`compatibility`・`metadata`は任意
+5. **file://との使い分け**: 小規模な必須ファイルは`file://`、大規模なガイドは`skill://`
+6. **自動読み込み（v1.26.0以降）**: `.kiro/skills/`と`~/.kiro/skills/`に配置するだけでデフォルトエージェントに自動提供（同名時はワークスペースがグローバルに優先）
 
 ### Skills機能の活用シーン
 
@@ -973,6 +1122,7 @@ Skillは以下の2つの方法で起動できます:
 | アーキテクチャパターン集 | 必要なパターンのみオンデマンドロード |
 | チーム標準・ガイドライン | 標準文書を一元管理、自動適用 |
 | 大規模リファレンス | 数百MBのドキュメントも管理可能 |
+| 他ツール・コミュニティ製Skillの活用 | GitHubやローカルフォルダからインポートしてすぐ使える |
 
 ### file://、skill://、Knowledge Basesの使い分け
 
@@ -984,24 +1134,26 @@ Skillは以下の2つの方法で起動できます:
 
 ### ベストプラクティスのまとめ
 
-1. **具体的なdescription**: エージェントが判断できる明確な説明
-2. **適切な粒度**: 5-50KBのファイルサイズ
+1. **具体的なdescription**: エージェントが判断できる明確な説明（`name`と`description`は必須、最大64字／1024字）
+2. **適切な粒度**: `SKILL.md`は要点のみに絞り、詳細は`references/`へ分離
 3. **階層的な構造**: 論理的なディレクトリ構成
-4. **命名規則の統一**: ケバブケース、説明的な名前
-5. **バージョン管理**: 変更履歴の追跡
+4. **命名規則の統一**: ケバブケース、フォルダ名と`name`を一致させる
+5. **決定論的な処理はスクリプト化**: 検証・生成・API呼び出しは`scripts/`へ
+6. **スコープの選択**: 個人の作業パターンはグローバル、チームの手順はワークスペース（`.kiro/skills/`をリポジトリにコミット）
 
 ### 次のステップ
 
-1. **Skillファイルの作成**: プロジェクトに必要なガイドを作成
-2. **Agent設定の更新**: `skill://`リソースを追加
-3. **動作確認**: Skillが正しく認識されるか確認
-4. **継続的な改善**: Skillファイルを継続的に更新・改善
+1. **Skillの作成**: `<skill-name>/SKILL.md`としてプロジェクトに必要なガイドを作成
+2. **Agent設定の更新**: `skill://`リソースを追加（デフォルトエージェントは自動読み込み）
+3. **動作確認**: `/context show`でSkillが正しく認識されるか確認
+4. **継続的な改善**: Skillを継続的に更新・改善
 
 ### 参考リンク
 
 - [Kiro CLI v1.24.0 Changelog](https://kiro.dev/changelog/cli/1-24/)
-- [Agent Configuration Reference - Skill Resources](https://kiro.dev/docs/cli/custom-agents/configuration-reference/#skill-resources)
-- [Context Management Documentation](https://kiro.dev/docs/cli/chat/context/)
+- [Agent Skills（公式・現行仕様）](https://kiro.dev/docs/skills/)
+- [Agent Skills 仕様詳細（agentskills.io）](https://agentskills.io/specification)
+- [Custom agents（公式）](https://kiro.dev/docs/custom-agents/)
 
 ---
 
@@ -1011,7 +1163,7 @@ Skillは以下の2つの方法で起動できます:
 
 | アプローチ | 適性 | 詳細 |
 |--------|------|------|
-| **Skills**（本ページ） | 大規模ドキュメントの **オンデマンド** ロード | YAML フロントマター、メタデータ起動 |
+| **Skills**（本ページ） | オープン標準準拠のポータブルな指示パッケージ。大規模ドキュメントの **オンデマンド** ロード | フォルダ + `SKILL.md`、段階的開示 |
 | **[Steering](23_Steering.md)** 🆕 | プロジェクト規約・コーディング標準の **永続的** 注入 | `.kiro/steering/`、AGENTS.md 標準 |
 | **[@file references](24_FileReferences.md)** 🆕 | チャット入力での **即時** ファイル参照 | `@file` `@directory` 構文、Tab補完 |
 | **Knowledge**（experimental） | セマンティック検索可能な独立 KB | `kiro-cli settings chat.enableKnowledge true` |
@@ -1024,7 +1176,7 @@ Skillは以下の2つの方法で起動できます:
 
 - [08. cdk-skills（CDK 開発支援 Skills 集）](../08_cdk-skills/README.md) 🛠️ — **AWS DevTools Hero（go-to-k 後藤さん）が公開する CDK 開発支援 Skills 集（MIT）**。本機能（Skills 自動読み込み、v1.26.0+）の **応用例として最も具体的** で、AI コーディングエージェントが AWS CDK 単体テストの「**どの場面でどれを書くべきか / 書かなくて良いか**」を判断できるようにします。
   - **収録 Skill**: `aws-cdk-unit-testing`（スナップショット / Fine-grained / バリデーションの 3 種類の使い分けを判断フロー化）
-  - **配置先**: `~/.kiro/skills/aws-cdk-unit-testing/SKILL.md`（本機能の Glob パターン `**/SKILL.md` に準拠）
+  - **配置先**: `~/.kiro/skills/aws-cdk-unit-testing/SKILL.md`（フォルダ + `SKILL.md`という現行仕様に準拠）
   - **インストール**: `gh skill install go-to-k/cdk-skills aws-cdk-unit-testing` または `npx skills add` または手動配置（公式仕様準拠）
 
 ### リファレンス（辞書）
@@ -1033,5 +1185,5 @@ Skillは以下の2つの方法で起動できます:
 
 ---
 
-**最終更新**: 2026-07-04
-**対象バージョン**: Kiro CLI v1.24.0+（v1.26.0 自動読み込み・v2.1.0 スラッシュコマンド呼び出しを含む）
+**最終更新**: 2026-08-16（Skill構造をフォルダ+SKILL.md形式に全面訂正、フロントマター全フィールド追記、オープンAgent Skills標準・import機能・Steering/Powers比較を追加）
+**対象バージョン**: Kiro CLI v1.24.0+（v1.26.0 自動読み込み・v2.1.0 スラッシュコマンド呼び出し・現行のオープン標準準拠仕様を含む）
