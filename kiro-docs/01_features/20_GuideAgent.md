@@ -235,7 +235,7 @@ TUI モードがデフォルト化された v2.0.0 以降、TUI はデフォル�
 
 - [Kiro CLI 公式サイト](https://kiro.dev/cli/)
 - [Kiro CLI Terminal UI 比較](https://kiro.dev/docs/cli/terminal-ui/comparison/) - `/guide` の唯一の公式言及
-- [Kiro CLI Help Agent](https://kiro.dev/docs/custom-agents/built-in/) - Help Agent の公式解説
+- [Kiro CLI Built-in agents - Help agent (CLI only)](https://kiro.dev/docs/custom-agents/built-in/#help-agent-cli-only) - Help Agent の公式解説（個別ページから統合ページ内セクションへ変更）
 - [Kiro CLI スラッシュコマンドリファレンス](https://kiro.dev/docs/reference/slash-commands/)
 
 ### 関連機能（本サイト内）

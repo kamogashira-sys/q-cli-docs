@@ -92,7 +92,7 @@
 ### 公式情報源
 
 - [Kiro CLI Documentation](https://kiro.dev/docs/cli/) — 公式トップ
-- [Kiro CLI Reference](https://kiro.dev/docs/reference/cli-commands/) — 公式リファレンスインデックス
+- [CLI commands - Commands and Reference](https://kiro.dev/docs/reference/cli-commands/) — 公式リファレンス（旧「CLI Reference」索引ページは廃止され、個別ページに統合）
 - [Kiro CLI Changelog](https://kiro.dev/changelog/cli/) — 公式 changelog
 
 ---
