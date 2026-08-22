@@ -79,6 +79,15 @@ kiro-cli --v3
 
 出典: [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)、[Upgrading agent configs（公式）](https://kiro.dev/docs/cli/v3/upgrade-agent/)。
 
+### v2.19.0 での追加（session resume タイトル要約・MCP protocol revision 対応）
+
+**v2.19.0（2026-08-19）** で、V3 に2つの改善が追加されました。
+
+- **session resume ピッカーのAI生成タイトル**: セッション再開ピッカーに、最初のプロンプトを要約した短いAI生成タイトルが表示されるようになりました。似た内容のセッションが並んでいても識別しやすくなります。
+- **MCP protocol revision 2026-07-28 対応**: このprotocol revisionを要求するMCPサーバーへの接続に対応しました。
+
+出典: `kiro-cli version --changelog=2.19.0`、[公式 Changelog v2.19](https://kiro.dev/changelog/cli/2-19/)。
+
 ---
 
 ## Breaking changes（v2 → v3）
@@ -154,5 +163,5 @@ kiro-cli diagnostic --format json-pretty
 
 ---
 
-**最終更新**: 2026-08-16（Supervised mode 記述・Tangent ステータス・出典URLを一次情報で再確認・訂正）
+**最終更新**: 2026-08-22（v2.19.0のV3追加項目（session resumeタイトル要約・MCP protocol revision対応）を追記）
 **対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x 以降 ＋ `--v3` で提供。3.0.0 GA は未リリース。

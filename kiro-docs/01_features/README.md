@@ -2,7 +2,7 @@
 
 # Kiro CLI 機能詳細ガイド
 
-> Kiro CLI の 37 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+> Kiro CLI の 38 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
 
 ## 🗂️ カテゴリ別ナビゲーション
 
@@ -26,6 +26,7 @@
 - [34. v2.14 /upgrade-agent](34_v214UpgradeAgent.md) 🆕 — [V3] V2 エージェント設定を V2/V3 両対応形式へ移行（v2.14.0）
 - [35. v2.16 Tangent（V3側枝会話）](35_v216Tangent.md) 🆕 — [V3] 名前付き・ネスト可能な側枝会話。既存classic版`/tangent`とは別仕様（v2.16.0）
 - [36. Cloud Sessions](36_CloudSessions.md) 🆕 — マネージドクラウドサンドボックスでのセッション実行（プレビュー、v2.17.0）
+- [38. v2.19 新機能](38_v219NewFeatures.md) 🆕 — サブエージェントタイムアウト・Spec Reviewマウス対応（v2.19.0）
 
 ### 📁 コンテキスト・知識管理
 - [07. Skills](07_Skills.md) — Progressive Context Loading
@@ -77,7 +78,7 @@
 | 機能 | リリース | 概要 | 主要機能 |
 |------|----------|------|----------|
 | **[LSP統合機能（Code Intelligence）](01_LSP.md)** | v1.22.0<br/>（2025-12-11）<br/>v1.24.0更新 | Language Server Protocol統合による高精度コード理解 | v1.22.0: 7言語対応、LSP統合<br/>v1.24.0: 18言語組み込み対応、/code overview |
-| **[サブエージェント機能（Subagents）](02_Subagents.md)** | v1.23.0<br/>（2025-12-18）<br/>v1.25.0更新<br/>v2.0.0更新 | 複雑なタスクを専門エージェントに委譲し並列実行 | v1.23.0: 自律実行、リアルタイム進捗追跡<br/>v1.25.0: Access Control（availableAgents、trustedAgents）<br/>v2.0.0: タスク依存関係サポート、Crew Monitor |
+| **[サブエージェント機能（Subagents）](02_Subagents.md)** | v1.23.0<br/>（2025-12-18）<br/>v1.25.0更新<br/>v2.0.0更新<br/>v2.19.0更新 | 複雑なタスクを専門エージェントに委譲し並列実行 | v1.23.0: 自律実行、リアルタイム進捗追跡<br/>v1.25.0: Access Control（availableAgents、trustedAgents）<br/>v2.0.0: タスク依存関係サポート、Crew Monitor<br/>v2.19.0: アイドルタイムアウト（`api.subagentTimeout`） |
 | **[Planエージェント機能（Plan Agent）](03_PlanAgent.md)** | v1.23.0<br/>（2025-12-18） | アイデアを構造化された実装計画に変換 | 要件収集、リサーチ分析、実装計画作成、計画引き継ぎ |
 | **[マルチセッション機能（Multi-Session Support）](04_MultiSession.md)** | v1.23.0<br/>（2025-12-18） | 複数のチャットセッションを効率的に管理 | セッションピッカー、自動保存、ディレクトリベース管理 |
 | **[Grep/Globツール機能（Grep/Glob Tools）](05_GrepGlob.md)** | v1.23.0<br/>（2025-12-18） | 高速なファイル検索を実現する2つのビルトインツール | 正規表現検索、Globパターン検索、.gitignore自動尊重 |
@@ -93,7 +94,7 @@
 | **[Exit Codes for CI/CD](15_ExitCodes.md)** | v1.25.0<br/>（2026-02-04） | CI/CD向け構造化終了コード | コード0/1/3、--require-mcp-startup |
 | **[v2.0.0メジャーアップデート](16_v2MajorUpdate.md)** | v2.0.0<br/>（2026-04-13） | v2.0.0がメジャーバージョンアップである理由と3つの柱 | Windows 11対応、Headless Mode、Terminal UIデフォルト化 |
 | **[Granular Tool Trust機能](17_GranularToolTrust.md)** | v1.27.0<br/>（2026-03-02） | ツール使用時の信頼スコープ段階的制御 | Shell 4段階、Read/Write 3段階、インタラクティブピッカー |
-| **[Terminal UI機能](18_TerminalUI.md)** | v1.28.0<br/>（2026-03-20）<br/>v2.0.0デフォルト化 | 新ターミナルUIインターフェース | スラッシュコマンド、キーボードショートカット、Crew Monitor、テーマ |
+| **[Terminal UI機能](18_TerminalUI.md)** | v1.28.0<br/>（2026-03-20）<br/>v2.0.0デフォルト化<br/>v2.19.0更新 | 新ターミナルUIインターフェース | スラッシュコマンド、キーボードショートカット、Crew Monitor、テーマ、Spec review screenマウス対応 |
 | **[Tool Search機能](19_ToolSearch.md)** | v2.1.0<br/>（2026-04-24） | MCPツールのオンデマンドロード | BM25キーワードマッチング、設定3項目、tool_searchツール |
 | **[Kiro guide agent](20_GuideAgent.md)** | v1.29.7<br/>（2026-04-10） | TUI専用オンボーディング・ヘルプ用組み込みエージェント | /guideコマンド、機能紹介、設定支援 |
 | **[v2.4新コマンド（/rewind, /effort, /settings）](21_v24NewCommands.md)** | v2.4.0<br/>（2026-05-20） | 会話巻き戻し、推論レベル制御、統合設定メニュー | /rewind、/effort（5段階）、/settings（theme/keybindings/terminal）、per-model defaults |
@@ -113,6 +114,7 @@
 | **[v2.16 Tangent（V3側枝会話）](35_v216Tangent.md)** 🆕 | v2.16.0<br/>（2026-07-31） | [V3] 名前付き・ネスト可能な側枝会話。既存classic版`/tangent`とはコマンド名は同じだが仕様が異なる別機能 | `/tangent`（ルートで自動命名分岐）、`/tangent <name>`（名前付き分岐・切替）、`/tangent ls`（ビジュアルピッカー）、`/tangent root`（メイン会話へ復帰）、ネスト可能 |
 | **[Cloud Sessions（クラウドセッション・プレビュー）](36_CloudSessions.md)** 🆕 | v2.17.0<br/>（2026-08-11）<br/>v2.18.0更新 | マネージドクラウドサンドボックスで Kiro agent harness を実行。IDE/CLI/Web/Mobile 全サーフェスが同一セッションにアタッチ可能 | `--cloud`・`--repo`・`--resume-id` によるセッション作成・再開、切断後もエージェント継続動作<br/>v2.18.0: 既定オプトイン化（破壊的変更） |
 | **[Voice Mode（音声入力）](37_VoiceMode.md)** 🆕 | v2.18.0<br/>（2026-08-12） | オンデバイス音声認識（Whisper）によるプロンプト入力 | `/voice`・`Ctrl+O`・`Space`長押しで録音、クラウド送信なし、`--continuous`、リモート音声サーバー（`voice-serve`／`voice-cloud-setup`） |
+| **[v2.19 新機能](38_v219NewFeatures.md)** 🆕 | v2.19.0<br/>（2026-08-19） | サブエージェントのアイドルタイムアウトとSpec review screenのマウス対応 | `api.subagentTimeout`（既定3600秒）、Spec review screenのマウス対応（スクロール/クリック、`m`キー）、[V3] session resume AI生成タイトル要約、[V3] MCP protocol revision対応 |
 
 ## 🔗 機能間の連携
 
@@ -299,6 +301,6 @@ sequenceDiagram
 
 ---
 
-**最終更新**: 2026-08-16  
-**対象バージョン**: Kiro CLI v2.18.1+（v3 は Early Access）  
-**機能数**: 35 + Reference集約 ([04_reference/](../04_reference/README.md))
+**最終更新**: 2026-08-22  
+**対象バージョン**: Kiro CLI v2.19.0+（v3 は Early Access）  
+**機能数**: 38 + Reference集約 ([04_reference/](../04_reference/README.md))

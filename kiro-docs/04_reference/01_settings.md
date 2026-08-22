@@ -2,7 +2,7 @@
 
 # Kiro CLI Settings リファレンス
 
-**出典**: [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-08-12）
+**出典**: [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-08-20、2026-08-22実機確認）
 
 Kiro CLI の設定項目を網羅的に記述する辞書的リファレンスです。各設定の意味、型、設定例を一覧します。構成は公式リファレンスの8カテゴリに準拠し、公式未掲載ながら実機で確認できる設定は「[補遺](#補遺-公式リファレンス未掲載の設定実機確認)」に掲載しています。
 
@@ -211,7 +211,12 @@ TUI のショートカットを上書き。`ctrl+`、`shift+`、`alt+`/`meta+` �
 
 | 設定 | 型 | 説明 | 例 |
 |------|-----|------|-----|
-| `api.timeout` | number | API リクエストタイムアウト（秒） | `kiro-cli settings api.timeout 30` |
+| `api.timeout` | number | ストリーミング応答の全体タイムアウト（秒、既定 `3600`）。応答の全期間を計測するため、1時間の既定値で長い応答も完了できる。より短い上限を強制する場合は低い値を設定 | `kiro-cli settings api.timeout 600` |
+| `api.streamIdleSoftTimeout` | number | ストリーム無応答が続いた際にstall警告を表示するまでの秒数（既定 `60`） | `kiro-cli settings api.streamIdleSoftTimeout 120` |
+| `api.streamIdleHardTimeout` | number | ストリーム無応答が続いた際にリクエストを中止するまでの秒数（既定 `300`） | `kiro-cli settings api.streamIdleHardTimeout 600` |
+| `api.subagentTimeout` | number | サブエージェントがアイドル状態でいられる秒数（既定 `3600`）。超過すると親ターンをブロックせず自動タイムアウト | `kiro-cli settings api.subagentTimeout 1800` |
+
+> スロットリング・5xxエラー・接続切断（ミッドストリームリセット含む）は自動でバックオフ付きリトライされるため、設定は不要です（v2.19.0〜）。
 
 #### MCP（Model Context Protocol）
 
@@ -337,8 +342,11 @@ kiro-cli settings chat.delegateModeKey "d"
 ### パフォーマンスチューニング
 
 ```bash
-# 遅い接続向けに API タイムアウトを延長
-kiro-cli settings api.timeout 60
+# 60分の既定タイムアウトを10分に短縮（ストリーミング応答の全体タイムアウト、v2.19.0〜）
+kiro-cli settings api.timeout 600
+
+# 遅い接続向けにstall警告までの時間を延長
+kiro-cli settings api.streamIdleSoftTimeout 120
 
 # ナレッジベースのチャンクサイズ調整
 kiro-cli settings knowledge.chunkSize 1024
@@ -430,10 +438,10 @@ kiro-cli settings list --all
 
 ### 公式情報源
 
-- [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-06-05）
+- [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-08-20）
 - [Custom Agents Configuration Reference](https://kiro.dev/docs/custom-agents/configuration-reference/)
 
 ---
 
-**Page updated**: 2026-07-25（v2.14.1 で `/model`・`/effort` がセッション限定へ回帰したことを反映。`chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` は v2.14.2 実機で存在しないことを実機検証し廃止表記へ変更、`chat.modelDefaults` の構造を公式 Effort ドキュメント準拠に明記。前回 2026-07-20: v2.12.3 の新設定 2 件を追加。前回 2026-07-04: `chat.terminalTitle` の型・既定値を実機確定、`chat.historyMode` の実機注記、補遺「公式リファレンス未掲載の設定」を新設。本サイト初版 2026-05-24）  
-**公式ページ最終更新**: 2026-06-05
+**Page updated**: 2026-08-22（v2.19.0で`api.timeout`の意味変更（ストリーミング応答全体のタイムアウトへ、既定3600秒）を反映し説明文・使用例を書き換え。`api.streamIdleSoftTimeout`・`api.streamIdleHardTimeout`・`api.subagentTimeout`を追加。公式ページ最終更新2026-08-20の内容を反映。前回 2026-07-25: v2.14.1 で `/model`・`/effort` がセッション限定へ回帰したことを反映。`chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` は v2.14.2 実機で存在しないことを実機検証し廃止表記へ変更、`chat.modelDefaults` の構造を公式 Effort ドキュメント準拠に明記。前回 2026-07-20: v2.12.3 の新設定 2 件を追加。前回 2026-07-04: `chat.terminalTitle` の型・既定値を実機確定、`chat.historyMode` の実機注記、補遺「公式リファレンス未掲載の設定」を新設。本サイト初版 2026-05-24）  
+**公式ページ最終更新**: 2026-08-20

@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.18.1（本サイト反映済。v2.8.0 で CLI v3 Early Access）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.19.1（本サイト反映済。v2.8.0 で CLI v3 Early Access）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,8 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.19.1** | 2026-08-21 | バグ修正・セキュリティ修正 | tmux < 3.7 でのoverflow-flush replay回避、`/knowledge`サブコマンド自動補完と`rm`エイリアス復元（V3）、TUI終了後の端末属性リーク修正等7件、[V3] `grep_search`/`file_search`が`.kiroignore`拒否パスを返さないよう修正（セキュリティ）（※公式Changelogページ本文に専用セクションなし・CLI内蔵changelogで確認） |
+| **v2.19.0** | 2026-08-19 | サブエージェントタイムアウト・Spec reviewマウス対応 | サブエージェントのアイドルタイムアウト`api.subagentTimeout`（既定3600秒）、Spec review screenへのマウス対応（スクロール/クリック、`m`キー）、[V3] session resumeピッカーのAI生成タイトル要約、[V3] MCP protocol revision 2026-07-28対応、ストリームアイドル監視・自動リトライ等バグ修正25件 |
 | **v2.18.1** | 2026-08-14 | `/spec view`インラインレビュー化・tarセキュリティ修正 | [V3] `/spec view`が完全なspec文書を開いてインラインレビュー可能に変更、`tar --use-compress-program`/`--to-command`の危険フラグブロック（セキュリティ）、activity tray完了表示・thinking indicator着色・`/goal --max`順序等の修正7件（※公式Changelogサイト未掲載・CLI内蔵changelogで確認） |
 | **v2.18.0** | 2026-08-12 | `/voice`音声入力・Cloud Sessions既定オプトイン化（破壊的変更） | オンデバイス音声認識`/voice`（Whisper、`Ctrl+O`/`Space`長押し、`--continuous`）、⚠️Cloud Sessionsが既定オプトイン化（未設定組織は無効）、[V3] Spec review screen（`Ctrl+X`で行コメントステージング）、[V3] Nested AGENTS.md（任意の深さに配置可） |
 | **v2.17.0** | 2026-08-11 | Cloud Sessions（プレビュー） | マネージドクラウドサンドボックスでセッション実行`--cloud`/`--repo`、切断後もエージェント継続動作、`--resume-id`で他マシンから再開、IAM Identity Center管理者向け Cloud Sessions (Preview) 設定（旧称 Kiro Web (Preview)） |
@@ -325,6 +327,16 @@ timeline
         2026-08-14 : v2.18.1
                    : [V3] /spec view インラインレビュー化
                    : tar 危険フラグのブロック（セキュリティ）
+
+    section v2.19.x サブエージェントタイムアウト・ストリーム安定性
+        2026-08-19 : v2.19.0
+                   : api.subagentTimeout（サブエージェントタイムアウト）
+                   : Spec review screen マウス対応
+                   : [V3] session resume AI生成タイトル
+                   : [V3] MCP protocol revision 2026-07-28対応
+        2026-08-21 : v2.19.1
+                   : tmuxオーバーフローフラッシュ回避
+                   : [V3] .kiroignore漏出防止（セキュリティ）
 ```
 
 ## 🔗 移行情報
@@ -416,5 +428,5 @@ timeline
 
 ---
 
-**最終更新**: 2026-08-16  
+**最終更新**: 2026-08-22  
 **対象バージョン**: Kiro CLI v2.18.1
