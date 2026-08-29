@@ -18,7 +18,7 @@
 ## 結論（先に要点）
 
 - **コアは同じ**: 要件 / 設計 / タスクの 3 ファイル、3 フェーズ、`.kiro/specs/` の共有は **IDE も CLI も同様**。CLI で始めて IDE で続ける、といった**相互運用**ができます。**タスクの並列 wave 実行やワークフロー変種の選択も IDE/CLI/Web 共通**であることが現行公式で確認できます（旧版の記述を訂正、詳細は俯瞰表A参照）。
-- **IDE が優位な点**: 視覚的なタスク実行 UI、GUI でのウィザード操作・図のレンダリング（様式の違い）。
+- **UI 様式の違い**: IDE は GUI のウィザード操作・図のレンダリングを提供します。CLI V3 も v2.20.0 から全画面のタスク実行ビューを提供しますが、UI の操作体系が完全に同等であることは公式に確認できません。
 - **CLI ならでは**: ターミナル統合（既存の CLI ワークフロー・シェルとの親和）。**ただし v3 はオプトインの Early Access で、非 TUI の classic モードは非対応**（下記の注意を参照）。
 
 ---
@@ -32,7 +32,7 @@
 | Spec タイプ（Feature Specs／Bugfix Specs、Quick Specは軽量変種） | ✅ | ✅ | **同様** | Specs「Types of Specs」 |
 | 統一エンジン（改善が全サーフェスへ同時反映） | ✅ | ✅ | **同様** | v3 docs「single engine for all surfaces」 |
 | タスクの**並列 wave 実行**（依存グラフで wave 単位に同時実行） | ✅ | ✅ | **同様（IDE/CLI/Web 共通）** | Specs「Running tasks in parallel」／Capability 表「Parallel task execution」= IDE/CLI/Web 全て ✓ |
-| 視覚的なタスク実行 UI（リアルタイム状態表示） | ✅ | ➖（ターミナルの進捗ストリーム表示） | **IDE が優位**（UI 様式差） | Specs「Task Execution」 |
+| タスク実行 UI（リアルタイム状態表示） | ✅ | ✅（v2.20.0+: 全画面タスク実行ビュー、進捗表示、実行前スコープ選択） | **様式が異なる** | [公式 Changelog v2.20](https://kiro.dev/changelog/cli/2-20/)／Specs「Task Execution」 |
 | GUI での Spec 作成・図のレンダリング（Kiro ペインの `+`、sequence diagram） | ✅ | ➖（`/spec` コマンド） | **IDE が優位**（操作様式差） | Specs |
 | ワークフロー変種の選択（Requirements-First / Design-First） | ✅（GUI で選択） | ✅（`/spec new` で選択、公式 Getting Started は per-surface 手順として案内） | **同様** | Feature Specs「Getting Started」 |
 
@@ -68,7 +68,7 @@
 
 ### 2. ❌ CLI ではできない / IDE が優位なこと
 
-- **視覚的なタスク実行 UI**: IDE はタスクの状態をリアルタイムに可視化。CLI はターミナルの進捗ストリーム（機能は同等だが UI 様式が異なる）。
+- **GUI 操作・図のレンダリング**: IDE は Kiro ペインの `+` から作成、sequence diagram を描画。CLI は `/spec` コマンド。CLI V3 は v2.20.0 から `/spec run` の全画面タスク実行ビュー、リアルタイム進捗、実行前のスコープ選択を提供するため、タスク実行画面そのものを「IDE 限定」とは扱いません。公式は両サーフェスの操作体系・表示詳細の完全同等性を主張していないため、UI 様式の差は残ります。
 - **GUI 操作・図のレンダリング**: IDE は Kiro ペインの `+` から作成、sequence diagram を描画。CLI は `/spec` コマンド。
 
 ### 3. 🖥️ CLI ならではのこと（確認できた範囲）
@@ -93,5 +93,5 @@
 
 ---
 
-**最終更新**: 2026-08-16（並列wave実行・ワークフロー変種選択・specタイプ数を一次情報で再確認・訂正）
+**最終更新**: 2026-08-29（v2.20.0 の CLI V3 全画面 Spec タスク実行・リアルタイム進捗・実行前スコープ選択を反映。IDE/CLI の UI 完全同等性は断定しない）
 **対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x ＋ `--v3` で提供。3.0.0 GA は未リリース。

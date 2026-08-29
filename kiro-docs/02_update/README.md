@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.19.1（本サイト反映済。v2.8.0 で CLI v3 Early Access）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.20.1（本サイト反映済。v2.8.0 で CLI v3 Early Access）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,8 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.20.1** | 2026-08-27 | [V3] `/powers`・安定性修正 | [V3] `/powers`でインストール済み Powers を表示。Windows `app.disableAutoupdates`、認証、tools/hooks表示、`chat.historyMode`、V3 `/chat`・JSON書込み・資格情報・model/subagent回復を含む修正12件（詳細はCLI内蔵changelog、日付は公式Changelog） |
+| **v2.20.0** | 2026-08-26 | [V3] 全画面 Spec 実行・Preserve scrollback | `/spec run`の全画面タスク実行ビュー（リアルタイム進捗・実行前スコープ選択）、`/settings display`のPreserve scrollback、会話再開・大容量出力・V3認証/MCP等の修正9件 |
 | **v2.19.1** | 2026-08-21 | バグ修正・セキュリティ修正 | tmux < 3.7 でのoverflow-flush replay回避、`/knowledge`サブコマンド自動補完と`rm`エイリアス復元（V3）、TUI終了後の端末属性リーク修正等7件、[V3] `grep_search`/`file_search`が`.kiroignore`拒否パスを返さないよう修正（セキュリティ）（※公式Changelogページ本文に専用セクションなし・CLI内蔵changelogで確認） |
 | **v2.19.0** | 2026-08-19 | サブエージェントタイムアウト・Spec reviewマウス対応 | サブエージェントのアイドルタイムアウト`api.subagentTimeout`（既定3600秒）、Spec review screenへのマウス対応（スクロール/クリック、`m`キー）、[V3] session resumeピッカーのAI生成タイトル要約、[V3] MCP protocol revision 2026-07-28対応、ストリームアイドル監視・自動リトライ等バグ修正25件 |
 | **v2.18.1** | 2026-08-14 | `/spec view`インラインレビュー化・tarセキュリティ修正 | [V3] `/spec view`が完全なspec文書を開いてインラインレビュー可能に変更、`tar --use-compress-program`/`--to-command`の危険フラグブロック（セキュリティ）、activity tray完了表示・thinking indicator着色・`/goal --max`順序等の修正7件（※公式Changelogサイト未掲載・CLI内蔵changelogで確認） |
@@ -328,6 +330,14 @@ timeline
                    : [V3] /spec view インラインレビュー化
                    : tar 危険フラグのブロック（セキュリティ）
 
+    section v2.20.x 全画面 Spec 実行・Powers
+        2026-08-26 : v2.20.0
+                   : [V3] /spec run 全画面タスク実行
+                   : Preserve scrollback
+        2026-08-27 : v2.20.1
+                   : [V3] /powers
+                   : 認証・セッション・Windows更新の修正
+
     section v2.19.x サブエージェントタイムアウト・ストリーム安定性
         2026-08-19 : v2.19.0
                    : api.subagentTimeout（サブエージェントタイムアウト）
@@ -428,5 +438,5 @@ timeline
 
 ---
 
-**最終更新**: 2026-08-22  
-**対象バージョン**: Kiro CLI v2.18.1
+**最終更新**: 2026-08-29
+**対象バージョン**: Kiro CLI v2.20.1

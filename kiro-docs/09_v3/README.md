@@ -88,6 +88,14 @@ kiro-cli --v3
 
 出典: `kiro-cli version --changelog=2.19.0`、[公式 Changelog v2.19](https://kiro.dev/changelog/cli/2-19/)。
 
+### v2.20.x での追加（全画面 Spec 実行・`/powers`）
+
+**v2.20.0（2026-08-26）** では、`/spec run` に専用の**全画面タスク実行ビュー**が追加されました。実行中の進捗をリアルタイムで追跡でき、実行開始前にタスクスコープを選択できます。
+
+**v2.20.1（2026-08-27）** では、インストール済み Powers を表示する **`/powers`** が追加されました。Powers は Agent Plugins 形式で tools・Skills・ナレッジ・ワークフローをまとめ、会話のキーワードに応じてオンデマンドで活性化します。CLI での Powers の install / use / create は V3 対応です。
+
+→ 詳細: [39. v2.20 新機能](../01_features/39_v220NewFeatures.md)、[Specs（公式）](https://kiro.dev/docs/specs/)、[Powers（公式）](https://kiro.dev/docs/powers/)
+
 ---
 
 ## Breaking changes（v2 → v3）
@@ -163,5 +171,5 @@ kiro-cli diagnostic --format json-pretty
 
 ---
 
-**最終更新**: 2026-08-22（v2.19.0のV3追加項目（session resumeタイトル要約・MCP protocol revision対応）を追記）
+**最終更新**: 2026-08-29（v2.20.0 の全画面 Spec タスク実行、v2.20.1 の V3 `/powers` を追加）
 **対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x 以降 ＋ `--v3` で提供。3.0.0 GA は未リリース。

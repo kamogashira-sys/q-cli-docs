@@ -41,6 +41,9 @@ v2.0.0（2026-04-13）   デフォルト化（GA）
   ↓
 v2.19.0（2026-08-19）  Spec review screenのマウス対応
      スクロール/クリック操作、`m`キーでトグル
+  ↓
+v2.20.0（2026-08-26）  Preserve scrollbackトグル
+     `/settings display` で端末履歴保持を切替
 ```
 
 ## 📋 目次
@@ -325,6 +328,16 @@ V2 TUIのcancel、close menu、quitアクションのキーを変更できます
 kiro-cli settings chat.keybindings.quit "ctrl+shift+q"
 ```
 
+### Preserve scrollback（v2.20.0）
+
+v2.20.0 で `/settings display` に **Preserve scrollback** トグルが追加されました。現行 CLI の `chat.preserveScrollback` は boolean、既定 `false` で、全画面再描画時にターミナルの scrollback を消去せず viewport のみを再描画します。
+
+```bash
+kiro-cli settings chat.preserveScrollback true
+```
+
+左側ステータスバーが再描画境界をまたぐ場合、継ぎ目に隙間（seam gap）が表示される制約があります。設定キー自体の初出バージョンは今回確認した一次情報から断定しません。詳細は [Settings リファレンス](../04_reference/01_settings.md) を参照してください。
+
 ### クラシックインターフェースの使用
 
 ```bash
@@ -450,5 +463,5 @@ kiro-cli settings list | grep chat.ui
 
 ---
 
-**最終更新**: 2026-08-22
-**対象バージョン**: Kiro CLI v1.28.0+（v2.0.0 でデフォルト UI 化、v2.18.0 Spec review screen導入、v2.19.0 マウス対応追加）
+**最終更新**: 2026-08-29
+**対象バージョン**: Kiro CLI v1.28.0+（v2.0.0 でデフォルト UI 化、v2.18.0 Spec review screen導入、v2.19.0 マウス対応、v2.20.0 Preserve scrollbackトグル追加）

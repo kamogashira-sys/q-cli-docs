@@ -6,7 +6,7 @@
 
 Kiro CLI のインタラクティブチャットセッション内で使用できるすべてのスラッシュコマンドを網羅する辞書的リファレンスです。
 
-> 📌 **v3（Early Access）コマンドについて**: 本リファレンスは **v2 安定版**のスラッシュコマンドを対象としています。v3（`kiro-cli --v3`）専用のコマンド — `/spec` 系は [09_v3/01. 仕様駆動開発](../09_v3/01_spec-driven-development.md)、`/upgrade-agent`（V2 → V2/V3 両対応のエージェント設定移行、v2.14.0 追加）は [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md) を参照してください（Early Access のため、安定版のコマンド数には含めていません）。
+> 📌 **v3（Early Access）コマンドについて**: 本リファレンスは **v2 安定版**のスラッシュコマンドを対象としています。v3（`kiro-cli --v3`）専用のコマンド — `/spec` 系は [09_v3/01. 仕様駆動開発](../09_v3/01_spec-driven-development.md)、`/upgrade-agent`（V2 → V2/V3 両対応のエージェント設定移行、v2.14.0 追加）は [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md)、インストール済み Powers を表示する `/powers`（v2.20.1 追加）は [39. v2.20 新機能](../01_features/39_v220NewFeatures.md) を参照してください（Early Access のため、安定版のコマンド数には含めていません）。
 
 ---
 
@@ -585,7 +585,7 @@ To-do リストの表示・管理・再開。
 - `theme` — プロンプトと応答色を live preview でカスタマイズ
 - `keybindings` — 設定可能なキーボードショートカットを表示（読み取り専用）
 - `terminal` — `Shift+Enter`/`Option+Enter` のマルチライン入力（VS Code、Alacritty、Zed、Apple Terminal 等を自動設定）
-- `display` — アニメーション、ASCII アート、アイコン表示、**Show thinking（推論のリアルタイム表示、v2.5.0+）**、Terminal title（端末タイトル、v2.6.0+）を切替
+- `display` — アニメーション、ASCII アート、アイコン表示、**Show thinking（推論のリアルタイム表示、v2.5.0+）**、Terminal title（端末タイトル、v2.6.0+）、**Preserve scrollback（v2.20.0+）**を切替
 - `history` — プロンプト履歴のスコープを `session`（既定）/ `global` で切替（v2.5.0+、設定キー `chat.historyMode`）
 
 > `terminal` サブコマンドはターミナル設定ファイル変更前に `.bak` を作成。
@@ -811,5 +811,5 @@ To-do リストの表示・管理・再開。
 
 ---
 
-**Page updated**: 2026-08-16（v2.18.0対応: `/voice`（オンデバイス音声入力）を追加、コマンド数を41に更新。出典は公式Voiceページ（公式slash-commandsページには未掲載）。前回 2026-07-25: v2.14.1 対応: `/model`・`/effort` の選択がセッション限定へ回帰したことを反映し `/effort set-current-as-default` を追記、`chat.modelDefaults` の JSON 例を公式 Effort ドキュメント準拠に是正、v3 コマンド注記に `/upgrade-agent` を追加。前回 2026-07-04: `/title` の注記を v2.7.0 `chat.terminalTitle` 追加に整合、classic UI フラグの表記を `--classic` に統一。本サイト初版 2026-05-24）  
+**Page updated**: 2026-08-29（V3 専用 `/powers`（v2.20.1）を除外注記から案内し、安定版41コマンドの SSoT を維持。`/settings display` の Preserve scrollback（v2.20.0）を反映。前回 2026-08-16: `/voice` を追加しコマンド数を41に更新）
 **公式ページ最終更新**: 2026-06-12

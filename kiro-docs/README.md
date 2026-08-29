@@ -23,7 +23,7 @@ Kiro CLI（旧Amazon Q Developer CLI）の最新情報とアップデートを�
 ```
 kiro-docs/
 ├── 00_information/   # 基本情報・公式サイト情報
-├── 01_features/      # 機能詳細ガイド（38機能）
+├── 01_features/      # 機能詳細ガイド（39機能）
 ├── 02_update/        # アップデート情報
 ├── 03_deployment/    # デプロイメント・環境構築
 ├── 04_reference/     # リファレンス（Settings/Slash/CLI/Tools）
@@ -46,7 +46,7 @@ Kiro CLI の基本情報と公式サイトの構造について説明したド�
 - **[公式サイト構造](00_information/01_official-site-structure.md)** - Kiro CLI公式サイトの画面遷移とページ構成
 
 ### [01_features/ - 機能詳細ガイド](01_features/README.md)
-Kiro CLIの主要機能（**38 機能**）について詳細に解説したドキュメント集です。
+Kiro CLIの主要機能（**39 機能**）について詳細に解説したドキュメント集です。
 
 📖 **[→ 機能一覧（カテゴリ別ナビゲーション・各機能の概要・バージョン情報）](01_features/README.md)**
 
@@ -79,6 +79,7 @@ Kiro CLI v3（`kiro-cli --v3`）の概要・仕様駆動開発・Kiro IDE 版と
 - **[v3 概要](09_v3/README.md)** - 統一エンジン・4本柱（Spec / permissions.yaml / Hooks / タグ Agent設定）・Breaking changes・Known gaps
 - **[仕様駆動開発](09_v3/01_spec-driven-development.md)** - `/spec` を使った CLI での実践（AI-DLC との違いも整理）
 - **[Kiro IDE 版との比較](09_v3/02_kiro-ide-vs-cli.md)** - 同様にできること／IDE が優位なこと／CLI ならではのこと
+- **[v2.20 新機能](01_features/39_v220NewFeatures.md)** - [V3] 全画面 Spec 実行・`/powers`、Preserve scrollback
 
 > **Kiro IDE そのものの解説は姉妹サイト
 > [猫でもわかるKiro IDE アップデート情報](https://github.com/kamogashira-sys/kiro-ide-docs)

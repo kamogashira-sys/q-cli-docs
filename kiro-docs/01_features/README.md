@@ -2,7 +2,7 @@
 
 # Kiro CLI 機能詳細ガイド
 
-> Kiro CLI の 38 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+> Kiro CLI の 39 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
 
 ## 🗂️ カテゴリ別ナビゲーション
 
@@ -27,6 +27,7 @@
 - [35. v2.16 Tangent（V3側枝会話）](35_v216Tangent.md) 🆕 — [V3] 名前付き・ネスト可能な側枝会話。既存classic版`/tangent`とは別仕様（v2.16.0）
 - [36. Cloud Sessions](36_CloudSessions.md) 🆕 — マネージドクラウドサンドボックスでのセッション実行（プレビュー、v2.17.0）
 - [38. v2.19 新機能](38_v219NewFeatures.md) 🆕 — サブエージェントタイムアウト・Spec Reviewマウス対応（v2.19.0）
+- [39. v2.20 新機能](39_v220NewFeatures.md) 🆕 — [V3] 全画面 Spec 実行・`/powers`、Preserve scrollback（v2.20.x）
 
 ### 📁 コンテキスト・知識管理
 - [07. Skills](07_Skills.md) — Progressive Context Loading
@@ -54,6 +55,7 @@
 - [28. v2.6 New Commands](28_v26NewCommands.md) 🆕 — `/transcript save`・`/title`・`--effort`・自動永続化（v2.6.0）
 - [29. v2.7 New Commands](29_v27NewCommands.md) 🆕 — Queue Steering（Ctrl+S）・`/settings` UI統一（v2.7.0）
 - [37. Voice Mode](37_VoiceMode.md) 🆕 — オンデバイス音声認識によるプロンプト入力（v2.18.0）
+- [39. v2.20 新機能](39_v220NewFeatures.md) 🆕 — Preserve scrollback と [V3] 全画面 Spec 実行・`/powers`（v2.20.x）
 
 ### 🔒 セキュリティ・権限
 - [11. URL Permissions](11_URLPermissions.md) — `web_fetch` の URL 権限細粒度制御
@@ -115,6 +117,7 @@
 | **[Cloud Sessions（クラウドセッション・プレビュー）](36_CloudSessions.md)** 🆕 | v2.17.0<br/>（2026-08-11）<br/>v2.18.0更新 | マネージドクラウドサンドボックスで Kiro agent harness を実行。IDE/CLI/Web/Mobile 全サーフェスが同一セッションにアタッチ可能 | `--cloud`・`--repo`・`--resume-id` によるセッション作成・再開、切断後もエージェント継続動作<br/>v2.18.0: 既定オプトイン化（破壊的変更） |
 | **[Voice Mode（音声入力）](37_VoiceMode.md)** 🆕 | v2.18.0<br/>（2026-08-12） | オンデバイス音声認識（Whisper）によるプロンプト入力 | `/voice`・`Ctrl+O`・`Space`長押しで録音、クラウド送信なし、`--continuous`、リモート音声サーバー（`voice-serve`／`voice-cloud-setup`） |
 | **[v2.19 新機能](38_v219NewFeatures.md)** 🆕 | v2.19.0<br/>（2026-08-19） | サブエージェントのアイドルタイムアウトとSpec review screenのマウス対応 | `api.subagentTimeout`（既定3600秒）、Spec review screenのマウス対応（スクロール/クリック、`m`キー）、[V3] session resume AI生成タイトル要約、[V3] MCP protocol revision対応 |
+| **[v2.20 新機能](39_v220NewFeatures.md)** 🆕 | v2.20.0<br/>（2026-08-26）<br/>v2.20.1更新 | [V3] 全画面 Spec タスク実行、Preserve scrollback、インストール済み Powers の表示 | `/spec run` の全画面ビュー・リアルタイム進捗・実行前スコープ選択、`/settings display` の Preserve scrollback、[V3] `/powers` |
 
 ## 🔗 機能間の連携
 
@@ -301,6 +304,6 @@ sequenceDiagram
 
 ---
 
-**最終更新**: 2026-08-22  
-**対象バージョン**: Kiro CLI v2.19.0+（v3 は Early Access）  
-**機能数**: 38 + Reference集約 ([04_reference/](../04_reference/README.md))
+**最終更新**: 2026-08-29
+**対象バージョン**: Kiro CLI v2.20.1+（v3 は Early Access）
+**機能数**: 39 + Reference集約 ([04_reference/](../04_reference/README.md))

@@ -2,7 +2,7 @@
 
 # Kiro CLI Settings リファレンス
 
-**出典**: [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-08-20、2026-08-22実機確認）
+**出典**: [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-08-20、2026-08-29実機確認）
 
 Kiro CLI の設定項目を網羅的に記述する辞書的リファレンスです。各設定の意味、型、設定例を一覧します。構成は公式リファレンスの8カテゴリに準拠し、公式未掲載ながら実機で確認できる設定は「[補遺](#補遺-公式リファレンス未掲載の設定実機確認)」に掲載しています。
 
@@ -105,7 +105,7 @@ kiro-cli settings list --format json-pretty
 | ~~`chat.disableAutoDefaultModel`~~ | boolean | v2.12.3 で追加された `/model` の sticky default 化のオプトアウト。**v2.14.2 実機では存在しません**（下記注記参照） | — |
 | ~~`chat.disableAutoDefaultEffort`~~ | boolean | v2.12.3 で追加された `/effort` の sticky default 化のオプトアウト。**v2.14.2 実機では存在しません**（下記注記参照） | — |
 | `chat.enableContextUsageIndicator` | boolean | プロンプトにコンテキスト使用率を表示（classic のみ） | `kiro-cli settings chat.enableContextUsageIndicator true` |
-| `chat.historyMode` | string | プロンプト履歴のスコープ: `session`（既定）/ `global`（v2.5.0+、次セッション反映）。⚠️ 実機 2.10.0 では `kiro-cli settings` から本キーを直接読み書きできない（`not a valid setting`、`settings list --all` にも非掲載。2026-07-04 実機確認）ため、チャット内の `/settings history` で設定する | `/settings history`（チャット内） |
+| `chat.historyMode` | string | プロンプト履歴のスコープ: `session`（既定）/ `global`（v2.5.0+、次セッション反映）。v2.20.1 で `kiro-cli settings` が本キーを無効として拒否する不具合が修正され、CLI からも読み書き可能 | `kiro-cli settings chat.historyMode global` |
 
 > **`chat.disableInheritingDefaultResources`** は **v2.10.0 で追加**された設定です。既定は `false`（カスタムエージェントは既定リソース steering / skills / AGENTS.md を継承）、`true` で継承を無効化できます（**組み込みエージェントは本設定に関わらず常に継承**）。v2.7.0 で導入された既定リソース自動継承のオプトアウト手段です。⚠️ 公式 [Settings リファレンス](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新 2026-06-05）は本設定が未反映のため、本サイトは [カスタムエージェント設定リファレンス](https://kiro.dev/docs/custom-agents/configuration-reference/)（公式ページ最終更新 2026-06-26）を一次情報として採用しています。詳細: [31. v2.10 設定ホットリロード & リソース継承制御](../01_features/31_v210ConfigHotReload.md)
 
@@ -141,12 +141,14 @@ kiro-cli settings list --format json-pretty
 | `chat.showThinking` | boolean | `true` | エージェントの推論（thinking）ブロックを表示（v2.5.0+、起動時のみ反映） | `kiro-cli settings chat.showThinking false` |
 | `chat.showThinkingTips` | boolean | `true` | 応答待ち中、thinking indicator下に表示される**機能ヒント**の表示/非表示（v2.15.0+） | `kiro-cli settings chat.showThinkingTips false` |
 | `chat.terminalTitle` | boolean | `false` | ターミナルタブのセッションタイトル表示/非表示（v2.7.0+） | `kiro-cli settings chat.terminalTitle true` |
+| `chat.preserveScrollback` | boolean | `false` | 全画面再描画時に端末の scrollback を消去せず、viewport のみを再描画。`/settings display` の Preserve scrollback からも切替可能 | `kiro-cli settings chat.preserveScrollback true` |
 | `chat.defaultInterruptBehavior` | string | `steer` | Queue Steering の起動時既定モード（`steer`/`queue`、v2.7.0+） | `kiro-cli settings chat.defaultInterruptBehavior queue` |
 | `chat.keybindings.toggleInterruptBehavior` | string | `ctrl+s` | Queue Steering の steer/queue モード切替キーバインド（v2.7.0+） | `kiro-cli settings chat.keybindings.toggleInterruptBehavior ctrl+shift+s` |
 
 > **`KIRO_ASCII_MODE=1`** を設定すると `chat.allowAsciiArt` に関わらず ASCII モードが強制されます（環境変数節参照）。
 > **v2.12.0+**: すべての TUI グリフ・記号が ASCII モード設定（`chat.allowAsciiArt` / `KIRO_ASCII_MODE`）を尊重するよう**適用範囲が拡大**しました（Unicode 非対応端末での互換性向上。新規設定の追加ではなく既存設定の挙動拡張）。
 > **ターミナルタイトル**は v2.6.0 までは `/settings display` → Terminal title でのトグルのみで CLI 設定としては提供されていませんでしたが、**v2.7.0 で `chat.terminalTitle` 設定が追加され CLI 設定としても制御可能**になりました。⚠️ 公式 [Settings リファレンス](https://kiro.dev/docs/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映のため、型・既定値は**実機 kiro-cli 2.10.0 の `kiro-cli settings list --all` の説明文**「Show dynamic title in terminal tab (boolean, default: false)」（2026-07-04 確認）を一次情報として採用しています（boolean・既定 `false`。CLI 内蔵 changelog v2.7.0 の追加文言とも整合）。
+> **Preserve scrollback**: v2.20.0 で `/settings display` にトグルが追加されました。現行 CLI の `chat.preserveScrollback` は boolean、既定 `false` です。ターミナル全体を消去せず viewport だけを再描画するため、左側ステータスバーが再描画境界をまたぐ場合は継ぎ目に隙間（seam gap）が表示される制約があります。設定キー自体の初出バージョンは、今回確認した一次情報から断定しません。
 > `chat.showThinking`（モデル自身の推論表示、本節）と `chat.enableThinking`（thinking ツールの有効化、Feature toggles 節）は**別物**です。`chat.showThinkingTips`（機能ヒントの表示、本節）はさらに別物で、いずれも独立してON/OFF可能です。
 > 詳細: [27. Thinking Display](../01_features/27_ThinkingDisplay.md)、[29. v27NewCommands](../01_features/29_v27NewCommands.md)、[公式 Queue Steering](https://kiro.dev/docs/cli/chat/queue-steering/)
 
@@ -203,7 +205,7 @@ TUI のショートカットを上書き。`ctrl+`、`shift+`、`alt+`/`meta+` �
 | `chat.enableTodoList` | boolean | todo リスト有効化（classic のみ） | `kiro-cli settings chat.enableTodoList true` |
 | `chat.enableCheckpoint` | boolean | checkpoint 有効化（classic のみ） | `kiro-cli settings chat.enableCheckpoint true` |
 | `chat.enableDelegate` | boolean | delegate ツール有効化（classic のみ） | `kiro-cli settings chat.enableDelegate true` |
-| `app.disableAutoupdates` | boolean | バックグラウンド自動更新を無効化 | `kiro-cli settings app.disableAutoupdates true` |
+| `app.disableAutoupdates` | boolean | バックグラウンド自動更新を無効化。v2.20.1 で Windows の更新ダウンロードも停止し、temp ディレクトリに installer が蓄積しないよう修正 | `kiro-cli settings app.disableAutoupdates true` |
 
 ### 8. API and service / MCP
 
@@ -443,5 +445,5 @@ kiro-cli settings list --all
 
 ---
 
-**Page updated**: 2026-08-22（v2.19.0で`api.timeout`の意味変更（ストリーミング応答全体のタイムアウトへ、既定3600秒）を反映し説明文・使用例を書き換え。`api.streamIdleSoftTimeout`・`api.streamIdleHardTimeout`・`api.subagentTimeout`を追加。公式ページ最終更新2026-08-20の内容を反映。前回 2026-07-25: v2.14.1 で `/model`・`/effort` がセッション限定へ回帰したことを反映。`chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` は v2.14.2 実機で存在しないことを実機検証し廃止表記へ変更、`chat.modelDefaults` の構造を公式 Effort ドキュメント準拠に明記。前回 2026-07-20: v2.12.3 の新設定 2 件を追加。前回 2026-07-04: `chat.terminalTitle` の型・既定値を実機確定、`chat.historyMode` の実機注記、補遺「公式リファレンス未掲載の設定」を新設。本サイト初版 2026-05-24）  
+**Page updated**: 2026-08-29（v2.20.0 の Preserve scrollback toggle と現行 CLI の `chat.preserveScrollback`（boolean・既定 `false`・viewport 再描画・seam gap 制約）を追加。v2.20.1 の `chat.historyMode` CLI 設定拒否修正と、Windows における `app.disableAutoupdates` 修正を反映。`chat.historyMode` は隔離した一時 `KIRO_HOME` で `global` / `session` の書込み・読取りを確認。前回 2026-08-22: v2.19.0のAPI・Subagent設定を追加）
 **公式ページ最終更新**: 2026-08-20

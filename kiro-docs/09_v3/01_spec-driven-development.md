@@ -58,7 +58,7 @@ kiro-cli --v3
 - **`/spec`**: 既存 spec の一覧・選択。
 - **`/spec new <name>`**: 新規作成。要件定義フェーズから始まります。**v2.15.0 以降**、spec 名を指定した直後に「このspecが何をカバーするか」を尋ねるガイド付き説明ステップが追加されました。ここで入力した説明はエージェントが要件を生成する際のground truth（正解データ）として使用され、spec名のみから推測するよりも精度の高い要件定義が可能になります（出典: [公式Changelog v2.15](https://kiro.dev/changelog/cli/2-15/)、詳細: [Specs（公式）](https://kiro.dev/docs/specs/)）。
 - **`/spec <name>`**: 既存 spec を再開。
-- **`/spec run <name>`**: `tasks.md` のタスクを実行します。
+- **`/spec run <name>`**: `tasks.md` のタスクを実行します。**v2.20.0+** では、専用の全画面タスク実行ビューが開き、リアルタイム進捗を追跡できます。実行開始前にタスクスコープを選択できます。詳細: [39. v2.20 新機能](../01_features/39_v220NewFeatures.md)。
 
 > 💡 **タスク実行は並列 wave 方式（IDE/CLI/Web 共通）**: 公式 [Specs](https://kiro.dev/docs/specs/) の「Running tasks in parallel」節は、Kiro が `tasks.md` の依存関係グラフを構築し、依存のないタスクを **wave（波）** としてまとめて並列実行すると説明しています（"Waves execute sequentially; tasks within a wave execute concurrently"）。この記述は IDE/CLI/Web の区別なく提示されており、Capability 比較表でも「Parallel task execution」は IDE/CLI/Web すべてに ✓ が付いています。CLI 固有の実行順序（サーフェス限定の逐次実行）を裏付ける公式記述は見当たりません。
 
@@ -123,6 +123,7 @@ Spec agent は**標準のエージェント**なので、v3 の権限（`permiss
 ### 本セクション内
 - [09. Kiro CLI v3（Early Access）概要](README.md)
 - [02. Kiro IDE 版との比較](02_kiro-ide-vs-cli.md)
+- [39. v2.20 新機能](../01_features/39_v220NewFeatures.md) — 全画面 Spec タスク実行・Preserve scrollback・V3 `/powers`
 
 ### 本サイトの関連文書
 - [07_aidlc/](../07_aidlc/README.md) — AI-DLC（AWS Labs OSS 方法論）
@@ -136,5 +137,5 @@ Spec agent は**標準のエージェント**なので、v3 の権限（`permiss
 
 ---
 
-**最終更新**: 2026-08-16（CLI逐次実行の記述・specタイプ数・生成ファイル名を一次情報で再確認・訂正）
+**最終更新**: 2026-08-29（v2.20.0 の `/spec run` 全画面タスク実行、リアルタイム進捗、実行前スコープ選択を反映）
 **対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x ＋ `--v3` で提供。3.0.0 GA は未リリース。
