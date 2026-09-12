@@ -26,7 +26,9 @@ kiro-cli --v3
 
 ## Preserve scrollback
 
-v2.20.0 で、`/settings display` に **Preserve scrollback** トグルが追加されました。現行 CLI では設定キー `chat.preserveScrollback`（boolean、既定 `false`）としても確認できます。
+v2.20.0 で、`/settings display` に **Preserve scrollback** トグルが追加されました。本版の時点では、設定キー `chat.preserveScrollback`（boolean）の既定は `false` です。
+
+> ⚠️ **既定値はその後変更されました**: **v2.21.2 で [V3] が再描画をまたいで端末履歴を既定で保持する**ようになり、実機 2.21.4 では `chat.preserveScrollback` の既定が `true` です。従来の clear-and-repaint 動作に戻すには `false` を設定します。詳細は [40. v2.21 新機能](40_v221NewFeatures.md) を参照してください。
 
 有効にすると、overflow や端末リサイズ時の全画面再描画でターミナルの scrollback を消去せず、viewport のみを再描画します。
 
@@ -61,6 +63,7 @@ v2.20.x には会話再開、大容量出力、認証、MCP、Windows 自動更�
 
 ### 本サイト
 
+- [40. v2.21 新機能](40_v221NewFeatures.md)
 - [09-01. 仕様駆動開発](../09_v3/01_spec-driven-development.md)
 - [09-02. Kiro IDE 版との比較](../09_v3/02_kiro-ide-vs-cli.md)
 - [Terminal UI](18_TerminalUI.md)
@@ -77,5 +80,5 @@ v2.20.x には会話再開、大容量出力、認証、MCP、Windows 自動更�
 - `kiro-cli version --changelog=2.20.0` / `kiro-cli version --changelog=2.20.1`
 - `kiro-cli settings list --all`
 
-**最終更新**: 2026-08-29
+**最終更新**: 2026-09-13
 **対象バージョン**: Kiro CLI v2.20.0+（`/spec run` 全画面実行と `/powers` は V3 Early Access）

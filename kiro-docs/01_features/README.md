@@ -2,7 +2,7 @@
 
 # Kiro CLI 機能詳細ガイド
 
-> Kiro CLI の 39 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+> Kiro CLI の 40 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
 
 ## 🗂️ カテゴリ別ナビゲーション
 
@@ -28,6 +28,7 @@
 - [36. Cloud Sessions](36_CloudSessions.md) 🆕 — マネージドクラウドサンドボックスでのセッション実行（プレビュー、v2.17.0）
 - [38. v2.19 新機能](38_v219NewFeatures.md) 🆕 — サブエージェントタイムアウト・Spec Reviewマウス対応（v2.19.0）
 - [39. v2.20 新機能](39_v220NewFeatures.md) 🆕 — [V3] 全画面 Spec 実行・`/powers`、Preserve scrollback（v2.20.x）
+- [40. v2.21 新機能](40_v221NewFeatures.md) 🆕 — [V3] セッションダッシュボード（`/sessions`）・設定パネル（`/config`）・クラウド設定適用、`--v2`（v2.21.x）
 
 ### 📁 コンテキスト・知識管理
 - [07. Skills](07_Skills.md) — Progressive Context Loading
@@ -56,6 +57,7 @@
 - [29. v2.7 New Commands](29_v27NewCommands.md) 🆕 — Queue Steering（Ctrl+S）・`/settings` UI統一（v2.7.0）
 - [37. Voice Mode](37_VoiceMode.md) 🆕 — オンデバイス音声認識によるプロンプト入力（v2.18.0）
 - [39. v2.20 新機能](39_v220NewFeatures.md) 🆕 — Preserve scrollback と [V3] 全画面 Spec 実行・`/powers`（v2.20.x）
+- [40. v2.21 新機能](40_v221NewFeatures.md) 🆕 — 設定メニューのキーボード統一・スピナー文言カスタマイズ・端末履歴保持の既定化（v2.21.x）
 
 ### 🔒 セキュリティ・権限
 - [11. URL Permissions](11_URLPermissions.md) — `web_fetch` の URL 権限細粒度制御
@@ -118,6 +120,7 @@
 | **[Voice Mode（音声入力）](37_VoiceMode.md)** 🆕 | v2.18.0<br/>（2026-08-12） | オンデバイス音声認識（Whisper）によるプロンプト入力 | `/voice`・`Ctrl+O`・`Space`長押しで録音、クラウド送信なし、`--continuous`、リモート音声サーバー（`voice-serve`／`voice-cloud-setup`） |
 | **[v2.19 新機能](38_v219NewFeatures.md)** 🆕 | v2.19.0<br/>（2026-08-19） | サブエージェントのアイドルタイムアウトとSpec review screenのマウス対応 | `api.subagentTimeout`（既定3600秒）、Spec review screenのマウス対応（スクロール/クリック、`m`キー）、[V3] session resume AI生成タイトル要約、[V3] MCP protocol revision対応 |
 | **[v2.20 新機能](39_v220NewFeatures.md)** 🆕 | v2.20.0<br/>（2026-08-26）<br/>v2.20.1更新 | [V3] 全画面 Spec タスク実行、Preserve scrollback、インストール済み Powers の表示 | `/spec run` の全画面ビュー・リアルタイム進捗・実行前スコープ選択、`/settings display` の Preserve scrollback、[V3] `/powers` |
+| **[v2.21 新機能](40_v221NewFeatures.md)** 🆕 | v2.21.0<br/>（2026-09-01）<br/>v2.21.1〜v2.21.4更新 | [V3] セッションダッシュボード・設定パネル・ローカルセッションへのクラウド設定適用、単一実行のハーネス選択 | `/sessions`・`kiro-cli chat --sessions`（V3限定、検索範囲は `chat.sessionDashboard.indexResponses`）、`/config`（local/cloud/both 識別）、`--v2` フラグ、`chat.enableCustomSpinnerVerbs`／`chat.spinnerVerbs`、`chat.preserveScrollback` の既定が `true` へ |
 
 ## 🔗 機能間の連携
 
@@ -304,6 +307,6 @@ sequenceDiagram
 
 ---
 
-**最終更新**: 2026-08-29
-**対象バージョン**: Kiro CLI v2.20.1+（v3 は Early Access）
-**機能数**: 39 + Reference集約 ([04_reference/](../04_reference/README.md))
+**最終更新**: 2026-09-13
+**対象バージョン**: Kiro CLI v2.21.4+（v3 は Early Access）
+**機能数**: 40 + Reference集約 ([04_reference/](../04_reference/README.md))

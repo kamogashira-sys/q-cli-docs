@@ -96,6 +96,24 @@ kiro-cli --v3
 
 → 詳細: [39. v2.20 新機能](../01_features/39_v220NewFeatures.md)、[Specs（公式）](https://kiro.dev/docs/specs/)、[Powers（公式）](https://kiro.dev/docs/powers/)
 
+### v2.21.x での追加（セッションダッシュボード・設定パネル・クラウド設定・セッション検索）
+
+**v2.21.0（2026-09-01）** では、V3 限定の機能が次のとおり追加されました。
+
+- **セッションダッシュボード（`/sessions`）**: ローカルまたはクラウドに保存された過去セッションを閲覧・検索・再開・整理する。起動時に `kiro-cli chat --sessions` を渡すとダッシュボードへ直接入り、閉じるとチャットに落ちずに終了する。
+- **設定パネル（`/config`）**: 設定済みの agents・MCP servers・Powers・Steering・Skills・Hooks を 1 画面で表示。ソース情報が利用可能な場合、各項目を local / cloud / both として識別する。
+- **ローカルセッションへのクラウド設定適用**: Kiro Web の Configuration Sync でアップロードした個人の `.kiro` 設定を、新規ローカル V3 セッションへ適用する（**ローカルの `.kiro` にファイルは書き込まれない**）。
+
+**v2.21.3（2026-09-10）** では、インストール済み Powers が **`/` コマンドピッカー**に表示されるようになりました（v2.20.1 の `/powers` に続く呼び出し経路の拡張）。
+
+**v2.21.4（2026-09-11）** では、`/sessions` の検索がセッションタイトル・プロンプトに加えて**エージェントの応答**もインデックスするようになりました。`/settings` の **Session search** で **Prompts only** と **Prompts and agent responses** を切り替えます（**ツール出力はどちらのモードでもインデックスされない**）。実機 2.21.4 の対応キーは `chat.sessionDashboard.indexResponses` です。
+
+あわせて **`--v2`** フラグが追加され、1 回の実行だけを V2 ハーネスで走らせられます（保存済み既定は上書きしない）。
+
+> **V3 限定であることの確認**: セッションダッシュボードを V2 で開こうとすると「Session dashboard is available on the V3 (KAS) engine only」の警告が表示されます。`/sessions`・`/config` は V2 安定版のスラッシュコマンド数には含めず、本セクションで扱います。
+
+→ 詳細: [40. v2.21 新機能](../01_features/40_v221NewFeatures.md)、[Session management（公式）](https://kiro.dev/docs/cli/chat/session-management/)、[Configuration（公式）](https://kiro.dev/docs/configuration/)、[Cloud configuration（公式）](https://kiro.dev/docs/web/cloud-configuration/)
+
 ---
 
 ## Breaking changes（v2 → v3）
@@ -171,5 +189,5 @@ kiro-cli diagnostic --format json-pretty
 
 ---
 
-**最終更新**: 2026-08-29（v2.20.0 の全画面 Spec タスク実行、v2.20.1 の V3 `/powers` を追加）
+**最終更新**: 2026-09-13（v2.21.0 のセッションダッシュボード `/sessions`・設定パネル `/config`・ローカルセッションへのクラウド設定適用、v2.21.3 の Powers ピッカー表示、v2.21.4 のセッション検索範囲選択と `--v2` を追加）
 **対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x 以降 ＋ `--v3` で提供。3.0.0 GA は未リリース。
