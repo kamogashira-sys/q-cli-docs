@@ -99,6 +99,10 @@ kiro-cli chat [OPTIONS] [INPUT]
 | `--wrap` | 行折返しモード: `always`/`never`/`auto`（既定） |
 | `--cloud` | **Cloud Sessions（プレビュー、v2.17.0+）**: マネージドクラウドサンドボックス上で新規セッションを作成（→ [36. Cloud Sessions](../01_features/36_CloudSessions.md)） |
 | `--repo <URL>` | `--cloud` と併用し、作成する Cloud Session にリポジトリを紐付け（v2.17.0+）。セッション内では `/repo` ピッカーでも指定可能 |
+| `--sessions` | **セッションダッシュボードへ直接起動（v2.21.0+、V3/KAS 限定）**: ダッシュボードを閉じるとチャットに落ちずに終了する。ヘルプ本文は「Launch straight into the session dashboard (V3/KAS only); closing it exits rather than dropping into a chat」（→ [40. v2.21 新機能](../01_features/40_v221NewFeatures.md)） |
+| `--v2` | **この実行を V2 エージェントハーネスで走らせる（v2.21.4+）**: `kiro-cli` と `kiro-cli chat` の両方で有効。保存済みの既定設定を上書きしない |
+| `--v3` | 次世代 Kiro エージェント（V3 Early Access）で起動（v2.8.0+、→ [09_v3/](../09_v3/README.md)） |
+| `--agent-engine <ENGINE>` | 使用するエージェントエンジンを明示指定: `v1` / `v2`（既定）/ `v3` |
 | `INPUT` | 最初の質問（位置引数） |
 
 **例**:
@@ -725,5 +729,5 @@ set -x KIRO_LOG_NO_COLOR 1
 
 ---
 
-**Page updated**: 2026-08-16（v2.16.1〜v2.18.1対応: 新規サブコマンド `kiro-cli crew`（v2.16.1）・`kiro-cli voice-serve`／`kiro-cli voice-cloud-setup`（いずれもv2.18.0）を追加、`chat --cloud`／`--repo`（v2.17.0、Cloud Sessions）を追加、`--resume-id` の説明をクラウドセッション対応に拡張。本サイト初版 2026-05-24）  
+**Page updated**: 2026-09-13（v2.21.x対応: `chat --sessions`（v2.21.0、V3/KAS 限定のセッションダッシュボード直接起動）・`--v2`（v2.21.4、単一実行のハーネス選択）を追加、既存の `--v3`／`--agent-engine` を表に明記。公式が言及する `chat.agentEngine` は実機 2.21.4 に存在しないため設定キーとしては記載しない。前回 2026-08-16（v2.16.1〜v2.18.1対応: 新規サブコマンド `kiro-cli crew`（v2.16.1）・`kiro-cli voice-serve`／`kiro-cli voice-cloud-setup`（いずれもv2.18.0）を追加、`chat --cloud`／`--repo`（v2.17.0、Cloud Sessions）を追加、`--resume-id` の説明をクラウドセッション対応に拡張）。本サイト初版 2026-05-24）  
 **公式ページ最終更新**: 2026-08-05

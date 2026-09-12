@@ -141,14 +141,21 @@ kiro-cli settings list --format json-pretty
 | `chat.showThinking` | boolean | `true` | エージェントの推論（thinking）ブロックを表示（v2.5.0+、起動時のみ反映） | `kiro-cli settings chat.showThinking false` |
 | `chat.showThinkingTips` | boolean | `true` | 応答待ち中、thinking indicator下に表示される**機能ヒント**の表示/非表示（v2.15.0+） | `kiro-cli settings chat.showThinkingTips false` |
 | `chat.terminalTitle` | boolean | `false` | ターミナルタブのセッションタイトル表示/非表示（v2.7.0+） | `kiro-cli settings chat.terminalTitle true` |
-| `chat.preserveScrollback` | boolean | `false` | 全画面再描画時に端末の scrollback を消去せず、viewport のみを再描画。`/settings display` の Preserve scrollback からも切替可能 | `kiro-cli settings chat.preserveScrollback true` |
+| `chat.preserveScrollback` | boolean | `true`（v2.21.2+） | 全画面再描画時に端末の scrollback を消去せず、viewport のみを再描画。`false` で従来の clear-and-repaint 動作に戻す。`/settings display` の Preserve scrollback からも切替可能 | `kiro-cli settings chat.preserveScrollback false` |
+| `chat.spinnerVerbs` | — | — | 待機中のビジーインジケーター（スピナー）に表示する動詞をカスタマイズ（v2.21.1+）。値の書式は公式リファレンスに未記載のため断定しません | — |
+| `chat.enableCustomSpinnerVerbs` | boolean | — | `chat.spinnerVerbs` によるカスタム文言を有効化（v2.21.1+） | `kiro-cli settings chat.enableCustomSpinnerVerbs true` |
 | `chat.defaultInterruptBehavior` | string | `steer` | Queue Steering の起動時既定モード（`steer`/`queue`、v2.7.0+） | `kiro-cli settings chat.defaultInterruptBehavior queue` |
 | `chat.keybindings.toggleInterruptBehavior` | string | `ctrl+s` | Queue Steering の steer/queue モード切替キーバインド（v2.7.0+） | `kiro-cli settings chat.keybindings.toggleInterruptBehavior ctrl+shift+s` |
+| `chat.sessionDashboard.indexResponses` | boolean | — | [V3] セッションダッシュボード（`/sessions`）の検索対象にエージェント応答を含める（v2.21.4+）。`/settings` の **Session search** で **Prompts only** / **Prompts and agent responses** を切替。**ツール出力はどちらのモードでもインデックスされません** | — |
+| `chat.sessionDashboard.groupBy` | — | — | [V3] セッションダッシュボードの一覧のグループ化。取り得る値は公式リファレンスに未記載のため断定しません | — |
+| `chat.keybindings.toggleSessionDashboard` | string | — | [V3] セッションダッシュボードの表示切替キーバインド | — |
 
 > **`KIRO_ASCII_MODE=1`** を設定すると `chat.allowAsciiArt` に関わらず ASCII モードが強制されます（環境変数節参照）。
 > **v2.12.0+**: すべての TUI グリフ・記号が ASCII モード設定（`chat.allowAsciiArt` / `KIRO_ASCII_MODE`）を尊重するよう**適用範囲が拡大**しました（Unicode 非対応端末での互換性向上。新規設定の追加ではなく既存設定の挙動拡張）。
-> **ターミナルタイトル**は v2.6.0 までは `/settings display` → Terminal title でのトグルのみで CLI 設定としては提供されていませんでしたが、**v2.7.0 で `chat.terminalTitle` 設定が追加され CLI 設定としても制御可能**になりました。⚠️ 公式 [Settings リファレンス](https://kiro.dev/docs/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映のため、型・既定値は**実機 kiro-cli 2.10.0 の `kiro-cli settings list --all` の説明文**「Show dynamic title in terminal tab (boolean, default: false)」（2026-07-04 確認）を一次情報として採用しています（boolean・既定 `false`。CLI 内蔵 changelog v2.7.0 の追加文言とも整合）。
-> **Preserve scrollback**: v2.20.0 で `/settings display` にトグルが追加されました。現行 CLI の `chat.preserveScrollback` は boolean、既定 `false` です。ターミナル全体を消去せず viewport だけを再描画するため、左側ステータスバーが再描画境界をまたぐ場合は継ぎ目に隙間（seam gap）が表示される制約があります。設定キー自体の初出バージョンは、今回確認した一次情報から断定しません。
+> **ターミナルタイトル**は v2.6.0 までは `/settings display` → Terminal title でのトグルのみで CLI 設定としては提供されていませんでしたが、**v2.7.0 で `chat.terminalTitle` 設定が追加され CLI 設定としても制御可能**になりました。⚠️ 公式 [Settings リファレンス](https://kiro.dev/docs/reference/settings/)（Page updated 2026-06-05）は v2.7.0 の追加が未反映のため、型・既定値は**実機 kiro-cli 2.10.0 の `kiro-cli settings list --all` の説明文**「Show dynamic title in terminal tab (boolean, default: false)」を一次情報として採用しています（boolean・既定 `false`。CLI 内蔵 changelog v2.7.0 の追加文言とも整合）。
+> **Preserve scrollback（既定値が変わりました）**: v2.20.0 で `/settings display` にトグルが追加された時点の既定は `false` でしたが、**v2.21.2 で [V3] が再描画をまたいで端末履歴を既定で保持するよう変更**され、実機 2.21.4 では既定が `true` です（設定パネル定義の `defaultValue` が真値であることを確認）。従来の clear-and-repaint 動作に戻すには `false` を設定します。ターミナル全体を消去せず viewport だけを再描画するため、左側ステータスバーが再描画境界をまたぐ場合は継ぎ目に隙間（seam gap）が表示される制約があります。なお v2.21.4 では左ステータスレール自体が撤去され、エージェント色のドット表示に置き換わりました。設定キー自体の初出バージョンは、確認できた一次情報から断定しません。
+> **スピナー文言とセッションダッシュボードの設定**: `chat.spinnerVerbs` / `chat.enableCustomSpinnerVerbs`（v2.21.1）、`chat.sessionDashboard.indexResponses` / `chat.sessionDashboard.groupBy` / `chat.keybindings.toggleSessionDashboard` は、いずれも実機 2.21.4 に設定キーとして存在することを確認しています。型・既定値・取り得る値が公式リファレンスに記載されていない項目は、本表で「—」とし断定しません。詳細: [40. v2.21 新機能](../01_features/40_v221NewFeatures.md)
+> **`chat.agentEngine` について**: 公式 Changelog v2.21.4 は `--v2` の説明で「保存された `chat.agentEngine` 値より優先される」と述べていますが、**実機 2.21.4 に `chat.agentEngine` という設定キーは存在しません**（`chat.` で始まる設定キーを全列挙して該当なし）。エンジン選択の実機経路は `--agent-engine v1|v2|v3`・`--v2`／`--v3`・環境変数 `KIRO_AGENT_ENGINE` です。詳細: [CLI コマンドリファレンス](03_cli-commands.md)
 > `chat.showThinking`（モデル自身の推論表示、本節）と `chat.enableThinking`（thinking ツールの有効化、Feature toggles 節）は**別物**です。`chat.showThinkingTips`（機能ヒントの表示、本節）はさらに別物で、いずれも独立してON/OFF可能です。
 > 詳細: [27. Thinking Display](../01_features/27_ThinkingDisplay.md)、[29. v27NewCommands](../01_features/29_v27NewCommands.md)、[公式 Queue Steering](https://kiro.dev/docs/cli/chat/queue-steering/)
 
@@ -445,5 +452,5 @@ kiro-cli settings list --all
 
 ---
 
-**Page updated**: 2026-08-29（v2.20.0 の Preserve scrollback toggle と現行 CLI の `chat.preserveScrollback`（boolean・既定 `false`・viewport 再描画・seam gap 制約）を追加。v2.20.1 の `chat.historyMode` CLI 設定拒否修正と、Windows における `app.disableAutoupdates` 修正を反映。`chat.historyMode` は隔離した一時 `KIRO_HOME` で `global` / `session` の書込み・読取りを確認。前回 2026-08-22: v2.19.0のAPI・Subagent設定を追加）
+**Page updated**: 2026-09-13（v2.21.2 で `chat.preserveScrollback` の既定が `false` → `true` に変更されたことを反映（実機 2.21.4 の設定パネル定義で `defaultValue` が真値であることを確認）。v2.21.1 の `chat.spinnerVerbs`・`chat.enableCustomSpinnerVerbs`、v2.21.4 の `chat.sessionDashboard.indexResponses`、および `chat.sessionDashboard.groupBy`・`chat.keybindings.toggleSessionDashboard` を追加。公式が言及する `chat.agentEngine` が実機に存在しない旨の注記を追加。前回 2026-08-29: v2.20.0 の Preserve scrollback toggle と v2.20.1 の `chat.historyMode` CLI 設定拒否修正、Windows における `app.disableAutoupdates` 修正を反映）
 **公式ページ最終更新**: 2026-08-20

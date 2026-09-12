@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.20.1（本サイト反映済。v2.8.0 で CLI v3 Early Access）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.21.4（本サイト反映済。v2.8.0 で CLI v3 Early Access）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,11 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.21.4** | 2026-09-11 | [V3] セッション検索の範囲選択・`--v2`フラグ | [V3] `/sessions`の検索がエージェント応答もインデックス（`/settings`のSession searchでPrompts only / Prompts and agent responsesを切替、ツール出力は非対象、実機キー`chat.sessionDashboard.indexResponses`）、単一実行でV2ハーネスを選ぶ`--v2`（保存済み既定は上書きしない。公式が言及する`chat.agentEngine`は実機に存在せず`--agent-engine`/`KIRO_AGENT_ENGINE`が実経路）、全設定メニューのキーボード操作統一、左ステータスレール撤去→エージェント色ドット、`/verbosity`プレビューが`Ctrl+X`、修正2件 |
+| **v2.21.3** | 2026-09-10 | [V3] Powers を `/` ピッカーに表示 | インストール済みPowersが`/`コマンドピッカーに出現。[V3] モデル/モード/effortの再起動後保持、`code`ツール結果のツールカード表示、session-list直前作成セッションの欠落、エージェント`model:`解決、外部ライブラリJAR内Java定義、MCP無効化時のツール一覧更新、`logbash`/`logzsh`への承認ルール適用、`/usage`非対話出力の全内訳復帰を含む修正9件 |
+| **v2.21.2** | 2026-09-08 | ⚠️ [V3] 端末履歴保持が既定化（`chat.preserveScrollback`） | [V3]が再描画をまたいで端末履歴を既定で保持（実機2.21.4で既定`true`を確認。従来のclear-and-repaintに戻すには`false`）。shellツール出力の部分行更新、起動高速化、`/settings`フッターのEnter説明、プロンプトフッターヒント消失時のちらつき、agent monitor/セッションダッシュボード離脱時の再出力、agent swap即時通知の修正6件 |
+| **v2.21.1** | 2026-09-03 | スピナー文言カスタマイズ・ワークスペース設定の優先順位是正 | ビジーインジケーターの動詞をカスタマイズ（`chat.enableCustomSpinnerVerbs`/`chat.spinnerVerbs`）、ターミナルUIでワークスペース`cli.json`がグローバル設定より優先。[V3] 非対話実行のクリーン終了・`--output-format stream-json`中断時のエラー報告・モデル未設定エージェントの既定値使用・SessionStart Hook保持と重複通知抑止の修正4件 |
+| **v2.21.0** | 2026-09-01 | [V3] セッションダッシュボード・設定パネル・クラウド設定適用 | [V3] `/sessions`（`kiro-cli chat --sessions`でも起動。ローカル/クラウドのセッションを閲覧・検索・再開・整理。**V3(KAS)限定**）、[V3] `/config`（agents・MCP・Powers・Steering・Skills・Hooksを1画面表示、local/cloud/both識別）、[V3] Kiro WebのConfiguration Syncでアップロードしたクラウド設定を新規ローカルセッションへ適用（ローカル`.kiro`に書き込まない）、Preserve scrollback・`/agent swap`ピッカー・V3タスクリスト表示等の修正7件 |
 | **v2.20.1** | 2026-08-27 | [V3] `/powers`・安定性修正 | [V3] `/powers`でインストール済み Powers を表示。Windows `app.disableAutoupdates`、認証、tools/hooks表示、`chat.historyMode`、V3 `/chat`・JSON書込み・資格情報・model/subagent回復を含む修正12件（詳細はCLI内蔵changelog、日付は公式Changelog） |
 | **v2.20.0** | 2026-08-26 | [V3] 全画面 Spec 実行・Preserve scrollback | `/spec run`の全画面タスク実行ビュー（リアルタイム進捗・実行前スコープ選択）、`/settings display`のPreserve scrollback、会話再開・大容量出力・V3認証/MCP等の修正9件 |
 | **v2.19.1** | 2026-08-21 | バグ修正・セキュリティ修正 | tmux < 3.7 でのoverflow-flush replay回避、`/knowledge`サブコマンド自動補完と`rm`エイリアス復元（V3）、TUI終了後の端末属性リーク修正等7件、[V3] `grep_search`/`file_search`が`.kiroignore`拒否パスを返さないよう修正（セキュリティ）（※公式Changelogページ本文に専用セクションなし・CLI内蔵changelogで確認） |
@@ -347,6 +352,23 @@ timeline
         2026-08-21 : v2.19.1
                    : tmuxオーバーフローフラッシュ回避
                    : [V3] .kiroignore漏出防止（セキュリティ）
+
+    section v2.21.x セッションダッシュボード・設定パネル
+        2026-09-01 : v2.21.0
+                   : [V3] /sessions（セッションダッシュボード）
+                   : [V3] /config（設定パネル）
+                   : [V3] ローカルセッションへのクラウド設定適用
+        2026-09-03 : v2.21.1
+                   : chat.enableCustomSpinnerVerbs / chat.spinnerVerbs
+                   : ワークスペース cli.json の優先順位是正
+        2026-09-08 : v2.21.2
+                   : [V3] 端末履歴保持が既定化（chat.preserveScrollback）
+        2026-09-10 : v2.21.3
+                   : [V3] Powers を / コマンドピッカーに表示
+        2026-09-11 : v2.21.4
+                   : [V3] セッション検索の範囲選択
+                   : --v2（単一実行のハーネス選択）
+                   : 設定メニューのキーボード操作統一
 ```
 
 ## 🔗 移行情報
@@ -408,6 +430,7 @@ timeline
 - [v2.16 Tangent（V3側枝会話）](../01_features/35_v216Tangent.md) 🆕 - [V3] 名前付き・ネスト可能な側枝会話。既存classic版`/tangent`とは別仕様（v2.16.0、→ [09_v3/](../09_v3/README.md)）
 - [Cloud Sessions（クラウドセッション・プレビュー）](../01_features/36_CloudSessions.md) 🆕 - マネージドクラウドサンドボックスでのセッション実行、v2.18.0で既定オプトイン化（v2.17.0/v2.18.0）
 - [Voice Mode（音声入力）](../01_features/37_VoiceMode.md) 🆕 - オンデバイス音声認識（Whisper）によるプロンプト入力（v2.18.0）
+- [v2.21 新機能（セッションダッシュボード・設定パネル・`--v2`）](../01_features/40_v221NewFeatures.md) 🆕 - [V3] `/sessions`・`/config`・ローカルセッションへのクラウド設定適用、単一実行のハーネス選択 `--v2`（v2.21.0〜v2.21.4、→ [09_v3/](../09_v3/README.md)）
 
 ### リファレンス（辞書） 🆕
 - [04_reference/](../04_reference/README.md) — Settings / Slash Commands / CLI Commands / Built-in Tools の網羅的辞書
@@ -438,5 +461,5 @@ timeline
 
 ---
 
-**最終更新**: 2026-08-29
-**対象バージョン**: Kiro CLI v2.20.1
+**最終更新**: 2026-09-13
+**対象バージョン**: Kiro CLI v2.21.4
