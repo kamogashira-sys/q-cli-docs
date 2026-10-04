@@ -97,7 +97,7 @@ kiro-cli chat --effort max
 
 ## Persistent Model and Effort Preferences - 設定の自動永続化
 
-> ⚠️ **現行仕様（v2.14.1 以降）**: `/model`・`/effort` の選択は**セッション限定**です。既定として保存するには `set-current-as-default` を実行します（→ [v2.14.1での変更](#v2141での変更2026-07-23リリース-セッション限定へ回帰)）。以下は v2.6.0 時点の仕様です。
+> ⚠️ **現行仕様（v2.23.0 以降）**: `/model` でのモデル選択と `/effort <level>` は**セッション限定**で、既定として保存するには `set-current-as-default` を実行します（v2.14.1 で導入 → [v2.14.1での変更](#v2141での変更2026-07-23リリース-セッション限定へ回帰)）。一方、v2.23.0 で `/model` が推論設定（thinking・effort）の主なインターフェースになり、**`/model` のピッカーで選んだ effort はそのモデルに対して自動的に保存**されます（公式 [Reasoning effort](https://kiro.dev/docs/models/effort/)・[In-session settings](https://kiro.dev/docs/cli/chat/settings/#persistence)、→ [42. v2.23 新機能](42_v223NewFeatures.md)）。以下は v2.6.0 時点の仕様です。
 
 v2.6.0では、`/model` と `/effort` の選択が**自動的に永続化**されるようになりました。一度モデルや effort を切り替えると、Kiro はその設定を将来のセッションに引き継ぎます。
 
@@ -144,7 +144,7 @@ v2.6.0では、`/model` と `/effort` の選択が**自動的に永続化**さ�
 
 - **`/effort set-current-as-default` は v2.14.1 の新規追加**で、**現行モデルに対する**既定 effort を保存します（保存先はモデル単位の `chat.modelDefaults`）。
 - v2.12.3 で追加されたオプトアウト設定 `chat.disableAutoDefaultModel` / `chat.disableAutoDefaultEffort` は、**v2.14.2 実機では設定キーとして存在しません**（`kiro-cli settings <key>` が `is not a valid setting` を返す。有効だが未設定のキーは `No value associated with` となるため区別できます）。削除された正確なバージョンは公式に記載がありません。
-- ⚠️ **公式リファレンスは未反映**: [Effort](https://kiro.dev/docs/models/effort/)（公式ページ最終更新 2026-07-21）と [In-session settings](https://kiro.dev/docs/cli/chat/settings/)（同 2026-06-12）は「選択は自動的に永続化され `set-current-as-default` は不要」と記述したままです。本サイトは新しい一次情報である[公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）を採用しています。
+- ✅ **公式ドキュメントの現行記述（公式ページ最終更新 2026-10-02）**: [In-session settings](https://kiro.dev/docs/cli/chat/settings/#persistence) と [Reasoning effort](https://kiro.dev/docs/models/effort/) は、`/model` でのモデル選択は現在のセッションにのみ適用、`/model` のピッカーで選んだ effort はそのモデルに対して自動的に保存、`/effort <level>` は現在のセッションのみ、と説明しています（本サイトが以前「公式は未反映」と注記していた点は、公式側の更新で解消されました）。出典: [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）
 - 変更履歴: [v2.14.1](../02_update/01_changelog.md)
 
 ---
@@ -181,5 +181,5 @@ v2.6.0では、`/model` と `/effort` の選択が**自動的に永続化**さ�
 
 ---
 
-**最終更新**: 2026-07-25
-**対象バージョン**: Kiro CLI v2.6.0+（`/model`・`/effort` の永続化は v2.12.3 で sticky default 化 → **v2.14.1 でセッション限定へ回帰**し `set-current-as-default` が必要）
+**最終更新**: 2026-10-04
+**対象バージョン**: Kiro CLI v2.6.0+（`/model`・`/effort` の永続化は v2.12.3 で sticky default 化 → **v2.14.1 でセッション限定へ回帰**し `set-current-as-default` が必要 → v2.23.0 で `/model` が推論設定の主インターフェースに）

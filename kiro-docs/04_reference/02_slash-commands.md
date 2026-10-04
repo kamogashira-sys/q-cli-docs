@@ -2,11 +2,11 @@
 
 # Kiro CLI Slash Commands リファレンス
 
-**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-08-12）
+**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-10-02）
 
 Kiro CLI のインタラクティブチャットセッション内で使用できるすべてのスラッシュコマンドを網羅する辞書的リファレンスです。
 
-> 📌 **v3（Early Access）コマンドについて**: 本リファレンスは **v2 安定版**のスラッシュコマンドを対象としています。v3（`kiro-cli --v3`）専用のコマンド — `/spec` 系は [09_v3/01. 仕様駆動開発](../09_v3/01_spec-driven-development.md)、`/upgrade-agent`（V2 → V2/V3 両対応のエージェント設定移行、v2.14.0 追加）は [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md)、インストール済み Powers を表示する `/powers`（v2.20.1 追加）は [39. v2.20 新機能](../01_features/39_v220NewFeatures.md) を参照してください（Early Access のため、安定版のコマンド数には含めていません）。
+> 📌 **v3（Early Access）コマンドについて**: 本リファレンスは **v2 安定版**のスラッシュコマンドを対象としています。v3（`kiro-cli --v3`）専用のコマンド — `/spec` 系は [09_v3/01. 仕様駆動開発](../09_v3/01_spec-driven-development.md)、`/upgrade-agent`（V2 → V2/V3 両対応のエージェント設定移行、v2.14.0 追加）は [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md)、インストール済み Powers を表示する `/powers`（v2.20.1 追加。v2.25.0 で `install`・`uninstall`）は [39. v2.20 新機能](../01_features/39_v220NewFeatures.md)・[44. v2.25 新機能](../01_features/44_v225NewFeatures.md)、セッションダッシュボード `/sessions`・設定パネル `/config`（v2.21.0 追加）は [40. v2.21 新機能](../01_features/40_v221NewFeatures.md)、Workflows の `/workflow`（v2.26.0 追加）は [45. v2.26 新機能](../01_features/45_v226NewFeatures.md)、保存済みプロンプトのスラッシュコマンド化（v2.27.0）は [46. v2.27 新機能](../01_features/46_v227NewFeatures.md) を参照してください（Early Access のため、安定版のコマンド数には含めていません。V3 の追加・変更の一覧は [09_v3/](../09_v3/README.md)）。
 
 ---
 
@@ -39,7 +39,7 @@ kiro-cli chat
 
 ## スラッシュコマンド一覧
 
-公式ページに記載されている全コマンド（公式更新日: 2026-08-12 時点）に加え、`/voice`（v2.18.0+、公式Voiceページを出典）を追加。**本ページには全 41 コマンドを掲載**しています（`/help`〜`/voice` の見出し数。`/save` / `/load` は 1 見出しに集約）。
+公式ページに記載されている V2 安定版のコマンドに加え、`/voice`（v2.18.0+、公式Voiceページを出典）を掲載しています。**本ページには全 42 コマンドを掲載**しています（`/help`〜`/fullscreen` の見出し数。`/save` / `/load` は 1 見出しに集約。v2.22.0 の `/fullscreen` で 41 → 42）。公式ページに掲載されている V3 専用のコマンド（`/config`・`/powers`・`/sessions`・`/spec`・`/upgrade-agent`・`/workflow`）は冒頭の注記のとおり本ページの数に含めていません。
 
 ### `/help`
 
@@ -102,7 +102,11 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 
 > **セッション限定（v2.14.1+）**: `/model` の選択は**現在のセッションにのみ適用**されます。既定として保存するには `/model set-current-as-default` を実行します（保存先は `chat.defaultModel`）。
 >
-> 変遷: v2.6.0 で自動永続化（`set-current-as-default` 不要）→ v2.12.3 で sticky default 化 → **v2.14.1 でセッション限定へ回帰**。出典: [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）。⚠️ 公式 [In-session settings](https://kiro.dev/docs/cli/chat/settings/)（公式ページ最終更新 2026-06-12）は自動永続化のままで本変更が未反映です。
+> **推論設定（v2.23.0+）**: `/model` のピッカーで **Thinking**（対応モデルが extended reasoning を使うか）と **Effort**（推論の量）を選べます。表示されるのは選んだモデルが対応する設定と値だけです。`/model` が推論設定の主なインターフェースになり、ここで選んだ Effort は自動的に保存されます（公式 [Reasoning effort](https://kiro.dev/docs/models/effort/)）。`/settings display` の **Show thinking** は推論ブロックを画面に表示するかどうかだけを制御する別の設定です。→ [42. v2.23 新機能](../01_features/42_v223NewFeatures.md)
+>
+> **モデルフォールバック（v2.27.1+、CLI 内蔵 changelog のみで確認）**: 拒否された、または容量超過になったターンを既定で別のモデルで再試行し、再試行先は `/model fallback` で選びます。公式 Slash commands の `/model` の項には `fallback` の記載がまだありません。→ [46. v2.27 新機能](../01_features/46_v227NewFeatures.md)
+>
+> 変遷: v2.6.0 で自動永続化（`set-current-as-default` 不要）→ v2.12.3 で sticky default 化 → **v2.14.1 でセッション限定へ回帰**。出典: [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）。公式 [In-session settings](https://kiro.dev/docs/cli/chat/settings/#persistence)（公式ページ最終更新 2026-10-02）も、`/model` の選択は現在のセッションにのみ適用されると説明しています。
 
 **特徴**:
 - Tab 補完（API から取得した利用可能モデル）
@@ -311,7 +315,7 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 > /tools schema                       # 入力スキーマ
 > /tools trust write                  # セッション中信頼
 > /tools untrust write                # リクエストごと確認に戻す
-> /tools trust-all                    # 全ツール信頼
+> /tools trust-all                    # 全ツール信頼（ターミナル UI では確認の警告あり）
 > /tools reset                        # 全権限デフォルトリセット
 ```
 
@@ -319,6 +323,8 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 - `~Tokens` — 各ツールスキーマの推定トークン数（1000+ は `k`）
 - `Permission` — 現在の権限状態（Trusted / Ask / Allowed）
 - `Total` — オリジン別トークン合計
+
+> **`/tools trust-all` の確認（公式 [Permissions](https://kiro.dev/docs/permissions/)）**: ターミナル UI では `--trust-all-tools` と `/tools trust-all` のどちらも、アクセスを許可する前に確認の警告を表示し、リスクを了承しないと進めません。v2.24.0 で V3 にもセッション全体の自動承認として `/tools trust-all` が追加されました（→ [43. v2.24 新機能](../01_features/43_v224NewFeatures.md)）。
 
 詳細: [17. Granular Tool Trust](../01_features/17_GranularToolTrust.md)
 
@@ -546,6 +552,8 @@ To-do リストの表示・管理・再開。
 - `delete` — to-do リストを削除
 
 > **注**: to-do リストへの項目追加（`add`）や完了マーク（`complete`）は、スラッシュコマンドではなく **AI ツール（`todo_list`）** 経由で行われます。エージェントがタスク管理時に自動的に使用します。
+>
+> ⚠️ **V3 では `todo_list` ツールが提供されません（v2.27.0）**。V3 では `chat.enableTodoList` も効果を持ちません。V2 の挙動は公式 changelog に変更の記載がないため、本節の内容（実機 2.4.1 検証）を維持しています。→ [46. v2.27 新機能](../01_features/46_v227NewFeatures.md)
 
 ### `/issue`
 
@@ -604,8 +612,10 @@ To-do リストの表示・管理・再開。
 
 セッションのモデル推論エフォートレベルを設定（v2.4.0+）。
 
+> ⚠️ **現行仕様（v2.23.0+）**: `/model` が推論設定の主なインターフェースです。V2 で引数なしの `/effort` を実行すると非推奨の警告を表示し、`/model` の Effort 設定を開きます（v2.24.1 で V3 も同じ挙動）。`/effort <level>` は V2・V3 とも引き続き使えます。`/effort <level>` は現在のセッションだけを変え、`/model` で選んだレベルは自動的に保存されます（公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/)・[Reasoning effort](https://kiro.dev/docs/models/effort/)）。→ [42. v2.23 新機能](../01_features/42_v223NewFeatures.md)
+
 ```bash
-> /effort                             # 対話的ピッカー
+> /effort                             # /model の Effort 設定を開く（v2.23.0+。V3 は v2.24.1+）
 > /effort high                        # 高
 > /effort max                         # 最大
 > /effort set-current-as-default      # 現在の effort を「現行モデルの既定」として保存（v2.14.1+）
@@ -617,9 +627,9 @@ To-do リストの表示・管理・再開。
 
 > **起動時指定（v2.6.0+）**: `kiro-cli chat --effort <level>` でセッション起動時に初期 effort レベルを指定できます。
 >
-> **セッション限定（v2.14.1+）**: `/effort` の選択は**現在のセッションにのみ適用**されます。既定として保存するには **`/effort set-current-as-default`**（v2.14.1 で追加）を実行します。保存先はモデル単位の `chat.modelDefaults` です。
+> **セッション限定（v2.14.1+）**: `/effort <level>` で選んだレベルは**現在のセッションにのみ適用**されます。既定として保存するには **`/effort set-current-as-default`**（v2.14.1 で追加）を実行します。保存先はモデル単位の `chat.modelDefaults` です。v2.23.0 以降、`/model` のピッカーで選んだ effort はそのモデルに対して自動的に保存されます。
 >
-> 変遷: v2.6.0 で自動永続化 → v2.12.3 で sticky default 化 → **v2.14.1 でセッション限定へ回帰**。出典: [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）。⚠️ 公式 [Effort](https://kiro.dev/docs/models/effort/)（公式ページ最終更新 2026-07-21）は自動永続化のままで本変更が未反映です。
+> 変遷: v2.6.0 で自動永続化 → v2.12.3 で sticky default 化 → **v2.14.1 でセッション限定へ回帰**。出典: [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）、公式 [Reasoning effort](https://kiro.dev/docs/models/effort/)（公式ページ最終更新 2026-10-02）。
 
 **永続的なデフォルト設定**（モデル系列で構造が異なります）:
 ```json
@@ -734,6 +744,27 @@ To-do リストの表示・管理・再開。
 
 ---
 
+### `/fullscreen`
+
+> **出典**: [Slash commands](https://kiro.dev/docs/reference/slash-commands/)、[Fullscreen mode](https://kiro.dev/docs/cli/fullscreen/)（v2.22.0+）
+
+現在の対話セッションを inline 表示と fullscreen 表示の間で切り替え（v2.22.0+）。
+
+```bash
+> /fullscreen                         # fullscreen に入る / inline に戻る
+```
+
+fullscreen は会話専用のターミナル画面（alternate screen）で、マウス・タッチパッド・キーボードでスクロールできます。もう一度 `/fullscreen` を実行すると inline に戻ります。**V2 と V3 の両方で、TUI と Lite で使えます。非対話セッションでは使えません。**
+
+- モード切替のキーボードショートカットはありません
+- 切り替えても会話はリセットされず、新しいセッションも始まりません
+- 今後の対話 TUI セッションを fullscreen で始めるには、`/settings` → **Display** → **Full Screen** → **Start fullscreen** を on にします（実機 2.27.1 の設定キー `chat.startFullscreen`。公式 Settings リファレンス未掲載）
+- **Scroll speed**（v2.25.0+）でマウスホイール 1 回あたり 1・2・3 行を選べます（既定 2、実機 2.27.1 の設定キー `chat.fullscreenWheelRows`。公式 Settings リファレンス未掲載）
+
+→ 詳細: [41. v2.22 新機能](../01_features/41_v222NewFeatures.md)
+
+---
+
 ## Skill ベースのスラッシュコマンド
 
 **出典**: [Skill-based slash commands](https://kiro.dev/docs/reference/slash-commands/#skill-based-slash-commands)
@@ -803,13 +834,17 @@ To-do リストの表示・管理・再開。
 - [21. v24NewCommands](../01_features/21_v24NewCommands.md) — `/rewind`、`/effort`、`/settings`
 - [22. Hooks](../01_features/22_Hooks.md) — `/hooks`
 - [25. Auto Complete](../01_features/25_AutoComplete.md) — `/theme` とテーマ切替（Auto Complete のテーマ設定との連携）
-- [37. Voice Mode](../01_features/37_VoiceMode.md) 🆕 — `/voice`
+- [37. Voice Mode](../01_features/37_VoiceMode.md) — `/voice`
+- [41. v2.22 新機能](../01_features/41_v222NewFeatures.md) 🆕 — `/fullscreen`
+- [42. v2.23 新機能](../01_features/42_v223NewFeatures.md) 🆕 — `/model` の推論設定、`/effort` のレガシー化
 
 ### 公式情報源
 
-- [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-06-12）
+- [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-10-02）
+- [Fullscreen mode](https://kiro.dev/docs/cli/fullscreen/)
 
 ---
 
-**Page updated**: 2026-08-29（V3 専用 `/powers`（v2.20.1）を除外注記から案内し、安定版41コマンドの SSoT を維持。`/settings display` の Preserve scrollback（v2.20.0）を反映。前回 2026-08-16: `/voice` を追加しコマンド数を41に更新）
-**公式ページ最終更新**: 2026-06-12
+**Page updated**: 2026-10-04（v2.22.0 の `/fullscreen` を追加しコマンド数を 42 に更新。v2.23.0 の `/model` の推論設定と `/effort` のレガシー化、v2.24.0 の `/tools trust-all` の確認、v2.27.0 の V3 `todo_list` 廃止、v2.27.1 の `/model fallback`（CLI 内蔵 changelog のみ）を反映。V3 専用コマンド `/sessions`・`/config`・`/workflow` の案内を冒頭注記に追加）
+**前回更新**: 2026-08-29（V3 専用 `/powers`（v2.20.1）を除外注記から案内し、安定版41コマンドの SSoT を維持。`/settings display` の Preserve scrollback（v2.20.0）を反映。前回 2026-08-16: `/voice` を追加しコマンド数を41に更新）
+**公式ページ最終更新**: 2026-10-02

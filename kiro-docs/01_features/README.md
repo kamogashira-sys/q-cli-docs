@@ -2,7 +2,7 @@
 
 # Kiro CLI 機能詳細ガイド
 
-> Kiro CLI の 40 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+> Kiro CLI の 46 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
 
 ## 🗂️ カテゴリ別ナビゲーション
 
@@ -29,11 +29,16 @@
 - [38. v2.19 新機能](38_v219NewFeatures.md) 🆕 — サブエージェントタイムアウト・Spec Reviewマウス対応（v2.19.0）
 - [39. v2.20 新機能](39_v220NewFeatures.md) 🆕 — [V3] 全画面 Spec 実行・`/powers`、Preserve scrollback（v2.20.x）
 - [40. v2.21 新機能](40_v221NewFeatures.md) 🆕 — [V3] セッションダッシュボード（`/sessions`）・設定パネル（`/config`）・クラウド設定適用、`--v2`（v2.21.x）
+- [42. v2.23 新機能](42_v223NewFeatures.md) 🆕 — `/model` の推論設定（`/effort` のレガシー化）・[V3] リポジトリ接続前のクラウドセッション（v2.23.x）
+- [44. v2.25 新機能](44_v225NewFeatures.md) 🆕 — Powers のインストール／アンインストール・[V3] `SessionEnd` Hook（v2.25.0）
+- [45. v2.26 新機能](45_v226NewFeatures.md) 🆕 — [V3] Workflows（v2.26.x）
+- [46. v2.27 新機能](46_v227NewFeatures.md) 🆕 — [V3] Workflows: sub-agent tool・保存済みプロンプトのコマンド化・`/tangent merge`・モデルフォールバック（v2.27.x）
 
 ### 📁 コンテキスト・知識管理
 - [07. Skills](07_Skills.md) — Progressive Context Loading
 - [10. Conversation Compaction](10_ConversationCompaction.md) — 会話履歴の圧縮
 - [24. @file references](24_FileReferences.md) 🆕 — チャット入力でのファイル/ディレクトリ即時参照
+- [46. v2.27 新機能](46_v227NewFeatures.md) 🆕 — Steering の `#[[file:...]]`・`#[[folder:...]]` によるライブコンテキスト（v2.27.0）
 
 ### 📂 ファイル操作・編集
 - [05. Grep / Glob Tools](05_GrepGlob.md) — 高速検索ツール
@@ -47,6 +52,8 @@
 - [04. Multi-Session](04_MultiSession.md) — 複数セッション管理
 - [21. v2.4 New Commands](21_v24NewCommands.md) — `/rewind`（会話巻き戻し）
 - [29. v2.7 New Commands](29_v27NewCommands.md) 🆕 — enriched `/rewind` preview（v2.7.0）
+- [41. v2.22 新機能](41_v222NewFeatures.md) 🆕 — [V3] `/sessions` の再設計（v2.22.x）
+- [43. v2.24 新機能](43_v224NewFeatures.md) 🆕 — [V3] `/sessions` の Filter・Sort・Group（v2.24.x）
 
 ### 🎨 UI/UX・補完
 - [18. Terminal UI](18_TerminalUI.md) — V2 TUI、テーマ、Crew Monitor
@@ -58,15 +65,21 @@
 - [37. Voice Mode](37_VoiceMode.md) 🆕 — オンデバイス音声認識によるプロンプト入力（v2.18.0）
 - [39. v2.20 新機能](39_v220NewFeatures.md) 🆕 — Preserve scrollback と [V3] 全画面 Spec 実行・`/powers`（v2.20.x）
 - [40. v2.21 新機能](40_v221NewFeatures.md) 🆕 — 設定メニューのキーボード統一・スピナー文言カスタマイズ・端末履歴保持の既定化（v2.21.x）
+- [41. v2.22 新機能](41_v222NewFeatures.md) 🆕 — `/fullscreen`（V2・V3）（v2.22.x）
+- [44. v2.25 新機能](44_v225NewFeatures.md) 🆕 — [V3] Output style・fullscreen のスクロール速度（v2.25.0）
+- [45. v2.26 新機能](45_v226NewFeatures.md) 🆕 — ⚠️ Classic の非推奨通知（v2.26.x）
 
 ### 🔒 セキュリティ・権限
 - [11. URL Permissions](11_URLPermissions.md) — `web_fetch` の URL 権限細粒度制御
 - [17. Granular Tool Trust](17_GranularToolTrust.md) — Shell 4段階・Read/Write 3段階の信頼スコープ
+- [43. v2.24 新機能](43_v224NewFeatures.md) 🆕 — [V3] `/tools trust-all`・⚠️ プロジェクト `.env` の自動読み込み廃止（v2.24.x）
+- [45. v2.26 新機能](45_v226NewFeatures.md) 🆕 — [V3] Hook・LSP・MCP・shell の承認チェック強化（v2.26.0）
+- [46. v2.27 新機能](46_v227NewFeatures.md) 🆕 — `~/.kiro` の所有者限定アクセス（v2.27.0）
 
 ### 🔌 統合（IDE/MCP/CI/CD/認証）
 - [12. Remote Authentication](12_RemoteAuth.md) — SSH/SSM/コンテナ認証
 - [13. Agent Client Protocol (ACP)](13_ACP.md) — JetBrains/Zed 統合
-- [15. Exit Codes for CI/CD](15_ExitCodes.md) — CI/CD 用構造化終了コード
+- [15. Exit Codes for CI/CD](15_ExitCodes.md) — CI/CD 用構造化終了コード（v2.27.1 で終了コード 4）
 - [16. v2 Major Update](16_v2MajorUpdate.md) — Windows 11 / Headless Mode
 - [19. Tool Search](19_ToolSearch.md) — MCP ツールのオンデマンドロード
 - [26. Agent Toolkit for AWS](26_AgentToolkitForAWS.md) 🌟 — AWS 公式 MCP Server + Skills + Plugins
@@ -121,6 +134,12 @@
 | **[v2.19 新機能](38_v219NewFeatures.md)** 🆕 | v2.19.0<br/>（2026-08-19） | サブエージェントのアイドルタイムアウトとSpec review screenのマウス対応 | `api.subagentTimeout`（既定3600秒）、Spec review screenのマウス対応（スクロール/クリック、`m`キー）、[V3] session resume AI生成タイトル要約、[V3] MCP protocol revision対応 |
 | **[v2.20 新機能](39_v220NewFeatures.md)** 🆕 | v2.20.0<br/>（2026-08-26）<br/>v2.20.1更新 | [V3] 全画面 Spec タスク実行、Preserve scrollback、インストール済み Powers の表示 | `/spec run` の全画面ビュー・リアルタイム進捗・実行前スコープ選択、`/settings display` の Preserve scrollback、[V3] `/powers` |
 | **[v2.21 新機能](40_v221NewFeatures.md)** 🆕 | v2.21.0<br/>（2026-09-01）<br/>v2.21.1〜v2.21.4更新 | [V3] セッションダッシュボード・設定パネル・ローカルセッションへのクラウド設定適用、単一実行のハーネス選択 | `/sessions`・`kiro-cli chat --sessions`（V3限定、検索範囲は `chat.sessionDashboard.indexResponses`）、`/config`（local/cloud/both 識別）、`--v2` フラグ、`chat.enableCustomSpinnerVerbs`／`chat.spinnerVerbs`、`chat.preserveScrollback` の既定が `true` へ |
+| **[v2.22 新機能](41_v222NewFeatures.md)** 🆕 | v2.22.0<br/>（2026-09-16）<br/>v2.22.1更新 | 専用画面でのチャットと V3 セッションダッシュボードの再設計 | `/fullscreen`（V2・V3、TUI・Lite）、Start fullscreen（実機キー `chat.startFullscreen`、公式未掲載）、[V3] `/sessions` の操作部分離・ソート記憶、大きなツール結果の保存（V3）、`KIRO_SKIP_BINARY_PINNING` |
+| **[v2.23 新機能](42_v223NewFeatures.md)** 🆕 | v2.23.0<br/>（2026-09-21）<br/>v2.23.1更新 | `/model` への推論設定の統合と、リポジトリ接続前のクラウドセッション | `/model` の Thinking・Effort、V2 の引数なし `/effort` がレガシー化、[V3] `kiro-cli --cloud` → `/repo`、作業時間の表示、`/sessions` のメインセッション絞り込み |
+| **[v2.24 新機能](43_v224NewFeatures.md)** 🆕 | v2.24.0<br/>（2026-09-23）<br/>v2.24.1更新 | セッション全体のツール承認・環境の分離 | [V3] `/tools trust-all`、[V3] `/sessions` の Filter・Sort・Group（`chat.sessionDashboard.scope`）、⚠️ プロジェクト `.env` の自動読み込み廃止、[V2] 画像の自動縮小・再試行 |
+| **[v2.25 新機能](44_v225NewFeatures.md)** 🆕 | v2.25.0<br/>（2026-09-28） | Powers の管理・V3 Output style・fullscreen のスクロール速度・`SessionEnd` Hook | [V3] `/powers install`・`/powers uninstall`、`kiro-cli powers install`・`uninstall`、[V3] Output style（`chat.outputStyle`）、Scroll speed（実機キー `chat.fullscreenWheelRows`、公式未掲載）、[V3] `SessionEnd` |
+| **[v2.26 新機能](45_v226NewFeatures.md)** 🆕 | v2.26.0<br/>（2026-09-30）<br/>v2.26.1更新 | Workflows と Classic の非推奨化 | [V3] Workflows（`chat.enableWorkflows`、`/workflow`）、⚠️ Classic の非推奨通知、[V3] 承認チェック強化 4 点、[V3] OS 証明書ストアの既定信頼 |
+| **[v2.27 新機能](46_v227NewFeatures.md)** 🆕 | v2.27.0<br/>（2026-10-01）<br/>v2.27.1更新 | Workflows の委譲設定・Steering のライブコンテキスト・保存済みプロンプトのコマンド化 | [V3] Workflows: sub-agent tool（`chat.enableMainAgentSubagentTool`）、`#[[file:...]]`・`#[[folder:...]]`、[V3] `/prompt-name`、⚠️ [V3] `todo_list` 廃止、`/tangent merge`・`/model fallback`・⚠️ 終了コード 4（v2.27.1、CLI 内蔵 changelog のみ） |
 
 ## 🔗 機能間の連携
 
@@ -307,6 +326,6 @@ sequenceDiagram
 
 ---
 
-**最終更新**: 2026-09-13
-**対象バージョン**: Kiro CLI v2.21.4+（v3 は Early Access）
-**機能数**: 40 + Reference集約 ([04_reference/](../04_reference/README.md))
+**最終更新**: 2026-10-04
+**対象バージョン**: Kiro CLI v2.27.1+（v3 は Early Access）
+**機能数**: 46 + Reference集約 ([04_reference/](../04_reference/README.md))

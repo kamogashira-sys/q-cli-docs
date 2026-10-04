@@ -53,6 +53,19 @@ check_moved_stub() {
 if [ "$MODE" = "important" ]; then
     IMPORTANT_URLS=(
         "https://kiro.dev/changelog/cli/"
+        "https://kiro.dev/changelog/cli/2-27/"
+        "https://kiro.dev/changelog/cli/2-26/"
+        "https://kiro.dev/changelog/cli/2-25/"
+        "https://kiro.dev/changelog/cli/2-24/"
+        "https://kiro.dev/changelog/cli/2-23/"
+        "https://kiro.dev/changelog/cli/2-22/"
+        "https://kiro.dev/changelog/cli/2-21/"
+        "https://kiro.dev/changelog/cli/2-20/"
+        "https://kiro.dev/changelog/cli/2-19/"
+        "https://kiro.dev/changelog/cli/2-18/"
+        "https://kiro.dev/changelog/cli/2-17/"
+        "https://kiro.dev/changelog/cli/2-16/"
+        "https://kiro.dev/changelog/cli/2-15/"
         "https://kiro.dev/changelog/cli/2-14/"
         "https://kiro.dev/changelog/cli/2-13/"
         "https://kiro.dev/changelog/cli/2-12/"
@@ -78,6 +91,12 @@ if [ "$MODE" = "important" ]; then
         "https://kiro.dev/docs/cli/v3/agent-config/"
         "https://kiro.dev/docs/cli/v3/upgrade-agent/"
         "https://kiro.dev/docs/models/effort/"
+        "https://kiro.dev/docs/cli/fullscreen/"
+        "https://kiro.dev/docs/workflows/"
+        "https://kiro.dev/docs/cli/chat/session-management/"
+        "https://kiro.dev/docs/steering/"
+        "https://kiro.dev/docs/cli/chat/manage-prompts/"
+        "https://kiro.dev/docs/reference/exit-codes/"
     )
     errors=0
     for url in "${IMPORTANT_URLS[@]}"; do

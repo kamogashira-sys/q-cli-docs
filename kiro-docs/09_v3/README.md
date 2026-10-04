@@ -56,7 +56,7 @@ kiro-cli --v3
 ### 4 本柱のポイント（一次情報の要約）
 
 - **Permissions**: 1 つのルールは `capability`（操作種別）/ `match`（グロブ）/ `exclude` / `effect`（`deny`・`ask`・`allow`）の 4 フィールド。効果は **deny > ask > allow** の順で厳しい方が勝ちます。ルールは **User**（`~/.kiro/settings/permissions.yaml`）と **Workspace**（`~/.kiro/workspace-roots/<hash>/permissions.yaml`、**リポジトリ外・ユーザー単位**で保持されるためクローンしたリポジトリが権限を注入できない）の2スコープ。CI 向けには `capability: all / effect: allow` の例が示されています。
-- **Hooks**: `.kiro/hooks/<name>.json`（`"version": "v1"`）に定義。**command**（シェル実行、stdin に JSON、終了コード 0=成功 / 2=ブロック）と **agent**（プロンプトを文脈へ追記）の 2 型。トリガは `SessionStart` / `Stop` / `PreToolUse` / `PostToolUse` / `UserPromptSubmit` / `PostFileCreate` / `PostFileSave` のほか、**3.0 新規**の `PreTaskExec` / `PostTaskExec` / `PostFileDelete` / `Manual`。旧 hooks は `kiro-cli agent migrate` で新形式へ変換できます。**v2.13.0（2026-07-17）** では、`~/.kiro/hooks/` に置いた**グローバル hooks** が追加され、**全ワークスペースへ自動適用**されるようになりました（従来のワークスペース単位 `.kiro/hooks/` に加えた、ユーザーグローバルの適用先）。
+- **Hooks**: `.kiro/hooks/<name>.json`（`"version": "v1"`）に定義。**command**（シェル実行、stdin に JSON、終了コード 0=成功 / 2=ブロック）と **agent**（プロンプトを文脈へ追記）の 2 型。トリガは `SessionStart` / `SessionEnd`（v2.25.0 追加）/ `Stop` / `PreToolUse` / `PostToolUse` / `UserPromptSubmit` / `PostFileCreate` / `PostFileSave` のほか、**3.0 新規**の `PreTaskExec` / `PostTaskExec` / `PostFileDelete` / `Manual`。旧 hooks は `kiro-cli agent migrate` で新形式へ変換できます。**v2.13.0（2026-07-17）** では、`~/.kiro/hooks/` に置いた**グローバル hooks** が追加され、**全ワークスペースへ自動適用**されるようになりました（従来のワークスペース単位 `.kiro/hooks/` に加えた、ユーザーグローバルの適用先）。
 - **Agent 設定**: Markdown の本文がシステムプロンプト、フロントマターに `description` / `model` / `tools`（タグ）/ `mcpServers` / `resources` / `permissions` / `welcomeMessage` を記述（JSON でも等価）。タグは `read` / `write` / `shell` / `web` / `subagent` / `knowledge` / `todo_list` / `@mcp` / `@builtin` / `*`。新しいツールがカテゴリに追加されると**自動で取り込まれます**。配置は `.kiro/agents/`（ワークスペース）・`~/.kiro/agents/`（ユーザー）。
 
 ### v2.13.0 での追加（Introspect サブエージェント・グローバル hooks）
@@ -114,6 +114,26 @@ kiro-cli --v3
 
 → 詳細: [40. v2.21 新機能](../01_features/40_v221NewFeatures.md)、[Session management（公式）](https://kiro.dev/docs/cli/chat/session-management/)、[Configuration（公式）](https://kiro.dev/docs/configuration/)、[Cloud configuration（公式）](https://kiro.dev/docs/web/cloud-configuration/)
 
+### v2.22.0〜v2.27.1 での追加（Workflows・`/tools trust-all`・Output style・`SessionEnd` ほか）
+
+V3 限定の追加・変更は次のとおりです（V2 でも使える `/fullscreen`・`/model` の推論設定は [41](../01_features/41_v222NewFeatures.md)・[42](../01_features/42_v223NewFeatures.md) を参照）。
+
+| 版 | V3 の追加・変更 | 詳細 |
+|----|---------------|------|
+| v2.22.0 | `/sessions` の再設計（操作部と一覧の分離、ソートの記憶）、大きなツール結果をセッションへ保存しモデルにはプレビューを渡す | [41](../01_features/41_v222NewFeatures.md) |
+| v2.23.0 | リポジトリ接続前のクラウドセッション（後から `/repo`） | [42](../01_features/42_v223NewFeatures.md) |
+| v2.24.0 | **`/tools trust-all`**（セッション全体の自動承認。既定で安全警告と確認）、`/sessions` の Filter・Sort・Group とフィルタの組み合わせ | [43](../01_features/43_v224NewFeatures.md) |
+| v2.24.1 | `/sessions` の既定が現在のディレクトリ（`chat.sessionDashboard.scope`）、引数なしの `/effort` が `/model` の Effort 設定を開く | [43](../01_features/43_v224NewFeatures.md) |
+| v2.25.0 | **`/powers install <name\|path>`・`/powers uninstall <name>`**（ローカルセッションのみ）、**Output style**（`chat.outputStyle`）、**`SessionEnd` Hook トリガー** | [44](../01_features/44_v225NewFeatures.md) |
+| v2.26.0 | **Workflows**（`/settings features` で有効化・再起動、`/workflow`）、Hook・LSP 書き込みのファイル単位承認、未信頼ワークスペースでの MCP・shell の都度承認、実行直前の承認再確認 | [45](../01_features/45_v226NewFeatures.md) |
+| v2.26.1 | OS の証明書ストアを既定で信頼（`NODE_USE_SYSTEM_CA` の明示値が優先） | [45](../01_features/45_v226NewFeatures.md) |
+| v2.27.0 | **Workflows: sub-agent tool**（`chat.enableMainAgentSubagentTool`）、Steering の行指定・行範囲・`#[[folder:...]]`、**保存済みプロンプトのスラッシュコマンド化**、⚠️ **`todo_list` ツールの廃止**（`chat.enableTodoList` は V3 で無効）、Output style が `/settings display` 配下へ移動 | [46](../01_features/46_v227NewFeatures.md) |
+| v2.27.1 | **`/tangent merge [dest]`**、非対話実行での hooks・knowledge・code intelligence 対応、`--no-interactive` の Workflows の完了までの接続維持と進捗・使用量の計上（CLI 内蔵 changelog のみで確認、公式 Changelog 未掲載） | [46](../01_features/46_v227NewFeatures.md) |
+
+**Hooks のトリガー**: v2.25.0 で `SessionEnd`（V3 セッションの終了時）が加わりました。公式 [Hook types](https://kiro.dev/docs/hooks/types/) の記載は「The `SessionEnd` trigger fires when a CLI V3 session is torn down.」の 1 文のみです。
+
+> **V3 専用コマンドの扱い**: `/workflow`・`/sessions`・`/config`・`/powers` は V2 安定版のスラッシュコマンド数（[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md)）に含めず、本セクションで扱います。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/) には `/workflow` のサブコマンド（`run`・`new`・`list`・`status`・`pause`・`resume`・`cancel`・`retry`）が掲載されています（→ [45](../01_features/45_v226NewFeatures.md)）。
+
 ---
 
 ## Breaking changes（v2 → v3）
@@ -122,7 +142,7 @@ v3 は **後方互換ではない変更**を含みます。切り替え前に確
 
 | 領域 | 変更内容 |
 |------|----------|
-| **権限** | `--trust-all-tools` / `/tools trust` を **`permissions.yaml`** で置換 |
+| **権限** | `--trust-all-tools` / `/tools trust` を **`permissions.yaml`** で置換（※v2.24.0 で V3 にもセッション限定の自動承認 `/tools trust-all` が追加。公式 [Permissions](https://kiro.dev/docs/permissions/) は `--trust-all-tools` が CI 向けのセッション単位の上書きとして引き続き動作すると説明） |
 | **Hooks** | 埋め込み hooks を**独立ファイル** `.kiro/hooks/*.json` へ。トリガ名は PascalCase |
 | **Agent 設定** | `toolsSettings` を **`permissions`** フィールドへ、個別ツール ID を**タグ**へ |
 | **aws_tool** | **削除**（MCP サーバーで代替） |
@@ -176,6 +196,7 @@ kiro-cli diagnostic --format json-pretty
 - [01_features/30. v2.8 / V3 プレビュー](../01_features/30_v28V3Preview.md) — v2.8.0 / v2.8.1 の事実と `--v3` の入口
 - [01_features/33. v2.13 Introspect サブエージェント・グローバル hooks](../01_features/33_v213IntrospectGlobalHooks.md) — v2.13.0 の V3 追加機能
 - [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md) — V2 → V3 エージェント設定移行（v2.14.0）
+- [01_features/41〜46. v2.22〜v2.27 新機能](../01_features/46_v227NewFeatures.md) — Workflows・`/tools trust-all`・Output style・`SessionEnd`・保存済みプロンプトのコマンド化ほか（[41](../01_features/41_v222NewFeatures.md)・[42](../01_features/42_v223NewFeatures.md)・[43](../01_features/43_v224NewFeatures.md)・[44](../01_features/44_v225NewFeatures.md)・[45](../01_features/45_v226NewFeatures.md)・[46](../01_features/46_v227NewFeatures.md)）
 - [07_aidlc/](../07_aidlc/README.md) — AI-DLC（AWS Labs OSS 方法論）。v3 の純正 Spec agent とは別物（→ [01. 仕様駆動開発](01_spec-driven-development.md) の比較表）
 - [02_update/01_changelog.md](../02_update/01_changelog.md) — v2.8.0 / v2.8.1 の変更履歴
 
@@ -186,8 +207,9 @@ kiro-cli diagnostic --format json-pretty
 - [Tangent](https://kiro.dev/docs/cli/v3/tangent/)
 - [Permissions（機能自体）](https://kiro.dev/docs/permissions/) ／ [Hooks（機能自体）](https://kiro.dev/docs/hooks/) ／ [Agent config changes（v3移行）](https://kiro.dev/docs/cli/v3/agent-config/)
 - [Upgrading agent configs（`/upgrade-agent`）](https://kiro.dev/docs/cli/v3/upgrade-agent/)
+- [Workflows](https://kiro.dev/docs/workflows/) ／ [Hook types](https://kiro.dev/docs/hooks/types/) ／ [Install powers](https://kiro.dev/docs/powers/installation/)
 
 ---
 
-**最終更新**: 2026-09-13（v2.21.0 のセッションダッシュボード `/sessions`・設定パネル `/config`・ローカルセッションへのクラウド設定適用、v2.21.3 の Powers ピッカー表示、v2.21.4 のセッション検索範囲選択と `--v2` を追加）
+**最終更新**: 2026-10-04（v2.22.0〜v2.27.1 の V3 追加・変更（Workflows、`/tools trust-all`、`/powers install`・`uninstall`、Output style、`SessionEnd` Hook、保存済みプロンプトのコマンド化、`todo_list` の廃止、`/tangent merge` ほか）を追加）
 **対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x 以降 ＋ `--v3` で提供。3.0.0 GA は未リリース。

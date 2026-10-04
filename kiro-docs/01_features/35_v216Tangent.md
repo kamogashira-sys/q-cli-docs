@@ -84,6 +84,24 @@ Kiro CLI **v2.16.0**（公式表示日 2026-07-31）で、**名前付き・ネ�
 
 ---
 
+## v2.27.1での進化（2026-10-02、公式Changelog未掲載）
+
+### `/tangent merge [dest]`
+
+V3 で、tangent で得た結果を親セッション、または名前を指定したセッションへ取り込む `/tangent merge [dest]` が追加されました。あわせて、`/tangent merge` の後に tangent を開き直すと、プロンプト全文ではなく要約行を表示するよう修正されています。
+
+```text
+# 親セッションへ取り込む
+/tangent merge
+
+# 名前を指定したセッションへ取り込む
+/tangent merge <dest>
+```
+
+> ⚠️ v2.27.1 は公式 Changelog に未掲載で、CLI 内蔵 changelog（`kiro-cli version --changelog=2.27.1`）のみで確認しています。公式 Slash commands リファレンスと公式 Tangent ページには `merge` の記載がまだないため、取り込まれる内容（要約か全文か）や `dest` の指定形式は本ページでは扱いません（→ [46. v2.27 新機能](46_v227NewFeatures.md)）。
+
+---
+
 ## 関連リンク
 
 - [Tangent（公式v3）](https://kiro.dev/docs/cli/v3/tangent) — V3版`/tangent`の公式ドキュメント
@@ -96,5 +114,5 @@ Kiro CLI **v2.16.0**（公式表示日 2026-07-31）で、**名前付き・ネ�
 
 ---
 
-**最終更新**: 2026-08-01  
-**対象バージョン**: Kiro CLI v2.16.0+（V3 は Early Access）
+**最終更新**: 2026-10-04  
+**対象バージョン**: Kiro CLI v2.16.0+（V3 は Early Access。v2.27.1 で `/tangent merge`）

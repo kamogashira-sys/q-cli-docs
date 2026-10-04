@@ -60,6 +60,7 @@ v2.20.0（2026-08-26）  Preserve scrollbackトグル
 - [プラットフォームサポート](#プラットフォームサポート)
 - [制限事項](#制限事項)
 - [トラブルシューティング](#トラブルシューティング)
+- [v2.22.0・v2.26.0での進化](#v2220v2260での進化)
 - [関連リンク](#関連リンク)
 
 ---
@@ -340,6 +341,8 @@ kiro-cli settings chat.preserveScrollback true
 
 ### クラシックインターフェースの使用
 
+> ⚠️ **v2.26.0（2026-09-30）以降、Classic インターフェースは非推奨です。** Classic セッションの起動時に、Classic を選んだ要因（フラグ・環境変数・設定）を示す通知が表示されます。ターミナル UI へ戻すには、`--classic` をコマンドから外す、`KIRO_CHAT_UI` を unset する、または `kiro-cli settings chat.ui "tui"` を実行してから Kiro CLI を再起動します（公式 [Terminal UI](https://kiro.dev/docs/cli/terminal-ui/#using-the-classic-interface)、→ [45. v2.26 新機能](45_v226NewFeatures.md)）。
+
 ```bash
 # 永続的に切り替え
 kiro-cli settings chat.ui "classic"
@@ -442,6 +445,18 @@ kiro-cli settings list | grep chat.ui
 
 ---
 
+## v2.22.0・v2.26.0での進化
+
+### v2.22.0（2026-09-16リリース）: `/fullscreen`
+
+`/fullscreen` で、現在の会話をシェル履歴から独立した専用のターミナル画面（alternate screen）へ移せます。もう一度入力すると inline に戻ります。V2・V3 の両方で、対話の TUI と Lite で使えます。今後のセッションを fullscreen で始めるには `/settings` → **Display** → **Full Screen** → **Start fullscreen** を on にします（v2.25.0 で **Scroll speed** も追加）。詳細は [41. v2.22 新機能](41_v222NewFeatures.md) を参照してください。
+
+### v2.26.0（2026-09-30リリース）: Classic の非推奨通知
+
+Classic インターフェースは非推奨になり、起動時に通知が表示されます。戻し方は [クラシックインターフェースの使用](#クラシックインターフェースの使用) を参照してください。
+
+---
+
 ## 関連リンク
 
 - [Terminal UI 公式ドキュメント](https://kiro.dev/docs/cli/terminal-ui/)
@@ -458,10 +473,10 @@ kiro-cli settings list | grep chat.ui
 ### 本サイトの関連文書
 - [25. Auto Complete](25_AutoComplete.md) 🆕 — Terminal UI と統合された AI 補完機能
 - [21. v2.4 New Commands](21_v24NewCommands.md) — `/theme`、`/settings` の TUI 統合メニュー
-- [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) — TUI で使える全スラッシュコマンド41種の正規仕様
+- [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) — TUI で使える全スラッシュコマンド42種の正規仕様
 - [04_reference/01_settings.md](../04_reference/01_settings.md) — TUI 用 keybindings、`chat.ui` 設定
 
 ---
 
-**最終更新**: 2026-08-29
-**対象バージョン**: Kiro CLI v1.28.0+（v2.0.0 でデフォルト UI 化、v2.18.0 Spec review screen導入、v2.19.0 マウス対応、v2.20.0 Preserve scrollbackトグル追加）
+**最終更新**: 2026-10-04
+**対象バージョン**: Kiro CLI v1.28.0+（v2.0.0 でデフォルト UI 化、v2.18.0 Spec review screen導入、v2.19.0 マウス対応、v2.20.0 Preserve scrollbackトグル追加、v2.22.0 `/fullscreen`、v2.26.0 Classic 非推奨）

@@ -47,6 +47,7 @@ Agent Steering は、これらの課題を **コミット可能な Markdown フ�
 - [Custom Agents との併用](#custom-agents-との併用)
 - [AGENTS.md 標準対応](#agentsmd-標準対応)
 - [v2.18.0での進化](#v2180での進化2026-08-12リリース)
+- [v2.27.0での進化](#v2270での進化2026-10-01リリース)
 - [ベストプラクティス](#ベストプラクティス)
 - [Common Steering File Strategies](#common-steering-file-strategies)
 - [ユースケース](#ユースケース)
@@ -594,6 +595,45 @@ my-monorepo/
 
 ---
 
+## v2.27.0での進化（2026-10-01リリース）
+
+**出典**: [公式Changelog v2.27](https://kiro.dev/changelog/cli/2-27/)、[Steering — File references（公式）](https://kiro.dev/docs/steering/#file-references)
+
+### ファイル参照によるライブコンテキスト
+
+Steering ファイルの中から、ワークスペースのファイルを参照できます。参照先の内容が取り込まれるため、仕様書や設定ファイルを Steering に書き写さずに最新の内容を参照させられます。
+
+| 書式 | 対象 | 内容 |
+|------|------|------|
+| `#[[file:<relative_file_name>]]` | 全サーフェス | ファイル全体 |
+| `#[[file:<relative_file_name>:<line>]]` | CLI V3 | 1 行 |
+| `#[[file:<relative_file_name>:<start>-<end>]]` | CLI V3 | 両端を含む行範囲 |
+| `#[[folder:<relative_folder_name>]]` | CLI V3 | 1 階層のフォルダ一覧 |
+
+```markdown
+API の仕様は次のとおり:
+#[[file:api/openapi.yaml]]
+
+レビュー規約（抜粋）:
+#[[file:docs/api-guidelines.md:12-28]]
+
+設定ディレクトリ:
+#[[folder:config]]
+```
+
+CLI V3 では次のように動作します（公式）。
+
+- 参照先は Steering 文書の読み込み時に展開される
+- 相対パスの基準は、ワークスペースの Steering ならワークスペースのルート、グローバルの Steering なら `~/.kiro/steering/`、`AGENTS.md` ならそのファイルがあるフォルダ
+- 参照はセッションのファイル読み取り権限と ignore ルールに従う
+- 参照を解決できない場合、文書を黙って落とさず、未解決の参照であることを示すマーカーを残す
+
+> この `#[[file:...]]` は Steering ファイルの中で使う書式です。Custom Agents の `resources` に書く `file://` 指定（[Custom Agents との併用](#custom-agents-との併用)）や、チャット入力の `@ファイル` 参照（[24. ファイル参照](24_FileReferences.md)）とは別の仕組みです。
+
+詳細は [46. v2.27 新機能](46_v227NewFeatures.md) を参照してください。
+
+---
+
 ### 関連機能（本サイト）
 
 - [02. Subagents](02_Subagents.md) — カスタムエージェントとの組み合わせ
@@ -632,5 +672,6 @@ my-monorepo/
 
 ---
 
-**Page updated**: 2026-08-16（v2.18.0で Nested AGENTS.md がワークスペースツリー内の任意の場所へ配置可能になったことを追記）  
+**Page updated**: 2026-10-04（v2.27.0 の Steering ファイル参照 `#[[file:...]]`・`#[[folder:...]]` を追記）  
+**前回更新**: 2026-08-16（v2.18.0で Nested AGENTS.md がワークスペースツリー内の任意の場所へ配置可能になったことを追記）  
 **公式ページ最終更新**: 2026-01-08

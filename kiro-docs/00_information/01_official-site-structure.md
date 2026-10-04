@@ -63,7 +63,7 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 | │　│　└── | Privacy First [(/docs/privacy-and-security/)](https://kiro.dev/docs/privacy-and-security/) | プライバシー・セキュリティ |
 | │　├── | **Reference**（リファレンス） 🆕 | |
 | │　│　├── | Settings [(/docs/cli/reference/settings/)](https://kiro.dev/docs/reference/settings/) | 全設定項目（Telemetry/Chat/Knowledge/Keybindings/Tool Search/Feature toggles/API+MCP）と環境変数 |
-| │　│　├── | Slash Commands [(/docs/cli/reference/slash-commands/)](https://kiro.dev/docs/reference/slash-commands/) | 全スラッシュコマンド41種＋キーボードショートカット |
+| │　│　├── | Slash Commands [(/docs/cli/reference/slash-commands/)](https://kiro.dev/docs/reference/slash-commands/) | 全スラッシュコマンド42種＋キーボードショートカット |
 | │　│　├── | CLI Commands [(/docs/cli/reference/cli-commands/)](https://kiro.dev/docs/reference/cli-commands/) | `kiro-cli` 全16コマンド、グローバル引数、セッション管理 |
 | │　│　└── | Built-in Tools [(/docs/cli/reference/built-in-tools/)](https://kiro.dev/docs/reference/built-in-tools/) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_*/code/tool_search/subagent 他） |
 | │　├── | **CLI 3.0（V3 / Early Access）** [(/docs/cli/v3/)](https://kiro.dev/docs/cli/v3/) 🆕 | v3 の全体像（統一エンジン・4本柱・Breaking changes）。v2.8.0 以降 `kiro-cli --v3` でオプトイン（→ 本サイト [09_v3/](../09_v3/README.md)） |
@@ -110,7 +110,7 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 - **[Kiro公式ブログ](https://kiro.dev/blog/)**
 
 ### 本サイトでの対応文書
-- [機能詳細ガイド](../01_features/README.md) — 40機能 + カテゴリ別ナビゲーション
+- [機能詳細ガイド](../01_features/README.md) — 46機能 + カテゴリ別ナビゲーション
 - [Smart Hooks](../01_features/22_Hooks.md) 🆕
 - [Agent Steering](../01_features/23_Steering.md) 🆕
 - [@file references](../01_features/24_FileReferences.md) 🆕
@@ -121,4 +121,4 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 
 ---
 
-**最終更新**: 2026-07-25（公式 v3 ドキュメントに新設された Upgrade Agent（/docs/cli/v3/upgrade-agent/）をサイト構造表に追加、機能数 34 に同期）／ 前回 2026-07-04（公式 v3 ドキュメント /docs/cli/v3/ 系5ページをサイト構造表に反映）
+**最終更新**: 2026-10-04（機能数 46・スラッシュコマンド 42 種に同期）／ 前回 2026-07-25（公式 v3 ドキュメントに新設された Upgrade Agent（/docs/cli/v3/upgrade-agent/）をサイト構造表に追加、機能数 34 に同期）／ 前回 2026-07-04（公式 v3 ドキュメント /docs/cli/v3/ 系5ページをサイト構造表に反映）

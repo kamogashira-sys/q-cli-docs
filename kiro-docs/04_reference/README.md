@@ -12,9 +12,9 @@
 
 | # | ファイル | 内容 | 公式情報源 | 公式更新日 |
 |---|--------|------|----------|----------|
-| 01 | [Settings](01_settings.md) | 全設定項目（公式8カテゴリ）と環境変数 | https://kiro.dev/docs/reference/settings/ | 2026-08-12 |
-| 02 | [Slash Commands](02_slash-commands.md) | 全スラッシュコマンド（41種）とキーボードショートカット | https://kiro.dev/docs/reference/slash-commands/ | 2026-08-12 |
-| 03 | [CLI Commands](03_cli-commands.md) | `kiro-cli` コマンド全16種、グローバル引数、セッション管理 | https://kiro.dev/docs/reference/cli-commands/ | 2026-08-05 |
+| 01 | [Settings](01_settings.md) | 全設定項目（公式8カテゴリ）と環境変数 | https://kiro.dev/docs/reference/settings/ | 2026-10-02 |
+| 02 | [Slash Commands](02_slash-commands.md) | 全スラッシュコマンド（42種）とキーボードショートカット | https://kiro.dev/docs/reference/slash-commands/ | 2026-10-02 |
+| 03 | [CLI Commands](03_cli-commands.md) | `kiro-cli` コマンド全16種、グローバル引数、セッション管理 | https://kiro.dev/docs/reference/cli-commands/ | 2026-09-12 |
 | 04 | [Built-in Tools](04_built-in-tools.md) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_search/web_fetch/introspect/code/tool_search/delegate/subagent/report/knowledge/thinking/todo/session） | https://kiro.dev/docs/reference/built-in-tools/ | 2026-08-04 |
 
 ---
@@ -84,7 +84,7 @@
 
 ### 本サイト
 
-- [機能詳細ガイド (01_features/)](../01_features/README.md) — 40機能の詳細解説
+- [機能詳細ガイド (01_features/)](../01_features/README.md) — 46機能の詳細解説
 - [アップデート情報 (02_update/)](../02_update/README.md) — バージョン履歴と主要変更
 - [デプロイ・環境構築 (03_deployment/)](../03_deployment/README.md) — インストール手順
 - [メタドキュメント (05_meta/)](../05_meta/) — 品質保証関連
@@ -97,4 +97,4 @@
 
 ---
 
-**Page updated**: 2026-07-25（v2.13.1・v2.14.0〜v2.14.2対応: 機能数 34 に同期。Settings に `/model`・`/effort` のセッション限定化を反映）／ 前回 2026-06-28（v2.7.0/v2.6.1対応: Slash Commands を公式 2026-06-12 版に更新、`/goal`・Queue Steering キーバインド追加 ／ v2.8.0・V3 Early Access 対応: v3（`--v3`）コマンドは [09_v3/](../09_v3/README.md) 参照の注記を追加、機能数 30 に同期 ／ v2.10.0・v2.9.0対応: Settings に `chat.disableInheritingDefaultResources` を追記（出典: カスタムエージェント設定リファレンス 2026-06-26）、機能数 31 に同期）
+**Page updated**: 2026-10-04（v2.22.0〜v2.27.1対応: 機能数 46・スラッシュコマンド 42 種（`/fullscreen`）に同期、Settings・Slash Commands・CLI Commands の公式更新日を更新）／ 前回 2026-07-25（v2.13.1・v2.14.0〜v2.14.2対応: 機能数 34 に同期。Settings に `/model`・`/effort` のセッション限定化を反映）／ 前回 2026-06-28（v2.7.0/v2.6.1対応: Slash Commands を公式 2026-06-12 版に更新、`/goal`・Queue Steering キーバインド追加 ／ v2.8.0・V3 Early Access 対応: v3（`--v3`）コマンドは [09_v3/](../09_v3/README.md) 参照の注記を追加、機能数 30 に同期 ／ v2.10.0・v2.9.0対応: Settings に `chat.disableInheritingDefaultResources` を追記（出典: カスタムエージェント設定リファレンス 2026-06-26）、機能数 31 に同期）

@@ -46,6 +46,13 @@ CROSS_REF = {
 # リンクが必要な 01_features 配下のファイル名。新バージョンで機能文書を追加したら
 # ここにも対応を追加すること。
 CHANGELOG_FEATURE_LINKS = {
+    "v2.27.1": ["46_v227NewFeatures.md"],
+    "v2.27.0": ["46_v227NewFeatures.md"],
+    "v2.26.0": ["45_v226NewFeatures.md"],
+    "v2.25.0": ["44_v225NewFeatures.md"],
+    "v2.24.0": ["43_v224NewFeatures.md"],
+    "v2.23.0": ["42_v223NewFeatures.md"],
+    "v2.22.0": ["41_v222NewFeatures.md"],
     "v2.21.4": ["40_v221NewFeatures.md"],
     "v2.21.0": ["40_v221NewFeatures.md"],
     "v2.20.0": ["39_v220NewFeatures.md"],

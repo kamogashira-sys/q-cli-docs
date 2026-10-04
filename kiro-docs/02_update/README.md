@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.21.4（本サイト反映済。v2.8.0 で CLI v3 Early Access）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.27.1（本サイト反映済。v2.8.0 で CLI v3 Early Access）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,17 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.27.1** | 2026-10-02 | [V3] `/tangent merge`・モデルフォールバック・⚠️ 非対話実行の終了コード変更 | [V3] `/tangent merge [dest]`、拒否・容量超過のターンを既定で別モデルに再試行（`/model fallback`）、⚠️ 非対話実行で指定エージェントが利用できない場合は exit 4・`--agent` を適用できない場合は exit 1、[V3] 非対話実行で hooks・knowledge・code intelligence に対応、`--no-interactive` の Workflows が完了まで接続を維持（`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS`）、修正11件（**公式Changelog未掲載、CLI内蔵changelogのみ**） |
+| **v2.27.0** | 2026-10-01 | [V3] Workflows の委譲設定・Steering のライブコンテキスト・保存済みプロンプトのコマンド化 | [V3] Workflows: sub-agent tool（`chat.enableMainAgentSubagentTool`）、Steering の `#[[file:...]]`・CLI V3 の行指定と `#[[folder:...]]`、[V3] 保存済みプロンプトがスラッシュコマンドに、⚠️ [V3] `todo_list` ツール廃止、Output style が `/settings display` へ移動、🔒 `~/.kiro` の所有者限定アクセス・registry モードの MCP、改善7件・修正10件 |
+| **v2.26.1** | 2026-09-30 | [V3] OS 証明書ストアの既定信頼・V2 ACP の拒否通知 | [V3] TLS インスペクション環境で OS の証明書ストアを既定で信頼（`NODE_USE_SYSTEM_CA` の明示値が優先）、V2 ACP の `stopReason: refusal`、`--model` が V2 の `--no-interactive` に適用、`--resume-id` の不一致時の扱い、Herdr のローカル V3 会話復元 |
+| **v2.26.0** | 2026-09-30 | [V3] Workflows・⚠️ Classic 非推奨・承認チェック強化 | [V3] Workflows（`/settings features` で有効化・再起動、`/workflow run`）、⚠️ Classic 起動時の非推奨通知（要因と TUI への戻し方を案内）、[V3] Hook・LSP の書き込み・MCP ツール・shell の承認チェック強化4件、修正2件 |
+| **v2.25.0** | 2026-09-28 | Powers のインストール・[V3] Output style・fullscreen のスクロール速度・[V3] `SessionEnd` | [V3] `/powers install`・`uninstall`、`kiro-cli powers install`・`uninstall`、[V3] Output style（`chat.outputStyle`）、`/settings display` → Full Screen → Scroll speed（1/2/3 行、既定 2）、[V3] `SessionEnd` Hook、改善4件・修正8件（[V3] `.kiroignore` の遵守・`web_fetch` のリダイレクト制限を含む） |
+| **v2.24.1** | 2026-09-24 | [V3] `/sessions` の既定が現在のディレクトリ・`/effort` の統一 | [V3] `/sessions` が現在のディレクトリのセッションで開く、[V3] 引数なしの `/effort` が `/model` の Effort 設定を開く、[V3] `/clear` はモデル・effort を保持、`/chat new` はモデルを保持し effort は保存値へ、Windows の `kiro-cli --cloud` が `chat` なしで動作、V2 の組み込み名カスタムエージェントの再読み込み ほか |
+| **v2.24.0** | 2026-09-23 | [V3] `/tools trust-all`・⚠️ `.env` の自動読み込み廃止 | [V3] セッション全体のツール自動承認（安全警告と確認あり）、[V3] `/sessions` の Filter・Sort・Group とフィルタの組み合わせ、⚠️ プロジェクト `.env` を chat・MCP・ツールへ自動で読み込まない（シェルで export）、[V2] 画像の縮小・再試行、改善2件・修正11件 |
+| **v2.23.1** | 2026-09-23 | `/sessions` のメインセッション絞り込み | Tangent・rewind・サブエージェントの子セッションを隠す、環境変数プレフィックス付き許可コマンドの再確認解消、extended thinking の継続、classic `--resume-id` のエラー化、古い V3 エンジンの削除 |
+| **v2.23.0** | 2026-09-21 | `/model` の推論設定・[V3] リポジトリ接続前のクラウドセッション | `/model` で Thinking・Effort を設定、⚠️ V2 の引数なし `/effort` はレガシー、[V3] `kiro-cli --cloud` → 後から `/repo`、作業時間の表示、ConEmu 対応、インストールサイズ削減、改善8件・修正16件 |
+| **v2.22.1** | 2026-09-17 | モデル切替の通知・安定性修正 | ターンのモデル切替を transcript に通知、[V3] 容量エラーのモデル名表示・クラウドセッションの接続リセット回復・compaction の再試行・`offline_access` を拒否する認可サーバー対応、Windows の `Ctrl+Break`、Markdown 描画 |
+| **v2.22.0** | 2026-09-16 | `/fullscreen`・[V3] セッションダッシュボードの再設計 | `/fullscreen`（V2・V3、TUI・Lite、Start fullscreen）、[V3] `/sessions` の操作部分離・ソート記憶、[V3] 大きなツール結果の保存、`KIRO_SKIP_BINARY_PINNING`、`--require-mcp-startup` が非対話 V3 で MCP 起動を待ち exit 3、改善4件・修正12件 |
 | **v2.21.4** | 2026-09-11 | [V3] セッション検索の範囲選択・`--v2`フラグ | [V3] `/sessions`の検索がエージェント応答もインデックス（`/settings`のSession searchでPrompts only / Prompts and agent responsesを切替、ツール出力は非対象、実機キー`chat.sessionDashboard.indexResponses`）、単一実行でV2ハーネスを選ぶ`--v2`（保存済み既定は上書きしない。公式が言及する`chat.agentEngine`は実機に存在せず`--agent-engine`/`KIRO_AGENT_ENGINE`が実経路）、全設定メニューのキーボード操作統一、左ステータスレール撤去→エージェント色ドット、`/verbosity`プレビューが`Ctrl+X`、修正2件 |
 | **v2.21.3** | 2026-09-10 | [V3] Powers を `/` ピッカーに表示 | インストール済みPowersが`/`コマンドピッカーに出現。[V3] モデル/モード/effortの再起動後保持、`code`ツール結果のツールカード表示、session-list直前作成セッションの欠落、エージェント`model:`解決、外部ライブラリJAR内Java定義、MCP無効化時のツール一覧更新、`logbash`/`logzsh`への承認ルール適用、`/usage`非対話出力の全内訳復帰を含む修正9件 |
 | **v2.21.2** | 2026-09-08 | ⚠️ [V3] 端末履歴保持が既定化（`chat.preserveScrollback`） | [V3]が再描画をまたいで端末履歴を既定で保持（実機2.21.4で既定`true`を確認。従来のclear-and-repaintに戻すには`false`）。shellツール出力の部分行更新、起動高速化、`/settings`フッターのEnter説明、プロンプトフッターヒント消失時のちらつき、agent monitor/セッションダッシュボード離脱時の再出力、agent swap即時通知の修正6件 |
@@ -369,6 +380,51 @@ timeline
                    : [V3] セッション検索の範囲選択
                    : --v2（単一実行のハーネス選択）
                    : 設定メニューのキーボード操作統一
+
+    section v2.22.x fullscreen・セッションダッシュボード再設計
+        2026-09-16 : v2.22.0
+                   : /fullscreen（V2・V3）
+                   : [V3] /sessions の再設計
+        2026-09-17 : v2.22.1
+                   : モデル切替の通知・安定性修正
+
+    section v2.23.x /model の推論設定
+        2026-09-21 : v2.23.0
+                   : /model で Thinking・Effort（/effort はレガシー）
+                   : [V3] リポジトリ接続前のクラウドセッション
+        2026-09-23 : v2.23.1
+                   : /sessions のメインセッション絞り込み
+
+    section v2.24.x trust-all・環境の分離
+        2026-09-23 : v2.24.0
+                   : [V3] /tools trust-all
+                   : .env の自動読み込み廃止
+        2026-09-24 : v2.24.1
+                   : [V3] /sessions の既定が現在のディレクトリ
+
+    section v2.25.0 Powers 管理・Output style
+        2026-09-28 : v2.25.0
+                   : /powers install・uninstall
+                   : [V3] Output style・SessionEnd Hook
+                   : fullscreen のスクロール速度
+
+    section v2.26.x Workflows・Classic 非推奨
+        2026-09-30 : v2.26.0
+                   : [V3] Workflows
+                   : Classic の非推奨通知
+                   : [V3] 承認チェック強化
+        2026-09-30 : v2.26.1
+                   : [V3] OS 証明書ストアの既定信頼
+
+    section v2.27.x 委譲設定・Steering ライブコンテキスト
+        2026-10-01 : v2.27.0
+                   : [V3] Workflows sub-agent tool
+                   : Steering の file・folder 参照
+                   : [V3] 保存済みプロンプトのコマンド化
+        2026-10-02 : v2.27.1
+                   : [V3] /tangent merge
+                   : モデルフォールバック
+                   : 非対話実行の終了コード 4
 ```
 
 ## 🔗 移行情報
@@ -431,6 +487,12 @@ timeline
 - [Cloud Sessions（クラウドセッション・プレビュー）](../01_features/36_CloudSessions.md) 🆕 - マネージドクラウドサンドボックスでのセッション実行、v2.18.0で既定オプトイン化（v2.17.0/v2.18.0）
 - [Voice Mode（音声入力）](../01_features/37_VoiceMode.md) 🆕 - オンデバイス音声認識（Whisper）によるプロンプト入力（v2.18.0）
 - [v2.21 新機能（セッションダッシュボード・設定パネル・`--v2`）](../01_features/40_v221NewFeatures.md) 🆕 - [V3] `/sessions`・`/config`・ローカルセッションへのクラウド設定適用、単一実行のハーネス選択 `--v2`（v2.21.0〜v2.21.4、→ [09_v3/](../09_v3/README.md)）
+- [v2.22 新機能（`/fullscreen`・セッションダッシュボード再設計）](../01_features/41_v222NewFeatures.md) 🆕 - 専用画面でのチャット（V2・V3）、[V3] `/sessions` の再設計（v2.22.0〜v2.22.1）
+- [v2.23 新機能（`/model` の推論設定・リポジトリ接続前のクラウドセッション）](../01_features/42_v223NewFeatures.md) 🆕 - Thinking・Effort の `/model` への統合と `/effort` のレガシー化（v2.23.0〜v2.23.1）
+- [v2.24 新機能（`/tools trust-all`・`.env` の自動読み込み廃止）](../01_features/43_v224NewFeatures.md) 🆕 - [V3] セッション全体のツール承認、⚠️ 環境の分離（v2.24.0〜v2.24.1）
+- [v2.25 新機能（Powers 管理・Output style・`SessionEnd`）](../01_features/44_v225NewFeatures.md) 🆕 - `/powers install`・`kiro-cli powers`、[V3] Output style、fullscreen のスクロール速度、[V3] `SessionEnd` Hook（v2.25.0）
+- [v2.26 新機能（Workflows・Classic 非推奨）](../01_features/45_v226NewFeatures.md) 🆕 - [V3] Workflows、⚠️ Classic の非推奨通知、[V3] 承認チェック強化（v2.26.0〜v2.26.1）
+- [v2.27 新機能（委譲設定・Steering のライブコンテキスト・保存済みプロンプト）](../01_features/46_v227NewFeatures.md) 🆕 - [V3] Workflows: sub-agent tool、`#[[file:...]]`、`/tangent merge`、モデルフォールバック、終了コード 4（v2.27.0〜v2.27.1）
 
 ### リファレンス（辞書） 🆕
 - [04_reference/](../04_reference/README.md) — Settings / Slash Commands / CLI Commands / Built-in Tools の網羅的辞書
@@ -461,5 +523,5 @@ timeline
 
 ---
 
-**最終更新**: 2026-09-13
-**対象バージョン**: Kiro CLI v2.21.4
+**最終更新**: 2026-10-04
+**対象バージョン**: Kiro CLI v2.27.1

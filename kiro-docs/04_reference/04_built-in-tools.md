@@ -387,6 +387,8 @@ kiro-cli settings chat.enableKnowledge true
 
 **有効化**: `kiro-cli settings chat.enableTodoList true`
 
+> ⚠️ **V3 では提供されません（v2.27.0）**: V3 は `todo_list` ツールを提供しなくなり、V3 では `chat.enableTodoList` は効果を持ちません（公式 Changelog v2.27、公式 Settings リファレンスも「V3 does not provide `todo_list`」と記載）。V2 での提供は公式 changelog に変更の記載がないため、本節の内容を維持しています。→ [46. v2.27 新機能](../01_features/46_v227NewFeatures.md)
+
 ### `session`（Session settings tool）
 
 **説明**: 設定ファイルを変更せずに、現在のセッションの CLI 設定を一時的に上書き。すべてのセッション上書きはメモリに保存され、セッション終了時にリセット。
@@ -508,7 +510,7 @@ Amazon Q Developer CLI 時代は **9個** のビルトインツールでした�
 | Web 系 | `web_search`, `web_fetch` |
 | 自己参照系 | `introspect`, `code` |
 | 拡張系 | `tool_search`, `delegate`, `subagent` |
-| 補助系 | `report`, `knowledge`, `thinking`, `todo`, `session` |
+| 補助系 | `report`, `knowledge`, `thinking`, `todo`（V3 は v2.27.0 で提供終了）, `session` |
 
 ### 新規追加（Kiro CLI 期）
 
@@ -562,5 +564,6 @@ Amazon Q Developer CLI 時代は **9個** のビルトインツールでした�
 
 ---
 
-**Page updated**: 2026-07-04（`settings` サブコマンドの表記を実機準拠（`settings KEY VALUE`）に修正、06_embedded-docs 参照をローカル管理注記付きテキスト参照へ変更。本サイト初版 2026-05-24）  
+**Page updated**: 2026-10-04（v2.27.0 で V3 が `todo_list` ツールを提供しなくなった旨を `todo` 節と分類表に注記）  
+**前回更新**: 2026-07-04（`settings` サブコマンドの表記を実機準拠（`settings KEY VALUE`）に修正、06_embedded-docs 参照をローカル管理注記付きテキスト参照へ変更。本サイト初版 2026-05-24）  
 **公式ページ最終更新**: 2026-08-04
