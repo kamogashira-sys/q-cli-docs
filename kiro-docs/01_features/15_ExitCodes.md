@@ -16,7 +16,7 @@ Exit Codesは、**Kiro CLIの実行結果を示す数値コード**です。ス�
 
 ### 主な特徴
 
-- **構造化された終了コード**: 0（成功）、1（失敗）、3（MCP起動失敗）、4（指定エージェントが利用できない。v2.27.1〜、CLI 内蔵 changelog のみで確認）
+- **構造化された終了コード**: 0（成功）、1（失敗）、3（MCP起動失敗）、4（Requested Agent Not Found＝非対話実行で指定したエージェントが利用できない。v2.27.1〜）
 - **MCPサーバー必須化**: `--require-mcp-startup`オプション
 - **CI/CD対応**: 自動化スクリプトでの利用を想定
 - **Hook終了コード**: Hookの実行制御にも対応
@@ -38,7 +38,7 @@ Exit Codesは、**Kiro CLIの実行結果を示す数値コード**です。ス�
 - [ベストプラクティス](#ベストプラクティス)
 - [ユースケース](#ユースケース)
 - [トラブルシューティング](#トラブルシューティング)
-- [v2.22.0・v2.27.1での進化](#v2220v2271での進化)
+- [v2.22.0・v2.27.1・v2.32.0での進化](#v2220v2271v2320での進化)
 - [関連リンク](#関連リンク)
 
 ---
@@ -52,9 +52,9 @@ Kiro CLIは、以下の終了コードを返します。
 | **0** | Success | コマンドが正常に完了 |
 | **1** | Failure | 全般的な失敗（認証エラー、無効な引数、操作失敗）。v2.27.1 以降は、非対話実行で `--agent` を適用できない場合（エージェントが利用できない以外の理由）も含む |
 | **3** | MCP Startup Failure | MCPサーバーの起動失敗（`--require-mcp-startup`使用時） |
-| **4** | Agent Unavailable（※名称は本サイトの便宜上の表記） | 非対話実行で、`--agent`（または V3 の `chat.defaultAgent`）で指定したエージェントが利用できない（v2.27.1〜） |
+| **4** | Requested Agent Not Found | 非対話実行（`--no-interactive`、V2 または V3）で指定したエージェントが、選択したエージェントエンジンで利用できない（v2.27.1〜） |
 
-> ⚠️ **公式ドキュメントとの差異**: 終了コード 4 は CLI 内蔵 changelog（`kiro-cli version --changelog=2.27.1`）のみで確認できます。v2.27.1 は公式 Changelog に未掲載で、公式 [Exit codes](https://kiro.dev/docs/reference/exit-codes/) ページは 0・1・3 のみを記載しています。名称（Agent Unavailable）は公式の名称ではありません。
+> **公式ドキュメントとの関係**: 終了コード 4 は公式 [Exit codes](https://kiro.dev/docs/reference/exit-codes/) ページ（公式更新日 2026-10-05）に「Requested Agent Not Found」として掲載されており、v2.27.1 も公式 [Changelog v2.27](https://kiro.dev/changelog/cli/2-27/#patch-2-27-1) の Patches 節に掲載されています。名称は公式の「Requested Agent Not Found」を使います。公式 Exit codes ページ、v2.27.1 の公式 Patches 節、CLI 内蔵 changelog（`kiro-cli version --changelog=2.27.1`）の間で、終了コード 4 と終了コード 1 の条件に食い違いはありません。
 
 ### コード0: Success
 
@@ -467,18 +467,27 @@ chmod +x .kiro/hooks/pre-tool
 
 ---
 
-## v2.22.0・v2.27.1での進化
+## v2.22.0・v2.27.1・v2.32.0での進化
 
 ### v2.22.0（2026-09-16リリース）: V3 非対話実行での `--require-mcp-startup`
 
 `--require-mcp-startup` が、非対話の V3 実行の開始前に設定済みの MCP サーバーの起動を待ち、起動に失敗した場合は終了コード 3 で終了するようになりました。公式 [Exit codes](https://kiro.dev/docs/reference/exit-codes/) は、非対話の V3 実行ではサーバーの失敗・起動状態が判定できない場合・30 秒以内に状態の報告がない場合も終了コード 3 になると説明しています。
 
-### v2.27.1（2026-10-02、公式Changelog未掲載）: 指定エージェントを適用できない場合の終了
+### v2.27.1（2026-10-02）: 指定エージェントを適用できない場合の終了
 
 | 状況 | v2.27.1 の動作 | 以前の動作 |
 |------|--------------|----------|
 | `--agent`（または V3 の `chat.defaultAgent`）で指定したエージェントが利用できない | 終了コード **4** で終了 | 既定エージェントで回答 |
 | エージェントが利用できない以外の理由で `--agent` を適用できない | 終了コード **1** で終了 | 警告して回答 |
+
+公式 [Exit codes](https://kiro.dev/docs/reference/exit-codes/) は、終了コード 4 の適用範囲を次のように説明しています。
+
+- 対象は非対話実行（`--no-interactive`、V2 または V3）です。`--agent` で名前を指定したエージェントが見つからない場合に終了コード 4 になります。
+- V3 の新規セッションでは、`chat.defaultAgent` に設定したエージェントが利用できない場合も終了コード 4 になります。
+- エージェントの名前を指定しない実行は対象外です。`--agent` なしで再開したセッションも含みます。
+- 終了コード 4 は `--trust-all-tools` に関係なく適用されます。
+- ⚠️ エージェントが見つからないことをターン開始後に検出する場合があります。その場合、停止するまでの間に、組み込みの既定エージェントがツール呼び出しを含む作業を行っていることがあります。stdout に書き出された出力はそのまま残ります。
+- それ以外の `--agent` の失敗は終了コード 4 にならず、エラーを報告して終了コード 1 で終了します。
 
 CI で終了コードを分岐している場合は、4 の扱いを追加してください。
 
@@ -492,7 +501,11 @@ case $? in
 esac
 ```
 
-出典: `kiro-cli version --changelog=2.27.1`（→ [46. v2.27 新機能](46_v227NewFeatures.md)）
+出典: [公式 Changelog v2.27（Patches 節）](https://kiro.dev/changelog/cli/2-27/#patch-2-27-1)、公式 [Exit codes](https://kiro.dev/docs/reference/exit-codes/)（→ [46. v2.27 新機能](46_v227NewFeatures.md)）
+
+### v2.32.0（2026-10-15）: stdout が閉じられた非対話実行
+
+非対話実行で stdout が完了前に閉じられた場合、Kiro がターンを完了せず非 0 のステータスで終了するようになりました（公式 [Changelog v2.32](https://kiro.dev/changelog/cli/2-32/) の Fixes 節）。公式 [Headless mode](https://kiro.dev/docs/cli/headless/#plain-text-failures-and-exit-status)（公式更新日 2026-10-20）の「Plain-text failures and exit status」にも同じ内容が記載されています。**終了コードの値は、Changelog にも Headless mode にも公式 [Exit codes](https://kiro.dev/docs/reference/exit-codes/) にも記載がなく、未確認です**。0・1・3・4 のどれに当たるかを前提にした分岐は書かず、「0 以外」として扱ってください。
 
 ---
 
@@ -518,5 +531,5 @@ esac
 
 ---
 
-**最終更新**: 2026-10-04
-**対象バージョン**: Kiro CLI v1.25.0+（v2.22.0 で V3 非対話の MCP 起動待機、v2.27.1 で終了コード 4）
+**最終更新**: 2026-10-21
+**対象バージョン**: Kiro CLI v1.25.0+（v2.22.0 で V3 非対話の MCP 起動待機、v2.27.1 で終了コード 4、v2.32.0 で stdout 閉鎖時の非 0 終了）

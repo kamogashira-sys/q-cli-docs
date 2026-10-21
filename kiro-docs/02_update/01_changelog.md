@@ -13,45 +13,305 @@
 
 ## 最新バージョン
 
-> **注記**: 本ページは **v2.27.1**（2026-10-02）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
+> **注記**: 本ページは **v2.33.0**（2026-10-20）まで反映しています。**v2.8.0**（2026-06-17）で **Kiro CLI v3（Early Access）** が `--v3` により先行公開されました（→ [09_v3/](../09_v3/README.md)）。最新版は[公式 Changelog](https://kiro.dev/changelog/cli/) を参照してください。
 >
-> **本節の掲載範囲**: 目安として直近 3〜4 バージョンを掲載し、それより古いものは新しいバージョンの追加時に[バージョン履歴](#バージョン履歴)へ移動します。v2.22.0〜v2.27.1 の 11 バージョンは 17 日間に連続したため、本節には v2.27.x・v2.26.x の 2 系列 4 バージョンを掲載し、v2.25.0〜v2.22.0 はバージョン履歴の先頭に掲載しています。
+> **本節の掲載範囲**: 目安として直近 3〜4 バージョンを掲載し、それより古いものは新しいバージョンの追加時に[バージョン履歴](#バージョン履歴)へ移動します。v2.28.0〜v2.33.0 の 8 バージョンは 16 日間（2026-10-05〜2026-10-20）に連続したため、本節には v2.33.0・v2.32.0・v2.31.x の 3 系列 4 バージョンを掲載し、v2.30.0〜v2.26.0 はバージョン履歴の先頭に掲載しています。
 >
-> **一次情報について**: v2.22.0〜v2.26.1 は CLI 内蔵 changelog（`kiro-cli version --changelog=all`。実機 2.27.1 は 2.27.0 と 2.27.1 の 2 件のみ保持）に含まれておらず、公式 Changelog ページを一次情報としています。パッチ版（v2.22.1・v2.23.1・v2.24.1・v2.26.1）は公式 Atom フィードにも個別エントリがなく、各系列ページの Patches 節にのみ掲載されています。
+> **一次情報について**: v2.28.0〜v2.32.0 は公式 Changelog ページを一次情報としています。パッチ版の v2.29.1 は公式 Atom フィードに個別エントリがなく、2-29 系列ページの Patches 節にのみ掲載されています。v2.31.1 は Atom フィードに個別エントリがあり、専用ページ（`https://kiro.dev/changelog/cli/2-31-1/`）を持ちます。CLI 内蔵 changelog（`kiro-cli version --changelog=all`。実機 2.33.0 は 2.32.0 と 2.33.0 の 2 件のみ保持）に含まれるのは v2.32.0 と v2.33.0 だけです。**v2.33.0 は公式 Changelog サイトに未掲載**（系列ページ `kiro.dev/changelog/cli/2-33/` は存在しません）のため、CLI 内蔵 changelog のみを出典としており、日付も CLI 内蔵 changelog の日付です。公式に掲載された後は、公式を出典とします。v2.27.1 は前回の反映時には公式未掲載でしたが、現在は 2-27 系列ページの Patches 節に掲載されているため、公式を出典としています（CLI 内蔵 changelog との件数差は v2.27.1 節の注記を参照）。
+
+### v2.33.0 CLI（2026-10-20）
+
+**主要な変更**: [V3] がフォルダの信頼確認を求めるようになり、Workflow の計画承認がステップツリーで表示されるようになった。`grep` ツールの並列検索による高速化、サブグラフを含む Mermaid フローチャートの描画、[V3] の長いセッションでのメモリ削減も加わった。セキュリティ面では、[V3] のサンドボックスのネットワーク規則がホスト名の大文字小文字に関係なく一致し、Windows の hook コマンドが作業ディレクトリの同名プログラムを実行しなくなった。
+
+**機能追加（2件）**:
+- 🔐 **[V3] フォルダの信頼確認**: Kiro が、フォルダの hooks・agents・MCP サーバー・workflows を読み込む前に、そのフォルダを信頼するかを確認する。
+- 🔄 **[V3] Workflow の計画承認のステップツリー**: Workflow の計画承認が、詳細を展開できるコンパクトなステップツリーを表示する。
+
+**変更（4件）**:
+- ⚡ **`grep` ツールの高速化**: 大規模なプロジェクトでの `grep` ツールの検索が速くなった。ファイルを CPU コア全体で並列にスキャンする。
+- 🎨 **Mermaid のサブグラフ**: サブグラフを含む Mermaid のフローチャートが、ソースを表示せず、チャット内に描画される。
+- ⚡ **[V3] 長いセッションのメモリ**: 長いセッションが保持するメモリが減り、何時間使ってもエージェントの応答性が保たれる。
+- 🔄 **[V3] Workflow の GitHub PR ウォッチ**: Workflow の GitHub PR ウォッチが、マージコンフリクト、失敗したチェック、回答済みのスレッドに対応する。
+
+**セキュリティ（2件）**:
+- 🔒 **[V3] サンドボックスのネットワーク規則**: サンドボックスのネットワーク規則が、ホスト名の大文字小文字に関係なく一致する。
+- 🔒 **[V3] Windows の hook コマンド**: Windows で、hook コマンドが作業ディレクトリにある同名のプログラムを実行しなくなった。
+
+**バグ修正（20件）**:
+- 🎨 [V3] `chat.terminalTitle` が有効なとき、端末タイトルにセッションのタイトルが表示されるよう修正。
+- 💬 [V3] Workflow の完了後など、Kiro が自発的に開始する返信が数語で途切れないよう修正。
+- ⌨️ [V3] `/agent`・`/model`・`/effort` が、入力途中の引数をインラインで再び補完するよう修正。
+- 🔧 [V3] `permissions.yaml` のサンドボックスのネットワーク規則を編集すると、実行中のサンドボックスに適用されるよう修正。
+- 🔧 [V3] `/sessions` が、検索インデックスの追従中に数秒間固まらないよう修正。
+- 🧠 [V3] フォールバックモデルを `/model` ペインと `/model fallback` から再び設定できるよう修正。
+- 🎨 Mermaid のノード説明が見やすくなり、最大 4 行に折り返され、それより長いテキストは省略記号で示されるよう修正。
+- 🤖 ホームディレクトリから Kiro を起動しても、グローバルのエージェントが 2 回表示されないよう修正。
+- 🔧 [V3] ホームディレクトリで `/sandbox` がグローバルのサンドボックス設定をプロジェクト設定として扱わないよう修正。そこでプロジェクト設定を変更しても、グローバル設定を上書きしたり削除したりしない。
+- 🔧 [V3] `kiro-cli chat --agent <agent> @agent-sop:<name>` が、入力したテキストをそのまま送らず SOP を実行するよう修正。`--no-interactive` でも同様。
+- ☁️ [V3] 応答が返らないリクエストの後も、クラウド設定の同期が続くよう修正。
+- ☁️ [V3] クラウドセッションの `/code` が、サンドボックスのワークスペースルートと `lsp.json` のパスを表示するよう修正。
+- ☁️ [V3] クラウド設定が空のとき、セッションにクラウド設定の同期カードが表示されないよう修正。
+- 🔧 [V3] `code` ツールが、Python などの応答の遅い言語サーバーの診断を報告するよう修正。
+- 🚦 [V3] スロットリングエラーが、モデルの過負荷とユーザー自身のレート制限を区別して伝えるよう修正。
+- 🪟 [V3] Windows の Workflow が、ドライブ文字の大文字小文字が異なるレシピファイルを拒否しないよう修正。
+- 🔄 [V3] Workflow の review loop が、レビュー担当が承認した時点で止まり、上限まで実行し続けないよう修正。
+- 🔄 [V3] 組織が Auto モデルを無効にしていても、Workflow が失敗せずに実行されるよう修正。
+- ⌨️ `/model ` の後に Tab を押すと、`set-current-as-default` をモデルピッカー内のモデルとして一覧せず、サブコマンドとして再び表示するよう修正。
+- 📚 [V3] `/code summary` が、失敗せずに、コードインテリジェンスの概要からコードベースのドキュメントを生成するよう修正。
+
+**📖 詳細解説**: [52. v2.33 新機能](../01_features/52_v233NewFeatures.md)
+
+**出典**: `kiro-cli version --changelog=2.33.0`
+
+**注記**: ※公式Changelogサイト未掲載。CLI内蔵changelogのみで確認。日付は CLI 内蔵 changelog の日付です。`[V3]` の表記がない次の 5 項目は、V2 専用か両対応かが CLI 内蔵 changelog に記載されておらず、公式にも記載がないため**未確認**です: 変更「`grep` ツールの高速化」、変更「Mermaid のサブグラフ」、バグ修正「Mermaid のノード説明」、バグ修正「ホームディレクトリでのグローバルエージェントの重複表示」、バグ修正「`/model ` の後の Tab 補完」。[V3] の「フォルダの信頼確認」が非対話実行でどう扱われるかは、CLI 内蔵 changelog に記載がなく**未確認**です。
+
+---
+
+### v2.32.0 CLI（2026-10-15）
+
+**主要な変更**: [V3] の書き込み承認でフォルダ単位の許可ができるようになり、V3 のクラウドセッションを非対話実行から使えるようになり、Workflow が実行前に計画を表示するようになった。[V3] の出力スタイルが 3 種追加され、Workflow の特定のステップで Powers と MCP サーバーを使えるようになった。⚠️ [V3] の Workflow は、ステップのセッションがタスクで開き、review loop が 2 回の却下で一時停止する。
+
+**変更（3件）**:
+- ⚠️ 🔄 **[V3] Workflow ステップのセッションはタスクで開く**: V3 の Workflow ステップのセッションが、親の会話のコピーではなく、そのステップのタスクで開く。詳細: [公式 Workflows](https://kiro.dev/docs/workflows/)
+- ⚠️ 🔄 **[V3] Workflow の review loop**: V3 の Workflow の review loop が、レビューが 2 回却下されると一時停止し、続行方法を確認する。詳細: [公式 Run and manage workflows](https://kiro.dev/docs/workflows/manage/#review-loop-decisions-in-v3)
+- ⚠️ 🧠 **V2 のサブエージェントのモデルフォールバック**: V2 セッションから起動されたサブエージェントが、そのセッションのモデルフォールバック設定に従う。詳細: [公式 Slash commands の `/model`](https://kiro.dev/docs/reference/slash-commands/#model)
+
+**改善（11件）**:
+- 📁 **[V3] 書き込み承認でフォルダを許可**: V3 セッションがファイルの書き込みを求めたとき、選んだフォルダをこのセッションで許可できる。ワークスペース内のフォルダはワークスペーススコープも使え、ワークスペース外のフォルダはユーザースコープを使える。そのフォルダ内への以降の書き込みは、`ask` または `deny` ルールが適用されない限り、この許可を再利用する。詳細: [公式 Permissions](https://kiro.dev/docs/permissions/#approval-scopes-in-cli-v3)
+- ☁️ **[V3] 非対話実行でのクラウドセッション**: V3 の非対話実行が `--cloud` と `--repo` に対応する。プレーンテキスト出力にクラウドセッション ID が出力されるため、後でそのセッションを再開または削除できる。詳細: [公式 Headless mode](https://kiro.dev/docs/cli/headless/#cloud-sessions-in-v3)
+- 🔄 **[V3] Workflow の計画プレビュー**: V3 の `/workflow run` のピッカーで選択すると、Workflow の開始前に計画プレビュー付きの確認フォームが開く。プロンプトから Workflow を作成する場合も、どのステップも実行される前に承認用の計画が表示される。詳細: [公式 Workflows](https://kiro.dev/docs/workflows/#start-from-the-agent)
+- 🔐 **[V3] 承認スコープの表示**: V3 の Always Allow ページが選択中のスコープを表示する。`s` を押すと session・workspace・user を切り替えられる。詳細: [公式 Permissions](https://kiro.dev/docs/permissions/#approval-scopes-in-cli-v3)
+- ✏️ **[V3] Workflow への平易な言葉での変更**: V3 の Workflow は、実行中に、残りのステップへの平易な言葉による変更を受け付ける。詳細: [公式 Run and manage workflows](https://kiro.dev/docs/workflows/manage/#revise-work-that-has-not-started)
+- ⚡ **[V3] Workflow ステップでの Powers と MCP**: V3 の Workflow のコーディング・計画・設計ステップが Powers を使える。設計ステップは、設定済みの MCP サーバーも使える。詳細: [公式 Author workflows](https://kiro.dev/docs/workflows/authoring/)
+- 🎨 **[V3] 新しい出力スタイル**: V3 の `/settings display` が **Proactive**・**Explanatory**・**Learning** の出力スタイルを選べるようになった。詳細: [公式 Settings](https://kiro.dev/docs/cli/chat/settings/#output-styles-in-v3)
+- 🧠 **What's new での Memory の紹介**: 起動時の What's new が Memory を紹介し、使用中のエンジンとメモリ設定に応じた次の手順を示す。詳細: [公式 Memory](https://kiro.dev/docs/memory/)
+- 🖥️ **端末のプログラム状態**: OSC 7501 に対応する端末が、Kiro CLI がアイドル・作業中・完了・承認または回答の待機中・エラーによる停止のどれかを表示できる。`KIRO_NO_PROGRAM_STATUS` を設定すると無効にできる。詳細: [公式 Terminal UI](https://kiro.dev/docs/cli/terminal-ui/#program-status-for-supporting-terminals)
+- 📋 **[V3] セッション一覧の更新**: V3 の保存済みセッション一覧が、バックグラウンドのディレクトリスキャンを待たずにすぐ表示される。
+- 📦 **[V3] ネイティブライブラリの削減**: V3 の Kiro CLI が、2 つのネイティブ画像ライブラリ `sharp` と `libvips` を同梱しなくなった。
+
+**バグ修正（18件）**:
+- 🔧 [V3] `/chat save` で `.zip` を付けない名前を指定すると、そのファイルが zip のセッションアーカイブであることを表示するよう修正。詳細: [公式 Session management](https://kiro.dev/docs/cli/chat/session-management/#from-chat)
+- 🔧 [V3] `/chat load` が、保存後に改変されたセッションアーカイブについて説明するよう修正。詳細: [公式 Session management](https://kiro.dev/docs/cli/chat/session-management/#from-chat)
+- ☁️ [V3] 非対話実行でクラウドセッションを `--resume-id` で指定すると、空のローカルセッションを開始せず、そのセッションを再開するよう修正。
+- 🔧 プレーンテキストの非対話実行が、ターンがキャンセルまたは拒否された理由、あるいはセッションを開始できなかった理由を説明するよう修正。
+- 🔧 stdout が閉じられている場合に、非対話実行がターンを完了せず、非 0 で終了するよう修正。
+- 🔌 MCP OAuth のリンクがサーバーの接続時に消え、通知にサーバー名が表示されるよう修正。
+- 🔌 [V3] 組織の MCP レジストリのサーバーが、レジストリの `oauth` と `oauthScopes` の設定を使うよう修正。詳細: [公式 Registry](https://kiro.dev/docs/mcp/registry/#oauth-for-remote-registry-servers)
+- 🔧 [V3] コマンド承認が、コマンドを実行するシェル向けにシェル構文を検査するよう修正。fish を含め、承認プロンプトがシェルによるコマンドの解析と一致する。
+- 🧠 V2 の `/model` フォールバックピッカーで None を選ぶと、このマシンとプロファイルでフォールバックが off になるよう修正。詳細: [公式 Slash commands の `/model`](https://kiro.dev/docs/reference/slash-commands/#model)
+- 🧠 V2 の `/model` のフォールバック行が、ターゲットが未設定のときに拒否へ応答するベンダー既定を名前で示すよう修正。
+- 🔧 ステージを開始できない V2 の crew が、永遠に待たず、そのステージのエラーで失敗するよう修正。
+- 🧠 [V3] モデルが出力予算をすべて推論に使っても、ターンが早く終わらないよう修正。
+- 🖼️ [V3] プロバイダーが大きすぎるとして拒否した画像を、ターンを失敗させず、プロバイダーのサイズ上限で再試行するよう修正。
+- 🧠 [V3] 再開したセッションが、モデル一覧の読み込み前に、保存済みのモデルと effort を表示するよう修正。
+- 🔄 [V3] 並列ブランチで一時停止した Workflow ステップが、成功または失敗を報告したときに終了するよう修正。
+- 🔄 [V3] エージェントの再起動中にバッファされた Workflow のメッセージが、再起動後も残るよう修正。
+- 🔄 [V3] 終了済みの Workflow ステップが、親へ追加情報を送れるよう修正。
+- 🔄 [V3] Workflow の一時停止メッセージが、実行が自動的に再開すると表示しないよう修正。実行を再開するとステップが再試行される。
+
+**📖 詳細解説**: [51. v2.32 新機能](../01_features/51_v232NewFeatures.md)
+
+**出典**: [公式 Changelog v2.32](https://kiro.dev/changelog/cli/2-32/)、`kiro-cli version --changelog=2.32.0`
+
+**注記**: 公式 Changelog は 32 項目（Improvements 14／Fixes 18）、CLI 内蔵 changelog は 34 項目（Added 7／Changed 9／Fixed 18）で、件数と分類が異なります。本節は公式を正として 32 項目を掲載しています。内蔵の「Powers」と「MCP servers」は公式では 1 項目（Workflow ステップでの Powers と MCP）、内蔵の「`/workflow run` の確認フォーム」と「プロンプトから作る Workflow の計画表示」は公式では 1 項目（Workflow の計画プレビュー）にまとめられています。公式が Improvements に置く「Workflow ステップのセッション」「Workflow の review loop」「V2 のサブエージェントのモデルフォールバック」は、既存の挙動が変わるため本サイトでは「変更」に置いています。「端末のプログラム状態」は changelog に V2／V3 の記載がありませんが、公式 [Terminal UI](https://kiro.dev/docs/cli/terminal-ui/#program-status-for-supporting-terminals) は V2 と V3 が OSC 7501 で状態を報告すると説明しています。公式 [Exit codes](https://kiro.dev/docs/reference/exit-codes/) ページには、stdout が閉じられたときの非 0 終了の記載がなく、終了コードの値は**未確認**です。
+
+---
+
+### v2.31.1 CLI（2026-10-14）
+
+**主要な変更**: エージェントの返信内の Mermaid 図をチャットに描画するようになり、保存済みの設定が V3 のヘッドレス実行で効くようになった。コピーしたプロンプト、ブロック状態のペイン、モデルフォールバック、compaction、Windows のセットアップ、リリースノート、AWS サインイン、Workflow の出力に関する修正も含む。
+
+**改善（1件）**:
+- 🎨 **Mermaid 図**: エージェントの返信内のフローチャート、シーケンス図、状態遷移図、ER 図が、端末内のアートとして描画される。未対応の構文、大きすぎる図、または ASCII アートが off の場合は、Kiro が Mermaid のソースを表示する。詳細: [公式 Terminal UI](https://kiro.dev/docs/cli/terminal-ui/#mermaid-diagrams)
+
+**バグ修正（9件）**:
+- 🔧 [V3] 非対話実行が、保存済みの compaction と Tool Search の設定を適用し、対話セッションと一致するよう修正。詳細: [公式 Headless mode](https://kiro.dev/docs/cli/headless/#saved-v3-settings)
+- 🔧 `chat.disableWrap` のセッションと Lite ペインからコピーしたプロンプトの先頭に、余分な空白が 2 つ付かないよう修正。
+- 🖥️ ターミナルペインマネージャーの Herdr が、Kiro が権限または回答を待っている間、V3 セッションをブロック中として表示し、操作が必要なペインを見つけられるよう修正。
+- 🧠 モデルが応答テキストなしで拒否した場合も、モデルフォールバックが実行されるよう修正。
+- 🧠 compaction が、モデルの拒否を会話の要約として保存しないよう修正。
+- 🪟 Windows の `/sandbox setup` が一時フォルダの外で実行され、ポリシーがそこでのプログラムをブロックしている場合の失敗を避けるよう修正。詳細: [公式 Local command sandbox](https://kiro.dev/docs/sandbox/#errors-and-recovery)
+- 🔧 `/changelog` がリリースノートの各エントリを別々の行に表示するよう修正。
+- 🔐 IAM Identity Center のサインインが、隔離された AWS パーティションでも動作するよう修正。
+- 🔧 [V3] `/workflow` で、Workflow のレシピのテキストが端末のエスケープシーケンスを出力できないよう修正。
+
+**📖 詳細解説**: [50. v2.31 新機能](../01_features/50_v231NewFeatures.md)
+
+**出典**: [公式 Changelog v2.31.1](https://kiro.dev/changelog/cli/2-31-1/)
+
+---
+
+### v2.31.0 CLI（2026-10-13）
+
+**主要な変更**: [V3] のローカルコマンドサンドボックス（`/sandbox`）とローカル autonomous モード（`/autonomous`）がすべての V3 ユーザーに提供され、MCP ツールがオンデマンドで読み込まれるようになった。⚠️ `KIRO_HOME` が V3 のグローバル設定・サインイン・セッション・エージェント状態に適用され、保存済みの `sandbox.json` が V3 のヘッドレス実行に適用される。
+
+**機能追加（2件）**:
+- 🛡️ **[V3] ローカルコマンドサンドボックス（`/sandbox`）**: `/sandbox` を実行すると、エージェントが実行する shell コマンドとその子プロセスを、オペレーティングシステムのサンドボックス内に置く。外向きのネットワークアクセスを、ブロック・よく使われる開発用ホストに限定・開放のいずれにするかを選べる。ローカルの stdio MCP サーバーを同じサンドボックス内で実行することもできる。エージェント本体、組み込みのファイルツール、リモート MCP サーバーはサンドボックスの外に残る。権限ルールは引き続きエージェントの動作を制御する。サンドボックスはリスクを減らすが、完全な隔離を保証できないため、提案されたコマンドの確認を続けること。詳細: [公式 Local command sandbox](https://kiro.dev/docs/sandbox/)
+- 🤖 **[V3] ローカル autonomous モード（`/autonomous`）**: V3 のローカルセッションで `/autonomous on` を実行すると、shell コマンドごとの承認を求められずに Kiro がタスクを進める。Kiro は Default エージェントに切り替え、先にローカルコマンドサンドボックスを有効にする。詳細: [公式 Local command sandbox](https://kiro.dev/docs/sandbox/)
+
+**変更（2件）**:
+- ⚠️ 🏠 **[V3] ホームディレクトリの一本化（`KIRO_HOME`）**: `KIRO_HOME` を絶対パスに設定すると、仕事用と個人用など別々の Kiro プロファイルを保てる。V3 はグローバル設定、サインイン、セッション、エージェントの状態をそこに保存する。既存の MCP サインインは 1 回だけそこへコピーされる（→ [v2.3.0](#v230-cli2026-05-12)）。詳細: [公式 Configuration scopes](https://kiro.dev/docs/configuration/#file-paths)
+- ⚠️ 🛡️ **[V3] ヘッドレス実行での保存済みサンドボックス設定**: グローバルまたはプロジェクトの `sandbox.json` で `enabled: true` の設定が、V3 のヘッドレス実行に適用されるようになった。保護なしで続行せず停止させたい場合は `--sandbox` を付ける。詳細: [公式 Local command sandbox](https://kiro.dev/docs/sandbox/)
+
+**改善（1件）**:
+- 🔌 **[V3] オンデマンドの MCP ツール**: V3 が MCP ツールの定義を必要なときにだけ読み込み、モデルのコンテキストをより多く作業に残す。詳細: [公式 Tool search](https://kiro.dev/docs/mcp/tool-search/)
+
+**バグ修正（7件）**:
+- 🔧 V1 の `--no-interactive` 実行が、無関係なツール承認エラーを報告せず、ターンを終わらせたエラーで終了するよう修正。
+- 🖼️ アニメーション WebP 画像内のテキストが、V3 セッションで Kiro が最初のフレームを読むときも鮮明に保たれるよう修正。
+- ⚡ V3 のクラウド設定と Kiro サービスへのリクエストが、停滞しても固まらず 15 秒で停止するよう修正。
+- 🔌 streamable HTTP サーバー上の V3 の MCP ツールが、サーバーがセッションを切断した後も動作し続けるよう修正。
+- 🏠 `KIRO_HOME` が相対パス、ファイルシステムのルート、ホームディレクトリ、またはその親ディレクトリの場合に、Kiro が `~/.kiro` にフォールバックするよう修正。
+- ☁️ V3 のクラウドセッションで、コードインテリジェンスのインジケーターと `/code` パネルがクラウドのワークスペースを反映するよう修正。
+- 🔐 トークンの更新中に認証サービスが一時的なエラーを返しても、GitHub と Google のサインインが終了しないよう修正。
+
+**📖 詳細解説**: [50. v2.31 新機能](../01_features/50_v231NewFeatures.md)
+
+**出典**: [公式 Changelog v2.31](https://kiro.dev/changelog/cli/2-31/)
+
+---
+
+## バージョン履歴
+
+### v2.30.0 CLI（2026-10-12）
+
+**主要な変更**: 起動時のプロンプトで V3 への切り替えを勧める段階的な展開が始まった。V3 は 10 月末に CLI 3.0 の既定になる。あわせて [V3] のモデルフォールバック通知を追加し、エージェントを V3 へアップグレードしても V2 のアクセス権限をより多く保持するようになり、画面リーダー・tmux・Knowledge 検索の問題を修正した。
+
+**機能追加（2件）**:
+- 🚀 **チャット開始時の V3 への切り替え提案**: 起動時のプロンプトは、10 月末に CLI 3.0 で V3 が既定になるのに先立って段階的に展開されているため、すぐには表示されない場合がある。表示されたら **Switch to V3 and upgrade my configs** を選ぶと、V3 を既定のハーネスとして保存し、エージェントの自動アップグレードを有効にし、カスタムエージェント設定の移行を開始する。`kiro-cli --v3` でいつでも V3 を試せる。詳細は [Kiro CLI V3 のロールアウトの案内（公式ブログ）](https://kiro.dev/blog/cli-3)を参照（→ [09_v3/](../09_v3/README.md)）。
+- 🧠 **[V3] モデルが切り替わったときの通知**: V3 セッションで、モデルがリクエストを拒否した、または利用できず、ターンが別のモデルへ移った場合に、transcript に通知が表示される。別のモデルがターンを引き継いだことが分かり、返信が変わった理由に迷わない。詳細: [公式 Terminal UI](https://kiro.dev/docs/cli/terminal-ui/#model-fallback-notices)
+
+**改善（1件）**:
+- 🔐 **アップグレード済みエージェントの権限**: 生成された V3 のフィールドが変更されていない、アップグレード済みのエージェントで V2 の信頼設定を変更すると、Kiro CLI が対応する V3 の権限を更新する。詳細: [公式 Upgrading agent configs](https://kiro.dev/docs/cli/v3/upgrade-agent/#refreshing-upgraded-agents)
+
+**バグ修正（6件）**:
+- ♿ 画面リーダーが、`/settings display` の Screen reader オプションを通じて、フル TUI のストリーミング返信を追従するよう修正。詳細: [公式 Settings](https://kiro.dev/docs/cli/chat/settings/#screen-reader-support)
+- 🔄 エージェントを V3 へアップグレードしたときに、V2 のワークスペース読み取りアクセスと `fs_read` のスキル信頼を保持するよう修正。詳細: [公式 Upgrading agent configs](https://kiro.dev/docs/cli/v3/upgrade-agent/#what-gets-converted)
+- 🖥️ tmux でスクロールバックしても、長い返信の後に空白行だけの画面が表示されないよう修正。
+- 🎨 末尾に改行のない出力の後に Kiro CLI を起動しても、UI がずれた位置に描画されないよう修正。
+- 🔍 Classic と V2 の Knowledge 検索が、小さな knowledge base からチャンクを黙って落とさないよう修正。詳細: [公式 Slash commands の `/knowledge`](https://kiro.dev/docs/reference/slash-commands/#knowledge)
+- 🎨 一部の Linux 端末とリモートデスクトップで、チャット内のアイコン周辺に文字化けや余分な文字が出る問題を修正。
+
+**📖 詳細解説**: [49. v2.30 新機能](../01_features/49_v230NewFeatures.md)
+
+**出典**: [公式 Changelog v2.30](https://kiro.dev/changelog/cli/2-30/)
+
+---
+
+### v2.29.1 CLI（2026-10-10）
+
+**主要な変更**: Classic と V2 の MCP OAuth サインインを修正。
+
+**バグ修正（1件）**:
+- 🔌 Classic と V2 の MCP OAuth サインインが、issuer を要求するサーバーで動作するよう修正。
+
+**📖 詳細解説**: [48. v2.29 新機能](../01_features/48_v229NewFeatures.md)
+
+**出典**: [公式 Changelog v2.29（Patches 節）](https://kiro.dev/changelog/cli/2-29/#patch-2-29-1)
+
+---
+
+### v2.29.0 CLI（2026-10-09）
+
+**主要な変更**: ローカルの V3 セッションで、作業から得た有用なコンテキストを後のチャットセッションで呼び出せる **Memory**（`/memories`）を追加。⚠️ [V3] の ACP は既定で Kiro CLI のログインを使い、[V3] のカスタムエージェントは、ツール設定が許可する MCP サーバーだけを起動する。
+
+**機能追加（1件）**:
+- 🧠 **[V3] Memory（チャットセッションをまたぐコンテキスト）**: Kiro が作業から有用なコンテキストを学び、後のセッションで必要になったときに呼び出す。たとえば、デバッグ中にリポジトリの結合テストがローカルデータベースを投入するまで失敗することを Kiro が学べば、後のセッションは原因を調べ直さず、先にデータベースを投入できる。Kiro がメモリを使うとき、作業中のチャットに `command=get` とメモリのタイトルを示す **Memory** のエントリが表示される。ローカルの V3 セッションで `/memories` と入力して `config` を選ぶと、`read & write`・`read only`・`off` を選べる。`read only` は「Use existing memories. No changes or automatic updates.」と説明され、`off` は Kiro によるメモリの使用と変更を止める。アクセスの変更は次のセッションから適用される。`read & write` では、**Automatic memory updates** により、セッション終了後も含めて Kiro がメモリを作成・改善でき、この設定の変更は即座に適用される。信頼していないワークスペースでは、Kiro はメモリを読めるが、追加・変更・削除はできない。`list` を選ぶと、保存されたメモリを検索・プレビュー・開くことができる。一覧は読み取り専用で、メモリの修正や削除はチャットで Kiro に依頼する。詳細: [公式 Memory](https://kiro.dev/docs/memory/)
+
+**変更（3件）**:
+- ⚠️ 🔌 **[V3] ACP のサインイン**: `kiro-cli acp` が既定で Kiro CLI のログインを使うようになった。接続するクライアントがサインインを扱う場合は `--auth-method=client` を渡す。
+- ⚠️ 🔌 **[V3] MCP サーバーの起動**: カスタムエージェントは、ツール設定が許可する `mcp.json` のサーバーだけを起動するようになった。
+- ⚠️ 🔌 **[V3] MCP サーバーの環境**: `stdio` の MCP サーバーが、エージェントの環境全体を継承するようになった。
+
+**改善（4件）**:
+- 🔐 **プロファイルごとの Device flow 制御**: 管理者は Kiro のプロファイルごとに Device flow サインインを無効にできる。CLI は Device flow でのログインとプロファイル切り替えの際にそれらのプロファイルを非表示にし、ブラウザでのサインインは引き続き利用できる。
+- 🔄 **ディレクトリ単位のエージェントアップグレード**: `kiro-cli agent upgrade <dir>` が、トップレベルのエージェント JSON ファイルを、V2 と V3 の両方が読み込める形式にアップグレードする。`--dry-run` で書き込まずに変更をプレビューでき、`--no-backup` で既定のバックアップを省略できる（→ [v2.14.0](#v2140-cli2026-07-22)）。
+- 🪝 **V2 TUI の Hook グループ**: `read` などの Hook マッチャーが、そのグループのすべてのツールを対象にするようになり、ブロックする `preToolUse` Hook がグループ内のどのツールも止められる。
+- 🪝 **V2 TUI の Hook 入力**: ツールの Hook が `tool_tags` を受け取るようになり、スクリプトがツールのグループを確認できる。
+
+**バグ修正（16件）**:
+- 🔒 Classic の `fs_write` が、シンボリックリンクによって `allowedPaths` の外へ向けられた書き込みを自動承認しないよう修正。
+- 🧠 Classic と V2 のモデルフォールバックの変更が、再起動なしで現在のセッションに反映されるよう修正。
+- 🔌 V2 と V3 が MCP OAuth の認可 URL を表示し、SSH や tmux のセッションからも開けるよう修正。
+- 📊 V3 の非対話実行が、`telemetry.enabled` と `KIRO_DISABLE_TELEMETRY` に従うよう修正。
+- 🔄 V3 の `/upgrade-agent` が、`fs_read` などの旧形式の Hook マッチャーを、動作するように書き換え、書き換えでマッチが広がる場合は警告するよう修正。
+- 🔍 Classic と V2 の Knowledge 検索が、すべてのベースにわたる 1 つにまとまった結果セットを返し、ページネーションを共有し、指定した上限とファイル種別を検索全体に適用するよう修正。
+- ⚡ 高負荷時に V3 セッションが閉じられる可能性があった問題を修正。
+- 🤖 サブエージェントとして起動された V3 のカスタムエージェントが、自身の `mcpServers` を読み込むよう修正。
+- 🧠 V3 が、既定のモデルが effort に対応している場合に、セッション開始時に effort セレクターを表示するよう修正。
+- 🖼️ V3 が、リクエストを失敗させず、選択したモデルに収まるよう画像をリサイズするよう修正。
+- 🔐 `us-east-1` 以外で発行された V3 の `KIRO_API_KEY` が、そのホームリージョンで認証されるよう修正。
+- 🔧 バックエンドが JSON でないエラーページを返したとき、V3 が読みやすい再試行メッセージを表示するよう修正。
+- 🔧 再開した V3 セッションが、`UserPromptSubmit` Hook の出力を会話に保持するよう修正。
+- 🔧 MCP サーバーの起動中に送信したプロンプトを、V3 の Stop がキャンセルするよう修正。
+- 🧠 新しいプロンプトが届いた時点で終了しかけていたターンを、V3 がモデルの履歴に保持するよう修正。
+- 📎 プロンプトの途中にスラッシュコマンドが現れた場合も、V3 が手動の Steering ファイルを読み込むよう修正。
+
+**📖 詳細解説**: [48. v2.29 新機能](../01_features/48_v229NewFeatures.md)
+
+**出典**: [公式 Changelog v2.29](https://kiro.dev/changelog/cli/2-29/)
+
+---
+
+### v2.28.0 CLI（2026-10-05）
+
+**主要な変更**: Classic の対話セッションから 3.0 へ切り替えられるようになり、[V3] の Hook がツールのカテゴリで一致できるようになった。長い V3 セッションの安定性も改善した。⚠️ `Workflows: sub-agent tool` の設定行を廃止し、Workflows が有効な V3 チャットは常に Workflows で委譲する。
+
+**機能追加（2件）**:
+- 🚀 **Classic の対話セッションから 3.0 へ切り替え**: 3.0 を実行できるホストで対話型の Classic セッションを開始すると、Kiro が切り替えを提案する。**Switch to 3.0 and upgrade my agent configs** を選ぶと、3.0 を既定として保存し、エージェント設定をアップグレードし、実行したコマンドを 3.0 で再実行する。断ると、約 1 週間に 1 回、Kiro が再度案内する（→ [v2.26.0](#v2260-cli2026-09-30)）。
+- 🪝 **[V3] ツールカテゴリによる Hook の一致**: V3 セッションで、ツールの実行前後に動く Hook が、内部のツール ID だけでなく、shell・read・write などのカテゴリ、または特定の MCP サーバー・ツールで一致できる。
+
+**変更（1件）**:
+- ⚠️ 🔄 **[V3] Workflows による委譲の一貫化**: `/settings` > Features から **Workflows: sub-agent tool** の行が削除され、保存済みの設定値は動作を変えなくなった。Workflows が有効な場合、V3 のチャットは常に Workflows で委譲する。同じ役割を共有する並列のサブエージェントには別々の行が表示され、それぞれを個別に確認・承認できる（→ [v2.27.0](#v2270-cli2026-10-01)）。
+
+**改善（6件）**:
+- 🧠 **ターン途中のモデル・effort の変更**: Kiro の作業中でも `/model` と `/effort` のピッカーが開く。選択は現在のターンが終わった後に適用される。
+- ⚡ **V3 の長いセッション**: V3 が完了したターンをメモリに保持せず解放する。非常に長いチャットでの蓄積が減る。
+- 🔧 **V3 の中断されたツールの状態表示**: V3 のターンがツール呼び出しへの応答がないまま終わった場合に、Kiro が状態をより正確に報告する。ツールが開始されなかったのか、完了したのか、結果が不明なのかを示す。
+- 🖱️ **Full Screen の表示設定の追加**: `/settings` > Display > Full Screen に **Copy on select** が加わった。off にすると fullscreen モードがテキスト選択を取り込まなくなり、すでにコピーを処理している端末や tmux がその操作を担える。
+- 🪟 **Windows での V2 の MCP サーバー引数**: Windows の V2 セッションで、`|`・`&`・`%`・空白を含む引数が、直接解決される stdio MCP サーバーへそのまま届くようになった。
+- 📋 **アクティビティトレイの拡張**: 展開したアクティビティトレイが 6 件で止まらず、すべてのタスクを一覧する。fullscreen では一覧の高さを画面の約半分までに制限する。Lite のトレイは、3 件ではなく最大 6 件の Workflow を表示する。
+
+**バグ修正（3件）**:
+- 🔧 V2 TUI で、サブエージェントの終了後に会話が応答しなくなる問題を修正。
+- 🖥️ 一部の端末で、エージェントモニターまたはセッションダッシュボードを離れた後に、チャット画面の位置がずれる問題を修正。
+- 🎤 音声録音のヒントが、存在しない `/settings voice` を案内していた問題を修正。ヒントは有効な `kiro-cli settings` コマンドを示す。
+
+**📖 詳細解説**: [47. v2.28 新機能](../01_features/47_v228NewFeatures.md)
+
+**出典**: [公式 Changelog v2.28](https://kiro.dev/changelog/cli/2-28/)
+
+---
 
 ### v2.27.1 CLI（2026-10-02）
 
 **主要な変更**: [V3] `/tangent merge` とモデルフォールバックを追加し、[V3] 非対話実行で hooks・knowledge・code intelligence に対応し、`--no-interactive` の Workflows が完了まで接続を維持するようになった。⚠️ 非対話実行で指定エージェントを適用できない場合の終了コードが変わった。
 
 **機能追加（5件）**:
-- 🔀 **[V3] `/tangent merge [dest]`**: tangent で得た結果を親セッション、または名前を指定したセッションへ取り込む。
-- 🤖 **[V3] 非対話実行で hooks・knowledge・code intelligence に対応**。
-- 🔄 **[V3] `--no-interactive` の Workflows**: 完了時の再開（completion wake）や後から来た `--trust-all-tools` の承認をまたいで、完了まで接続を維持する。待機の上限（6 時間）は環境変数 `KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` で短くできる。
-- 📊 **[V3] `--no-interactive` 実行での Workflow の進捗と、完了時の再開ターンの使用量計上**。
-- 🧠 **モデルフォールバック**: 拒否された、または容量超過になったターンを、既定で別のモデルで再試行する。再試行先は `/model fallback` で選ぶ。
+- 🧠 **モデルフォールバック（V1・V2 エンジン）**: V1・V2 エンジンで、拒否されたターンを、設定済みまたはサービスが提供するフォールバックモデルで再試行する。バックエンドがモデルを利用不可とした場合は、設定済みのフォールバックモデルでのみ再試行する。`/model fallback` で確認・変更する。
+- 🔀 **[V3] `/tangent merge [dest]`**: tangent で得た結果を親セッション、または名前を指定したセッションへ取り込む。取り込み済みの tangent を開き直すと、プロンプト全文ではなく要約行を表示する。
+- 🤖 **[V3] 非対話実行で hooks・knowledge・code intelligence に対応**: V3 の `--no-interactive` 実行が、Hooks、knowledge base、code intelligence に対応する。
+- 🔄 **[V3] `--no-interactive` の Workflows**: 完了時の再開（completion wake）や後から来た `--trust-all-tools` の承認をまたいで、既定で最大 6 時間、完了まで接続を維持する。`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` でこの上限を短くできる。これらの実行は機能設定に従い、Workflow が未完了で終わった場合はそれを報告する。
+- 📊 **[V3] `--no-interactive` 実行での Workflow の進捗報告と使用量計上**: V3 の `--no-interactive` 実行が、Workflow の進捗を報告し、完了時の再開ターンごとの使用量を計上し、子ステップの出力を実行自体の出力から分けて保つ。
 
-**変更（2件）**:
-- ⚠️ 🚦 **非対話実行で指定エージェントが使えない場合は exit 4**: `--agent`（または V3 の `chat.defaultAgent`）で指定したエージェントが利用できないとき、既定エージェントで回答せず終了コード 4 で終了する。
-- ⚠️ 🚦 **`--agent` を適用できない場合は exit 1**: エージェントが利用できない以外の理由で `--agent` を適用できないとき、警告して回答するのではなく終了コード 1 で終了する。
+**変更（1件）**:
+- ⚠️ 🚦 **非対話実行で指定エージェントを適用できない場合の終了コード**: `--agent`（または新規の V3 セッションでの `chat.defaultAgent`）で指定したエージェントが利用できないとき、既定エージェントで回答せず終了コード 4 で終了する。それ以外の理由で `--agent` を適用できないときは、警告して回答するのではなく、終了コード 1 で終了する。遅れて exit 4 になる場合も、それまでに書き出した出力はそのまま残る。
 
-**バグ修正（11件）**:
-- 🔧 [V3] `/chat save -f <path>` が既存ファイルで失敗せず、`--force` と同じく上書きするよう修正。
-- 🔧 [V3] セッションを開始したディレクトリと異なる場所から Kiro を起動しても `/chat save` が動作するよう修正。
-- 🔧 [V3] `/tangent merge` 後に tangent を開き直すと、プロンプト全文ではなく要約行を表示するよう修正。
-- 🔌 パスベースの OAuth discovery URL に対してルートの issuer を返すリモート MCP サーバー（セルフマネージドの GitLab など）で、V2 エンジンのサインインが issuer 不一致で失敗しないよう修正。
-- 🔧 [V2] `read` ツールで複数の `Directory` 操作をまとめて実行したとき、結果が混ざらないよう修正。
+**バグ修正（8件）**:
+- 🧠 [V3] 新規・再開したセッションが、モデル一覧が判明した時点で、モデルが利用できない、または変更されたことを通知し、`/model` を案内するよう修正。保存済みの既定モデルが利用できない場合は、既定モデルへフォールバックする。
 - 🔧 [V3] `/upgrade-agent diagnostics` を開いた数秒後に画面が空白になり入力が固まる問題を修正。
-- 🧠 [V3] 新規・再開したセッションが、モデル一覧の取得後にモデルが利用できない、または変更されたことを通知し `/model` を案内するよう修正。保存済みの既定モデルが利用できない場合は既定モデルへフォールバックする。
-- ⚡ [V3] Workflow の実行が多いセッションを再開するとき、完了済みステップすべてのクレジット読み込みを待たないよう修正。
-- 🔧 [V3] `--no-interactive` の Workflows が機能設定に従い、子の出力を分離し、未完了の結果を報告するよう修正。
+- 🔌 パスベースの OAuth discovery URL に対してルートの issuer を返すリモート MCP サーバー（セルフマネージドの GitLab など）で、V2 のサインインが issuer 不一致で失敗しないよう修正。
+- 🔧 [V3] `/chat save -f <path>` が既存ファイルで失敗せず、`--force` と同じく上書きするよう修正。`/chat save` は、セッションを開始したディレクトリと異なる場所から Kiro を起動した場合も動作する。
+- 🔧 失敗した shell コマンドが、終了ステータスと併せて stdout と stderr の両方を表示し、shell 出力が最後の内容行で終わるよう修正。
 - 🎨 色付き出力やハイパーリンクなど、端末のエスケープシーケンスを含むテキストを貼り付けても、プロンプトにシーケンスの残骸が残らないよう修正。
-- 🔧 失敗した shell コマンドが終了ステータスと併せて stdout と stderr の両方を表示し、shell 出力の末尾に空行が残らないよう修正。
+- 🔧 [V2] `read` ツールでまとめて実行した `Directory` 操作が、それぞれ自身の一覧を返すよう修正。
+- ⚡ [V3] Workflow の実行が多いセッションの再開が速くなるよう修正。CLI 内蔵 changelog は、完了済みのステップすべてのクレジットの読み込みを待たなくなったためと説明している。
 
 **📖 詳細解説**: [46. v2.27 新機能](../01_features/46_v227NewFeatures.md)
 
-**出典**: `kiro-cli version --changelog=2.27.1`
+**出典**: [公式 Changelog v2.27（Patches 節）](https://kiro.dev/changelog/cli/2-27/#patch-2-27-1)
 
-**注記**: ※公式Changelogサイト未掲載。CLI内蔵changelogのみで確認。公式 [Exit codes](https://kiro.dev/docs/reference/exit-codes/) ページには終了コード 0・1・3 のみが記載され、exit 4 は記載されていません。
+**注記**: 公式の Patches 節は 14 項目、CLI 内蔵 changelog（`kiro-cli version --changelog=2.27.1`。実機 2.33.0 は v2.27.1 を保持しない）は 18 項目（Added 5／Changed 2／Fixed 11）で、件数と分類が異なります。本節は公式を正として 14 項目を掲載し、公式の Patches 節は分類を持たないため、各項目は CLI 内蔵 changelog の分類（Added／Changed／Fixed）に従って振り分けています。内蔵の 4 項目は公式では別の項目に含まれており、掲載内容は欠けていません: 「`/tangent merge` 後に開き直したときの要約行」は `/tangent merge` の項目、「終了コード 4」と「終了コード 1」は終了コードの 1 項目、「`/chat save -f`」と「別ディレクトリからの `/chat save`」は 1 項目、「`--no-interactive` の Workflows が機能設定に従い、未完了を報告する」点は Workflows の項目に含まれ、「子の出力を分離する」点は進捗報告の項目に含まれます。モデルフォールバックについて、CLI 内蔵 changelog は「拒否された、または容量超過のターンを既定で別のモデルで再試行する」と記載し、公式 Patches は上記のとおり V1・V2 エンジンで設定済みまたはサービス提供のフォールバックモデルを使うと記載しています。本サイトは公式の記述を採用しています。公式 [Exit codes](https://kiro.dev/docs/reference/exit-codes/) ページ（公式更新日 2026-10-05）は終了コード 4（Requested Agent Not Found）を掲載しています。
 
 ---
 
@@ -61,6 +321,7 @@
 
 **機能追加（3件）**:
 - 🔄 **[V3] Workflows: sub-agent tool**: Workflows を有効にすると、新しい設定 **Workflows: sub-agent tool** が既定で on になり、メインのチャットはサブエージェントへ直接、または Workflows 経由で委譲できる。`/settings features` で off にすると、メインチャットの委譲は Workflows 経由に限られる（エージェント設定が許可していれば、Workflow のステップ内では引き続きサブエージェントを使える）。実機 2.27.1 の設定キーは `chat.enableMainAgentSubagentTool`。詳細: [公式 Settings](https://kiro.dev/docs/cli/chat/settings/#settings-features)
+  - ※v2.28.0 で `/settings` > Features の **Workflows: sub-agent tool** の行が廃止され、保存済みの設定値は動作を変えなくなった。Workflows が有効な V3 チャットは常に Workflows で委譲する（→ [v2.28.0](#v2280-cli2026-10-05)）
 - 📎 **Steering のライブコンテキスト**: ファイル全体を参照する `#[[file:...]]` が全サーフェスで動作する。CLI V3 では 1 行指定・行範囲指定と、1 階層のディレクトリ一覧を返す `#[[folder:...]]` も使える。CLI V3 では Steering 文書の読み込み時に参照先が展開され、セッションのファイル読み取りポリシーに従う。詳細: [公式 Steering](https://kiro.dev/docs/steering/#file-references)
 - 💬 **[V3] 保存済みプロンプトをスラッシュコマンドとして実行**: ワークスペース・グローバル・MCP のプロンプトがスラッシュコマンドとして現れる。補完に引数のヒントが表示され、実行するとファイルテンプレートまたは MCP の内容を展開してからモデルへ送る。詳細: [公式 Manage prompts](https://kiro.dev/docs/cli/chat/manage-prompts/)
 
@@ -129,6 +390,7 @@
 
 **変更（1件）**:
 - ⚠️ 🖥️ **Classic の非推奨通知**: Classic セッションの起動時に非推奨の通知が表示される。フラグ・環境変数・保存済み設定のどれが Classic を起動したかを特定し、ターミナル UI へ切り替える手順を案内する。詳細: [公式 Terminal UI](https://kiro.dev/docs/cli/terminal-ui/#using-the-classic-interface)
+  - ※v2.28.0 で、3.0 を実行できるホストの対話型 Classic セッションに 3.0 への切り替えの提案が加わった。v2.30.0 では、起動時のプロンプトで V3 への切り替えを勧める段階的な展開が始まった（→ [v2.28.0](#v2280-cli2026-10-05)、[v2.30.0](#v2300-cli2026-10-12)）
 
 **セキュリティ（4件）**:
 - 🔒 **Hook・LSP の書き込みをファイル単位で承認**: V3 の Hook と LSP による編集が、Hook ファイルの書き込み前と、リネーム・フォーマット操作で変更する各ファイルの変更前に承認を求める。
@@ -146,8 +408,6 @@
 
 ---
 
-## バージョン履歴
-
 ### v2.25.0 CLI（2026-09-28）
 
 **主要な変更**: Powers をチャットやコマンドラインからインストール・アンインストールできるようになり、[V3] Output style、fullscreen のスクロール速度、[V3] `SessionEnd` Hook を追加。
@@ -155,6 +415,7 @@
 **機能追加（4件）**:
 - 🔌 **Powers のインストールとアンインストール**: ローカルの V3 セッションで `/powers install <name|path>` を実行するとカタログまたはローカルディレクトリから Power を追加し、`/powers uninstall <name>` で削除する。利用可能な Powers がすぐ更新され、現在のセッションで使える。チャットを起動せずに管理するには `kiro-cli powers install <name|path>` または `kiro-cli powers uninstall <name>` を実行する。詳細: [公式 Powers installation](https://kiro.dev/docs/powers/installation/)
 - 🎨 **[V3] Output style**: V3 セッションで `/settings` を開き、Kiro の応答の書式を選ぶ。アップグレード済みのエージェントが提供する Output style も選択肢に含まれる（v2.27.0 で `/settings display` 配下へ移動）。実機 2.27.1 の設定キーは `chat.outputStyle`。詳細: [公式 Settings](https://kiro.dev/docs/cli/chat/settings/)
+  - ※v2.32.0 で、V3 の `/settings display` に **Proactive**・**Explanatory**・**Learning** の出力スタイルが追加された（→ [v2.32.0](#v2320-cli2026-10-15)）
 - 🖱️ **fullscreen のスクロール速度**: `/settings display` → **Full Screen** → **Scroll speed** で、マウスホイール 1 回あたりの transcript の移動量を 1・2・3 行から選ぶ（既定 2 行）。新しい **Full Screen** 画面には既存の **Start fullscreen** も含まれる。実機 2.27.1 の設定キーは `chat.fullscreenWheelRows`（公式 Settings リファレンス未掲載）。詳細: [公式 Fullscreen](https://kiro.dev/docs/cli/fullscreen/)
 - 🪝 **[V3] `SessionEnd` Hook**: 新しいトリガー `SessionEnd` で、V3 セッションの終了時に Hook を実行できる。セッション単位の自動化に、後片付けなどのための確実な終了イベントを提供する。詳細: [公式 Hook types](https://kiro.dev/docs/hooks/types/)
 
@@ -660,6 +921,7 @@
 **機能追加（1件）**:
 - ☁️ **Cloud Sessions（プレビュー）**: `kiro-cli --cloud`（または `kiro-cli chat --cloud`）でマネージドクラウドサンドボックス上でセッションを実行。`--repo` または `/repo` ピッカーでリポジトリを紐付け。切断してもエージェントは作業を継続し、`--resume-id` で別マシンから再開可能。クラウド・ローカルセッションはセッションピッカーに共に表示される。IAM Identity Center 利用組織向けには、管理者が **Cloud Sessions (Preview)** 設定で管理（旧称 **Kiro Web (Preview)**）。既存有効化組織は継続有効、新規組織は要オプトイン。詳細: [36. Cloud Sessions](../01_features/36_CloudSessions.md)
   - 詳細: [Cloud sessions（公式）](https://kiro.dev/docs/cloud-sessions/)
+  - ※v2.32.0 で、V3 の非対話実行が `--cloud` と `--repo` に対応し、プレーンテキスト出力にクラウドセッション ID が出力されるようになった（→ [v2.32.0](#v2320-cli2026-10-15)）
 
 **改善（3件）**:
 - 💡 スラッシュコマンドメニューが部分文字列一致に対応（`/pact` で `/compact` を検出）、前方一致を優先ランク付け。
@@ -841,6 +1103,7 @@
 - 🔧 **[V3] `/upgrade-agent`（V2 → V3 エージェント設定移行）**: V2 のエージェント設定ファイルを、**V2 と V3 の両方で動作する universal 形式**へその場で変換する。V3 セッション（`kiro-cli --v3`）内で実行し、既存の設定を読み取って両モード互換のファイルを生成する。
   - サブコマンド: `/upgrade-agent`（既定 = `run`。`.kiro/agents/` と `~/.kiro/agents/` をスキャンし、スコープ別の選択メニューを表示）／`/upgrade-agent diagnostics`（変換警告の確認）
   - 詳細: [Upgrading agent configs（公式）](https://kiro.dev/docs/cli/v3/upgrade-agent/)
+  - ※v2.29.0 で、ディレクトリ内のトップレベルのエージェント JSON ファイルを一括でアップグレードする `kiro-cli agent upgrade <dir>` が追加された。v2.30.0 では、エージェントを V3 へアップグレードしても V2 のワークスペース読み取りアクセスと `fs_read` のスキル信頼を保持するよう修正された（→ [v2.29.0](#v2290-cli2026-10-09)、[v2.30.0](#v2300-cli2026-10-12)）
 
 **改善（3件）**:
 - 📡 **[V3] 自動ストリームリトライ**: 空で届いた応答・ストリーム途中で切り詰められた応答を**自動的に再試行**。
@@ -1357,6 +1620,7 @@
 - 🔧 **KIRO_HOME環境変数**: `~/.kiro`ディレクトリの場所をオーバーライドする環境変数を追加。global agents, prompts, skills, steering, settings, sessionsに適用（→ 詳細: [04_reference/01_settings.md](../04_reference/01_settings.md)）
   - 用途: 複数マシン間のdotfiles管理、仕事/個人プロファイル分離、コンテナ環境でのKiro状態隔離
   - 詳細: [公式設定リファレンス](https://kiro.dev/docs/reference/settings/#environment-variables)
+  - ※v2.31.0 で、V3 はグローバル設定・サインイン・セッション・エージェントの状態を `KIRO_HOME` 配下に保存するようになった。また、`KIRO_HOME` が相対パス、ファイルシステムのルート、ホームディレクトリ、またはその親ディレクトリの場合に、Kiro が `~/.kiro` にフォールバックするよう修正された（→ [v2.31.0](#v2310-cli2026-10-13)）
 - 🔧 **V2 TUIキーバインド設定**: cancel（`chat.keybindings.cancelStream`）、close menu（`chat.keybindings.closeMenu`）、quit（`chat.keybindings.quit`）アクションのキーリマップが可能に
   - 修飾キー: `ctrl+`, `shift+`, `alt+`/`meta+` + 単一キー
   - 詳細: [公式設定リファレンス](https://kiro.dev/docs/reference/settings/#key-bindings-terminal-ui)
@@ -1753,7 +2017,7 @@
   - Globパターン（`test-*`等）をサポート
   
 - 🚀 **Exit Codes for CI/CD**: 構造化された終了コードで自動化をサポート
-  - ※v2.27.1（2026-10-02）で、非対話実行において指定エージェントが利用できない場合の終了コード 4 が追加されました（CLI 内蔵 changelog のみで確認、公式 Exit codes ページには未記載 → [v2.27.1](#v2271-cli2026-10-02)）。
+  - ※v2.27.1（2026-10-02）で、非対話実行において指定エージェントが利用できない場合の終了コード 4 が追加されました。公式 [Exit codes](https://kiro.dev/docs/reference/exit-codes/) ページに終了コード 4（Requested Agent Not Found）が掲載されています（→ [v2.27.1](#v2271-cli2026-10-02)）。
   - コード0: 成功、コード1: 一般的な失敗、コード3: MCPサーバー起動失敗
   - `--require-mcp-startup`オプションでMCPサーバー必須化
 
@@ -2028,4 +2292,4 @@ kiro-cli chat "Hello, world!"
 - セキュリティアップデートのリリース時
 - コミュニティからの重要なフィードバック時
 
-**最終更新**: 2026-10-04（v2.22.0・v2.22.1・v2.23.0・v2.23.1・v2.24.0・v2.24.1・v2.25.0・v2.26.0・v2.26.1・v2.27.0・v2.27.1対応追加、最新掲載範囲を v2.27.x / v2.26.x の 4 件に更新し、v2.25.0〜v2.22.0 をバージョン履歴の先頭に掲載、v2.21.x・v2.20.x をバージョン履歴へ移動。v2.27.1 は公式 Changelog 未掲載のため CLI 内蔵 changelog を出典として明記。v2.4.0 `/effort`・v2.14.1 `set-current-as-default`・v2.21.0 `/sessions`・v1.25.0 Exit Codes へ相互参照を追加）
+**最終更新**: 2026-10-21（v2.28.0・v2.29.0・v2.29.1・v2.30.0・v2.31.0・v2.31.1・v2.32.0・v2.33.0対応追加、最新掲載範囲を v2.33.0 / v2.32.0 / v2.31.x の 4 件に更新し、v2.30.0〜v2.26.0 をバージョン履歴の先頭に掲載。v2.33.0 は公式 Changelog 未掲載のため CLI 内蔵 changelog を出典として明記。v2.27.1 の出典を公式 Changelog の Patches 節（14 項目）に更新し、CLI 内蔵 changelog（18 項目）との件数・分類の違いを注記。v2.3.0 `KIRO_HOME`・v2.14.0 `/upgrade-agent`・v2.17.0 Cloud Sessions・v2.25.0 Output style・v2.26.0 Classic 非推奨通知・v2.27.0 Workflows: sub-agent tool・v1.25.0 Exit Codes へ相互参照を追加）

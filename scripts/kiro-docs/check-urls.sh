@@ -53,6 +53,12 @@ check_moved_stub() {
 if [ "$MODE" = "important" ]; then
     IMPORTANT_URLS=(
         "https://kiro.dev/changelog/cli/"
+        "https://kiro.dev/changelog/cli/2-32/"
+        "https://kiro.dev/changelog/cli/2-31-1/"
+        "https://kiro.dev/changelog/cli/2-31/"
+        "https://kiro.dev/changelog/cli/2-30/"
+        "https://kiro.dev/changelog/cli/2-29/"
+        "https://kiro.dev/changelog/cli/2-28/"
         "https://kiro.dev/changelog/cli/2-27/"
         "https://kiro.dev/changelog/cli/2-26/"
         "https://kiro.dev/changelog/cli/2-25/"

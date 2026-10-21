@@ -60,7 +60,7 @@ v2.20.0（2026-08-26）  Preserve scrollbackトグル
 - [プラットフォームサポート](#プラットフォームサポート)
 - [制限事項](#制限事項)
 - [トラブルシューティング](#トラブルシューティング)
-- [v2.22.0・v2.26.0での進化](#v2220v2260での進化)
+- [v2.22.0〜v2.33.0での進化](#v2220v2330での進化)
 - [関連リンク](#関連リンク)
 
 ---
@@ -445,7 +445,7 @@ kiro-cli settings list | grep chat.ui
 
 ---
 
-## v2.22.0・v2.26.0での進化
+## v2.22.0〜v2.33.0での進化
 
 ### v2.22.0（2026-09-16リリース）: `/fullscreen`
 
@@ -454,6 +454,42 @@ kiro-cli settings list | grep chat.ui
 ### v2.26.0（2026-09-30リリース）: Classic の非推奨通知
 
 Classic インターフェースは非推奨になり、起動時に通知が表示されます。戻し方は [クラシックインターフェースの使用](#クラシックインターフェースの使用) を参照してください。
+
+### v2.28.0（2026-10-05リリース）: Classic からの 3.0 への切り替え提案・Copy on select・アクティビティトレイ
+
+- **Classic の対話セッションから 3.0 への切り替えを提案**: 3.0 を実行できるホストで対話型の Classic セッションを開始すると、Kiro が 3.0 への切り替えを提案します。**Switch to 3.0 and upgrade my agent configs** を選ぶと、3.0 を既定として保存し、エージェント設定をアップグレードし、実行したコマンドを 3.0 で再実行します。断ると約 1 週間に 1 回、再度案内されます（公式 [Changelog v2.28](https://kiro.dev/changelog/cli/2-28/)。詳細は [47. v2.28 新機能](47_v228NewFeatures.md)）。
+- **Full Screen の Copy on select**: `/settings` → **Display** → **Full Screen** に追加された項目です。off にすると fullscreen モードがテキスト選択を取り込まず、すでにコピーを処理している端末や tmux がその操作を担えます。公式 [Fullscreen mode](https://kiro.dev/docs/cli/fullscreen/)（公式更新日 2026-09-30）はドラッグでのコピーを説明していますが、この項目の記載はありません。設定キー `chat.fullscreenCopyOnSelect`（boolean、既定 `true`）は**実機 2.33.0 で確認**したものです（→ [設定リファレンス](../04_reference/01_settings.md)）。
+- **アクティビティトレイの拡張**: 展開したトレイが 6 件で止まらず、すべてのタスクを一覧します（fullscreen では一覧の高さを画面の約半分までに制限）。Lite のトレイは最大 6 件の Workflow を表示します（公式 Changelog v2.28.0）。トレイの操作（`Ctrl+X`）は上の「[Activity Tray](#activity-tray)」を参照してください。
+
+### v2.30.0（2026-10-12リリース）: モデルフォールバックの通知・スクリーンリーダー
+
+- **モデルフォールバックの通知**: 公式 [Terminal UI の Model fallback notices](https://kiro.dev/docs/cli/terminal-ui/#model-fallback-notices)（公式更新日 2026-10-20）によると、V3 の端末 UI セッションでは、モデルがターンを拒否した場合や利用できなかった場合に別のモデルへ移ったことが transcript に通知されます。通知は、そのターンに応答したモデル、モデルが会話のモデルになったか、または応答したモデルがなかったことを示し、応答したモデルがない場合は `/model` で別のモデルを選びます。V2 の端末 UI ではターン単位のフォールバックが既定で有効で（v2.27.1 で追加。→ [46. v2.27 新機能](46_v227NewFeatures.md)）、`/model fallback` で確認・変更します（V1・V2 に適用）。
+- **スクリーンリーダー対応**: 公式 [In-session settings の Screen reader support](https://kiro.dev/docs/cli/chat/settings/#screen-reader-support)（公式更新日 2026-10-20）によると、フル端末 UI で、返信がストリーミングされ、プロンプトが空の間は、非表示の端末カーソルが返信テキストを追います。入力を始める、メニューを開く、承認に応答すると、カーソルは入力に戻ります。設定 `chat.screenReader` は `auto`（既定）・`on`・`off` で、グローバルのみです。`auto` はローカルの Mac で VoiceOver が動作していることを検出した場合に有効になり、SSH などのリモート接続・他のプラットフォーム・検出の失敗や時間切れでは無効のままなので、その場合は `on` を選びます。起動 1 回だけ上書きするには環境変数 `KIRO_SCREEN_READER` に `auto`・`on`・`off` を設定します。有効なとき IME 入力の位置が変わることがあります。
+
+### v2.31.1（2026-10-14リリース）・v2.33.0（2026-10-20リリース）: Mermaid 図の描画
+
+公式 [Terminal UI の Mermaid diagrams](https://kiro.dev/docs/cli/terminal-ui/#mermaid-diagrams)（公式更新日 2026-10-20）は、Kiro CLI 2.31.1 以降が、エージェントの返信に含まれる対応する Mermaid のコードブロックを端末上のアートとして描画すると説明しています。
+
+| Mermaid の見出し | 図 |
+|-----------------|----|
+| `graph`・`flowchart` | フローチャート |
+| `sequenceDiagram` | シーケンス図 |
+| `stateDiagram`・`stateDiagram-v2` | 状態遷移図 |
+| `erDiagram` | ER 図 |
+
+未完了のブロックがストリーミングされている間は **Drawing diagram** と表示されます。図が広すぎる・大きすぎる・未対応、または未対応の構文を使っている場合は、ソースと理由が表示されます。ASCII アートが off の場合、または `KIRO_ASCII_MODE=1` の場合は、常にソースが表示されます。
+
+v2.33.0 の CLI 内蔵 changelog には、サブグラフを含む Mermaid のフローチャートの描画と、Mermaid のノード説明の見やすさ（最大 4 行に折り返し、それより長いテキストは省略記号）の項目があります。v2.33.0 は公式 Changelog に未掲載で、これらが V2 専用か両対応かは**未確認**です（→ [52. v2.33 新機能](52_v233NewFeatures.md)）。
+
+### v2.32.0（2026-10-15リリース）: 端末へのプログラム状態の報告（OSC 7501）
+
+公式 [Terminal UI の Program status for supporting terminals](https://kiro.dev/docs/cli/terminal-ui/#program-status-for-supporting-terminals)（公式更新日 2026-10-20）は、Kiro CLI の V2 と V3 が、対話型の端末で OSC 7501 を通じて状態を報告すると説明しています。対応する端末は、Kiro がアイドル・作業中・完了・承認または回答の待機中・エラーで停止、のどれであるかを表示できます。起動前に `KIRO_NO_PROGRAM_STATUS=1` を設定すると、この更新を無効にできます。
+
+```bash
+KIRO_NO_PROGRAM_STATUS=1 kiro-cli chat
+```
+
+公式 Changelog v2.32.0 はこの項目に V2・V3 の区別を書いていません。V2・V3 の両対応という記述は公式 Terminal UI によるものです。詳細は [51. v2.32 新機能](51_v232NewFeatures.md) を参照してください。
 
 ---
 
@@ -478,5 +514,5 @@ Classic インターフェースは非推奨になり、起動時に通知が表
 
 ---
 
-**最終更新**: 2026-10-04
-**対象バージョン**: Kiro CLI v1.28.0+（v2.0.0 でデフォルト UI 化、v2.18.0 Spec review screen導入、v2.19.0 マウス対応、v2.20.0 Preserve scrollbackトグル追加、v2.22.0 `/fullscreen`、v2.26.0 Classic 非推奨）
+**最終更新**: 2026-10-21
+**対象バージョン**: Kiro CLI v1.28.0+（v2.0.0 でデフォルト UI 化、v2.18.0 Spec review screen導入、v2.19.0 マウス対応、v2.20.0 Preserve scrollbackトグル追加、v2.22.0 `/fullscreen`、v2.26.0 Classic 非推奨、v2.28.0 Classic からの 3.0 切替提案、v2.30.0 スクリーンリーダー、v2.31.1 Mermaid 図、v2.32.0 OSC 7501）

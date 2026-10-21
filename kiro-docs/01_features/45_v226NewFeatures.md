@@ -66,7 +66,8 @@ Workflow のモニター内では、`p` で一時停止、状態に応じて `r`
 | 版 | 変更 |
 |----|------|
 | v2.27.0 | **Workflows: sub-agent tool** 設定（メインチャットの委譲方法の選択）、ステップの接続失敗を最大 24 時間再試行（→ [46. v2.27 新機能](46_v227NewFeatures.md)） |
-| v2.27.1 | `--no-interactive` 実行で Workflows が完了まで接続を維持（`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS`）（CLI 内蔵 changelog のみで確認） |
+| v2.27.1 | `--no-interactive` 実行で Workflows が完了まで接続を維持（`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS`）（公式 [Changelog v2.27 の Patches 節](https://kiro.dev/changelog/cli/2-27/#patch-2-27-1)） |
+| v2.28.0 | ⚠ **Workflows: sub-agent tool** の設定行を削除。保存済みの値は動作に影響せず、Workflows が有効な V3 チャットは常に Workflows で委譲（→ [47. v2.28 新機能](47_v228NewFeatures.md)） |
 
 ## ⚠️ Classic インターフェースの非推奨通知
 
@@ -85,7 +86,7 @@ Classic セッションの起動時に非推奨の通知が表示されるよう
 kiro-cli settings chat.ui "tui"
 ```
 
-Classic とターミナル UI の違いは [18. Terminal UI](18_TerminalUI.md) を参照してください。
+Classic とターミナル UI の違いは [18. Terminal UI](18_TerminalUI.md) を参照してください。v2.28.0 では、Classic の対話セッションで 3.0 への切り替えも提案されるようになりました（→ [47. v2.28 新機能](47_v228NewFeatures.md)）。
 
 ## V3 の承認チェック強化（v2.26.0）
 
@@ -128,5 +129,5 @@ Classic とターミナル UI の違いは [18. Terminal UI](18_TerminalUI.md) �
 - [Slash commands — `/workflow`](https://kiro.dev/docs/reference/slash-commands/)
 - [Terminal UI — Using the classic interface](https://kiro.dev/docs/cli/terminal-ui/#using-the-classic-interface)
 
-**最終更新**: 2026-10-04
+**最終更新**: 2026-10-21
 **対象バージョン**: Kiro CLI v2.26.0+（Workflows・承認チェック強化は V3 Early Access）

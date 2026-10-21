@@ -2,11 +2,11 @@
 
 # Kiro CLI Slash Commands リファレンス
 
-**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-10-02）
+**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-10-20）
 
 Kiro CLI のインタラクティブチャットセッション内で使用できるすべてのスラッシュコマンドを網羅する辞書的リファレンスです。
 
-> 📌 **v3（Early Access）コマンドについて**: 本リファレンスは **v2 安定版**のスラッシュコマンドを対象としています。v3（`kiro-cli --v3`）専用のコマンド — `/spec` 系は [09_v3/01. 仕様駆動開発](../09_v3/01_spec-driven-development.md)、`/upgrade-agent`（V2 → V2/V3 両対応のエージェント設定移行、v2.14.0 追加）は [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md)、インストール済み Powers を表示する `/powers`（v2.20.1 追加。v2.25.0 で `install`・`uninstall`）は [39. v2.20 新機能](../01_features/39_v220NewFeatures.md)・[44. v2.25 新機能](../01_features/44_v225NewFeatures.md)、セッションダッシュボード `/sessions`・設定パネル `/config`（v2.21.0 追加）は [40. v2.21 新機能](../01_features/40_v221NewFeatures.md)、Workflows の `/workflow`（v2.26.0 追加）は [45. v2.26 新機能](../01_features/45_v226NewFeatures.md)、保存済みプロンプトのスラッシュコマンド化（v2.27.0）は [46. v2.27 新機能](../01_features/46_v227NewFeatures.md) を参照してください（Early Access のため、安定版のコマンド数には含めていません。V3 の追加・変更の一覧は [09_v3/](../09_v3/README.md)）。
+> 📌 **v3（Early Access）コマンドについて**: 本リファレンスは **v2 安定版**のスラッシュコマンドを対象としています。v3（`kiro-cli --v3`）専用のコマンド — `/spec` 系は [09_v3/01. 仕様駆動開発](../09_v3/01_spec-driven-development.md)、`/upgrade-agent`（V2 → V2/V3 両対応のエージェント設定移行、v2.14.0 追加）は [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md)、インストール済み Powers を表示する `/powers`（v2.20.1 追加。v2.25.0 で `install`・`uninstall`）は [39. v2.20 新機能](../01_features/39_v220NewFeatures.md)・[44. v2.25 新機能](../01_features/44_v225NewFeatures.md)、セッションダッシュボード `/sessions`・設定パネル `/config`（v2.21.0 追加）は [40. v2.21 新機能](../01_features/40_v221NewFeatures.md)、Workflows の `/workflow`（v2.26.0 追加）は [45. v2.26 新機能](../01_features/45_v226NewFeatures.md)、保存済みプロンプトのスラッシュコマンド化（v2.27.0）は [46. v2.27 新機能](../01_features/46_v227NewFeatures.md)、Memory の `/memories`（v2.29.0 追加）は [48. v2.29 新機能](../01_features/48_v229NewFeatures.md)、ローカルコマンドサンドボックスの `/sandbox` とローカル autonomous モードの `/autonomous`（いずれも v2.31.0 追加）は [50. v2.31 新機能](../01_features/50_v231NewFeatures.md) を参照してください（Early Access のため、安定版のコマンド数には含めていません。V3 の追加・変更の一覧は [09_v3/](../09_v3/README.md)）。
 
 ---
 
@@ -39,7 +39,7 @@ kiro-cli chat
 
 ## スラッシュコマンド一覧
 
-公式ページに記載されている V2 安定版のコマンドに加え、`/voice`（v2.18.0+、公式Voiceページを出典）を掲載しています。**本ページには全 42 コマンドを掲載**しています（`/help`〜`/fullscreen` の見出し数。`/save` / `/load` は 1 見出しに集約。v2.22.0 の `/fullscreen` で 41 → 42）。公式ページに掲載されている V3 専用のコマンド（`/config`・`/powers`・`/sessions`・`/spec`・`/upgrade-agent`・`/workflow`）は冒頭の注記のとおり本ページの数に含めていません。
+公式ページに記載されている V2 安定版のコマンドに加え、`/voice`（v2.18.0+、公式Voiceページを出典）を掲載しています。**本ページには全 42 コマンドを掲載**しています（`/help`〜`/fullscreen` の見出し数。`/save` / `/load` は 1 見出しに集約。v2.22.0 の `/fullscreen` で 41 → 42）。公式ページに掲載されている V3 専用のコマンド（`/autonomous`・`/config`・`/powers`・`/sandbox`・`/sessions`・`/spec`・`/upgrade-agent`・`/workflow`）と、公式の Slash commands に見出しはなく公式 [Memory](https://kiro.dev/docs/memory/) に記載がある `/memories` は、冒頭の注記のとおり本ページの数に含めていません。v2.28.0〜v2.33.0 の changelog に、V2 に適用される新しいスラッシュコマンドはありません（既存コマンドの `/model`・`/knowledge`・`/fullscreen` の記述を更新しました）。
 
 ### `/help`
 
@@ -98,15 +98,28 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 > /model claude-opus-4.6              # 直接指定
 > /model clau<Tab>                    # Tab 補完
 > /model set-current-as-default       # 現在のモデルを既定として保存（v2.14.1 以降は必須）
+> /model fallback                      # 現在のモデルのフォールバックを表示（V1・V2）
+> /model fallback <model-id>           # フォールバックを設定（V1・V2）
+> /model fallback clear                # フォールバックを解除（V1・V2）
 ```
 
 > **セッション限定（v2.14.1+）**: `/model` の選択は**現在のセッションにのみ適用**されます。既定として保存するには `/model set-current-as-default` を実行します（保存先は `chat.defaultModel`）。
 >
 > **推論設定（v2.23.0+）**: `/model` のピッカーで **Thinking**（対応モデルが extended reasoning を使うか）と **Effort**（推論の量）を選べます。表示されるのは選んだモデルが対応する設定と値だけです。`/model` が推論設定の主なインターフェースになり、ここで選んだ Effort は自動的に保存されます（公式 [Reasoning effort](https://kiro.dev/docs/models/effort/)）。`/settings display` の **Show thinking** は推論ブロックを画面に表示するかどうかだけを制御する別の設定です。→ [42. v2.23 新機能](../01_features/42_v223NewFeatures.md)
 >
-> **モデルフォールバック（v2.27.1+、CLI 内蔵 changelog のみで確認）**: 拒否された、または容量超過になったターンを既定で別のモデルで再試行し、再試行先は `/model fallback` で選びます。公式 Slash commands の `/model` の項には `fallback` の記載がまだありません。→ [46. v2.27 新機能](../01_features/46_v227NewFeatures.md)
+> **モデルフォールバック（V1・V2、v2.27.1+）**: モデルがターンを拒否した場合、設定済みのフォールバックモデルまたはサービスが提供するフォールバックモデルで再試行します。バックエンドが現在のモデルを利用不可とした場合は、設定済みのフォールバックモデルでのみ再試行します。`/model fallback`（現在のモデルのフォールバックを表示）、`/model fallback <model-id>`（設定）、`/model fallback clear`（解除）を使います。`/model fallback` は **V1 と V2** に適用されます。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/#model)（公式ページ最終更新 2026-10-20）の補足:
+> - V2 のセッションでは、フォールバックのピッカーで **None** を選ぶと、このマシンとプロファイルでフォールバックを無効にできる（v2.32.0）
+> - フォールバック先が未設定の場合、フォールバック行には拒否に応答できるベンダー既定のモデルが表示される
+> - フォールバックの変更は、再起動なしで現在のセッションに反映される（Classic・V2、v2.29.0。公式 Changelog v2.29）
+> - V2 のセッションから起動したサブエージェントは、そのセッションのフォールバック設定に従う（v2.32.0 で変更）
+> - モデル自身をフォールバックにはできない。1 ターンでモデルが切り替わるのは最大 3 回で、試行済みまたは利用不可の候補は飛ばされる
+> - API キーのセッションではフォールバックを設定できない（`This session's credentials cannot configure model fallbacks. Sign in to Kiro to configure one.` と表示される）
 >
-> 変遷: v2.6.0 で自動永続化（`set-current-as-default` 不要）→ v2.12.3 で sticky default 化 → **v2.14.1 でセッション限定へ回帰**。出典: [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）。公式 [In-session settings](https://kiro.dev/docs/cli/chat/settings/#persistence)（公式ページ最終更新 2026-10-02）も、`/model` の選択は現在のセッションにのみ適用されると説明しています。
+> V3 の端末 UI セッションでは `/model fallback` ではなく、モデルが別のモデルへ移ったことが transcript に通知されます（公式 [Terminal UI の Model fallback notices](https://kiro.dev/docs/cli/terminal-ui/#model-fallback-notices)）。→ [46. v2.27 新機能](../01_features/46_v227NewFeatures.md)・[51. v2.32 新機能](../01_features/51_v232NewFeatures.md)・[49. v2.30 新機能](../01_features/49_v230NewFeatures.md)
+>
+> **作業中のピッカー（v2.28.0+）と Tab 補完（v2.33.0）**: Kiro の作業中でも `/model` と `/effort` のピッカーが開き、選択は現在のターンが終わった後に適用されます（公式 Changelog v2.28。公式 Slash commands には記載がなく、V2／V3 の区別は changelog にないため**未確認**）。`/model ` の後に Tab を押すと、`set-current-as-default` をモデルとして一覧せず、サブコマンドとして表示します（v2.33.0。CLI 内蔵 changelog のみで確認、公式 Changelog 未掲載、V2／V3 の適用範囲は**未確認**）。
+>
+> 変遷: v2.6.0 で自動永続化（`set-current-as-default` 不要）→ v2.12.3 で sticky default 化 → **v2.14.1 でセッション限定へ回帰**。出典: [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）。公式 [In-session settings](https://kiro.dev/docs/cli/chat/settings/#persistence)（公式ページ最終更新 2026-10-20）も、`/model` の選択は現在のセッションにのみ適用されると説明しています。
 
 **特徴**:
 - Tab 補完（API から取得した利用可能モデル）
@@ -286,7 +299,9 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 
 > **実機追加確認（v2.4.1）**: `fix` サブコマンド — エージェントファイルパス変更後のナレッジベースディレクトリ名を修正
 
-> **実験的機能**: `kiro-cli settings chat.enableKnowledge true` で有効化
+> **実験的機能（V1・V2）**: `kiro-cli settings chat.enableKnowledge true` で有効化。公式 Slash commands（公式ページ最終更新 2026-10-20）の Note によると、**V3 では knowledge が既定で有効**で、無効にするには `chat.enableKnowledge false` を設定します。
+
+> **Classic・V2 の Knowledge 検索の修正**: v2.29.0 で、全ナレッジベースにわたる検索結果が 1 つの結果セットにまとまり、ページネーションを共有し、指定した上限とファイル種別が検索全体に適用されるようになりました。v2.30.0 で、小さなナレッジベースの chunk が黙って失われる問題が修正されました（公式 Changelog [v2.29](https://kiro.dev/changelog/cli/2-29/)・[v2.30](https://kiro.dev/changelog/cli/2-30/)。公式 Knowledge Management ページにこれらの動作の記載は確認できず、**未確認**）。→ [48. v2.29 新機能](../01_features/48_v229NewFeatures.md)・[49. v2.30 新機能](../01_features/49_v230NewFeatures.md)
 
 ### `/compact`
 
@@ -519,7 +534,12 @@ OSC 52 エスケープシーケンス経由で SSH/tmux/Zellij でも動作。10
 > /tangent <name>                     # 名前付きside-conversationへ分岐・切替
 > /tangent ls                         # 会話木全体を表示するビジュアルピッカーを開く
 > /tangent root                       # どの深さからでも直接メイン会話へ戻る
+> /tangent merge                      # tangent の要約を親セッションへ取り込む（v2.27.1+）
+> /tangent merge root                 # メイン会話へ取り込む
+> /tangent merge <name>               # 名前を指定したセッションへ取り込む
 ```
+
+`/tangent merge [dest]` は、宛先（指定なしは親、`root`、名前）のセッションへ**短い要約**を送ります。元の tangent は残り、セッションは新規に作られません。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/#tangent)（公式ページ最終更新 2026-10-20）と公式 [Tangent](https://kiro.dev/docs/cli/v3/tangent/#merging-a-tangent-back) に記載があります（→ [35. v2.16 Tangent](../01_features/35_v216Tangent.md)）。
 
 **V2 classic版との違い**:
 
@@ -760,6 +780,7 @@ fullscreen は会話専用のターミナル画面（alternate screen）で、�
 - 切り替えても会話はリセットされず、新しいセッションも始まりません
 - 今後の対話 TUI セッションを fullscreen で始めるには、`/settings` → **Display** → **Full Screen** → **Start fullscreen** を on にします（実機 2.27.1 の設定キー `chat.startFullscreen`。公式 Settings リファレンス未掲載）
 - **Scroll speed**（v2.25.0+）でマウスホイール 1 回あたり 1・2・3 行を選べます（既定 2、実機 2.27.1 の設定キー `chat.fullscreenWheelRows`。公式 Settings リファレンス未掲載）
+- **Copy on select**（v2.28.0+）を off にすると、fullscreen モードがテキスト選択を取り込まなくなり、コピーを端末や tmux に任せられます（実機 2.33.0 の設定キー `chat.fullscreenCopyOnSelect`、既定 `true`。公式 Settings リファレンス・公式 Fullscreen mode 未掲載）
 
 → 詳細: [41. v2.22 新機能](../01_features/41_v222NewFeatures.md)
 
@@ -840,11 +861,11 @@ fullscreen は会話専用のターミナル画面（alternate screen）で、�
 
 ### 公式情報源
 
-- [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-10-02）
+- [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-10-20）
 - [Fullscreen mode](https://kiro.dev/docs/cli/fullscreen/)
 
 ---
 
-**Page updated**: 2026-10-04（v2.22.0 の `/fullscreen` を追加しコマンド数を 42 に更新。v2.23.0 の `/model` の推論設定と `/effort` のレガシー化、v2.24.0 の `/tools trust-all` の確認、v2.27.0 の V3 `todo_list` 廃止、v2.27.1 の `/model fallback`（CLI 内蔵 changelog のみ）を反映。V3 専用コマンド `/sessions`・`/config`・`/workflow` の案内を冒頭注記に追加）
-**前回更新**: 2026-08-29（V3 専用 `/powers`（v2.20.1）を除外注記から案内し、安定版41コマンドの SSoT を維持。`/settings display` の Preserve scrollback（v2.20.0）を反映。前回 2026-08-16: `/voice` を追加しコマンド数を41に更新）
-**公式ページ最終更新**: 2026-10-02
+**Page updated**: 2026-10-21（v2.28.0〜v2.33.0 対応: コマンド数は 42 のまま変更なし。`/model` に V1・V2 の `fallback` サブコマンドと公式のフォールバックの説明、`/knowledge` に V3 の既定有効と Classic・V2 の検索修正、`/fullscreen` に Copy on select、V3 の `/tangent` に `merge`（v2.27.1。公式 Slash commands・Tangent に掲載済み）を追記。V3 専用の `/autonomous`・`/sandbox`・`/memories` を除外注記に追加）
+**前回更新**: 2026-10-04（v2.22.0 の `/fullscreen` を追加しコマンド数を 42 に更新。v2.23.0 の `/model` の推論設定と `/effort` のレガシー化、v2.24.0 の `/tools trust-all` の確認、v2.27.0 の V3 `todo_list` 廃止、v2.27.1 の `/model fallback`（CLI 内蔵 changelog のみ）を反映。V3 専用コマンド `/sessions`・`/config`・`/workflow` の案内を冒頭注記に追加）。2026-08-29（V3 専用 `/powers`（v2.20.1）を除外注記から案内し、安定版41コマンドの SSoT を維持。`/settings display` の Preserve scrollback（v2.20.0）を反映。前回 2026-08-16: `/voice` を追加しコマンド数を41に更新）
+**公式ページ最終更新**: 2026-10-20

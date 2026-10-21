@@ -89,6 +89,8 @@ Kiro CLI の組み込みツール（公式記載 18 種類）を網羅する辞�
 | `deniedPaths` | array of strings | `[]` | 拒否パス |
 | `allowReadOnly` | boolean | `false` | すべての場所で検索を許可 |
 
+> **v2.33.0 での変更（CLI 内蔵 changelog のみで確認）**: 大規模なプロジェクトでの `grep` ツールの検索が速くなりました。ファイルを CPU コア全体で並列にスキャンします（`kiro-cli version --changelog=2.33.0`）。v2.33.0 は公式 Changelog に未掲載で、この項目に `[V3]` の表記がなく、V2 専用か V3 を含む両対応かは**未確認**です。公式 Built-in tools の `grep` の節にも並列スキャンの記載はありません（→ [52. v2.33 新機能](../01_features/52_v233NewFeatures.md)）。
+
 ### `write`
 
 **Aliases**: `fs_write`, `fsWrite`  
@@ -274,6 +276,8 @@ kiro-cli settings introspect.tangentMode true
 - ワークスペース **内** のシンボル検索・コード編集はプロンプトなしで実行
 - ワークスペース **外** をターゲットとする操作は **承認が必要**（認証情報、システム設定、他プロジェクトの誤読・誤書防止）
 
+> **v2.33.0 での修正（CLI 内蔵 changelog のみで確認）**: [V3] で `code` ツールが、Python などの応答の遅い言語サーバーの診断を報告するようになりました。また、[V3] のクラウドセッションの `/code` が、サンドボックスのワークスペースルートと `lsp.json` のパスを表示するようになりました（v2.31.0 では、[V3] のクラウドセッションでコードインテリジェンスの表示と `/code` パネルがクラウドのワークスペースを反映するようになっています）。いずれも v2.33.0 は公式 Changelog に未掲載で、公式 Built-in tools の `code` の節に記載はありません（→ [52. v2.33 新機能](../01_features/52_v233NewFeatures.md)）。
+
 → 詳細: [01. LSP](../01_features/01_LSP.md)、[09. AST Pattern Tools](../01_features/09_ASTPatternTools.md)
 
 ---
@@ -372,6 +376,10 @@ kiro-cli settings chat.enableKnowledge true
 | Windows | `%LOCALAPPDATA%\kiro-cli\knowledge_bases\` |
 
 エージェント別に **独立した** ナレッジベース（クロスエージェント不可）。
+
+> **V3 と Classic・V2 の違い**: 公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/#knowledge)（公式ページ最終更新 2026-10-20）の Note によると、**V3 では knowledge が既定で有効**です（無効にするには `chat.enableKnowledge false`）。V1・V2 では実験的機能で、上記の設定で有効にします。
+>
+> **Classic・V2 の検索の修正**: v2.29.0 で、全ナレッジベースにわたる検索結果が 1 つの結果セットにまとまり、ページネーションを共有し、指定した上限とファイル種別が検索全体に適用されるようになりました。v2.30.0 で、小さなナレッジベースの chunk が黙って失われる問題が修正されました（公式 Changelog [v2.29](https://kiro.dev/changelog/cli/2-29/)・[v2.30](https://kiro.dev/changelog/cli/2-30/)。公式 Knowledge Management ページに記載は確認できず、**未確認**）。
 
 → 公式: https://kiro.dev/docs/cli/experimental/knowledge-management/
 
@@ -564,6 +572,6 @@ Amazon Q Developer CLI 時代は **9個** のビルトインツールでした�
 
 ---
 
-**Page updated**: 2026-10-04（v2.27.0 で V3 が `todo_list` ツールを提供しなくなった旨を `todo` 節と分類表に注記）  
-**前回更新**: 2026-07-04（`settings` サブコマンドの表記を実機準拠（`settings KEY VALUE`）に修正、06_embedded-docs 参照をローカル管理注記付きテキスト参照へ変更。本サイト初版 2026-05-24）  
+**Page updated**: 2026-10-21（v2.29.0・v2.30.0・v2.33.0 の changelog に基づき `grep`・`code`・`knowledge` の節に注記を追加。公式 Built-in tools は 2026-10-13 に更新されているが、本ページの全ツール節との突合は行っていないため、下の「公式ページ最終更新」は据え置き。公式にある `goal` ツールの節（Goal tool）が本ページにない点は、v2.28.0〜v2.33.0 の changelog に由来しない既存の差のため未対応）  
+**前回更新**: 2026-10-04（v2.27.0 で V3 が `todo_list` ツールを提供しなくなった旨を `todo` 節と分類表に注記）。2026-07-04（`settings` サブコマンドの表記を実機準拠（`settings KEY VALUE`）に修正、06_embedded-docs 参照をローカル管理注記付きテキスト参照へ変更。本サイト初版 2026-05-24）  
 **公式ページ最終更新**: 2026-08-04

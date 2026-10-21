@@ -4,6 +4,8 @@
 
 > ⚠️ **Early Access の注意**: Kiro CLI v3（公式表記「**CLI 3.0**」「**V3**」）は **Early Access（先行公開）** です。**v2.8.0 以降の 2.x に `--v3` フラグで同梱**され、オプトインで試せます。GA（正式版）としての「3.0.0」はまだリリースされていません。**仕様は変更される可能性があり**、本セクションの内容は公式ドキュメント更新に追従して見直します。
 
+> 📌 **CLI 3.0 での V3 の既定化と Classic からの切り替え提案**: 公式 [Changelog v2.30](https://kiro.dev/changelog/cli/2-30/)（2026-10-12）によると、起動時の V3 への切り替えプロンプトは段階的に展開されており、**2026 年 10 月末に V3 が CLI 3.0 の既定になります**（プロンプトで **Switch to V3 and upgrade my configs** を選ぶと、V3 を既定のハーネスとして保存し、エージェントの自動アップグレードを有効にし、カスタムエージェント設定の移行を開始します）。[Changelog v2.28](https://kiro.dev/changelog/cli/2-28/)（2026-10-05）では、Classic の対話セッションからも 3.0 への切り替えが提案されるようになりました。一方、公式 [What's new in CLI V3](https://kiro.dev/docs/cli/v3/)（公式更新日 2026-10-13）は「early release of Kiro CLI V3」と記載しており、両者の記述は時期が異なります（→ [49. v2.30 新機能](../01_features/49_v230NewFeatures.md)）。本ページの更新時点で、公式 Changelog に CLI 3.0 の系列ページ（`/changelog/cli/3-0/`）はありません。3.0 の既定化が実際に行われた後は、公式 Changelog を確認してください。
+
 > 💡 **どちらを読めばいい？**: 普段の利用では、まず **v2 系のドキュメント**（[機能詳細ガイド](../01_features/README.md)・[リファレンス](../04_reference/README.md)）を参照してください。本セクション（09_v3/）は「v3 を先行して試したい人」向けです。
 
 **位置付け**: v3 は単一機能の追加ではなく、**エージェント実行基盤（エンジン）の刷新＋仕様駆動開発（Spec-driven development）の導入**という「開発パラダイムの更新」です。そのため本サイトでは独立セクション（`09_v3/`）にまとめています。
@@ -56,7 +58,7 @@ kiro-cli --v3
 ### 4 本柱のポイント（一次情報の要約）
 
 - **Permissions**: 1 つのルールは `capability`（操作種別）/ `match`（グロブ）/ `exclude` / `effect`（`deny`・`ask`・`allow`）の 4 フィールド。効果は **deny > ask > allow** の順で厳しい方が勝ちます。ルールは **User**（`~/.kiro/settings/permissions.yaml`）と **Workspace**（`~/.kiro/workspace-roots/<hash>/permissions.yaml`、**リポジトリ外・ユーザー単位**で保持されるためクローンしたリポジトリが権限を注入できない）の2スコープ。CI 向けには `capability: all / effect: allow` の例が示されています。
-- **Hooks**: `.kiro/hooks/<name>.json`（`"version": "v1"`）に定義。**command**（シェル実行、stdin に JSON、終了コード 0=成功 / 2=ブロック）と **agent**（プロンプトを文脈へ追記）の 2 型。トリガは `SessionStart` / `SessionEnd`（v2.25.0 追加）/ `Stop` / `PreToolUse` / `PostToolUse` / `UserPromptSubmit` / `PostFileCreate` / `PostFileSave` のほか、**3.0 新規**の `PreTaskExec` / `PostTaskExec` / `PostFileDelete` / `Manual`。旧 hooks は `kiro-cli agent migrate` で新形式へ変換できます。**v2.13.0（2026-07-17）** では、`~/.kiro/hooks/` に置いた**グローバル hooks** が追加され、**全ワークスペースへ自動適用**されるようになりました（従来のワークスペース単位 `.kiro/hooks/` に加えた、ユーザーグローバルの適用先）。
+- **Hooks**: `.kiro/hooks/<name>.json`（`"version": "v1"`）に定義。**command**（シェル実行、stdin に JSON、終了コード 0=成功 / 2=ブロック）と **agent**（プロンプトを文脈へ追記）の 2 型。トリガは `SessionStart` / `SessionEnd`（v2.25.0 追加）/ `Stop` / `PreToolUse` / `PostToolUse` / `UserPromptSubmit` / `PostFileCreate` / `PostFileSave` のほか、**3.0 新規**の `PreTaskExec` / `PostTaskExec` / `PostFileDelete` / `Manual`。旧 hooks は `kiro-cli agent migrate` で新形式へ変換できます。**v2.13.0（2026-07-17）** では、`~/.kiro/hooks/` に置いた**グローバル hooks** が追加され、**全ワークスペースへ自動適用**されるようになりました（従来のワークスペース単位 `.kiro/hooks/` に加えた、ユーザーグローバルの適用先）。**v2.28.0（2026-10-05）** では、`PreToolUse`／`PostToolUse` の Hook が、内部のツール ID だけでなく、shell・read・write などの**カテゴリ**、または特定の MCP サーバー・ツールでも一致できるようになりました（詳細は下記「v2.28.0〜v2.33.0 での追加」）。
 - **Agent 設定**: Markdown の本文がシステムプロンプト、フロントマターに `description` / `model` / `tools`（タグ）/ `mcpServers` / `resources` / `permissions` / `welcomeMessage` を記述（JSON でも等価）。タグは `read` / `write` / `shell` / `web` / `subagent` / `knowledge` / `todo_list` / `@mcp` / `@builtin` / `*`。新しいツールがカテゴリに追加されると**自動で取り込まれます**。配置は `.kiro/agents/`（ワークスペース）・`~/.kiro/agents/`（ユーザー）。
 
 ### v2.13.0 での追加（Introspect サブエージェント・グローバル hooks）
@@ -128,11 +130,30 @@ V3 限定の追加・変更は次のとおりです（V2 でも使える `/fulls
 | v2.26.0 | **Workflows**（`/settings features` で有効化・再起動、`/workflow`）、Hook・LSP 書き込みのファイル単位承認、未信頼ワークスペースでの MCP・shell の都度承認、実行直前の承認再確認 | [45](../01_features/45_v226NewFeatures.md) |
 | v2.26.1 | OS の証明書ストアを既定で信頼（`NODE_USE_SYSTEM_CA` の明示値が優先） | [45](../01_features/45_v226NewFeatures.md) |
 | v2.27.0 | **Workflows: sub-agent tool**（`chat.enableMainAgentSubagentTool`）、Steering の行指定・行範囲・`#[[folder:...]]`、**保存済みプロンプトのスラッシュコマンド化**、⚠️ **`todo_list` ツールの廃止**（`chat.enableTodoList` は V3 で無効）、Output style が `/settings display` 配下へ移動 | [46](../01_features/46_v227NewFeatures.md) |
-| v2.27.1 | **`/tangent merge [dest]`**、非対話実行での hooks・knowledge・code intelligence 対応、`--no-interactive` の Workflows の完了までの接続維持と進捗・使用量の計上（CLI 内蔵 changelog のみで確認、公式 Changelog 未掲載） | [46](../01_features/46_v227NewFeatures.md) |
+| v2.27.1 | **`/tangent merge [dest]`**、非対話実行での hooks・knowledge・code intelligence 対応、`--no-interactive` の Workflows の完了までの接続維持と進捗・使用量の計上（公式 [Changelog v2.27 の Patches 節](https://kiro.dev/changelog/cli/2-27/#patch-2-27-1)に掲載） | [46](../01_features/46_v227NewFeatures.md) |
 
 **Hooks のトリガー**: v2.25.0 で `SessionEnd`（V3 セッションの終了時）が加わりました。公式 [Hook types](https://kiro.dev/docs/hooks/types/) の記載は「The `SessionEnd` trigger fires when a CLI V3 session is torn down.」の 1 文のみです。
 
 > **V3 専用コマンドの扱い**: `/workflow`・`/sessions`・`/config`・`/powers` は V2 安定版のスラッシュコマンド数（[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md)）に含めず、本セクションで扱います。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/) には `/workflow` のサブコマンド（`run`・`new`・`list`・`status`・`pause`・`resume`・`cancel`・`retry`）が掲載されています（→ [45](../01_features/45_v226NewFeatures.md)）。
+
+### v2.28.0〜v2.33.0 での追加（Hook のカテゴリ一致・Memory・サンドボックス・autonomous ほか）
+
+V3 限定の追加・変更は次のとおりです。**v2.33.0 は公式 Changelog に未掲載**で、CLI 内蔵 changelog のみを出典としています（公式 `kiro.dev/changelog/cli/2-33/` は存在しません）。
+
+| 版 | V3 の追加・変更 | 詳細 |
+|----|---------------|------|
+| v2.28.0 | **Hook のツールカテゴリ一致**（shell・read・write・特定の MCP サーバー／ツール）、⚠ **`Workflows: sub-agent tool` の設定行を廃止**（保存値は動作に影響せず、Workflows が有効なら常に Workflows で委譲。並列の同一ロールのサブエージェントは行を分けて個別に承認）、長いセッションで終了ターンを解放、中断されたツールの状態表示 | [47](../01_features/47_v228NewFeatures.md) |
+| v2.29.0 | **Memory**（ローカル V3 セッションの `/memories`。`read & write`／`read only`／`off`）、⚠ **V3 の ACP は既定で Kiro CLI のログインを使う**（クライアントがサインインを扱う場合は `--auth-method=client`）、⚠ カスタムエージェントはツール設定が許可する `mcp.json` のサーバーだけを起動、⚠ `stdio` MCP サーバーがエージェントの環境全体を継承、`/upgrade-agent` が旧 Hook マッチャー（`fs_read` など）を書き換え | [48](../01_features/48_v229NewFeatures.md) |
+| v2.30.0 | ⚠ **起動時の V3 への切り替えプロンプト（2026 年 10 月末に V3 が CLI 3.0 の既定になる）**、モデルフォールバックの通知（transcript）、アップグレード済みエージェントの権限の更新と、V2 のワークスペース読み取り・`fs_read` のスキル信頼の保持 | [49](../01_features/49_v230NewFeatures.md) |
+| v2.31.0 | **ローカルコマンドサンドボックス（`/sandbox`）**、**ローカル autonomous モード（`/autonomous`）**、MCP ツールのオンデマンド読み込み（既定）、⚠ **`KIRO_HOME` が V3 のグローバル設定・サインイン・セッション・エージェント状態に適用**、⚠ 保存済み `sandbox.json`（`enabled: true`）が V3 ヘッドレス実行に適用 | [50](../01_features/50_v231NewFeatures.md) |
+| v2.31.1 | 非対話実行が保存済みの compaction と Tool Search の設定を適用、Mermaid 図の描画（公式 Terminal UI は 2.31.1 以降と記載。V2／V3 の区別は changelog にない）、Windows の `/sandbox setup` | [50](../01_features/50_v231NewFeatures.md) |
+| v2.32.0 | 書き込み承認でのフォルダ許可と承認スコープ表示、非対話実行の `--cloud`／`--repo`、Workflow の実行前の計画プレビュー・平易な言葉での変更・Powers／MCP の利用、⚠ review loop が 2 回の却下で一時停止、⚠ ステップのセッションがタスクで開く、出力スタイル 3 種（Proactive／Explanatory／Learning）、組織の MCP レジストリの `oauth`／`oauthScopes` | [51](../01_features/51_v232NewFeatures.md) |
+| v2.33.0 | **フォルダの信頼確認**（hooks・agents・MCP サーバー・workflows の読み込み前。非対話実行での扱いは未確認）、Workflow の計画承認のステップツリー、Workflow の GitHub PR ウォッチ、🔒 サンドボックスのネットワーク規則の大文字小文字、🔒 Windows の hook コマンド（CLI 内蔵 changelog のみ、公式 Changelog 未掲載） | [52](../01_features/52_v233NewFeatures.md) |
+
+**Hook のカテゴリ一致（v2.28.0）**: 公式 [Hook types](https://kiro.dev/docs/hooks/types/)（公式更新日 2026-10-10）の CLI タブは、`matcher` がツールのセレクターまたは正規表現であり、タグにはカテゴリ `read`・`write`・`shell`・`web`・`subagent`・`spec`・`context`、ソースセレクター `@builtin`・`@mcp`・`@powers`、MCP ツール用の `@<server>`・`@<server>/<tool>` があると説明しています。**V3 は CLI 2.x のツール名を展開しません。** `fs_read` や `grep` は V3 の ID でもタグでもないため、カテゴリのタグ（`read`）または V3 の ID（`read_file`、`grep_search`）を使います。旧名がどのグループに対応するかは公式 [Hooks migration](https://kiro.dev/docs/cli/v3/hooks-migration/#migrate-tool-matchers) にあり、V2 の端末 UI（v2.29.0 以降）での V2 エンジンのグループ一致と `tool_tags` は [22. Hooks](../01_features/22_Hooks.md) を参照してください。
+
+> **V3 専用コマンドの扱い（v2.29.0〜v2.31.0 の追加分）**: `/memories`（Memory）、`/sandbox`（ローカルコマンドサンドボックス）、`/autonomous`（ローカル autonomous モード）は V3 専用で、V2 安定版のスラッシュコマンド数（[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md)）には含めず、本セクションから各詳細文書（[48](../01_features/48_v229NewFeatures.md)・[50](../01_features/50_v231NewFeatures.md)）を参照します。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/) には `/sandbox` と `/autonomous` が掲載され（local V3）、`/memories` の見出しはありません（公式 [Memory](https://kiro.dev/docs/memory/) に記載）。
+
 
 ---
 
@@ -198,6 +219,7 @@ kiro-cli diagnostic --format json-pretty
 - [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md) — V2 → V3 エージェント設定移行（v2.14.0）
 - [01_features/41〜46. v2.22〜v2.27 新機能](../01_features/46_v227NewFeatures.md) — Workflows・`/tools trust-all`・Output style・`SessionEnd`・保存済みプロンプトのコマンド化ほか（[41](../01_features/41_v222NewFeatures.md)・[42](../01_features/42_v223NewFeatures.md)・[43](../01_features/43_v224NewFeatures.md)・[44](../01_features/44_v225NewFeatures.md)・[45](../01_features/45_v226NewFeatures.md)・[46](../01_features/46_v227NewFeatures.md)）
 - [07_aidlc/](../07_aidlc/README.md) — AI-DLC（AWS Labs OSS 方法論）。v3 の純正 Spec agent とは別物（→ [01. 仕様駆動開発](01_spec-driven-development.md) の比較表）
+- [01_features/47〜52. v2.28〜v2.33 新機能](../01_features/52_v233NewFeatures.md) — Hook のカテゴリ一致・Memory・サンドボックス・autonomous・`KIRO_HOME`・Workflows の拡張・フォルダの信頼確認ほか（[47](../01_features/47_v228NewFeatures.md)・[48](../01_features/48_v229NewFeatures.md)・[49](../01_features/49_v230NewFeatures.md)・[50](../01_features/50_v231NewFeatures.md)・[51](../01_features/51_v232NewFeatures.md)・[52](../01_features/52_v233NewFeatures.md)）
 - [02_update/01_changelog.md](../02_update/01_changelog.md) — v2.8.0 / v2.8.1 の変更履歴
 
 ### 公式情報源
@@ -208,8 +230,10 @@ kiro-cli diagnostic --format json-pretty
 - [Permissions（機能自体）](https://kiro.dev/docs/permissions/) ／ [Hooks（機能自体）](https://kiro.dev/docs/hooks/) ／ [Agent config changes（v3移行）](https://kiro.dev/docs/cli/v3/agent-config/)
 - [Upgrading agent configs（`/upgrade-agent`）](https://kiro.dev/docs/cli/v3/upgrade-agent/)
 - [Workflows](https://kiro.dev/docs/workflows/) ／ [Hook types](https://kiro.dev/docs/hooks/types/) ／ [Install powers](https://kiro.dev/docs/powers/installation/)
+- [Memory](https://kiro.dev/docs/memory/) ／ [Local command sandbox](https://kiro.dev/docs/sandbox/)（Kiro IDE と Kiro CLI の両方を扱うページです。CLI の記述だけを参照してください）
+- [Migrate an ACP client to CLI V3](https://kiro.dev/docs/cli/v3/acp-migration/)
 
 ---
 
-**最終更新**: 2026-10-04（v2.22.0〜v2.27.1 の V3 追加・変更（Workflows、`/tools trust-all`、`/powers install`・`uninstall`、Output style、`SessionEnd` Hook、保存済みプロンプトのコマンド化、`todo_list` の廃止、`/tangent merge` ほか）を追加）
+**最終更新**: 2026-10-21（v2.28.0〜v2.33.0 の V3 追加・変更（Hook のカテゴリ一致、Memory、サンドボックス、autonomous、`KIRO_HOME`、Workflows の拡張、フォルダの信頼確認ほか）と、CLI 3.0 での V3 既定化・Classic からの切り替え提案の注記を追加。v2.27.1 の出典を公式 Changelog の Patches 節に更新）
 **対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x 以降 ＋ `--v3` で提供。3.0.0 GA は未リリース。

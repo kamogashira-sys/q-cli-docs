@@ -42,6 +42,7 @@ Kiro CLI v2.1.0（2026年4月24日リリース）で追加された、MCPツー�
 - [動作の仕組み](#動作の仕組み)
 - [tool_searchツール](#tool_searchツール)
 - [キーワードマッチング](#キーワードマッチング)
+- [v2.31.0・v2.31.1での進化（V3）](#v2310v2311での進化v3)
 - [関連リンク](#関連リンク)
 
 ---
@@ -149,6 +150,28 @@ MCPツールをオンデマンドで発見・ロードする組み込みツー�
 
 ---
 
+## v2.31.0・v2.31.1での進化（V3）
+
+> 本ページの上記の説明（`toolSearch.enabled` で有効化、`tool_search` ツール）は **V2 の Tool Search** です。V3 は別の仕組みで、MCP ツールをオンデマンドで読み込みます。
+
+### v2.31.0（2026-10-13）: V3 の MCP ツールのオンデマンド読み込み
+
+V3 が MCP ツールの定義を必要なときにだけ読み込み、モデルのコンテキストをより多く作業に残します（公式 [Changelog v2.31](https://kiro.dev/changelog/cli/2-31/)）。公式 [Tool Search](https://kiro.dev/docs/mcp/tool-search/)（公式更新日 2026-10-15）によると、Kiro CLI 2.31 以降のローカル V3 セッションでは Tool Search が**既定で**使われます。MCP サーバーを設定していなければ効果はありません。V2 では、引き続き `kiro-cli settings toolSearch.enabled true` で有効にします。
+
+| | V2 | V3（ローカルセッション、v2.31.0 以降） |
+|---|---|---|
+| 有効化 | オプトイン（`toolSearch.enabled`） | 既定で有効 |
+| ツールの読み込み | `tool_search` の経路（公式は legacy `tool_search` path と記載） | `tool_load` が正確なツール ID を読み込み、`tool_call` が実行する。MCP ツールでは `tool_load` が `tool_call` の前に表示されることがある |
+| 確認方法 | `/tools` で MCP ツールのトークン使用量が下がる | アクティビティに `tool_load` が表示されることがある |
+
+### v2.31.1（2026-10-14）: V3 の非対話実行に保存済みの設定を適用
+
+Kiro CLI 2.31.1 以降は、保存済みの `toolSearch.enabled`・`toolSearch.minPct`・`toolSearch.minTokens` を、V3 の対話実行と非対話実行の両方に適用します。保存済みのしきい値は、`toolSearch.enabled` も保存されている場合にのみ適用されます（公式 Tool Search の「V3 settings」。公式 [Headless mode](https://kiro.dev/docs/cli/headless/#saved-v3-settings)、公式更新日 2026-10-20）。
+
+詳細は [50. v2.31 新機能](50_v231NewFeatures.md) を参照してください。
+
+---
+
 ## 関連リンク
 
 - [Tool Search 公式ドキュメント](https://kiro.dev/docs/mcp/tool-search/)
@@ -166,5 +189,5 @@ MCPツールをオンデマンドで発見・ロードする組み込みツー�
 
 ---
 
-**最終更新**: 2026-07-04
-**対象バージョン**: Kiro CLI v2.1.0+
+**最終更新**: 2026-10-21
+**対象バージョン**: Kiro CLI v2.1.0+（v2.31.0 V3 のオンデマンド読み込み、v2.31.1 V3 非対話実行の保存済み設定を含む）

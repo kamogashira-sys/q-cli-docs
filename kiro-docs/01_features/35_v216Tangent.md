@@ -84,7 +84,7 @@ Kiro CLI **v2.16.0**（公式表示日 2026-07-31）で、**名前付き・ネ�
 
 ---
 
-## v2.27.1での進化（2026-10-02、公式Changelog未掲載）
+## v2.27.1での進化（2026-10-02）
 
 ### `/tangent merge [dest]`
 
@@ -94,11 +94,28 @@ V3 で、tangent で得た結果を親セッション、または名前を指定
 # 親セッションへ取り込む
 /tangent merge
 
+# 会話のルートへ取り込む
+/tangent merge root
+
 # 名前を指定したセッションへ取り込む
 /tangent merge <dest>
 ```
 
-> ⚠️ v2.27.1 は公式 Changelog に未掲載で、CLI 内蔵 changelog（`kiro-cli version --changelog=2.27.1`）のみで確認しています。公式 Slash commands リファレンスと公式 Tangent ページには `merge` の記載がまだないため、取り込まれる内容（要約か全文か）や `dest` の指定形式は本ページでは扱いません（→ [46. v2.27 新機能](46_v227NewFeatures.md)）。
+公式 [Tangent（V3）](https://kiro.dev/docs/cli/v3/tangent/)（公式更新日 2026-10-10）の「Merging a tangent back」は、`/tangent merge [dest]` の動作を次のように説明しています。
+
+| 宛先 | 動作 |
+|------|------|
+| （指定なし） | 現在の tangent の親へ取り込む |
+| `root` | ネストの深さに関係なく、メインの会話へ取り込む |
+| `<name>` | その名前のセッションが存在すれば、そこへ取り込む |
+
+- 取り込まれるのは tangent の全文ではなく、**短い要約**です。Kiro は tangent の中で要約のターンを 1 回送り、まとめた要約だけを宛先に実際のプロンプトのターンとして挿入します。宛先が tangent の全 transcript を受け取ることはありません。
+- 取り込みで tangent 自体が削除・切り詰めされることはなく、元の tangent は残ります。
+- 取り込みでセッションが新規に作られることはありません。存在しない名前を宛先にするとエラーになります。
+- 取り込みの際に表示される短い行（"Merging findings from..." など）はそのターン自身の内容として保存されるため、セッションを後で開き直す・再開すると、元の取り込み指示ではなく同じ要約行が表示されます（v2.27.1 の「開き直すとプロンプト全文ではなく要約行を表示する」修正に対応します）。
+- 公式はエラーとして、ルートでの宛先なしの `/tangent merge`、存在しない名前の指定、自分自身への取り込み、tangent に固有のプロンプトがない場合、要約ターンの取り消し・送信失敗を挙げています（メッセージ全文は公式 Tangent ページを参照）。
+
+`/tangent merge` は公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/#tangent)（公式更新日 2026-10-20）の `/tangent` の項にも掲載されています。出典: [公式 Changelog v2.27（Patches 節）](https://kiro.dev/changelog/cli/2-27/#patch-2-27-1)（→ [46. v2.27 新機能](46_v227NewFeatures.md)）。
 
 ---
 
@@ -114,5 +131,5 @@ V3 で、tangent で得た結果を親セッション、または名前を指定
 
 ---
 
-**最終更新**: 2026-10-04  
+**最終更新**: 2026-10-21  
 **対象バージョン**: Kiro CLI v2.16.0+（V3 は Early Access。v2.27.1 で `/tangent merge`）

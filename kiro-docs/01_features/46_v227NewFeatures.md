@@ -9,7 +9,7 @@ Kiro CLI **v2.27.0**（2026-10-01）と **v2.27.1**（2026-10-02）では、V3 �
 - **v2.27.0**: [V3] Workflows: sub-agent tool、Steering の `#[[file:...]]`・`#[[folder:...]]`、[V3] 保存済みプロンプトのスラッシュコマンド化、⚠️ [V3] `todo_list` ツールの廃止、🔒 `~/.kiro` の所有者限定アクセス
 - **v2.27.1**: [V3] `/tangent merge`、モデルフォールバック、⚠️ 非対話実行の終了コード変更、[V3] 非対話実行の hooks・knowledge・code intelligence 対応、`--no-interactive` の Workflows の完了までの接続維持
 
-> ⚠️ **v2.27.1 は公式 Changelog に未掲載**です。本ページの v2.27.1 の内容は CLI 内蔵 changelog（`kiro-cli version --changelog=2.27.1`）のみを出典としています。
+> v2.27.1 は公式 [Changelog v2.27](https://kiro.dev/changelog/cli/2-27/#patch-2-27-1) の Patches 節（2026-10-02）に掲載されています。本ページの v2.27.1 の内容は、この Patches 節（14 項目）を出典とし、公式 [Exit codes](https://kiro.dev/docs/reference/exit-codes/)・[Slash commands](https://kiro.dev/docs/reference/slash-commands/)・[Headless mode](https://kiro.dev/docs/cli/headless/) で確認できた範囲を補っています。CLI 内蔵 changelog（`kiro-cli version --changelog=2.27.1`。18 項目）とは件数と分類が異なります（→ [変更履歴の v2.27.1 の注記](../02_update/01_changelog.md#v2271-cli2026-10-02)）。
 
 ## [V3] Workflows: sub-agent tool
 
@@ -19,6 +19,8 @@ Workflows（v2.26.0、→ [45. v2.26 新機能](45_v226NewFeatures.md)）を有�
 |------|-------------------|
 | on（既定） | サブエージェントへ直接（`invoke_sub_agent`）、または Workflows 経由（`run_workflow`） |
 | off | Workflows 経由（`run_workflow`）のみ。1 つのカスタムエージェントをバックグラウンドで動かすには `agent://<name>` を指定する |
+
+> ⚠ **v2.28.0 での変更**: `/settings` > Features の **Workflows: sub-agent tool** の行は v2.28.0 で削除され、保存済みの値は動作に影響しなくなりました。Workflows が有効な V3 チャットは常に Workflows で委譲します。詳細と公式ドキュメント間の食い違いは [47. v2.28 新機能](47_v228NewFeatures.md) を参照してください。以下は v2.27.0 時点の説明です。
 
 off にしても、Workflow のステップ内のエージェントは、エージェント設定が許可していればサブエージェントを使えます。選択は `chat.enableMainAgentSubagentTool` として保存され、新しいセッションに適用されます（公式 [In-session settings](https://kiro.dev/docs/cli/chat/settings/#settings-features)・[Workflows](https://kiro.dev/docs/workflows/)）。
 
@@ -100,15 +102,17 @@ V3 は `todo_list` ツールを提供しなくなり、V3 では `chat.enableTod
 | `kiro-cli agent list` | V3 形式のエージェントも表示する |
 | Workflow ステップの回復 | 接続失敗をその場で最大 24 時間再試行してから一時停止する |
 
-## v2.27.1 の要点（CLI 内蔵 changelog のみで確認）
+## v2.27.1 の要点
 
 ### [V3] `/tangent merge [dest]`
 
-tangent で得た結果を、親セッションまたは名前を指定したセッションへ取り込みます。tangent 自体は [35. v2.16 Tangent](35_v216Tangent.md) を参照してください。公式 Slash commands リファレンスには、`/tangent merge` はまだ記載されていません。
+tangent で得た結果を、親セッションまたは名前を指定したセッションへ取り込みます。tangent 自体は [35. v2.16 Tangent](35_v216Tangent.md) を参照してください。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/#tangent)（公式更新日 2026-10-20）と公式 [Tangent](https://kiro.dev/docs/cli/v3/tangent/#merging-a-tangent-back)（公式更新日 2026-10-10）に、宛先（親・`root`・名前指定）と、取り込まれるのが要約であり元の tangent は残ることが記載されています。
 
 ### モデルフォールバック — `/model fallback`
 
-拒否された、または容量超過になったターンを、既定で別のモデルで再試行します。再試行先は `/model fallback` で選びます。公式 [Terminal UI](https://kiro.dev/docs/cli/terminal-ui/) には「Model fallback notices」として、ターンが別のモデルへ移ったときに前のモデルが拒否したのか利用できなかったのかを説明し、フォールバックが連鎖した後は試したモデルと応答したモデルの要約を表示する旨が記載されていますが、`/model fallback` コマンドの説明はまだありません。
+**V1・V2 エンジン**で、モデルがターンを拒否した場合、設定済みのフォールバックモデルまたはサービスが提供するフォールバックモデルで再試行します。バックエンドが現在のモデルを利用不可とした場合は、設定済みのフォールバックモデルでのみ再試行します。確認・変更は `/model fallback` で行います（公式 [Changelog v2.27 の Patches 節](https://kiro.dev/changelog/cli/2-27/#patch-2-27-1)）。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/#model)（公式更新日 2026-10-20）の `/model` の項は、`/model fallback [<model-id> | clear]` を V1・V2 に適用すると説明し、V3 の端末 UI ではフォールバックが transcript に通知として表示されると説明しています。
+
+> CLI 内蔵 changelog（`kiro-cli version --changelog=2.27.1`）は、この項目を「拒否された、または容量超過のターンを既定で別のモデルで再試行する」と記載しています。公式 Changelog の Patches 節は上記のとおり V1・V2 エンジンと、設定済みまたはサービス提供のフォールバックモデルを挙げており、本ページは公式の記述を採用しています。
 
 ### ⚠️ 非対話実行の終了コード
 
@@ -117,12 +121,12 @@ tangent で得た結果を、親セッションまたは名前を指定したセ
 | `--agent`（または V3 の `chat.defaultAgent`）で指定したエージェントが利用できない | **exit 4** で終了 | 既定エージェントで回答 |
 | エージェントが利用できない以外の理由で `--agent` を適用できない | **exit 1** で終了 | 警告して回答 |
 
-CI などで終了コードを分岐している場合は確認してください。公式 [Exit codes](https://kiro.dev/docs/reference/exit-codes/) は 0・1・3 のみを記載しています（→ [15. Exit Codes](15_ExitCodes.md)）。
+CI などで終了コードを分岐している場合は確認してください。公式 [Exit codes](https://kiro.dev/docs/reference/exit-codes/)（公式更新日 2026-10-05）は、終了コード 4 を「Requested Agent Not Found」として掲載し、非対話実行（`--no-interactive`、V2 または V3）が対象であること、名前を指定しない実行（`--agent` なしの再開を含む）は対象外であること、`--trust-all-tools` に関係なく適用されることを説明しています（→ [15. Exit Codes](15_ExitCodes.md)）。
 
 ### [V3] 非対話実行の拡張
 
 - 非対話実行で hooks・knowledge・code intelligence に対応
-- `--no-interactive` の Workflows が完了まで接続を維持する。待機の上限（6 時間）は環境変数 `KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` で短くできる
+- `--no-interactive` の Workflows が完了まで接続を維持する。待機の上限（既定 6 時間）は環境変数 `KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` で短くできる。公式 [Headless mode](https://kiro.dev/docs/cli/headless/)（公式更新日 2026-10-20）は、この変数を「非対話の V3 実行が実行中の Workflow の完了を待つ秒数。既定 21600（6 時間）。無効な値・ゼロ・上限を超える値は既定値にフォールバックする」と説明しています
 
 修正項目の完全な一覧は [変更履歴の v2.27.1・v2.27.0](../02_update/01_changelog.md) を正とします。
 
@@ -147,7 +151,9 @@ CI などで終了コードを分岐している場合は確認してくださ�
 - [Manage prompts](https://kiro.dev/docs/cli/chat/manage-prompts/)
 - [Terminal UI](https://kiro.dev/docs/cli/terminal-ui/)
 - [Exit codes](https://kiro.dev/docs/reference/exit-codes/)
-- `kiro-cli version --changelog=2.27.1` / `kiro-cli version --changelog=2.27.0`
+- [Changelog v2.27 の Patches 節（v2.27.1）](https://kiro.dev/changelog/cli/2-27/#patch-2-27-1)
+- [Slash commands](https://kiro.dev/docs/reference/slash-commands/)・[Headless mode](https://kiro.dev/docs/cli/headless/)
+- `kiro-cli version --changelog=2.27.0`（v2.27.1 は実機 2.33.0 の内蔵 changelog に含まれません）
 
-**最終更新**: 2026-10-04
+**最終更新**: 2026-10-21
 **対象バージョン**: Kiro CLI v2.27.0+（Workflows・保存済みプロンプトのコマンド化・`/tangent merge` は V3 Early Access）

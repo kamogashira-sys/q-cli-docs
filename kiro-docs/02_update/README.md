@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.27.1（本サイト反映済。v2.8.0 で CLI v3 Early Access）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.33.0（本サイト反映済。v2.8.0 で CLI v3 Early Access）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,7 +26,15 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
-| **v2.27.1** | 2026-10-02 | [V3] `/tangent merge`・モデルフォールバック・⚠️ 非対話実行の終了コード変更 | [V3] `/tangent merge [dest]`、拒否・容量超過のターンを既定で別モデルに再試行（`/model fallback`）、⚠️ 非対話実行で指定エージェントが利用できない場合は exit 4・`--agent` を適用できない場合は exit 1、[V3] 非対話実行で hooks・knowledge・code intelligence に対応、`--no-interactive` の Workflows が完了まで接続を維持（`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS`）、修正11件（**公式Changelog未掲載、CLI内蔵changelogのみ**） |
+| **v2.33.0** | 2026-10-20 | [V3] フォルダの信頼確認・Workflow の計画承認ツリー・🔒 セキュリティ修正2件 | [V3] hooks・agents・MCP サーバー・workflows の読み込み前にフォルダを信頼するか確認、[V3] Workflow の計画承認ステップツリー・GitHub PR ウォッチ、`grep` の並列スキャン・Mermaid のサブグラフ（`[V3]` 表記なしの項目は V2／V3 の適用範囲が**未確認**）、🔒 [V3] サンドボックスのネットワーク規則のホスト名の大文字小文字・Windows の hook コマンド、修正20件（**公式Changelogサイト未掲載、CLI内蔵changelogのみ**） |
+| **v2.32.0** | 2026-10-15 | [V3] 書き込み承認でのフォルダ許可・非対話実行のクラウドセッション・Workflow の拡張 | [V3] 選んだフォルダをセッションで許可、[V3] 非対話実行の `--cloud`／`--repo`、[V3] Workflow の計画プレビュー・平易な言葉での変更・ステップでの Powers と MCP、⚠️ [V3] Workflow の review loop は 2 回の却下で一時停止・ステップのセッションはタスクで開く、⚠️ V2 のサブエージェントがモデルフォールバック設定に従う、[V3] 出力スタイル 3 種、OSC 7501 の端末プログラム状態（`KIRO_NO_PROGRAM_STATUS`）、改善11件・修正18件 |
+| **v2.31.1** | 2026-10-14 | Mermaid 図のチャット内描画・V3 非対話実行の保存済み設定 | フローチャート・シーケンス図・状態遷移図・ER 図を端末内のアートとして描画、[V3] 非対話実行が保存済みの compaction と Tool Search の設定を適用、Windows の `/sandbox setup`・IAM Identity Center の隔離パーティション対応ほか修正9件 |
+| **v2.31.0** | 2026-10-13 | [V3] ローカルコマンドサンドボックスと autonomous モード | [V3] `/sandbox`（shell コマンドと子プロセスを OS のサンドボックス内に置く）、[V3] `/autonomous on`、[V3] MCP ツールのオンデマンド読み込み、⚠️ `KIRO_HOME` が V3 のグローバル設定・サインイン・セッション・エージェント状態に適用、⚠️ 保存済み `sandbox.json` が V3 ヘッドレス実行に適用（`--sandbox`）、修正7件 |
+| **v2.30.0** | 2026-10-12 | チャット開始時の V3 切替提案・[V3] モデルフォールバック通知 | 起動時の **Switch to V3 and upgrade my configs**（V3 は 10 月末に CLI 3.0 の既定になる。段階的に展開）、[V3] モデルが切り替わったときの transcript 通知、アップグレード済みエージェントの権限更新、スクリーンリーダー対応、改善1件・修正6件 |
+| **v2.29.1** | 2026-10-10 | MCP OAuth サインインの修正 | Classic と V2 の MCP OAuth サインインが、issuer を要求するサーバーで動作するよう修正（公式 Changelog v2.29 の Patches 節に掲載） |
+| **v2.29.0** | 2026-10-09 | [V3] Memory・ディレクトリ単位のエージェントアップグレード・V3 の ACP／MCP の挙動変更 | [V3] Memory（`/memories`。`read & write`／`read only`／`off`）、`kiro-cli agent upgrade <dir>`（`--dry-run`・`--no-backup`）、⚠️ [V3] ACP は既定で Kiro CLI のログイン（`--auth-method=client`）、⚠️ [V3] MCP サーバーの起動と環境、V2 TUI の Hook グループ・`tool_tags`、プロファイルごとの Device flow 制御、改善4件・修正16件（🔒 Classic `fs_write` のシンボリックリンクを含む） |
+| **v2.28.0** | 2026-10-05 | Classic から 3.0 への切替提案・[V3] Hook のツールカテゴリ一致 | Classic の対話セッションに **Switch to 3.0 and upgrade my agent configs**（断ると約 1 週間ごとに再通知）、[V3] Hook が shell・read・write などのカテゴリで一致、⚠️ `Workflows: sub-agent tool` の設定行を廃止（保存済みの値は動作に影響しない）、改善6件・修正3件 |
+| **v2.27.1** | 2026-10-02 | [V3] `/tangent merge`・モデルフォールバック・⚠️ 非対話実行の終了コード変更 | [V3] `/tangent merge [dest]`、V1・V2 エンジンで拒否されたターンを設定済みまたはサービス提供のフォールバックモデルで再試行（`/model fallback`）、⚠️ 非対話実行で指定エージェントが利用できない場合は exit 4・`--agent` を適用できない場合は exit 1、[V3] 非対話実行で hooks・knowledge・code intelligence に対応、`--no-interactive` の Workflows が完了まで接続を維持（`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS`）、バグ修正8件（公式 Changelog v2.27 の Patches 節に掲載） |
 | **v2.27.0** | 2026-10-01 | [V3] Workflows の委譲設定・Steering のライブコンテキスト・保存済みプロンプトのコマンド化 | [V3] Workflows: sub-agent tool（`chat.enableMainAgentSubagentTool`）、Steering の `#[[file:...]]`・CLI V3 の行指定と `#[[folder:...]]`、[V3] 保存済みプロンプトがスラッシュコマンドに、⚠️ [V3] `todo_list` ツール廃止、Output style が `/settings display` へ移動、🔒 `~/.kiro` の所有者限定アクセス・registry モードの MCP、改善7件・修正10件 |
 | **v2.26.1** | 2026-09-30 | [V3] OS 証明書ストアの既定信頼・V2 ACP の拒否通知 | [V3] TLS インスペクション環境で OS の証明書ストアを既定で信頼（`NODE_USE_SYSTEM_CA` の明示値が優先）、V2 ACP の `stopReason: refusal`、`--model` が V2 の `--no-interactive` に適用、`--resume-id` の不一致時の扱い、Herdr のローカル V3 会話復元 |
 | **v2.26.0** | 2026-09-30 | [V3] Workflows・⚠️ Classic 非推奨・承認チェック強化 | [V3] Workflows（`/settings features` で有効化・再起動、`/workflow run`）、⚠️ Classic 起動時の非推奨通知（要因と TUI への戻し方を案内）、[V3] Hook・LSP の書き込み・MCP ツール・shell の承認チェック強化4件、修正2件 |
@@ -425,6 +433,46 @@ timeline
                    : [V3] /tangent merge
                    : モデルフォールバック
                    : 非対話実行の終了コード 4
+
+    section v2.28.x Classic からの 3.0 切替提案
+        2026-10-05 : v2.28.0
+                   : Classic から 3.0 への切替提案
+                   : [V3] Hook のツールカテゴリ一致
+                   : Workflows: sub-agent tool の設定行を廃止
+
+    section v2.29.x Memory・V3 の ACP／MCP
+        2026-10-09 : v2.29.0
+                   : [V3] Memory
+                   : kiro-cli agent upgrade
+                   : [V3] ACP のサインイン既定
+        2026-10-10 : v2.29.1
+                   : MCP OAuth の issuer 対応
+
+    section v2.30.0 V3 切替プロンプト
+        2026-10-12 : v2.30.0
+                   : 起動時の V3 切替提案
+                   : [V3] モデルフォールバック通知
+                   : スクリーンリーダー対応
+
+    section v2.31.x サンドボックス・autonomous
+        2026-10-13 : v2.31.0
+                   : [V3] /sandbox
+                   : [V3] /autonomous
+                   : KIRO_HOME の V3 全体への拡張
+        2026-10-14 : v2.31.1
+                   : Mermaid 図の描画
+
+    section v2.32.0 フォルダ許可・Workflow 拡張
+        2026-10-15 : v2.32.0
+                   : [V3] 書き込み承認でのフォルダ許可
+                   : 非対話実行の --cloud
+                   : [V3] Workflow の計画プレビュー
+
+    section v2.33.0 フォルダの信頼確認
+        2026-10-20 : v2.33.0
+                   : [V3] フォルダの信頼確認
+                   : [V3] Workflow の計画承認ツリー
+                   : サンドボックスのネットワーク規則の修正
 ```
 
 ## 🔗 移行情報
@@ -493,6 +541,12 @@ timeline
 - [v2.25 新機能（Powers 管理・Output style・`SessionEnd`）](../01_features/44_v225NewFeatures.md) 🆕 - `/powers install`・`kiro-cli powers`、[V3] Output style、fullscreen のスクロール速度、[V3] `SessionEnd` Hook（v2.25.0）
 - [v2.26 新機能（Workflows・Classic 非推奨）](../01_features/45_v226NewFeatures.md) 🆕 - [V3] Workflows、⚠️ Classic の非推奨通知、[V3] 承認チェック強化（v2.26.0〜v2.26.1）
 - [v2.27 新機能（委譲設定・Steering のライブコンテキスト・保存済みプロンプト）](../01_features/46_v227NewFeatures.md) 🆕 - [V3] Workflows: sub-agent tool、`#[[file:...]]`、`/tangent merge`、モデルフォールバック、終了コード 4（v2.27.0〜v2.27.1）
+- [v2.28 新機能（Classic からの 3.0 切替提案・Hook のカテゴリ一致）](../01_features/47_v228NewFeatures.md) 🆕 - Classic の対話セッションからの 3.0 切替提案、[V3] Hook のツールカテゴリ一致、Workflows による委譲の一貫化（v2.28.0）
+- [v2.29 新機能（Memory・エージェントのアップグレード・ACP／MCP）](../01_features/48_v229NewFeatures.md) 🆕 - [V3] Memory、`kiro-cli agent upgrade <dir>`、V3 の ACP サインインと MCP の挙動変更（v2.29.0〜v2.29.1）
+- [v2.30 新機能（V3 切替プロンプト・モデルフォールバック通知）](../01_features/49_v230NewFeatures.md) 🆕 - チャット開始時の V3 切替提案、[V3] モデルフォールバック通知、スクリーンリーダー（v2.30.0）
+- [v2.31 新機能（サンドボックス・autonomous モード）](../01_features/50_v231NewFeatures.md) 🆕 - [V3] `/sandbox`・`/autonomous`、MCP ツールのオンデマンド読み込み、`KIRO_HOME` の V3 全体への拡張、Mermaid 図（v2.31.0〜v2.31.1）
+- [v2.32 新機能（フォルダ許可・非対話クラウドセッション・Workflow 拡張）](../01_features/51_v232NewFeatures.md) 🆕 - [V3] 書き込み承認でのフォルダ許可、非対話実行の `--cloud`／`--repo`、Workflow の拡張、OSC 7501（v2.32.0）
+- [v2.33 新機能（フォルダの信頼確認）](../01_features/52_v233NewFeatures.md) 🆕 - [V3] フォルダの信頼確認、Workflow の計画承認ツリー、セキュリティ修正。公式 Changelog 未掲載・CLI 内蔵 changelog のみ（v2.33.0）
 
 ### リファレンス（辞書） 🆕
 - [04_reference/](../04_reference/README.md) — Settings / Slash Commands / CLI Commands / Built-in Tools の網羅的辞書
@@ -523,5 +577,5 @@ timeline
 
 ---
 
-**最終更新**: 2026-10-04
-**対象バージョン**: Kiro CLI v2.27.1
+**最終更新**: 2026-10-21
+**対象バージョン**: Kiro CLI v2.33.0

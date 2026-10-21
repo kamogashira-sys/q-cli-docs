@@ -496,6 +496,16 @@ kiro-cli settings api.subagentTimeout 1800
 
 設定の詳細は[04_reference/01_settings.md](../04_reference/01_settings.md)を参照してください。
 
+## v2.29.0・v2.32.0での進化
+
+### V2 のサブエージェントが親セッションのモデルフォールバック設定に従う（v2.32.0）
+
+⚠ V2 のセッションから起動したサブエージェントは、そのセッションのモデルフォールバック設定に従うようになりました（公式 [Changelog v2.32](https://kiro.dev/changelog/cli/2-32/)）。公式 [Slash commands の `/model`](https://kiro.dev/docs/reference/slash-commands/#model)（公式更新日 2026-10-20）と公式 [Terminal UI の Model fallback notices](https://kiro.dev/docs/cli/terminal-ui/#model-fallback-notices)（公式更新日 2026-10-20）も、V2 のセッションから起動したサブエージェントは、そのセッションのフォールバック設定に従うと説明しています。`/model fallback` は V1・V2 に適用されます（→ [51. v2.32 新機能](51_v232NewFeatures.md)）。
+
+### V3 のカスタムエージェントをサブエージェントとして起動したときの `mcpServers`（v2.29.0）
+
+V3 のカスタムエージェントがサブエージェントとして起動されたとき、そのエージェント自身の `mcpServers` を読み込むよう修正されました（公式 [Changelog v2.29](https://kiro.dev/changelog/cli/2-29/) のバグ修正）。公式 [Sub-agents](https://kiro.dev/docs/custom-agents/subagents/)（公式更新日 2026-10-02）にこの修正に関する記述は確認できず、**未確認**です（→ [48. v2.29 新機能](48_v229NewFeatures.md)）。
+
 ## まとめ
 
 Kiro CLI v1.23.0のサブエージェント機能は、複雑なタスクの並列実行を可能にする革新的な機能です。この機能により：
@@ -525,5 +535,5 @@ Kiro CLI v1.23.0のサブエージェント機能は、複雑なタスクの並�
 
 ---
 
-**最終更新**: 2026-08-22
-**対象バージョン**: Kiro CLI v1.23.0+（v1.25.0 Access Control・v2.0.0 タスク依存関係/Crew Monitor・v2.5.0 Review Loops・v2.19.0 アイドルタイムアウトを含む）
+**最終更新**: 2026-10-21
+**対象バージョン**: Kiro CLI v1.23.0+（v1.25.0 Access Control・v2.0.0 タスク依存関係/Crew Monitor・v2.5.0 Review Loops・v2.19.0 アイドルタイムアウト・v2.32.0 V2 サブエージェントのモデルフォールバックを含む）

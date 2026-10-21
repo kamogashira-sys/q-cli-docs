@@ -51,6 +51,7 @@ Smart Hooks は、これらの要求を **エージェント設定ファイル�
 - [キャッシュ](#キャッシュ)
 - [ユースケース](#ユースケース)
 - [トラブルシューティング](#トラブルシューティング)
+- [v2.28.0・v2.29.0での進化](#v2280v2290での進化)
 - [関連リンク](#関連リンク)
 
 ---
@@ -582,6 +583,40 @@ TOOL_NAME=$(echo "$INPUT" | jq -r '.tool_name // empty')
 
 ---
 
+## v2.28.0・v2.29.0での進化
+
+### v2.29.0（2026-10-09）: V2 TUI の Hook のツールグループ一致と `tool_tags`
+
+V2 TUI の Hook で、`read` などのマッチャーが、そのグループのすべてのツールを対象にするようになりました。ブロックする `preToolUse` Hook は、グループ内のどのツールも止められます。ツールの Hook は `tool_tags` を受け取り、スクリプトがツールのグループを確認できます（公式 [Changelog v2.29](https://kiro.dev/changelog/cli/2-29/)）。
+
+公式 [Hooks migration](https://kiro.dev/docs/cli/v3/hooks-migration/#migrate-tool-matchers)（公式更新日 2026-10-10）は、V2 の端末 UI では V2 エンジンも V3 エンジンも、正確なツール名または共有のツールグループで一致できると説明し、V2 の名前で次のグループを挙げています。
+
+| マッチャー | V2 のグループに含まれるツール |
+|-----------|-------------------------|
+| `read` | `fs_read`・`grep`・`glob`・`code`・`introspect`・`tool_search` |
+| `write` | `fs_write`・`code` |
+| `shell` | `execute_bash` |
+| `web` | `web_fetch`・`web_search` |
+| `subagent` | `use_subagent` |
+
+V2 エンジンで動くツールの Hook は、`tool_name`・`tool_input` に加えて `tool_tags` を受け取ります。Classic エンジンと V3 エンジンは `tool_tags` を送りません。
+
+```json
+{
+  "tool_name": "fs_read",
+  "tool_tags": ["read", "@builtin"],
+  "tool_input": {}
+}
+```
+
+> ⚠️ 上の「[Tool Matching](#tool-matching)」の表は alias 名（`read` など）を 1 つのツールに対応づけて書いています。公式 Hooks migration によると、Classic エンジンは `read`・`write`・`shell`・`subagent` を 1 つのツールの別名として扱い、`@mcp` マッチャーとタグのグロブに対応しません。V2 TUI（v2.29.0 以降）では、`read` は上の表のグループ全体に一致します。たとえば `fs_read` を意図して `read` と書いた Hook は、`grep`・`glob`・`code`・`introspect`・`tool_search` にも一致します。
+
+### v2.28.0（2026-10-05）: V3 の Hook のツールカテゴリ一致
+
+V3 では、Hook がツールのカテゴリ（shell、read、write、特定の MCP サーバー・ツール）で一致するようになりました（公式 [Changelog v2.28](https://kiro.dev/changelog/cli/2-28/)）。V3 の Hook の仕様は本ページの対象外です。V3 のマッチャーは V3 のツール ID またはタグで書きます。詳細は [47. v2.28 新機能](47_v228NewFeatures.md) と [09_v3/](../09_v3/README.md) を参照してください。
+
+---
+
 ## 関連リンク
 
 ### 関連機能（本サイト）
@@ -591,6 +626,7 @@ TOOL_NAME=$(echo "$INPUT" | jq -r '.tool_name // empty')
 - [13. ACP](13_ACP.md) — ACP セッションでの hooks 動作
 - [17. Granular Tool Trust](17_GranularToolTrust.md) — PreToolUse Hook と権限制御の併用
 - [19. Tool Search](19_ToolSearch.md) — matcher の指定方法と Tool Search の関係
+- [47. v2.28 新機能](47_v228NewFeatures.md)・[48. v2.29 新機能](48_v229NewFeatures.md) — V3 のカテゴリ一致、V2 TUI のグループ一致と `tool_tags`
 
 ### リファレンス（辞書）
 
@@ -617,9 +653,9 @@ TOOL_NAME=$(echo "$INPUT" | jq -r '.tool_name // empty')
 - [CLI 2.x reference - Hooks](https://kiro.dev/docs/cli/2x-reference/#hooks)（公式ページ最終更新: 2026-08-04。本ページが解説するCLI 2.x仕様の要約が残る唯一の公式ページ）
 - [Agent Configuration Reference - hooks field](https://kiro.dev/docs/custom-agents/configuration-reference#hooks-field)（CLI 3.0 / IDE 1.0向けの現行仕様。参考として掲載）
 - [Agent Configuration Reference - tools field](https://kiro.dev/docs/custom-agents/configuration-reference#tools-field)（同上）
-- [Hooks migration guide（CLI 2.x → 3.0）](https://kiro.dev/docs/cli/v3/hooks-migration/) — 3.0への移行を検討する場合の公式ガイド
+- [Hooks migration guide（CLI 2.x → 3.0）](https://kiro.dev/docs/cli/v3/hooks-migration/) — 3.0への移行を検討する場合の公式ガイド（公式ページ最終更新: 2026-10-10。V2 TUI のツールグループと `tool_tags` を掲載）
 
 ---
 
-**Page updated**: 2026-07-04（ライフサイクル全体像の図解と STDIN/STDOUT の補足を追加。本サイト初版 2026-05-24）  
+**Page updated**: 2026-10-21（v2.28.0・v2.29.0 の進化を追加。2026-07-04 にライフサイクル全体像の図解と STDIN/STDOUT の補足を追加。本サイト初版 2026-05-24）  
 **公式ページ最終更新**: 2026-04-13

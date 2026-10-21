@@ -128,9 +128,27 @@ mv .kiro/agents/my-agent.json.bak .kiro/agents/my-agent.json
 
 ---
 
+## v2.29.0・v2.30.0 での進化
+
+### v2.29.0（2026-10-09）: `kiro-cli agent upgrade <dir>`・旧 Hook マッチャーの書き換え
+
+- **ディレクトリ単位のアップグレード**: `kiro-cli agent upgrade <dir>` は、ディレクトリ直下の `*.json` を、V2 と V3 の両方が読む形式へアップグレードします。`--dry-run` で書き込まずに変更をプレビューでき、`--no-backup` で既定のバックアップを省略できます（公式 [Changelog v2.29](https://kiro.dev/changelog/cli/2-29/)）。
+- **旧 Hook マッチャーの書き換え**: V3 の `/upgrade-agent` は、`fs_read` などの旧形式の Hook マッチャーが動作するよう書き換え、書き換えでマッチが広がる場合は警告します（公式 Changelog v2.29.0 のバグ修正）。公式 [Hooks migration](https://kiro.dev/docs/cli/v3/hooks-migration/#migrate-tool-matchers)（公式更新日 2026-10-10）によると、`fs_read` は `read` に、`execute_cmd` は `shell` になり、`fs_read` の書き換えは `grep`・`glob`・`code`・`introspect`・`tool_search` にも一致します。
+
+`kiro-cli agent upgrade` は、公式 [CLI commands](https://kiro.dev/docs/reference/cli-commands/)（公式更新日 2026-10-20）の `agent` のサブコマンド表には掲載されていません。コマンドの存在と説明は、公式 [Upgrading agent configs](https://kiro.dev/docs/cli/v3/upgrade-agent/)（公式更新日 2026-10-13）と実機 2.33.0 の `kiro-cli agent --help` で確認しています（`--dry-run` で警告 `widened-hook-matcher` が表示され、ファイルが変更されないことも実機 2.33.0 で確認）。詳細は [48. v2.29 新機能](48_v229NewFeatures.md) と [04_reference/03_cli-commands.md](../04_reference/03_cli-commands.md) を参照してください。
+
+### v2.30.0（2026-10-12）: アップグレード済みエージェントの権限の更新
+
+- 生成された V3 のフィールドが変更されていない、アップグレード済みのエージェントで V2 の信頼設定を変更すると、Kiro CLI が対応する V3 の権限を更新します（改善）。公式 [Refreshing upgraded agents](https://kiro.dev/docs/cli/v3/upgrade-agent/#refreshing-upgraded-agents) は、生成された V3 のフィールドを手で編集すると自動での更新が止まり、エージェントが選択メニューの **Universal · Out of Sync** に表示されると説明しています。
+- エージェントを V3 へアップグレードしたときに、V2 のワークスペース読み取りアクセスと `fs_read` のスキル信頼を保持するよう修正されました（バグ修正）。変換内容は公式 [What gets converted](https://kiro.dev/docs/cli/v3/upgrade-agent/#what-gets-converted) を参照してください。
+
+詳細は [49. v2.30 新機能](49_v230NewFeatures.md) を参照してください。
+
+---
+
 ## 注意点・制限事項
 
-- **V3 専用**: `/upgrade-agent` は V3 セッション（`kiro-cli --v3`）内でのみ利用できます。V2 安定版のスラッシュコマンド一覧（[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md)）には含めていません。
+- **V3 専用**: `/upgrade-agent` は V3 セッション（`kiro-cli --v3`）内でのみ利用できます（v2.29.0 で追加された `kiro-cli agent upgrade <dir>` は、V3 セッションの外でディレクトリ単位に実行するコマンドです）。V2 安定版のスラッシュコマンド一覧（[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md)）には含めていません。
 - **V3 は Early Access**: 破壊的変更・Known gaps（Amazon Linux 2 非対応・非 TUI モード非対応・セッション非互換）を伴います（→ [09_v3/](../09_v3/README.md)）。
 - 変換は「universal（V2 + V3）」形式であり、元のフィールドを残したまま新しい権限ルールを追加します。V2 に戻して使う場合も設定は機能します。
 - 変換後は `/upgrade-agent diagnostics` で警告を確認し、`regex-*` 系の近似変換は意図どおりか目視で確認してください。
@@ -149,5 +167,5 @@ mv .kiro/agents/my-agent.json.bak .kiro/agents/my-agent.json
 
 ---
 
-**最終更新**: 2026-07-25  
-**対象バージョン**: Kiro CLI v2.14.0+（V3 は Early Access）
+**最終更新**: 2026-10-21  
+**対象バージョン**: Kiro CLI v2.14.0+（V3 は Early Access。v2.29.0 `kiro-cli agent upgrade <dir>`、v2.30.0 権限の更新を含む）

@@ -60,12 +60,16 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 | │　│　├── | MCP Integration [(/docs/cli/mcp/)](https://kiro.dev/docs/mcp/) | 外部ツール・データソース接続。Setting up MCP（Command line、mcp.json file、Agent configuration）、Troubleshooting、Examples、Security Best Practices |
 | │　│　├── | Auto Complete [(/docs/cli/autocomplete/)](https://kiro.dev/docs/cli/autocomplete/) | コンテキスト認識型補完。Autocomplete dropdown menu、Inline suggestions、Configuration、Supported tools、Troubleshooting |
 | │　│　├── | File References [(/docs/cli/chat/file-references/)](https://kiro.dev/docs/cli/chat/file-references/) 🆕 | チャット入力での `@file` `@directory` ファイル参照。解決順序（Prompts→Files→Directories）、Tab補完、Manage Prompts |
+| │　│　├── | Memory [(/docs/memory/)](https://kiro.dev/docs/memory/) 🆕 | チャットセッションをまたいで有用なコンテキストを引き継ぐ Memory（CLI は V3 のローカルセッションの `/memories`。→ 本サイト [01_features/48](../01_features/48_v229NewFeatures.md)） |
+| │　│　├── | Workflows [(/docs/workflows/)](https://kiro.dev/docs/workflows/) 🆕 | 再利用できる複数ステップのエージェント計画をバックグラウンドで実行（IDE・CLI・Web 共通のページ）。配下に Author workflows（`/docs/workflows/authoring/`）、Workflow examples（`/docs/workflows/patterns/`）、Run and manage workflows（`/docs/workflows/manage/`）がある（→ 本サイト [01_features/45](../01_features/45_v226NewFeatures.md)、[51](../01_features/51_v232NewFeatures.md)） |
+| │　│　├── | Local command sandbox [(/docs/sandbox/)](https://kiro.dev/docs/sandbox/) 🆕 | ローカルのエージェントが実行する shell コマンドと子プロセスの到達範囲・ネットワークアクセスの制限、stdio MCP サーバーのラッピング（Kiro IDE 1.3 以降と Kiro CLI 2.31 以降のローカル V3 セッション。→ 本サイト [01_features/50](../01_features/50_v231NewFeatures.md)） |
 | │　│　└── | Privacy First [(/docs/privacy-and-security/)](https://kiro.dev/docs/privacy-and-security/) | プライバシー・セキュリティ |
 | │　├── | **Reference**（リファレンス） 🆕 | |
 | │　│　├── | Settings [(/docs/cli/reference/settings/)](https://kiro.dev/docs/reference/settings/) | 全設定項目（Telemetry/Chat/Knowledge/Keybindings/Tool Search/Feature toggles/API+MCP）と環境変数 |
 | │　│　├── | Slash Commands [(/docs/cli/reference/slash-commands/)](https://kiro.dev/docs/reference/slash-commands/) | 全スラッシュコマンド42種＋キーボードショートカット |
 | │　│　├── | CLI Commands [(/docs/cli/reference/cli-commands/)](https://kiro.dev/docs/reference/cli-commands/) | `kiro-cli` 全16コマンド、グローバル引数、セッション管理 |
-| │　│　└── | Built-in Tools [(/docs/cli/reference/built-in-tools/)](https://kiro.dev/docs/reference/built-in-tools/) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_*/code/tool_search/subagent 他） |
+| │　│　├── | Built-in Tools [(/docs/cli/reference/built-in-tools/)](https://kiro.dev/docs/reference/built-in-tools/) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_*/code/tool_search/subagent 他） |
+| │　│　└── | Exit codes [(/docs/reference/exit-codes/)](https://kiro.dev/docs/reference/exit-codes/) | CI/CD 向けの終了コード（0／1／3／4。4 は Requested Agent Not Found。→ 本サイト [01_features/15](../01_features/15_ExitCodes.md)） |
 | │　├── | **CLI 3.0（V3 / Early Access）** [(/docs/cli/v3/)](https://kiro.dev/docs/cli/v3/) 🆕 | v3 の全体像（統一エンジン・4本柱・Breaking changes）。v2.8.0 以降 `kiro-cli --v3` でオプトイン（→ 本サイト [09_v3/](../09_v3/README.md)） |
 | │　│　├── | Spec-driven development [(/docs/cli/v3/specs/)](https://kiro.dev/docs/specs/) | 組み込み Spec agent による仕様駆動開発（要件→設計→タスク→実行） |
 | │　│　├── | Feature overview [(/docs/cli/v3/feature-overview/)](https://kiro.dev/docs/cli/v3/new-features/) | v2 → v3 の機能比較 |
@@ -76,6 +80,7 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 | ├── | **Resources** | |
 | │　├── | Blog [(/blog/)](https://kiro.dev/blog/) | 技術ブログ |
 | │　├── | Changelog [(/changelog/)](https://kiro.dev/changelog/) | バージョン履歴 |
+| │　│　└── | CLI Changelog [(/changelog/cli/)](https://kiro.dev/changelog/cli/) | Kiro CLI のリリースノート。系列ページ `/changelog/cli/<メジャー>-<マイナー>/`（2-28〜2-32 が存在）と、系列内パッチの専用ページ `/changelog/cli/2-31-1/`（v2.31.1）を持つ。ほかのパッチ版（例: v2.29.1）は系列ページの Patches 節に掲載される。v2.33.0 の系列ページ `/changelog/cli/2-33/` は存在せず（HTTP 404）、v2.33.0 は公式サイトに未掲載（→ 本サイト [変更履歴](../02_update/01_changelog.md)） |
 | │　├── | FAQs [(/faq/)](https://kiro.dev/faq/) | よくある質問 |
 | │　├── | Report a bug [(GitHub Issues)](https://github.com/kirodotdev/Kiro/issues/new/choose) | バグ報告 |
 | │　├── | Suggest an idea [(GitHub Issues)](https://github.com/kirodotdev/Kiro/issues/new?template=feature_request.yml) | 機能提案 |
@@ -110,7 +115,7 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 - **[Kiro公式ブログ](https://kiro.dev/blog/)**
 
 ### 本サイトでの対応文書
-- [機能詳細ガイド](../01_features/README.md) — 46機能 + カテゴリ別ナビゲーション
+- [機能詳細ガイド](../01_features/README.md) — 52機能 + カテゴリ別ナビゲーション
 - [Smart Hooks](../01_features/22_Hooks.md) 🆕
 - [Agent Steering](../01_features/23_Steering.md) 🆕
 - [@file references](../01_features/24_FileReferences.md) 🆕
@@ -121,4 +126,4 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 
 ---
 
-**最終更新**: 2026-10-04（機能数 46・スラッシュコマンド 42 種に同期）／ 前回 2026-07-25（公式 v3 ドキュメントに新設された Upgrade Agent（/docs/cli/v3/upgrade-agent/）をサイト構造表に追加、機能数 34 に同期）／ 前回 2026-07-04（公式 v3 ドキュメント /docs/cli/v3/ 系5ページをサイト構造表に反映）
+**最終更新**: 2026-10-21（機能数 52 に同期、スラッシュコマンドは 42 種のまま。Memory・Workflows・Local command sandbox・Exit codes・CLI Changelog の系列ページをサイト構造表に追加）／ 前回 2026-10-04（機能数 46・スラッシュコマンド 42 種に同期）／ 前回 2026-07-25（公式 v3 ドキュメントに新設された Upgrade Agent（/docs/cli/v3/upgrade-agent/）をサイト構造表に追加、機能数 34 に同期）／ 前回 2026-07-04（公式 v3 ドキュメント /docs/cli/v3/ 系5ページをサイト構造表に反映）

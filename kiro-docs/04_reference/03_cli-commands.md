@@ -2,7 +2,7 @@
 
 # Kiro CLI Commands リファレンス
 
-**出典**: [CLI commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/cli-commands/)（公式ページ最終更新: 2026-09-12）
+**出典**: [CLI commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/cli-commands/)（公式ページ最終更新: 2026-10-20）
 
 Kiro CLI の `kiro-cli` コマンドおよびその引数を網羅する辞書的リファレンスです。
 
@@ -59,6 +59,7 @@ kiro-cli agent [SUBCOMMAND] [AGENT_NAME] [OPTIONS]
 | `validate` | 指定パスの設定を検証 |
 | `migrate` | プロファイルをエージェントに移行（既存エージェントに破壊的の可能性あり） |
 | `set-default` | セッション開始時のデフォルトエージェント設定 |
+| `upgrade <dir>` | ディレクトリ直下の `*.json` のエージェント設定を、V2 と V3 の両方が読む形式へアップグレード（v2.29.0+）。`--dry-run` で書き込まずにプレビュー、`--no-backup` で既定のバックアップ（`<name>.json.bak`）を省略。サブディレクトリは検索しない。**公式 CLI commands の `agent` のサブコマンド表には未掲載**で、公式 [Upgrading agent configs](https://kiro.dev/docs/cli/v3/upgrade-agent/) と実機 2.33.0 の `kiro-cli agent --help`・`kiro-cli agent upgrade --help` で確認（→ [34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md)・[48. v2.29 新機能](../01_features/48_v229NewFeatures.md)） |
 
 **例**:
 
@@ -92,15 +93,16 @@ kiro-cli chat [OPTIONS] [INPUT]
 | `--list-sessions` | 当該ディレクトリの保存済みセッション一覧 |
 | `--list-models` | 利用可能なモデルを表示 |
 | `--delete-session <ID>` | 保存済みセッションを ID で削除 |
-| `--agent` | 使用するエージェントを指定。⚠️ **v2.27.1+**（CLI 内蔵 changelog のみで確認）: 非対話実行で指定エージェント（または V3 の `chat.defaultAgent`）が利用できない場合は既定エージェントで回答せず **exit 4**、それ以外の理由で適用できない場合は **exit 1** で終了（→ [15. Exit Codes](../01_features/15_ExitCodes.md)） |
+| `--agent` | 使用するエージェントを指定。⚠ **v2.27.1+**（公式 [Exit codes](https://kiro.dev/docs/reference/exit-codes/)・[Changelog v2.27 の Patches 節](https://kiro.dev/changelog/cli/2-27/#patch-2-27-1)）: 非対話実行（`--no-interactive`、V2 または V3）で指定エージェント（または V3 の新規セッションでの `chat.defaultAgent`）が利用できない場合は既定エージェントで回答せず **exit 4**（Requested Agent Not Found）、それ以外の理由で適用できない場合は **exit 1** で終了。名前を指定しない実行（`--agent` なしの再開を含む）は対象外で、`--trust-all-tools` に関係なく適用される（→ [15. Exit Codes](../01_features/15_ExitCodes.md)） |
 | `--trust-all-tools` | 全ツールを確認なしで使用 |
 | `--trust-tools` | 特定ツールのみ信頼（カンマ区切り） |
 | `--require-mcp-startup` | MCP サーバー起動失敗時に exit code 3 で終了。v2.22.0 以降、非対話の V3 実行では開始前に MCP サーバーの起動を待つ（公式 Exit codes は、失敗・起動状態が判定できない場合・30 秒以内に状態の報告がない場合も exit code 3 と説明） |
 | `--effort <LEVEL>` | セッションの初期の推論 effort（`low`/`medium`/`high`/`xhigh`/`max`、v2.6.0+）。v2.27.0 以降は非対話実行にも適用。V3 では起動時のセッションにだけ適用され、既定としては保存されない（公式 Reasoning effort） |
 | `--model <MODEL>` | 使用するモデル。v2.26.1 以降は V2 の `--no-interactive` 実行にも適用され、空でない値を明示するとエージェントのモデルと再開したセッションの保存済みモデルを上書きする |
 | `--wrap` | 行折返しモード: `always`/`never`/`auto`（既定） |
-| `--cloud` | **Cloud Sessions（プレビュー、v2.17.0+）**: マネージドクラウドサンドボックス上で新規セッションを作成（→ [36. Cloud Sessions](../01_features/36_CloudSessions.md)）。v2.23.0 以降、[V3] はリポジトリを接続する前にセッションを開始し、後から `/repo` で紐付けられる。v2.24.1 以降、Windows でも `chat` サブコマンドなしで動作 |
-| `--repo <URL>` | `--cloud` と併用し、作成する Cloud Session にリポジトリを紐付け（v2.17.0+）。セッション内では `/repo` ピッカーでも指定可能 |
+| `--cloud` | **Cloud Sessions（プレビュー、v2.17.0+）**: マネージドクラウドサンドボックス上で新規セッションを作成（→ [36. Cloud Sessions](../01_features/36_CloudSessions.md)）。v2.23.0 以降、[V3] はリポジトリを接続する前にセッションを開始し、後から `/repo` で紐付けられる。v2.24.1 以降、Windows でも `chat` サブコマンドなしで動作。**v2.32.0 以降、[V3] は非対話実行（`--no-interactive`）でも使え**、プレーンテキスト出力にクラウドセッション ID が出力される（公式 [Headless mode](https://kiro.dev/docs/cli/headless/#cloud-sessions-in-v3)） |
+| `--repo <URL>` | `--cloud` と併用し、作成する Cloud Session にリポジトリを紐付け（v2.17.0+）。セッション内では `/repo` ピッカーでも指定可能。公式 CLI commands（公式ページ最終更新 2026-10-20）は `--repo <owner/repository>` とし、V3 のクラウドセッションに 1 つ以上のカンマ区切りのリポジトリを追加すると説明している。v2.32.0 以降は [V3] の非対話実行でも使える |
+| `--sandbox` | **[V3] ヘッドレス実行にローカルコマンドサンドボックスを必須にする（v2.31.0+）**: `--no-interactive` または `--output-format stream-json` と併用する。保護を開始できない場合は終了する。保存済みの `sandbox.json`（`enabled: true`）は V3 ヘッドレス実行に適用されるため、保護なしでの継続を止めたい場合に指定する（公式 CLI commands・[Headless mode](https://kiro.dev/docs/cli/headless/)）。実機 2.33.0 の `kiro-cli chat --help` には表示されない（理由は未確認）（→ [50. v2.31 新機能](../01_features/50_v231NewFeatures.md)） |
 | `--sessions` | **セッションダッシュボードへ直接起動（v2.21.0+、V3/KAS 限定）**: ダッシュボードを閉じるとチャットに落ちずに終了する。ヘルプ本文は「Launch straight into the session dashboard (V3/KAS only); closing it exits rather than dropping into a chat」（→ [40. v2.21 新機能](../01_features/40_v221NewFeatures.md)） |
 | `--v2` | **この実行を V2 エージェントハーネスで走らせる（v2.21.4+）**: `kiro-cli` と `kiro-cli chat` の両方で有効。保存済みの既定設定を上書きしない |
 | `--v3` | 次世代 Kiro エージェント（V3 Early Access）で起動（v2.8.0+、→ [09_v3/](../09_v3/README.md)） |
@@ -673,7 +675,7 @@ kiro-cli chat --delete-session <SESSION_ID>
 
 | 変数 | 値 | 説明 |
 |------|---|------|
-| `KIRO_HOME` | path | `~/.kiro` ディレクトリ（agents/prompts/skills/steering/settings/sessions）の上書き |
+| `KIRO_HOME` | path | `~/.kiro` ディレクトリ（agents/prompts/skills/steering/settings/sessions）の上書き。絶対パスで指定する。[V3] はグローバル設定・サインイン・セッション・エージェントの状態もここに保存する（v2.31.0+）。ルート・ホームディレクトリ・その親ディレクトリ・相対パスは `~/.kiro` にフォールバック（公式 [Settings](https://kiro.dev/docs/reference/settings/#environment-variables)） |
 | `KIRO_LOG_LEVEL` | `error`/`warn`/`info`/`debug`/`trace` | ログ詳細度（既定: `error`） |
 | `KIRO_LOG_NO_COLOR` | `1`/`true`/`yes` | カラーログ無効化（v1.26.0+） |
 
@@ -711,16 +713,18 @@ set -x KIRO_LOG_NO_COLOR 1
 
 | 変数 | 説明 |
 |------|------|
-| `KIRO_HOME` | `~/.kiro` ディレクトリの上書き先 |
+| `KIRO_HOME` | `~/.kiro` ディレクトリの上書き先（絶対パス。v2.31.0 以降、V3 は設定・サインイン・セッション・エージェントの状態もここに保存） |
 | `KIRO_LOG_LEVEL` | ログレベル: `error`/`warn`/`info`/`debug`/`trace` |
 | `KIRO_LOG_NO_COLOR` | `1`/`true`/`yes` でカラーログ無効化（v1.26.0+） |
 | `KIRO_API_KEY` | Headless Mode 用 API キー（v2.0.0+、[16. v2 Major Update](../01_features/16_v2MajorUpdate.md) 参照） |
 | `KIRO_ACP_RECORD_PATH` | TUI ACP 通信を記録する JSONL ファイルパス |
-| `KIRO_CLI_TOOL_SEARCH_MATCHING_THRESHOLD` | Tool Search キーワード結果の最低スコア（既定: 1.5） |
+| `KIRO_CLI_TOOL_SEARCH_MATCHING_THRESHOLD` | V2 の Tool Search キーワード結果の最低スコア（既定: 1.5） |
 | `NO_COLOR` | TUI のすべてのカラー出力を無効化 |
 | `KIRO_CHAT_UI` | UI の選択。Classic を選んでいる場合、ターミナル UI へ戻すには unset する（v2.26.0 の Classic 非推奨通知が要因として示す。公式 [Terminal UI](https://kiro.dev/docs/cli/terminal-ui/#using-the-classic-interface)） |
 | `KIRO_SKIP_BINARY_PINNING` | `1` でバイナリの固定を省略（v2.22.0+。インストールしたバイナリが固定のパスに残る環境向け。インストーラーがセッション中にバイナリを置き換え・削除しうる場合は使わない） |
-| `KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` | [V3] `--no-interactive` 実行で Workflows の完了を待つ上限（6 時間）を短くする（v2.27.1+、CLI 内蔵 changelog のみで確認） |
+| `KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` | [V3] `--no-interactive` 実行が、実行中の Workflows の完了を待つ秒数。既定 21600（6 時間）。無効な値・ゼロ・上限を超える値は既定値にフォールバック（v2.27.1+。公式 [Headless mode](https://kiro.dev/docs/cli/headless/)） |
+| `KIRO_SCREEN_READER` | `auto`・`on`・`off` で、起動 1 回だけ `chat.screenReader` を上書き（v2.30.0+。公式 [Settings](https://kiro.dev/docs/reference/settings/#environment-variables)） |
+| `KIRO_NO_PROGRAM_STATUS` | `1` で、対話型の端末への OSC 7501 によるプログラム状態の報告を無効化（v2.32.0+）。公式 [Terminal UI](https://kiro.dev/docs/cli/terminal-ui/#program-status-for-supporting-terminals) にのみ記載があり、公式 CLI commands・Settings にはない |
 | `HTTP_PROXY` / `HTTPS_PROXY` / `NO_PROXY` | プロキシ設定（[03_official-installation](../03_deployment/03_official-installation.md) 参照） |
 
 ---
@@ -750,12 +754,12 @@ set -x KIRO_LOG_NO_COLOR 1
 
 ### 公式情報源
 
-- [CLI commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/cli-commands/)（公式ページ最終更新: 2026-09-12）
+- [CLI commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/cli-commands/)（公式ページ最終更新: 2026-10-20）
 - [Install powers](https://kiro.dev/docs/powers/installation/) — `kiro-cli powers`
 - [ACP](https://kiro.dev/docs/cli/acp/) — `kiro-cli acp` の詳細
 
 ---
 
-**Page updated**: 2026-10-04（v2.22.0〜v2.27.1対応: `kiro-cli powers`（v2.25.0）を追加、`chat` の `--effort`・`--model` を表に追加、`--require-mcp-startup`（v2.22.0）・`--cloud`（v2.23.0／v2.24.1）・`--resume`（v2.27.0）・`--agent`（v2.27.1、CLI 内蔵 changelog のみ）の変更を反映、環境変数 `KIRO_CHAT_UI`・`KIRO_SKIP_BINARY_PINNING`・`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` を追加）  
-**前回更新**: 2026-09-13（v2.21.x対応: `chat --sessions`（v2.21.0、V3/KAS 限定のセッションダッシュボード直接起動）・`--v2`（v2.21.4、単一実行のハーネス選択）を追加、既存の `--v3`／`--agent-engine` を表に明記。公式が言及する `chat.agentEngine` は実機 2.21.4 に存在しないため設定キーとしては記載しない。前回 2026-08-16（v2.16.1〜v2.18.1対応: 新規サブコマンド `kiro-cli crew`（v2.16.1）・`kiro-cli voice-serve`／`kiro-cli voice-cloud-setup`（いずれもv2.18.0）を追加、`chat --cloud`／`--repo`（v2.17.0、Cloud Sessions）を追加、`--resume-id` の説明をクラウドセッション対応に拡張）。本サイト初版 2026-05-24）  
-**公式ページ最終更新**: 2026-09-12
+**Page updated**: 2026-10-21（v2.28.0〜v2.33.0 対応: `agent upgrade <dir>`（v2.29.0。公式 CLI commands 未掲載のため公式 Upgrading agent configs と実機 2.33.0 を出典と明記）、`chat` の `--sandbox`（v2.31.0）と `--cloud`／`--repo` の V3 非対話実行（v2.32.0）、`KIRO_HOME` の V3 全体への拡張（v2.31.0）、環境変数 `KIRO_SCREEN_READER`・`KIRO_NO_PROGRAM_STATUS` を追加。`--agent` の exit 4 と `KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` の出典を公式 Exit codes・Headless mode に更新。公式 CLI commands の `chat` 引数表・`agent` のサブコマンド表と照合した）
+**前回更新**: 2026-10-04（v2.22.0〜v2.27.1対応: `kiro-cli powers`（v2.25.0）を追加、`chat` の `--effort`・`--model` を表に追加、`--require-mcp-startup`（v2.22.0）・`--cloud`（v2.23.0／v2.24.1）・`--resume`（v2.27.0）・`--agent`（v2.27.1、CLI 内蔵 changelog のみ）の変更を反映、環境変数 `KIRO_CHAT_UI`・`KIRO_SKIP_BINARY_PINNING`・`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` を追加）  。2026-09-13（v2.21.x対応: `chat --sessions`（v2.21.0、V3/KAS 限定のセッションダッシュボード直接起動）・`--v2`（v2.21.4、単一実行のハーネス選択）を追加、既存の `--v3`／`--agent-engine` を表に明記。公式が言及する `chat.agentEngine` は実機 2.21.4 に存在しないため設定キーとしては記載しない。前回 2026-08-16（v2.16.1〜v2.18.1対応: 新規サブコマンド `kiro-cli crew`（v2.16.1）・`kiro-cli voice-serve`／`kiro-cli voice-cloud-setup`（いずれもv2.18.0）を追加、`chat --cloud`／`--repo`（v2.17.0、Cloud Sessions）を追加、`--resume-id` の説明をクラウドセッション対応に拡張）。本サイト初版 2026-05-24）  
+**公式ページ最終更新**: 2026-10-20

@@ -770,6 +770,12 @@ External IdP（Okta、Microsoft Entra ID等の外部IDプロバイダー）経�
 - [Authentication 公式ドキュメント](https://kiro.dev/docs/getting-started/authentication/)
 - [公式Changelog v2.1.0](https://kiro.dev/changelog/cli/2-1/)
 
+### v2.29.0（2026年10月9日リリース）: プロファイルごとの Device flow サインインの制御
+
+管理者は、Kiro のプロファイルごとに Device flow サインインを無効にできるようになりました。CLI は、Device flow でのログインとプロファイル切り替えの際に、無効にされたプロファイルを非表示にします。ブラウザでのサインインは引き続き利用できます（公式 [Changelog v2.29](https://kiro.dev/changelog/cli/2-29/)）。
+
+公式 [Authentication](https://kiro.dev/docs/getting-started/authentication/#device-flow)（公式更新日 2026-10-17）の Device flow の節は同じ内容を説明し、利用できるプロファイルが残らない場合は、ブラウザでのサインインを完了できるマシンで `kiro-cli login` を実行するよう案内しています。管理者がこの設定を行う画面・手順は、公式 Changelog にも公式 Authentication にも記載がなく**未確認**です。詳細は [48. v2.29 新機能](48_v229NewFeatures.md) を参照してください。
+
 ## まとめ
 
 ### Remote Authentication機能の重要ポイント
@@ -833,5 +839,5 @@ External IdP（Okta、Microsoft Entra ID等の外部IDプロバイダー）経�
 
 ---
 
-**最終更新**: 2026-07-04
-**対象バージョン**: Kiro CLI v1.24.0+（v1.25.1 External IdP・v2.1.0 Device Flow を含む）
+**最終更新**: 2026-10-21
+**対象バージョン**: Kiro CLI v1.24.0+（v1.25.1 External IdP・v2.1.0 Device Flow・v2.29.0 プロファイルごとの Device flow 制御を含む）

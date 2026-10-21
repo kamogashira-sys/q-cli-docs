@@ -12,7 +12,7 @@ Kiro CLI **v2.17.0**（2026-08-11）で、マネージドクラウドサンド�
 
 **対応バージョン**: セッションの作成・アタッチは **Kiro CLI v2.17.0 以降**が必須。「Open with Kiro CLI」操作自体は **v2.16.2 以降**で先行対応済みです。
 
-**出典**: [Cloud sessions - Kiro CLI Documentation](https://kiro.dev/docs/cloud-sessions/)（Page updated: 2026-08-14）、[公式Changelog v2.17](https://kiro.dev/changelog/cli/2-17/)、[公式Changelog v2.18](https://kiro.dev/changelog/cli/2-18/)
+**出典**: [Cloud sessions - Kiro CLI Documentation](https://kiro.dev/docs/cloud-sessions/)（公式ページの現在の Page updated: 2026-10-20。本ページの既存の節は Page updated 2026-08-14 の版に基づき、「非対話実行でのクラウドセッション（V3）」の節は 2026-10-20 の版に基づきます）、[公式Changelog v2.17](https://kiro.dev/changelog/cli/2-17/)、[公式Changelog v2.18](https://kiro.dev/changelog/cli/2-18/)
 
 ---
 
@@ -26,6 +26,7 @@ Kiro CLI **v2.17.0**（2026-08-11）で、マネージドクラウドサンド�
 - [Kiro Web (Preview) との関係](#kiro-web-preview-との関係)
 - [姉妹サイトとの役割分担](#姉妹サイトとの役割分担)
 - [v2.23.0以降の進化](#v2230以降の進化)
+- [非対話実行でのクラウドセッション（V3）](#非対話実行でのクラウドセッションv3)
 - [関連リンク](#関連リンク)
 
 ---
@@ -118,6 +119,9 @@ Cloud Sessions がアタッチする実行環境そのもの（Web UI・Mobile U
 | v2.24.1（2026-09-24） | Windows でも macOS・Linux と同じく、`kiro-cli --cloud` と `--repo` が `chat` サブコマンドなしで動作する |
 | v2.26.1（2026-09-30） | ターミナル UI で `--resume-id` がローカルのセッションに一致しない場合、代わりの会話を始めない。クラウドセッションが有効なら、完全なセッション ID がローカルに見つからないときにクラウドのセッションストアを確認する |
 | v2.27.0（2026-10-01） | [V3] `--resume` が、現在のローカル／クラウドの起動場所に一致する最新のセッションを選ぶ |
+| v2.31.0（2026-10-13） | [V3] クラウドセッションで、コードインテリジェンスの表示と `/code` パネルがクラウドのワークスペースを反映する。V3 のクラウド設定と Kiro サービスへのリクエストが、応答が止まったときに固まらず 15 秒で停止する |
+| v2.32.0（2026-10-15） | [V3] 非対話実行が `--cloud` と `--repo` に対応する。プレーンテキスト出力がクラウドセッション ID を出力し、後でそのセッションを再開または削除できる。非対話の `--resume-id` にクラウドセッションを指定すると、空のローカルセッションを開始せず、そのセッションを再開する（→ [下記](#非対話実行でのクラウドセッションv3)） |
+| v2.33.0（2026-10-20） | [V3] 応答が返らないリクエストの後もクラウド設定の同期が続く。クラウドセッションの `/code` がサンドボックスのワークスペースルートと `lsp.json` のパスを表示する。クラウド設定が空のとき、同期カードが表示されない（CLI 内蔵 changelog のみ。公式 Changelog 未掲載） |
 
 公式 [Cloud sessions](https://kiro.dev/docs/cloud-sessions/) は、起動時のチェックリストに `✓ 12 repositories found, /repo to select (optional)` のような行が表示される例を示しています。
 
@@ -127,6 +131,26 @@ kiro-cli --cloud
 /repo
 /repo owner/repository
 ```
+
+### 非対話実行でのクラウドセッション（V3）
+
+公式 [Cloud sessions](https://kiro.dev/docs/cloud-sessions/)（Page updated: 2026-10-20）と公式 [Headless mode の Cloud sessions in V3](https://kiro.dev/docs/cli/headless/#cloud-sessions-in-v3)（Page updated: 2026-10-20）は、V3 の非対話実行について次のように説明しています。
+
+- `--cloud` を付けると、V3 の非対話タスクをクラウドセッションで実行する。`--repo` で 1 つ以上のリポジトリから始められる（複数はカンマ区切り）
+- 指示は引数でもパイプ（stdin）でも渡せる。パイプで渡した指示は両方のフラグで使える
+- プレーンテキスト出力はクラウドセッション ID を出力する。ID を `--resume-id` や `--delete-session` で使って、後でセッションを再開または削除できる
+- 出力・エラー・終了の挙動は公式 Headless mode を参照
+
+```bash
+kiro-cli chat --v3 --no-interactive --cloud --repo owner/repository "Review the open pull request"
+printf '%s\n' "Run the tests" | kiro-cli chat --v3 --no-interactive --cloud --repo owner/repository
+
+# 出力されたセッション ID で再開または削除する
+kiro-cli chat --v3 --no-interactive --resume-id <SESSION_ID> "Continue the task"
+kiro-cli chat --delete-session <SESSION_ID>
+```
+
+詳細は [51. v2.32 新機能](51_v232NewFeatures.md)、終了コードは [15. Exit Codes](15_ExitCodes.md) を参照してください。
 
 > v2.25.0 の `/powers install`・`/powers uninstall` はローカルマシンを変更するため、クラウドセッションでは使えません（→ [44. v2.25 新機能](44_v225NewFeatures.md)）。
 
@@ -149,11 +173,11 @@ kiro-cli --cloud
 
 ### 公式情報源
 
-- [Cloud sessions - Kiro CLI Documentation](https://kiro.dev/docs/cloud-sessions/)（Page updated: 2026-08-14）
+- [Cloud sessions - Kiro CLI Documentation](https://kiro.dev/docs/cloud-sessions/)（公式ページの現在の Page updated: 2026-10-20）
 - [公式Changelog v2.17](https://kiro.dev/changelog/cli/2-17/)
 - [公式Changelog v2.18](https://kiro.dev/changelog/cli/2-18/)
 
 ---
 
-**Page updated**: 2026-10-04（v2.23.0〜v2.27.0 のリポジトリ接続前の開始・Windows のフラグ・`--resume-id`／`--resume` の挙動を追記）  
+**Page updated**: 2026-10-21（v2.31.0〜v2.33.0 のクラウドセッションの `/code`・非対話実行の `--cloud`／`--repo` を追記。2026-10-04 に v2.23.0〜v2.27.0 のリポジトリ接続前の開始・Windows のフラグ・`--resume-id`／`--resume` の挙動を追記）  
 **前回更新**: 2026-08-16（本サイト初版）

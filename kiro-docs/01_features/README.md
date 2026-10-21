@@ -2,7 +2,7 @@
 
 # Kiro CLI 機能詳細ガイド
 
-> Kiro CLI の 46 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+> Kiro CLI の 52 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
 
 ## 🗂️ カテゴリ別ナビゲーション
 
@@ -33,12 +33,19 @@
 - [44. v2.25 新機能](44_v225NewFeatures.md) 🆕 — Powers のインストール／アンインストール・[V3] `SessionEnd` Hook（v2.25.0）
 - [45. v2.26 新機能](45_v226NewFeatures.md) 🆕 — [V3] Workflows（v2.26.x）
 - [46. v2.27 新機能](46_v227NewFeatures.md) 🆕 — [V3] Workflows: sub-agent tool・保存済みプロンプトのコマンド化・`/tangent merge`・モデルフォールバック（v2.27.x）
+- [47. v2.28 新機能](47_v228NewFeatures.md) 🆕 — Classic の対話セッションからの 3.0 切替提案・[V3] Hook のツールカテゴリ一致・⚠️ Workflows による委譲の一貫化（v2.28.0）
+- [48. v2.29 新機能](48_v229NewFeatures.md) 🆕 — [V3] Memory・`kiro-cli agent upgrade <dir>`・⚠️ V3 の ACP サインインと MCP の挙動変更（v2.29.x）
+- [49. v2.30 新機能](49_v230NewFeatures.md) 🆕 — ⚠️ チャット開始時の V3 切替提案（V3 は 10 月末に CLI 3.0 の既定になる）・[V3] モデルフォールバック通知（v2.30.0）
+- [50. v2.31 新機能](50_v231NewFeatures.md) 🆕 — [V3] ローカルコマンドサンドボックス（`/sandbox`）・ローカル autonomous モード（`/autonomous`）（v2.31.x）
+- [51. v2.32 新機能](51_v232NewFeatures.md) 🆕 — [V3] 書き込み承認でのフォルダ許可・非対話実行のクラウドセッション・Workflow の拡張（v2.32.0）
+- [52. v2.33 新機能](52_v233NewFeatures.md) 🆕 — [V3] フォルダの信頼確認・Workflow の計画承認ツリー（v2.33.0、CLI 内蔵 changelog のみ）
 
 ### 📁 コンテキスト・知識管理
 - [07. Skills](07_Skills.md) — Progressive Context Loading
 - [10. Conversation Compaction](10_ConversationCompaction.md) — 会話履歴の圧縮
 - [24. @file references](24_FileReferences.md) 🆕 — チャット入力でのファイル/ディレクトリ即時参照
 - [46. v2.27 新機能](46_v227NewFeatures.md) 🆕 — Steering の `#[[file:...]]`・`#[[folder:...]]` によるライブコンテキスト（v2.27.0）
+- [48. v2.29 新機能](48_v229NewFeatures.md) 🆕 — [V3] Memory（チャットセッションをまたぐコンテキスト）（v2.29.0）
 
 ### 📂 ファイル操作・編集
 - [05. Grep / Glob Tools](05_GrepGlob.md) — 高速検索ツール
@@ -68,6 +75,10 @@
 - [41. v2.22 新機能](41_v222NewFeatures.md) 🆕 — `/fullscreen`（V2・V3）（v2.22.x）
 - [44. v2.25 新機能](44_v225NewFeatures.md) 🆕 — [V3] Output style・fullscreen のスクロール速度（v2.25.0）
 - [45. v2.26 新機能](45_v226NewFeatures.md) 🆕 — ⚠️ Classic の非推奨通知（v2.26.x）
+- [47. v2.28 新機能](47_v228NewFeatures.md) 🆕 — Full Screen の Copy on select・アクティビティトレイの拡張（v2.28.0）
+- [49. v2.30 新機能](49_v230NewFeatures.md) 🆕 — スクリーンリーダー対応（`/settings display`）（v2.30.0）
+- [50. v2.31 新機能](50_v231NewFeatures.md) 🆕 — Mermaid 図のチャット内描画（v2.31.1）
+- [51. v2.32 新機能](51_v232NewFeatures.md) 🆕 — [V3] 出力スタイル 3 種・OSC 7501 による端末のプログラム状態（v2.32.0）
 
 ### 🔒 セキュリティ・権限
 - [11. URL Permissions](11_URLPermissions.md) — `web_fetch` の URL 権限細粒度制御
@@ -75,6 +86,9 @@
 - [43. v2.24 新機能](43_v224NewFeatures.md) 🆕 — [V3] `/tools trust-all`・⚠️ プロジェクト `.env` の自動読み込み廃止（v2.24.x）
 - [45. v2.26 新機能](45_v226NewFeatures.md) 🆕 — [V3] Hook・LSP・MCP・shell の承認チェック強化（v2.26.0）
 - [46. v2.27 新機能](46_v227NewFeatures.md) 🆕 — `~/.kiro` の所有者限定アクセス（v2.27.0）
+- [50. v2.31 新機能](50_v231NewFeatures.md) 🆕 — [V3] ローカルコマンドサンドボックス・autonomous モード・⚠️ 保存済み `sandbox.json` のヘッドレス実行への適用（v2.31.0）
+- [51. v2.32 新機能](51_v232NewFeatures.md) 🆕 — [V3] 書き込み承認でのフォルダ許可と承認スコープの表示（v2.32.0）
+- [52. v2.33 新機能](52_v233NewFeatures.md) 🆕 — [V3] フォルダの信頼確認・🔒 サンドボックスのネットワーク規則と Windows の hook コマンドの修正（v2.33.0、CLI 内蔵 changelog のみ）
 
 ### 🔌 統合（IDE/MCP/CI/CD/認証）
 - [12. Remote Authentication](12_RemoteAuth.md) — SSH/SSM/コンテナ認証
@@ -84,6 +98,9 @@
 - [19. Tool Search](19_ToolSearch.md) — MCP ツールのオンデマンドロード
 - [26. Agent Toolkit for AWS](26_AgentToolkitForAWS.md) 🌟 — AWS 公式 MCP Server + Skills + Plugins
 - [32. MCP OAuth 認証管理](32_MCPOAuthManagement.md) 🆕 — リモート MCP の OAuth 再認証コマンド・事前登録アプリ対応（v2.11.0/v2.12.0）
+- [48. v2.29 新機能](48_v229NewFeatures.md) 🆕 — ⚠️ [V3] ACP のサインイン既定（`--auth-method=client`）・[V3] MCP サーバーの起動と環境（v2.29.0）
+- [50. v2.31 新機能](50_v231NewFeatures.md) 🆕 — [V3] MCP ツールのオンデマンド読み込み・⚠️ `KIRO_HOME` の V3 全体への拡張（v2.31.0）
+- [51. v2.32 新機能](51_v232NewFeatures.md) 🆕 — [V3] 非対話実行の `--cloud`／`--repo`・組織 MCP レジストリの OAuth 設定（v2.32.0）
 
 ### 💰 使用量・課金
 - [06. /usage コマンド](06_UsageCommand.md) — 契約プラン・月間使用量
@@ -139,7 +156,13 @@
 | **[v2.24 新機能](43_v224NewFeatures.md)** 🆕 | v2.24.0<br/>（2026-09-23）<br/>v2.24.1更新 | セッション全体のツール承認・環境の分離 | [V3] `/tools trust-all`、[V3] `/sessions` の Filter・Sort・Group（`chat.sessionDashboard.scope`）、⚠️ プロジェクト `.env` の自動読み込み廃止、[V2] 画像の自動縮小・再試行 |
 | **[v2.25 新機能](44_v225NewFeatures.md)** 🆕 | v2.25.0<br/>（2026-09-28） | Powers の管理・V3 Output style・fullscreen のスクロール速度・`SessionEnd` Hook | [V3] `/powers install`・`/powers uninstall`、`kiro-cli powers install`・`uninstall`、[V3] Output style（`chat.outputStyle`）、Scroll speed（実機キー `chat.fullscreenWheelRows`、公式未掲載）、[V3] `SessionEnd` |
 | **[v2.26 新機能](45_v226NewFeatures.md)** 🆕 | v2.26.0<br/>（2026-09-30）<br/>v2.26.1更新 | Workflows と Classic の非推奨化 | [V3] Workflows（`chat.enableWorkflows`、`/workflow`）、⚠️ Classic の非推奨通知、[V3] 承認チェック強化 4 点、[V3] OS 証明書ストアの既定信頼 |
-| **[v2.27 新機能](46_v227NewFeatures.md)** 🆕 | v2.27.0<br/>（2026-10-01）<br/>v2.27.1更新 | Workflows の委譲設定・Steering のライブコンテキスト・保存済みプロンプトのコマンド化 | [V3] Workflows: sub-agent tool（`chat.enableMainAgentSubagentTool`）、`#[[file:...]]`・`#[[folder:...]]`、[V3] `/prompt-name`、⚠️ [V3] `todo_list` 廃止、`/tangent merge`・`/model fallback`・⚠️ 終了コード 4（v2.27.1、CLI 内蔵 changelog のみ） |
+| **[v2.27 新機能](46_v227NewFeatures.md)** 🆕 | v2.27.0<br/>（2026-10-01）<br/>v2.27.1更新 | Workflows の委譲設定・Steering のライブコンテキスト・保存済みプロンプトのコマンド化 | [V3] Workflows: sub-agent tool（`chat.enableMainAgentSubagentTool`）、`#[[file:...]]`・`#[[folder:...]]`、[V3] `/prompt-name`、⚠️ [V3] `todo_list` 廃止、`/tangent merge`・`/model fallback`（V1・V2）・⚠️ 終了コード 4（v2.27.1） |
+| **[v2.28 新機能](47_v228NewFeatures.md)** 🆕 | v2.28.0<br/>（2026-10-05） | Classic の対話セッションからの 3.0 切替提案、[V3] Hook のツールカテゴリ一致、Workflows による委譲の一貫化 | **Switch to 3.0 and upgrade my agent configs**（断ると約 1 週間ごとに再通知）、[V3] Hook が shell・read・write などのカテゴリ／特定の MCP サーバー・ツールで一致、⚠️ `Workflows: sub-agent tool` の設定行を廃止（保存済みの値は動作に影響しない）、作業中も開く `/model`・`/effort` のピッカー、Full Screen の Copy on select |
+| **[v2.29 新機能](48_v229NewFeatures.md)** 🆕 | v2.29.0<br/>（2026-10-09）<br/>v2.29.1更新 | [V3] Memory、ディレクトリ単位のエージェントアップグレード、V3 の ACP・MCP の挙動変更 | [V3] Memory（`/memories` の `read & write`／`read only`／`off`）、`kiro-cli agent upgrade <dir>`（`--dry-run`・`--no-backup`）、⚠️ [V3] ACP は既定で Kiro CLI のログイン（`--auth-method=client`）、⚠️ [V3] MCP サーバーの起動と環境、V2 TUI の Hook グループ・`tool_tags`、🔒 Classic `fs_write` のシンボリックリンク、v2.29.1: MCP OAuth の issuer 対応 |
+| **[v2.30 新機能](49_v230NewFeatures.md)** 🆕 | v2.30.0<br/>（2026-10-12） | チャット開始時の V3 切替提案（V3 は 10 月末に CLI 3.0 の既定になる）とモデル切替の通知 | **Switch to V3 and upgrade my configs**（V3 を既定として保存・エージェントの自動アップグレードを有効化・設定の移行を開始）、[V3] モデルが切り替わったときの transcript 通知、アップグレード済みエージェントの権限更新と V2 権限の保持、スクリーンリーダー対応（`/settings display`）、Classic・V2 の Knowledge 検索の修正 |
+| **[v2.31 新機能](50_v231NewFeatures.md)** 🆕 | v2.31.0<br/>（2026-10-13）<br/>v2.31.1更新 | [V3] ローカルコマンドサンドボックスと autonomous モード、`KIRO_HOME` の V3 全体への拡張 | [V3] `/sandbox`（shell コマンドと子プロセスを OS のサンドボックス内に置く）、[V3] `/autonomous on`、[V3] MCP ツールのオンデマンド読み込み、⚠️ `KIRO_HOME` が V3 のグローバル設定・サインイン・セッション・エージェント状態に適用、⚠️ 保存済み `sandbox.json` が V3 ヘッドレス実行に適用（`--sandbox`）、v2.31.1: Mermaid 図のチャット内描画 |
+| **[v2.32 新機能](51_v232NewFeatures.md)** 🆕 | v2.32.0<br/>（2026-10-15） | [V3] 書き込み承認でのフォルダ許可、非対話実行のクラウドセッション、Workflow の拡張 | [V3] フォルダ単位の書き込み承認と承認スコープの表示、[V3] 非対話実行の `--cloud`／`--repo`、[V3] Workflow の計画プレビューと平易な言葉での変更、⚠️ [V3] Workflow の review loop は 2 回の却下で一時停止・ステップのセッションはタスクで開く、[V3] 出力スタイル 3 種、OSC 7501 の端末プログラム状態（`KIRO_NO_PROGRAM_STATUS`）、⚠️ V2 のサブエージェントがモデルフォールバック設定に従う |
+| **[v2.33 新機能](52_v233NewFeatures.md)** 🆕 | v2.33.0<br/>（2026-10-20） | [V3] フォルダの信頼確認と Workflow の計画承認ツリー（**公式 Changelog 未掲載、CLI 内蔵 changelog のみ**） | [V3] hooks・agents・MCP サーバー・workflows の読み込み前のフォルダ信頼確認、[V3] Workflow の計画承認ステップツリー・GitHub PR ウォッチ、`grep` の並列スキャン・Mermaid のサブグラフ（V2／V3 の適用範囲は未確認）、🔒 [V3] サンドボックスのネットワーク規則のホスト名の大文字小文字・Windows の hook コマンド |
 
 ## 🔗 機能間の連携
 
@@ -326,6 +349,6 @@ sequenceDiagram
 
 ---
 
-**最終更新**: 2026-10-04
-**対象バージョン**: Kiro CLI v2.27.1+（v3 は Early Access）
-**機能数**: 46 + Reference集約 ([04_reference/](../04_reference/README.md))
+**最終更新**: 2026-10-21
+**対象バージョン**: Kiro CLI v2.33.0+（v3 は Early Access）
+**機能数**: 52 + Reference集約 ([04_reference/](../04_reference/README.md))

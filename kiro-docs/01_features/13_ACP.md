@@ -40,6 +40,7 @@ Agent Client Protocol (ACP) は、**エディタとAIエージェント間の標
 - [ログ](#ログ)
 - [ユースケース](#ユースケース)
 - [トラブルシューティング](#トラブルシューティング)
+- [v2.29.0での変更点（V3 ACP のサインイン）](#v2290での変更点v3-acp-のサインイン)
 - [関連リンク](#関連リンク)
 
 ---
@@ -416,11 +417,41 @@ v1.26.0で、ACPのデフォルトエージェント読み込みに関するバ�
 
 ---
 
+## v2.29.0での変更点（V3 ACP のサインイン）
+
+> ⚠️ **本ページの本文は CLI v2 の ACP サーバー（公式 [ACP](https://kiro.dev/docs/cli/acp/)、公式更新日 2026-10-02）の説明です。** 公式 ACP ページ自身が、CLI v2 のレガシーな ACP サーバーを扱うページであり、CLI V3 へ移行する ACP クライアントは [Migrate an ACP client to CLI V3](https://kiro.dev/docs/cli/v3/acp-migration/) に従うよう案内しています。公式 ACP ページに `--auth-method` の記載はありません。
+
+v2.29.0（2026-10-09）で、**V3 の ACP は既定で Kiro CLI のログインを使う**ようになりました。接続するクライアントがサインインを扱う場合は、`--auth-method=client` を渡します（公式 [Changelog v2.29](https://kiro.dev/changelog/cli/2-29/)）。
+
+公式 [Migrate an ACP client to CLI V3](https://kiro.dev/docs/cli/v3/acp-migration/)（公式更新日 2026-10-09）の説明です。
+
+- CLI V3 のサーバーは、V3 エンジンを明示して起動する（`/full/path/to/kiro-cli acp --agent-engine=v3`）
+- 既定では、アクセストークンの要求を Kiro CLI のログインで処理する
+- クライアントが、エージェントからクライアントへの `_kiro/auth/getAccessToken` 要求に応答する必要がある場合は `--auth-method=client` を渡す。`--auth-method=client` でサーバーを起動したときは、この要求への応答が必須になる
+- クライアントがサインインを担う場合は、トークンの値をログや診断に出さないよう保護する
+- CLI v2 専用の起動フラグ（`--agent`、`--model` など）は V3 の起動から外す
+
+```bash
+# V3 エンジン（既定は Kiro CLI のログインでアクセストークンを解決）
+/full/path/to/kiro-cli acp --agent-engine=v3
+
+# クライアントがアクセストークンの要求に応答する場合
+/full/path/to/kiro-cli acp --agent-engine=v3 --auth-method=client
+```
+
+> 公式 ACP ページの `--agent`（v1.26.0 で追加）、セッション保存（`~/.kiro/sessions/cli/`）、`_kiro.dev/*` 拡張メソッドの説明は CLI v2 サーバーに対するものです。V3 での置き換え（`session/list`・`session/load`、交渉型の拡張メソッドなど）は公式 Migrate ガイドを参照してください。
+
+V3 エンジンで `--auth-method` が効くこと、既定が `cli` であることは、実機 2.33.0 の `kiro-cli acp --help` で確認できます。V2 エンジン（既定）での `--auth-method` の扱いは公式に記載がなく**未確認**です。詳細は [48. v2.29 新機能](48_v229NewFeatures.md) を参照してください。
+
+---
+
 ## 関連リンク
 
 ### 公式ドキュメント
 - [Agent Client Protocol (ACP) - Kiro CLI Documentation](https://kiro.dev/docs/cli/acp/)
 - [Kiro CLI v1.25.0 Changelog](https://kiro.dev/changelog/cli/1-25/)
+- [Migrate an ACP client to CLI V3](https://kiro.dev/docs/cli/v3/acp-migration/)（公式更新日 2026-10-09。V3 の起動・サインイン・移行の説明）
+- [Kiro CLI v2.29 Changelog](https://kiro.dev/changelog/cli/2-29/)
 
 ### 関連機能
 - [Help Agent](14_HelpAgent.md) - Kiro CLIドキュメントベースのヘルプ
@@ -447,5 +478,5 @@ v1.26.0で、ACPのデフォルトエージェント読み込みに関するバ�
 
 ---
 
-**最終更新**: 2026-07-04
-**対象バージョン**: Kiro CLI v1.25.0+（v1.26.0 `--agent` フラグ・`code` ツール対応を含む）
+**最終更新**: 2026-10-21
+**対象バージョン**: Kiro CLI v1.25.0+（v1.26.0 `--agent` フラグ・`code` ツール対応、v2.29.0 V3 ACP のサインイン既定を含む）
