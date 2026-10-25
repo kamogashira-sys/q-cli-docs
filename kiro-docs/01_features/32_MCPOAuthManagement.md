@@ -81,6 +81,8 @@ MCP サーバーごとの OAuth 設定（`~/.kiro/settings/mcp.json` のサー�
 | v2.29.1（2026-10-10） | Classic と V2 の MCP OAuth サインインが、issuer を要求するサーバーで動作する（[Changelog v2.29 の Patches 節](https://kiro.dev/changelog/cli/2-29/#patch-2-29-1)） |
 | v2.31.0（2026-10-13） | V3 の MCP ツールが、streamable HTTP のサーバーがセッションを切断した後も動作し続ける（[Changelog v2.31](https://kiro.dev/changelog/cli/2-31/)） |
 | v2.32.0（2026-10-15） | MCP OAuth のリンクは、サーバーが接続すると消え、通知にサーバー名が表示される。V3 で、組織の MCP レジストリから取得した MCP サーバーが、レジストリの `oauth` と `oauthScopes` の設定を使う（[Changelog v2.32](https://kiro.dev/changelog/cli/2-32/)） |
+| v2.33.1（2026-10-21） | V3 で、MCP サインインの後に固定された OAuth コールバックポートを占有したままにしない。利用できないオプションの Power の MCP サーバーがプロンプトのターンをブロックしない。V3 のレジストリから追加した MCP サーバーがカタログのパッケージバージョンで起動する。`kiro-cli mcp add --agent` が `tools` に含まれないエージェントにも付与する（[Changelog v2.33.1](https://kiro.dev/changelog/cli/2-33-1/)。→ [53. v2.34 新機能](53_v234NewFeatures.md)） |
+| v2.34.0（2026-10-23） | V3 のヘッドレスモードが、対話セッションで保存された MCP サインインを再利用する。ローカルの V3 セッションで、MCP ツールがフォームやリンクで入力を求める（MCP elicitation。URL 型は OAuth の認可フローの完了にも使われる）。HTTP のリモート MCP サーバーが同一オリジンのリダイレクトだけに従う（[Changelog v2.34](https://kiro.dev/changelog/cli/2-34/)。→ [53. v2.34 新機能](53_v234NewFeatures.md)） |
 
 公式 [MCP Registry の OAuth for remote registry servers](https://kiro.dev/docs/mcp/registry/#oauth-for-remote-registry-servers)（公式更新日 2026-10-20）は、Kiro CLI V3 が、組織のレジストリが提供するリモートサーバーの `oauth` と `oauthScopes` の設定を使うこと、一致するレジストリの上書きでローカル用にこれらの値を置き換えられること、これらのフィールドは `mcp.json` のリモートサーバーと同じ形式であることを説明しています。公式 [MCP configuration](https://kiro.dev/docs/mcp/configuration/)（公式更新日 2026-10-07）は、認可サーバーの `issuer` が RFC 8414 に従って完全に一致する必要があること（「OAuth issuer mismatch」）を説明していますが、v2.29.1 の修正との対応関係は記載がなく**未確認**です。認可 URL の表示（v2.29.0）と OAuth リンクの消去（v2.32.0）に対応する記述も、公式の MCP configuration・MCP Registry・Slash commands には確認できず、**未確認**です。詳細は [48. v2.29 新機能](48_v229NewFeatures.md)・[51. v2.32 新機能](51_v232NewFeatures.md) を参照してください。
 
@@ -94,5 +96,5 @@ MCP サーバーごとの OAuth 設定（`~/.kiro/settings/mcp.json` のサー�
 
 ---
 
-**最終更新**: 2026-10-21  
-**対象バージョン**: Kiro CLI v2.12.0（認証管理コマンドは v2.11.0。v2.29.0〜v2.32.0 の変更を追記）
+**最終更新**: 2026-10-25  
+**対象バージョン**: Kiro CLI v2.12.0（認証管理コマンドは v2.11.0。v2.29.0〜v2.34.0 の変更を追記）

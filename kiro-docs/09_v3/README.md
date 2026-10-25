@@ -136,9 +136,9 @@ V3 限定の追加・変更は次のとおりです（V2 でも使える `/fulls
 
 > **V3 専用コマンドの扱い**: `/workflow`・`/sessions`・`/config`・`/powers` は V2 安定版のスラッシュコマンド数（[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md)）に含めず、本セクションで扱います。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/) には `/workflow` のサブコマンド（`run`・`new`・`list`・`status`・`pause`・`resume`・`cancel`・`retry`）が掲載されています（→ [45](../01_features/45_v226NewFeatures.md)）。
 
-### v2.28.0〜v2.33.0 での追加（Hook のカテゴリ一致・Memory・サンドボックス・autonomous ほか）
+### v2.28.0〜v2.34.0 での追加（Hook のカテゴリ一致・Memory・サンドボックス・autonomous・MCP elicitation ほか）
 
-V3 限定の追加・変更は次のとおりです。**v2.33.0 は公式 Changelog に未掲載**で、CLI 内蔵 changelog のみを出典としています（公式 `kiro.dev/changelog/cli/2-33/` は存在しません）。
+V3 限定の追加・変更は次のとおりです。v2.33.0 は前回の反映時には公式 Changelog に未掲載で CLI 内蔵 changelog のみを出典としていましたが、現在は公式 `kiro.dev/changelog/cli/2-33/` に掲載されているため、公式を出典としています。
 
 | 版 | V3 の追加・変更 | 詳細 |
 |----|---------------|------|
@@ -148,7 +148,9 @@ V3 限定の追加・変更は次のとおりです。**v2.33.0 は公式 Change
 | v2.31.0 | **ローカルコマンドサンドボックス（`/sandbox`）**、**ローカル autonomous モード（`/autonomous`）**、MCP ツールのオンデマンド読み込み（既定）、⚠ **`KIRO_HOME` が V3 のグローバル設定・サインイン・セッション・エージェント状態に適用**、⚠ 保存済み `sandbox.json`（`enabled: true`）が V3 ヘッドレス実行に適用 | [50](../01_features/50_v231NewFeatures.md) |
 | v2.31.1 | 非対話実行が保存済みの compaction と Tool Search の設定を適用、Mermaid 図の描画（公式 Terminal UI は 2.31.1 以降と記載。V2／V3 の区別は changelog にない）、Windows の `/sandbox setup` | [50](../01_features/50_v231NewFeatures.md) |
 | v2.32.0 | 書き込み承認でのフォルダ許可と承認スコープ表示、非対話実行の `--cloud`／`--repo`、Workflow の実行前の計画プレビュー・平易な言葉での変更・Powers／MCP の利用、⚠ review loop が 2 回の却下で一時停止、⚠ ステップのセッションがタスクで開く、出力スタイル 3 種（Proactive／Explanatory／Learning）、組織の MCP レジストリの `oauth`／`oauthScopes` | [51](../01_features/51_v232NewFeatures.md) |
-| v2.33.0 | **フォルダの信頼確認**（hooks・agents・MCP サーバー・workflows の読み込み前。非対話実行での扱いは未確認）、Workflow の計画承認のステップツリー、Workflow の GitHub PR ウォッチ、🔒 サンドボックスのネットワーク規則の大文字小文字、🔒 Windows の hook コマンド（CLI 内蔵 changelog のみ、公式 Changelog 未掲載） | [52](../01_features/52_v233NewFeatures.md) |
+| v2.33.0 | **ワークスペースの信頼確認**（hooks・agents・MCP サーバー・steering・workflows・言語サーバー設定の読み込み前。対象は対話型の V3 セッションで、非対話実行と V1・V2 は確認なしに読み込む）、**モデルフォールバックの設定**、Workflow の計画承認のステップツリー、Workflow の GitHub PR ウォッチ、🔒 サンドボックスのネットワーク規則の大文字小文字、🔒 Windows の hook コマンド | [52](../01_features/52_v233NewFeatures.md) |
+| v2.33.1 | ⚠ **Workflows は依頼したときだけ開始**（有効にしても自動では始まらない）、V2 のセッションを V3 で再開したときの保存済みツール承認の案内、サブエージェントの Skills・ナレッジベース、`@builtin` の Web 検索、ホームフォルダでのユーザーエージェントのルール保持 | [53](../01_features/53_v234NewFeatures.md) |
+| v2.34.0 | **MCP elicitation**（ローカルの V3 セッションで MCP ツールがフォームやリンクで入力を求める）、**Workflow use**（`chat.workflowLaunch`）、Workflow の計画承認への変更案の入力、**`/memories` からの Memory の削除**（`Ctrl+D`）、**`--trust-workspace`**、ツール承認の Allow once／Deny once の順序、解析できない shell コマンドの自動拒否、サブエージェントの MCP の範囲、🔒 HTTP のリモート MCP サーバーの同一オリジンのリダイレクト、ヘッドレス実行の MCP サインインの再利用 | [53](../01_features/53_v234NewFeatures.md) |
 
 **Hook のカテゴリ一致（v2.28.0）**: 公式 [Hook types](https://kiro.dev/docs/hooks/types/)（公式更新日 2026-10-10）の CLI タブは、`matcher` がツールのセレクターまたは正規表現であり、タグにはカテゴリ `read`・`write`・`shell`・`web`・`subagent`・`spec`・`context`、ソースセレクター `@builtin`・`@mcp`・`@powers`、MCP ツール用の `@<server>`・`@<server>/<tool>` があると説明しています。**V3 は CLI 2.x のツール名を展開しません。** `fs_read` や `grep` は V3 の ID でもタグでもないため、カテゴリのタグ（`read`）または V3 の ID（`read_file`、`grep_search`）を使います。旧名がどのグループに対応するかは公式 [Hooks migration](https://kiro.dev/docs/cli/v3/hooks-migration/#migrate-tool-matchers) にあり、V2 の端末 UI（v2.29.0 以降）での V2 エンジンのグループ一致と `tool_tags` は [22. Hooks](../01_features/22_Hooks.md) を参照してください。
 
@@ -219,7 +221,7 @@ kiro-cli diagnostic --format json-pretty
 - [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md) — V2 → V3 エージェント設定移行（v2.14.0）
 - [01_features/41〜46. v2.22〜v2.27 新機能](../01_features/46_v227NewFeatures.md) — Workflows・`/tools trust-all`・Output style・`SessionEnd`・保存済みプロンプトのコマンド化ほか（[41](../01_features/41_v222NewFeatures.md)・[42](../01_features/42_v223NewFeatures.md)・[43](../01_features/43_v224NewFeatures.md)・[44](../01_features/44_v225NewFeatures.md)・[45](../01_features/45_v226NewFeatures.md)・[46](../01_features/46_v227NewFeatures.md)）
 - [07_aidlc/](../07_aidlc/README.md) — AI-DLC（AWS Labs OSS 方法論）。v3 の純正 Spec agent とは別物（→ [01. 仕様駆動開発](01_spec-driven-development.md) の比較表）
-- [01_features/47〜52. v2.28〜v2.33 新機能](../01_features/52_v233NewFeatures.md) — Hook のカテゴリ一致・Memory・サンドボックス・autonomous・`KIRO_HOME`・Workflows の拡張・フォルダの信頼確認ほか（[47](../01_features/47_v228NewFeatures.md)・[48](../01_features/48_v229NewFeatures.md)・[49](../01_features/49_v230NewFeatures.md)・[50](../01_features/50_v231NewFeatures.md)・[51](../01_features/51_v232NewFeatures.md)・[52](../01_features/52_v233NewFeatures.md)）
+- [01_features/47〜53. v2.28〜v2.34 新機能](../01_features/53_v234NewFeatures.md) — Hook のカテゴリ一致・Memory・サンドボックス・autonomous・`KIRO_HOME`・Workflows の拡張・ワークスペースの信頼確認・MCP elicitation・Workflow use ほか（[47](../01_features/47_v228NewFeatures.md)・[48](../01_features/48_v229NewFeatures.md)・[49](../01_features/49_v230NewFeatures.md)・[50](../01_features/50_v231NewFeatures.md)・[51](../01_features/51_v232NewFeatures.md)・[52](../01_features/52_v233NewFeatures.md)・[53](../01_features/53_v234NewFeatures.md)）
 - [02_update/01_changelog.md](../02_update/01_changelog.md) — v2.8.0 / v2.8.1 の変更履歴
 
 ### 公式情報源
@@ -235,5 +237,5 @@ kiro-cli diagnostic --format json-pretty
 
 ---
 
-**最終更新**: 2026-10-21（v2.28.0〜v2.33.0 の V3 追加・変更（Hook のカテゴリ一致、Memory、サンドボックス、autonomous、`KIRO_HOME`、Workflows の拡張、フォルダの信頼確認ほか）と、CLI 3.0 での V3 既定化・Classic からの切り替え提案の注記を追加。v2.27.1 の出典を公式 Changelog の Patches 節に更新）
+**最終更新**: 2026-10-25（v2.33.1・v2.34.0 の V3 追加・変更を追加し、v2.33.0 の出典を公式 Changelog に更新）／ 2026-10-21（v2.28.0〜v2.33.0 の V3 追加・変更（Hook のカテゴリ一致、Memory、サンドボックス、autonomous、`KIRO_HOME`、Workflows の拡張、フォルダの信頼確認ほか）と、CLI 3.0 での V3 既定化・Classic からの切り替え提案の注記を追加。v2.27.1 の出典を公式 Changelog の Patches 節に更新）
 **対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x 以降 ＋ `--v3` で提供。3.0.0 GA は未リリース。

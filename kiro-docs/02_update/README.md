@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.33.0（本サイト反映済。v2.8.0 で CLI v3 Early Access）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.34.0（本サイト反映済。v2.8.0 で CLI v3 Early Access）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,7 +26,9 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
-| **v2.33.0** | 2026-10-20 | [V3] フォルダの信頼確認・Workflow の計画承認ツリー・🔒 セキュリティ修正2件 | [V3] hooks・agents・MCP サーバー・workflows の読み込み前にフォルダを信頼するか確認、[V3] Workflow の計画承認ステップツリー・GitHub PR ウォッチ、`grep` の並列スキャン・Mermaid のサブグラフ（`[V3]` 表記なしの項目は V2／V3 の適用範囲が**未確認**）、🔒 [V3] サンドボックスのネットワーク規則のホスト名の大文字小文字・Windows の hook コマンド、修正20件（**公式Changelogサイト未掲載、CLI内蔵changelogのみ**） |
+| **v2.34.0** | 2026-10-23 | [V3] MCP elicitation・Workflow の起動方針と計画の修正・Memory の削除・`/model edit` | [V3] MCP ツールがフォームやリンクで入力を求める、`/settings` の **Workflow use**（Only when asked／Only for large tasks／As much as possible）、[V3] Workflow の計画承認に変更案を入力、[V3] `/memories` で `Ctrl+D` による削除、`/model edit`（V2／V3 の適用範囲は未確認）、[V3] `--trust-workspace`、🔒 [V3] HTTP のリモート MCP サーバーは同一オリジンのリダイレクトだけに従う、修正17件 |
+| **v2.33.1** | 2026-10-21 | ⚠ [V3] Workflows は依頼したときだけ開始 | [V3] Workflows を有効にしても自動では始まらない、`kiro-cli mcp add --agent` が `tools` に含まれないエージェントにも付与、スクリーンリーダー使用時の `/tools`、V2 から V3 へのセッション再開、V3 のサブエージェント・MCP・画像の修正ほか（修正15件） |
+| **v2.33.0** | 2026-10-20 | [V3] ワークスペースの信頼確認・Workflow の計画承認ツリー・V3 のモデルフォールバック・🔒 セキュリティ修正2件 | [V3] hooks・agents・MCP サーバー・steering・workflows・言語サーバー設定の読み込み前に信頼を確認（非対話実行と V1・V2 は対象外）、[V3] Workflow の計画承認ステップツリー・PR ウォッチ、V2 の `grep` の並列スキャン、Mermaid のサブグラフ、[V3] サンドボックスのネットワーク規則のホスト名の大文字小文字・Windows の hook コマンド（公式 Changelog v2.33 に基づく） |
 | **v2.32.0** | 2026-10-15 | [V3] 書き込み承認でのフォルダ許可・非対話実行のクラウドセッション・Workflow の拡張 | [V3] 選んだフォルダをセッションで許可、[V3] 非対話実行の `--cloud`／`--repo`、[V3] Workflow の計画プレビュー・平易な言葉での変更・ステップでの Powers と MCP、⚠️ [V3] Workflow の review loop は 2 回の却下で一時停止・ステップのセッションはタスクで開く、⚠️ V2 のサブエージェントがモデルフォールバック設定に従う、[V3] 出力スタイル 3 種、OSC 7501 の端末プログラム状態（`KIRO_NO_PROGRAM_STATUS`）、改善11件・修正18件 |
 | **v2.31.1** | 2026-10-14 | Mermaid 図のチャット内描画・V3 非対話実行の保存済み設定 | フローチャート・シーケンス図・状態遷移図・ER 図を端末内のアートとして描画、[V3] 非対話実行が保存済みの compaction と Tool Search の設定を適用、Windows の `/sandbox setup`・IAM Identity Center の隔離パーティション対応ほか修正9件 |
 | **v2.31.0** | 2026-10-13 | [V3] ローカルコマンドサンドボックスと autonomous モード | [V3] `/sandbox`（shell コマンドと子プロセスを OS のサンドボックス内に置く）、[V3] `/autonomous on`、[V3] MCP ツールのオンデマンド読み込み、⚠️ `KIRO_HOME` が V3 のグローバル設定・サインイン・セッション・エージェント状態に適用、⚠️ 保存済み `sandbox.json` が V3 ヘッドレス実行に適用（`--sandbox`）、修正7件 |
@@ -468,11 +470,18 @@ timeline
                    : 非対話実行の --cloud
                    : [V3] Workflow の計画プレビュー
 
-    section v2.33.0 フォルダの信頼確認
+    section v2.33.0 ワークスペースの信頼確認
         2026-10-20 : v2.33.0
-                   : [V3] フォルダの信頼確認
+                   : [V3] ワークスペースの信頼確認
                    : [V3] Workflow の計画承認ツリー
                    : サンドボックスのネットワーク規則の修正
+        2026-10-21 : v2.33.1
+                   : [V3] Workflows は依頼したときだけ開始
+    section v2.34.0 MCP elicitation・Workflow use
+        2026-10-23 : v2.34.0
+                   : [V3] MCP elicitation
+                   : Workflow use と計画の修正
+                   : Memory の削除
 ```
 
 ## 🔗 移行情報
@@ -546,7 +555,8 @@ timeline
 - [v2.30 新機能（V3 切替プロンプト・モデルフォールバック通知）](../01_features/49_v230NewFeatures.md) 🆕 - チャット開始時の V3 切替提案、[V3] モデルフォールバック通知、スクリーンリーダー（v2.30.0）
 - [v2.31 新機能（サンドボックス・autonomous モード）](../01_features/50_v231NewFeatures.md) 🆕 - [V3] `/sandbox`・`/autonomous`、MCP ツールのオンデマンド読み込み、`KIRO_HOME` の V3 全体への拡張、Mermaid 図（v2.31.0〜v2.31.1）
 - [v2.32 新機能（フォルダ許可・非対話クラウドセッション・Workflow 拡張）](../01_features/51_v232NewFeatures.md) 🆕 - [V3] 書き込み承認でのフォルダ許可、非対話実行の `--cloud`／`--repo`、Workflow の拡張、OSC 7501（v2.32.0）
-- [v2.33 新機能（フォルダの信頼確認）](../01_features/52_v233NewFeatures.md) 🆕 - [V3] フォルダの信頼確認、Workflow の計画承認ツリー、セキュリティ修正。公式 Changelog 未掲載・CLI 内蔵 changelog のみ（v2.33.0）
+- [v2.33 新機能（ワークスペースの信頼確認）](../01_features/52_v233NewFeatures.md) 🆕 - [V3] ワークスペースの信頼確認、Workflow の計画承認ツリー、V3 のモデルフォールバック、セキュリティ修正。
+- [v2.34 新機能（MCP elicitation・Workflow use）](../01_features/53_v234NewFeatures.md) 🆕 - [V3] MCP elicitation、Workflow の起動方針と計画の修正、Memory の削除、`/model edit`、`--trust-workspace`（v2.33.1・v2.34.0）
 
 ### リファレンス（辞書） 🆕
 - [04_reference/](../04_reference/README.md) — Settings / Slash Commands / CLI Commands / Built-in Tools の網羅的辞書
@@ -577,5 +587,5 @@ timeline
 
 ---
 
-**最終更新**: 2026-10-21
-**対象バージョン**: Kiro CLI v2.33.0
+**最終更新**: 2026-10-25
+**対象バージョン**: Kiro CLI v2.34.0

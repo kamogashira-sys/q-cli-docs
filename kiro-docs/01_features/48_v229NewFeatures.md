@@ -47,7 +47,7 @@ Kiro が作業から有用なコンテキストを学び、後のセッション
 - 入力して一覧を絞り込める。一覧には保存されているメモリの件数が表示される
 - 各行にタイトル・1 行の説明・更新からの経過時間が表示される
 - `ctrl+p` またはクリックでプレビュー（type・scope・更新時刻・説明）、`Enter` またはダブルクリックで全体（内容・ID・タイムスタンプを追加）を開く
-- 一覧は読み取り専用。メモリの修正や削除は、チャットで Kiro に依頼する（`read & write` の信頼済みワークスペースでのみ可能）
+- 一覧では閲覧とプレビューができる。メモリの修正は、チャットで Kiro に依頼する（`read & write` の信頼済みワークスペースでのみ可能）。v2.34.0 以降は、一覧または詳細の画面で `Ctrl+D` を押すと、選択したメモリを削除できる（`y` で確認、`n` で残す。→ [53. v2.34 新機能](53_v234NewFeatures.md)）
 
 ### セッションでの表示
 
@@ -232,5 +232,5 @@ Classic と V2 の Knowledge 検索が、すべてのベースにわたる 1 つ
 - [Knowledge Management](https://kiro.dev/docs/cli/experimental/knowledge-management/)
 - `kiro-cli settings list --all` / `kiro-cli agent --help` / `kiro-cli agent upgrade --help` / `kiro-cli acp --help`（実機 2.33.0）
 
-**最終更新**: 2026-10-21
+**最終更新**: 2026-10-25
 **対象バージョン**: Kiro CLI v2.29.0+（Memory・V3 ACP／MCP の挙動変更は V3 Early Access、`agent upgrade` は V2・V3 の両方が読む形式へ変換するコマンド）

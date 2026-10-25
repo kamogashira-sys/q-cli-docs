@@ -2,7 +2,7 @@
 
 # Kiro CLI Slash Commands リファレンス
 
-**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-10-20）
+**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-10-20。`/model` の節は 2026-10-24 版と照合）
 
 Kiro CLI のインタラクティブチャットセッション内で使用できるすべてのスラッシュコマンドを網羅する辞書的リファレンスです。
 
@@ -98,9 +98,10 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 > /model claude-opus-4.6              # 直接指定
 > /model clau<Tab>                    # Tab 補完
 > /model set-current-as-default       # 現在のモデルを既定として保存（v2.14.1 以降は必須）
-> /model fallback                      # 現在のモデルのフォールバックを表示（V1・V2）
+> /model fallback                      # 現在のモデルのフォールバックを表示（V1・V2）／フォールバックのピッカーを開く（V3、v2.33.0+）
 > /model fallback <model-id>           # フォールバックを設定（V1・V2）
 > /model fallback clear                # フォールバックを解除（V1・V2）
+> /model edit                          # /model のピッカーに表示するモデルを選ぶ（v2.34.0+）
 ```
 
 > **セッション限定（v2.14.1+）**: `/model` の選択は**現在のセッションにのみ適用**されます。既定として保存するには `/model set-current-as-default` を実行します（保存先は `chat.defaultModel`）。
@@ -115,9 +116,11 @@ Help Agent に切り替えて Kiro CLI 機能について質問、または clas
 > - モデル自身をフォールバックにはできない。1 ターンでモデルが切り替わるのは最大 3 回で、試行済みまたは利用不可の候補は飛ばされる
 > - API キーのセッションではフォールバックを設定できない（`This session's credentials cannot configure model fallbacks. Sign in to Kiro to configure one.` と表示される）
 >
-> V3 の端末 UI セッションでは `/model fallback` ではなく、モデルが別のモデルへ移ったことが transcript に通知されます（公式 [Terminal UI の Model fallback notices](https://kiro.dev/docs/cli/terminal-ui/#model-fallback-notices)）。→ [46. v2.27 新機能](../01_features/46_v227NewFeatures.md)・[51. v2.32 新機能](../01_features/51_v232NewFeatures.md)・[49. v2.30 新機能](../01_features/49_v230NewFeatures.md)
+> **モデルフォールバック（V3、v2.33.0+）**: V3 のセッションでも、モデルフォールバックを設定できます。`/model` の設定ペインの **Fallback** 行と `/model fallback` のコマンドが、エージェントが対応していれば、選択を保存します。保存した選択は現在のセッションに適用され、以降のセッションにも保持されます（v2.33.0 より前の V3 セッションは、フォールバックを設定できませんでした）。引数なしの `/model fallback` は、現在のモデルのフォールバックのピッカーを開きます。**None** を選ぶとフォールバックを off にし、拒否されてもターンは現在のモデルに留まります。選択を解除すると、拒否にはベンダー既定のモデルが答えます。エージェントが対応していないときは `This agent does not support configuring a model fallback` と表示され、セッションの認証情報が設定を保存できないときは **Fallback** 行が `read-only` になります。保存した選択は `/model` の **Fallback** 行で確認できます。ターンが別のモデルに移ると、transcript がそれを報告します（公式 [Terminal UI の Model fallback notices](https://kiro.dev/docs/cli/terminal-ui/#model-fallback-notices)）。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/#model)（公式ページ最終更新 2026-10-24）の「Model fallback (V3)」に基づきます。→ [46. v2.27 新機能](../01_features/46_v227NewFeatures.md)・[51. v2.32 新機能](../01_features/51_v232NewFeatures.md)・[49. v2.30 新機能](../01_features/49_v230NewFeatures.md)・[52. v2.33 新機能](../01_features/52_v233NewFeatures.md)
 >
-> **作業中のピッカー（v2.28.0+）と Tab 補完（v2.33.0）**: Kiro の作業中でも `/model` と `/effort` のピッカーが開き、選択は現在のターンが終わった後に適用されます（公式 Changelog v2.28。公式 Slash commands には記載がなく、V2／V3 の区別は changelog にないため**未確認**）。`/model ` の後に Tab を押すと、`set-current-as-default` をモデルとして一覧せず、サブコマンドとして表示します（v2.33.0。CLI 内蔵 changelog のみで確認、公式 Changelog 未掲載、V2／V3 の適用範囲は**未確認**）。
+> **`/model edit`（v2.34.0+）**: **Models in /model** を開き、`/model` のピッカーに表示するモデルを選びます。Space または Enter で、モデル・プロバイダー・すべてのモデルのどれかを切り替えます。隠したモデルも、`/model <model-id>`・`--model`・エージェント設定・フォールバック設定では引き続き使えます（公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/#model)）。実機 2.34.0 では、選択が設定キー `chat.modelPicker.hiddenModels` に保存されます（→ [設定リファレンス](01_settings.md)）。changelog に `[V3]` の表記はなく、公式にも V2／V3 の記載がないため、V2 でも使えるかは**未確認**です。→ [53. v2.34 新機能](../01_features/53_v234NewFeatures.md)
+>
+> **作業中のピッカー（v2.28.0+）と Tab 補完（v2.33.0+）**: Kiro の作業中でも `/model` と `/effort` のピッカーが開き、選択は現在のターンが終わった後に適用されます（公式 Changelog v2.28。公式 Slash commands には記載がなく、V2／V3 の区別は changelog にないため**未確認**）。`/model ` の後に Tab を押すと、`set-current-as-default` をモデルとして一覧せず、サブコマンドとして表示します（v2.33.0。出典: [公式 Changelog v2.33](https://kiro.dev/changelog/cli/2-33/)。公式 Changelog にも V2／V3 の記載がなく、適用範囲は**未確認**）。
 >
 > 変遷: v2.6.0 で自動永続化（`set-current-as-default` 不要）→ v2.12.3 で sticky default 化 → **v2.14.1 でセッション限定へ回帰**。出典: [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)（`#patch-2-14-1`）。公式 [In-session settings](https://kiro.dev/docs/cli/chat/settings/#persistence)（公式ページ最終更新 2026-10-20）も、`/model` の選択は現在のセッションにのみ適用されると説明しています。
 
@@ -861,11 +864,12 @@ fullscreen は会話専用のターミナル画面（alternate screen）で、�
 
 ### 公式情報源
 
-- [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-10-20）
+- [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-10-20。`/model` の節は 2026-10-24 版と照合）
 - [Fullscreen mode](https://kiro.dev/docs/cli/fullscreen/)
 
 ---
 
-**Page updated**: 2026-10-21（v2.28.0〜v2.33.0 対応: コマンド数は 42 のまま変更なし。`/model` に V1・V2 の `fallback` サブコマンドと公式のフォールバックの説明、`/knowledge` に V3 の既定有効と Classic・V2 の検索修正、`/fullscreen` に Copy on select、V3 の `/tangent` に `merge`（v2.27.1。公式 Slash commands・Tangent に掲載済み）を追記。V3 専用の `/autonomous`・`/sandbox`・`/memories` を除外注記に追加）
+**Page updated**: 2026-10-25（v2.33.1・v2.34.0 対応: コマンド数は 42 のまま変更なし。`/model` に `edit`（v2.34.0）と V3 のモデルフォールバック（v2.33.0。公式 Slash commands の更新日 2026-10-24）を追記し、`/model ` の Tab 補完（v2.33.0）の出典を公式 Changelog に更新）
+**前回更新**: 2026-10-21（v2.28.0〜v2.33.0 対応: コマンド数は 42 のまま変更なし。`/model` に V1・V2 の `fallback` サブコマンドと公式のフォールバックの説明、`/knowledge` に V3 の既定有効と Classic・V2 の検索修正、`/fullscreen` に Copy on select、V3 の `/tangent` に `merge`（v2.27.1。公式 Slash commands・Tangent に掲載済み）を追記。V3 専用の `/autonomous`・`/sandbox`・`/memories` を除外注記に追加）
 **前回更新**: 2026-10-04（v2.22.0 の `/fullscreen` を追加しコマンド数を 42 に更新。v2.23.0 の `/model` の推論設定と `/effort` のレガシー化、v2.24.0 の `/tools trust-all` の確認、v2.27.0 の V3 `todo_list` 廃止、v2.27.1 の `/model fallback`（CLI 内蔵 changelog のみ）を反映。V3 専用コマンド `/sessions`・`/config`・`/workflow` の案内を冒頭注記に追加）。2026-08-29（V3 専用 `/powers`（v2.20.1）を除外注記から案内し、安定版41コマンドの SSoT を維持。`/settings display` の Preserve scrollback（v2.20.0）を反映。前回 2026-08-16: `/voice` を追加しコマンド数を41に更新）
-**公式ページ最終更新**: 2026-10-20
+**公式ページ最終更新**: 2026-10-20（`/model` の節は 2026-10-24 版と照合）

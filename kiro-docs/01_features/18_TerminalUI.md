@@ -466,7 +466,7 @@ Classic インターフェースは非推奨になり、起動時に通知が表
 - **モデルフォールバックの通知**: 公式 [Terminal UI の Model fallback notices](https://kiro.dev/docs/cli/terminal-ui/#model-fallback-notices)（公式更新日 2026-10-20）によると、V3 の端末 UI セッションでは、モデルがターンを拒否した場合や利用できなかった場合に別のモデルへ移ったことが transcript に通知されます。通知は、そのターンに応答したモデル、モデルが会話のモデルになったか、または応答したモデルがなかったことを示し、応答したモデルがない場合は `/model` で別のモデルを選びます。V2 の端末 UI ではターン単位のフォールバックが既定で有効で（v2.27.1 で追加。→ [46. v2.27 新機能](46_v227NewFeatures.md)）、`/model fallback` で確認・変更します（V1・V2 に適用）。
 - **スクリーンリーダー対応**: 公式 [In-session settings の Screen reader support](https://kiro.dev/docs/cli/chat/settings/#screen-reader-support)（公式更新日 2026-10-20）によると、フル端末 UI で、返信がストリーミングされ、プロンプトが空の間は、非表示の端末カーソルが返信テキストを追います。入力を始める、メニューを開く、承認に応答すると、カーソルは入力に戻ります。設定 `chat.screenReader` は `auto`（既定）・`on`・`off` で、グローバルのみです。`auto` はローカルの Mac で VoiceOver が動作していることを検出した場合に有効になり、SSH などのリモート接続・他のプラットフォーム・検出の失敗や時間切れでは無効のままなので、その場合は `on` を選びます。起動 1 回だけ上書きするには環境変数 `KIRO_SCREEN_READER` に `auto`・`on`・`off` を設定します。有効なとき IME 入力の位置が変わることがあります。
 
-### v2.31.1（2026-10-14リリース）・v2.33.0（2026-10-20リリース）: Mermaid 図の描画
+### v2.31.1（2026-10-14リリース）・v2.33.0（2026-10-20リリース）・v2.34.0（2026-10-23リリース）: Mermaid 図の描画
 
 公式 [Terminal UI の Mermaid diagrams](https://kiro.dev/docs/cli/terminal-ui/#mermaid-diagrams)（公式更新日 2026-10-20）は、Kiro CLI 2.31.1 以降が、エージェントの返信に含まれる対応する Mermaid のコードブロックを端末上のアートとして描画すると説明しています。
 
@@ -479,7 +479,9 @@ Classic インターフェースは非推奨になり、起動時に通知が表
 
 未完了のブロックがストリーミングされている間は **Drawing diagram** と表示されます。図が広すぎる・大きすぎる・未対応、または未対応の構文を使っている場合は、ソースと理由が表示されます。ASCII アートが off の場合、または `KIRO_ASCII_MODE=1` の場合は、常にソースが表示されます。
 
-v2.33.0 の CLI 内蔵 changelog には、サブグラフを含む Mermaid のフローチャートの描画と、Mermaid のノード説明の見やすさ（最大 4 行に折り返し、それより長いテキストは省略記号）の項目があります。v2.33.0 は公式 Changelog に未掲載で、これらが V2 専用か両対応かは**未確認**です（→ [52. v2.33 新機能](52_v233NewFeatures.md)）。
+**v2.33.0 以降**: 公式 [Terminal UI の Mermaid diagrams](https://kiro.dev/docs/cli/terminal-ui/#mermaid-diagrams)（公式更新日 2026-10-21）によると、フローチャートは `subgraph ... end` のブロックをタイトル付きの枠として描画し、`<br/>` で新しいラベルの行を始め、ノードの枠を最初のスタイルクラス（`A:::focal` または `class A,B focal`）の色で塗ります。色が付くのは、テーマがクラス名（`function`・`class`・`file`・`directory`・`external`・`focal`）を知っているときです。ノードのラベルは最大 4 行に折り返され、それより長いテキストは省略記号で終わります。ネストされたサブグラフは未対応で、Kiro はソースを表示します。`classDef`・`style`・`linkStyle` の文は読み飛ばされ、色は図ではなくテーマから決まります。公式 Changelog v2.33 と公式 Terminal UI は、これらが V2 専用か両対応かを明記していないため**未確認**です（→ [52. v2.33 新機能](52_v233NewFeatures.md)）。
+
+**v2.34.0**: チャット内の Mermaid 図が、生の HTML を表示したり描画に失敗したりせず、より多くの場合に描画されるよう修正されました（公式 [Changelog v2.34](https://kiro.dev/changelog/cli/2-34/)。V2／V3 の適用範囲は**未確認**。→ [53. v2.34 新機能](53_v234NewFeatures.md)）。また、`chat.allowIcons` が off のとき、端末が罫線文字とブロック文字を使わず、矢印キーを単語として読み上げるよう修正されました（公式 Changelog v2.34。V2／V3 の適用範囲は**未確認**）。
 
 ### v2.32.0（2026-10-15リリース）: 端末へのプログラム状態の報告（OSC 7501）
 
@@ -514,5 +516,5 @@ KIRO_NO_PROGRAM_STATUS=1 kiro-cli chat
 
 ---
 
-**最終更新**: 2026-10-21
-**対象バージョン**: Kiro CLI v1.28.0+（v2.0.0 でデフォルト UI 化、v2.18.0 Spec review screen導入、v2.19.0 マウス対応、v2.20.0 Preserve scrollbackトグル追加、v2.22.0 `/fullscreen`、v2.26.0 Classic 非推奨、v2.28.0 Classic からの 3.0 切替提案、v2.30.0 スクリーンリーダー、v2.31.1 Mermaid 図、v2.32.0 OSC 7501）
+**最終更新**: 2026-10-25
+**対象バージョン**: Kiro CLI v1.28.0+（v2.0.0 でデフォルト UI 化、v2.18.0 Spec review screen導入、v2.19.0 マウス対応、v2.20.0 Preserve scrollbackトグル追加、v2.22.0 `/fullscreen`、v2.26.0 Classic 非推奨、v2.28.0 Classic からの 3.0 切替提案、v2.30.0 スクリーンリーダー、v2.31.1 Mermaid 図、v2.32.0 OSC 7501、v2.33.0 Mermaid のサブグラフ、v2.34.0 Mermaid の描画の修正）

@@ -96,6 +96,7 @@ kiro-cli chat [OPTIONS] [INPUT]
 | `--agent` | 使用するエージェントを指定。⚠ **v2.27.1+**（公式 [Exit codes](https://kiro.dev/docs/reference/exit-codes/)・[Changelog v2.27 の Patches 節](https://kiro.dev/changelog/cli/2-27/#patch-2-27-1)）: 非対話実行（`--no-interactive`、V2 または V3）で指定エージェント（または V3 の新規セッションでの `chat.defaultAgent`）が利用できない場合は既定エージェントで回答せず **exit 4**（Requested Agent Not Found）、それ以外の理由で適用できない場合は **exit 1** で終了。名前を指定しない実行（`--agent` なしの再開を含む）は対象外で、`--trust-all-tools` に関係なく適用される（→ [15. Exit Codes](../01_features/15_ExitCodes.md)） |
 | `--trust-all-tools` | 全ツールを確認なしで使用 |
 | `--trust-tools` | 特定ツールのみ信頼（カンマ区切り） |
+| `--trust-workspace` | **[V3] ワークスペースの信頼確認を 1 回の起動だけ省略（v2.34.0+）**: **Trust this workspace?** 画面を表示せず、フォルダの hooks・agents・MCP サーバー・workflows を確認なしに読み込む。決定は保存されないため、以前に信頼を保存していないフォルダでは、次の起動で再び確認される。公式 CLI commands（公式更新日 2026-10-20）には未掲載のため、公式 [Permissions](https://kiro.dev/docs/permissions/#trust-a-workspace-in-kiro-cli) と実機 2.34.0 の `kiro-cli chat --help` を出典とする（→ [53. v2.34 新機能](../01_features/53_v234NewFeatures.md)） |
 | `--require-mcp-startup` | MCP サーバー起動失敗時に exit code 3 で終了。v2.22.0 以降、非対話の V3 実行では開始前に MCP サーバーの起動を待つ（公式 Exit codes は、失敗・起動状態が判定できない場合・30 秒以内に状態の報告がない場合も exit code 3 と説明） |
 | `--effort <LEVEL>` | セッションの初期の推論 effort（`low`/`medium`/`high`/`xhigh`/`max`、v2.6.0+）。v2.27.0 以降は非対話実行にも適用。V3 では起動時のセッションにだけ適用され、既定としては保存されない（公式 Reasoning effort） |
 | `--model <MODEL>` | 使用するモデル。v2.26.1 以降は V2 の `--no-interactive` 実行にも適用され、空でない値を明示するとエージェントのモデルと再開したセッションの保存済みモデルを上書きする |
@@ -488,9 +489,13 @@ MCP サーバーを追加・置換。
 | `--env` | 環境変数: `key1=value1,key2=value2` |
 | `--timeout` | 起動タイムアウト（ミリ秒） |
 | `--force` | 既存サーバーを上書き |
+| `--agent` | 追加先のエージェント名。指定しないときは、グローバルの `mcp.json` に追加する。v2.33.1 で、`tools` リストに新しいサーバーを含まないエージェントにもそのサーバーを付与し、`chat.enableAutoAgentUpgrade` が on のとき V3 向けにエージェントファイルをアップグレードするようになった。公式 CLI commands の `mcp add` の表には未掲載のため、公式 [MCP configuration](https://kiro.dev/docs/mcp/configuration/#adding-servers-to-a-specific-agent) と実機 2.34.0 の `kiro-cli mcp add --help` を出典とする |
 
 ```bash
 kiro-cli mcp add --name my-server --command "node server.js" --scope workspace
+
+# 特定のエージェントに追加する（v2.33.1 で付与の動作が修正された）
+kiro-cli mcp add --name git-server --agent rust-dev
 ```
 
 #### `kiro-cli mcp remove`
@@ -760,6 +765,7 @@ set -x KIRO_LOG_NO_COLOR 1
 
 ---
 
-**Page updated**: 2026-10-21（v2.28.0〜v2.33.0 対応: `agent upgrade <dir>`（v2.29.0。公式 CLI commands 未掲載のため公式 Upgrading agent configs と実機 2.33.0 を出典と明記）、`chat` の `--sandbox`（v2.31.0）と `--cloud`／`--repo` の V3 非対話実行（v2.32.0）、`KIRO_HOME` の V3 全体への拡張（v2.31.0）、環境変数 `KIRO_SCREEN_READER`・`KIRO_NO_PROGRAM_STATUS` を追加。`--agent` の exit 4 と `KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` の出典を公式 Exit codes・Headless mode に更新。公式 CLI commands の `chat` 引数表・`agent` のサブコマンド表と照合した）
+**Page updated**: 2026-10-25（v2.34.0 対応: `chat` の `--trust-workspace`（V3）を追加。`mcp add` の `--agent`（v2.33.1 の修正）を追加）
+**前回更新**: 2026-10-21（v2.28.0〜v2.33.0 対応: `agent upgrade <dir>`（v2.29.0。公式 CLI commands 未掲載のため公式 Upgrading agent configs と実機 2.33.0 を出典と明記）、`chat` の `--sandbox`（v2.31.0）と `--cloud`／`--repo` の V3 非対話実行（v2.32.0）、`KIRO_HOME` の V3 全体への拡張（v2.31.0）、環境変数 `KIRO_SCREEN_READER`・`KIRO_NO_PROGRAM_STATUS` を追加。`--agent` の exit 4 と `KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` の出典を公式 Exit codes・Headless mode に更新。公式 CLI commands の `chat` 引数表・`agent` のサブコマンド表と照合した）
 **前回更新**: 2026-10-04（v2.22.0〜v2.27.1対応: `kiro-cli powers`（v2.25.0）を追加、`chat` の `--effort`・`--model` を表に追加、`--require-mcp-startup`（v2.22.0）・`--cloud`（v2.23.0／v2.24.1）・`--resume`（v2.27.0）・`--agent`（v2.27.1、CLI 内蔵 changelog のみ）の変更を反映、環境変数 `KIRO_CHAT_UI`・`KIRO_SKIP_BINARY_PINNING`・`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` を追加）  。2026-09-13（v2.21.x対応: `chat --sessions`（v2.21.0、V3/KAS 限定のセッションダッシュボード直接起動）・`--v2`（v2.21.4、単一実行のハーネス選択）を追加、既存の `--v3`／`--agent-engine` を表に明記。公式が言及する `chat.agentEngine` は実機 2.21.4 に存在しないため設定キーとしては記載しない。前回 2026-08-16（v2.16.1〜v2.18.1対応: 新規サブコマンド `kiro-cli crew`（v2.16.1）・`kiro-cli voice-serve`／`kiro-cli voice-cloud-setup`（いずれもv2.18.0）を追加、`chat --cloud`／`--repo`（v2.17.0、Cloud Sessions）を追加、`--resume-id` の説明をクラウドセッション対応に拡張）。本サイト初版 2026-05-24）  
 **公式ページ最終更新**: 2026-10-20

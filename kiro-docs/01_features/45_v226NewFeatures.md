@@ -68,6 +68,9 @@ Workflow のモニター内では、`p` で一時停止、状態に応じて `r`
 | v2.27.0 | **Workflows: sub-agent tool** 設定（メインチャットの委譲方法の選択）、ステップの接続失敗を最大 24 時間再試行（→ [46. v2.27 新機能](46_v227NewFeatures.md)） |
 | v2.27.1 | `--no-interactive` 実行で Workflows が完了まで接続を維持（`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS`）（公式 [Changelog v2.27 の Patches 節](https://kiro.dev/changelog/cli/2-27/#patch-2-27-1)） |
 | v2.28.0 | ⚠ **Workflows: sub-agent tool** の設定行を削除。保存済みの値は動作に影響せず、Workflows が有効な V3 チャットは常に Workflows で委譲（→ [47. v2.28 新機能](47_v228NewFeatures.md)） |
+| v2.33.0 | Workflow の計画承認がステップツリーで表示される。PR ウォッチがマージコンフリクト・失敗したチェック・スレッドの回答で動く（→ [52. v2.33 新機能](52_v233NewFeatures.md)） |
+| v2.33.1 | ⚠ Workflows を有効にしても自動では始まらず、依頼したときだけ実行される（→ [53. v2.34 新機能](53_v234NewFeatures.md)） |
+| v2.34.0 | `/settings` の **Workflow use** で起動の方針を選べる（`chat.workflowLaunch`）。計画の承認に変更案を入力できる（→ [53. v2.34 新機能](53_v234NewFeatures.md)） |
 
 ## ⚠️ Classic インターフェースの非推奨通知
 
@@ -129,5 +132,5 @@ Classic とターミナル UI の違いは [18. Terminal UI](18_TerminalUI.md) �
 - [Slash commands — `/workflow`](https://kiro.dev/docs/reference/slash-commands/)
 - [Terminal UI — Using the classic interface](https://kiro.dev/docs/cli/terminal-ui/#using-the-classic-interface)
 
-**最終更新**: 2026-10-21
+**最終更新**: 2026-10-25
 **対象バージョン**: Kiro CLI v2.26.0+（Workflows・承認チェック強化は V3 Early Access）

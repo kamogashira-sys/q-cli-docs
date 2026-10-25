@@ -80,7 +80,7 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 | ├── | **Resources** | |
 | │　├── | Blog [(/blog/)](https://kiro.dev/blog/) | 技術ブログ |
 | │　├── | Changelog [(/changelog/)](https://kiro.dev/changelog/) | バージョン履歴 |
-| │　│　└── | CLI Changelog [(/changelog/cli/)](https://kiro.dev/changelog/cli/) | Kiro CLI のリリースノート。系列ページ `/changelog/cli/<メジャー>-<マイナー>/`（2-28〜2-32 が存在）と、系列内パッチの専用ページ `/changelog/cli/2-31-1/`（v2.31.1）を持つ。ほかのパッチ版（例: v2.29.1）は系列ページの Patches 節に掲載される。v2.33.0 の系列ページ `/changelog/cli/2-33/` は存在せず（HTTP 404）、v2.33.0 は公式サイトに未掲載（→ 本サイト [変更履歴](../02_update/01_changelog.md)） |
+| │　│　└── | CLI Changelog [(/changelog/cli/)](https://kiro.dev/changelog/cli/) | Kiro CLI のリリースノート。系列ページ `/changelog/cli/<メジャー>-<マイナー>/`（2-28〜2-34 が存在）と、系列内パッチの専用ページ `/changelog/cli/2-31-1/`（v2.31.1）・`/changelog/cli/2-33-1/`（v2.33.1）を持つ。ほかのパッチ版（例: v2.29.1）は系列ページの Patches 節に掲載される（→ 本サイト [変更履歴](../02_update/01_changelog.md)） |
 | │　├── | FAQs [(/faq/)](https://kiro.dev/faq/) | よくある質問 |
 | │　├── | Report a bug [(GitHub Issues)](https://github.com/kirodotdev/Kiro/issues/new/choose) | バグ報告 |
 | │　├── | Suggest an idea [(GitHub Issues)](https://github.com/kirodotdev/Kiro/issues/new?template=feature_request.yml) | 機能提案 |
@@ -115,7 +115,7 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 - **[Kiro公式ブログ](https://kiro.dev/blog/)**
 
 ### 本サイトでの対応文書
-- [機能詳細ガイド](../01_features/README.md) — 52機能 + カテゴリ別ナビゲーション
+- [機能詳細ガイド](../01_features/README.md) — 53機能 + カテゴリ別ナビゲーション
 - [Smart Hooks](../01_features/22_Hooks.md) 🆕
 - [Agent Steering](../01_features/23_Steering.md) 🆕
 - [@file references](../01_features/24_FileReferences.md) 🆕
@@ -126,4 +126,4 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 
 ---
 
-**最終更新**: 2026-10-21（機能数 52 に同期、スラッシュコマンドは 42 種のまま。Memory・Workflows・Local command sandbox・Exit codes・CLI Changelog の系列ページをサイト構造表に追加）／ 前回 2026-10-04（機能数 46・スラッシュコマンド 42 種に同期）／ 前回 2026-07-25（公式 v3 ドキュメントに新設された Upgrade Agent（/docs/cli/v3/upgrade-agent/）をサイト構造表に追加、機能数 34 に同期）／ 前回 2026-07-04（公式 v3 ドキュメント /docs/cli/v3/ 系5ページをサイト構造表に反映）
+**最終更新**: 2026-10-25（機能数 53 に同期、CLI Changelog の系列ページを 2-34 まで・パッチの専用ページに 2-33-1 を追記し、v2.33.0 の「未掲載」の記述を削除）／ 前回 2026-10-21（機能数 52 に同期、スラッシュコマンドは 42 種のまま。Memory・Workflows・Local command sandbox・Exit codes・CLI Changelog の系列ページをサイト構造表に追加）／ 前回 2026-10-04（機能数 46・スラッシュコマンド 42 種に同期）／ 前回 2026-07-25（公式 v3 ドキュメントに新設された Upgrade Agent（/docs/cli/v3/upgrade-agent/）をサイト構造表に追加、機能数 34 に同期）／ 前回 2026-07-04（公式 v3 ドキュメント /docs/cli/v3/ 系5ページをサイト構造表に反映）

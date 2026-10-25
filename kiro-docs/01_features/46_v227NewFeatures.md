@@ -20,7 +20,7 @@ Workflows（v2.26.0、→ [45. v2.26 新機能](45_v226NewFeatures.md)）を有�
 | on（既定） | サブエージェントへ直接（`invoke_sub_agent`）、または Workflows 経由（`run_workflow`） |
 | off | Workflows 経由（`run_workflow`）のみ。1 つのカスタムエージェントをバックグラウンドで動かすには `agent://<name>` を指定する |
 
-> ⚠ **v2.28.0 での変更**: `/settings` > Features の **Workflows: sub-agent tool** の行は v2.28.0 で削除され、保存済みの値は動作に影響しなくなりました。Workflows が有効な V3 チャットは常に Workflows で委譲します。詳細と公式ドキュメント間の食い違いは [47. v2.28 新機能](47_v228NewFeatures.md) を参照してください。以下は v2.27.0 時点の説明です。
+> ⚠ **v2.28.0 での変更**: `/settings` > Features の **Workflows: sub-agent tool** の行は v2.28.0 で削除され、保存済みの値は動作に影響しなくなりました。Workflows が有効な V3 チャットは常に Workflows で委譲します。詳細と公式ドキュメント間の食い違いは [47. v2.28 新機能](47_v228NewFeatures.md) を参照してください。さらに、v2.33.1 で、Workflows を有効にしても Workflow は依頼したときだけ開始する動作になり、v2.34.0 で **Workflow use** により起動の方針を選べるようになりました（→ [53. v2.34 新機能](53_v234NewFeatures.md)）。以下は v2.27.0 時点の説明です。
 
 off にしても、Workflow のステップ内のエージェントは、エージェント設定が許可していればサブエージェントを使えます。選択は `chat.enableMainAgentSubagentTool` として保存され、新しいセッションに適用されます（公式 [In-session settings](https://kiro.dev/docs/cli/chat/settings/#settings-features)・[Workflows](https://kiro.dev/docs/workflows/)）。
 
@@ -155,5 +155,5 @@ CI などで終了コードを分岐している場合は確認してくださ�
 - [Slash commands](https://kiro.dev/docs/reference/slash-commands/)・[Headless mode](https://kiro.dev/docs/cli/headless/)
 - `kiro-cli version --changelog=2.27.0`（v2.27.1 は実機 2.33.0 の内蔵 changelog に含まれません）
 
-**最終更新**: 2026-10-21
+**最終更新**: 2026-10-25
 **対象バージョン**: Kiro CLI v2.27.0+（Workflows・保存済みプロンプトのコマンド化・`/tangent merge` は V3 Early Access）

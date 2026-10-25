@@ -7,7 +7,7 @@
 Kiro CLI **v2.28.0**（2026-10-05）では、Classic の対話セッションから 3.0（V3）へ切り替える提案が表示されるようになり、V3 の Hook がツールのカテゴリで一致できるようになりました。長い V3 セッションの安定性も改善され、⚠ V3 の Workflows 有効時の委譲は常に Workflows 経由になりました。系列ページ（`changelog/cli/2-28/`）に Patches 節はなく、v2.28 系列の版は v2.28.0 のみです。
 
 - **機能追加**: Classic の対話セッションからの 3.0 切替提案、[V3] ツールカテゴリによる Hook の一致
-- **変更**: ⚠ [V3] `Workflows: sub-agent tool` の設定行を廃止（Workflows が有効なら常に Workflows で委譲）
+- **変更**: ⚠ [V3] `Workflows: sub-agent tool` の設定行を廃止（Workflows が有効なら常に Workflows で委譲。v2.33.1 で「依頼したときだけ開始」に変わり、v2.34.0 で **Workflow use** により起動の方針を選べる → [53. v2.34 新機能](53_v234NewFeatures.md)）
 - **改善**: ターン途中の `/model`・`/effort`、V3 の長いセッション、中断されたツールの状態表示、Full Screen の Copy on select、Windows の V2 の MCP サーバー引数、アクティビティトレイ
 - **バグ修正**: 3 件
 
@@ -139,5 +139,5 @@ kiro-cli settings chat.fullscreenCopyOnSelect false
 - [Fullscreen mode](https://kiro.dev/docs/cli/fullscreen/)
 - `kiro-cli settings list --all`（実機 2.33.0）
 
-**最終更新**: 2026-10-21
+**最終更新**: 2026-10-25
 **対象バージョン**: Kiro CLI v2.28.0+（Hook のカテゴリ一致・Workflows 委譲の一貫化は V3 Early Access）

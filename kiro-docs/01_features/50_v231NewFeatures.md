@@ -214,7 +214,7 @@ kiro-cli chat --v3 --sandbox --no-interactive "Run the test suite and summarize 
 - 未完成のブロックがストリーミングされている間は **Drawing diagram** と表示される
 - 図が広すぎる、大きすぎる、未対応、または未対応の構文を使っている場合、Kiro はソースと理由を表示する
 - [ASCII アートが off](https://kiro.dev/docs/cli/chat/settings/#settings-display) のとき、または `KIRO_ASCII_MODE=1` が設定されているとき、Kiro は常にソースを表示する。`chat.allowAsciiArt` は、off にすると braille 点・罫線・Unicode 記号を平易な ASCII に置き換える設定（公式 In-session settings、Page updated: 2026-10-20）
-- 公式 Terminal UI のこの節は、V2／V3 のどちらに適用されるかを明記していません（**未確認**）。v2.33.0 では、サブグラフを含むフローチャートの描画と、ノード説明の折り返しが加わっています（→ [52. v2.33 新機能](52_v233NewFeatures.md)）
+- 公式 Terminal UI のこの節は、V2／V3 のどちらに適用されるかを明記していません（**未確認**）。v2.33.0 では、サブグラフを含むフローチャートの描画と、ノード説明の折り返しが加わっています（公式 Terminal UI は 2.33 以降の挙動として説明していますが、V2／V3 の別は明記していません。→ [52. v2.33 新機能](52_v233NewFeatures.md)）
 
 ### V3 非対話実行に保存済みの compaction と Tool Search の設定を適用（バグ修正）
 
@@ -294,5 +294,5 @@ Windows の `/sandbox setup` が一時フォルダの外で実行されるよう
 - [CLI commands リファレンス](https://kiro.dev/docs/reference/cli-commands/)
 - `kiro-cli settings list --all` / `kiro-cli chat --help`（実機 2.33.0）
 
-**最終更新**: 2026-10-21
+**最終更新**: 2026-10-25
 **対象バージョン**: Kiro CLI v2.31.0+（サンドボックス・autonomous モード・オンデマンドの MCP ツール・保存済み `sandbox.json` の適用は V3 Early Access）

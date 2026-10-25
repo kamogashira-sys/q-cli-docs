@@ -2,7 +2,7 @@
 
 # Kiro CLI Settings リファレンス
 
-**出典**: [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-10-15、実機 2.27.1・2.33.0 で確認）
+**出典**: [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-10-24、実機 2.27.1・2.33.0・2.34.0 で確認）
 
 Kiro CLI の設定項目を網羅的に記述する辞書的リファレンスです。各設定の意味、型、設定例を一覧します。構成は公式リファレンスの8カテゴリに準拠し、公式未掲載ながら実機で確認できる設定は「[補遺](#補遺-公式リファレンス未掲載の設定実機確認)」に掲載しています。
 
@@ -219,6 +219,7 @@ TUI のショートカットを上書き。`ctrl+`、`shift+`、`alt+`/`meta+` �
 | `introspect.tangentMode` | boolean | introspect で自動的に tangent mode（classic のみ。同上、V3版には非適用） | `kiro-cli settings introspect.tangentMode true` |
 | `chat.enableTodoList` | boolean | todo リスト有効化（classic のみ）。⚠️ v2.27.0 以降、V3 は `todo_list` ツールを提供しないため V3 では効果なし（公式 Settings リファレンスも同旨） | `kiro-cli settings chat.enableTodoList true` |
 | `chat.enableWorkflows` | boolean | [V3] Workflows を有効化（v2.26.0+。アカウントで利用可能な場合のみ）。変更後は Kiro CLI の再起動が必要。`/settings features` の **Workflows** に対応 | `kiro-cli settings chat.enableWorkflows true` |
+| `chat.workflowLaunch` | string | [V3] Workflow の起動方針（v2.34.0+）: `when-asked`（既定）・`large-tasks`・`delegate-all`。`/settings features` の **Workflows** の下に表示される **Workflow use**（**Only when asked**／**Only for large tasks**／**As much as possible**）の選択は、このキーに保存される（公式 Settings）。選択肢の名称と値（`when-asked`・`large-tasks`・`delegate-all`）の対応は公式に明記がなく**未確認**。現在のセッション（可能な場合）と、その後の新しいセッションに適用される。v2.33.1 で、Workflows を有効にしても Workflow は依頼したときだけ開始する動作になった（→ [53. v2.34 新機能](../01_features/53_v234NewFeatures.md)） | `kiro-cli settings chat.workflowLaunch large-tasks` |
 | `chat.enableMainAgentSubagentTool` | boolean | [V3] Workflows 有効時に、メインチャットからサブエージェントへの直接の委譲を残す（v2.27.0+、既定 `true`）。`false` でメインチャットの委譲を Workflows 経由に限定。`/settings features` の **Workflows: sub-agent tool** に対応。⚠ **v2.28.0 で設定行が廃止され、保存済みの値は動作に影響しません**（Workflows が有効な V3 チャットは常に Workflows で委譲。公式 [Changelog v2.28](https://kiro.dev/changelog/cli/2-28/)）。実機 2.33.0 の説明は「Legacy setting with no effect: while workflows is enabled, chat delegates only through workflows」。公式 Settings リファレンス（公式ページ最終更新 2026-10-15）は引き続き本行を有効な設定として記載しており、公式間で食い違っています（→ [47. v2.28 新機能](../01_features/47_v228NewFeatures.md)） | `kiro-cli settings chat.enableMainAgentSubagentTool false` |
 | `chat.enableCheckpoint` | boolean | checkpoint 有効化（classic のみ） | `kiro-cli settings chat.enableCheckpoint true` |
 | `chat.enableDelegate` | boolean | delegate ツール有効化（classic のみ） | `kiro-cli settings chat.enableDelegate true` |
@@ -278,6 +279,9 @@ Whisper によるオンデバイス音声文字起こし（`/voice`、v2.18.0+�
 | `chat.enableAutoAgentUpgrade` | boolean | — | 起動時に V2 のエージェント設定を V3 形式へ自動アップグレードする: `true`（無通知で実行）・`false`（実行しない）。未設定の場合は 1 回確認する。**実機 2.33.0 で確認**（v2.30.0 の切り替えプロンプトの説明に対応） | `kiro-cli settings chat.enableAutoAgentUpgrade true` |
 | `memory.mode` | string | — | [V3] 新しいセッションの Memory のアクセス: `read_write`・`read_only`・`disabled`。KAS（V3）エンジンが必要。**実機 2.33.0 で確認**。`/memories` の `config` に対応（→ [48. v2.29 新機能](../01_features/48_v229NewFeatures.md)） | `kiro-cli settings memory.mode read_only` |
 | `memory.reflection` | boolean | — | [V3] 新しいセッションの Automatic memory updates。`read_write` のアクセスでのみ有効。**実機 2.33.0 で確認** | `kiro-cli settings memory.reflection false` |
+| `chat.modelPicker.hiddenModels` | array of strings | — | `/model` のピッカーに表示しないモデル ID（v2.34.0+）。`/model edit` の **Models in /model** で切り替える。隠したモデルも `/model <model-id>`・`--model`・エージェント設定・フォールバック設定では使える。**実機 2.34.0 で確認**（説明文「Model ids the /model picker leaves out (array of strings)」）。公式 Settings リファレンスに記載はない（→ [53. v2.34 新機能](../01_features/53_v234NewFeatures.md)） | `/model edit`（設定キーを直接書き換えるより、画面で選ぶ方法が確実） |
+| `chat.workflow.continueInterrupted` | boolean | — | 再接続後に中断された Workflow を続行する。**実機 2.34.0 で確認**（説明文「Continue interrupted workflows after reconnecting (boolean)」）。公式 Settings リファレンスに記載はなく、v2.34.0 の「Workflow が再起動後に続きから再開する」修正との関係は**未確認** | `kiro-cli settings chat.workflow.continueInterrupted true` |
+| `chat.workflowMonitor.mouseEnabled` | boolean | — | Workflow モニターのマウス操作を有効にする。**実機 2.34.0 で確認**（説明文「Enable workflow monitor mouse controls (boolean)」）。公式 Settings リファレンスに記載はない | `kiro-cli settings chat.workflowMonitor.mouseEnabled true` |
 
 > - `autocomplete.disable` は実機 2.10.0 で `kiro-cli settings autocomplete.disable` による読み書きは可能ですが、`settings list --all` の一覧には表示されません（2026-07-04 実機確認）。
 > - このほか実機の `list --all` には `api.*`（サービスエンドポイント系）、`chat.disableTrustAllConfirmation`、`chat.enableCodeIntelligence`、`chat.enableSubagent`、`chat.hasSeenLogo` 等の**内部向け・未文書化キー**が存在しますが、公式ドキュメントに説明がなく日常の利用で変更する必要がないため、本リファレンスでは一覧掲載を見送っています。
@@ -473,6 +477,7 @@ kiro-cli settings list --all
 
 ---
 
-**Page updated**: 2026-10-21（v2.28.0〜v2.33.0 対応: 公式 Settings リファレンスの `chat.screenReader` と環境変数 `KIRO_SCREEN_READER`、`KIRO_HOME` の V3 での説明を追加。`chat.fullscreenCopyOnSelect`・`chat.agentEngine`・`chat.enableAutoAgentUpgrade`・`memory.mode`・`memory.reflection` を実機 2.33.0 に基づき追加。`chat.enableMainAgentSubagentTool` に v2.28.0 での設定行の廃止を注記。`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` の出典を公式 Headless mode に更新し、`KIRO_NO_PROGRAM_STATUS` を追加）
+**Page updated**: 2026-10-25（v2.33.1・v2.34.0 対応: 公式 Settings リファレンス（公式更新日 2026-10-24）の設定キー・環境変数を本ページと照合し、不足していた `chat.workflowLaunch` を追加。`chat.modelPicker.hiddenModels`・`chat.workflow.continueInterrupted`・`chat.workflowMonitor.mouseEnabled` を実機 2.34.0 に基づき補遺に追加）
+**前々回更新**: 2026-10-21（v2.28.0〜v2.33.0 対応: 公式 Settings リファレンスの `chat.screenReader` と環境変数 `KIRO_SCREEN_READER`、`KIRO_HOME` の V3 での説明を追加。`chat.fullscreenCopyOnSelect`・`chat.agentEngine`・`chat.enableAutoAgentUpgrade`・`memory.mode`・`memory.reflection` を実機 2.33.0 に基づき追加。`chat.enableMainAgentSubagentTool` に v2.28.0 での設定行の廃止を注記。`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` の出典を公式 Headless mode に更新し、`KIRO_NO_PROGRAM_STATUS` を追加）
 **前回更新**: 2026-10-04（v2.22.0〜v2.27.1 対応: `chat.sessionDashboard.scope`・`chat.outputStyle`・`chat.enableWorkflows`・`chat.enableMainAgentSubagentTool` を公式リファレンスに基づき追加、`chat.startFullscreen`・`chat.fullscreenWheelRows`・`chat.sessionDashboard.sortBy` を実機 2.27.1 に基づき追加、`chat.sessionDashboard.indexResponses` の既定 `true` を公式に基づき記入、`chat.enableTodoList` に V3 で無効の注記、環境変数 `KIRO_SKIP_BINARY_PINNING`・`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS`・`NODE_USE_SYSTEM_CA` と `.env` 自動読み込み廃止の注記を追加）。2026-09-13（v2.21.2 で `chat.preserveScrollback` の既定が `false` → `true` に変更されたことを反映（実機 2.21.4 の設定パネル定義で `defaultValue` が真値であることを確認）。v2.21.1 の `chat.spinnerVerbs`・`chat.enableCustomSpinnerVerbs`、v2.21.4 の `chat.sessionDashboard.indexResponses`、および `chat.sessionDashboard.groupBy`・`chat.keybindings.toggleSessionDashboard` を追加。公式が言及する `chat.agentEngine` が実機に存在しない旨の注記を追加。前回 2026-08-29: v2.20.0 の Preserve scrollback toggle と v2.20.1 の `chat.historyMode` CLI 設定拒否修正、Windows における `app.disableAutoupdates` 修正を反映）
 **公式ページ最終更新**: 2026-10-15
