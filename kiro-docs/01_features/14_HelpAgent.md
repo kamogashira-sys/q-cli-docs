@@ -14,7 +14,7 @@ Kiro CLI v1.25.0（2026年2月4日リリース）で追加されたHelp Agent機
 
 Help Agentは、**Kiro CLIドキュメントを使用した組み込みヘルプエージェント**です。一般的なAI応答ではなく、実際のKiro CLIドキュメントから情報を取得して回答します。
 
-> **📌 v1.29.7 以降の重要な変更**: TUI モードでは `/help` の挙動が「コマンドパネル表示」に変更されました。TUI で対話型ヘルプを使いたい場合は **[`/guide`（Kiro guide agent）](20_GuideAgent.md)** をご使用ください。詳細は [/help / /plan / /guide の使い分け](#help--plan--guide-の使い分け) を参照。
+> **📌 v1.29.7 以降の重要な変更**: TUI モードでは `/help` の挙動が「コマンドパネル表示」に変更されました。TUI で対話型ヘルプを使いたい場合は **[`/guide`（Kiro guide agent）](20_GuideAgent.md)** をご使用ください。詳細は [/help / /plan / /guide の使い分け](#-help--plan--guide-の使い分け) を参照。
 
 ### 🔀 /help / /plan / /guide の使い分け
 

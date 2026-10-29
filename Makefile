@@ -87,7 +87,7 @@ check-kiro-quick: check-kiro-counts check-kiro-links check-kiro-consistency chec
 check-kiro-counts:
 	@./scripts/kiro-docs/check-counts.sh
 
-# 内部リンクチェック（相対リンク実在＋アンカー見出し検査）
+# 内部リンクチェック（相対リンク実在＋アンカー見出し検査。日本語・ページ内アンカーを含む）
 check-kiro-links:
 	@./scripts/kiro-docs/check-links.py --check-anchors
 
@@ -95,7 +95,7 @@ check-kiro-links:
 check-kiro-consistency:
 	@./scripts/kiro-docs/check-consistency.sh
 
-# changelog 構造チェック（バージョン降順・日付書式・「N件」と箇条書き数の一致）
+# changelog 構造チェック（バージョン降順・日付書式・「N件」と箇条書き数の一致・見出しの重複）
 check-kiro-changelog:
 	@./scripts/kiro-docs/check-changelog.sh
 

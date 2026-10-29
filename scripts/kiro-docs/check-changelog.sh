@@ -9,6 +9,8 @@
 #   2. 各バージョン見出しに `（YYYY-MM-DD）` の日付があるか
 #   3. 件数注記 `**カテゴリ（N件）**:` の N と直後の箇条書き（`- ` 行）数が一致するか
 #      （注記のない節はスキップ。カテゴリ: 機能追加/改善/バグ修正/セキュリティ 等）
+#   4. `## ` 見出しと `### vX.Y.Z` 見出しが重複していないか
+#      （2026-08-01 の移動作業で `## バージョン履歴` が 2 つになり、2026-10-29 まで残っていた）
 
 set -euo pipefail
 
@@ -68,6 +70,18 @@ mismatch=$(awk '
 if [ -n "$mismatch" ]; then
     echo "❌ カテゴリ件数と箇条書き数の不一致:"
     echo "$mismatch" | sed 's/^/   /'
+    errors=$((errors + 1))
+fi
+
+# ---- 4. 見出しの重複 ----
+echo "🔍 見出しの重複（## 見出し・### vX.Y.Z）を検証中..."
+dup=$( { grep -E '^## ' "$CHANGELOG"; grep -oE '^### v[0-9]+\.[0-9]+\.[0-9]+' "$CHANGELOG"; } | sort | uniq -d || true)
+if [ -n "$dup" ]; then
+    echo "❌ 重複している見出し:"
+    while IFS= read -r h; do
+        lines=$(awk -v h="$h" 'index($0, h) == 1 && (length($0) == length(h) || substr($0, length(h) + 1, 1) == " ") { print NR }' "$CHANGELOG" | paste -sd, -)
+        echo "   $h（行: $lines）"
+    done <<< "$dup"
     errors=$((errors + 1))
 fi
 

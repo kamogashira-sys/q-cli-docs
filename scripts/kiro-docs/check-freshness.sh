@@ -8,7 +8,9 @@
 # 機能:
 #   - 公式 Atom フィードの最新 CLI エントリ（link/id の changelog/cli/X-Y）と
 #     kiro-docs/02_update/01_changelog.md 先頭の ### vX.Y.Z を major.minor で比較
-#   - 一致: exit 0 ／ 差分（新バージョン掲載済み）: exit 1
+#   - 一致: exit 0 ／ フィードの方が新しい（新バージョン掲載済み）: exit 1
+#   - ドキュメントの方が新しい（公式未掲載の版を CLI 内蔵 changelog で反映済み）: 注記して exit 0
+#     （2026-10-29 以前は等値比較のため、この場合も exit 1 で「新バージョン掲載済み」と誤表示していた）
 #   - フィード取得失敗: 手動確認を促して exit 0（fail-safe。外部依存で CI を壊さない）
 #
 # 設計メモ:
@@ -51,6 +53,13 @@ echo "=== チェック結果 ==="
 
 if [ "$feed_mm" = "$doc_mm" ]; then
     echo "✅ ドキュメントは公式フィードの最新 CLI バージョンに追随しています"
+    exit 0
+fi
+
+newer=$(printf '%s\n%s\n' "$feed_mm" "$doc_mm" | sort -V | tail -1)
+if [ "$newer" = "$doc_mm" ]; then
+    echo "ℹ ドキュメント（v$doc_ver）は公式フィードの最新 CLI エントリ（v$feed_mm）より新しい版を掲載しています"
+    echo "   （公式サイト未掲載の版を CLI 内蔵 changelog で反映した状態。公式に掲載されたら出典を公式に差し替える）"
     exit 0
 fi
 

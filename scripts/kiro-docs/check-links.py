@@ -3,15 +3,19 @@
 
 使用方法:
     ./scripts/kiro-docs/check-links.py
-    ./scripts/kiro-docs/check-links.py --check-anchors   # アンカー(見出し)実在も検査(ASCIIのみ)
+    ./scripts/kiro-docs/check-links.py --check-anchors   # アンカー(見出し)実在も検査
     ./scripts/kiro-docs/check-links.py --check-anchors --paths <file...>
         # 指定ファイルのみ検査（既定の除外を適用しない。05_meta 等のローカル管理文書の
-        # 相互リンク・目次アンカー検証用。--paths 時は非 ASCII アンカーも検査する）
+        # 相互リンク・目次アンカー検証用）
 
 機能:
     - kiro-docs/**/*.md ＋ ルート README.md の相対 Markdown リンクを抽出
+      （フェンスコードブロックとインラインコード内のリンク記法は描画されないため対象外）
     - リンク先ファイルの実在を検証（アンカー #... は分離して判定）
-    - http(s)/mailto/tel/# 始まりはスキップ
+    - --check-anchors: 他ファイルへのアンカーと同一ファイル内アンカー（#... のみのリンク）の
+      見出し実在を検査する。日本語を含むアンカーも検査する（2026-10-29 以前は全体実行で
+      非 ASCII とページ内アンカーをスキップしており、実在の切れ 5 件を見逃していた）
+    - http(s)/mailto/tel はスキップ
 
 除外（スコープ外・原典準拠のため。ソースのスキャン／リンク先の検証の両方に適用）:
     - kiro-docs/06_embedded-docs/**     … 公式 OSS リポジトリの逐語コピー（GitHub 非公開・ローカル管理）
@@ -55,36 +59,61 @@ def slugify(heading):
     return s
 
 
+FENCE_OPEN_RE = re.compile(r"^\s*(`{3,}|~{3,})(.*)$")
+
+
+def fence_step(line, fence):
+    """CommonMark のフェンス判定。fence は開いているフェンス（文字列）か None。
+    閉じるのは、開始と同じ文字で同じ長さ以上、かつ情報文字列（```bash の bash 等）がない行だけ。
+    戻り値: (この行がフェンス行か, 次の fence)"""
+    m = FENCE_OPEN_RE.match(line.rstrip("\n"))
+    if not m:
+        return False, fence
+    marker, rest = m.group(1), m.group(2).strip()
+    if fence is None:
+        if marker[0] == "`" and "`" in rest:
+            return False, None   # 情報文字列にバッククォートを含む行は開始フェンスではない
+        return True, marker
+    if marker[0] == fence[0] and len(marker) >= len(fence) and rest == "":
+        return True, None
+    return False, fence      # 開いているフェンスの中身（```bash などは閉じない）
+
+
 def strip_code(txt):
     """フェンスコードブロックとインラインコードスパンを除去（コード内のリンク記法例は
     Markdown ではリンクとして描画されないため、リンク抽出の対象外にする）。"""
     out = []
-    in_fence = False
+    fence = None
     for line in txt.splitlines(keepends=True):
-        if line.lstrip().startswith("```"):
-            in_fence = not in_fence
+        is_fence, fence_next = fence_step(line, fence)
+        if is_fence or fence is not None:
+            fence = fence_next
             continue
-        if in_fence:
-            continue
+        fence = fence_next
         out.append(re.sub(r"`[^`\n]*`", "", line))
     return "".join(out)
 
 
 def collect_headings(filepath):
+    """見出しの slug 集合。GitHub と同じく、同じ slug の 2 つ目以降に -1, -2 … を付ける。"""
     slugs = set()
-    in_fence = False
+    seen = {}
+    fence = None
     try:
         with open(filepath, encoding="utf-8") as f:
             for line in f:
                 # フェンス内の「# コメント」を見出しと誤認しない
-                if line.lstrip().startswith("```"):
-                    in_fence = not in_fence
+                is_fence, fence_next = fence_step(line, fence)
+                if is_fence or fence is not None:
+                    fence = fence_next
                     continue
-                if in_fence:
-                    continue
+                fence = fence_next
                 m = HEADING_RE.match(line)
                 if m:
-                    slugs.add(slugify(m.group(1)))
+                    slug = slugify(m.group(1))
+                    n = seen.get(slug, 0)
+                    seen[slug] = n + 1
+                    slugs.add(slug if n == 0 else f"{slug}-{n}")
     except OSError:
         pass
     return slugs
@@ -115,7 +144,7 @@ def main():
     checked = 0
     broken = []
     anchor_broken = []
-    anchor_skipped = 0
+    anchor_checked = 0
     heading_cache = {}
 
     for f in files:
@@ -126,17 +155,16 @@ def main():
             txt = open(f, encoding="utf-8").read()
         except OSError:
             continue
-        if paths_mode:
-            # コードブロック内のリンク記法例（`[表示名](URL)` 等）を誤検出しない
-            txt = strip_code(txt)
+        # コードブロック内のリンク記法例（`[表示名](URL)` 等）を誤検出しない
+        txt = strip_code(txt)
         for m in LINK_RE.finditer(txt):
             target = m.group(2).strip()
-            # 同一ファイル内アンカー（#... のみのリンク）は既定ではスキップ。
-            # --paths では目次アンカー検証が目的のため検査する。
+            # 同一ファイル内アンカー（#... のみのリンク）
             if target.startswith("#"):
-                if paths_mode and check_anchors:
+                if check_anchors:
                     anchor = target[1:]
                     checked += 1
+                    anchor_checked += 1
                     if f not in heading_cache:
                         heading_cache[f] = collect_headings(f)
                     if anchor.lower() not in heading_cache[f]:
@@ -159,11 +187,7 @@ def main():
                 continue
             # アンカー検査（任意）
             if check_anchors and anchor and resolved.endswith(".md"):
-                # 非 ASCII を含むアンカーはスラッグ規則が複雑なため既定ではスキップ（誤検知防止）。
-                # --paths は目次アンカー検証が目的（対象が少なく目視確認可能）のため日本語も検査する。
-                if not anchor.isascii() and not paths_mode:
-                    anchor_skipped += 1
-                    continue
+                anchor_checked += 1
                 if resolved not in heading_cache:
                     heading_cache[resolved] = collect_headings(resolved)
                 if anchor.lower() not in heading_cache[resolved]:
@@ -178,7 +202,7 @@ def main():
 
     if check_anchors:
         print("")
-        print(f"アンカー検査: 切れ {len(anchor_broken)} 件 / スキップ(非ASCII) {anchor_skipped} 件")
+        print(f"アンカー検査: {anchor_checked} 件 / 切れ {len(anchor_broken)} 件")
         for f, t, a in anchor_broken:
             print(f"  ⚠️  {f}: '{t}'（見出し '#{a}' が見つからない）")
 

@@ -35,13 +35,13 @@ make check-kiro-freshness     # 新バージョン検知（フィード vs ド�
 | スクリプト | 目的 | 終了コード |
 |-----------|------|-----------|
 | `check-counts.sh` | 機能数（=機能テーブル行数）/ コマンド数（=スラッシュコマンド見出し数）と各所記述の一致 | 不一致で 1 |
-| `check-links.py` | `kiro-docs/**/*.md` ＋ ルート README の相対リンク実在（`--check-anchors` で見出しも。`--paths <file...>` で 05_meta 等の除外対象ファイルを個別検査、同一ファイル内・日本語アンカーも対象） | 切れで 1 |
+| `check-links.py` | `kiro-docs/**/*.md` ＋ ルート README の相対リンク実在。`--check-anchors` で他ファイルへのアンカーと同一ファイル内アンカーの見出し実在も検査（日本語アンカー・同名見出しの `-1` 付き ID を含む。コードブロック内のリンク記法は対象外で、フェンスは CommonMark と同じく情報文字列付きの行では閉じない）。`--paths <file...>` で 05_meta 等の除外対象ファイルを個別検査 | 切れで 1 |
 | `check-consistency.sh` | 取得日混入(`YYYY-MM-DD取得`)・`（vX.Y.Z対応）`の鮮度・出典日書式の存在・フッター更新日の ISO 書式・裸 URL 直後の全角文字（GitHub autolink 境界事故） | 不一致で 1 |
-| `check-changelog.sh` | `### vX.Y.Z` の降順・日付書式・`（N件）`と箇条書き数の一致 | 不一致で 1 |
+| `check-changelog.sh` | `### vX.Y.Z` の降順・日付書式・`（N件）`と箇条書き数の一致・`## ` 見出しと `### vX.Y.Z` の重複 | 不一致で 1 |
 | `check-structure.py` | 機能テーブル末尾＝changelog最新版・NN欠番・必須セクション・相互参照注記・changelog⇔機能文書リンク・更新履歴表先頭行＝changelog最新版 | 問題で 1 |
 | `check-notation.sh` | 実機に存在しない/標準表記に反するコマンド・フラグ表記（`--legacy-ui`・`kiro auth`・`settings set`・`kiro` 単体コマンド）の混入 | 検出で 1 |
 | `check-urls.sh` | `kiro-docs/**/*.md` ＋ ルート README の外部URLの HTTP 2xx/3xx（`--important`/`--dry-run`/`--sample N`） | エラーで 1 |
-| `check-freshness.sh` | 公式フィード最新 CLI エントリ vs changelog 先頭版の major.minor 比較（新バージョン検知） | 差分で 1・取得失敗は 0（fail-safe） |
+| `check-freshness.sh` | 公式フィード最新 CLI エントリ vs changelog 先頭版の major.minor 比較（新バージョン検知） | フィードが新しいと 1。ドキュメントが新しい（公式未掲載の版を反映済み）場合と取得失敗は注記して 0 |
 
 ### 正準値（単一情報源 / SSoT）
 
@@ -68,8 +68,7 @@ make check-kiro-freshness     # 新バージョン検知（フィード vs ド�
 
 機械化が困難な項目は、更新時に人手で確認してください。
 
-- [ ] **#7 バックアップ**: 大きな更新の前に対象ファイルの `.bak` を作成した（pre-commit フックは `.bak` を検査しません）。
-- [ ] **#8 コミットスコープ**: `git status` が意図したファイルのみを示す（`.bak` / `*_update_plan.md` / `work_records/` が混入していない）。
+- [ ] **#8 コミットスコープ**: `git status` が意図したファイルのみを示す（`*_update_plan.md` / `work_records/` が混入していない）。差分の確認と取り消しは Git で行う（追跡ファイルの `.bak` は 2026-10-29 に廃止。旧 #7）。
 - [ ] **#15 公式矛盾の扱い**: Ctrl+S 等、公式ページ間で記述が矛盾する箇所は、両論併記＋出典付き注記になっている。
 - [ ] **#17 公式ページ本文の再取得**: 公式ページ本文は `curl` で取得し grep でキーワード確認した。未公開 patch のような動的差し替えの可能性がある重要判断では実ブラウザでも確認した。
 
