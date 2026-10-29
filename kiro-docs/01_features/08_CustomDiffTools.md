@@ -460,7 +460,7 @@ catch (error) {                 |   }
 #### 実装
 
 **ツール**: VS Code
-```
+
 ```bash
 # VS Codeをインストール（公式サイトから）
 
@@ -605,7 +605,6 @@ echo "All diff tools installed!"
 
 - **表示専用**: 一時ファイルを表示
 - **編集不可**: GUI内での編集は保存されない
-```
 - **承認のみ**: Kiroの提案を承認するかどうかの判断のみ
 
 #### 推奨される使い方
@@ -749,7 +748,6 @@ kiro-cli settings chat.diffTool code
 1. VS Codeを起動
 2. Command Palette（Cmd+Shift+P）を開く
 3. "Shell Command: Install 'code' command in PATH"を実行
-```
 
 **原因2: パスが通っていない**
 

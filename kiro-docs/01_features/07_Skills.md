@@ -469,7 +469,6 @@ description: Comprehensive guide for advanced topics. Use when...
 6. [Best Practices](#best-practices)
 7. [Troubleshooting](#troubleshooting)
 8. [References](#references)
-```
 
 ## Overview
 
@@ -831,7 +830,6 @@ metadata:
 ---
 
 # DynamoDB Data Modeling
-```
 
 **Version**: 1.2.0  
 **Last Updated**: 2026-01-15

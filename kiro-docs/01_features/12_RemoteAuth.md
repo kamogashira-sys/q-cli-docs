@@ -265,8 +265,6 @@ RUN apt-get update && \
 
 # 作業ディレクトリ
 WORKDIR /workspace
-```
-
 
 CMD ["/bin/bash"]
 ```
