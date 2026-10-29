@@ -395,7 +395,7 @@ kiro-cli settings chat.enableKnowledge true
 
 **有効化**: `kiro-cli settings chat.enableTodoList true`
 
-> ⚠️ **V3 では提供されません（v2.27.0）**: V3 は `todo_list` ツールを提供しなくなり、V3 では `chat.enableTodoList` は効果を持ちません（公式 Changelog v2.27、公式 Settings リファレンスも「V3 does not provide `todo_list`」と記載）。V2 での提供は公式 changelog に変更の記載がないため、本節の内容を維持しています。→ [46. v2.27 新機能](../01_features/46_v227NewFeatures.md)
+> ⚠️ **V3 では提供されません（v2.27.0）**: V3 は `todo_list` ツールを提供しなくなり、V3 では `chat.enableTodoList` は効果を持ちません（公式 Changelog v2.27、公式 Settings リファレンスも「V3 does not provide `todo_list`」と記載）。公式 [Tools](https://kiro.dev/docs/tools/)（公式更新日 2026-10-13）は、`task`（別名 `todo`・`todo_list`）を「CLI 2.x legacy」に分類し、V3 の組み込みツールではないと説明しています。V2 での提供は公式 changelog に変更の記載がないため、本節の内容を維持しています。→ [46. v2.27 新機能](../01_features/46_v227NewFeatures.md)
 
 ### `session`（Session settings tool）
 

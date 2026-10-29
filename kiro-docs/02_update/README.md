@@ -54,9 +54,9 @@ kiro-cli version --changelog=all
 | **v2.21.0** | 2026-09-01 | [V3] セッションダッシュボード・設定パネル・クラウド設定適用 | [V3] `/sessions`（`kiro-cli chat --sessions`でも起動。ローカル/クラウドのセッションを閲覧・検索・再開・整理。**V3(KAS)限定**）、[V3] `/config`（agents・MCP・Powers・Steering・Skills・Hooksを1画面表示、local/cloud/both識別）、[V3] Kiro WebのConfiguration Syncでアップロードしたクラウド設定を新規ローカルセッションへ適用（ローカル`.kiro`に書き込まない）、Preserve scrollback・`/agent swap`ピッカー・V3タスクリスト表示等の修正7件 |
 | **v2.20.1** | 2026-08-27 | [V3] `/powers`・安定性修正 | [V3] `/powers`でインストール済み Powers を表示。Windows `app.disableAutoupdates`、認証、tools/hooks表示、`chat.historyMode`、V3 `/chat`・JSON書込み・資格情報・model/subagent回復を含む修正12件（詳細はCLI内蔵changelog、日付は公式Changelog） |
 | **v2.20.0** | 2026-08-26 | [V3] 全画面 Spec 実行・Preserve scrollback | `/spec run`の全画面タスク実行ビュー（リアルタイム進捗・実行前スコープ選択）、`/settings display`のPreserve scrollback、会話再開・大容量出力・V3認証/MCP等の修正9件 |
-| **v2.19.1** | 2026-08-21 | バグ修正・セキュリティ修正 | tmux < 3.7 でのoverflow-flush replay回避、`/knowledge`サブコマンド自動補完と`rm`エイリアス復元（V3）、TUI終了後の端末属性リーク修正等7件、[V3] `grep_search`/`file_search`が`.kiroignore`拒否パスを返さないよう修正（セキュリティ）（※公式Changelogページ本文に専用セクションなし・CLI内蔵changelogで確認） |
+| **v2.19.1** | 2026-08-21 | バグ修正・セキュリティ修正 | tmux 3.7 より前での再描画修正、[V3] `/knowledge`の自動補完（6サブコマンド）と`rm`エイリアス、TUI終了後の端末書式リセット等7件、[V3] `grep_search`/`file_search`が`.kiroignore`拒否パスを返さないよう修正（セキュリティ）（公式Changelog v2.19のPatches節に8項目掲載） |
 | **v2.19.0** | 2026-08-19 | サブエージェントタイムアウト・Spec reviewマウス対応 | サブエージェントのアイドルタイムアウト`api.subagentTimeout`（既定3600秒）、Spec review screenへのマウス対応（スクロール/クリック、`m`キー）、[V3] session resumeピッカーのAI生成タイトル要約、[V3] MCP protocol revision 2026-07-28対応、ストリームアイドル監視・自動リトライ等バグ修正25件 |
-| **v2.18.1** | 2026-08-14 | `/spec view`インラインレビュー化・tarセキュリティ修正 | [V3] `/spec view`が完全なspec文書を開いてインラインレビュー可能に変更、`tar --use-compress-program`/`--to-command`の危険フラグブロック（セキュリティ）、activity tray完了表示・thinking indicator着色・`/goal --max`順序等の修正7件（※公式Changelogサイト未掲載・CLI内蔵changelogで確認） |
+| **v2.18.1** | 2026-08-14 | `/spec view`インラインレビュー化・tarセキュリティ修正 | [V3] `/spec view`が完全なspec文書を開いてインラインレビュー可能に変更、`tar --use-compress-program`/`--to-command`は信頼済み`tar`でも承認が必要（セキュリティ）、activity tray完了表示・thinking indicator着色・`/goal --max`等の修正7件（公式Changelog v2.18のPatches節に9項目掲載） |
 | **v2.18.0** | 2026-08-12 | `/voice`音声入力・Cloud Sessions既定オプトイン化（破壊的変更） | オンデバイス音声認識`/voice`（Whisper、`Ctrl+O`/`Space`長押し、`--continuous`）、⚠️Cloud Sessionsが既定オプトイン化（未設定組織は無効）、[V3] Spec review screen（`Ctrl+X`で行コメントステージング）、[V3] Nested AGENTS.md（任意の深さに配置可） |
 | **v2.17.0** | 2026-08-11 | Cloud Sessions（プレビュー） | マネージドクラウドサンドボックスでセッション実行`--cloud`/`--repo`、切断後もエージェント継続動作、`--resume-id`で他マシンから再開、IAM Identity Center管理者向け Cloud Sessions (Preview) 設定（旧称 Kiro Web (Preview)） |
 | **v2.16.2** | 2026-08-06 | Agent Plugin形式Powers対応 | オープンなAgent Plugin形式に準拠したPowersがV3セッションで読み込み可能（skillとMCPをバンドル）、V3 specファイル自動修復、`/effort`ピッカーの`[default]`表示 |
@@ -65,7 +65,7 @@ kiro-cli version --changelog=all
 | **v2.15.2** | 2026-07-29 | `update.baseUrl`ポリシー・KIRO_API_KEY案内 | IT管理者向け`update.baseUrl`管理ポリシー（macOS MDM/Windows Group Policy）、`login`・`logout`が`KIRO_API_KEY`のunset要否を案内 |
 | **v2.15.1** | 2026-07-28 | [V3]限定バグ修正5件 | Hooks `confirmCommand`、GPT `invalid_union`修正、workspace-scope policy永続化、`/tools`リフレッシュ、`.kiroignore`書き込みブロック |
 | **v2.15.0** | 2026-07-27 | [V3] `/spec new`ガイド化・Plan mode自動実行 | `/spec new`にガイド付き説明ステップ追加、Plan mode承認後の自動実行、`chat.showThinkingTips`設定追加、`@prompt`参照・classicモードtrust prompt警告の修正 |
-| **v2.14.2** | 2026-07-24 | EUテレメトリのリージョンローカル化・モデル拒否メッセージ具体化 | テレメトリを EU ユーザー向けリージョンローカルエンドポイントへ送信、モデル拒否メッセージが `/model`・`/rewind`・`/chat new` を提示、TUI 強制色検出時のカラーコード漏れ修正、kitty 互換端末の終了後問題修正（※公式Changelogサイト未掲載・CLI内蔵changelogで確認） |
+| **v2.14.2** | 2026-07-24 | EUテレメトリのリージョンローカル化・モデル拒否メッセージ具体化 | テレメトリを EU ユーザー向けリージョンローカルエンドポイントへ送信、モデル拒否メッセージが `/model`・`/rewind`・`/chat new` を提示、色コード非対応の端末でのツール出力の色コード表示修正、kitty 互換端末の終了後問題修正（公式Changelog v2.14のPatches節に4項目掲載） |
 | **v2.14.1** | 2026-07-23 | /model・/effort のセッション限定化（方針転換） | `/effort set-current-as-default` 追加、起動スピナー追加、`/model`・`/effort` の選択がセッション限定へ回帰（既定化には `set-current-as-default`）、MCP の `structuredContent` 応答でのツール呼び出し失敗修正、終了時のターミナルモード復元修正 |
 | **v2.14.0** | 2026-07-22 | [V3] /upgrade-agent（V2 → V3 エージェント設定移行） | V2 エージェント設定を V2/V3 両対応の universal 形式へ変換する `/upgrade-agent`（`run`・`diagnostics`）、[V3] 自動ストリームリトライ、待機中の機能ヒント表示、`Ctrl+Z` 後の制御キー修復、[V3] `/plan` デッドロック・supervised 承認永続化ほか修正 |
 | **v2.13.1** | 2026-07-22 | エラー区別・Windows 安定性のバグ修正 | モデル過負荷と月次クォータのエラーを区別、`/context` の重複ファイル列挙修正、`/agent generate` のコードフェンス対応、Windows で MCP のコンソールウィンドウ非表示化・レジストリアクセスエラーの抑制 |
@@ -318,7 +318,7 @@ timeline
         2026-07-24 : v2.14.2
                    : EUテレメトリのリージョンローカル化
                    : モデル拒否メッセージの具体化
-                   : カラーコード漏れ・kitty端末の修正
+                   : 色コード非対応の端末での色コード表示・kitty端末の修正
 
     section v2.15.x / v2.16.0 Spec/Plan強化・Tangent(V3)
         2026-07-27 : v2.15.0
@@ -354,7 +354,7 @@ timeline
                    : [V3] Nested AGENTS.md（任意の深さ）
         2026-08-14 : v2.18.1
                    : [V3] /spec view インラインレビュー化
-                   : tar 危険フラグのブロック（セキュリティ）
+                   : tar 危険フラグに承認が必要（セキュリティ）
 
     section v2.20.x 全画面 Spec 実行・Powers
         2026-08-26 : v2.20.0

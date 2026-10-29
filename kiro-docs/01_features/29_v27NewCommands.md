@@ -123,7 +123,7 @@ v2.7.0 では `/settings` とその全サブコマンドの UI が統一され�
 
 `Ctrl+S` は v2.7.0 で Queue Steering の steer/queue モード切替に使われます。一方で、従来 `Ctrl+S` は「コマンドとコンテキストファイルのファジー検索」に割り当てられていました。
 
-> **公式記述の不一致（2026-06-21 取得時点）**: 公式 [Slash commands リファレンス](https://kiro.dev/docs/reference/slash-commands/)（Page updated 2026-06-12）の Keyboard shortcuts 表は `Ctrl+S` を「Fuzzy search commands and context files」と記載したままです。一方、公式 [Queue Steering ページ](https://kiro.dev/docs/cli/chat/queue-steering/)は「Press Ctrl+S to toggle between modes」と記載しています。同日（2026-06-12）更新ながら両者の整合は未確認です。本サイトは v2.7.0 で Queue Steering モード切替が追加されたことを CLI 内蔵 changelog で確認済みのため、両機能を併記しています。実機の挙動は v2.7.0 起動後の確認を推奨します（→ [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) キーボードショートカット節）。
+> **公式記述の不一致（2026-06-21 取得時点）**: 公式 [Slash commands リファレンス](https://kiro.dev/docs/reference/slash-commands/)（Page updated 2026-06-12）の Keyboard shortcuts 表は `Ctrl+S` を「Fuzzy search commands and context files」と記載したままです。一方、公式 [Queue Steering ページ](https://kiro.dev/docs/cli/chat/queue-steering/)は「Press Ctrl+S to toggle between modes」と記載しています。同日（2026-06-12）更新ながら両者の整合は未確認でした。**現在の公式を再確認したところ、Slash commands の更新日は 2026-10-24、Queue Steering ページは 2026-08-04 で、食い違いは解消していません**（Slash commands の表は現在も `Ctrl+S` をファジー検索と記載し、同じページの `/goal` の節は queue steering の `Ctrl+S` に言及しています）。本サイトは v2.7.0 で Queue Steering モード切替が追加されたことを CLI 内蔵 changelog で確認済みのため、両機能を併記しています。実機の挙動は v2.7.0 起動後の確認を推奨します（→ [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) キーボードショートカット節）。
 
 ---
 

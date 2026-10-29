@@ -441,7 +441,7 @@ v2.29.0（2026-10-09）で、**V3 の ACP は既定で Kiro CLI のログイン�
 
 > 公式 ACP ページの `--agent`（v1.26.0 で追加）、セッション保存（`~/.kiro/sessions/cli/`）、`_kiro.dev/*` 拡張メソッドの説明は CLI v2 サーバーに対するものです。V3 での置き換え（`session/list`・`session/load`、交渉型の拡張メソッドなど）は公式 Migrate ガイドを参照してください。
 
-V3 エンジンで `--auth-method` が効くこと、既定が `cli` であることは、実機 2.33.0 の `kiro-cli acp --help` で確認できます。V2 エンジン（既定）での `--auth-method` の扱いは公式に記載がなく**未確認**です。詳細は [48. v2.29 新機能](48_v229NewFeatures.md) を参照してください。
+V3 エンジンで `--auth-method` が効くことと、既定で Kiro CLI のログインを使うことは、公式 [Migrate an ACP client to CLI V3](https://kiro.dev/docs/cli/v3/acp-migration/)（公式更新日 2026-10-09）に記載があります（クライアントがトークン要求に答える場合は `--auth-method=client`。V3 の起動例は `kiro-cli acp --agent-engine=v3 --auth-method=cli`）。実機 2.33.0 の `kiro-cli acp --help` でも確認できます。V2 エンジン（既定）での `--auth-method` の扱いは公式に記載がなく**未確認**です。詳細は [48. v2.29 新機能](48_v229NewFeatures.md) を参照してください。
 
 ---
 

@@ -51,7 +51,7 @@
 | 観点 | 状況（事実） | なぜ断定しないか |
 |------|------|------------------|
 | ヘッドレス / CI での spec 実行 | 公式 Permissions に **CI 向け例**（`capability: all / effect: allow`）あり。一方で v3 の Known gap は **「Classic mode（非 TUI）は v3 非対応・TUI を使用」** と明記 | CI 例は権限設定の例示であり、「v3 がヘッドレス / 非対話で spec を実行できる」と明言したものではない。非 TUI 非対応の制限と整合する公式記載が未確認のため断定しない |
-| `/goal`・Queue Steering 等との併用 | `/goal`・Queue Steering は v2.7 系（v2 エンジン）の機能 | **v3（`--v3`）での存在・spec agent との併用可否が公式 feature-overview に記載なし**。未確認 |
+| `/goal`・Queue Steering 等との併用 | `/goal`・Queue Steering は v2.7 系（v2 エンジン）の機能 | **v3（`--v3`）での存在・spec agent との併用可否が公式 feature-overview に記載なし**。公式 [Tools](https://kiro.dev/docs/tools/)（公式更新日 2026-10-13）は `goal` ツールを「CLI 2.x legacy」に分類し、V3 の組み込みツールではないと説明している。`/goal` コマンドと Queue Steering の V3 での扱いは公式に記載がなく**未確認** |
 | SSH / リモート / コンテナでの spec 実行 | CLI はターミナルツールとしてリモート環境で使われる | IDE もリモート開発機能を持ち得るため「CLI のみ」と断定できない。CLI / IDE 双方の公式記載が未確認 |
 
 ---

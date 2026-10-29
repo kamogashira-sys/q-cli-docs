@@ -21,14 +21,13 @@ Kiro CLI には 4 種類の組み込みエージェントがあり、用途ご�
 
 ### Kiro guide agent が提供する体験（公式説明に基づく）
 
-公式 TUI 比較ページ（[https://kiro.dev/docs/cli/terminal-ui/comparison/](https://kiro.dev/docs/cli/terminal-ui/comparison/)）より:
+公式 [Slash commands の `/guide`](https://kiro.dev/docs/reference/slash-commands/#guide)（公式更新日 2026-10-24）と [Built-in agents の Guide agent](https://kiro.dev/docs/custom-agents/built-in/#guide-agent-cli-only)（公式更新日 2026-10-02）は、Guide agent を次のように説明しています。
 
-> `/guide` — Switch to the Kiro guide agent for help and onboarding
+- **ドキュメントに基づくヘルプとオンボーディング**: Kiro CLI の機能・コマンド・ツール・設定についての質問に、インデックス化されたドキュメントを使って答える。汎用の知識で答えるデフォルトエージェントと違い、インストール済みのバージョンに対応したドキュメントを検索する
+- **設定ファイルの作成**: `.kiro/` ディレクトリに、エージェント・プロンプト・steering ファイルを作成できる
+- **CLI のみ**: 公式 Built-in agents の表で、Guide は IDE ではなく CLI の欄に印が付いている（ターミナル UI 向け）
 
-つまり:
-
-- **ヘルプ**: TUI 環境での CLI 機能の案内
-- **オンボーディング**: 初見ユーザーが CLI の使い方を学ぶ導入体験
+公式 TUI 比較ページ（[https://kiro.dev/docs/cli/terminal-ui/comparison/](https://kiro.dev/docs/cli/terminal-ui/comparison/)）にも `/guide` の行があります。
 
 ### なぜ `/guide` が必要なのか
 
@@ -90,7 +89,7 @@ flowchart TD
 | 特定コマンドのヘルプ | `/help --legacy <command>` | `/help` パネル内で検索 |
 | 詳細な対話型 QA | `/help` | **`/guide`** |
 | 実装計画を立てる | `/plan` / `Shift+Tab` | 同左 |
-| 設定ファイル作成を依頼 | `/help` | `/guide` ※公式説明は「help and onboarding」のみで、設定ファイル作成支援の明記はなし |
+| 設定ファイル作成を依頼 | `/help` | `/guide`（公式 Slash commands が、`.kiro/` にエージェント・プロンプト・steering ファイルを作成できると説明） |
 
 ---
 
@@ -104,11 +103,11 @@ TUI モードで以下を入力すると、Kiro guide agent に切り替わり�
 > /guide
 ```
 
-以降、エージェントから案内を受けながら対話を進めることができます（具体的な応答内容は実機確認で把握が必要）。
+以降、Guide agent に質問できます。
 
 ### 元のエージェントに戻る
 
-公式ドキュメントに明示的な記述はありませんが、他の built-in agent と同様に **再度 `/guide` を実行するとトグル** する、または **`/agent swap <元のエージェント名>`** で切り替え可能と推測されます（要検証）。
+公式 Slash commands の `/guide` の節は、`Shift+Tab` または `/agent swap` で直前のエージェントに戻れると説明しています。再度 `/guide` を実行したときにトグルするかは、公式に記載がなく**未確認**です。
 
 ---
 
@@ -120,8 +119,11 @@ TUI モードで以下を入力すると、Kiro guide agent に切り替わり�
 |------|------|------|
 | 導入バージョン | **v1.29.7（2026-04-10）** | `kiro-cli version --changelog=1.29.7` |
 | CLI 内蔵 changelog の記述 | `Added /guide command to swap to the Kiro guide agent` | CLI 内蔵 changelog |
-| 対応 UI | **TUI 専用**（公式 TUI 比較ページに記載） | [terminal-ui/comparison](https://kiro.dev/docs/cli/terminal-ui/comparison/) |
-| 用途 | help and onboarding（公式表記） | 同上 |
+| 対応 UI | **ターミナル UI 専用**。Classic では `/help` を使う | [Slash commands の `/guide`](https://kiro.dev/docs/reference/slash-commands/#guide)、[terminal-ui/comparison](https://kiro.dev/docs/cli/terminal-ui/comparison/) |
+| 用途 | ドキュメントに基づくヘルプとオンボーディング。`.kiro/` にエージェント・プロンプト・steering ファイルを作成できる | Slash commands の `/guide` |
+| 検索の仕組み | **introspect** ツールによる、セマンティック検索と BM25 のハイブリッド検索。対象はコンパイル時に埋め込まれたインデックス済みドキュメントで、インストール済みのバージョンに対応する | [Built-in agents の Guide agent](https://kiro.dev/docs/custom-agents/built-in/#guide-agent-cli-only)（公式更新日 2026-10-02） |
+| 質問できる内容 | コマンド（スラッシュコマンド・CLI コマンドとそのオプション）、設定、機能（MCP・hooks・steering・カスタムエージェント・サブエージェント・コードインテリジェンス）、`.kiro/` のファイル作成 | 同上 |
+| 戻り方 | `Shift+Tab` または `/agent swap` | Slash commands の `/guide` |
 
 ### 関連する他機能
 
@@ -141,14 +143,16 @@ TUI モードで以下を入力すると、Kiro guide agent に切り替わり�
 - **TUI 専用**と公式に位置付けられている
 - `/help` の挙動が TUI で変わる（コマンドパネル化）ため、**対話型ヘルプの代替**として設計された
 
-### ⚠️ 公式ドキュメント化されていない事項
+### ✅ 公式ドキュメントでの確認状況（以前の「未整備」を更新）
+
+2026-05-10 の調査時点では、`/guide` の専用ページ・スラッシュコマンドリファレンスでの言及・公式 Changelog での言及はいずれも確認できませんでした。現在の公式ドキュメントでは、次のとおり確認できます。
 
 | 項目 | 現状 |
 |------|------|
-| `/guide` 専用の公式ドキュメントページ | **存在しない**（`/docs/cli/chat/guide-agent/` 等 404） |
-| 公式 Changelog ページ（`/changelog/cli/1-29/`）での言及 | **なし**（CLI 内蔵 changelog のみに記載） |
-| 公式スラッシュコマンドリファレンスでの言及 | **なし**（`/help` や `/plan` は掲載あり） |
-| 唯一の公式言及 | [TUI 比較ページ](https://kiro.dev/docs/cli/terminal-ui/comparison/) 内のテーブル 1 行のみ |
+| `/guide` の説明 | 公式 [Slash commands の `/guide`](https://kiro.dev/docs/reference/slash-commands/#guide)（公式更新日 2026-10-24）に節がある |
+| Guide agent の専用の解説 | 公式 [Built-in agents の Guide agent (CLI only)](https://kiro.dev/docs/custom-agents/built-in/#guide-agent-cli-only)（公式更新日 2026-10-02）に節がある。専用ページ `/docs/cli/chat/guide-agent/` 等は引き続きない（Built-in agents ページに統合） |
+| 公式 Changelog ページ（`/changelog/cli/1-29/`）での言及 | 本サイトでは再確認していない（**未確認**）。導入バージョン v1.29.7 は CLI 内蔵 changelog による |
+| TUI 比較ページ | [terminal-ui/comparison](https://kiro.dev/docs/cli/terminal-ui/comparison/) に `/guide` の行がある |
 
 ### ❓ 一次情報から確認できなかった事項（**推測を避けるため未記述**）
 
@@ -157,7 +161,6 @@ TUI モードで以下を入力すると、Kiro guide agent に切り替わり�
 | 内部エージェント名（`kiro_guide` 等） | `kiro-cli agent list` に表示されず、バイナリからも検出不可 |
 | 使用ツール・プロンプトインジケーター | バイナリ strings で `[guide]` 等は検出不可 |
 | 情報源・知識ベース | 新規の埋め込みドキュメントは検出不可（既存の `introspect` 利用の可能性あり） |
-| Classic UI で `/guide` を実行した時の挙動 | 対話式 CLI のため実機確認が必要 |
 | 初回オンボーディングの具体的フロー | 公開情報なし |
 | トグル動作の有無 | 公開情報なし |
 
@@ -175,12 +178,12 @@ TUI モードで以下を入力すると、Kiro guide agent に切り替わり�
 | **導入バージョン** | v1.25.0（2026-02-03） | v1.29.7（2026-04-10） |
 | **対応 UI** | Classic UI / TUI 両対応（TUI では別挙動） | **TUI 専用** |
 | **エージェント名** | `kiro_help`（`agent list` で確認可能） | 未公開（`agent list` に非表示） |
-| **公式専用ページ** | ✅ [https://kiro.dev/docs/custom-agents/built-in/](https://kiro.dev/docs/custom-agents/built-in/) | ❌ なし |
-| **主な用途** | CLI 機能・設定・コマンドの詳細 QA、設定ファイル作成支援 | オンボーディング・TUI ヘルプ |
-| **使用ツール** | `introspect`、`fs_write`（`.kiro/**` `~/.kiro/**` 限定） | 未公開 |
+| **公式の解説** | ✅ [Built-in agents の Help agent](https://kiro.dev/docs/custom-agents/built-in/#help-agent-cli-only) | ✅ [Built-in agents の Guide agent](https://kiro.dev/docs/custom-agents/built-in/#guide-agent-cli-only)、[Slash commands の `/guide`](https://kiro.dev/docs/reference/slash-commands/#guide) |
+| **主な用途** | CLI 機能・設定・コマンドの詳細 QA、設定ファイル作成支援 | ドキュメントに基づくヘルプとオンボーディング、`.kiro/` のファイル作成（公式）。公式は、ターミナル UI では Help agent が Guide agent に置き換わったと説明 |
+| **使用ツール** | `introspect`、`fs_write`（`.kiro/**` `~/.kiro/**` 限定） | `introspect`（公式 Built-in agents）。そのほかのツールは公式に記載がなく未確認 |
 | **プロンプトインジケーター** | `[help]`（紫色） | 未公開 |
 | **MCPサーバー** | 無効（`includeMcpJson: false`） | 未公開 |
-| **オフライン対応** | ✅ 可能（バイナリ内蔵ドキュメント参照） | 未公開（同様と推測） |
+| **オフライン対応** | ✅ 可能（バイナリ内蔵ドキュメント参照） | ドキュメントはコンパイル時に埋め込まれる（公式）。オフラインでの動作は公式に記載がなく未確認 |
 
 ### 共通点
 
@@ -214,18 +217,17 @@ TUI モードがデフォルト化された v2.0.0 以降、TUI はデフォル�
 ### Classic UI との互換性
 
 - **`/guide` は公式に TUI 専用**と位置付けられています
-- Classic UI での実行結果は公式に記載されていません（**「Unknown command」エラー相当**になる可能性が高い）
+- 公式 Slash commands は、`/guide` はターミナル UI でのみ使え、Classic インターフェースでは同じ対話型のエージェント体験に `/help` を使うと説明しています。Classic で `/guide` を実行したときの表示は、公式に記載がなく**未確認**です
 - Classic UI で対話型ヘルプが欲しい場合は **`/help`**（Help Agent）を使用してください
 
 ### 公式ドキュメント状況
 
-- **公式専用ページが未整備**のため、詳細仕様は実機で確認するか、公式ドキュメントの今後の更新を待つ必要があります
-- 本サイトでは**推測を避けて確定事実のみ記述**しているため、上記「未確認事項」は公式更新後に追記予定です
+- 公式の説明は Slash commands の `/guide` と Built-in agents の Guide agent の節にあります。内部のエージェント名、使うツールの一覧、プロンプトのインジケーターなど、上の「確認できなかった事項」は引き続き公式に記載がなく**未確認**です
 
 ### 他エージェントとの切替
 
 - `/agent swap <name>` での切替時、エージェント別のモデル設定がない限り現在のモデルは維持されます
-- Kiro guide agent が `/agent list` に表示されないため、`/agent swap kiro_guide` 相当の直接切替は機能しない可能性があります
+- `/guide` から直前のエージェントへ戻るには、`Shift+Tab` または `/agent swap` を使います（公式 Slash commands）。Guide agent が `/agent list` に表示されない件は、本サイトの調査時（2026-05-10）の実機の結果で、現在の公式には記載がありません
 
 ---
 
@@ -234,7 +236,9 @@ TUI モードがデフォルト化された v2.0.0 以降、TUI はデフォル�
 ### 公式ドキュメント
 
 - [Kiro CLI 公式サイト](https://kiro.dev/cli/)
-- [Kiro CLI Terminal UI 比較](https://kiro.dev/docs/cli/terminal-ui/comparison/) - `/guide` の唯一の公式言及
+- [Kiro CLI Terminal UI 比較](https://kiro.dev/docs/cli/terminal-ui/comparison/) - `/guide` の行
+- [Slash commands の `/guide`](https://kiro.dev/docs/reference/slash-commands/#guide) - `/guide` の説明
+- [Built-in agents の Guide agent (CLI only)](https://kiro.dev/docs/custom-agents/built-in/#guide-agent-cli-only) - Guide agent の公式解説
 - [Kiro CLI Built-in agents - Help agent (CLI only)](https://kiro.dev/docs/custom-agents/built-in/#help-agent-cli-only) - Help Agent の公式解説（個別ページから統合ページ内セクションへ変更）
 - [Kiro CLI スラッシュコマンドリファレンス](https://kiro.dev/docs/reference/slash-commands/)
 
@@ -259,6 +263,6 @@ TUI モードがデフォルト化された v2.0.0 以降、TUI はデフォル�
 
 ---
 
-**最終更新**: 2026-05-10  
+**最終更新**: 2026-10-29（公式 Slash commands・Built-in agents の記述に合わせて更新。2026-05-10 の調査時点では公式の記載なし）  
 **対象バージョン**: Kiro CLI v1.29.7+（TUI モード）  
-**公式ドキュメント状況**: 未整備（Kiro CLI 公式サイトで今後の更新を待つ）
+**公式ドキュメント状況**: Slash commands の `/guide` と Built-in agents の Guide agent の節に記載あり

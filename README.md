@@ -118,14 +118,14 @@ Kiro CLI v2.x 系では **Windows対応・Headless Mode・新TUI** を中心に�
    - v2.19.0: **Spec review screenのマウス対応**（スクロールでのナビゲーション、クリックでのカーソル位置指定、`m`キーでトグル） → [kiro-docs/01_features/18](kiro-docs/01_features/18_TerminalUI.md)
    - v2.19.0: [V3] session resumeピッカーのAI生成タイトル要約、[V3] MCP protocol revision 2026-07-28対応 → [kiro-docs/09_v3/](kiro-docs/09_v3/README.md)
    - v2.19.0: ストリームアイドル監視（`api.streamIdleSoftTimeout`/`api.streamIdleHardTimeout`）・自動リトライ・コンテキストオーバーフロー自動圧縮等バグ修正25件
-   - v2.19.1: tmux < 3.7でのoverflow-flush replay回避、`/knowledge`サブコマンド自動補完復元（V3）等バグ修正7件、[V3] `grep_search`/`file_search`の`.kiroignore`漏出防止（セキュリティ）
+   - v2.19.1: tmux 3.7 より前での再描画修正、[V3] `/knowledge` の自動補完（6サブコマンド）と `rm` エイリアス等バグ修正7件、[V3] `grep_search`/`file_search`の`.kiroignore`漏出防止（セキュリティ）
 
 10. **[v2.18.1 / v2.18.0 / v2.17.0 Cloud Sessions・Voice Mode・Spec Review Screen](kiro-docs/02_update/01_changelog.md)**（2026-08-14 / 08-12 / 08-11）
    - v2.17.0: **Cloud Sessions（プレビュー）**（マネージドクラウドサンドボックスで Kiro agent harness を実行。`--cloud`／`--repo`／`--resume-id` で作成・再開、切断後もエージェント継続動作） → [kiro-docs/01_features/36](kiro-docs/01_features/36_CloudSessions.md)
    - v2.18.0: **`/voice`**（オンデバイス音声認識（Whisper）によるプロンプト入力。`Ctrl+O`／`Space`長押し、`--continuous`、クラウド送信なし） → [kiro-docs/01_features/37](kiro-docs/01_features/37_VoiceMode.md)
    - v2.18.0: ⚠️ **Cloud Sessions が既定オプトインへ変更（破壊的変更）**（管理者が明示的に有効化しない限り無効。未設定組織は無効化）
    - v2.18.0: [V3] Spec review screen（`Ctrl+X`でフェーズ文書に行コメントをステージング）、[V3] Nested `AGENTS.md`（ワークスペースツリー内の任意の場所へ配置可能） → [kiro-docs/01_features/23](kiro-docs/01_features/23_Steering.md)
-   - v2.18.1: [V3] `/spec view` がインラインレビュー可能な完全なspec文書表示に変更、`tar --use-compress-program`／`--to-command` の危険フラグをブロック（セキュリティ）
+   - v2.18.1: [V3] `/spec view` がインラインレビュー可能な完全なspec文書表示に変更、`tar --use-compress-program`／`--to-command` は信頼済み `tar` でも承認が必要（セキュリティ）
    - v2.16.1〜v2.16.2: `kiro-cli crew`（Kiro Crew統合）、ステータスラインカスタマイズ、Agent Plugin形式Powers対応
 
 11. **[v2.16.0 / v2.15.2 / v2.15.1 / v2.15.0 [V3] Tangent側枝会話・Spec/Plan強化](kiro-docs/02_update/01_changelog.md)**（2026-07-31 / 07-29 / 07-28 / 07-27）
@@ -139,7 +139,7 @@ Kiro CLI v2.x 系では **Windows対応・Headless Mode・新TUI** を中心に�
    - v2.14.0: [V3] `/upgrade-agent`（V2 のカスタムエージェント設定を V2/V3 両対応の universal 形式へ変換。`run`／`diagnostics`、`.json.bak` バックアップ） → [kiro-docs/01_features/34](kiro-docs/01_features/34_v214UpgradeAgent.md)
    - v2.14.0: [V3] 自動ストリームリトライ（空応答・途中切断を自動再試行）、待機中の機能ヒント表示、`Ctrl+Z` 後の制御キー修復、[V3] `/plan` デッドロック解消・supervised モードの承認永続化ほか
    - v2.14.1: `/effort set-current-as-default` 追加、起動スピナー、**`/model`・`/effort` の選択がセッション限定へ**（`chat.disableAutoDefaultModel`/`chat.disableAutoDefaultEffort` は v2.14.2 実機では存在しません）、MCP `structuredContent` 応答の修正、終了時のターミナルモード復元
-   - v2.14.2: EU ユーザーのテレメトリをリージョンローカルエンドポイントへ、モデル拒否メッセージが `/model`・`/rewind`・`/chat new` を提示、カラーコード漏れ・kitty 互換端末の修正（※公式Changelogサイト未掲載）
+   - v2.14.2: EU ユーザーのテレメトリをリージョンローカルエンドポイントへ、モデル拒否メッセージが `/model`・`/rewind`・`/chat new` を提示、色コード非対応の端末での色コード表示・kitty 互換端末の修正（公式 Changelog v2.14 の Patches 節に掲載）
 
 13. **[v2.13.1 / v2.13.0 [V3] Introspect サブエージェント・グローバル hooks](kiro-docs/02_update/01_changelog.md)**（2026-07-22 / 07-17）
    - v2.13.0: [V3] Introspect サブエージェント（Kiro 機能の説明・カスタム agent/hooks/steering 作成支援）、[V3] グローバル hooks（`~/.kiro/hooks/` が全ワークスペースへ自動適用） → [kiro-docs/09_v3/](kiro-docs/09_v3/README.md)

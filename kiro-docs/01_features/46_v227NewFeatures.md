@@ -88,7 +88,7 @@ V3 のファイルプロンプトでは、位置引数を `${1}`〜`${10}`、す
 
 ## ⚠️ [V3] `todo_list` ツールの廃止
 
-V3 は `todo_list` ツールを提供しなくなり、V3 では `chat.enableTodoList` は効果を持ちません。V2 の `todo` ツールと `/todos` コマンドの扱いは公式 changelog に記載がなく、本サイトの [組み込みツールリファレンス](../04_reference/04_built-in-tools.md) と [スラッシュコマンドリファレンス](../04_reference/02_slash-commands.md) の V2 向けの記述はそのまま残しています。
+V3 は `todo_list` ツールを提供しなくなり、V3 では `chat.enableTodoList` は効果を持ちません。V2 の `todo` ツールについて、公式 [Tools](https://kiro.dev/docs/tools/)（公式更新日 2026-10-13）は、`task`（別名 `todo`・`todo_list`）を「CLI 2.x legacy」に分類し、V3 の組み込みツールではないと説明しています。`/todos` は公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/#todos)（公式更新日 2026-10-24）に節があります（使い方の食い違いは [スラッシュコマンドリファレンス](../04_reference/02_slash-commands.md) の `/todos` を参照）。公式 changelog には変更の記載がなく、本サイトの [組み込みツールリファレンス](../04_reference/04_built-in-tools.md) と [スラッシュコマンドリファレンス](../04_reference/02_slash-commands.md) の V2 向けの記述はそのまま残しています。
 
 ## その他の変更（v2.27.0）
 

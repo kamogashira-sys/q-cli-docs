@@ -557,9 +557,11 @@ OSC 52 エスケープシーケンス経由で SSH/tmux/Zellij でも動作。10
 
 ### `/todos`
 
-> **出典**: 実機 kiro-cli 2.4.1（2026-05-24 検証）
+> **出典**: 実機 kiro-cli 2.4.1（2026-05-24 検証）、公式 [Slash commands の `/todos`](https://kiro.dev/docs/reference/slash-commands/#todos)（公式更新日 2026-10-24）
 
 To-do リストの表示・管理・再開。
+
+> ⚠ **公式の記述に食い違いがあります。** 公式 Slash commands の `/todos` の節は、説明を「View, manage, and resume to-do lists」とし、コマンド例として `/todo`（表示）・`/todo add "Fix authentication bug"`・`/todo complete 1` を挙げています。一方、下の実機 2.4.1 の検証では `/todos` のサブコマンドは `clear-finished`・`resume`・`view`・`delete` で、項目の追加と完了はスラッシュコマンドではなく AI ツール経由でした。公式の例（`/todo add`・`/todo complete`）が現行の V2 で動くかは、実機 2.35.1 で確認しておらず**未確認**です。
 
 ```bash
 > /todos clear-finished               # 完了済みリストを削除
@@ -834,7 +836,9 @@ fullscreen は会話専用のターミナル画面（alternate screen）で、�
 | `Tab` | 承認オプション展開 / ファイル参照自動補完 |
 | `Esc` | パネルを閉じる、エージェント実行キャンセル、プロンプトキューをクリア |
 
-> ※ **Ctrl+S の機能について公式に矛盾あり（2026-06-21 取得時点）**: 公式 [Slash commands リファレンス](https://kiro.dev/docs/reference/slash-commands/)（Page updated 2026-06-12）の Keyboard shortcuts 表は「Fuzzy search commands and context files」と既存記述のまま。一方、公式 [Queue Steering ページ](https://kiro.dev/docs/cli/chat/queue-steering/)（同 2026-06-12）は「Press Ctrl+S to toggle between modes at any time」と明記し、設定キー `chat.keybindings.toggleInterruptBehavior`（既定 `ctrl+s`）でカスタマイズ可能と記載。同日更新だが両者の整合は未確認。**本サイトは v2.7.0 で Queue Steering モード切替が追加されたことを CLI 内蔵 changelog で確認済のため、両機能を併記**。実機の挙動は v2.7.0 起動後に確認推奨。
+> ※ **Ctrl+S の機能について公式に矛盾あり（2026-06-21 取得時点）**: 公式 [Slash commands リファレンス](https://kiro.dev/docs/reference/slash-commands/)（Page updated 2026-06-12）の Keyboard shortcuts 表は「Fuzzy search commands and context files」と既存記述のまま。一方、公式 [Queue Steering ページ](https://kiro.dev/docs/cli/chat/queue-steering/)（同 2026-06-12）は「Press Ctrl+S to toggle between modes at any time」と明記し、設定キー `chat.keybindings.toggleInterruptBehavior`（既定 `ctrl+s`）でカスタマイズ可能と記載。同日更新だが両者の整合は未確認。**本サイトは v2.7.0 で Queue Steering モード切替が追加されたことを CLI 内蔵 changelog で確認済のため、両機能を併記**。
+>
+> **現在の公式（再確認）**: Slash commands リファレンスの更新日は 2026-10-24、Queue Steering ページの更新日は 2026-08-04 です。Slash commands の Keyboard shortcuts 表は現在も `Ctrl+S` を「Fuzzy search commands and context files, use tab to select multiple items」と記載しています。同じページの `/goal` の節には、「queue steering（Ctrl+S）で、ループを止めずにエージェントへ指示を出せる」とあり、同一ページ内でも `Ctrl+S` の説明が一致していません。更新日の新しい Slash commands の表に従えば `Ctrl+S` はファジー検索ですが、Queue Steering ページと `/goal` の節は切り替えとして記載しており、食い違いは解消されていません。実機 2.35.1 での `Ctrl+S` の挙動は確認しておらず**未確認**です。
 
 ---
 

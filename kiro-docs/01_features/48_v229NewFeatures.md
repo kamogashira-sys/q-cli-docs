@@ -67,7 +67,7 @@ command=get, title=seed-db-before-integration-tests
 | `memory.mode` | Default memory access for new sessions: `read_write`, `read_only`, or `disabled`; requires the KAS engine |
 | `memory.reflection` | Automatic memory updates for new sessions; takes effect only with `read_write` access（boolean） |
 
-`/memories` の `config` 画面の項目（`read & write`・`read only`・`off`、**Automatic memory updates**）と、上の設定キーの値（`read_write`・`read_only`・`disabled`、`reflection`）の対応は、公式に記載がありません。実機の説明文の対応は読み取れますが、画面操作との対応は**未確認**です。説明にある「KAS engine」と V3 の対応関係も公式に記載がなく**未確認**です。
+`/memories` の `config` 画面の項目（`read & write`・`read only`・`off`、**Automatic memory updates**）と、上の設定キーの値（`read_write`・`read_only`・`disabled`、`reflection`）の対応は、公式に記載がありません。実機の説明文の対応は読み取れますが、画面操作との対応は**未確認**です。説明にある「KAS engine」という名称は公式ドキュメントに記載がありません。ただし、公式 [Memory](https://kiro.dev/docs/memory/)（公式更新日 2026-10-24）は、Kiro CLI の Memory に V3 が必要で、`/memories` → `config` でアクセスレベルを選ぶと説明しています。
 
 ### 公式ドキュメントでの確認状況
 
