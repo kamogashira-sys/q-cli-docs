@@ -81,13 +81,18 @@ Kiro CLI v3（`kiro-cli --v3`）の概要・仕様駆動開発・Kiro IDE 版と
 - **[Kiro IDE 版との比較](09_v3/02_kiro-ide-vs-cli.md)** - 同様にできること／IDE が優位なこと／CLI ならではのこと
 - **[v2.20 新機能](01_features/39_v220NewFeatures.md)** - [V3] 全画面 Spec 実行・`/powers`、Preserve scrollback
 
-> **Kiro IDE そのものの解説は姉妹サイト
-> [猫でもわかるKiro IDE アップデート情報](https://github.com/kamogashira-sys/kiro-ide-docs)
-> にあります**（IDE の機能詳細・バージョン情報・リファレンス）。
->
-> **Kiro Web（ブラウザ版）の解説は姉妹サイト
-> [猫でもわかるKiro Web アップデート情報](https://github.com/kamogashira-sys/kiro-web-docs)
-> にあります**（Web の機能詳細・更新履歴・リファレンス）。
+## 🐾 姉妹サイト
+
+Kiro IDE・Kiro CLI・Kiro Web・Kiro Crew は**別製品**です。同名の機能でも仕様が異なることがあります。
+
+| 対象 | サイト |
+|------|-------|
+| **Kiro CLI** | **本サイト** |
+| Kiro IDE | [猫でもわかるKiro IDE アップデート情報](https://github.com/kamogashira-sys/kiro-ide-docs) |
+| Kiro Web | [猫でもわかるKiro Web アップデート情報](https://github.com/kamogashira-sys/kiro-web-docs) |
+| Kiro Crew | [猫でもわかるKiro Crewアップデート情報](https://github.com/kamogashira-sys/kiro-crew-docs) |
+
+Kiro IDE と Kiro CLI の比較は本サイトの [Kiro IDE 版との比較](09_v3/02_kiro-ide-vs-cli.md) にまとめています。
 
 ---
 
