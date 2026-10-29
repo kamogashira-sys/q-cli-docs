@@ -13,12 +13,16 @@
 4. **[🔍 リファレンス](kiro-docs/04_reference/README.md)** - Settings / Slashコマンド / CLIコマンド / Built-in Tools の辞書
 5. **[📋 変更履歴](kiro-docs/02_update/01_changelog.md)** - 全バージョンの詳細な変更内容
 
-## 🖥️ 姉妹サイト（Kiro IDE 版・Kiro Web 版）
+## 🐾 姉妹サイト
 
-**本サイトは Kiro CLI を扱います。** Kiro IDE（デスクトップアプリ）と Kiro Web（ブラウザ版）の情報は姉妹サイトにあります。
+Kiro IDE・Kiro CLI・Kiro Web・Kiro Crew は**別製品**です。同名の機能でも仕様が異なることがあります。
 
-- **[猫でもわかるKiro IDE アップデート情報](https://github.com/kamogashira-sys/kiro-ide-docs)**
-- **[猫でもわかるKiro Web アップデート情報](https://github.com/kamogashira-sys/kiro-web-docs)**
+| 対象 | サイト |
+|------|-------|
+| **Kiro CLI** | **本サイト** |
+| Kiro IDE | [猫でもわかるKiro IDE アップデート情報](https://github.com/kamogashira-sys/kiro-ide-docs) |
+| Kiro Web | [猫でもわかるKiro Web アップデート情報](https://github.com/kamogashira-sys/kiro-web-docs) |
+| Kiro Crew | [猫でもわかるKiro Crewアップデート情報](https://github.com/kamogashira-sys/kiro-crew-docs) |
 
 | 知りたいこと | 参照先 |
 |------------|-------|
@@ -27,8 +31,8 @@
 | **IDE と CLI の違い** | 本サイトの [Kiro IDE 版との比較](kiro-docs/09_v3/02_kiro-ide-vs-cli.md) |
 | **Web の機能**（エージェントのモード・Specs・Automations・サンドボックスほか） | [機能詳細ガイド](https://github.com/kamogashira-sys/kiro-web-docs/blob/main/kiro-web-docs/01_features/README.md) |
 | **Web の更新履歴**（**バージョン番号がなく日付で識別**） | [変更履歴](https://github.com/kamogashira-sys/kiro-web-docs/blob/main/kiro-web-docs/02_update/01_changelog.md) |
-
-> **IDE・CLI・Web は別製品**です。同名の機能（Specs・Hooks・Steering・Permissions）でも仕様が異なる場合があります。
+| **Crew の機能**（アーキテクチャ・メモリ・Knowledge Library・サブエージェント・MCP・Workflows ほか） | [機能解説](https://github.com/kamogashira-sys/kiro-crew-docs/blob/main/kiro-crew-docs/01_features/README.md) |
+| **Crew の更新履歴** | [更新履歴](https://github.com/kamogashira-sys/kiro-crew-docs/blob/main/kiro-crew-docs/02_update/01_changelog.md) |
 
 ## 📢 Amazon Q Developer CLI から Kiro CLI へ
 
