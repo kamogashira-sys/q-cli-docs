@@ -24,15 +24,7 @@ Kiro IDE・Kiro CLI・Kiro Web・Kiro Crew は**別製品**です。同名の機
 | Kiro Web | [猫でもわかるKiro Web アップデート情報](https://github.com/kamogashira-sys/kiro-web-docs) |
 | Kiro Crew | [猫でもわかるKiro Crewアップデート情報](https://github.com/kamogashira-sys/kiro-crew-docs) |
 
-| 知りたいこと | 参照先 |
-|------------|-------|
-| **IDE の機能**（Specs・Permissions・Hooks・Steering・MCP・Agent Focus Mode ほか） | [機能詳細ガイド](https://github.com/kamogashira-sys/kiro-ide-docs/blob/main/kiro-ide-docs/01_features/README.md) |
-| **IDE のバージョン情報**（0.1 〜 1.0 系） | [変更履歴](https://github.com/kamogashira-sys/kiro-ide-docs/blob/main/kiro-ide-docs/02_update/01_changelog.md) |
-| **IDE と CLI の違い** | 本サイトの [Kiro IDE 版との比較](kiro-docs/09_v3/02_kiro-ide-vs-cli.md) |
-| **Web の機能**（エージェントのモード・Specs・Automations・サンドボックスほか） | [機能詳細ガイド](https://github.com/kamogashira-sys/kiro-web-docs/blob/main/kiro-web-docs/01_features/README.md) |
-| **Web の更新履歴**（**バージョン番号がなく日付で識別**） | [変更履歴](https://github.com/kamogashira-sys/kiro-web-docs/blob/main/kiro-web-docs/02_update/01_changelog.md) |
-| **Crew の機能**（アーキテクチャ・メモリ・Knowledge Library・サブエージェント・MCP・Workflows ほか） | [機能解説](https://github.com/kamogashira-sys/kiro-crew-docs/blob/main/kiro-crew-docs/01_features/README.md) |
-| **Crew の更新履歴** | [更新履歴](https://github.com/kamogashira-sys/kiro-crew-docs/blob/main/kiro-crew-docs/02_update/01_changelog.md) |
+Kiro IDE と Kiro CLI の比較は本サイトの [Kiro IDE 版との比較](kiro-docs/09_v3/02_kiro-ide-vs-cli.md) にまとめています。
 
 ## 📢 Amazon Q Developer CLI から Kiro CLI へ
 
