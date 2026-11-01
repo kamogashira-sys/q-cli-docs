@@ -1,17 +1,23 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 🏠 Official Q CLI Repository
+  - name: 🏠 Official Kiro Repository
+    url: https://github.com/kirodotdev/Kiro
+    about: For official Kiro CLI issues, bugs, and feature requests
+  - name: 📖 Official Kiro CLI Documentation
+    url: https://kiro.dev/docs/cli/
+    about: Official Kiro CLI documentation
+  - name: 📣 Official Kiro CLI Changelog
+    url: https://kiro.dev/changelog/cli/
+    about: Official release notes for Kiro CLI
+  - name: 🗄️ Amazon Q Developer CLI Repository (archived predecessor)
     url: https://github.com/aws/amazon-q-developer-cli
-    about: For official Q CLI issues, bugs, and feature requests
-  - name: 📖 Official Q CLI Documentation
-    url: https://aws.amazon.com/q/developer/
-    about: Official Amazon Q Developer documentation
-  - name: 🆘 AWS Support
-    url: https://aws.amazon.com/support/
-    about: For official AWS support and technical assistance
+    about: 旧 Amazon Q Developer CLI（v1.19.7 で積極開発終了）。本リポジトリの docs/ はそのアーカイブ
   - name: 🐱 Kiro IDE 版ドキュメント（姉妹サイト）
     url: https://github.com/kamogashira-sys/kiro-ide-docs
     about: 猫でもわかるKiro IDE アップデート情報
   - name: 🐱 Kiro Web 版ドキュメント（姉妹サイト）
     url: https://github.com/kamogashira-sys/kiro-web-docs
     about: 猫でもわかるKiro Web アップデート情報
+  - name: 🐱 Kiro Crew 版ドキュメント（姉妹サイト）
+    url: https://github.com/kamogashira-sys/kiro-crew-docs
+    about: 猫でもわかるKiro Crewアップデート情報
