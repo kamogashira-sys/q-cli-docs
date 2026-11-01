@@ -8,7 +8,7 @@
 >
 > ここに含まれるドキュメントは、**Amazon Q Developer CLI（2025年11月17日の v1.19.7 を最後に積極的な開発を終了）** 時代の内容です。
 > Q CLI は **[Kiro CLI](https://kiro.dev/cli/)** として生まれ変わりました。
-> **現行の Kiro CLI の情報は [猫でもわかるkiro-cli アップデート情報（kiro-docs/）](../kiro-docs/README.md) をご覧ください。**
+> **現行の Kiro CLI の情報は [猫でもわかるKiro CLI アップデート情報（kiro-docs/）](../kiro-docs/README.md) をご覧ください。**
 
 **対象バージョン**: v1.13.0～v1.19.7（最終版）  
 **総ドキュメント数**: 127文書
