@@ -1,4 +1,4 @@
-# 猫でもわかるkiro-cli アップデート情報
+# 猫でもわかるKiro CLI アップデート情報
 
 **[Kiro CLI](https://kiro.dev/cli/)（旧 Amazon Q Developer CLI）のアップデート情報を、初心者にも分かりやすく解説するプロジェクトです。** より正確な情報発信を心がけて今後も更新していきます。
 
@@ -7,7 +7,7 @@
 
 ## 🚀 クイックスタート
 
-1. **[📖 猫でもわかるkiro-cli アップデート情報](kiro-docs/README.md)** ← ⭐まずここから！
+1. **[📖 猫でもわかるKiro CLI アップデート情報](kiro-docs/README.md)** ← ⭐まずここから！
 2. **[💻 公式インストール手順](kiro-docs/03_deployment/03_official-installation.md)** - macOS / Windows 11 / Linux 別のインストール方法
 3. **[📚 機能詳細ガイド](kiro-docs/01_features/README.md)** - 53機能をカテゴリ別に解説
 4. **[🔍 リファレンス](kiro-docs/04_reference/README.md)** - Settings / Slashコマンド / CLIコマンド / Built-in Tools の辞書
