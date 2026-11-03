@@ -2,7 +2,7 @@
 
 # Kiro CLI Commands リファレンス
 
-**出典**: [CLI commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/cli-commands/)（公式ページ最終更新: 2026-10-20）
+**出典**: [CLI commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/cli-commands/)（公式ページ最終更新: 2026-11-02。環境変数 `KIRO_RUNTIME_DIR` の行は照合済み。ほかの節は 2026-10-20 版と照合）
 
 Kiro CLI の `kiro-cli` コマンドおよびその引数を網羅する辞書的リファレンスです。
 
@@ -59,7 +59,7 @@ kiro-cli agent [SUBCOMMAND] [AGENT_NAME] [OPTIONS]
 | `validate` | 指定パスの設定を検証 |
 | `migrate` | プロファイルをエージェントに移行（既存エージェントに破壊的の可能性あり） |
 | `set-default` | セッション開始時のデフォルトエージェント設定 |
-| `upgrade <dir>` | ディレクトリ直下の `*.json` のエージェント設定を、V2 と V3 の両方が読む形式へアップグレード（v2.29.0+）。`--dry-run` で書き込まずにプレビュー、`--no-backup` で既定のバックアップ（`<name>.json.bak`）を省略。サブディレクトリは検索しない。**公式 CLI commands の `agent` のサブコマンド表には未掲載**で、公式 [Upgrading agent configs](https://kiro.dev/docs/cli/v3/upgrade-agent/) と実機 2.33.0 の `kiro-cli agent --help`・`kiro-cli agent upgrade --help` で確認（→ [34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md)・[48. v2.29 新機能](../01_features/48_v229NewFeatures.md)） |
+| `upgrade <dir>` | ディレクトリ直下の `*.json` のエージェント設定を、V2 と V3 の両方が読む形式へアップグレード（v2.29.0+）。`--dry-run` で書き込まずにプレビュー、`--no-backup` で既定のバックアップ（`<name>.json.bak`）を省略。サブディレクトリは検索しない。v2.36.0 以降は、アップグレード後のルールが V2 で許可されていたものを拒否・非表示・承認要求にするときに警告し、結果の表にファイルごとの警告数 `(N warnings)` を示す。**公式 CLI commands の `agent` のサブコマンド表には現在も未掲載**（公式更新日 2026-11-02 で再確認）で、公式 [Upgrading agent configs](https://kiro.dev/docs/cli/v3/upgrade-agent/) と実機 2.33.0 の `kiro-cli agent --help`・`kiro-cli agent upgrade --help` で確認（→ [34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md)・[48. v2.29 新機能](../01_features/48_v229NewFeatures.md)） |
 
 **例**:
 
@@ -730,6 +730,7 @@ set -x KIRO_LOG_NO_COLOR 1
 | `KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` | [V3] `--no-interactive` 実行が、実行中の Workflows の完了を待つ秒数。既定 21600（6 時間）。無効な値・ゼロ・上限を超える値は既定値にフォールバック（v2.27.1+。公式 [Headless mode](https://kiro.dev/docs/cli/headless/)） |
 | `KIRO_SCREEN_READER` | `auto`・`on`・`off` で、起動 1 回だけ `chat.screenReader` を上書き（v2.30.0+。公式 [Settings](https://kiro.dev/docs/reference/settings/#environment-variables)） |
 | `KIRO_NO_PROGRAM_STATUS` | `1` で、対話型の端末への OSC 7501 によるプログラム状態の報告を無効化（v2.32.0+）。公式 [Terminal UI](https://kiro.dev/docs/cli/terminal-ui/#program-status-for-supporting-terminals) にのみ記載があり、公式 CLI commands・Settings にはない |
+| `KIRO_RUNTIME_DIR` | 絶対パス。Kiro の同梱ランタイムを、ホームディレクトリではなくこのディレクトリへ展開する（v2.37.0+）。相対パスの値は無視される。公式 [CLI commands の環境変数](https://kiro.dev/docs/reference/cli-commands/)（公式更新日 2026-11-02）に掲載。→ [54. v2.35〜v2.37 新機能](../01_features/54_v237NewFeatures.md) |
 | `HTTP_PROXY` / `HTTPS_PROXY` / `NO_PROXY` | プロキシ設定（[03_official-installation](../03_deployment/03_official-installation.md) 参照） |
 
 ---
@@ -759,13 +760,14 @@ set -x KIRO_LOG_NO_COLOR 1
 
 ### 公式情報源
 
-- [CLI commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/cli-commands/)（公式ページ最終更新: 2026-10-20）
+- [CLI commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/cli-commands/)（公式ページ最終更新: 2026-11-02）
 - [Install powers](https://kiro.dev/docs/powers/installation/) — `kiro-cli powers`
 - [ACP](https://kiro.dev/docs/cli/acp/) — `kiro-cli acp` の詳細
 
 ---
 
-**Page updated**: 2026-10-25（v2.34.0 対応: `chat` の `--trust-workspace`（V3）を追加。`mcp add` の `--agent`（v2.33.1 の修正）を追加）
-**前回更新**: 2026-10-21（v2.28.0〜v2.33.0 対応: `agent upgrade <dir>`（v2.29.0。公式 CLI commands 未掲載のため公式 Upgrading agent configs と実機 2.33.0 を出典と明記）、`chat` の `--sandbox`（v2.31.0）と `--cloud`／`--repo` の V3 非対話実行（v2.32.0）、`KIRO_HOME` の V3 全体への拡張（v2.31.0）、環境変数 `KIRO_SCREEN_READER`・`KIRO_NO_PROGRAM_STATUS` を追加。`--agent` の exit 4 と `KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` の出典を公式 Exit codes・Headless mode に更新。公式 CLI commands の `chat` 引数表・`agent` のサブコマンド表と照合した）
-**前回更新**: 2026-10-04（v2.22.0〜v2.27.1対応: `kiro-cli powers`（v2.25.0）を追加、`chat` の `--effort`・`--model` を表に追加、`--require-mcp-startup`（v2.22.0）・`--cloud`（v2.23.0／v2.24.1）・`--resume`（v2.27.0）・`--agent`（v2.27.1、CLI 内蔵 changelog のみ）の変更を反映、環境変数 `KIRO_CHAT_UI`・`KIRO_SKIP_BINARY_PINNING`・`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` を追加）  。2026-09-13（v2.21.x対応: `chat --sessions`（v2.21.0、V3/KAS 限定のセッションダッシュボード直接起動）・`--v2`（v2.21.4、単一実行のハーネス選択）を追加、既存の `--v3`／`--agent-engine` を表に明記。公式が言及する `chat.agentEngine` は実機 2.21.4 に存在しないため設定キーとしては記載しない。前回 2026-08-16（v2.16.1〜v2.18.1対応: 新規サブコマンド `kiro-cli crew`（v2.16.1）・`kiro-cli voice-serve`／`kiro-cli voice-cloud-setup`（いずれもv2.18.0）を追加、`chat --cloud`／`--repo`（v2.17.0、Cloud Sessions）を追加、`--resume-id` の説明をクラウドセッション対応に拡張）。本サイト初版 2026-05-24）  
-**公式ページ最終更新**: 2026-10-20
+**Page updated**: 2026-11-03（v2.37.0 対応: 環境変数 `KIRO_RUNTIME_DIR` を追加、`agent upgrade` に v2.36.0 の権限の警告を追記。公式 CLI commands（更新日 2026-11-02）の全フラグと環境変数の名前を本ページと突き合わせ、本ページにないのは `kiro-cli update` の `--check`・`--force`・`--rollout` のみ。公式は `--relaunch-dashboard` の既定を false と書くが、本ページは true と記載しており、食い違いが残る。いずれも今回の版の範囲外の既存の差で、実機での確認と合わせて別途対応する）
+**前回更新**: 2026-10-25（v2.34.0 対応: `chat` の `--trust-workspace`（V3）を追加。`mcp add` の `--agent`（v2.33.1 の修正）を追加）
+**前々回更新**: 2026-10-21（v2.28.0〜v2.33.0 対応: `agent upgrade <dir>`（v2.29.0。公式 CLI commands 未掲載のため公式 Upgrading agent configs と実機 2.33.0 を出典と明記）、`chat` の `--sandbox`（v2.31.0）と `--cloud`／`--repo` の V3 非対話実行（v2.32.0）、`KIRO_HOME` の V3 全体への拡張（v2.31.0）、環境変数 `KIRO_SCREEN_READER`・`KIRO_NO_PROGRAM_STATUS` を追加。`--agent` の exit 4 と `KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` の出典を公式 Exit codes・Headless mode に更新。公式 CLI commands の `chat` 引数表・`agent` のサブコマンド表と照合した）
+**3 回前の更新**: 2026-10-04（v2.22.0〜v2.27.1対応: `kiro-cli powers`（v2.25.0）を追加、`chat` の `--effort`・`--model` を表に追加、`--require-mcp-startup`（v2.22.0）・`--cloud`（v2.23.0／v2.24.1）・`--resume`（v2.27.0）・`--agent`（v2.27.1、CLI 内蔵 changelog のみ）の変更を反映、環境変数 `KIRO_CHAT_UI`・`KIRO_SKIP_BINARY_PINNING`・`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` を追加）  。2026-09-13（v2.21.x対応: `chat --sessions`（v2.21.0、V3/KAS 限定のセッションダッシュボード直接起動）・`--v2`（v2.21.4、単一実行のハーネス選択）を追加、既存の `--v3`／`--agent-engine` を表に明記。公式が言及する `chat.agentEngine` は実機 2.21.4 に存在しないため設定キーとしては記載しない。前回 2026-08-16（v2.16.1〜v2.18.1対応: 新規サブコマンド `kiro-cli crew`（v2.16.1）・`kiro-cli voice-serve`／`kiro-cli voice-cloud-setup`（いずれもv2.18.0）を追加、`chat --cloud`／`--repo`（v2.17.0、Cloud Sessions）を追加、`--resume-id` の説明をクラウドセッション対応に拡張）。本サイト初版 2026-05-24）  
+**公式ページ最終更新**: 2026-11-02（環境変数 `KIRO_RUNTIME_DIR` のみ照合）

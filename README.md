@@ -9,7 +9,7 @@
 
 1. **[📖 猫でもわかるKiro CLI アップデート情報](kiro-docs/README.md)** ← ⭐まずここから！
 2. **[💻 公式インストール手順](kiro-docs/03_deployment/03_official-installation.md)** - macOS / Windows 11 / Linux 別のインストール方法
-3. **[📚 機能詳細ガイド](kiro-docs/01_features/README.md)** - 53機能をカテゴリ別に解説
+3. **[📚 機能詳細ガイド](kiro-docs/01_features/README.md)** - 54機能をカテゴリ別に解説
 4. **[🔍 リファレンス](kiro-docs/04_reference/README.md)** - Settings / Slashコマンド / CLIコマンド / Built-in Tools の辞書
 5. **[📋 変更履歴](kiro-docs/02_update/01_changelog.md)** - 全バージョンの詳細な変更内容
 
@@ -68,7 +68,7 @@ Amazon Q Developer CLIは、**[Kiro CLI](https://kiro.dev/cli/)** として生�
 ```
 kiro-docs/
 ├── 00_information/   # 基本情報・公式サイト情報
-├── 01_features/      # 機能詳細ガイド（v2.34.0対応）
+├── 01_features/      # 機能詳細ガイド（v2.37.1対応）
 ├── 02_update/        # アップデート情報
 ├── 03_deployment/    # デプロイメント・環境構築
 ├── 04_reference/     # リファレンス（Settings/Slash/CLI/Tools）
@@ -78,7 +78,7 @@ kiro-docs/
 ```
 
 **主要ドキュメント**:
-- **[機能詳細ガイド](kiro-docs/01_features/README.md)** - 53機能の詳細解説
+- **[機能詳細ガイド](kiro-docs/01_features/README.md)** - 54機能の詳細解説
 - **[アップデート情報](kiro-docs/02_update/README.md)** - バージョン履歴
 - **[環境構築ガイド](kiro-docs/03_deployment/README.md)** - デプロイメント手順
 
@@ -337,6 +337,7 @@ Q CLIのセキュリティとプライバシーについて理解することは
 
 | 日付 | 内容 |
 |------|------|
+| 2026-11-03 | v2.34.1、v2.34.2、v2.35.0、v2.35.1、v2.35.2、v2.36.0、v2.37.0、v2.37.1対応（前回までの反映で漏れていた v2.19.2、v2.20.2 を履歴に追加） |
 | 2026-10-25 | v2.33.1、v2.34.0対応（v2.33.0 の出典を公式 Changelog に更新） |
 | 2026-10-21 | v2.28.0、v2.29.0、v2.29.1、v2.30.0、v2.31.0、v2.31.1、v2.32.0、v2.33.0対応（v2.27.1 の出典を公式 Changelog に更新） |
 | 2026-10-04 | v2.22.0、v2.22.1、v2.23.0、v2.23.1、v2.24.0、v2.24.1、v2.25.0、v2.26.0、v2.26.1、v2.27.0、v2.27.1対応 |

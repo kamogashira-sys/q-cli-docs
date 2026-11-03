@@ -35,7 +35,7 @@ Esc は **Remind me later** と同じ扱いです。**Remind me later**・**Don'
 | `kiro-cli chat --help` の `--v3` | 「Launch the next generation Kiro agent」 |
 | `kiro-cli chat --help` の `--v2` | 「Use the V2 agent engine (the pre-3.0 default)」 |
 | 設定 `chat.agentEngine` | 「Default agent engine: 'v1', 'v2' (default), or 'v3'」。公式 Settings リファレンス（Page updated: 2026-10-15）には掲載されていない |
-| 設定 `chat.enableAutoAgentUpgrade` | 「Auto-upgrade V2 agent configs to the V3 format on launch: true (upgrade silently), false (never). Unset prompts once.」。公式 Settings リファレンスには掲載されていない |
+| 設定 `chat.enableAutoAgentUpgrade` | v2.30.0 当時の実機の説明は「Auto-upgrade V2 agent configs to the V3 format on launch: true (upgrade silently), false (never). Unset prompts once.」で、公式 Settings リファレンスには掲載されていなかった。⚠ **v2.37.0 で、未設定は有効（既定 `true`）に変わり**、公式 Settings リファレンスにも掲載された（実機 2.37.1 の説明は「Auto-upgrade V2 agent configs, workspace and global, to the V3 format on V3 launches (boolean, default: true). When false, interactive V3 launches show a notice while any are pending.」）。→ [54. v2.35〜v2.37 新機能](54_v237NewFeatures.md) |
 
 ```bash
 # V3 を既定のハーネスとして保存する（実機 2.33.0 の chat.agentEngine の説明に基づく）
@@ -146,5 +146,5 @@ KIRO_SCREEN_READER=on kiro-cli chat
 - [Settings リファレンス](https://kiro.dev/docs/reference/settings/)
 - `kiro-cli chat --help` / `kiro-cli settings list --all`（実機 2.33.0）
 
-**最終更新**: 2026-10-21
+**最終更新**: 2026-11-03
 **対象バージョン**: Kiro CLI v2.30.0+（V3 への切り替え提案・モデルフォールバック通知は V3 Early Access）

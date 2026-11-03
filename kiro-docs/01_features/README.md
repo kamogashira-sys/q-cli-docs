@@ -2,7 +2,7 @@
 
 # Kiro CLI 機能詳細ガイド
 
-> Kiro CLI の 53 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+> Kiro CLI の 54 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
 
 ## 🗂️ カテゴリ別ナビゲーション
 
@@ -40,6 +40,7 @@
 - [51. v2.32 新機能](51_v232NewFeatures.md) 🆕 — [V3] 書き込み承認でのフォルダ許可・非対話実行のクラウドセッション・Workflow の拡張（v2.32.0）
 - [52. v2.33 新機能](52_v233NewFeatures.md) 🆕 — [V3] ワークスペースの信頼確認・Workflow の計画承認ツリー・V3 のモデルフォールバック（v2.33.0）
 - [53. v2.34 新機能](53_v234NewFeatures.md) 🆕 — [V3] MCP elicitation・Workflow の起動方針（Workflow use）と計画の修正・Memory の削除・`/model edit`（v2.33.1・v2.34.0）
+- [54. v2.35〜v2.37 新機能](54_v237NewFeatures.md) 🆕 — [V3] Approve for me・⚠ V2 エージェントの起動時の自動アップグレードが既定で有効（v2.36.0・v2.37.0）
 
 ### 📁 コンテキスト・知識管理
 - [07. Skills](07_Skills.md) — Progressive Context Loading
@@ -92,6 +93,7 @@
 - [51. v2.32 新機能](51_v232NewFeatures.md) 🆕 — [V3] 書き込み承認でのフォルダ許可と承認スコープの表示（v2.32.0）
 - [52. v2.33 新機能](52_v233NewFeatures.md) 🆕 — [V3] ワークスペースの信頼確認・🔒 サンドボックスのネットワーク規則と Windows の hook コマンドの修正（v2.33.0）
 - [53. v2.34 新機能](53_v234NewFeatures.md) 🆕 — [V3] `--trust-workspace`（信頼確認を 1 回の起動だけ省略）・ツール承認の選択肢の並び・解析できない shell コマンドの拒否（v2.34.0）
+- [54. v2.35〜v2.37 新機能](54_v237NewFeatures.md) 🆕 — [V3] Approve for me（`/permissions` の Policies）・サブコマンド単位の承認ルール（`git stash *`）・root／Administrator 起動の警告・`kiro-cli agent upgrade` の権限の警告（v2.35.0・v2.36.0）
 
 ### 🔌 統合（IDE/MCP/CI/CD/認証）
 - [12. Remote Authentication](12_RemoteAuth.md) — SSH/SSM/コンテナ認証
@@ -105,6 +107,7 @@
 - [50. v2.31 新機能](50_v231NewFeatures.md) 🆕 — [V3] MCP ツールのオンデマンド読み込み・⚠️ `KIRO_HOME` の V3 全体への拡張（v2.31.0）
 - [51. v2.32 新機能](51_v232NewFeatures.md) 🆕 — [V3] 非対話実行の `--cloud`／`--repo`・組織 MCP レジストリの OAuth 設定（v2.32.0）
 - [53. v2.34 新機能](53_v234NewFeatures.md) 🆕 — [V3] MCP elicitation（MCP ツールがフォームやリンクで入力を求める）・`kiro-cli mcp add --agent` の修正（v2.33.1・v2.34.0）
+- [54. v2.35〜v2.37 新機能](54_v237NewFeatures.md) 🆕 — ACP クライアントのターミナルでのサインイン（v2.37.0）・`acp.agentEngine`（v2.36.0）・[V3] 組織の MCP と Web ツールの設定への追従と、レジストリが隠した MCP サーバーの表示（v2.35.0）
 
 ### 💰 使用量・課金
 - [06. /usage コマンド](06_UsageCommand.md) — 契約プラン・月間使用量
@@ -168,6 +171,7 @@
 | **[v2.32 新機能](51_v232NewFeatures.md)** 🆕 | v2.32.0<br/>（2026-10-15） | [V3] 書き込み承認でのフォルダ許可、非対話実行のクラウドセッション、Workflow の拡張 | [V3] フォルダ単位の書き込み承認と承認スコープの表示、[V3] 非対話実行の `--cloud`／`--repo`、[V3] Workflow の計画プレビューと平易な言葉での変更、⚠️ [V3] Workflow の review loop は 2 回の却下で一時停止・ステップのセッションはタスクで開く、[V3] 出力スタイル 3 種、OSC 7501 の端末プログラム状態（`KIRO_NO_PROGRAM_STATUS`）、⚠️ V2 のサブエージェントがモデルフォールバック設定に従う |
 | **[v2.33 新機能](52_v233NewFeatures.md)** 🆕 | v2.33.0<br/>（2026-10-20） | [V3] ワークスペースの信頼確認、Workflow の計画承認ツリー、V3 のモデルフォールバックの設定 | [V3] hooks・agents・MCP サーバー・steering・workflows・言語サーバー設定の読み込み前のワークスペース信頼確認（非対話実行と V1・V2 は対象外）、[V3] Workflow の計画承認ステップツリー・PR ウォッチ（コンフリクト・失敗チェック・スレッド）、V2 の `grep` の並列スキャン、Mermaid のサブグラフ（V2／V3 の適用範囲は未確認）、🔒 [V3] サンドボックスのネットワーク規則のホスト名の大文字小文字・Windows の hook コマンド |
 | **[v2.34 新機能](53_v234NewFeatures.md)** 🆕 | v2.34.0<br/>（2026-10-23）<br/>v2.33.1含む | [V3] MCP elicitation、Workflow の起動方針（Workflow use）と計画の修正、Memory の削除、`/model edit` | [V3] MCP ツールがフォームやリンクで入力を求める、⚠ [V3] Workflows は依頼したときだけ開始（v2.33.1）、`chat.workflowLaunch`（Only when asked／Only for large tasks／As much as possible）、[V3] 計画承認への変更案の入力、[V3] `/memories` で `Ctrl+D` による削除、`/model edit`（V2／V3 の適用範囲は未確認）、[V3] `--trust-workspace`、🔒 [V3] HTTP の MCP サーバーは同一オリジンのリダイレクトだけに従う |
+| **[v2.35〜v2.37 新機能](54_v237NewFeatures.md)** 🆕 | v2.37.0<br/>（2026-10-30）<br/>v2.35.0・v2.36.0<br/>v2.34.1〜v2.37.1のパッチ含む | [V3] Approve for me、V2 エージェントの起動時の自動アップグレード（既定で有効）、ACP のサインインとエンジン選択、root／Administrator 起動の警告 | [V3] `/permissions` の Policies で **approve for me**（`evaluate` 効果・ワークスペース単位）、[V3] サブコマンド単位の承認ルール（`git stash *`）、`kiro-cli agent upgrade` の権限の警告、⚠ [V3] `chat.enableAutoAgentUpgrade` 未設定でも V3 の起動時に V2 エージェントをアップグレード（`.json.bak` を作成）、`acp.agentEngine`（`v1`／`v2`／`v3`）、ACP クライアントのターミナルでのサインイン（**Log in to Kiro**）、`app.warnOnElevatedPrivileges`、`KIRO_RUNTIME_DIR`、Mermaid のノードの形状と入れ子の subgraph、fullscreen で長い回答の上端のプロンプト行から戻る、[V3] レジストリが隠した MCP サーバーを `/mcp` に表示 |
 
 ## 🔗 機能間の連携
 
@@ -354,6 +358,6 @@ sequenceDiagram
 
 ---
 
-**最終更新**: 2026-10-25
-**対象バージョン**: Kiro CLI v2.34.0+（v3 は Early Access）
-**機能数**: 53 + Reference集約 ([04_reference/](../04_reference/README.md))
+**最終更新**: 2026-11-03
+**対象バージョン**: Kiro CLI v2.37.1+（v3 は Early Access）
+**機能数**: 54 + Reference集約 ([04_reference/](../04_reference/README.md))

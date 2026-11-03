@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.34.0（本サイト反映済。v2.8.0 で CLI v3 Early Access）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.37.1（本サイト反映済。v2.8.0 で CLI v3 Early Access）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,14 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v2.37.1** | 2026-10-31 | 起動時の通知・fullscreen のボタン・V3 のサインイン維持 | 起動時の通知・welcome 行・What's new の見た目、`/fullscreen` の最下部ボタンのホバー、[V3] 出力上限での打ち切りの案内、アイドル時の CPU 使用の低下、[V3] 更新後もサインインが維持される（項目5件） |
+| **v2.37.0** | 2026-10-30 | ⚠ [V3] V2 エージェントの起動時の自動アップグレードが既定で有効・ACP のサインイン・`KIRO_RUNTIME_DIR` | [V3] `chat.enableAutoAgentUpgrade` 未設定でも V3 の起動時に V2 エージェントをアップグレード（`.json.bak` を作成）、`kiro-cli acp` のターミナルでのサインイン（**Log in to Kiro**）、Mermaid のノードの形状と入れ子の subgraph、`KIRO_RUNTIME_DIR`、V2 エージェントの `kiro-cli agent upgrade` の案内、`stopping (exit 4)`（公式の項目14件） |
+| **v2.36.0** | 2026-10-29 | [V3] Approve for me・サブコマンド単位の承認ルール・`acp.agentEngine` | [V3] `/permissions` の Policies で **approve for me**、`git stash *` のサブコマンド階層、`kiro-cli agent upgrade` の権限の警告、`acp.agentEngine`、Mermaid の `title:` と注記、V2 の git 環境変数で設定を変える shell コマンドは先に承認（項目12件） |
+| **v2.35.2** | 2026-10-28 | パッチ | autocomplete のデスクトップアプリの廃止の段階的展開（macOS） |
+| **v2.35.1** | 2026-10-28 | パッチ | 性能の改善 |
+| **v2.35.0** | 2026-10-27 | root／Administrator 起動の警告・[V3] 組織の MCP と Web ツールの設定への追従 | `app.warnOnElevatedPrivileges`、[V3] 組織の MCP と `web_search`・`web_fetch` の設定に従う、fullscreen で長い回答の上端のプロンプト行から戻る、[V3] `/mcp` がレジストリの隠したサーバーを表示、V2・V3 のモデルフォールバックの修正ほか（項目15件） |
+| **v2.34.2** | 2026-10-26 | パッチ | 対象となるすべてのユーザーに、対話型 V2 チャットの開始時に V3 の案内を表示 |
+| **v2.34.1** | 2026-10-26 | パッチ | 空行を含む待ち行列のメッセージを 1 件の保留メッセージとして数える |
 | **v2.34.0** | 2026-10-23 | [V3] MCP elicitation・Workflow の起動方針と計画の修正・Memory の削除・`/model edit` | [V3] MCP ツールがフォームやリンクで入力を求める、`/settings` の **Workflow use**（Only when asked／Only for large tasks／As much as possible）、[V3] Workflow の計画承認に変更案を入力、[V3] `/memories` で `Ctrl+D` による削除、`/model edit`（V2／V3 の適用範囲は未確認）、[V3] `--trust-workspace`、🔒 [V3] HTTP のリモート MCP サーバーは同一オリジンのリダイレクトだけに従う、修正17件 |
 | **v2.33.1** | 2026-10-21 | ⚠ [V3] Workflows は依頼したときだけ開始 | [V3] Workflows を有効にしても自動では始まらない、`kiro-cli mcp add --agent` が `tools` に含まれないエージェントにも付与、スクリーンリーダー使用時の `/tools`、V2 から V3 へのセッション再開、V3 のサブエージェント・MCP・画像の修正ほか（修正15件） |
 | **v2.33.0** | 2026-10-20 | [V3] ワークスペースの信頼確認・Workflow の計画承認ツリー・V3 のモデルフォールバック・🔒 セキュリティ修正2件 | [V3] hooks・agents・MCP サーバー・steering・workflows・言語サーバー設定の読み込み前に信頼を確認（非対話実行と V1・V2 は対象外）、[V3] Workflow の計画承認ステップツリー・PR ウォッチ、V2 の `grep` の並列スキャン、Mermaid のサブグラフ、[V3] サンドボックスのネットワーク規則のホスト名の大文字小文字・Windows の hook コマンド（公式 Changelog v2.33 に基づく） |
@@ -52,8 +60,10 @@ kiro-cli version --changelog=all
 | **v2.21.2** | 2026-09-08 | ⚠️ [V3] 端末履歴保持が既定化（`chat.preserveScrollback`） | [V3]が再描画をまたいで端末履歴を既定で保持（実機2.21.4で既定`true`を確認。従来のclear-and-repaintに戻すには`false`）。shellツール出力の部分行更新、起動高速化、`/settings`フッターのEnter説明、プロンプトフッターヒント消失時のちらつき、agent monitor/セッションダッシュボード離脱時の再出力、agent swap即時通知の修正6件 |
 | **v2.21.1** | 2026-09-03 | スピナー文言カスタマイズ・ワークスペース設定の優先順位是正 | ビジーインジケーターの動詞をカスタマイズ（`chat.enableCustomSpinnerVerbs`/`chat.spinnerVerbs`）、ターミナルUIでワークスペース`cli.json`がグローバル設定より優先。[V3] 非対話実行のクリーン終了・`--output-format stream-json`中断時のエラー報告・モデル未設定エージェントの既定値使用・SessionStart Hook保持と重複通知抑止の修正4件 |
 | **v2.21.0** | 2026-09-01 | [V3] セッションダッシュボード・設定パネル・クラウド設定適用 | [V3] `/sessions`（`kiro-cli chat --sessions`でも起動。ローカル/クラウドのセッションを閲覧・検索・再開・整理。**V3(KAS)限定**）、[V3] `/config`（agents・MCP・Powers・Steering・Skills・Hooksを1画面表示、local/cloud/both識別）、[V3] Kiro WebのConfiguration Syncでアップロードしたクラウド設定を新規ローカルセッションへ適用（ローカル`.kiro`に書き込まない）、Preserve scrollback・`/agent swap`ピッカー・V3タスクリスト表示等の修正7件 |
+| **v2.20.2** | 2026-08-31 | パッチ | フィードバックのアンケートが毎セッション出る問題の修正、[V3] 再開したチャットがツール結果の内容と書式を保持 |
 | **v2.20.1** | 2026-08-27 | [V3] `/powers`・安定性修正 | [V3] `/powers`でインストール済み Powers を表示。Windows `app.disableAutoupdates`、認証、tools/hooks表示、`chat.historyMode`、V3 `/chat`・JSON書込み・資格情報・model/subagent回復を含む修正12件（詳細はCLI内蔵changelog、日付は公式Changelog） |
 | **v2.20.0** | 2026-08-26 | [V3] 全画面 Spec 実行・Preserve scrollback | `/spec run`の全画面タスク実行ビュー（リアルタイム進捗・実行前スコープ選択）、`/settings display`のPreserve scrollback、会話再開・大容量出力・V3認証/MCP等の修正9件 |
+| **v2.19.2** | 2026-08-25 | パッチ | 非対話モードの `--output-format stream-json`、[V3] MCP OAuth の URL 指定、[V3] エージェント設定の自動アップグレードの提案、サブエージェントの `/tools trust-all` の継承、Windows の `cmd` の解析が fail closed など（項目22件） |
 | **v2.19.1** | 2026-08-21 | バグ修正・セキュリティ修正 | tmux 3.7 より前での再描画修正、[V3] `/knowledge`の自動補完（6サブコマンド）と`rm`エイリアス、TUI終了後の端末書式リセット等7件、[V3] `grep_search`/`file_search`が`.kiroignore`拒否パスを返さないよう修正（セキュリティ）（公式Changelog v2.19のPatches節に8項目掲載） |
 | **v2.19.0** | 2026-08-19 | サブエージェントタイムアウト・Spec reviewマウス対応 | サブエージェントのアイドルタイムアウト`api.subagentTimeout`（既定3600秒）、Spec review screenへのマウス対応（スクロール/クリック、`m`キー）、[V3] session resumeピッカーのAI生成タイトル要約、[V3] MCP protocol revision 2026-07-28対応、ストリームアイドル監視・自動リトライ等バグ修正25件 |
 | **v2.18.1** | 2026-08-14 | `/spec view`インラインレビュー化・tarセキュリティ修正 | [V3] `/spec view`が完全なspec文書を開いてインラインレビュー可能に変更、`tar --use-compress-program`/`--to-command`は信頼済み`tar`でも承認が必要（セキュリティ）、activity tray完了表示・thinking indicator着色・`/goal --max`等の修正7件（公式Changelog v2.18のPatches節に9項目掲載） |
@@ -363,6 +373,8 @@ timeline
         2026-08-27 : v2.20.1
                    : [V3] /powers
                    : 認証・セッション・Windows更新の修正
+        2026-08-31 : v2.20.2
+                   : アンケート表示・再開したチャットの結果の保持
 
     section v2.19.x サブエージェントタイムアウト・ストリーム安定性
         2026-08-19 : v2.19.0
@@ -373,6 +385,8 @@ timeline
         2026-08-21 : v2.19.1
                    : tmuxオーバーフローフラッシュ回避
                    : [V3] .kiroignore漏出防止（セキュリティ）
+        2026-08-25 : v2.19.2
+                   : stream-json 出力・MCP OAuth の URL 指定
 
     section v2.21.x セッションダッシュボード・設定パネル
         2026-09-01 : v2.21.0
@@ -482,6 +496,25 @@ timeline
                    : [V3] MCP elicitation
                    : Workflow use と計画の修正
                    : Memory の削除
+        2026-10-26 : v2.34.1・v2.34.2
+                   : 待ち行列の数え方・V3 の案内
+    section v2.35.x root 起動の警告・組織の設定
+        2026-10-27 : v2.35.0
+                   : root／Administrator 起動の警告
+                   : [V3] 組織の MCP と Web ツールの設定
+        2026-10-28 : v2.35.1・v2.35.2
+                   : 性能の改善・デスクトップアプリ廃止の展開
+    section v2.36.0 Approve for me
+        2026-10-29 : v2.36.0
+                   : [V3] Approve for me
+                   : サブコマンド単位の承認ルール
+                   : acp.agentEngine
+    section v2.37.x 自動アップグレード・ACP サインイン
+        2026-10-30 : v2.37.0
+                   : V2 エージェントの起動時の自動アップグレード
+                   : ACP クライアントのサインイン
+        2026-10-31 : v2.37.1
+                   : 起動時の通知・fullscreen のボタン
 ```
 
 ## 🔗 移行情報
@@ -557,6 +590,7 @@ timeline
 - [v2.32 新機能（フォルダ許可・非対話クラウドセッション・Workflow 拡張）](../01_features/51_v232NewFeatures.md) 🆕 - [V3] 書き込み承認でのフォルダ許可、非対話実行の `--cloud`／`--repo`、Workflow の拡張、OSC 7501（v2.32.0）
 - [v2.33 新機能（ワークスペースの信頼確認）](../01_features/52_v233NewFeatures.md) 🆕 - [V3] ワークスペースの信頼確認、Workflow の計画承認ツリー、V3 のモデルフォールバック、セキュリティ修正。
 - [v2.34 新機能（MCP elicitation・Workflow use）](../01_features/53_v234NewFeatures.md) 🆕 - [V3] MCP elicitation、Workflow の起動方針と計画の修正、Memory の削除、`/model edit`、`--trust-workspace`（v2.33.1・v2.34.0）
+- [v2.35〜v2.37 新機能（Approve for me・自動アップグレード・ACP）](../01_features/54_v237NewFeatures.md) 🆕 - [V3] Approve for me、サブコマンド単位の承認ルール、⚠ V2 エージェントの起動時の自動アップグレード（既定で有効）、ACP のサインインと `acp.agentEngine`、root／Administrator 起動の警告
 
 ### リファレンス（辞書） 🆕
 - [04_reference/](../04_reference/README.md) — Settings / Slash Commands / CLI Commands / Built-in Tools の網羅的辞書
@@ -587,5 +621,5 @@ timeline
 
 ---
 
-**最終更新**: 2026-10-25
-**対象バージョン**: Kiro CLI v2.34.0
+**最終更新**: 2026-11-03
+**対象バージョン**: Kiro CLI v2.37.1

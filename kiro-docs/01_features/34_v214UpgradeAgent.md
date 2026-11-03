@@ -146,6 +146,20 @@ mv .kiro/agents/my-agent.json.bak .kiro/agents/my-agent.json
 
 ---
 
+## v2.36.0・v2.37.0 での進化
+
+### v2.36.0（2026-10-29）: 権限の警告
+
+`kiro-cli agent upgrade` は、アップグレード後の V3 のルールが V2 で許可されていたものを拒否・非表示・承認要求にするとき、警告を出します。結果の表には、アップグレードしたファイルごとに `(N warnings)` が表示されます。警告は `deny-by-default-trusted-shell`・`hidden-tool`・`allow-read-only-dropped` の 3 つです。V3 のセッションも、V2 で許可されていたものをルールがブロックするエージェントごとに、V2 へ戻る方法とともに、セッションにつき 1 回通知します。
+
+### v2.37.0（2026-10-30）: ⚠ 起動時の自動アップグレードが既定で有効
+
+V3 セッションの開始時に、V2 形式のエージェントを自動でアップグレードする動作が、`chat.enableAutoAgentUpgrade` が**未設定のときも**動くようになりました。明示的な `false` は無効のままです。ワークスペースの `.kiro/agents/` とグローバルの `~/.kiro/agents/`（`KIRO_AGENT_CONFIG_DIR` を設定している場合はそのディレクトリだけ）を走査し、書き換える前に各ファイルを `.json.bak` に複製します。V2 のままにするには `kiro-cli settings chat.enableAutoAgentUpgrade false` を実行します。出典は公式 [Upgrading agent configs](https://kiro.dev/docs/cli/v3/upgrade-agent/)（公式更新日 2026-11-02）です。
+
+詳細は [54. v2.35〜v2.37 新機能](54_v237NewFeatures.md) を参照してください。
+
+---
+
 ## 注意点・制限事項
 
 - **V3 専用**: `/upgrade-agent` は V3 セッション（`kiro-cli --v3`）内でのみ利用できます（v2.29.0 で追加された `kiro-cli agent upgrade <dir>` は、V3 セッションの外でディレクトリ単位に実行するコマンドです）。V2 安定版のスラッシュコマンド一覧（[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md)）には含めていません。
@@ -167,5 +181,5 @@ mv .kiro/agents/my-agent.json.bak .kiro/agents/my-agent.json
 
 ---
 
-**最終更新**: 2026-10-21  
-**対象バージョン**: Kiro CLI v2.14.0+（V3 は Early Access。v2.29.0 `kiro-cli agent upgrade <dir>`、v2.30.0 権限の更新を含む）
+**最終更新**: 2026-11-03  
+**対象バージョン**: Kiro CLI v2.14.0+（V3 は Early Access。v2.29.0 `kiro-cli agent upgrade <dir>`、v2.30.0 権限の更新、v2.36.0 権限の警告、v2.37.0 起動時の自動アップグレードの既定化を含む）

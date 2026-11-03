@@ -445,6 +445,26 @@ V3 エンジンで `--auth-method` が効くことと、既定で Kiro CLI の�
 
 ---
 
+## v2.36.0・v2.37.0 での変更点（エンジン選択とターミナルでのサインイン）
+
+### `acp.agentEngine`（v2.36.0）
+
+`kiro-cli acp` は、既定では V2 エンジンで動きます。v2.36.0 で、エンジンを一度だけ設定する `acp.agentEngine` が加わりました（値は `v1`・`v2`・`v3`）。エディタのコマンド引数に `--agent-engine` を渡す方法もあり、フラグが設定より優先されます。`chat.agentEngine` は `kiro-cli chat` に適用され、`kiro-cli acp` は変えません。
+
+```bash
+kiro-cli settings acp.agentEngine v3
+```
+
+出典は公式 [ACP の Choose the engine](https://kiro.dev/docs/cli/acp/#choose-the-engine)（公式更新日 2026-11-02）と [Settings リファレンス](https://kiro.dev/docs/reference/settings/)（公式更新日 2026-11-02）です。
+
+### ターミナルでのサインイン（v2.37.0）
+
+サインアウト中に `kiro-cli acp` が起動したとき、`initialize` でターミナル認証を宣言するクライアントには **Log in to Kiro** の方法が提示され、クライアントが開くターミナルで Kiro のサインインが走ります。宣言しないクライアントには、`kiro-cli login` を自分で実行するよう求める方法が提示されます。サインインの後は、クライアントから再接続します。サインインするまで、ほかのリクエストは認証が必要というエラーを返します。出典は公式 [ACP の Sign in from an ACP client](https://kiro.dev/docs/cli/acp/#sign-in-from-an-acp-client)（公式更新日 2026-11-02）です。
+
+詳細は [54. v2.35〜v2.37 新機能](54_v237NewFeatures.md) を参照してください。
+
+---
+
 ## 関連リンク
 
 ### 公式ドキュメント
@@ -478,5 +498,5 @@ V3 エンジンで `--auth-method` が効くことと、既定で Kiro CLI の�
 
 ---
 
-**最終更新**: 2026-10-21
-**対象バージョン**: Kiro CLI v1.25.0+（v1.26.0 `--agent` フラグ・`code` ツール対応、v2.29.0 V3 ACP のサインイン既定を含む）
+**最終更新**: 2026-11-03
+**対象バージョン**: Kiro CLI v1.25.0+（v1.26.0 `--agent` フラグ・`code` ツール対応、v2.29.0 V3 ACP のサインイン既定、v2.36.0 `acp.agentEngine`、v2.37.0 ターミナルでのサインインを含む）

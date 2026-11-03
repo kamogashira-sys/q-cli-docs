@@ -107,7 +107,7 @@ changelog に記載された次の 4 件の変更について、公式 Changelog
 |------|------------------------|
 | [V3] ツール承認が **Allow once** と **Deny once** を先頭に並べ、続いて許可または拒否のルールを保存する選択肢を並べる | 取得した公式ページの範囲では、選択肢の並び順の記載は確認できなかった（**未確認**）。権限は [17. Granular Tool Trust](17_GranularToolTrust.md) を参照 |
 | [V3] セッションダッシュボードが、セッションを削除する前に確認する | 公式 [Session management](https://kiro.dev/docs/cli/chat/session-management/)（Page updated: 2026-10-20）は、セッションを選んで `Ctrl+D` で削除を準備し、`y` で確認、それ以外のキーで取り消すと説明している。この確認が v2.34.0 の変更と同じものかは記載がなく**未確認**。ダッシュボードは [40. v2.21 新機能](40_v221NewFeatures.md) を参照 |
-| [V3] 解析できない shell コマンドを、承認を求めずに拒否する | 取得した公式ページの範囲では記載を確認できなかった（**未確認**） |
+| [V3] 解析できない shell コマンドを、承認を求めずに拒否する | 公式 [Permissions](https://kiro.dev/docs/permissions/)（Page updated: 2026-10-31）が、Kiro CLI の V3 セッション（と Kiro IDE 1.4.51 以降）で、権限のルールと照合できる程度に解析できない bash／PowerShell のコマンドをブロックし、承認を求める代わりにエージェントにコマンドの書き直しを求めると説明している。`cmd.exe` のコマンドは引き続き承認を求める。数回の書き直しの後も有効なコマンドがブロックされるときは、エージェントが確認できなかったと伝える |
 | [V3] サブエージェントが、親エージェントがインラインで宣言した MCP サーバーを受け取らない | 取得した公式ページの範囲では記載を確認できなかった（**未確認**）。サブエージェントは [02. Subagents](02_Subagents.md) を参照 |
 
 ## [V3] セキュリティ（v2.34.0）
@@ -184,5 +184,5 @@ HTTP 経由のリモート MCP サーバーが、同一オリジンのリダイ�
 - [MCP configuration](https://kiro.dev/docs/mcp/configuration/#adding-servers-to-a-specific-agent)
 - `kiro-cli version --changelog=2.34.0` / `kiro-cli settings list --all` / `kiro-cli chat --help` / `kiro-cli mcp add --help`（実機 2.34.0）
 
-**最終更新**: 2026-10-25
+**最終更新**: 2026-11-03（解析できない shell コマンドの拒否を公式 Permissions の記載で更新）
 **対象バージョン**: Kiro CLI v2.34.0（v2.33.1 を含む。MCP elicitation・Workflow の起動方針・Memory の削除・`--trust-workspace` は V3 Early Access）

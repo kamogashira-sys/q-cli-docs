@@ -157,6 +157,21 @@ V3 限定の追加・変更は次のとおりです。v2.33.0 は前回の反映
 > **V3 専用コマンドの扱い（v2.29.0〜v2.31.0 の追加分）**: `/memories`（Memory）、`/sandbox`（ローカルコマンドサンドボックス）、`/autonomous`（ローカル autonomous モード）は V3 専用で、V2 安定版のスラッシュコマンド数（[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md)）には含めず、本セクションから各詳細文書（[48](../01_features/48_v229NewFeatures.md)・[50](../01_features/50_v231NewFeatures.md)）を参照します。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/) には `/sandbox` と `/autonomous` が掲載され（local V3）、`/memories` の見出しはありません（公式 [Memory](https://kiro.dev/docs/memory/) に記載）。
 
 
+### v2.35.0〜v2.37.1 での追加（Approve for me・自動アップグレード・組織設定の追従ほか）
+
+V3 限定の追加・変更は次のとおりです（出典は公式 Changelog [v2.35](https://kiro.dev/changelog/cli/2-35/)・[v2.36](https://kiro.dev/changelog/cli/2-36/)・[v2.37](https://kiro.dev/changelog/cli/2-37/)）。詳細は [01_features/54. v2.35〜v2.37 新機能](../01_features/54_v237NewFeatures.md) を参照してください。
+
+| 版 | V3 の追加・変更 |
+|----|---------------|
+| v2.35.0 | **組織の MCP と Web ツールの設定への追従**（MCP サーバーと `web_search`・`web_fetch` を組織の設定で有効・無効に）、`/mcp` が組織のレジストリに隠された設定済みサーバーを表示、`kiro-cli mcp list` がスキップされたレジストリのサーバーを有効と表示しない、モデルが出力なしで拒否したときのループの修正、V2 セッション再開時の `default` エージェントの警告と planner の修正、HTTP 403 を返す MCP サーバーへの接続、`read_file` のオフセットの修正 |
+| v2.36.0 | **Approve for me**（`/permissions` → **Policies**。ワークスペース単位の `approve-for-me` プリセット）、**サブコマンド単位の承認ルール**（`git stash *`）、`kiro-cli agent upgrade` と V3 セッションの権限の警告（V2 で許可されていたものを V3 のルールが拒否・非表示・承認要求にする場合）、`/spec` の質問数表示、shell ツールカードの題名、承認プロンプトのルール行 |
+| v2.37.0 | ⚠ **V2 エージェントの起動時の自動アップグレードが既定で有効**（`chat.enableAutoAgentUpgrade` が未設定でも動く。`.json.bak` を作成）、承認プロンプトで複数行コマンドの先頭 1 行のみ表示（`Ctrl+O` で全体）、承認ルールのページの強調、`/spec` の表示でエスケープシーケンスを出力しない修正、V2 形式のエージェントで止まった `--no-interactive` 実行が `kiro-cli agent upgrade <directory>` を案内 |
+| v2.37.1 | 出力上限で打ち切られた回答の案内、アイドル時の CPU 使用の低下、この版で開始したセッションが更新後もサインインを維持 |
+
+> **V3 専用コマンドの扱い（v2.36.0）**: `/permissions`（**Policies** の **approve for me**・**ask for approval**）は対話型の V3 セッション専用で、V2 安定版のスラッシュコマンド数（[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md)）には含めません。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/#permissions) に掲載されています。
+
+> **ACP のエンジン選択（v2.36.0）と サインイン（v2.37.0）**: `kiro-cli acp` は既定で V2 エンジンで動き、`acp.agentEngine` または `--agent-engine` で `v3` を選びます。V3 の ACP のサインイン既定は v2.29.0 で変わっています（→ [13. ACP](../01_features/13_ACP.md)）。v2.37.0 からは、ターミナル認証を宣言する ACP クライアントが、サインアウト中の `kiro-cli acp` からターミナルでサインインできます。
+
 ---
 
 ## Breaking changes（v2 → v3）
@@ -221,6 +236,7 @@ kiro-cli diagnostic --format json-pretty
 - [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md) — V2 → V3 エージェント設定移行（v2.14.0）
 - [01_features/41〜46. v2.22〜v2.27 新機能](../01_features/46_v227NewFeatures.md) — Workflows・`/tools trust-all`・Output style・`SessionEnd`・保存済みプロンプトのコマンド化ほか（[41](../01_features/41_v222NewFeatures.md)・[42](../01_features/42_v223NewFeatures.md)・[43](../01_features/43_v224NewFeatures.md)・[44](../01_features/44_v225NewFeatures.md)・[45](../01_features/45_v226NewFeatures.md)・[46](../01_features/46_v227NewFeatures.md)）
 - [07_aidlc/](../07_aidlc/README.md) — AI-DLC（AWS Labs OSS 方法論）。v3 の純正 Spec agent とは別物（→ [01. 仕様駆動開発](01_spec-driven-development.md) の比較表）
+- [01_features/54. v2.35〜v2.37 新機能](../01_features/54_v237NewFeatures.md) — Approve for me・V2 エージェントの起動時の自動アップグレード・組織の MCP と Web ツールの設定への追従・ACP のサインインとエンジン選択
 - [01_features/47〜53. v2.28〜v2.34 新機能](../01_features/53_v234NewFeatures.md) — Hook のカテゴリ一致・Memory・サンドボックス・autonomous・`KIRO_HOME`・Workflows の拡張・ワークスペースの信頼確認・MCP elicitation・Workflow use ほか（[47](../01_features/47_v228NewFeatures.md)・[48](../01_features/48_v229NewFeatures.md)・[49](../01_features/49_v230NewFeatures.md)・[50](../01_features/50_v231NewFeatures.md)・[51](../01_features/51_v232NewFeatures.md)・[52](../01_features/52_v233NewFeatures.md)・[53](../01_features/53_v234NewFeatures.md)）
 - [02_update/01_changelog.md](../02_update/01_changelog.md) — v2.8.0 / v2.8.1 の変更履歴
 
@@ -237,5 +253,5 @@ kiro-cli diagnostic --format json-pretty
 
 ---
 
-**最終更新**: 2026-10-25（v2.33.1・v2.34.0 の V3 追加・変更を追加し、v2.33.0 の出典を公式 Changelog に更新）／ 2026-10-21（v2.28.0〜v2.33.0 の V3 追加・変更（Hook のカテゴリ一致、Memory、サンドボックス、autonomous、`KIRO_HOME`、Workflows の拡張、フォルダの信頼確認ほか）と、CLI 3.0 での V3 既定化・Classic からの切り替え提案の注記を追加。v2.27.1 の出典を公式 Changelog の Patches 節に更新）
+**最終更新**: 2026-11-03（v2.35.0〜v2.37.1 の V3 追加・変更を追加）／ 2026-10-25（v2.33.1・v2.34.0 の V3 追加・変更を追加し、v2.33.0 の出典を公式 Changelog に更新）／ 2026-10-21（v2.28.0〜v2.33.0 の V3 追加・変更（Hook のカテゴリ一致、Memory、サンドボックス、autonomous、`KIRO_HOME`、Workflows の拡張、フォルダの信頼確認ほか）と、CLI 3.0 での V3 既定化・Classic からの切り替え提案の注記を追加。v2.27.1 の出典を公式 Changelog の Patches 節に更新）
 **対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x 以降 ＋ `--v3` で提供。3.0.0 GA は未リリース。
