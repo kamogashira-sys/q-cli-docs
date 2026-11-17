@@ -1,8 +1,8 @@
-[ホーム](../README.md) > [Kiro CLI v3（Early Access）](README.md) > Kiro IDE 版との比較
+[ホーム](../README.md) > [Kiro CLI v3](README.md) > Kiro IDE 版との比較
 
 # 09-02. Kiro IDE 版との比較（仕様駆動開発）
 
-> ⚠️ **Early Access**: 本ページは Kiro CLI v3（`kiro-cli --v3`）と Kiro IDE の仕様駆動開発を比較します。Early Access のため仕様変更の可能性があります（→ [09. v3 概要](README.md)）。
+> 📌 本ページは Kiro CLI v3 と Kiro IDE の仕様駆動開発を比較します。v3.0.0 以降、V3 は対話型の既定です。仕様は公式ドキュメントの更新に追従して見直します（→ [09. v3 概要](README.md)）。
 >
 > 📌 **編集方針**: 本ページは **一次情報で確認できた事実のみ**を「同様／IDE が優位／CLI ならでは」に整理します。公式に確認できない比較は**断定して掲載しません**（推測を避けるため）。
 
@@ -19,7 +19,7 @@
 
 - **コアは同じ**: 要件 / 設計 / タスクの 3 ファイル、3 フェーズ、`.kiro/specs/` の共有は **IDE も CLI も同様**。CLI で始めて IDE で続ける、といった**相互運用**ができます。**タスクの並列 wave 実行やワークフロー変種の選択も IDE/CLI/Web 共通**であることが現行公式で確認できます（旧版の記述を訂正、詳細は俯瞰表A参照）。
 - **UI 様式の違い**: IDE は GUI のウィザード操作・図のレンダリングを提供します。CLI V3 も v2.20.0 から全画面のタスク実行ビューを提供しますが、UI の操作体系が完全に同等であることは公式に確認できません。
-- **CLI ならでは**: ターミナル統合（既存の CLI ワークフロー・シェルとの親和）。**ただし v3 はオプトインの Early Access で、非 TUI の classic モードは非対応**（下記の注意を参照）。
+- **CLI ならでは**: ターミナル統合（既存の CLI ワークフロー・シェルとの親和）。**ただし Classic（非 TUI）インターフェースは 3.0.0 で廃止され、ターミナル UI を使います**（下記の注意を参照）。
 
 ---
 
@@ -50,7 +50,7 @@
 
 | 観点 | 状況（事実） | なぜ断定しないか |
 |------|------|------------------|
-| ヘッドレス / CI での spec 実行 | 公式 Permissions に **CI 向け例**（`capability: all / effect: allow`）あり。一方で v3 の Known gap は **「Classic mode（非 TUI）は v3 非対応・TUI を使用」** と明記 | CI 例は権限設定の例示であり、「v3 がヘッドレス / 非対話で spec を実行できる」と明言したものではない。非 TUI 非対応の制限と整合する公式記載が未確認のため断定しない |
+| ヘッドレス / CI での spec 実行 | 公式 Permissions に **CI 向け例**（`capability: all / effect: allow`）あり。一方で、Classic（非 TUI）インターフェースは 3.0.0 で廃止され、ターミナル UI を使う（公式 [Upgrade from CLI 2.x](https://kiro.dev/docs/cli/v3/) の「Remaining differences from V2」） | CI 例は権限設定の例示であり、「v3 がヘッドレス / 非対話で spec を実行できる」と明言したものではない。ヘッドレス実行と Classic の廃止との関係について、公式に整合する記載を確認できていないため断定しない |
 | `/goal`・Queue Steering 等との併用 | `/goal`・Queue Steering は v2.7 系（v2 エンジン）の機能 | **v3（`--v3`）での存在・spec agent との併用可否が公式 feature-overview に記載なし**。公式 [Tools](https://kiro.dev/docs/tools/)（公式更新日 2026-10-13）は `goal` ツールを「CLI 2.x legacy」に分類し、V3 の組み込みツールではないと説明している。`/goal` コマンドと Queue Steering の V3 での扱いは公式に記載がなく**未確認** |
 | SSH / リモート / コンテナでの spec 実行 | CLI はターミナルツールとしてリモート環境で使われる | IDE もリモート開発機能を持ち得るため「CLI のみ」と断定できない。CLI / IDE 双方の公式記載が未確認 |
 
@@ -76,14 +76,14 @@
 - **ターミナル統合**: 既存の CLI / シェルのワークフローの中で仕様駆動開発を進められます。
 - 表 B の項目（ヘッドレス / CI、`/goal` 併用、SSH/リモート）は、**公式に確認できるまで本サイトでは断定しません**。
 
-> ⚠️ **v3 利用形態の注意**: v3 は `kiro-cli --v3` の **Early Access**。Known gap として **Amazon Linux 2 非対応**・**非 TUI（classic）モード非対応（TUI を使用）**・**V3 セッションは V2 で再開不可** があります（→ [09. v3 概要](README.md) の Known gaps）。
+> ⚠ **v3 利用形態の注意**: v3.0.0 以降、V3 は対話型の既定です。既知の制限として、**V3 セッションは V2 で再開不可**、**Classic（非 TUI）インターフェースは廃止（ターミナル UI を使用）**、**glibc が古い Linux では V2 で起動**があります（→ [09. v3 概要](README.md) の Known gaps）。
 
 ---
 
 ## 関連リンク
 
 ### 本セクション内
-- [09. Kiro CLI v3（Early Access）概要](README.md)
+- [09. Kiro CLI v3 概要](README.md)
 - [01. 仕様駆動開発（Spec-driven development）](01_spec-driven-development.md)
 
 ### 公式情報源
@@ -93,5 +93,5 @@
 
 ---
 
-**最終更新**: 2026-08-29（v2.20.0 の CLI V3 全画面 Spec タスク実行・リアルタイム進捗・実行前スコープ選択を反映。IDE/CLI の UI 完全同等性は断定しない）
-**対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x ＋ `--v3` で提供。3.0.0 GA は未リリース。
+**最終更新**: 2026-11-17（V3 の既定化と Classic の廃止に合わせて注記を更新）／ 2026-08-29（v2.20.0 の CLI V3 全画面 Spec タスク実行・リアルタイム進捗・実行前スコープ選択を反映。IDE/CLI の UI 完全同等性は断定しない）
+**対象バージョン**: Kiro CLI v3.3.0（v3.0.0 で V3 が対話型の既定）

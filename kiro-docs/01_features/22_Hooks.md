@@ -617,6 +617,16 @@ V3 では、Hook がツールのカテゴリ（shell、read、write、特定の 
 
 ---
 
+
+## v3.1.0 での進化（`PreCompact`・`PostCompact`）
+
+CLI V3 のセッションで、会話の compaction の前後に動く 2 つのトリガーが加わりました（公式 [Hook types](https://kiro.dev/docs/hooks/types/)、Page updated: 2026-11-12。V3 の Hook 形式で、本ページが解説する CLI 2.x の Hook とは別系統です）。
+
+- **`PreCompact`**: 手動（`/compact`）、自動、コンテキストの溢れからの回復、別のモデルへの引き継ぎの compaction の前に動く。終了コード 0 は compaction を続け、標準出力（3,000 文字まで）をエージェントのコンテキストに加える。終了コード 2 は compaction を取り消し、会話はそのまま残る
+- **`PostCompact`**: 要約が古い履歴に置き換わったあとに動く。標準入力の JSON に `summary`（3,000 文字まで）と `summary_path`（要約全体のファイル）が入る。compaction を取り消せず、要約も変えられず、マッチャーを取らない
+
+詳細は [56. v3.1〜v3.3 新機能](56_v33NewFeatures.md) を参照してください。
+
 ## 関連リンク
 
 ### 関連機能（本サイト）

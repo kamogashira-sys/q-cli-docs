@@ -12,7 +12,7 @@ Kiro CLI **v2.14.0**（公式表示日 2026-07-22）で、**V2 のカスタム�
 
 **対応バージョン**: Kiro CLI v2.14.0（V3 は Early Access）
 
-> **注記**: V3 は **Early Access** であり、仕様変更の可能性があります。V3 の全体像・4 本柱・Breaking changes は専用セクション **[09_v3/](../09_v3/README.md)** にまとめています。最新は[公式 Changelog](https://kiro.dev/changelog/cli/) および [公式ドキュメント](https://kiro.dev/docs/cli/v3/upgrade-agent/) を参照してください。
+> **注記**: 本ページは v2.14 当時の記述で、当時 V3 は **Early Access** でした（v3.0.0 で対話型の既定になりました。→ [55. v3.0 新機能](55_v30NewFeatures.md)）。V3 の全体像・4 本柱・Breaking changes は専用セクション **[09_v3/](../09_v3/README.md)** にまとめています。最新は[公式 Changelog](https://kiro.dev/changelog/cli/) および [公式ドキュメント](https://kiro.dev/docs/cli/v3/upgrade-agent/) を参照してください。
 
 ---
 
@@ -160,10 +160,17 @@ V3 セッションの開始時に、V2 形式のエージェントを自動で�
 
 ---
 
+
+## v3.3.0 での進化: 許可ルールを広げない
+
+V2 エージェントを V3 へアップグレードするとき、`allowedCommands` と `web_fetch.trusted` の正規表現のうち、どの glob にも正確に対応しないものは、より広い glob に変換されなくなりました。代わりに、`unconvertible-pattern` の警告とともに削除されます。その結果、V3 は、正規表現が許可していた操作の前に承認を尋ねます。書き直し方は、`kiro-cli agent upgrade` と `/upgrade-agent diagnostics` に表示されます（公式 [Changelog v3.3](https://kiro.dev/changelog/cli/3-3/)）。
+
+そのほか v3.1.0 では、`kiro-cli agent upgrade` と `/upgrade-agent` が、エージェントが V3 の提供しないツール（`todo_list` など）を使うとき警告するようになりました（→ [56. v3.1〜v3.3 新機能](56_v33NewFeatures.md)）。
+
 ## 注意点・制限事項
 
 - **V3 専用**: `/upgrade-agent` は V3 セッション（`kiro-cli --v3`）内でのみ利用できます（v2.29.0 で追加された `kiro-cli agent upgrade <dir>` は、V3 セッションの外でディレクトリ単位に実行するコマンドです）。V2 安定版のスラッシュコマンド一覧（[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md)）には含めていません。
-- **V3 は Early Access**: 破壊的変更・Known gaps（Amazon Linux 2 非対応・非 TUI モード非対応・セッション非互換）を伴います（→ [09_v3/](../09_v3/README.md)）。
+- **V3 の破壊的変更・Known gaps**: v2.14 当時は Early Access で、Known gaps に Amazon Linux 2 非対応・非 TUI モード非対応・セッション非互換を挙げていました。現行の Known gaps（セッションの再開は V2 → V3 のみ、`/checkpoint` なし、glibc が古い Linux では V2、Classic は廃止）は [09_v3/](../09_v3/README.md) を参照してください。
 - 変換は「universal（V2 + V3）」形式であり、元のフィールドを残したまま新しい権限ルールを追加します。V2 に戻して使う場合も設定は機能します。
 - 変換後は `/upgrade-agent diagnostics` で警告を確認し、`regex-*` 系の近似変換は意図どおりか目視で確認してください。
 
@@ -176,10 +183,10 @@ V3 セッションの開始時に、V2 形式のエージェントを自動で�
 - [30. v2.8 / V3 プレビュー](30_v28V3Preview.md) — V3 Early Access の入口（v2.8.0）
 - [変更履歴 v2.14.0](../02_update/01_changelog.md)
 - [Upgrading agent configs（公式）](https://kiro.dev/docs/cli/v3/upgrade-agent/)
-- [Agent config（公式 V3）](https://kiro.dev/docs/cli/v3/agent-config/) ／ [Permissions（公式 V3）](https://kiro.dev/docs/cli/v3/permissions/)
+- [Agent config（公式 V3）](https://kiro.dev/docs/custom-agents/configuration-reference/) ／ [Permissions（公式 V3）](https://kiro.dev/docs/cli/v3/permissions/)
 - [公式 Changelog v2.14](https://kiro.dev/changelog/cli/2-14/)
 
 ---
 
-**最終更新**: 2026-11-03  
-**対象バージョン**: Kiro CLI v2.14.0+（V3 は Early Access。v2.29.0 `kiro-cli agent upgrade <dir>`、v2.30.0 権限の更新、v2.36.0 権限の警告、v2.37.0 起動時の自動アップグレードの既定化を含む）
+**最終更新**: 2026-11-17  
+**対象バージョン**: Kiro CLI v2.14.0+（V3 は v3.0.0 で既定。v3.3.0 で許可ルールを広げない動作。v2.29.0 `kiro-cli agent upgrade <dir>`、v2.30.0 権限の更新、v2.36.0 権限の警告、v2.37.0 起動時の自動アップグレードの既定化を含む）

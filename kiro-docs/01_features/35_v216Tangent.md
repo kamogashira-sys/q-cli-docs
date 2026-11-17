@@ -12,9 +12,9 @@ Kiro CLI **v2.16.0**（公式表示日 2026-07-31）で、**名前付き・ネ�
 
 **対応バージョン**: Kiro CLI v2.16.0（V3 は Early Access）
 
-> **注記**: V3 は **Early Access** であり、仕様変更の可能性があります。V3 の全体像・4 本柱・機能強化は専用セクション **[09_v3/](../09_v3/README.md)** にまとめています。最新は[公式 Changelog](https://kiro.dev/changelog/cli/) および [公式ドキュメント](https://kiro.dev/docs/cli/v3/tangent) を参照してください。
+> **注記**: 本ページは v2.16 当時の記述で、当時 V3 は **Early Access** でした（v3.0.0 で対話型の既定になりました。→ [55. v3.0 新機能](55_v30NewFeatures.md)）。V3 の全体像・4 本柱・機能強化は専用セクション **[09_v3/](../09_v3/README.md)** にまとめています。最新は[公式 Changelog](https://kiro.dev/changelog/cli/) および [公式ドキュメント](https://kiro.dev/docs/cli/chat/tangent/) を参照してください。
 
-> ⚠️ **既存（V2 / classic、実験的機能）の`/tangent`とは別仕様**: 本サイトの [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md#tangent) が解説する既存の `/tangent`（トグル切替・単一チェックポイント・ネスト不可）とはコマンド名が同じですが、動作が異なります。公式ドキュメントも「the earlier experimental tangent mode behaves differently」と明記しています（出典: [Tangent（公式v3）](https://kiro.dev/docs/cli/v3/tangent)）。
+> ⚠️ **既存（V2 / classic、実験的機能）の`/tangent`とは別仕様**: 本サイトの [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md#tangent) が解説する既存の `/tangent`（トグル切替・単一チェックポイント・ネスト不可）とはコマンド名が同じですが、動作が異なります。公式ドキュメントも「the earlier experimental tangent mode behaves differently」と明記しています（出典: [Tangent（公式v3）](https://kiro.dev/docs/cli/chat/tangent/)）。
 
 ---
 
@@ -72,14 +72,14 @@ Kiro CLI **v2.16.0**（公式表示日 2026-07-31）で、**名前付き・ネ�
 | 提供範囲 | V2安定版・classic全般 | V3（`kiro-cli --v3`）限定 |
 | 公式ステータス | Experimental feature that may change or be removed | ⬆️ Enhanced（Feature comparisonより） |
 
-出典: [Tangent（公式v3）](https://kiro.dev/docs/cli/v3/tangent)、[experimental Tangent mode（公式）](https://kiro.dev/docs/cli/experimental/tangent-mode/)、[Feature comparison（公式v3）](https://kiro.dev/docs/cli/v3/new-features/)
+出典: [Tangent（公式v3）](https://kiro.dev/docs/cli/chat/tangent/)、[experimental Tangent mode（公式）](https://kiro.dev/docs/cli/experimental/tangent-mode/)、[Feature comparison（公式v3）](https://kiro.dev/docs/cli/v3/)
 
 ---
 
 ## 注意点・制限事項
 
 - **V3 専用**: `/tangent`（本機能）は V3 セッション（`kiro-cli --v3`）内でのみ利用できます。V2 安定版のスラッシュコマンド一覧（[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md)）のコマンド数SSoTには含めていません（V3限定コマンドを対象外とする既存方針を踏襲）。
-- **V3 は Early Access**: 仕様変更・機能追加の可能性があります（→ [09_v3/](../09_v3/README.md)）。
+- **V3 の位置付け**: v2.16 当時は Early Access でした。v3.0.0 で対話型の既定になっています（→ [09_v3/](../09_v3/README.md)）。
 - TUI（V2安定版のターミナルUI）の対応表（[18. Terminal UI](18_TerminalUI.md)）は既存classic版`/tangent`のみを対象としており、本機能（V3限定）はそもそも比較対象外です。
 
 ---
@@ -101,7 +101,7 @@ V3 で、tangent で得た結果を親セッション、または名前を指定
 /tangent merge <dest>
 ```
 
-公式 [Tangent（V3）](https://kiro.dev/docs/cli/v3/tangent/)（公式更新日 2026-10-10）の「Merging a tangent back」は、`/tangent merge [dest]` の動作を次のように説明しています。
+公式 [Tangent（V3）](https://kiro.dev/docs/cli/chat/tangent/)（公式更新日 2026-10-10）の「Merging a tangent back」は、`/tangent merge [dest]` の動作を次のように説明しています。
 
 | 宛先 | 動作 |
 |------|------|
@@ -121,9 +121,9 @@ V3 で、tangent で得た結果を親セッション、または名前を指定
 
 ## 関連リンク
 
-- [Tangent（公式v3）](https://kiro.dev/docs/cli/v3/tangent) — V3版`/tangent`の公式ドキュメント
+- [Tangent（公式v3）](https://kiro.dev/docs/cli/chat/tangent/) — V3版`/tangent`の公式ドキュメント
 - [experimental Tangent mode（公式）](https://kiro.dev/docs/cli/experimental/tangent-mode/) — 既存classic版の公式ドキュメント
-- [Feature comparison（公式v3）](https://kiro.dev/docs/cli/v3/new-features/) — V2からV3への機能ステータス比較表
+- [Feature comparison（公式v3）](https://kiro.dev/docs/cli/v3/) — V2からV3への機能ステータス比較表
 - [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md#tangent) — 既存classic版`/tangent`の解説（本サイト）
 - [09_v3/ Kiro CLI v3（Early Access）概要](../09_v3/README.md) — 機能強化（v2→v3）の一覧
 - [変更履歴 v2.16.0](../02_update/01_changelog.md)

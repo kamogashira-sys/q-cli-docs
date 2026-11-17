@@ -12,7 +12,7 @@ V3 は単一機能ではなく、**統一エンジン＋仕様駆動開発（Spe
 
 **対応バージョン**: Kiro CLI v2.8.0 / v2.8.1（V3 は Early Access）
 
-> **注記**: V3 は **Early Access** であり、仕様変更の可能性があります。最新は[公式 Changelog](https://kiro.dev/changelog/cli/) および [公式 CLI v3 ドキュメント](https://kiro.dev/docs/cli/v3/) を参照してください。
+> **注記**: 本ページは v2.8 当時の記述です。V3 は **v3.0.0（2026-11-03）で対話型の既定**になりました（→ [55. v3.0 新機能](55_v30NewFeatures.md)、[09_v3/](../09_v3/README.md)）。最新は[公式 Changelog](https://kiro.dev/changelog/cli/) および [公式 CLI v3 ドキュメント](https://kiro.dev/docs/cli/v3/) を参照してください。
 
 ---
 

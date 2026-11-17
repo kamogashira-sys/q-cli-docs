@@ -23,7 +23,7 @@ Kiro CLI（旧Amazon Q Developer CLI）の最新情報とアップデートを�
 ```
 kiro-docs/
 ├── 00_information/   # 基本情報・公式サイト情報
-├── 01_features/      # 機能詳細ガイド（54機能）
+├── 01_features/      # 機能詳細ガイド（56機能）
 ├── 02_update/        # アップデート情報
 ├── 03_deployment/    # デプロイメント・環境構築
 ├── 04_reference/     # リファレンス（Settings/Slash/CLI/Tools）
@@ -31,7 +31,7 @@ kiro-docs/
 ├── 06_embedded-docs/ # 公式 OSS リポジトリ文書の複製（※ローカル管理・GitHub 非公開）
 ├── 07_aidlc/         # AI-DLC（Kiro CLI で実践する選択肢）
 ├── 08_cdk-skills/    # cdk-skills（CDK 開発支援 Skills 集）
-└── 09_v3/            # Kiro CLI v3（Early Access）— 仕様駆動開発・IDE比較 🆕
+└── 09_v3/            # Kiro CLI v3（3.0.0 で既定）— 仕様駆動開発・IDE比較 🆕
 ```
 
 > **注**: `05_meta/`（本サイトの保守手順書）と `06_embedded-docs/`（公式リポジトリ文書の逐語複製）は `.gitignore` によるローカル管理で、GitHub 上には表示されません。
@@ -46,7 +46,7 @@ Kiro CLI の基本情報と公式サイトの構造について説明したド�
 - **[公式サイト構造](00_information/01_official-site-structure.md)** - Kiro CLI公式サイトの画面遷移とページ構成
 
 ### [01_features/ - 機能詳細ガイド](01_features/README.md)
-Kiro CLIの主要機能（**54 機能**）について詳細に解説したドキュメント集です。
+Kiro CLIの主要機能（**56 機能**）について詳細に解説したドキュメント集です。
 
 📖 **[→ 機能一覧（カテゴリ別ナビゲーション・各機能の概要・バージョン情報）](01_features/README.md)**
 
@@ -70,11 +70,11 @@ Kiro CLI の設定・コマンド・ツールの **辞書的リファレンス**
 |--------|------|
 | [01. Settings](04_reference/01_settings.md) | 全設定項目（公式8カテゴリ）と環境変数 |
 | [02. Slash Commands](04_reference/02_slash-commands.md) | 全スラッシュコマンド42種＋キーボードショートカット |
-| [03. CLI Commands](04_reference/03_cli-commands.md) | `kiro-cli` コマンド全16種、グローバル引数、セッション管理 |
+| [03. CLI Commands](04_reference/03_cli-commands.md) | `kiro-cli` コマンド全16種（うち `translate`・`doctor`・`theme`・`inline` は 3.0.0 で廃止）、グローバル引数、セッション管理 |
 | [04. Built-in Tools](04_reference/04_built-in-tools.md) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_*/code/tool_search/subagent 他） |
 
-### [09_v3/ - Kiro CLI v3（Early Access）](09_v3/README.md) 🆕
-Kiro CLI v3（`kiro-cli --v3`）の概要・仕様駆動開発・Kiro IDE 版との比較をまとめた専用セクションです。
+### [09_v3/ - Kiro CLI v3](09_v3/README.md) 🆕
+Kiro CLI v3（v3.0.0 で対話型の既定）の概要・仕様駆動開発・Kiro IDE 版との比較をまとめた専用セクションです。
 
 - **[v3 概要](09_v3/README.md)** - 統一エンジン・4本柱（Spec / permissions.yaml / Hooks / タグ Agent設定）・Breaking changes・Known gaps
 - **[仕様駆動開発](09_v3/01_spec-driven-development.md)** - `/spec` を使った CLI での実践（AI-DLC との違いも整理）

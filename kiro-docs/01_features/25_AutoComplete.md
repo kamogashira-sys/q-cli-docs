@@ -2,7 +2,9 @@
 
 # 25. Auto Complete（オートコンプリート＆インライン補完）
 
-**出典**: [Completions & autocomplete - Kiro CLI Documentation](https://kiro.dev/docs/cli/autocomplete/)（公式ページ最終更新: 2025-11-16）
+> ⚠ **3.0.0 で廃止されました**: Kiro CLI 3.0.0（2026-11-03）で、オートコンプリートとインライン提案は、デスクトップアプリとともに廃止されました。スタンドアロンの `kiro-cli` に代替はありません。公式 [Completions & autocomplete](https://kiro.dev/docs/cli/autocomplete/)（Page updated: 2026-11-05）は、サポート終了と 3.0.0 での削除を告知し、端末の補完が必要な場合の選択肢としてサードパーティのツール（例: Figxit）を挙げています。サードパーティのツールは公式の開発・保守・サポートの対象ではありません。実機 `kiro-cli 3.3.0` では、`kiro-cli autocomplete`・`kiro-cli inline` が「unrecognized subcommand」になり、`kiro-cli settings list --all` に `autocomplete.disable` が出ません（→ [55. v3.0 新機能](55_v30NewFeatures.md)）。以下は、3.0.0 より前の版（Kiro CLI 2.x のデスクトップアプリ）の記述です。
+
+**出典**: [Completions & autocomplete - Kiro CLI Documentation](https://kiro.dev/docs/cli/autocomplete/)（公式ページ最終更新: 2026-11-05。本文は 2025-11-16 版の記述）
 
 ## 概要
 
@@ -303,11 +305,11 @@ kiro-cli inline show-customizations
 
 ### 公式情報源
 
-- [Completions & autocomplete - Kiro CLI Documentation](https://kiro.dev/docs/cli/autocomplete/)（公式ページ最終更新: 2025-11-16）
+- [Completions & autocomplete - Kiro CLI Documentation](https://kiro.dev/docs/cli/autocomplete/)（公式ページ最終更新: 2026-11-05。本文は 2025-11-16 版の記述）
 - [Hooks - Kiro CLI Documentation](https://kiro.dev/docs/hooks/) — 関連機能
 - [Code Intelligence - Kiro CLI Documentation](https://kiro.dev/docs/tools/code-intelligence/) — 関連機能
 
 ---
 
-**Page updated**: 2026-05-24（本サイト初版）  
-**公式ページ最終更新**: 2025-11-16
+**Page updated**: 2026-11-17（3.0.0 での廃止の注記を追記）／ 2026-05-24（本サイト初版）  
+**公式ページ最終更新**: 2026-11-05（3.0.0 での廃止の告知。以下の本文の元になった版は 2025-11-16）

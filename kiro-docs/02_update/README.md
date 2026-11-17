@@ -18,7 +18,7 @@ kiro-cli version --changelog=all
 
 ### [01_changelog.md](01_changelog.md)
 - **内容**: Kiro CLIの包括的な変更履歴
-- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v2.37.1（本サイト反映済。v2.8.0 で CLI v3 Early Access）
+- **対象バージョン**: v1.20.0（Kiro CLI初回リリース）〜 v3.3.0（本サイト反映済。v3.0.0 で V3 が対話型の既定）
 - **更新頻度**: 新バージョンリリース時
 - **情報源**: 公式changelog、Zenn記事、`kiro-cli version --changelog=all`
 
@@ -26,6 +26,11 @@ kiro-cli version --changelog=all
 
 | バージョン | リリース日 | 主要機能 | 概要 |
 |-----------|-----------|----------|------|
+| **v3.3.0** | 2026-11-12 | `/copy N`・`/copy last N`・自動 compaction の閾値・アップグレード時の許可ルールの縮小 | `/copy N`（N 番目に新しい回答）と `/copy last N`（直近 N 件のメッセージ）、`/settings` の **Compaction** と `compaction.autoCompactionThreshold`、サブエージェントのタスクの表示、🔒 V2 エージェントのアップグレードで正規表現の許可ルールを広い glob にせず `unconvertible-pattern` で削除 |
+| **v3.2.1** | 2026-11-11 | Output details・サインインの修正 | `/settings` の **Output details**（`collapsed`・`lean`・`default`・`full`）、ツール呼び出しの見た目の統一、グラフィカルなセッションのない Linux でのデバイスフローのサインイン、`/model fallback` の修正 |
+| **v3.2.0** | 2026-11-10 | Mermaid 図の全画面ビューア・クライアント登録なしの MCP サインイン | `/diagram`・`Ctrl+]`（`chat.keybindings.viewDiagram`）、CIMD による MCP サインイン、ワークフローのループの上限でのあと 1 回／完了の選択、autonomous モードでのワークフローの案内 |
+| **v3.1.0** | 2026-11-05 | `PreCompact`・`PostCompact` Hook・セッションのクレジット表示・`KIRO_DEFAULT_SETTINGS` | compaction の前後の Hook、`/usage` と Session credits、環境の既定設定、Session recap（`chat.enableSessionRecap`）、サブエージェントによる親の Memory の読み取り、通知の 1 行化 |
+| **v3.0.0** | 2026-11-03 | ⚠ V3 が対話型の既定・Classic／デスクトップアプリ／オートコンプリートの廃止 | V3 が既定のハーネス（ヘッドレスは `--trust-all-tools` のとき、ACP は新しいクライアントが V3）、初回起動の選択プロンプト、Classic の起動への **Continue with V3**、単一の `kiro-cli` バイナリ、`autocomplete`・`inline`・`translate`・`theme`・`dashboard` の廃止、`doctor` の案内 |
 | **v2.37.1** | 2026-10-31 | 起動時の通知・fullscreen のボタン・V3 のサインイン維持 | 起動時の通知・welcome 行・What's new の見た目、`/fullscreen` の最下部ボタンのホバー、[V3] 出力上限での打ち切りの案内、アイドル時の CPU 使用の低下、[V3] 更新後もサインインが維持される（項目5件） |
 | **v2.37.0** | 2026-10-30 | ⚠ [V3] V2 エージェントの起動時の自動アップグレードが既定で有効・ACP のサインイン・`KIRO_RUNTIME_DIR` | [V3] `chat.enableAutoAgentUpgrade` 未設定でも V3 の起動時に V2 エージェントをアップグレード（`.json.bak` を作成）、`kiro-cli acp` のターミナルでのサインイン（**Log in to Kiro**）、Mermaid のノードの形状と入れ子の subgraph、`KIRO_RUNTIME_DIR`、V2 エージェントの `kiro-cli agent upgrade` の案内、`stopping (exit 4)`（公式の項目14件） |
 | **v2.36.0** | 2026-10-29 | [V3] Approve for me・サブコマンド単位の承認ルール・`acp.agentEngine` | [V3] `/permissions` の Policies で **approve for me**、`git stash *` のサブコマンド階層、`kiro-cli agent upgrade` の権限の警告、`acp.agentEngine`、Mermaid の `title:` と注記、V2 の git 環境変数で設定を変える shell コマンドは先に承認（項目12件） |
@@ -515,6 +520,20 @@ timeline
                    : ACP クライアントのサインイン
         2026-10-31 : v2.37.1
                    : 起動時の通知・fullscreen のボタン
+    section v3.0.0 V3 が既定
+        2026-11-03 : v3.0.0
+                   : V3 が対話型の既定
+                   : Classic・デスクトップアプリ・オートコンプリートの廃止
+    section v3.1.0〜v3.3.0 compaction・図・Output details
+        2026-11-05 : v3.1.0
+                   : PreCompact・PostCompact Hook
+                   : セッションのクレジット表示
+        2026-11-10 : v3.2.0
+                   : /diagram・CIMD の MCP サインイン
+        2026-11-11 : v3.2.1
+                   : Output details
+        2026-11-12 : v3.3.0
+                   : /copy N・自動 compaction の閾値
 ```
 
 ## 🔗 移行情報
@@ -591,6 +610,8 @@ timeline
 - [v2.33 新機能（ワークスペースの信頼確認）](../01_features/52_v233NewFeatures.md) 🆕 - [V3] ワークスペースの信頼確認、Workflow の計画承認ツリー、V3 のモデルフォールバック、セキュリティ修正。
 - [v2.34 新機能（MCP elicitation・Workflow use）](../01_features/53_v234NewFeatures.md) 🆕 - [V3] MCP elicitation、Workflow の起動方針と計画の修正、Memory の削除、`/model edit`、`--trust-workspace`（v2.33.1・v2.34.0）
 - [v2.35〜v2.37 新機能（Approve for me・自動アップグレード・ACP）](../01_features/54_v237NewFeatures.md) 🆕 - [V3] Approve for me、サブコマンド単位の承認ルール、⚠ V2 エージェントの起動時の自動アップグレード（既定で有効）、ACP のサインインと `acp.agentEngine`、root／Administrator 起動の警告
+- [v3.0 新機能（V3 の既定化・Classic／デスクトップアプリの廃止）](../01_features/55_v30NewFeatures.md) 🆕 - V3 が対話型の既定、Classic・デスクトップアプリ・オートコンプリートの廃止、デスクトップアプリからの移行
+- [v3.1〜v3.3 新機能（compaction の Hook・Output details・`/copy N`）](../01_features/56_v33NewFeatures.md) 🆕 - `PreCompact`・`PostCompact` Hook、セッションのクレジット、Output details、`/diagram`、`/copy N`、自動 compaction の閾値
 
 ### リファレンス（辞書） 🆕
 - [04_reference/](../04_reference/README.md) — Settings / Slash Commands / CLI Commands / Built-in Tools の網羅的辞書
@@ -621,5 +642,5 @@ timeline
 
 ---
 
-**最終更新**: 2026-11-03
-**対象バージョン**: Kiro CLI v2.37.1
+**最終更新**: 2026-11-17
+**対象バージョン**: Kiro CLI v3.3.0

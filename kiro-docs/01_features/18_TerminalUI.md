@@ -60,7 +60,7 @@ v2.20.0（2026-08-26）  Preserve scrollbackトグル
 - [プラットフォームサポート](#プラットフォームサポート)
 - [制限事項](#制限事項)
 - [トラブルシューティング](#トラブルシューティング)
-- [v2.22.0〜v2.33.0での進化](#v2220v2330での進化)
+- [v2.22.0〜v3.3.0での進化](#v2220v330での進化)
 - [関連リンク](#関連リンク)
 
 ---
@@ -341,6 +341,8 @@ kiro-cli settings chat.preserveScrollback true
 
 ### クラシックインターフェースの使用
 
+> ⚠ **Kiro CLI 3.0.0（2026-11-03）で、Classic インターフェースは廃止されました。** 対話型のチャットは、V3・V2 のどちらのハーネスでもターミナル UI で動きます。以下の `chat.ui`・`KIRO_CHAT_UI`・`--classic`（および root の旧 UI フラグ）は、Classic を選ぶ起動として扱われ、**Continue with V3** または **Exit** を選ぶメッセージが表示されます（V3 を動かせない環境では **Switch to the terminal UI and launch**）。スクリプトでは、選択が無視されます。詳細は [55. v3.0 新機能](55_v30NewFeatures.md) と公式 [If a launch still selects Classic](https://kiro.dev/docs/cli/agent-harness/#if-a-launch-still-selects-classic) を参照してください。以降の Classic に関する記述は、3.0.0 より前の版のものです。
+
 > ⚠️ **v2.26.0（2026-09-30）以降、Classic インターフェースは非推奨です。** Classic セッションの起動時に、Classic を選んだ要因（フラグ・環境変数・設定）を示す通知が表示されます。ターミナル UI へ戻すには、`--classic` をコマンドから外す、`KIRO_CHAT_UI` を unset する、または `kiro-cli settings chat.ui "tui"` を実行してから Kiro CLI を再起動します（公式 [Terminal UI](https://kiro.dev/docs/cli/terminal-ui/#using-the-classic-interface)、→ [45. v2.26 新機能](45_v226NewFeatures.md)）。
 
 ```bash
@@ -445,7 +447,7 @@ kiro-cli settings list | grep chat.ui
 
 ---
 
-## v2.22.0〜v2.33.0での進化
+## v2.22.0〜v3.3.0での進化
 
 ### v2.22.0（2026-09-16リリース）: `/fullscreen`
 
@@ -493,6 +495,16 @@ KIRO_NO_PROGRAM_STATUS=1 kiro-cli chat
 
 公式 Changelog v2.32.0 はこの項目に V2・V3 の区別を書いていません。V2・V3 の両対応という記述は公式 Terminal UI によるものです。詳細は [51. v2.32 新機能](51_v232NewFeatures.md) を参照してください。
 
+### v3.0.0〜v3.3.0（2026-11-03〜11-12リリース）: Classic の廃止・Mermaid 図の全画面ビューア・Output details
+
+- **Classic の廃止（v3.0.0）**: 「クラシックインターフェースの使用」の注記のとおり。ターミナル UI が対話型チャットの唯一のインターフェースになりました
+- **Mermaid 図の全画面ビューア（v3.2.0）**: 端末に収まらない幅広い図は、`Ctrl+]` または `/diagram` で全幅の専用画面に開きます。矢印キーとマウスホイールで動かし、`Tab` で古い図へ、`Esc` でチャットへ戻ります。キーは `chat.keybindings.viewDiagram` で変えます
+- **Output details とツール呼び出しの見た目（v3.2.1）**: `/settings output-details` で、ツール呼び出しの詳細を `collapsed`・`lean`・`default`・`full` から選びます。完了したツール呼び出しが 2 件以上続くと 1 つの要約行にたたまれ、`Ctrl+O` で展開します。thinking の表示は `/settings display` からここへ移りました
+- **通知の 1 行化（v3.1.0）**: 通知は緊急度の高い順に 1 行に並び、`+N waiting` の件数を示します。警告とエラーは、キー操作で閉じるまで残ります
+- **サブエージェントのタスクの表示（v3.3.0）**: インラインのサブエージェントパネルと `Ctrl+G` のモニターで、サブエージェントに渡されたタスクが読めます
+
+出典: 公式 [Terminal UI](https://kiro.dev/docs/cli/terminal-ui/)（Page updated: 2026-11-16）、公式 Changelog [v3.1](https://kiro.dev/changelog/cli/3-1/)〜[v3.3](https://kiro.dev/changelog/cli/3-3/)。詳細は [56. v3.1〜v3.3 新機能](56_v33NewFeatures.md) を参照してください。
+
 ---
 
 ## 関連リンク
@@ -516,5 +528,5 @@ KIRO_NO_PROGRAM_STATUS=1 kiro-cli chat
 
 ---
 
-**最終更新**: 2026-10-25
+**最終更新**: 2026-11-17
 **対象バージョン**: Kiro CLI v1.28.0+（v2.0.0 でデフォルト UI 化、v2.18.0 Spec review screen導入、v2.19.0 マウス対応、v2.20.0 Preserve scrollbackトグル追加、v2.22.0 `/fullscreen`、v2.26.0 Classic 非推奨、v2.28.0 Classic からの 3.0 切替提案、v2.30.0 スクリーンリーダー、v2.31.1 Mermaid 図、v2.32.0 OSC 7501、v2.33.0 Mermaid のサブグラフ、v2.34.0 Mermaid の描画の修正）

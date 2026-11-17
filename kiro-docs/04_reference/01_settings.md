@@ -2,7 +2,7 @@
 
 # Kiro CLI Settings リファレンス
 
-**出典**: [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-11-02、実機 2.27.1・2.33.0・2.34.0・2.37.1 で確認）
+**出典**: [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-11-12、実機 2.27.1・2.33.0・2.34.0・2.37.1・3.3.0 で確認）
 
 Kiro CLI の設定項目を網羅的に記述する辞書的リファレンスです。各設定の意味、型、設定例を一覧します。構成は公式リファレンスの8カテゴリに準拠し、公式未掲載ながら実機で確認できる設定は「[補遺](#補遺-公式リファレンス未掲載の設定実機確認)」に掲載しています。
 
@@ -95,10 +95,12 @@ kiro-cli settings list --format json-pretty
 | `chat.disableInheritingDefaultResources` | boolean | カスタムエージェントが既定リソース（steering / skills / AGENTS.md）を継承しないようにする（v2.10.0+、既定 `false`、global/workspace 上書き可）。※組み込みエージェントは本設定に関わらず常に継承 | `kiro-cli settings chat.disableInheritingDefaultResources true` |
 | `compaction.excludeMessages` | number | 圧縮時に保持する最低メッセージペア数（既定: 2） | `kiro-cli settings compaction.excludeMessages 2` |
 | `compaction.excludeContextWindowPercent` | number | 圧縮時に保持する最低コンテキストウィンドウ% | `kiro-cli settings compaction.excludeContextWindowPercent 2` |
+| `compaction.autoCompactionThreshold` | number | [V3] 自動 compaction を始めるコンテキスト使用率（%。v3.3.0+）。`kiro-cli settings` は小数点以下 2 桁までの 0〜100 を受け付け、対話型のセッションはエージェントハーネスが示す範囲を適用する。実機 3.3.0 の `settings list --all` は既定を 80 と表示する。`/settings` の **Compaction** でも設定する。ワークスペースの `cli.json` で上書きできる | `kiro-cli settings compaction.autoCompactionThreshold 70` |
 | `chat.enablePromptHints` | boolean | 起動時ヒント表示（v1.26.0+、既定 true） | `kiro-cli settings chat.enablePromptHints false` |
 | `chat.enableHistoryHints` | boolean | 履歴ヒント表示（classic のみ） | `kiro-cli settings chat.enableHistoryHints true` |
-| `chat.uiMode` | string | UI バリアント | `kiro-cli settings chat.uiMode "compact"` |
-| `chat.ui` | string | UI エンジン: `tui`（既定）または `classic` | `kiro-cli settings chat.ui "classic"` |
+| `chat.uiMode` | string | 旧メッセージ描画モード: `tui`（既定）または `structured`。`structured` は Classic の出力の形を決めていたもので、**3.0.0 以降は効果がない**。インターフェースやハーネスを選ぶ設定ではない。グローバルのみ（公式 Settings、更新日 2026-11-12） | `kiro-cli settings chat.uiMode "tui"` |
+| `chat.ui` | string | インターフェース: `tui`（既定）または `classic`。**3.0.0 以降、`classic` は対話型チャットで動かない**。選ぶ起動には V3 が提案される | `kiro-cli settings chat.ui "tui"` |
+| `chat.agentEngine` | string | `kiro-cli` と `kiro-cli chat` のエージェントハーネス: `v3`・`v2`・`v1`。3.0.0 以降、未設定なら、V3 を動かせる環境の対話型チャットは V3 で始まる。`v1` は廃止された Classic を選んでいたため、いまは Classic のアップグレードプロンプトを開く。`--v3`・`--v2`・`--agent-engine` が 1 回の起動で上書きする。**グローバルのみ**（ワークスペースでは上書きできない）。`kiro-cli acp` には適用されない。→ [55. v3.0 新機能](../01_features/55_v30NewFeatures.md)、公式 [Choose an agent harness](https://kiro.dev/docs/cli/agent-harness/) | `kiro-cli settings chat.agentEngine v2` |
 | `chat.disableGranularTrust` | boolean | 段階的信頼オプション無効化（TUI のみ） | `kiro-cli settings chat.disableGranularTrust true` |
 | `chat.autoExpandToolOutput` | boolean | ツール出力を自動展開（TUI のみ） | `kiro-cli settings chat.autoExpandToolOutput true` |
 | `chat.modelDefaults` | object | モデルごとのデフォルト設定（Claude 系は `output_config.effort`、GPT-5.6 系は `reasoning.effort`／`reasoning.mode`。新セッション全体に適用。`/effort set-current-as-default` の保存先） | [Effort](https://kiro.dev/docs/models/effort/#persistent-defaults-cli) 参照 |
@@ -156,6 +158,7 @@ kiro-cli settings list --format json-pretty
 | `chat.fullscreenCopyOnSelect` | boolean | `true` | fullscreen の端末 UI でドラッグしたテキストをコピーする（v2.28.0+）。off にするとコピーを端末に任せる。`/settings` → **Display** → **Full Screen** → **Copy on select** に対応。**公式リファレンス未掲載・実機 2.33.0 で確認**（説明文「Copy dragged text in the fullscreen TUI; off leaves copying to the terminal (boolean, default: true)」） | `kiro-cli settings chat.fullscreenCopyOnSelect false` |
 | `chat.sessionDashboard.groupBy` | — | — | [V3] セッションダッシュボードの一覧のグループ化。取り得る値は公式リファレンスに未記載のため断定しません | — |
 | `chat.keybindings.toggleSessionDashboard` | string | — | [V3] セッションダッシュボードの表示切替キーバインド | — |
+| `chat.keybindings.viewDiagram` | string | `ctrl+]` | [V3] 端末に収まらない幅広い Mermaid 図を専用の画面で開くキー（v3.2.0+） | `kiro-cli settings chat.keybindings.viewDiagram "ctrl+shift+d"` |
 
 > **`KIRO_ASCII_MODE=1`** を設定すると `chat.allowAsciiArt` に関わらず ASCII モードが強制されます（環境変数節参照）。
 > **v2.12.0+**: すべての TUI グリフ・記号が ASCII モード設定（`chat.allowAsciiArt` / `KIRO_ASCII_MODE`）を尊重するよう**適用範囲が拡大**しました（Unicode 非対応端末での互換性向上。新規設定の追加ではなく既存設定の挙動拡張）。
@@ -163,7 +166,7 @@ kiro-cli settings list --format json-pretty
 > **Preserve scrollback（既定値が変わりました）**: v2.20.0 で `/settings display` にトグルが追加された時点の既定は `false` でしたが、**v2.21.2 で [V3] が再描画をまたいで端末履歴を既定で保持するよう変更**され、実機 2.21.4 では既定が `true` です（設定パネル定義の `defaultValue` が真値であることを確認）。従来の clear-and-repaint 動作に戻すには `false` を設定します。ターミナル全体を消去せず viewport だけを再描画するため、左側ステータスバーが再描画境界をまたぐ場合は継ぎ目に隙間（seam gap）が表示される制約があります。なお v2.21.4 では左ステータスレール自体が撤去され、エージェント色のドット表示に置き換わりました。設定キー自体の初出バージョンは、確認できた一次情報から断定しません。
 > **v2.22.0〜v2.27.0 で追加された表示関連の設定**: `chat.sessionDashboard.scope`・`chat.outputStyle` は公式 Settings リファレンス（公式ページ最終更新 2026-10-15）に掲載されています。`chat.startFullscreen`・`chat.fullscreenWheelRows`・`chat.sessionDashboard.sortBy` は設定キー名が公式 Settings リファレンスに未掲載で（前二者の画面操作は公式 [Fullscreen mode](https://kiro.dev/docs/cli/fullscreen/) に記載）、実機 2.27.1 の `kiro-cli settings list --all` で確認しました。v2.28.0 で追加された `chat.fullscreenCopyOnSelect` も公式リファレンスに未掲載で、実機 2.33.0 の `kiro-cli settings list --all` で確認しました。v2.30.0 で追加された `chat.screenReader` は公式リファレンス（公式ページ最終更新 2026-10-15）に掲載されています。詳細: [41](../01_features/41_v222NewFeatures.md)・[43](../01_features/43_v224NewFeatures.md)・[44](../01_features/44_v225NewFeatures.md)・[46](../01_features/46_v227NewFeatures.md)
 > **スピナー文言とセッションダッシュボードの設定**: `chat.spinnerVerbs` / `chat.enableCustomSpinnerVerbs`（v2.21.1）、`chat.sessionDashboard.indexResponses` / `chat.sessionDashboard.groupBy` / `chat.keybindings.toggleSessionDashboard` は、いずれも実機 2.21.4 に設定キーとして存在することを確認しています。型・既定値・取り得る値が公式リファレンスに記載されていない項目は、本表で「—」とし断定しません。詳細: [40. v2.21 新機能](../01_features/40_v221NewFeatures.md)
-> **`chat.agentEngine` について**: 公式 Changelog v2.21.4 は `--v2` の説明で「保存された `chat.agentEngine` 値より優先される」と述べています。**実機 2.21.4 には `chat.agentEngine` という設定キーが存在しませんでしたが（`chat.` で始まる設定キーを全列挙して該当なし）、実機 2.33.0 の `kiro-cli settings list --all` には存在します**。説明は「Default agent engine: 'v1', 'v2' (default), or 'v3' (string)」です。公式 [CLI commands](https://kiro.dev/docs/reference/cli-commands/)（公式更新日 2026-10-20）も `--v2` が保存済みの `chat.agentEngine` より優先されると説明していますが、公式 Settings リファレンスにこのキーの行はありません。エンジン選択の経路は `--agent-engine v1|v2|v3`・`--v2`／`--v3`・環境変数 `KIRO_AGENT_ENGINE` のほか、保存済みの `chat.agentEngine` があります（→ [補遺](#補遺-公式リファレンス未掲載の設定実機確認)、[CLI コマンドリファレンス](03_cli-commands.md)）。
+> **`chat.agentEngine` について**: 公式 Settings リファレンス（公式更新日 2026-11-12）が、3.0.0 以降に `chat.agentEngine` の行を掲載しています（上の表）。以前の本サイトは、公式にこのキーの行がないとして補遺に載せていました。エンジン選択の経路は、`--v3`・`--v2`・`--agent-engine v1|v2|v3`・保存済みの `chat.agentEngine` で（環境変数 `KIRO_AGENT_ENGINE` は v2.21.4 の記述で、現行の公式ドキュメントと実機 3.3.0 の `--help` に記載がなく**未確認**）、優先順位は公式 [Choose an agent harness](https://kiro.dev/docs/cli/agent-harness/) のとおりです（→ [55. v3.0 新機能](../01_features/55_v30NewFeatures.md)、[CLI コマンドリファレンス](03_cli-commands.md)）。
 > `chat.showThinking`（モデル自身の推論表示、本節）と `chat.enableThinking`（thinking ツールの有効化、Feature toggles 節）は**別物**です。`chat.showThinkingTips`（機能ヒントの表示、本節）はさらに別物で、いずれも独立してON/OFF可能です。
 > 詳細: [27. Thinking Display](../01_features/27_ThinkingDisplay.md)、[29. v27NewCommands](../01_features/29_v27NewCommands.md)、[公式 Queue Steering](https://kiro.dev/docs/cli/chat/queue-steering/)
 
@@ -182,7 +185,7 @@ kiro-cli settings list --format json-pretty
 
 ### 4. Key bindings - classic（キーバインディング・クラシック）
 
-> これらは **classic インターフェースのみ有効**。TUI では効果なし。
+> これらは **classic インターフェースのみ有効**。TUI では効果なし。⚠ **3.0.0 で Classic インターフェースは廃止**されたため、現在の対話型チャットでは使えません（旧版の記述として残しています）。
 
 | 設定 | 型 | 説明 | 例 |
 |------|-----|------|-----|
@@ -226,6 +229,7 @@ TUI のショートカットを上書き。`ctrl+`、`shift+`、`alt+`/`meta+` �
 | `chat.enableDelegate` | boolean | delegate ツール有効化（classic のみ） | `kiro-cli settings chat.enableDelegate true` |
 | `app.disableAutoupdates` | boolean | バックグラウンド自動更新を無効化。v2.20.1 で Windows の更新ダウンロードも停止し、temp ディレクトリに installer が蓄積しないよう修正 | `kiro-cli settings app.disableAutoupdates true` |
 | `app.warnOnElevatedPrivileges` | boolean | root（macOS・Linux）または Administrator（Windows）として Kiro CLI を起動したときに警告を表示する（v2.35.0+、既定 `true`）。警告は何もブロックしない。**グローバル設定のみ**で、ワークスペースの `.kiro/settings/cli.json` では上書きできない。→ [54. v2.35〜v2.37 新機能](../01_features/54_v237NewFeatures.md) | `kiro-cli settings app.warnOnElevatedPrivileges false` |
+| `chat.enableSessionRecap` | boolean | [V3] プロンプトの上にセッションの短い要約を表示する（v3.1.0+、既定はオフ。変更後は新しいセッションを始める）。オンのとき、各ターンの完了後に追加の課金されるモデル呼び出しを 1 回行う。公式 Settings は、フルの端末 UI が 3 アイドル秒後に表示すると書き、実機 3.3.0 の説明は「3 minutes away」で食い違う（**未確認**）。Lite モードは表示しないが、呼び出しは行う | `kiro-cli settings chat.enableSessionRecap true` |
 | `chat.enableAutoAgentUpgrade` | boolean | [V3] V3 セッションの開始時に、V2 形式のエージェントを V3 形式へアップグレードする。⚠ **v2.37.0 以降、未設定は有効**（既定 `true`）で、明示的な `false` だけが無効。対象はワークスペースの `.kiro/agents/` とグローバルの `~/.kiro/agents/`（`KIRO_AGENT_CONFIG_DIR` を設定している場合はそのディレクトリだけ）で、書き換える前に各ファイルを `.json.bak` に複製する。`false` のとき、対話型の V3 起動は、アップグレードが必要なエージェントの数を示す通知を表示する。**グローバル設定のみ**。v2.37.0 より前は、未設定のとき起動時の移行は自動では動かなかった。公式 [Upgrading agent configs](https://kiro.dev/docs/cli/v3/upgrade-agent/)（公式更新日 2026-11-02）と [MCP configuration](https://kiro.dev/docs/mcp/configuration/#adding-servers-to-a-specific-agent) は、このキーが on のとき `mcp add --agent` が V3 向けにエージェントファイルもアップグレードすると説明している。→ [54](../01_features/54_v237NewFeatures.md)・[34](../01_features/34_v214UpgradeAgent.md) | `kiro-cli settings chat.enableAutoAgentUpgrade false` |
 
 ### 8. API and service / MCP
@@ -253,7 +257,7 @@ TUI のショートカットを上書き。`ctrl+`、`shift+`、`alt+`/`meta+` �
 
 | 設定 | 型 | 説明 | 例 |
 |------|-----|------|-----|
-| `acp.agentEngine` | string | `kiro-cli acp` のエンジン: `v1`・`v2`・`v3`（v2.36.0+）。`--agent-engine` フラグが設定より優先され、どちらもなければ `v2`。`chat.agentEngine` は `kiro-cli acp` には適用されない。実機 2.37.1 の `kiro-cli settings list --all` の説明は「'v2' (default) or 'v3'」で、公式の 3 値と書き方が異なる（`v1` を設定したときの動作は未確認）。→ [13. ACP](../01_features/13_ACP.md)・[54](../01_features/54_v237NewFeatures.md) | `kiro-cli settings acp.agentEngine v3` |
+| `acp.agentEngine` | string | `kiro-cli acp` のエンジン: `v1`・`v2`・`v3`（v2.36.0+）。`--agent-engine` フラグが設定より優先される。どちらもなければ、3.0.0 以降は、V3 を動かせる環境で V3（起動行に V2 専用フラグがある、V2 が必要なクライアントと認識した場合は V2）。2.36.0〜2.37.x は V2。`chat.agentEngine` は `kiro-cli acp` には適用されない。実機 2.37.1 の `kiro-cli settings list --all` の説明は「'v2' (default) or 'v3'」で、公式の 3 値と書き方が異なった。実機 3.3.0 の説明は「'v2' or 'v3', where 'v1' runs v2 (string, default: v3, or v2 for v2-only launch flags, ACP clients known to need it, and systems that cannot run v3)」で、`v1` を設定すると V2 で動く。→ [13. ACP](../01_features/13_ACP.md)・[54](../01_features/54_v237NewFeatures.md) | `kiro-cli settings acp.agentEngine v3` |
 
 ### 9. Voice（音声入力）🆕
 
@@ -283,8 +287,7 @@ Whisper によるオンデバイス音声文字起こし（`/voice`、v2.18.0+�
 | `cleanup.periodDays` | number | - | 古い会話・データを自動削除するまでの日数（v1.27.3+） | `kiro-cli settings cleanup.periodDays 90` |
 | `hooks.showStatus` | boolean | `true` | フック実行ステータスメッセージの表示（v1.29.0+） | `kiro-cli settings hooks.showStatus false` |
 | `introspect.progressiveMode` | boolean | - | introspect でセマンティック検索の代わりに progressive loading を使用（埋め込みモデルをダウンロードできない環境向け） | `kiro-cli settings introspect.progressiveMode true` |
-| `autocomplete.disable` | boolean | - | オートコンプリートの無効化（`true` で無効。キー名が **disable** である点に注意） | `kiro-cli settings autocomplete.disable true` |
-| `chat.agentEngine` | string | `v2` | 既定のエージェントエンジン: `v1`・`v2`（既定）・`v3`。**実機 2.33.0 で確認**（説明文「Default agent engine: 'v1', 'v2' (default), or 'v3' (string)」）。V3 への切り替えプロンプトで **Switch to V3 and upgrade my configs** を選ぶと `v3` が保存される。この動作は公式 [CLI V3](https://kiro.dev/docs/cli/v3/)（公式更新日 2026-10-28）も説明し、`--v2` が保存済みの値より優先されることは公式 [CLI commands](https://kiro.dev/docs/reference/cli-commands/) に記載がある。ただし公式 Settings リファレンスにはこのキーの一覧項目がない（→ [49. v2.30 新機能](../01_features/49_v230NewFeatures.md)）。`kiro-cli acp` のエンジンは別の設定 `acp.agentEngine`（上記）で選ぶ（v2.36.0+）。公式 Settings リファレンス（公式更新日 2026-11-02）にも、このキーの行は現在もない | `kiro-cli settings chat.agentEngine v3` |
+| `autocomplete.disable` | boolean | - | ⚠ **3.0.0 で廃止**（オートコンプリートはデスクトップアプリとともに削除された）。実機 3.3.0 の `settings list --all` に出ない。旧版では、オートコンプリートの無効化（`true` で無効。キー名が **disable** である点に注意） | `kiro-cli settings autocomplete.disable true` |
 | `memory.mode` | string | — | [V3] 新しいセッションの Memory のアクセス: `read_write`・`read_only`・`disabled`。KAS（V3）エンジンが必要。**実機 2.33.0 で確認**（設定キー名は公式に記載がない。公式 [Memory](https://kiro.dev/docs/memory/)（公式更新日 2026-10-24）は、CLI の Memory に V3 が必要で、`/memories` → `config` で `read & write`・`read only`・`off` を選ぶと説明している）。`/memories` の `config` に対応（→ [48. v2.29 新機能](../01_features/48_v229NewFeatures.md)） | `kiro-cli settings memory.mode read_only` |
 | `memory.reflection` | boolean | — | [V3] 新しいセッションの Automatic memory updates。`read_write` のアクセスでのみ有効。**実機 2.33.0 で確認** | `kiro-cli settings memory.reflection false` |
 | `chat.modelPicker.hiddenModels` | array of strings | — | `/model` のピッカーに表示しないモデル ID（v2.34.0+）。`/model edit` の **Models in /model** で切り替える。隠したモデルも `/model <model-id>`・`--model`・エージェント設定・フォールバック設定では使える。**実機 2.34.0 で確認**（説明文「Model ids the /model picker leaves out (array of strings)」）。公式 Settings リファレンスに記載はない（→ [53. v2.34 新機能](../01_features/53_v234NewFeatures.md)） | `/model edit`（設定キーを直接書き換えるより、画面で選ぶ方法が確実） |
@@ -304,6 +307,7 @@ Whisper によるオンデバイス音声文字起こし（`/voice`、v2.18.0+�
 | 変数 | 説明 |
 |------|------|
 | `KIRO_HOME` | `~/.kiro` ディレクトリ（グローバル agents/prompts/skills/steering/settings/sessions）の上書き先。同マシンで複数の独立した Kiro プロファイルを保持する用途。**絶対パスで指定する**。V3 では、グローバル設定・サインイン・セッション・エージェントの状態の保存先になる（v2.31.0+。既存の MCP サインインは 1 回だけコピーされる）。ファイルシステムのルート・ホームディレクトリ・その親ディレクトリ・相対パスを指定すると `~/.kiro` にフォールバックする（公式 Settings リファレンス、公式ページ最終更新 2026-10-15） |
+| `KIRO_DEFAULT_SETTINGS` | macOS・Linux で、既定設定のファイルの絶対パス（v3.1.0+）。root 所有の通常ファイルで、グループとその他に書き込み権がなく、1 MiB 以下の JSON オブジェクトであること。値は最も低い設定の層になり、`~/.kiro/settings/cli.json` とワークスペースの設定が上書きする。`kiro-cli settings` はこのファイルの値を設定・削除できない。相対パスや検査に通らないファイルは警告を 1 回示して無視される（→ [56](../01_features/56_v33NewFeatures.md)） |
 | `KIRO_LOG_NO_COLOR` | `1` でカラーログ出力を無効化 |
 | `KIRO_ASCII_MODE` | `1` で ASCII モードを強制（`chat.allowAsciiArt` の設定値に優先、v2.5.0+） |
 | `NO_COLOR` | 任意の値で TUI のすべてのカラー出力を無効化 |
@@ -480,13 +484,14 @@ kiro-cli settings list --all
 
 ### 公式情報源
 
-- [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-11-02）
+- [Settings - Kiro CLI Documentation](https://kiro.dev/docs/reference/settings/)（公式ページ最終更新: 2026-11-12）
 - [Custom Agents Configuration Reference](https://kiro.dev/docs/custom-agents/configuration-reference/)
 
 ---
 
-**Page updated**: 2026-11-03（v2.34.1〜v2.37.1 対応: 公式 Settings リファレンス（公式更新日 2026-11-02）の `app.warnOnElevatedPrivileges`・`acp.agentEngine`・`chat.enableAutoAgentUpgrade` を反映。`chat.enableAutoAgentUpgrade` は公式に掲載されたため補遺から本表へ移し、v2.37.0 で未設定が有効になった変更を記載。補遺の他のキー（`chat.agentEngine`・`memory.mode`・`memory.reflection`・`chat.modelPicker.hiddenModels`・`chat.workflow.continueInterrupted`・`chat.workflowMonitor.mouseEnabled`・fullscreen 関連）は、公式 Settings に現在も行がない）
-**前回更新**: 2026-10-25（v2.33.1・v2.34.0 対応: 公式 Settings リファレンス（公式更新日 2026-10-24）の設定キー・環境変数を本ページと照合し、不足していた `chat.workflowLaunch` を追加。`chat.modelPicker.hiddenModels`・`chat.workflow.continueInterrupted`・`chat.workflowMonitor.mouseEnabled` を実機 2.34.0 に基づき補遺に追加）
-**前々回更新**: 2026-10-21（v2.28.0〜v2.33.0 対応: 公式 Settings リファレンスの `chat.screenReader` と環境変数 `KIRO_SCREEN_READER`、`KIRO_HOME` の V3 での説明を追加。`chat.fullscreenCopyOnSelect`・`chat.agentEngine`・`chat.enableAutoAgentUpgrade`・`memory.mode`・`memory.reflection` を実機 2.33.0 に基づき追加。`chat.enableMainAgentSubagentTool` に v2.28.0 での設定行の廃止を注記。`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` の出典を公式 Headless mode に更新し、`KIRO_NO_PROGRAM_STATUS` を追加）
-**3 回前の更新**: 2026-10-04（v2.22.0〜v2.27.1 対応: `chat.sessionDashboard.scope`・`chat.outputStyle`・`chat.enableWorkflows`・`chat.enableMainAgentSubagentTool` を公式リファレンスに基づき追加、`chat.startFullscreen`・`chat.fullscreenWheelRows`・`chat.sessionDashboard.sortBy` を実機 2.27.1 に基づき追加、`chat.sessionDashboard.indexResponses` の既定 `true` を公式に基づき記入、`chat.enableTodoList` に V3 で無効の注記、環境変数 `KIRO_SKIP_BINARY_PINNING`・`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS`・`NODE_USE_SYSTEM_CA` と `.env` 自動読み込み廃止の注記を追加）。2026-09-13（v2.21.2 で `chat.preserveScrollback` の既定が `false` → `true` に変更されたことを反映（実機 2.21.4 の設定パネル定義で `defaultValue` が真値であることを確認）。v2.21.1 の `chat.spinnerVerbs`・`chat.enableCustomSpinnerVerbs`、v2.21.4 の `chat.sessionDashboard.indexResponses`、および `chat.sessionDashboard.groupBy`・`chat.keybindings.toggleSessionDashboard` を追加。公式が言及する `chat.agentEngine` が実機に存在しない旨の注記を追加。前回 2026-08-29: v2.20.0 の Preserve scrollback toggle と v2.20.1 の `chat.historyMode` CLI 設定拒否修正、Windows における `app.disableAutoupdates` 修正を反映）
-**公式ページ最終更新**: 2026-11-02
+**Page updated**: 2026-11-17（v3.0.0〜v3.3.0 対応: 公式 Settings リファレンス（公式更新日 2026-11-12）の `chat.agentEngine`（補遺から本表へ）・`compaction.autoCompactionThreshold`・`chat.enableSessionRecap`・`chat.keybindings.viewDiagram`・環境変数 `KIRO_DEFAULT_SETTINGS` を追加。`chat.ui`・`chat.uiMode`・`acp.agentEngine` を 3.0.0 の既定に更新し、`autocomplete.disable` と Classic のキーバインドを廃止の旨に更新。実機 3.3.0 の `kiro-cli settings list --all` と照合）
+**前回更新**: 2026-11-03（v2.34.1〜v2.37.1 対応: 公式 Settings リファレンス（公式更新日 2026-11-02）の `app.warnOnElevatedPrivileges`・`acp.agentEngine`・`chat.enableAutoAgentUpgrade` を反映。`chat.enableAutoAgentUpgrade` は公式に掲載されたため補遺から本表へ移し、v2.37.0 で未設定が有効になった変更を記載。補遺の他のキー（`chat.agentEngine`・`memory.mode`・`memory.reflection`・`chat.modelPicker.hiddenModels`・`chat.workflow.continueInterrupted`・`chat.workflowMonitor.mouseEnabled`・fullscreen 関連）は、公式 Settings に現在も行がない）
+**前々回更新**: 2026-10-25（v2.33.1・v2.34.0 対応: 公式 Settings リファレンス（公式更新日 2026-10-24）の設定キー・環境変数を本ページと照合し、不足していた `chat.workflowLaunch` を追加。`chat.modelPicker.hiddenModels`・`chat.workflow.continueInterrupted`・`chat.workflowMonitor.mouseEnabled` を実機 2.34.0 に基づき補遺に追加）
+**3 回前の更新**: 2026-10-21（v2.28.0〜v2.33.0 対応: 公式 Settings リファレンスの `chat.screenReader` と環境変数 `KIRO_SCREEN_READER`、`KIRO_HOME` の V3 での説明を追加。`chat.fullscreenCopyOnSelect`・`chat.agentEngine`・`chat.enableAutoAgentUpgrade`・`memory.mode`・`memory.reflection` を実機 2.33.0 に基づき追加。`chat.enableMainAgentSubagentTool` に v2.28.0 での設定行の廃止を注記。`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS` の出典を公式 Headless mode に更新し、`KIRO_NO_PROGRAM_STATUS` を追加）
+**4 回前の更新**: 2026-10-04（v2.22.0〜v2.27.1 対応: `chat.sessionDashboard.scope`・`chat.outputStyle`・`chat.enableWorkflows`・`chat.enableMainAgentSubagentTool` を公式リファレンスに基づき追加、`chat.startFullscreen`・`chat.fullscreenWheelRows`・`chat.sessionDashboard.sortBy` を実機 2.27.1 に基づき追加、`chat.sessionDashboard.indexResponses` の既定 `true` を公式に基づき記入、`chat.enableTodoList` に V3 で無効の注記、環境変数 `KIRO_SKIP_BINARY_PINNING`・`KIRO_HEADLESS_WORKFLOW_TIMEOUT_SECS`・`NODE_USE_SYSTEM_CA` と `.env` 自動読み込み廃止の注記を追加）。2026-09-13（v2.21.2 で `chat.preserveScrollback` の既定が `false` → `true` に変更されたことを反映（実機 2.21.4 の設定パネル定義で `defaultValue` が真値であることを確認）。v2.21.1 の `chat.spinnerVerbs`・`chat.enableCustomSpinnerVerbs`、v2.21.4 の `chat.sessionDashboard.indexResponses`、および `chat.sessionDashboard.groupBy`・`chat.keybindings.toggleSessionDashboard` を追加。公式が言及する `chat.agentEngine` が実機に存在しない旨の注記を追加。前回 2026-08-29: v2.20.0 の Preserve scrollback toggle と v2.20.1 の `chat.historyMode` CLI 設定拒否修正、Windows における `app.disableAutoupdates` 修正を反映）
+**公式ページ最終更新**: 2026-11-12（設定キーと環境変数の一覧を全件照合）

@@ -2,11 +2,13 @@
 
 # Kiro CLI Slash Commands リファレンス
 
-**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-10-20。`/model` の節は 2026-10-24 版と照合）
+**出典**: [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-11-16。見出しの一覧と `/copy` の節は 2026-11-16 版と照合済み。`/model` の節は 2026-10-24 版、ほかの節は 2026-10-20 版と照合）
 
 Kiro CLI のインタラクティブチャットセッション内で使用できるすべてのスラッシュコマンドを網羅する辞書的リファレンスです。
 
-> 📌 **v3（Early Access）コマンドについて**: 本リファレンスは **v2 安定版**のスラッシュコマンドを対象としています。v3（`kiro-cli --v3`）専用のコマンド — `/spec` 系は [09_v3/01. 仕様駆動開発](../09_v3/01_spec-driven-development.md)、`/upgrade-agent`（V2 → V2/V3 両対応のエージェント設定移行、v2.14.0 追加）は [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md)、インストール済み Powers を表示する `/powers`（v2.20.1 追加。v2.25.0 で `install`・`uninstall`）は [39. v2.20 新機能](../01_features/39_v220NewFeatures.md)・[44. v2.25 新機能](../01_features/44_v225NewFeatures.md)、セッションダッシュボード `/sessions`・設定パネル `/config`（v2.21.0 追加）は [40. v2.21 新機能](../01_features/40_v221NewFeatures.md)、Workflows の `/workflow`（v2.26.0 追加）は [45. v2.26 新機能](../01_features/45_v226NewFeatures.md)、保存済みプロンプトのスラッシュコマンド化（v2.27.0）は [46. v2.27 新機能](../01_features/46_v227NewFeatures.md)、Memory の `/memories`（v2.29.0 追加）は [48. v2.29 新機能](../01_features/48_v229NewFeatures.md)、対話型 V3 セッションの `/permissions`（**Policies** の **approve for me**・**ask for approval**、v2.36.0 追加）は [54. v2.35〜v2.37 新機能](../01_features/54_v237NewFeatures.md)、ローカルコマンドサンドボックスの `/sandbox` とローカル autonomous モードの `/autonomous`（いずれも v2.31.0 追加）は [50. v2.31 新機能](../01_features/50_v231NewFeatures.md) を参照してください（Early Access のため、安定版のコマンド数には含めていません。V3 の追加・変更の一覧は [09_v3/](../09_v3/README.md)）。
+> 📌 **V3 コマンドについて**: 本リファレンスは、見出し数をコマンド数の正準値とする既存の方針のまま、**V2 でも使えるスラッシュコマンド**を対象としています。V3 専用のコマンド — `/spec` 系は [09_v3/01. 仕様駆動開発](../09_v3/01_spec-driven-development.md)、`/upgrade-agent`（V2 → V2/V3 両対応のエージェント設定移行、v2.14.0 追加）は [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md)、インストール済み Powers を表示する `/powers`（v2.20.1 追加。v2.25.0 で `install`・`uninstall`）は [39. v2.20 新機能](../01_features/39_v220NewFeatures.md)・[44. v2.25 新機能](../01_features/44_v225NewFeatures.md)、セッションダッシュボード `/sessions`・設定パネル `/config`（v2.21.0 追加）は [40. v2.21 新機能](../01_features/40_v221NewFeatures.md)、Workflows の `/workflow`（v2.26.0 追加）は [45. v2.26 新機能](../01_features/45_v226NewFeatures.md)、保存済みプロンプトのスラッシュコマンド化（v2.27.0）は [46. v2.27 新機能](../01_features/46_v227NewFeatures.md)、Memory の `/memories`（v2.29.0 追加）は [48. v2.29 新機能](../01_features/48_v229NewFeatures.md)、対話型 V3 セッションの `/permissions`（**Policies** の **approve for me**・**ask for approval**、v2.36.0 追加）は [54. v2.35〜v2.37 新機能](../01_features/54_v237NewFeatures.md)、ローカルコマンドサンドボックスの `/sandbox` とローカル autonomous モードの `/autonomous`（いずれも v2.31.0 追加）は [50. v2.31 新機能](../01_features/50_v231NewFeatures.md) 、V3 の画面で幅広い Mermaid 図を開く `/diagram`（v3.2.0 追加）は [56. v3.1〜v3.3 新機能](../01_features/56_v33NewFeatures.md) を参照してください（本リファレンスでは安定版のコマンド数に含めていません。V3 の追加・変更の一覧は [09_v3/](../09_v3/README.md)）。
+>
+> ⚠ **3.0.0 以降の注記**: 公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/)（公式更新日 2026-11-16）は、`/permissions`・`/sessions`・`/config`・`/powers`・`/diagram`・`/autonomous`・`/sandbox`・`/workflow`・`/spec`・`/upgrade-agent` を、V3 専用の別枠ではなく通常のコマンドとして掲載しています。V3 が対話型の既定になった（3.0.0）ため、これらを V3 専用として別扱いする本サイトの方針は、見直しの余地があります（コマンド数の記述が連動するため、今回は変更していません）。公式の一覧に `/feedback`・`/stats`・`/voice` の見出しはありません。
 
 ---
 
@@ -429,8 +431,12 @@ MCP サーバーとレジストリ状態を表示・管理。
 直前のアシスタント応答をクリップボードにコピー。
 
 ```bash
-> /copy
+> /copy          # 最新の回答
+> /copy 2        # 2 番目に新しい回答（v3.3.0+。`/copy` と `/copy 1` は同じ）
+> /copy last 3   # 直近 3 件のメッセージ（古い順。プロンプトは **You:**、回答は **Kiro:** のラベル。v3.3.0+）
 ```
+
+3.3.0 以降、`/copy N` は N 番目に新しい回答、`/copy last N` は直近 N 件のメッセージ（プロンプトも回答も）をコピーします。ツール呼び出しをはさんだ 1 つの回答は 1 件と数えます。会話の全体は `/transcript` を使います（公式 [`/copy`](https://kiro.dev/docs/reference/slash-commands/#copy)、公式更新日 2026-11-16。→ [56](../01_features/56_v33NewFeatures.md)）。
 
 OSC 52 エスケープシーケンス経由で SSH/tmux/Zellij でも動作。100KB 超は無視。
 
@@ -510,7 +516,7 @@ OSC 52 エスケープシーケンス経由で SSH/tmux/Zellij でも動作。10
 
 ### `/tangent`
 
-> ⚠️ **V2 / classic、実験的機能の解説です。** v2.16.0でV3に別仕様の`/tangent`（名前付き・ネスト可能な側枝会話）が追加されました。V3版は次節（本節直後）を参照してください。公式ドキュメントも「the earlier experimental tangent mode behaves differently」と両者を明確に区別しています（出典: [Tangent（公式v3）](https://kiro.dev/docs/cli/v3/tangent)）。
+> ⚠️ **V2 / classic、実験的機能の解説です。** v2.16.0でV3に別仕様の`/tangent`（名前付き・ネスト可能な側枝会話）が追加されました。V3版は次節（本節直後）を参照してください。公式ドキュメントも「the earlier experimental tangent mode behaves differently」と両者を明確に区別しています（出典: [Tangent（公式v3）](https://kiro.dev/docs/cli/chat/tangent/)）。
 
 会話チェックポイントを作成して脇道のトピックを探求。
 
@@ -542,7 +548,7 @@ OSC 52 エスケープシーケンス経由で SSH/tmux/Zellij でも動作。10
 > /tangent merge <name>               # 名前を指定したセッションへ取り込む
 ```
 
-`/tangent merge [dest]` は、宛先（指定なしは親、`root`、名前）のセッションへ**短い要約**を送ります。元の tangent は残り、セッションは新規に作られません。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/#tangent)（公式ページ最終更新 2026-10-20）と公式 [Tangent](https://kiro.dev/docs/cli/v3/tangent/#merging-a-tangent-back) に記載があります（→ [35. v2.16 Tangent](../01_features/35_v216Tangent.md)）。
+`/tangent merge [dest]` は、宛先（指定なしは親、`root`、名前）のセッションへ**短い要約**を送ります。元の tangent は残り、セッションは新規に作られません。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/#tangent)（公式ページ最終更新 2026-10-20）と公式 [Tangent](https://kiro.dev/docs/cli/chat/tangent/#merging-a-tangent-back) に記載があります（→ [35. v2.16 Tangent](../01_features/35_v216Tangent.md)）。
 
 **V2 classic版との違い**:
 
@@ -553,7 +559,7 @@ OSC 52 エスケープシーケンス経由で SSH/tmux/Zellij でも動作。10
 | 切替方法 | トグル（`/tangent`・`Ctrl+T`） | ビジュアルピッカー（`/tangent ls`） |
 | 状態表示 | なし | フッターに `↯ name` チップ |
 
-**出典**: [Tangent（公式v3）](https://kiro.dev/docs/cli/v3/tangent)、[公式Changelog v2.16](https://kiro.dev/changelog/cli/2-16/)
+**出典**: [Tangent（公式v3）](https://kiro.dev/docs/cli/chat/tangent/)、[公式Changelog v2.16](https://kiro.dev/changelog/cli/2-16/)
 
 ### `/todos`
 
@@ -868,13 +874,14 @@ fullscreen は会話専用のターミナル画面（alternate screen）で、�
 
 ### 公式情報源
 
-- [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-10-20。`/model` の節は 2026-10-24 版と照合）
+- [Slash commands - Kiro CLI Documentation](https://kiro.dev/docs/reference/slash-commands/)（公式ページ最終更新: 2026-11-16。見出しの一覧と `/copy` の節は 2026-11-16 版と照合済み。`/model` の節は 2026-10-24 版、ほかの節は 2026-10-20 版と照合）
 - [Fullscreen mode](https://kiro.dev/docs/cli/fullscreen/)
 
 ---
 
-**Page updated**: 2026-11-03（v2.34.1〜v2.37.1 対応: コマンド数は 42 のまま変更なし。V3 専用の `/permissions`（v2.36.0）への参照を V3 専用コマンドの注記に追加。公式 Slash commands の `/permissions` の節（公式更新日 2026-10-30）と照合。ほかの節は 2026-10-20 版との照合のまま）
-**前回更新**: 2026-10-25（v2.33.1・v2.34.0 対応: コマンド数は 42 のまま変更なし。`/model` に `edit`（v2.34.0）と V3 のモデルフォールバック（v2.33.0。公式 Slash commands の更新日 2026-10-24）を追記し、`/model ` の Tab 補完（v2.33.0）の出典を公式 Changelog に更新）
-**前々回更新**: 2026-10-21（v2.28.0〜v2.33.0 対応: コマンド数は 42 のまま変更なし。`/model` に V1・V2 の `fallback` サブコマンドと公式のフォールバックの説明、`/knowledge` に V3 の既定有効と Classic・V2 の検索修正、`/fullscreen` に Copy on select、V3 の `/tangent` に `merge`（v2.27.1。公式 Slash commands・Tangent に掲載済み）を追記。V3 専用の `/autonomous`・`/sandbox`・`/memories` を除外注記に追加）
-**3 回前の更新**: 2026-10-04（v2.22.0 の `/fullscreen` を追加しコマンド数を 42 に更新。v2.23.0 の `/model` の推論設定と `/effort` のレガシー化、v2.24.0 の `/tools trust-all` の確認、v2.27.0 の V3 `todo_list` 廃止、v2.27.1 の `/model fallback`（CLI 内蔵 changelog のみ）を反映。V3 専用コマンド `/sessions`・`/config`・`/workflow` の案内を冒頭注記に追加）。2026-08-29（V3 専用 `/powers`（v2.20.1）を除外注記から案内し、安定版41コマンドの SSoT を維持。`/settings display` の Preserve scrollback（v2.20.0）を反映。前回 2026-08-16: `/voice` を追加しコマンド数を41に更新）
-**公式ページ最終更新**: 2026-10-20（`/model` の節は 2026-10-24 版と照合）
+**Page updated**: 2026-11-17（v3.0.0〜v3.3.0 対応: コマンド数は 42 のまま変更なし。`/copy` に `/copy N`・`/copy last N`（v3.3.0）を追記し、V3 コマンドの注記を 3.0.0 の既定化に合わせて更新、`/diagram`（v3.2.0）の参照を追加。公式 Slash commands（公式更新日 2026-11-16）の見出し一覧と照合）
+**前回更新**: 2026-11-03（v2.34.1〜v2.37.1 対応: コマンド数は 42 のまま変更なし。V3 専用の `/permissions`（v2.36.0）への参照を V3 専用コマンドの注記に追加。公式 Slash commands の `/permissions` の節（公式更新日 2026-10-30）と照合。ほかの節は 2026-10-20 版との照合のまま）
+**前々回更新**: 2026-10-25（v2.33.1・v2.34.0 対応: コマンド数は 42 のまま変更なし。`/model` に `edit`（v2.34.0）と V3 のモデルフォールバック（v2.33.0。公式 Slash commands の更新日 2026-10-24）を追記し、`/model ` の Tab 補完（v2.33.0）の出典を公式 Changelog に更新）
+**3 回前の更新**: 2026-10-21（v2.28.0〜v2.33.0 対応: コマンド数は 42 のまま変更なし。`/model` に V1・V2 の `fallback` サブコマンドと公式のフォールバックの説明、`/knowledge` に V3 の既定有効と Classic・V2 の検索修正、`/fullscreen` に Copy on select、V3 の `/tangent` に `merge`（v2.27.1。公式 Slash commands・Tangent に掲載済み）を追記。V3 専用の `/autonomous`・`/sandbox`・`/memories` を除外注記に追加）
+**4 回前の更新**: 2026-10-04（v2.22.0 の `/fullscreen` を追加しコマンド数を 42 に更新。v2.23.0 の `/model` の推論設定と `/effort` のレガシー化、v2.24.0 の `/tools trust-all` の確認、v2.27.0 の V3 `todo_list` 廃止、v2.27.1 の `/model fallback`（CLI 内蔵 changelog のみ）を反映。V3 専用コマンド `/sessions`・`/config`・`/workflow` の案内を冒頭注記に追加）。2026-08-29（V3 専用 `/powers`（v2.20.1）を除外注記から案内し、安定版41コマンドの SSoT を維持。`/settings display` の Preserve scrollback（v2.20.0）を反映。前回 2026-08-16: `/voice` を追加しコマンド数を41に更新）
+**公式ページ最終更新**: 2026-11-16（`/copy` の節は 2026-11-16 版と照合。それ以外の節は 2026-10-20 版）

@@ -70,17 +70,18 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 | │　│　├── | CLI Commands [(/docs/cli/reference/cli-commands/)](https://kiro.dev/docs/reference/cli-commands/) | `kiro-cli` 全16コマンド、グローバル引数、セッション管理 |
 | │　│　├── | Built-in Tools [(/docs/cli/reference/built-in-tools/)](https://kiro.dev/docs/reference/built-in-tools/) | 組み込みツール18種（read/glob/grep/write/shell/aws/web_*/code/tool_search/subagent 他） |
 | │　│　└── | Exit codes [(/docs/reference/exit-codes/)](https://kiro.dev/docs/reference/exit-codes/) | CI/CD 向けの終了コード（0／1／3／4。4 は Requested Agent Not Found。→ 本サイト [01_features/15](../01_features/15_ExitCodes.md)） |
-| │　├── | **CLI 3.0（V3 / Early Access）** [(/docs/cli/v3/)](https://kiro.dev/docs/cli/v3/) 🆕 | v3 の全体像（統一エンジン・4本柱・Breaking changes）。v2.8.0 以降 `kiro-cli --v3` でオプトイン（→ 本サイト [09_v3/](../09_v3/README.md)） |
+| │　├── | **Upgrade from CLI 2.x（V3）** [(/docs/cli/v3/)](https://kiro.dev/docs/cli/v3/) 🆕 | v3 の全体像（統一エンジン・Breaking changes・移行手順）。3.0.0 以降、V3 は対話型の既定（→ 本サイト [09_v3/](../09_v3/README.md)） |
+| │　│　├── | Choose an agent harness [(/docs/cli/agent-harness/)](https://kiro.dev/docs/cli/agent-harness/) 🆕 | V3／V2 の選び方（起動の種類ごとの既定、`--v2`・`--v3`、`chat.agentEngine`、初回起動のプロンプト、Classic を選ぶ起動、V2 への戻し方。→ 本サイト [01_features/55](../01_features/55_v30NewFeatures.md)） |
 | │　│　├── | Spec-driven development [(/docs/cli/v3/specs/)](https://kiro.dev/docs/specs/) | 組み込み Spec agent による仕様駆動開発（要件→設計→タスク→実行） |
-| │　│　├── | Feature overview [(/docs/cli/v3/feature-overview/)](https://kiro.dev/docs/cli/v3/new-features/) | v2 → v3 の機能比較 |
+| │　│　├── | Feature overview [(/docs/cli/v3/feature-overview/)](https://kiro.dev/docs/cli/v3/) | v2 → v3 の機能比較 |
 | │　│　├── | Permissions [(/docs/cli/v3/permissions/)](https://kiro.dev/docs/cli/v3/permissions/) | `permissions.yaml` による capability ベースの権限管理 |
 | │　│　├── | Hooks [(/docs/cli/v3/hooks/)](https://kiro.dev/docs/cli/v3/hooks-migration/) | 独立ファイル `.kiro/hooks/*.json` の強化版 Hooks |
-| │　│　├── | Agent config [(/docs/cli/v3/agent-config/)](https://kiro.dev/docs/cli/v3/agent-config/) | タグベースのツール選択・Markdown 形式の Agent 設定 |
+| │　│　├── | Agent config [(/docs/cli/v3/agent-config/)](https://kiro.dev/docs/custom-agents/configuration-reference/) | タグベースのツール選択・Markdown 形式の Agent 設定 |
 | │　│　└── | Upgrade Agent [(/docs/cli/v3/upgrade-agent/)](https://kiro.dev/docs/cli/v3/upgrade-agent/) 🆕 | `/upgrade-agent` による V2 → V2/V3 両対応（universal）エージェント設定への移行（v2.14.0 追加。→ 本サイト [01_features/34](../01_features/34_v214UpgradeAgent.md)） |
 | ├── | **Resources** | |
 | │　├── | Blog [(/blog/)](https://kiro.dev/blog/) | 技術ブログ |
 | │　├── | Changelog [(/changelog/)](https://kiro.dev/changelog/) | バージョン履歴 |
-| │　│　└── | CLI Changelog [(/changelog/cli/)](https://kiro.dev/changelog/cli/) | Kiro CLI のリリースノート。系列ページ `/changelog/cli/<メジャー>-<マイナー>/`（2-28〜2-37 が存在）と、系列内パッチの専用ページ `/changelog/cli/2-31-1/`（v2.31.1）・`/changelog/cli/2-33-1/`（v2.33.1）を持つ。ほかのパッチ版（例: v2.29.1）は系列ページの Patches 節に掲載される（→ 本サイト [変更履歴](../02_update/01_changelog.md)） |
+| │　│　└── | CLI Changelog [(/changelog/cli/)](https://kiro.dev/changelog/cli/) | Kiro CLI のリリースノート。系列ページ `/changelog/cli/<メジャー>-<マイナー>/`（2-28〜2-37・3-0〜3-3 が存在）と、系列内パッチの専用ページ `/changelog/cli/2-31-1/`（v2.31.1）・`/changelog/cli/2-33-1/`（v2.33.1）・`/changelog/cli/3-2-1/`（v3.2.1）を持つ。ほかのパッチ版（例: v2.29.1）は系列ページの Patches 節に掲載される（→ 本サイト [変更履歴](../02_update/01_changelog.md)） |
 | │　├── | FAQs [(/faq/)](https://kiro.dev/faq/) | よくある質問 |
 | │　├── | Report a bug [(GitHub Issues)](https://github.com/kirodotdev/Kiro/issues/new/choose) | バグ報告 |
 | │　├── | Suggest an idea [(GitHub Issues)](https://github.com/kirodotdev/Kiro/issues/new?template=feature_request.yml) | 機能提案 |
@@ -115,15 +116,15 @@ Kiro CLI公式サイト（[https://kiro.dev/cli/](https://kiro.dev/cli/)）の�
 - **[Kiro公式ブログ](https://kiro.dev/blog/)**
 
 ### 本サイトでの対応文書
-- [機能詳細ガイド](../01_features/README.md) — 54機能 + カテゴリ別ナビゲーション
+- [機能詳細ガイド](../01_features/README.md) — 56機能 + カテゴリ別ナビゲーション
 - [Smart Hooks](../01_features/22_Hooks.md) 🆕
 - [Agent Steering](../01_features/23_Steering.md) 🆕
 - [@file references](../01_features/24_FileReferences.md) 🆕
 - [Auto Complete](../01_features/25_AutoComplete.md) 🆕
 - [04_reference/](../04_reference/README.md) 🆕 — Settings/Slash/CLI/Tools の辞書
 - [公式インストール手順](../03_deployment/03_official-installation.md) 🆕
-- [09_v3/](../09_v3/README.md) 🆕 — Kiro CLI v3（Early Access）専用セクション
+- [09_v3/](../09_v3/README.md) 🆕 — Kiro CLI v3 専用セクション
 
 ---
 
-**最終更新**: 2026-11-03（機能数 54 に同期、CLI Changelog の系列ページを 2-37 までに更新）／ 前回 2026-10-25（機能数 53 に同期、CLI Changelog の系列ページを 2-34 まで・パッチの専用ページに 2-33-1 を追記し、v2.33.0 の「未掲載」の記述を削除）／ 前回 2026-10-21（機能数 52 に同期、スラッシュコマンドは 42 種のまま。Memory・Workflows・Local command sandbox・Exit codes・CLI Changelog の系列ページをサイト構造表に追加）／ 前回 2026-10-04（機能数 46・スラッシュコマンド 42 種に同期）／ 前回 2026-07-25（公式 v3 ドキュメントに新設された Upgrade Agent（/docs/cli/v3/upgrade-agent/）をサイト構造表に追加、機能数 34 に同期）／ 前回 2026-07-04（公式 v3 ドキュメント /docs/cli/v3/ 系5ページをサイト構造表に反映）
+**最終更新**: 2026-11-17（機能数 56 に同期、CLI Changelog の系列ページを 3-3 までに更新、Upgrade from CLI 2.x と Choose an agent harness を追記）／ 前回 2026-10-25（機能数 53 に同期、CLI Changelog の系列ページを 2-34 まで・パッチの専用ページに 2-33-1 を追記し、v2.33.0 の「未掲載」の記述を削除）／ 前回 2026-10-21（機能数 52 に同期、スラッシュコマンドは 42 種のまま。Memory・Workflows・Local command sandbox・Exit codes・CLI Changelog の系列ページをサイト構造表に追加）／ 前回 2026-10-04（機能数 46・スラッシュコマンド 42 種に同期）／ 前回 2026-07-25（公式 v3 ドキュメントに新設された Upgrade Agent（/docs/cli/v3/upgrade-agent/）をサイト構造表に追加、機能数 34 に同期）／ 前回 2026-07-04（公式 v3 ドキュメント /docs/cli/v3/ 系5ページをサイト構造表に反映）

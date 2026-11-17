@@ -449,7 +449,7 @@ V3 エンジンで `--auth-method` が効くことと、既定で Kiro CLI の�
 
 ### `acp.agentEngine`（v2.36.0）
 
-`kiro-cli acp` は、既定では V2 エンジンで動きます。v2.36.0 で、エンジンを一度だけ設定する `acp.agentEngine` が加わりました（値は `v1`・`v2`・`v3`）。エディタのコマンド引数に `--agent-engine` を渡す方法もあり、フラグが設定より優先されます。`chat.agentEngine` は `kiro-cli chat` に適用され、`kiro-cli acp` は変えません。
+`kiro-cli acp` は、v2.36.0〜v2.37.x では既定で V2 エンジンで動きました（**3.0.0 以降は V3 を動かせる環境で既定が V3**。→ 下記「v3.0.0 での変更点」）。v2.36.0 で、エンジンを一度だけ設定する `acp.agentEngine` が加わりました（値は `v1`・`v2`・`v3`）。エディタのコマンド引数に `--agent-engine` を渡す方法もあり、フラグが設定より優先されます。`chat.agentEngine` は `kiro-cli chat` に適用され、`kiro-cli acp` は変えません。
 
 ```bash
 kiro-cli settings acp.agentEngine v3
@@ -464,6 +464,17 @@ kiro-cli settings acp.agentEngine v3
 詳細は [54. v2.35〜v2.37 新機能](54_v237NewFeatures.md) を参照してください。
 
 ---
+
+
+## v3.0.0 での変更点（既定のエンジン）
+
+Kiro CLI 3.0.0 以降、`kiro-cli acp` は、`--agent-engine` フラグも `acp.agentEngine` 設定もエンジンを指定しないとき、V3 を動かせる環境で **V3 で始まります**（公式 [Choose an agent harness](https://kiro.dev/docs/cli/agent-harness/#acp-clients)、Page updated: 2026-11-03）。例外は次の 3 つで、いずれも V2 のままです。
+
+- 起動行に V2 専用のフラグ（`--agent`・`--model`・`--effort`・`--trust-all-tools`・`--trust-tools`）がある
+- Kiro が、V2 が必要なクライアントと認識した
+- V3 を動かせない環境（古い glibc の Linux など）
+
+エンジンを明示すると、それが常に優先されます。`--agent-engine v3` と V2 専用フラグは同時に使えません。V3 の ACP への移行は公式 [Migrate an ACP client to CLI V3](https://kiro.dev/docs/cli/v3/acp-migration/) を参照してください（→ [55. v3.0 新機能](55_v30NewFeatures.md)）。v3.2.0 では、`kiro-cli acp` を通して動かすエディタとツールが、Kiro CLI のセッションと同じ OS と作業ディレクトリのコンテキストをエージェントに渡すようになり、認識しない `acp.agentEngine` の値を無視するときは stderr に警告します。
 
 ## 関連リンク
 
@@ -498,5 +509,5 @@ kiro-cli settings acp.agentEngine v3
 
 ---
 
-**最終更新**: 2026-11-03
-**対象バージョン**: Kiro CLI v1.25.0+（v1.26.0 `--agent` フラグ・`code` ツール対応、v2.29.0 V3 ACP のサインイン既定、v2.36.0 `acp.agentEngine`、v2.37.0 ターミナルでのサインインを含む）
+**最終更新**: 2026-11-17
+**対象バージョン**: Kiro CLI v1.25.0+（v1.26.0 `--agent` フラグ・`code` ツール対応、v2.29.0 V3 ACP のサインイン既定、v3.0.0 既定のエンジンが V3、v2.36.0 `acp.agentEngine`、v2.37.0 ターミナルでのサインインを含む）

@@ -4,6 +4,8 @@
 
 **出典**: [Installation - Kiro CLI Documentation](https://kiro.dev/docs/getting-started/installation/)（公式ページ最終更新: 2026-08-04）
 
+> **⚠ Kiro CLI 3.0.0 で、インストール形態が変わりました**: Kiro CLI は、デスクトップアプリを同梱しない単一のスタンドアロンの `kiro-cli` バイナリになりました。デスクトップアプリの機能（インラインのオートコンプリートと提案、`kiro-cli translate`、ダッシュボード、`kiro-cli doctor`）は廃止されました。デスクトップアプリからの移行（macOS の DMG と Homebrew、Linux の AppImage・zip・Ubuntu .deb、Amazon Linux の RPM リポジトリ）の手順は、[55. v3.0 新機能](../01_features/55_v30NewFeatures.md) と公式 [Installation の Moving from the Kiro CLI desktop app](https://kiro.dev/docs/getting-started/installation/#moving-from-the-kiro-cli-desktop-app)（公式更新日 2026-11-12）にあります。以下のインストール手順は 3.0.0 より前の公式ページ（2026-08-04 時点）をもとにしており、現行の公式ページの手順と異なる箇所があります。現行の手順は公式ページで確認してください。
+
 > **⚠️ 公式ページの構造変更について**: 公式サイトは Kiro IDE / CLI / Web / Mobile / Crew の5サーフェス共通ページへ統合され、OS別の個別見出し（`macos`/`windows`等）は廃止されました。CLI向けの詳細手順（AppImage・zip・Ubuntu .deb・musl版等）はタブ切り替え形式の中に現存しますが、見出しID（アンカー）が再編されています（例: `linux-appimage`→`appimage`、`with-a-zip-file`→`zip-glibc-234`/`zip-musl-for-glibc-older-than-234`に分割、`ubuntu`→`ubuntu-deb`、`debugging-kiro-cli`→`log-file-locations`/`common-issues`に分割）。本ページの内容自体は現行の公式情報と一致しています（2026年8月16日確認）。
 
 ## 概要
@@ -19,7 +21,7 @@ Kiro CLI を OS 別に **公式手順でインストール** するためのガ�
 - ✅ **glibc 分岐**: glibc 2.34+ 標準版と、それ以前向けの **musl 版** を提供
 - ✅ **Auto-update**: バックグラウンドで自動更新（Windows）
 - ✅ **エンタープライズ対応**: HTTP/HTTPS プロキシ、Basic 認証付プロキシをサポート（v1.8.0+）
-- ✅ **セルフ診断**: `kiro-cli doctor` で問題自動検出
+- ✅ **セルフ診断**: `kiro-cli diagnostic` でシステム情報を出力（`kiro-cli doctor` は 3.0.0 で廃止）
 
 ### なぜ公式手順が必要なのか
 
@@ -60,10 +62,10 @@ curl -fsSL https://cli.kiro.dev/install | bash
 
 ```bash
 kiro-cli --version
-kiro-cli doctor
+kiro-cli diagnostic
 ```
 
-`Everything looks good!` が表示されれば正常です。
+`kiro-cli --version` がインストールした版を示せば正常です。`kiro-cli diagnostic` はシステム情報を出力します（`--format plain|json|json-pretty`）。3.0.0 より前の `kiro-cli doctor` は廃止されました。
 
 ---
 
@@ -305,23 +307,15 @@ kiro-cli uninstall
 
 **出典**: [Installation - Log file locations](https://kiro.dev/docs/getting-started/installation/#log-file-locations)、[Common issues](https://kiro.dev/docs/getting-started/installation/#common-issues)（見出し名"Debugging Kiro CLI"は廃止され、CLIタブ内で"Log file locations"と"Common issues"の2見出しに再編）
 
-### 自動診断: `kiro-cli doctor`
+### 診断: `kiro-cli diagnostic`・`kiro-cli issue`
 
 ```bash
-kiro-cli doctor
+kiro-cli diagnostic                 # システム情報を出力（plain は Markdown）
+kiro-cli diagnostic --format json   # json / json-pretty も指定可能
+kiro-cli issue                      # バグレポート（GitHub の issue）を作成
 ```
 
-#### 期待される出力
-
-```
-$ kiro-cli doctor
-
-✔ Everything looks good!
-
-Kiro CLI still not working? Run kiro-cli issue to let us know!
-```
-
-問題があれば、プロンプトの指示に従って解決します。それでも解決しない場合は `kiro-cli issue` でバグレポートを作成。
+> ⚠ **`kiro-cli doctor` は 3.0.0 で廃止されました**。実行すると「`kiro-cli doctor` has been removed. Run `kiro-cli diagnostic` for system info, or `kiro-cli issue` to report a problem.」と表示されます（実機 `kiro-cli 3.3.0` で確認）。公式 [Installation](https://kiro.dev/docs/getting-started/installation/)（公式更新日 2026-11-12）も、問題が起きたときは `kiro-cli diagnostic` でシステム情報を出力するか、`kiro-cli issue` で報告するよう案内しています。
 
 ### ログファイルの場所
 
@@ -351,12 +345,12 @@ kiro-cli chat
 | 症状 | 解決方法 |
 |------|--------|
 | **認証失敗** | `kiro-cli login` で再認証 |
-| **オートコンプリートが動作しない** | `kiro-cli doctor` でシェル統合を確認 |
+| **オートコンプリートが動作しない** | 3.0.0 でオートコンプリートは廃止されました（→ [25. Auto Complete](../01_features/25_AutoComplete.md)） |
 | **SSH 統合の問題** | SSH サーバーが必要な環境変数を受け入れる設定か確認 |
 
 ### 推奨トラブルシューティング手順
 
-1. **`kiro-cli doctor`** を実行して一般的な問題を自動検出・修正
+1. **`kiro-cli diagnostic`** を実行してシステム情報を確認
 2. **インターネット接続** を確認
 3. **対応環境** を使用しているか確認（[Supported command line environments](https://kiro.dev/docs/reference/cli-commands/) 参照）
 4. **再インストール** を試行
@@ -378,7 +372,7 @@ curl -fsSL https://cli.kiro.dev/install | bash
 kiro-cli login
 
 # 3. 動作確認
-kiro-cli doctor
+kiro-cli diagnostic
 kiro-cli chat
 ```
 
@@ -464,7 +458,7 @@ GitHub Actions の Windows runner で Kiro CLI を導入：
 
 ### リファレンス（辞書）
 
-- [04_reference/03_cli-commands.md](../04_reference/03_cli-commands.md) — `kiro-cli doctor`、`kiro-cli update`、`kiro-cli login`、`kiro-cli uninstall` 等の正規仕様
+- [04_reference/03_cli-commands.md](../04_reference/03_cli-commands.md) — `kiro-cli diagnostic`、`kiro-cli update`、`kiro-cli login`、`kiro-cli uninstall` 等の正規仕様
 - [04_reference/01_settings.md](../04_reference/01_settings.md) — `app.disableAutoupdates`、プロキシ関連環境変数（`HTTP_PROXY`/`HTTPS_PROXY`/`NO_PROXY`）、`KIRO_CHAT_LOG_FILE`
 
 ### デプロイメント関連（本ディレクトリ）
@@ -489,4 +483,5 @@ GitHub Actions の Windows runner で Kiro CLI を導入：
 ---
 
 **Page updated**: 2026-05-24（本サイト初版）  
-**公式ページ最終更新**: 2026-04-24
+**公式ページ最終更新**: 2026-04-24（本文）／ 2026-11-12（3.0.0 の注記と診断コマンドの節）
+**3.0.0 対応の追記**: 2026-11-17

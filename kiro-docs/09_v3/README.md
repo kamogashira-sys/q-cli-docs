@@ -1,21 +1,22 @@
-[ホーム](../README.md) > Kiro CLI v3（Early Access）
+[ホーム](../README.md) > Kiro CLI v3
 
-# 09. Kiro CLI v3（Early Access）概要
+# 09. Kiro CLI v3 概要
 
-> ⚠️ **Early Access の注意**: Kiro CLI v3（公式表記「**CLI 3.0**」「**V3**」）は **Early Access（先行公開）** です。**v2.8.0 以降の 2.x に `--v3` フラグで同梱**され、オプトインで試せます。GA（正式版）としての「3.0.0」はまだリリースされていません。**仕様は変更される可能性があり**、本セクションの内容は公式ドキュメント更新に追従して見直します。
+> 📌 **v3.0.0（2026-11-03）で V3 が既定になりました**: 公式 [Changelog v3.0](https://kiro.dev/changelog/cli/3-0/) によると、Kiro CLI 3.0.0 以降は、V3 が動作する環境の**対話型セッションの既定のエージェントハーネス**です（公式表記は「**CLI 3.0**」「**V3**」）。`--v3` は不要になり、V2 を使うには `kiro-cli --v2` を指定します。V2 は動き続けますが、新機能は届きません。このセクション（`09_v3/`）は、v2.8.0 から `--v3` で先行公開（Early Access）されていた時期に作ったもので、ディレクトリ名は維持しています。以下の記述のうち、v3.0.0 より前の版の説明は、当時の状況を示します。
 
-> 📌 **CLI 3.0 での V3 の既定化と Classic からの切り替え提案**: 公式 [Changelog v2.30](https://kiro.dev/changelog/cli/2-30/)（2026-10-12）によると、起動時の V3 への切り替えプロンプトは段階的に展開されており、**2026 年 10 月末に V3 が CLI 3.0 の既定になります**（プロンプトで **Switch to V3 and upgrade my configs** を選ぶと、V3 を既定のハーネスとして保存し、エージェントの自動アップグレードを有効にし、カスタムエージェント設定の移行を開始します）。[Changelog v2.28](https://kiro.dev/changelog/cli/2-28/)（2026-10-05）では、Classic の対話セッションからも 3.0 への切り替えが提案されるようになりました。一方、公式 [What's new in CLI V3](https://kiro.dev/docs/cli/v3/)（公式更新日 2026-10-13）は「early release of Kiro CLI V3」と記載しており、両者の記述は時期が異なります（→ [49. v2.30 新機能](../01_features/49_v230NewFeatures.md)）。本ページの更新時点で、公式 Changelog に CLI 3.0 の系列ページ（`/changelog/cli/3-0/`）はありません。3.0 の既定化が実際に行われた後は、公式 Changelog を確認してください。
+> 📌 **3.0.0 の破壊的変更**: Classic インターフェース・デスクトップアプリ・インラインのオートコンプリート（とそのコマンド）が廃止されました（→ 下記「v3.0.0〜v3.3.0 での追加・変更」、[55. v3.0 新機能](../01_features/55_v30NewFeatures.md)）。CLI 2.x の設定・Hooks・権限・ACP クライアントの移行は、公式 [Upgrade from CLI 2.x](https://kiro.dev/docs/cli/v3/) と [Migration guide](https://kiro.dev/docs/cli/v3/migration-guide/) に従います。起動時にどのハーネスが選ばれるかは、公式 [Choose an agent harness](https://kiro.dev/docs/cli/agent-harness/)（Page updated: 2026-11-03）にまとまっています。
 
-> 💡 **どちらを読めばいい？**: 普段の利用では、まず **v2 系のドキュメント**（[機能詳細ガイド](../01_features/README.md)・[リファレンス](../04_reference/README.md)）を参照してください。本セクション（09_v3/）は「v3 を先行して試したい人」向けです。
+> 💡 **どちらを読めばいい？**: V3 が既定になったため、新規の利用は V3 を前提に、[機能詳細ガイド](../01_features/README.md)・[リファレンス](../04_reference/README.md)と本セクションを併読してください。V2 のままの環境（V2 を選んだ、または glibc が古い Linux）は、機能詳細ガイドの各ページの V2 の記述に従います。
 
 **位置付け**: v3 は単一機能の追加ではなく、**エージェント実行基盤（エンジン）の刷新＋仕様駆動開発（Spec-driven development）の導入**という「開発パラダイムの更新」です。そのため本サイトでは独立セクション（`09_v3/`）にまとめています。
 
 **出典（一次情報）**:
 - [Kiro CLI v3 概要（公式・What's new in CLI 3.0）](https://kiro.dev/docs/cli/v3/)
 - [Spec-driven development（公式・機能自体）](https://kiro.dev/docs/specs/)
-- [新機能一覧（公式 New features in 3.0）](https://kiro.dev/docs/cli/v3/new-features/)
-- [Permissions（公式・機能自体）](https://kiro.dev/docs/permissions/) ／ [Hooks（公式・機能自体）](https://kiro.dev/docs/hooks/) ／ [Agent config changes（公式・v3移行）](https://kiro.dev/docs/cli/v3/agent-config/)
+- [新機能一覧（公式 New features in 3.0）](https://kiro.dev/docs/cli/v3/)
+- [Permissions（公式・機能自体）](https://kiro.dev/docs/permissions/) ／ [Hooks（公式・機能自体）](https://kiro.dev/docs/hooks/) ／ [Agent config changes（公式・v3移行）](https://kiro.dev/docs/custom-agents/configuration-reference/)
 - [公式 Changelog v2.8](https://kiro.dev/changelog/cli/2-8/)
+- [Choose an agent harness（公式・V3 と V2 の選び方）](https://kiro.dev/docs/cli/agent-harness/) ／ [公式 Changelog v3.0](https://kiro.dev/changelog/cli/3-0/)
 
 > **出典URLについての注記**: kiro.dev は 2026-08-04〜08-12 に v3 関連ドキュメントを再構成しました。旧 `/docs/cli/v3/specs/` は `/docs/specs/` への移転スタブとなり、`/docs/cli/v3/feature-overview/` は存在しなくなりました（機能比較・Breaking changes は `/docs/cli/v3/` 本体のアンカーに統合）。`/docs/cli/v3/permissions/`・`/docs/cli/v3/hooks-migration/`・`/docs/cli/v3/agent-config/` は v3 移行ガイド専用ページとして現存します。本ページの出典は再構成後の現行 URL に更新済みです（2026-08-16 確認）。
 
@@ -23,7 +24,7 @@
 
 ## このセクションの構成
 
-- **本ページ（README）** — v3 の全体像、4 本柱、Breaking changes / Known gaps、Early Access の位置付け
+- **本ページ（README）** — v3 の全体像、4 本柱、Breaking changes / Known gaps、v3.0.0 での既定化とその後の追加
 - **[01. 仕様駆動開発（Spec-driven development）](01_spec-driven-development.md)** — `/spec` を使った CLI での実践、`.kiro/specs/` の3ファイル、AI-DLC との違い
 - **[02. Kiro IDE 版との比較](02_kiro-ide-vs-cli.md)** — 「同様にできること／IDE が優位なこと／CLI ならではのこと」を一次情報ベースで整理
 
@@ -33,13 +34,16 @@
 
 Kiro CLI v3 の核心は **「統一エンジン（single engine for all Kiro surfaces）」** です。CLI 3.0 は Kiro IDE / Kiro Web と**同じエージェント基盤**の上に構築され、エンジン側の改善（新しいツール、計画立案、ツール選択など）が**全クライアントへ同時に届く**ようになりました。
 
-- **試し方**: `kiro-cli --v3` で V3 エンジンを起動（オプトイン）。
-- **併存**: 既存の **2.x と併存**します。設定を変えずにそのまま試せます。
-- **提供形態**: v2.8.0（公式表示日 2026-06-17）で **Early Access** として先行公開されました。
+- **v3.0.0 以降**: V3 が対話型の既定です。`kiro-cli --v3`（その 1 回だけ V3）と `kiro-cli --v2`（その 1 回だけ V2）で切り替えます。
+- **併存**: V2 のセッションと設定はそのまま残ります。V3 は V2 のセッションを V3 のコピーとして再開でき、V2 は V3 のセッションを開けません。
+- **経緯**: v2.8.0（公式表示日 2026-06-17）で **Early Access** として `--v3` による先行公開が始まり、v3.0.0（2026-11-03）で既定になりました。
 
 ```bash
-# V3 エンジンを試す（既存 2.x はそのまま）
+# この 1 回だけ V3 で起動（v3.0.0 以降は既定が V3 なので、V3 が既定の環境では不要）
 kiro-cli --v3
+
+# この 1 回だけ V2 で起動
+kiro-cli --v2
 ```
 
 ---
@@ -53,7 +57,7 @@ kiro-cli --v3
 | **仕様駆動開発**（Spec-driven development） | 組み込みの **Spec agent**。要件 → 設計 → タスク → 実行を計画してから進める | [01. 仕様駆動開発](01_spec-driven-development.md)、[公式](https://kiro.dev/docs/specs/) |
 | **Capability ベースの権限**（Permissions） | `permissions.yaml` に許可/拒否ルールを宣言。`--trust-all-tools` / `/tools trust` を置換 | [公式 Permissions](https://kiro.dev/docs/cli/v3/permissions/) |
 | **強化版 Hooks** | 独立ファイル `.kiro/hooks/*.json`（バージョン付きスキーマ）、2 アクション型（shell / agent）、新トリガ | [公式 Hooks migration](https://kiro.dev/docs/cli/v3/hooks-migration/) |
-| **強化版 Agent 設定** | タグでツール種別を選択、`permissions` ブロック統合、Markdown 形式、inline MCP | [公式 Agent config](https://kiro.dev/docs/cli/v3/agent-config/) |
+| **強化版 Agent 設定** | タグでツール種別を選択、`permissions` ブロック統合、Markdown 形式、inline MCP | [公式 Agent config](https://kiro.dev/docs/custom-agents/configuration-reference/) |
 
 ### 4 本柱のポイント（一次情報の要約）
 
@@ -63,7 +67,7 @@ kiro-cli --v3
 
 ### v2.13.0 での追加（Introspect サブエージェント・グローバル hooks）
 
-**v2.13.0（2026-07-17）** で、V3（Early Access）に2つの機能が追加されました。
+**v2.13.0（2026-07-17）** で、V3（当時は Early Access）に2つの機能が追加されました。
 
 - **Introspect サブエージェント**: Kiro の機能に関する質問に答え、**カスタムエージェント・hooks・steering の作成を支援**する組み込みサブエージェント。Spec agent（仕様駆動）に加わる新しい組み込みエージェントで、v3 の設定（上記 4 本柱）を書く際の対話的なガイドとして使えます。
 - **グローバル hooks**: `~/.kiro/hooks/` に置いた hooks が**全ワークスペースへ自動適用**されます（詳細は上記「Hooks」ポイント）。プロジェクト横断で共通のフック（例: セッション開始時の共通セットアップ）をユーザー単位で一元管理できます。
@@ -170,7 +174,21 @@ V3 限定の追加・変更は次のとおりです（出典は公式 Changelog 
 
 > **V3 専用コマンドの扱い（v2.36.0）**: `/permissions`（**Policies** の **approve for me**・**ask for approval**）は対話型の V3 セッション専用で、V2 安定版のスラッシュコマンド数（[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md)）には含めません。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/#permissions) に掲載されています。
 
-> **ACP のエンジン選択（v2.36.0）と サインイン（v2.37.0）**: `kiro-cli acp` は既定で V2 エンジンで動き、`acp.agentEngine` または `--agent-engine` で `v3` を選びます。V3 の ACP のサインイン既定は v2.29.0 で変わっています（→ [13. ACP](../01_features/13_ACP.md)）。v2.37.0 からは、ターミナル認証を宣言する ACP クライアントが、サインアウト中の `kiro-cli acp` からターミナルでサインインできます。
+> **ACP のエンジン選択（v2.36.0）と サインイン（v2.37.0）**: `kiro-cli acp` は、v2.36.0〜v2.37.x では既定で V2 エンジンで動き、`acp.agentEngine` または `--agent-engine` で `v3` を選びました。**3.0.0 以降は、V3 を動かせる環境で既定が V3** です（例外あり。→ [13. ACP](../01_features/13_ACP.md)）。V3 の ACP のサインイン既定は v2.29.0 で変わっています（→ [13. ACP](../01_features/13_ACP.md)）。v2.37.0 からは、ターミナル認証を宣言する ACP クライアントが、サインアウト中の `kiro-cli acp` からターミナルでサインインできます。
+
+### v3.0.0〜v3.3.0 での追加・変更（V3 の既定化・Classic の廃止・compaction の Hook・Output details ほか）
+
+V3 が既定になった v3.0.0 以降の追加・変更は次のとおりです（出典は公式 Changelog [v3.0](https://kiro.dev/changelog/cli/3-0/)・[v3.1](https://kiro.dev/changelog/cli/3-1/)・[v3.2](https://kiro.dev/changelog/cli/3-2/)・[v3.2.1](https://kiro.dev/changelog/cli/3-2-1/)・[v3.3](https://kiro.dev/changelog/cli/3-3/)）。詳細は [01_features/55. v3.0 新機能](../01_features/55_v30NewFeatures.md) と [01_features/56. v3.1〜v3.3 新機能](../01_features/56_v33NewFeatures.md) を参照してください。
+
+| 版 | 追加・変更 |
+|----|-----------|
+| v3.0.0 | ⚠ **V3 が対話型の既定のハーネス**（ヘッドレスは `--trust-all-tools` のとき V3、ACP は新しいクライアントが V3。既存の V2 利用者には先に確認）、⚠ **Classic インターフェースの廃止**（Classic を選ぶ起動には **Continue with V3** を提案）、⚠ **デスクトップアプリとインラインのオートコンプリートの廃止**（`kiro-cli` の単一バイナリ。`autocomplete`・`inline`・`translate`・`theme`・`dashboard` は使えず、`doctor` は `diagnostic` か `issue` を案内） |
+| v3.1.0 | **`PreCompact`・`PostCompact` Hook**（CLI V3）、セッションのクレジット表示（`/usage`・ステータス行の **Session credits**・ワークフローのステップ行）、`KIRO_DEFAULT_SETTINGS`（macOS・Linux）、Session recap（`chat.enableSessionRecap`）、サブエージェントによる親の Memory の読み取り、通知の 1 行化、エージェントの `file://` リソースの上限（32 ファイル・100,000 文字） |
+| v3.2.0 | **Mermaid 図の全画面ビューア**（`/diagram`・`Ctrl+]`・`chat.keybindings.viewDiagram`）、クライアント登録なしの MCP サインイン（Client ID Metadata Documents）、ワークフローのループの上限でのあと 1 回／完了の選択、autonomous モードでのワークフローの案内 |
+| v3.2.1 | **Output details**（`/settings output-details`。`collapsed`・`lean`・`default`・`full`）、ツール呼び出しの見た目の統一、thinking の表示の移動、Linux でのデバイスフローのサインイン |
+| v3.3.0 | **`/copy N`・`/copy last N`**、自動 compaction の閾値（`/settings` の **Compaction**・`compaction.autoCompactionThreshold`）、サブエージェントのタスクの表示、`/model` の操作、🔒 V2 エージェントのアップグレードで正規表現の許可ルールを広げない（`unconvertible-pattern`） |
+
+> **V3 専用コマンドの扱い（v3.0.0 以降）**: 公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/)（Page updated: 2026-11-16）は、`/permissions`・`/sessions`・`/config`・`/powers`・`/diagram`・`/autonomous`・`/sandbox`・`/workflow`・`/spec`・`/upgrade-agent` を、V3 専用の別枠ではなく通常のコマンドとして掲載しています。本サイトの [04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md) は、見出し数をコマンド数の正準値とする既存の方針のまま、これらを V3 専用として本セクションで扱っています。
 
 ---
 
@@ -183,8 +201,11 @@ v3 は **後方互換ではない変更**を含みます。切り替え前に確
 | **権限** | `--trust-all-tools` / `/tools trust` を **`permissions.yaml`** で置換（※v2.24.0 で V3 にもセッション限定の自動承認 `/tools trust-all` が追加。公式 [Permissions](https://kiro.dev/docs/permissions/) は `--trust-all-tools` が CI 向けのセッション単位の上書きとして引き続き動作すると説明） |
 | **Hooks** | 埋め込み hooks を**独立ファイル** `.kiro/hooks/*.json` へ。トリガ名は PascalCase |
 | **Agent 設定** | `toolsSettings` を **`permissions`** フィールドへ、個別ツール ID を**タグ**へ |
-| **aws_tool** | **削除**（MCP サーバーで代替） |
-| **セッション形式** | v3 形式は**後方互換なし**。切り替え前に `~/.kiro/sessions/` をバックアップ推奨 |
+| **aws_tool** | **削除**（MCP サーバーで代替。公式の移行手順 5 は、`.kiro/settings/mcp.json` に AWS の MCP サーバーを追加する例を示している） |
+| **セッション形式** | V3 は別のセッションストアを持つ。V3 は V2 のセッションを V3 のコピーとして再開でき（`/sessions`・`--resume`・`--resume-id`）、**V2 は V3 のセッションを開けない**。切り替え前に `~/.kiro/sessions/` をバックアップ推奨 |
+| **サブエージェントの権限** | サブエージェントのツール呼び出しは、親のセッションのポリシーも許可するときだけプロンプトなしで動く。以前はサブエージェント自身の承認済みツールが、親が許可しなくても動いた。ヘッドレスでは拒否される（公式 [Sub-agent permissions](https://kiro.dev/docs/custom-agents/subagents/#sub-agent-permissions)） |
+| **Classic インターフェース**（v3.0.0） | 廃止。Classic を選ぶ起動は V3 を提案される |
+| **デスクトップアプリ・オートコンプリート**（v3.0.0） | 廃止。`autocomplete`・`inline`・`translate`・`theme`・`dashboard` は使えない。`doctor` は `diagnostic` か `issue` を案内 |
 
 > **移行手段（v2.14.0 で追加）**: V2 のカスタムエージェント設定は **`/upgrade-agent`**（V3 セッション内で実行）で V2/V3 両対応の universal 形式へ変換できます。公式 [v3 概要](https://kiro.dev/docs/cli/v3/) も同コマンドと [migration guide](https://kiro.dev/docs/cli/v3/upgrade-agent/) を案内しています。→ [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md)
 >
@@ -196,7 +217,7 @@ Breaking changes（置換・削除）とは別に、v2 に**名前や見た目�
 
 | 領域 | 状況 |
 |------|------|
-| **Tangent**（`/tangent`） | 公式 [Feature overview](https://kiro.dev/docs/cli/v3/)（2026-08-12 更新版）ではステータス **「✅ New」**、Change from 2.x は「Named, nestable side-conversations」。公式 [Tangent ページ](https://kiro.dev/docs/cli/v3/tangent/) は「This page covers tangent in CLI 3.0 ... The earlier experimental tangent mode behaves differently — a single checkpoint toggled with `/tangent` or `Ctrl+T`, with no naming or nesting」と明記し、V2 classic 版とは**別物**であることを明示。コマンド名 `/tangent` は同じですが、V3 版は名前付き・ネスト可能・ビジュアルピッカー（`/tangent ls`）対応という別仕様です（→ [01_features/35. v2.16 Tangent（V3側枝会話）](../01_features/35_v216Tangent.md)、[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md#tangent)） |
+| **Tangent**（`/tangent`） | 公式 [Feature overview](https://kiro.dev/docs/cli/v3/)（2026-08-12 更新版）ではステータス **「✅ New」**、Change from 2.x は「Named, nestable side-conversations」。公式 [Tangent ページ](https://kiro.dev/docs/cli/chat/tangent/) は「This page covers tangent in CLI 3.0 ... The earlier experimental tangent mode behaves differently — a single checkpoint toggled with `/tangent` or `Ctrl+T`, with no naming or nesting」と明記し、V2 classic 版とは**別物**であることを明示。コマンド名 `/tangent` は同じですが、V3 版は名前付き・ネスト可能・ビジュアルピッカー（`/tangent ls`）対応という別仕様です（→ [01_features/35. v2.16 Tangent（V3側枝会話）](../01_features/35_v216Tangent.md)、[04_reference/02_slash-commands.md](../04_reference/02_slash-commands.md#tangent)） |
 
 > 📝 **旧記述の訂正（2026-08-16）**: 本サイトは以前、Tangent を「⬆️ Enhanced（強化）」と分類し、公式が「replace the single-checkpoint experiment」と記載していると引用していましたが、現行の公式 Feature overview 表のステータスは **「✅ New」** であり、該当の引用文は現行公式ページのいずれにも存在しません。上記表は現行記述に基づき修正しています。
 
@@ -204,11 +225,16 @@ Breaking changes（置換・削除）とは別に、v2 に**名前や見た目�
 
 ## Known gaps（既知の制限）
 
+公式 [Upgrade from CLI 2.x](https://kiro.dev/docs/cli/v3/)（Page updated: 2026-11-03）の「Remaining differences from V2」と、公式 [Choose an agent harness](https://kiro.dev/docs/cli/agent-harness/) をもとにしています。
+
 | 制限 | 内容 |
 |------|------|
-| **Amazon Linux 2 非対応** | CLI 3.0 は **AL2 では動作しません**。AL2 が必要な環境は CLI 2.x を使用 |
-| **Classic mode 非対応** | レガシーの**非 TUI モード**（`kiro-cli chat` を TUI なしで使う形態）は v3 エンジン非対応。**TUI を使用** |
-| **セッション再開の非互換** | **V3 セッションは V2 で再開不可**。V2 に戻すと、作成済みの V3 セッションは利用できません |
+| **セッション再開の非互換** | **V3 セッションは V2 で再開できません**（保存形式が異なる）。V2 のセッションは V3 のコピーとして再開できます |
+| **ワークスペースのチェックポイント** | 実験機能の `/checkpoint` は V3 にありません。V3 は会話の分岐を再訪する `/rewind` を提供します。ファイルの復元はバージョン管理で行います |
+| **glibc が古い Linux** | V3 が必要とする版より glibc が古い Linux では、ハーネスを指定しない起動は V2 で開きます。`kiro-cli --v3` は「V3 is currently not supported on this system」で止まります（macOS と Windows は常に V3 を動かせます） |
+| **Classic インターフェース** | どちらのハーネスでも動きません。ターミナル UI（V3 または V2）を使います |
+
+> 📝 **旧記述の訂正（2026-11-17）**: 本サイトは以前、Known gaps に「Amazon Linux 2 非対応」と「非 TUI（Classic）モード非対応」を載せていました。現行の公式 Upgrade from CLI 2.x の「Remaining differences from V2」には前者の記載がなく、Classic は 3.0.0 で V2 でも動かなくなったため、上の表に置き換えました。公式 [Installation](https://kiro.dev/docs/getting-started/installation/)（Page updated: 2026-11-12）は、Amazon Linux 2023 を RPM リポジトリでのインストール対象とし、glibc 2.34 以降向けの zip と、それより古い glibc 向けの musl 版の zip を案内しています。Amazon Linux 2 の可否は、公式が現行のページで述べていないため**未確認**です。
 
 ---
 
@@ -236,6 +262,8 @@ kiro-cli diagnostic --format json-pretty
 - [01_features/34. v2.14 /upgrade-agent](../01_features/34_v214UpgradeAgent.md) — V2 → V3 エージェント設定移行（v2.14.0）
 - [01_features/41〜46. v2.22〜v2.27 新機能](../01_features/46_v227NewFeatures.md) — Workflows・`/tools trust-all`・Output style・`SessionEnd`・保存済みプロンプトのコマンド化ほか（[41](../01_features/41_v222NewFeatures.md)・[42](../01_features/42_v223NewFeatures.md)・[43](../01_features/43_v224NewFeatures.md)・[44](../01_features/44_v225NewFeatures.md)・[45](../01_features/45_v226NewFeatures.md)・[46](../01_features/46_v227NewFeatures.md)）
 - [07_aidlc/](../07_aidlc/README.md) — AI-DLC（AWS Labs OSS 方法論）。v3 の純正 Spec agent とは別物（→ [01. 仕様駆動開発](01_spec-driven-development.md) の比較表）
+- [01_features/55. v3.0 新機能](../01_features/55_v30NewFeatures.md) — V3 の既定化・Classic／デスクトップアプリ／オートコンプリートの廃止・デスクトップアプリからの移行
+- [01_features/56. v3.1〜v3.3 新機能](../01_features/56_v33NewFeatures.md) — compaction の Hook・セッションのクレジット・Output details・`/diagram`・`/copy N`
 - [01_features/54. v2.35〜v2.37 新機能](../01_features/54_v237NewFeatures.md) — Approve for me・V2 エージェントの起動時の自動アップグレード・組織の MCP と Web ツールの設定への追従・ACP のサインインとエンジン選択
 - [01_features/47〜53. v2.28〜v2.34 新機能](../01_features/53_v234NewFeatures.md) — Hook のカテゴリ一致・Memory・サンドボックス・autonomous・`KIRO_HOME`・Workflows の拡張・ワークスペースの信頼確認・MCP elicitation・Workflow use ほか（[47](../01_features/47_v228NewFeatures.md)・[48](../01_features/48_v229NewFeatures.md)・[49](../01_features/49_v230NewFeatures.md)・[50](../01_features/50_v231NewFeatures.md)・[51](../01_features/51_v232NewFeatures.md)・[52](../01_features/52_v233NewFeatures.md)・[53](../01_features/53_v234NewFeatures.md)）
 - [02_update/01_changelog.md](../02_update/01_changelog.md) — v2.8.0 / v2.8.1 の変更履歴
@@ -243,9 +271,9 @@ kiro-cli diagnostic --format json-pretty
 ### 公式情報源
 - [Kiro CLI v3 概要（What's new in CLI 3.0）](https://kiro.dev/docs/cli/v3/)
 - [Spec-driven development（機能自体）](https://kiro.dev/docs/specs/)
-- [新機能一覧（New features in 3.0）](https://kiro.dev/docs/cli/v3/new-features/)
-- [Tangent](https://kiro.dev/docs/cli/v3/tangent/)
-- [Permissions（機能自体）](https://kiro.dev/docs/permissions/) ／ [Hooks（機能自体）](https://kiro.dev/docs/hooks/) ／ [Agent config changes（v3移行）](https://kiro.dev/docs/cli/v3/agent-config/)
+- [新機能一覧（New features in 3.0）](https://kiro.dev/docs/cli/v3/)
+- [Tangent](https://kiro.dev/docs/cli/chat/tangent/)
+- [Permissions（機能自体）](https://kiro.dev/docs/permissions/) ／ [Hooks（機能自体）](https://kiro.dev/docs/hooks/) ／ [Agent config changes（v3移行）](https://kiro.dev/docs/custom-agents/configuration-reference/)
 - [Upgrading agent configs（`/upgrade-agent`）](https://kiro.dev/docs/cli/v3/upgrade-agent/)
 - [Workflows](https://kiro.dev/docs/workflows/) ／ [Hook types](https://kiro.dev/docs/hooks/types/) ／ [Install powers](https://kiro.dev/docs/powers/installation/)
 - [Memory](https://kiro.dev/docs/memory/) ／ [Local command sandbox](https://kiro.dev/docs/sandbox/)（Kiro IDE と Kiro CLI の両方を扱うページです。CLI の記述だけを参照してください）
@@ -253,5 +281,5 @@ kiro-cli diagnostic --format json-pretty
 
 ---
 
-**最終更新**: 2026-11-03（v2.35.0〜v2.37.1 の V3 追加・変更を追加）／ 2026-10-25（v2.33.1・v2.34.0 の V3 追加・変更を追加し、v2.33.0 の出典を公式 Changelog に更新）／ 2026-10-21（v2.28.0〜v2.33.0 の V3 追加・変更（Hook のカテゴリ一致、Memory、サンドボックス、autonomous、`KIRO_HOME`、Workflows の拡張、フォルダの信頼確認ほか）と、CLI 3.0 での V3 既定化・Classic からの切り替え提案の注記を追加。v2.27.1 の出典を公式 Changelog の Patches 節に更新）
-**対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x 以降 ＋ `--v3` で提供。3.0.0 GA は未リリース。
+**最終更新**: 2026-11-17（v3.0.0〜v3.3.0 の追加・変更、V3 の既定化、Classic の廃止、Known gaps の更新）／ 2026-11-03（v2.35.0〜v2.37.1 の V3 追加・変更を追加）／ 2026-10-25（v2.33.1・v2.34.0 の V3 追加・変更を追加し、v2.33.0 の出典を公式 Changelog に更新）／ 2026-10-21（v2.28.0〜v2.33.0 の V3 追加・変更（Hook のカテゴリ一致、Memory、サンドボックス、autonomous、`KIRO_HOME`、Workflows の拡張、フォルダの信頼確認ほか）と、CLI 3.0 での V3 既定化・Classic からの切り替え提案の注記を追加。v2.27.1 の出典を公式 Changelog の Patches 節に更新）
+**対象バージョン**: Kiro CLI v3.3.0（v3.0.0 で V3 が対話型の既定。v2.8.x〜v2.37.x は `--v3` による Early Access）

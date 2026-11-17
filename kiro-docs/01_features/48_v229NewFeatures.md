@@ -163,7 +163,7 @@ V3 での Hook のカテゴリ一致（v2.28.0）は [47. v2.28 新機能](47_v2
 
 | 変更（公式 Changelog v2.29.0） | 公式ドキュメントでの確認 |
 |----------------------------|------------------------|
-| カスタムエージェントは、ツール設定が許可する `mcp.json` のサーバーだけを起動する | 公式 [Agent config changes](https://kiro.dev/docs/cli/v3/agent-config/)（Page updated: 2026-10-10）は `includeMcpJson` を「ワークスペースの `.kiro/settings/mcp.json` のサーバーを含める」と説明しているが、「ツール設定が許可するサーバーだけを起動する」という記述は確認できなかった（**未確認**） |
+| カスタムエージェントは、ツール設定が許可する `mcp.json` のサーバーだけを起動する | 公式 [Agent config changes](https://kiro.dev/docs/custom-agents/configuration-reference/)（Page updated: 2026-10-10）は `includeMcpJson` を「ワークスペースの `.kiro/settings/mcp.json` のサーバーを含める」と説明しているが、「ツール設定が許可するサーバーだけを起動する」という記述は確認できなかった（**未確認**） |
 | `stdio` の MCP サーバーが、エージェントの環境全体を継承する | 公式 [MCP configuration](https://kiro.dev/docs/mcp/configuration/)（Page updated: 2026-10-07）は `env` を「サーバープロセスの環境変数」と説明しているが、環境全体の継承に関する記述は確認できなかった（**未確認**） |
 | サブエージェントとして起動された V3 のカスタムエージェントが、自身の `mcpServers` を読み込む（バグ修正） | 公式 [Sub-agents](https://kiro.dev/docs/custom-agents/subagents/)（Page updated: 2026-10-02）は、MCP サーバーがメインエージェントと共有されると説明しているが、この修正に関する記述は確認できなかった（**未確認**） |
 

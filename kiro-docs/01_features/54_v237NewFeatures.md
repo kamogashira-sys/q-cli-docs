@@ -60,7 +60,7 @@ MCP の設定は [32. MCP OAuth Management](32_MCPOAuthManagement.md) を参照�
 
 ## [V3] Approve for me（v2.36.0）
 
-対話型の V3 セッションで、Kiro が定型的な操作を代わりに承認します。Kiro は、安全と判断した操作を承認し、危険と判断した操作をブロックし、判断できないときは利用者に尋ねます。公式 [V3 Permissions の Approve for me](https://kiro.dev/docs/cli/v3/permissions/#approve-for-me)（Page updated: 2026-10-31）の説明は次のとおりです。
+対話型の V3 セッションで、Kiro が定型的な操作を代わりに承認します。Kiro は、安全と判断した操作を承認し、危険と判断した操作をブロックし、判断できないときは利用者に尋ねます。公式 [V3 Permissions の Approve for me](https://kiro.dev/docs/permissions/#approve-for-me)（Page updated: 2026-10-31）の説明は次のとおりです。
 
 - 対象は **Kiro CLI 2.36 以降の、対話型のローカル V3 セッション**。`/permissions` はクラウドセッションでは使えない
 - `/permissions` → **Policies** で **approve for me** を選ぶ。この選択肢は、Approve for me が使えるセッションにだけ表示される。使えないセッションでは、Policies のページがその旨を示し、Kiro は尋ね続ける
@@ -271,7 +271,7 @@ V3 の ACP クライアントの移行は [13. ACP](13_ACP.md) と、公式 [Mig
 - [Kiro CLI Changelog v2.37](https://kiro.dev/changelog/cli/2-37/)
 - [Kiro CLI Changelog v2.36](https://kiro.dev/changelog/cli/2-36/)
 - [Kiro CLI Changelog v2.35](https://kiro.dev/changelog/cli/2-35/)
-- [V3 Permissions — Approve for me](https://kiro.dev/docs/cli/v3/permissions/#approve-for-me)
+- [V3 Permissions — Approve for me](https://kiro.dev/docs/permissions/#approve-for-me)
 - [Upgrading agent configs](https://kiro.dev/docs/cli/v3/upgrade-agent/)
 - [ACP — Sign in from an ACP client](https://kiro.dev/docs/cli/acp/#sign-in-from-an-acp-client)
 - [Settings リファレンス](https://kiro.dev/docs/reference/settings/)

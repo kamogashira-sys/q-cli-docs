@@ -2,7 +2,7 @@
 
 # Kiro CLI 機能詳細ガイド
 
-> Kiro CLI の 54 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
+> Kiro CLI の 56 機能を、それぞれ独立したページで詳細解説します。**目的から探すなら下のカテゴリ別ナビゲーション**、リリース時期・バージョンから探すなら[機能一覧表](#-機能一覧リリース情報付き)をどうぞ。リファレンス（辞書的・網羅的）は [04_reference/](../04_reference/README.md) にあります。
 
 ## 🗂️ カテゴリ別ナビゲーション
 
@@ -41,6 +41,8 @@
 - [52. v2.33 新機能](52_v233NewFeatures.md) 🆕 — [V3] ワークスペースの信頼確認・Workflow の計画承認ツリー・V3 のモデルフォールバック（v2.33.0）
 - [53. v2.34 新機能](53_v234NewFeatures.md) 🆕 — [V3] MCP elicitation・Workflow の起動方針（Workflow use）と計画の修正・Memory の削除・`/model edit`（v2.33.1・v2.34.0）
 - [54. v2.35〜v2.37 新機能](54_v237NewFeatures.md) 🆕 — [V3] Approve for me・⚠ V2 エージェントの起動時の自動アップグレードが既定で有効（v2.36.0・v2.37.0）
+- [55. v3.0 新機能](55_v30NewFeatures.md) 🆕 — ⚠ V3 が対話型の既定のハーネスに・Classic インターフェース／デスクトップアプリ／オートコンプリートの廃止（v3.0.0）
+- [56. v3.1〜v3.3 新機能](56_v33NewFeatures.md) 🆕 — `PreCompact`・`PostCompact` Hook・セッションのクレジット表示・Output details・`/diagram`・`/copy N`・自動 compaction の閾値（v3.1.0〜v3.3.0）
 
 ### 📁 コンテキスト・知識管理
 - [07. Skills](07_Skills.md) — Progressive Context Loading
@@ -68,7 +70,7 @@
 ### 🎨 UI/UX・補完
 - [18. Terminal UI](18_TerminalUI.md) — V2 TUI、テーマ、Crew Monitor
 - [21. v2.4 New Commands](21_v24NewCommands.md) — `/effort`、`/settings`
-- [25. Auto Complete](25_AutoComplete.md) 🆕 — ドロップダウン + インライン補完
+- [25. Auto Complete](25_AutoComplete.md) 🆕 — ドロップダウン + インライン補完（⚠ 3.0.0 で廃止）
 - [27. Thinking Display](27_ThinkingDisplay.md) 🆕 — 推論のリアルタイム表示（v2.5.0）
 - [28. v2.6 New Commands](28_v26NewCommands.md) 🆕 — `/transcript save`・`/title`・`--effort`・自動永続化（v2.6.0）
 - [29. v2.7 New Commands](29_v27NewCommands.md) 🆕 — Queue Steering（Ctrl+S）・`/settings` UI統一（v2.7.0）
@@ -82,6 +84,8 @@
 - [49. v2.30 新機能](49_v230NewFeatures.md) 🆕 — スクリーンリーダー対応（`/settings display`）（v2.30.0）
 - [50. v2.31 新機能](50_v231NewFeatures.md) 🆕 — Mermaid 図のチャット内描画（v2.31.1）
 - [51. v2.32 新機能](51_v232NewFeatures.md) 🆕 — [V3] 出力スタイル 3 種・OSC 7501 による端末のプログラム状態（v2.32.0）
+- [55. v3.0 新機能](55_v30NewFeatures.md) 🆕 — ⚠ Classic インターフェースの廃止（起動時に V3 を提案）・インラインのオートコンプリートの廃止（v3.0.0）
+- [56. v3.1〜v3.3 新機能](56_v33NewFeatures.md) 🆕 — Output details・Mermaid 図の全画面ビューア（`/diagram`）・`/copy N`・Session recap（v3.1.0〜v3.3.0）
 
 ### 🔒 セキュリティ・権限
 - [11. URL Permissions](11_URLPermissions.md) — `web_fetch` の URL 権限細粒度制御
@@ -94,6 +98,7 @@
 - [52. v2.33 新機能](52_v233NewFeatures.md) 🆕 — [V3] ワークスペースの信頼確認・🔒 サンドボックスのネットワーク規則と Windows の hook コマンドの修正（v2.33.0）
 - [53. v2.34 新機能](53_v234NewFeatures.md) 🆕 — [V3] `--trust-workspace`（信頼確認を 1 回の起動だけ省略）・ツール承認の選択肢の並び・解析できない shell コマンドの拒否（v2.34.0）
 - [54. v2.35〜v2.37 新機能](54_v237NewFeatures.md) 🆕 — [V3] Approve for me（`/permissions` の Policies）・サブコマンド単位の承認ルール（`git stash *`）・root／Administrator 起動の警告・`kiro-cli agent upgrade` の権限の警告（v2.35.0・v2.36.0）
+- [56. v3.1〜v3.3 新機能](56_v33NewFeatures.md) 🆕 — アップグレード時の許可ルールの縮小（`unconvertible-pattern`）・MCP の状態を所有者のみに（v3.1.0・v3.3.0）
 
 ### 🔌 統合（IDE/MCP/CI/CD/認証）
 - [12. Remote Authentication](12_RemoteAuth.md) — SSH/SSM/コンテナ認証
@@ -108,6 +113,8 @@
 - [51. v2.32 新機能](51_v232NewFeatures.md) 🆕 — [V3] 非対話実行の `--cloud`／`--repo`・組織 MCP レジストリの OAuth 設定（v2.32.0）
 - [53. v2.34 新機能](53_v234NewFeatures.md) 🆕 — [V3] MCP elicitation（MCP ツールがフォームやリンクで入力を求める）・`kiro-cli mcp add --agent` の修正（v2.33.1・v2.34.0）
 - [54. v2.35〜v2.37 新機能](54_v237NewFeatures.md) 🆕 — ACP クライアントのターミナルでのサインイン（v2.37.0）・`acp.agentEngine`（v2.36.0）・[V3] 組織の MCP と Web ツールの設定への追従と、レジストリが隠した MCP サーバーの表示（v2.35.0）
+- [55. v3.0 新機能](55_v30NewFeatures.md) 🆕 — ⚠ ACP が既定で V3 で始まる（例外あり）・`kiro-cli doctor` などの廃止・デスクトップアプリからの移行（v3.0.0）
+- [56. v3.1〜v3.3 新機能](56_v33NewFeatures.md) 🆕 — クライアント登録なしの MCP サインイン（CIMD）・`KIRO_DEFAULT_SETTINGS`（v3.1.0〜v3.3.0）
 
 ### 💰 使用量・課金
 - [06. /usage コマンド](06_UsageCommand.md) — 契約プラン・月間使用量
@@ -142,7 +149,7 @@
 | **[Smart Hooks](22_Hooks.md)** 🆕 | Q CLI由来<br/>v1.29.6<br/>（2026-04-13公式公開） | エージェントライフサイクルにシェルコマンドを差し込む拡張機構 | 5種類の Hook Types（AgentSpawn/UserPromptSubmit/PreToolUse/PostToolUse/Stop）、Tool Matching、Caching、Timeout |
 | **[Agent Steering](23_Steering.md)** 🆕 | Q CLI由来<br/>v1.20.0継承<br/>（2026-01-08公式公開） | プロジェクト規約・コーディング標準・アーキテクチャパターンを永続化 | 3スコープ（global/project/scoped）、Foundational 3 files、AGENTS.md標準対応、Custom Agents併用 |
 | **[@file references（File References）](24_FileReferences.md)** 🆕 | v1.26.0<br/>（2026-02-12） | チャット入力で `@file` `@directory` を介してファイル/ディレクトリ内容を即時参照 | 解決順序（Prompts→Files→Directories）、Tab補完、Manage Prompts、4アプローチ比較 |
-| **[Auto Complete](25_AutoComplete.md)** 🆕 | Q CLI由来<br/>v2.0.0で再統合<br/>（公式公開 2025-11-16） | ターミナル AI 補完（ドロップダウン + インライン候補） | Autocomplete Dropdown Menu、Inline Suggestions（ghost text）、数百ツール対応、テーマ、ARN カスタマイズ |
+| **[Auto Complete](25_AutoComplete.md)** 🆕 | Q CLI由来<br/>v2.0.0で再統合<br/>（公式公開 2025-11-16） | ⚠ 3.0.0 で廃止: ターミナル AI 補完（ドロップダウン + インライン候補） | Autocomplete Dropdown Menu、Inline Suggestions（ghost text）、数百ツール対応、テーマ、ARN カスタマイズ |
 | **[Agent Toolkit for AWS](26_AgentToolkitForAWS.md)** 🌟 | 2026-05-06 GA<br/>（AWS 公式製品） | AI エージェントが AWS で安全・効果的に動作するための公式ツールキット | 4 コンポーネント（MCP Server/Skills/Plugins/Rules files）、主要4ツール（call_aws/search_documentation/read_documentation/run_script）、IAM コンテキストキー、CloudWatch メトリクス、AWS Labs MCP 後継 |
 | **[Thinking Display（推論のリアルタイム表示）](27_ThinkingDisplay.md)** 🆕 | v2.5.0<br/>（2026-05-29） | エージェントの推論プロセスをリアルタイム表示（既定有効） | chat.showThinking（既定 true）、/settings display > Show thinking、Adaptive Thinking との違い |
 | **[v2.6新コマンド（/transcript save, /title, --effort）](28_v26NewCommands.md)** 🆕 | v2.6.0<br/>（2026-06-05） | 会話エクスポート・端末タイトル・起動時effort・設定の自動永続化 | /transcript save（md/plain/json）、/title、--effort 起動フラグ、/model・/effort 自動永続化、/knowledge update（全KB一括） |
@@ -172,6 +179,8 @@
 | **[v2.33 新機能](52_v233NewFeatures.md)** 🆕 | v2.33.0<br/>（2026-10-20） | [V3] ワークスペースの信頼確認、Workflow の計画承認ツリー、V3 のモデルフォールバックの設定 | [V3] hooks・agents・MCP サーバー・steering・workflows・言語サーバー設定の読み込み前のワークスペース信頼確認（非対話実行と V1・V2 は対象外）、[V3] Workflow の計画承認ステップツリー・PR ウォッチ（コンフリクト・失敗チェック・スレッド）、V2 の `grep` の並列スキャン、Mermaid のサブグラフ（V2／V3 の適用範囲は未確認）、🔒 [V3] サンドボックスのネットワーク規則のホスト名の大文字小文字・Windows の hook コマンド |
 | **[v2.34 新機能](53_v234NewFeatures.md)** 🆕 | v2.34.0<br/>（2026-10-23）<br/>v2.33.1含む | [V3] MCP elicitation、Workflow の起動方針（Workflow use）と計画の修正、Memory の削除、`/model edit` | [V3] MCP ツールがフォームやリンクで入力を求める、⚠ [V3] Workflows は依頼したときだけ開始（v2.33.1）、`chat.workflowLaunch`（Only when asked／Only for large tasks／As much as possible）、[V3] 計画承認への変更案の入力、[V3] `/memories` で `Ctrl+D` による削除、`/model edit`（V2／V3 の適用範囲は未確認）、[V3] `--trust-workspace`、🔒 [V3] HTTP の MCP サーバーは同一オリジンのリダイレクトだけに従う |
 | **[v2.35〜v2.37 新機能](54_v237NewFeatures.md)** 🆕 | v2.37.0<br/>（2026-10-30）<br/>v2.35.0・v2.36.0<br/>v2.34.1〜v2.37.1のパッチ含む | [V3] Approve for me、V2 エージェントの起動時の自動アップグレード（既定で有効）、ACP のサインインとエンジン選択、root／Administrator 起動の警告 | [V3] `/permissions` の Policies で **approve for me**（`evaluate` 効果・ワークスペース単位）、[V3] サブコマンド単位の承認ルール（`git stash *`）、`kiro-cli agent upgrade` の権限の警告、⚠ [V3] `chat.enableAutoAgentUpgrade` 未設定でも V3 の起動時に V2 エージェントをアップグレード（`.json.bak` を作成）、`acp.agentEngine`（`v1`／`v2`／`v3`）、ACP クライアントのターミナルでのサインイン（**Log in to Kiro**）、`app.warnOnElevatedPrivileges`、`KIRO_RUNTIME_DIR`、Mermaid のノードの形状と入れ子の subgraph、fullscreen で長い回答の上端のプロンプト行から戻る、[V3] レジストリが隠した MCP サーバーを `/mcp` に表示 |
+| **[v3.0 新機能](55_v30NewFeatures.md)** 🆕 | v3.0.0<br/>（2026-11-03） | ⚠ V3 が対話型の既定のハーネスに、Classic インターフェース・デスクトップアプリ・オートコンプリートの廃止 | V3 が対話型の既定（ヘッドレスは `--trust-all-tools` のとき V3、ACP は新しいクライアントが V3）、初回起動の選択プロンプト（**Continue with V3**／**Stay on V2**）、`--v2`・`--v3`・`chat.agentEngine`、Classic を選ぶ起動への **Continue with V3** の提案、`kiro-cli` 単一バイナリ、`autocomplete`・`inline`・`translate`・`theme`・`dashboard` の廃止と `doctor` の案内 |
+| **[v3.1〜v3.3 新機能](56_v33NewFeatures.md)** 🆕 | v3.3.0<br/>（2026-11-12）<br/>v3.1.0・v3.2.0<br/>v3.2.1のパッチ含む | `PreCompact`・`PostCompact` Hook、セッションのクレジット表示、Output details、Mermaid 図の全画面ビューア、`/copy N`、自動 compaction の閾値 | `PreCompact`／`PostCompact` Hook、`/usage` と Session credits、`KIRO_DEFAULT_SETTINGS`、Session recap（`chat.enableSessionRecap`）、サブエージェントによる親の Memory の読み取り、`/diagram`（`Ctrl+]`・`chat.keybindings.viewDiagram`）、クライアント登録なしの MCP サインイン（CIMD）、ワークフローのループの上限での選択、**Output details**（`collapsed`・`lean`・`default`・`full`）、`/copy N`・`/copy last N`、`compaction.autoCompactionThreshold`、アップグレード時の許可ルールの縮小 |
 
 ## 🔗 機能間の連携
 
@@ -219,7 +228,7 @@
 
 - **[Smart Hooks](22_Hooks.md)** — Q CLI v1.13.0 時代から概念存在。Kiro CLI で形式化、v1.29.6 で `/hooks` コマンド追加（公式公開 2026-04-13）
 - **[Agent Steering](23_Steering.md)** — Q CLI 時代から類似機能（context entries）あり。Kiro CLI で **Foundational 3 files / AGENTS.md 標準** に再整備（公式公開 2026-01-08）
-- **[Auto Complete](25_AutoComplete.md)** — Q CLI 時代から提供。Kiro CLI v2.0.0 で **Terminal UI と統合**（公式公開 2025-11-16）
+- **[Auto Complete](25_AutoComplete.md)** — Q CLI 時代から提供。Kiro CLI v2.0.0 で **Terminal UI と統合**（公式公開 2025-11-16）。⚠ **3.0.0（2026-11-03）で廃止**
 
 ## 🎯 使用シナリオ例
 
@@ -358,6 +367,6 @@ sequenceDiagram
 
 ---
 
-**最終更新**: 2026-11-03
-**対象バージョン**: Kiro CLI v2.37.1+（v3 は Early Access）
-**機能数**: 54 + Reference集約 ([04_reference/](../04_reference/README.md))
+**最終更新**: 2026-11-17
+**対象バージョン**: Kiro CLI v3.3.0+（v3.0.0 で V3 が対話型の既定）
+**機能数**: 56 + Reference集約 ([04_reference/](../04_reference/README.md))

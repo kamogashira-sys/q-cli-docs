@@ -15,7 +15,7 @@ Kiro CLI の環境構築とデプロイメントに関するガイド集です�
 
 - **対象**: Kiro CLI を OS 別に公式手順でインストール・運用する方
 - **内容**: macOS / Windows 11 / Linux (AppImage / zip / Ubuntu .deb) / Proxy / アンインストール / デバッグ
-- **特徴**: glibc 2.34+ 標準版と musl 版の使い分け、エンタープライズプロキシ対応、`kiro-cli doctor` 自動診断
+- **特徴**: glibc 2.34+ 標準版と musl 版の使い分け、エンタープライズプロキシ対応、`kiro-cli diagnostic`・`kiro-cli issue` による診断（`kiro-cli doctor` は 3.0.0 で廃止）
 
 ### [01_aws-samples-code-server.md](01_aws-samples-code-server.md)
 AWS Samples の AI Agent Development Code Server を使用した、EC2 上での Kiro CLI 開発環境構築ガイドです。

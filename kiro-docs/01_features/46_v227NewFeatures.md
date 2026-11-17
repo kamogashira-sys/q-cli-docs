@@ -106,7 +106,7 @@ V3 は `todo_list` ツールを提供しなくなり、V3 では `chat.enableTod
 
 ### [V3] `/tangent merge [dest]`
 
-tangent で得た結果を、親セッションまたは名前を指定したセッションへ取り込みます。tangent 自体は [35. v2.16 Tangent](35_v216Tangent.md) を参照してください。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/#tangent)（公式更新日 2026-10-20）と公式 [Tangent](https://kiro.dev/docs/cli/v3/tangent/#merging-a-tangent-back)（公式更新日 2026-10-10）に、宛先（親・`root`・名前指定）と、取り込まれるのが要約であり元の tangent は残ることが記載されています。
+tangent で得た結果を、親セッションまたは名前を指定したセッションへ取り込みます。tangent 自体は [35. v2.16 Tangent](35_v216Tangent.md) を参照してください。公式 [Slash commands](https://kiro.dev/docs/reference/slash-commands/#tangent)（公式更新日 2026-10-20）と公式 [Tangent](https://kiro.dev/docs/cli/chat/tangent/#merging-a-tangent-back)（公式更新日 2026-10-10）に、宛先（親・`root`・名前指定）と、取り込まれるのが要約であり元の tangent は残ることが記載されています。
 
 ### モデルフォールバック — `/model fallback`
 

@@ -1,8 +1,8 @@
-[ホーム](../README.md) > [Kiro CLI v3（Early Access）](README.md) > 仕様駆動開発
+[ホーム](../README.md) > [Kiro CLI v3](README.md) > 仕様駆動開発
 
 # 09-01. 仕様駆動開発（Spec-driven development）— CLI での実践
 
-> ⚠️ **Early Access**: 本ページは Kiro CLI v3（`kiro-cli --v3`）の機能を扱います。Early Access のため仕様変更の可能性があります（→ [09. v3 概要](README.md)）。
+> 📌 本ページは Kiro CLI v3 の機能を扱います。v3.0.0 以降、V3 は対話型の既定です（V2 を選んだ環境では `kiro-cli --v3` で V3 を選びます）。仕様は公式ドキュメントの更新に追従して見直します（→ [09. v3 概要](README.md)）。
 
 **出典（一次情報）**:
 - [Spec-driven development（公式・機能自体）](https://kiro.dev/docs/specs/)
@@ -121,7 +121,7 @@ Spec agent は**標準のエージェント**なので、v3 の権限（`permiss
 ## 関連リンク
 
 ### 本セクション内
-- [09. Kiro CLI v3（Early Access）概要](README.md)
+- [09. Kiro CLI v3 概要](README.md)
 - [02. Kiro IDE 版との比較](02_kiro-ide-vs-cli.md)
 - [39. v2.20 新機能](../01_features/39_v220NewFeatures.md) — 全画面 Spec タスク実行・Preserve scrollback・V3 `/powers`
 
@@ -137,5 +137,5 @@ Spec agent は**標準のエージェント**なので、v3 の権限（`permiss
 
 ---
 
-**最終更新**: 2026-08-29（v2.20.0 の `/spec run` 全画面タスク実行、リアルタイム進捗、実行前スコープ選択を反映）
-**対象バージョン**: Kiro CLI v3（Early Access）— v2.8.x ＋ `--v3` で提供。3.0.0 GA は未リリース。
+**最終更新**: 2026-11-17（V3 が既定になったことに合わせて冒頭の注記を更新）／ 2026-08-29（v2.20.0 の `/spec run` 全画面タスク実行、リアルタイム進捗、実行前スコープ選択を反映）
+**対象バージョン**: Kiro CLI v3.3.0（v3.0.0 で V3 が対話型の既定）
